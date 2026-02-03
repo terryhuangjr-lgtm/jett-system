@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Manager Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>📋 Task Manager</h1>
+      <div class="stats" id="stats">
+        <div class="stat">
+          <span class="stat-value" id="stat-total">0</span>
+          <span class="stat-label">Total</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value" id="stat-pending">0</span>
+          <span class="stat-label">Pending</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value" id="stat-running">0</span>
+          <span class="stat-label">Running</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value" id="stat-completed">0</span>
+          <span class="stat-label">Completed</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value" id="stat-failed">0</span>
+          <span class="stat-label">Failed</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="actions">
+      <button class="btn btn-primary" onclick="showAddTaskModal()">+ Add Task</button>
+      <button class="btn btn-secondary" onclick="refreshTasks()">🔄 Refresh</button>
+      <select id="filter-status" onchange="refreshTasks()">
+        <option value="">All Tasks</option>
+        <option value="pending">Pending</option>
+        <option value="running">Running</option>
+        <option value="completed">Completed</option>
+        <option value="failed">Failed</option>
+      </select>
+    </div>
+
+    <div class="tasks-list" id="tasks-list">
+      <p class="loading">Loading tasks...</p>
+    </div>
+  </div>
+
+  <!-- Add Task Modal -->
+  <div id="add-task-modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="hideAddTaskModal()">&times;</span>
+      <h2>Add New Task</h2>
+      <form id="add-task-form" onsubmit="addTask(event)">
+        <div class="form-group">
+          <label>Task Name *</label>
+          <input type="text" name="name" required placeholder="e.g., Scrape eBay for jerseys">
+        </div>
+        <div class="form-group">
+          <label>Description</label>
+          <textarea name="description" placeholder="Optional description"></textarea>
+        </div>
+        <div class="form-group">
+          <label>Command *</label>
+          <input type="text" name="command" required placeholder="e.g., node lib/stealth-browser/cli.js scrape --url ...">
+        </div>
+        <div class="form-group">
+          <label>Schedule</label>
+          <input type="text" name="schedule" placeholder="e.g., daily at 06:00, hourly, every 30 minutes">
+          <small>Leave empty for one-time task</small>
+        </div>
+        <div class="form-group">
+          <label>Priority (1-10)</label>
+          <input type="number" name="priority" value="5" min="1" max="10">
+        </div>
+        <button type="submit" class="btn btn-primary">Create Task</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Task Details Modal -->
+  <div id="task-details-modal" class="modal">
+    <div class="modal-content modal-large">
+      <span class="close" onclick="hideTaskDetailsModal()">&times;</span>
+      <div id="task-details"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

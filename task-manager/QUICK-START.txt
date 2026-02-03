@@ -1,0 +1,161 @@
+═══════════════════════════════════════════════════════════════
+TASK MANAGER - QUICK START GUIDE
+═══════════════════════════════════════════════════════════════
+
+✅ INSTALLATION COMPLETE!
+
+The Task Manager is ready to use. Here's how to get started:
+
+───────────────────────────────────────────────────────────────
+1. START THE TASK MANAGER
+───────────────────────────────────────────────────────────────
+
+cd /home/clawd/clawd/task-manager
+./start.sh
+
+This starts:
+  • Web Dashboard at http://localhost:3000
+  • Background Worker (checks tasks every 30 seconds)
+
+───────────────────────────────────────────────────────────────
+2. OPEN THE DASHBOARD
+───────────────────────────────────────────────────────────────
+
+Open in your browser:
+  http://localhost:3000
+
+You'll see:
+  • Statistics (total, pending, running, completed, failed tasks)
+  • Task list with status badges
+  • Add Task button
+  • Filter and refresh controls
+
+───────────────────────────────────────────────────────────────
+3. ADD YOUR FIRST TASK
+───────────────────────────────────────────────────────────────
+
+Option A: Via Web Dashboard
+  1. Click "Add Task"
+  2. Fill in:
+     - Name: "Test eBay Scrape"
+     - Command: node /home/clawd/clawd/lib/stealth-browser/example-ebay.js "vintage jersey"
+     - Schedule: daily at 06:00
+  3. Click "Create Task"
+
+Option B: Via Command Line
+  cd /home/clawd/clawd
+  node task-manager/cli.js add "Test eBay Scrape" \
+    "node lib/stealth-browser/example-ebay.js 'vintage jersey'" \
+    --schedule "daily at 06:00" \
+    --description "Daily vintage jersey price monitoring"
+
+───────────────────────────────────────────────────────────────
+4. WATCH IT RUN
+───────────────────────────────────────────────────────────────
+
+  • Worker checks every 30 seconds for tasks to run
+  • Status changes: pending → running → completed
+  • View logs in dashboard (click task name)
+  • Or via CLI: node task-manager/cli.js logs 1
+
+───────────────────────────────────────────────────────────────
+COMMON COMMANDS
+───────────────────────────────────────────────────────────────
+
+List all tasks:
+  node task-manager/cli.js list
+
+View task details:
+  node task-manager/cli.js show <id>
+
+View task logs:
+  node task-manager/cli.js logs <id>
+
+Add scheduled task (daily at 6 AM):
+  node task-manager/cli.js add "Morning Check" "node script.js" \
+    --schedule "daily at 06:00"
+
+Add hourly task:
+  node task-manager/cli.js add "Hourly Monitor" "node monitor.js" \
+    --schedule "hourly"
+
+Add task every 30 minutes:
+  node task-manager/cli.js add "Quick Check" "node check.js" \
+    --schedule "every 30 minutes"
+
+Remove task:
+  node task-manager/cli.js remove <id>
+
+Show statistics:
+  node task-manager/cli.js stats
+
+Stop Task Manager:
+  cd /home/clawd/clawd/task-manager
+  ./stop.sh
+
+───────────────────────────────────────────────────────────────
+EXAMPLE TASKS FOR JETT
+───────────────────────────────────────────────────────────────
+
+1. Daily eBay Price Monitoring:
+   node task-manager/cli.js add "eBay Jerseys" \
+     "node /home/clawd/clawd/lib/stealth-browser/example-ebay.js 'vintage jersey'" \
+     --schedule "daily at 06:00"
+
+2. Hourly Website Check:
+   node task-manager/cli.js add "Competitor Check" \
+     "node /home/clawd/clawd/lib/stealth-browser/cli.js scrape --url https://competitor.com" \
+     --schedule "hourly"
+
+3. Screenshot Archive (daily):
+   node task-manager/cli.js add "Daily Screenshot" \
+     "node /home/clawd/clawd/lib/stealth-browser/cli.js screenshot --url https://site.com --output /tmp/daily.png" \
+     --schedule "daily at 12:00"
+
+───────────────────────────────────────────────────────────────
+FOR JETT - API ACCESS
+───────────────────────────────────────────────────────────────
+
+Jett can interact with tasks via:
+
+1. CLI commands (shown above)
+
+2. REST API:
+   GET  http://localhost:3000/api/tasks        - List all tasks
+   GET  http://localhost:3000/api/tasks/1      - Get task details
+   POST http://localhost:3000/api/tasks        - Create task
+   PUT  http://localhost:3000/api/tasks/1      - Update task
+   DELETE http://localhost:3000/api/tasks/1    - Delete task
+   GET  http://localhost:3000/api/tasks/1/logs - Get task logs
+   GET  http://localhost:3000/api/stats        - Get statistics
+
+Example (create task via API):
+  curl -X POST http://localhost:3000/api/tasks \
+    -H "Content-Type: application/json" \
+    -d '{"name":"Test","command":"echo hi","schedule":"hourly"}'
+
+───────────────────────────────────────────────────────────────
+BENEFITS
+───────────────────────────────────────────────────────────────
+
+✅ Visual Dashboard - See everything at a glance
+✅ Automated Scheduling - Set it and forget it
+✅ Background Execution - Runs without supervision
+✅ Complete Logs - Full execution history
+✅ Token Savings - Tasks run locally (free!)
+✅ Flexible Control - Web, CLI, or API access
+✅ Persistent Storage - Survives restarts
+✅ Real-time Updates - Dashboard auto-refreshes
+
+───────────────────────────────────────────────────────────────
+NEXT STEPS
+───────────────────────────────────────────────────────────────
+
+1. Start the Task Manager: ./start.sh
+2. Open dashboard: http://localhost:3000
+3. Add your first task
+4. Watch it run automatically!
+
+Full documentation: /home/clawd/clawd/task-manager/README.md
+
+═══════════════════════════════════════════════════════════════
