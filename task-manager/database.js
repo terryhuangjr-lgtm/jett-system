@@ -203,7 +203,7 @@ class TaskDatabase {
   calculateNextRun(schedule) {
     const now = new Date();
 
-    // Parse schedule format: "daily at HH:MM", "hourly", "every N minutes", etc.
+    // Parse schedule format: "daily at HH:MM", "weekly on [day] at HH:MM", "hourly", "every N minutes", etc.
     if (schedule.startsWith('daily at ')) {
       const time = schedule.replace('daily at ', '');
       const [hours, minutes] = time.split(':').map(Number);
@@ -216,6 +216,35 @@ class TaskDatabase {
       }
 
       return next.toISOString();
+    } else if (schedule.startsWith('weekly on ')) {
+      // Format: "weekly on Tuesday at 04:00"
+      const match = schedule.match(/weekly on (\w+) at (\d{2}):(\d{2})/i);
+      if (match) {
+        const [, dayName, hours, minutes] = match;
+        const dayMap = {
+          'sunday': 0, 'monday': 1, 'tuesday': 2, 'wednesday': 3,
+          'thursday': 4, 'friday': 5, 'saturday': 6
+        };
+
+        const targetDay = dayMap[dayName.toLowerCase()];
+        if (targetDay !== undefined) {
+          const next = new Date(now);
+          next.setHours(parseInt(hours), parseInt(minutes), 0, 0);
+
+          // Calculate days until target day
+          const currentDay = now.getDay();
+          let daysUntil = targetDay - currentDay;
+
+          // If target day is today but time has passed, or target day is in the past, go to next week
+          if (daysUntil < 0 || (daysUntil === 0 && next <= now)) {
+            daysUntil += 7;
+          }
+
+          next.setDate(next.getDate() + daysUntil);
+          return next.toISOString();
+        }
+      }
+      return null;
     } else if (schedule === 'hourly') {
       const next = new Date(now);
       next.setHours(next.getHours() + 1, 0, 0, 0);
