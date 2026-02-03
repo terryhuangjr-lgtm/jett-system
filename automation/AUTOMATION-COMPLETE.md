@@ -4,6 +4,20 @@
 
 All 11 automation tasks are now configured with working scripts. The system is ready to run.
 
+## LLM Usage Summary
+
+**Token Cost: $0.00/day** (0 tokens)
+
+All automation scripts use **100% local execution**:
+- **Template-based generation** - No LLM calls for content creation
+- **Web scraping** - ESPN, Spotrac use Puppeteer + regex parsing
+- **API calls** - Free external APIs (wttr.in, Coinbase)
+- **Data aggregation** - Pure JavaScript file reading and formatting
+
+**Verification:** See `SCRIPT-STATUS.json` for detailed per-script analysis.
+
+**Key Finding:** The automation pipeline was designed for efficiency from the start. Token usage (if any) comes from interactive Slack bridge or manual clawdbot usage, not scheduled automation.
+
 ## What Was Built
 
 ### Core Scripts (6 files)
@@ -13,25 +27,37 @@ All 11 automation tasks are now configured with working scripts. The system is r
    - Macro news from memory
    - Active projects
    - Today's scheduled tasks
+   - **LLM Usage:** None (0 tokens) - Pure data aggregation
+   - **Last Modified:** 2026-02-03
 
 2. **deploy-morning-brief.js** - Posts brief to Terry's Slack DM
+   - **LLM Usage:** None (0 tokens) - Uses clawdbot CLI
+   - **Last Modified:** 2026-02-03
 
 3. **21m-sports-tweet-generator.js** - Generates 3 tweet variations
    - Content pillars: Contracts, Athlete Wealth, Business, Macro, Quick Hits
    - Bitcoin-denominated sports analysis
    - Logs to memory/21m-sports-research.md
+   - **LLM Usage:** None (0 tokens) - Template-based with string replacement
+   - **Last Modified:** 2026-02-02
 
 4. **deploy-21m-tweet.js** - Posts tweet options to #21msports
+   - **LLM Usage:** None (0 tokens) - Uses clawdbot CLI
+   - **Last Modified:** 2026-02-03
 
 5. **21m-sports-researcher.js** - Researches topics and logs findings
    - Tracks contract news
    - Athlete Bitcoin adoption
    - Sports business updates
+   - **LLM Usage:** None (0 tokens) - Web scraping (ESPN, Spotrac) + regex parsing
+   - **Last Modified:** 2026-02-03
 
 6. **deploy-ebay-scans.js** - Posts eBay scan results to #levelupcards
    - Auto-detects today's scan (Monday-Sunday)
    - Formats top 10 results
    - Includes prices, scores, links
+   - **LLM Usage:** None (0 tokens) - JSON formatting + clawdbot CLI
+   - **Last Modified:** 2026-02-03
 
 ---
 
@@ -260,4 +286,29 @@ All tasks are configured and ready. The task-manager daemon will execute them on
 
 ---
 
+## Documentation Practice (New Rule)
+
+**Before answering questions about automation:**
+```bash
+cat ~/clawd/automation/SCRIPT-STATUS.json
+```
+
+**After every build/fix:**
+1. Update this file (AUTOMATION-COMPLETE.md) with:
+   - What each script does
+   - Does it use LLM? (yes/no + token estimate)
+   - Last modified date
+   - Any dependencies
+
+2. Update SCRIPT-STATUS.json with:
+   - Accurate LLM usage per script
+   - Token cost estimates
+   - Dependency changes
+   - Last modified dates
+
+**Purpose:** Prevent miscalculations about token usage and functionality. Always verify actual implementation before making claims.
+
+---
+
 Built: 2026-02-02 11:17 PM
+Updated: 2026-02-03 (added LLM usage documentation)
