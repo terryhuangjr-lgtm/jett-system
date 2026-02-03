@@ -1,0 +1,67 @@
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+
+# System files
+.DS_Store
+*.swp
+*.swo
+*~
+
+# Process IDs
+*.pid
+slack-bridge.pid
+task-manager/.server.pid
+task-manager/.worker.pid
+
+# Databases (don't commit working DB files)
+*.db
+!task-manager/tasks.db.template
+
+# State files
+slack-bridge-timestamps.json
+memory/state.json
+
+# Credentials & Secrets
+.env
+credentials.json
+memory/credentials.md
+*.key
+*.pem
+
+# Temporary files
+/tmp/
+*.tmp
+*.temp
+
+# Logs
+*.log
+logs/
+
+# Build artifacts
+dist/
+build/
+*.min.js
+*.map
+
+# IDE files
+.vscode/
+.idea/
+*.sublime-*
+
+# Test files
+test-output.json
+
+# Large files
+*.pdf
+*.zip
+*.tar.gz
+*.jpg
+*.png
+*.gif
+!ebay-test.png
+
+# Generated files
+automation/output/
+slack-files/

@@ -20,7 +20,7 @@ const ALLOWED_USER_ID = 'U0ABTP704QK'; // Terry's Slack user ID
 const BOT_USER_ID = 'U0ABX015Y5T'; // Jett's Slack user ID
 const CLAWDBOT_GATEWAY = 'http://localhost:18789';
 const CLAWDBOT_TOKEN = '5a5132b80dedcc723bec68c13679992b6eaadc7fa848b7af';
-const POLL_INTERVAL = 8000; // Poll every 8 seconds to avoid rate limits
+const POLL_INTERVAL = 15000; // Poll every 15 seconds (reduced API calls, still feels instant)
 const FILE_DOWNLOAD_DIR = path.join(process.env.HOME, 'clawd', 'slack-files');
 const TIMESTAMP_FILE = path.join(process.env.HOME, 'clawd', 'slack-bridge-timestamps.json');
 
@@ -213,6 +213,27 @@ async function sendToClawdbot(message, slackChannelId, slackUserId, attachedFile
       .replace(/<@[A-Z0-9]+>/g, '') // Remove Slack user mentions
       .trim();
 
+    // Pre-filter: Skip messages that don't need LLM processing
+    const SKIP_PATTERNS = [
+      /^(ok|okay|thanks|thank you|thx|got it|sounds good|cool|nice|great)$/i,
+      /^(yes|no|yep|nope|sure|k|kk)$/i,
+      /^[\p{Emoji_Presentation}\p{Extended_Pictographic}]+$/u, // emoji-only
+      /^(👍|🙏|✅|❤️|🔥|💯|😊|😂|🎉|👋)+$/u // common reaction emojis
+    ];
+
+    const shouldSkip = SKIP_PATTERNS.some(pattern => pattern.test(cleanedMessage));
+
+    if (shouldSkip) {
+      console.log(`   ⚡ Skipping simple message (no LLM needed): "${cleanedMessage}"`);
+      // Return a simple acknowledgment without calling LLM
+      return {
+        response: null,
+        success: true,
+        provider: 'filtered',
+        skipped: true
+      };
+    }
+
     // Create a unique session ID based on Slack channel + user
     const sessionId = `slack:${slackChannelId}:${slackUserId}`;
 
@@ -288,6 +309,12 @@ async function checkConversation(channelId, channelName) {
       try {
         console.log(`   ⚡ Forwarding to Jett...`);
         const response = await sendToClawdbot(msg.text, channelId, msg.user);
+
+        // Skip posting if message was filtered (simple acknowledgments)
+        if (response && response.skipped) {
+          console.log(`   ⏭️  Message filtered, no response needed`);
+          continue;
+        }
 
         if (response && response.success && response.response) {
           const preview = response.response.length > 100
