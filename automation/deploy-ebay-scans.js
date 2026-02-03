@@ -48,29 +48,48 @@ function formatResults(data, scanName) {
     };
   }
 
-  const { results, metadata } = data;
+  const { results, timestamp } = data;
   const topResults = results.slice(0, 10);
 
   let message = `📊 *eBay Scan: ${scanName}*\n`;
   message += `🔍 Found ${results.length} results (showing top ${topResults.length})\n`;
-  message += `⏰ Scanned at: ${new Date(metadata.scanned_at).toLocaleString()}\n\n`;
+
+  // Use timestamp from root level (not metadata.scanned_at)
+  if (timestamp) {
+    message += `⏰ Scanned at: ${new Date(timestamp).toLocaleString()}\n\n`;
+  } else {
+    message += '\n';
+  }
 
   topResults.forEach((item, index) => {
     message += `*${index + 1}. ${item.title.substring(0, 80)}${item.title.length > 80 ? '...' : ''}*\n`;
-    message += `💰 Price: ${item.price}`;
 
-    if (item.score) {
-      message += ` | 📈 Score: ${item.score}`;
+    // Use totalPrice (number) and format it
+    const price = item.totalPrice || item.price;
+    message += `💰 Price: $${typeof price === 'number' ? price.toFixed(2) : price}`;
+
+    // Check for dealScore.score or score
+    const score = item.dealScore?.score || item.score;
+    if (score) {
+      message += ` | 📈 Score: ${typeof score === 'number' ? score.toFixed(1) : score}/10`;
     }
 
-    message += `\n🔗 ${item.url}\n`;
+    // Use viewItemURL or url
+    const itemUrl = item.viewItemURL || item.url;
+    message += `\n🔗 ${itemUrl}\n`;
 
     // Add notable details
     if (item.condition) {
       message += `   Condition: ${item.condition}`;
     }
-    if (item.shipping) {
-      message += ` | Shipping: ${item.shipping}`;
+
+    // Handle shipping cost (shippingCost number vs shipping string)
+    const shipping = item.shippingCost !== undefined
+      ? (item.shippingCost === 0 ? 'FREE' : `$${item.shippingCost.toFixed(2)}`)
+      : item.shipping;
+
+    if (shipping) {
+      message += ` | Shipping: ${shipping}`;
     }
     message += '\n\n';
   });
@@ -90,7 +109,7 @@ function postToSlack(message) {
     const escapedMessage = message.replace(/'/g, "'\\''");
 
     // Use clawdbot to send message
-    const cmd = `clawdbot message --channel slack --to "${SLACK_CHANNEL}" --text '${escapedMessage}' --json`;
+    const cmd = `clawdbot message send --channel slack --target "${SLACK_CHANNEL}" --message '${escapedMessage}' --json`;
 
     const output = execSync(cmd, {
       encoding: 'utf8',
@@ -99,7 +118,7 @@ function postToSlack(message) {
 
     const result = JSON.parse(output.trim());
 
-    if (result.status === 'ok') {
+    if (result.payload && result.payload.ok) {
       console.log('✓ Posted to #levelupcards');
       return true;
     } else {
