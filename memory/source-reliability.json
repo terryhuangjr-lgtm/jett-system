@@ -1,0 +1,107 @@
+{
+  "spotrac.com": {
+    "score": 10,
+    "category": "sports",
+    "notes": "Official contract database, always accurate"
+  },
+  "basketball-reference.com": {
+    "score": 10,
+    "category": "sports",
+    "notes": "Official stats, verified data"
+  },
+  "pro-football-reference.com": {
+    "score": 10,
+    "category": "sports",
+    "notes": "Official stats, verified data"
+  },
+  "baseball-reference.com": {
+    "score": 10,
+    "category": "sports",
+    "notes": "Official stats, verified data"
+  },
+  "espn.com": {
+    "score": 9,
+    "category": "sports",
+    "notes": "Very reliable, occasionally speculative on rumors"
+  },
+  "theathletic.com": {
+    "score": 9,
+    "category": "sports",
+    "notes": "Premium journalism, well-sourced"
+  },
+  "bleacherreport.com": {
+    "score": 6,
+    "category": "sports",
+    "notes": "Mixed quality, verify critical claims"
+  },
+  "bitcoin.org": {
+    "score": 10,
+    "category": "bitcoin",
+    "notes": "Official Bitcoin site"
+  },
+  "github.com/bitcoinbook": {
+    "score": 10,
+    "category": "bitcoin",
+    "notes": "Mastering Bitcoin - Andreas Antonopoulos"
+  },
+  "saifedean.com": {
+    "score": 10,
+    "category": "bitcoin",
+    "notes": "The Bitcoin Standard author"
+  },
+  "en.bitcoin.it": {
+    "score": 9,
+    "category": "bitcoin",
+    "notes": "Bitcoin Wiki - community maintained"
+  },
+  "coindesk.com": {
+    "score": 8,
+    "category": "bitcoin",
+    "notes": "Major crypto news, generally reliable"
+  },
+  "cointelegraph.com": {
+    "score": 7,
+    "category": "bitcoin",
+    "notes": "Crypto news, sometimes clickbait"
+  },
+  "api.coingecko.com": {
+    "score": 10,
+    "category": "finance",
+    "notes": "Official CoinGecko API for prices"
+  },
+  "bloomberg.com": {
+    "score": 9,
+    "category": "finance",
+    "notes": "Premium financial journalism"
+  },
+  "investopedia.com": {
+    "score": 8,
+    "category": "finance",
+    "notes": "Educational, good for definitions"
+  },
+  "bbc.com": {
+    "score": 9,
+    "category": "news",
+    "notes": "High editorial standards"
+  },
+  "reuters.com": {
+    "score": 9,
+    "category": "news",
+    "notes": "Wire service, factual reporting"
+  },
+  "nytimes.com": {
+    "score": 8,
+    "category": "news",
+    "notes": "Established journalism"
+  },
+  "twitter.com": {
+    "score": 5,
+    "category": "social",
+    "notes": "Verify all claims, user-generated content"
+  },
+  "reddit.com": {
+    "score": 4,
+    "category": "social",
+    "notes": "Community discussions, verify everything"
+  }
+}
