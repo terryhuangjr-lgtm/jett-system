@@ -12,13 +12,20 @@ Period. No exceptions.
 
 ---
 
-## What Went Wrong (Feb 3, 2026)
+## What Went Wrong (Feb 3, 2026 - Morning)
 
-**Task:** Generate 3 tweets about sports/Bitcoin
-**Result:** 2 out of 3 were completely fabricated fake news
-**Problem:** Made up statistics, contracts, or events that never happened
+**Task:** Generate tweet options for 21M Sports account
+**Result:** Multiple fabricated "facts" in the suggestions
+**Fabrications:**
+1. "In 2015, you could've bought entire Blue Jays roster for less BTC than Bichette" (FAKE - math was completely backwards)
+2. Yankees sale claim (never happened)
+3. Ohtani scenario with made-up numbers
 
-**This is UNACCEPTABLE.**
+**Problem:** Generated "fun facts" without using web_search to verify them. Made up claims that "sounded right" instead of researching actual facts.
+
+**This is UNACCEPTABLE and violated the core directive: NEVER FABRICATE.**
+
+**Why this is so bad:** Terry's building a sports account where credibility is everything. One fake tweet can destroy the entire brand. This almost happened.
 
 ---
 
@@ -135,6 +142,34 @@ Before stating ANY fact, ask:
 
 ❌ "LeBron signed for $500M" (unless you just verified this)
 ❌ "In 2020, BTC crashed to $10K" (unless you have price data)
+
+---
+
+## Special Case: 21M Sports Content
+
+**This account has ZERO tolerance for fabrication. See `21M-SPORTS-RULES.md` for full details.**
+
+**MANDATORY workflow for ANY 21M Sports tweet suggestions:**
+
+1. **BEFORE writing anything:**
+   - [ ] Read `21M-SPORTS-RULES.md`
+   - [ ] Use `21M-SPORTS-CHECKLIST.md` as preflight
+   - [ ] Use `web_search` to find real, recent news
+   - [ ] Verify EVERY claim with sources
+
+2. **EVERY tweet option MUST include:**
+   - ✅ Source URLs for all facts
+   - ✅ Contract database confirmation (Spotrac)
+   - ✅ BTC price verification with dates
+   - ✅ Math shown and double-checked
+
+3. **NEVER suggest:**
+   - ❌ "Fun facts" you haven't verified
+   - ❌ Comparisons using made-up scenarios
+   - ❌ Historical claims without sources
+   - ❌ "Probably true" statements
+
+**If you can't verify it → Don't suggest it. No exceptions.**
 
 ---
 
