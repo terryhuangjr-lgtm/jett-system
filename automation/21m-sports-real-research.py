@@ -266,45 +266,97 @@ def get_current_btc_price(session: ResearchSession) -> Optional[Dict]:
         return None
 
 
-def search_sports_news(query: str, session: ResearchSession) -> List[Dict]:
+def search_recent_contracts_via_brave(days: int, exclude_players: List[str], session: ResearchSession) -> List[Dict]:
     """
-    Perform web search for sports news
-
-    NOTE: This is a placeholder that uses Brave Search API.
-    In production, integrate with Claude's web_search tool or use Brave API key.
+    Search for recent sports contracts using Brave Search via JavaScript module
 
     Args:
-        query: Search query
+        days: Number of days to look back
+        exclude_players: List of player names to exclude
         session: Research session for logging
 
     Returns:
-        List of search results with url, title, snippet
+        List of contract dictionaries with player, team, value, etc.
     """
-    if VERBOSE:
-        print(f"  Searching: '{query}'")
-
-    # For now, return curated high-quality sources
-    # TODO: Integrate actual web search API
-
-    curated_results = []
-
-    # Check if Spotrac is accessible and add as source
-    spotrac_url = "https://www.spotrac.com/mlb/contracts/"
-    if verify_url(spotrac_url):
-        curated_results.append({
-            'url': spotrac_url,
-            'title': 'MLB Contracts - Spotrac',
-            'snippet': 'Comprehensive MLB contract database',
-            'date': datetime.now().strftime('%Y-%m-%d')
-        })
-
-    session.log_search(query, len(curated_results),
-                      curated_results[0]['url'] if curated_results else None)
+    import subprocess
+    import json
 
     if VERBOSE:
-        print(f"  Found {len(curated_results)} sources")
+        print(f"  Searching for contracts in last {days} days...")
+        if exclude_players:
+            print(f"  Excluding: {', '.join(exclude_players)}")
 
-    return curated_results
+    try:
+        # Call brave-search.js module with --json flag
+        brave_search_script = os.path.join(parent_dir, 'automation', 'brave-search.js')
+
+        exclude_arg = ','.join(exclude_players) if exclude_players else ''
+        cmd = [
+            'node',
+            brave_search_script,
+            '--contracts',
+            '--days', str(days),
+            '--exclude', exclude_arg,
+            '--json'
+        ]
+
+        result = subprocess.run(
+            cmd,
+            capture_output=True,
+            text=True,
+            timeout=30
+        )
+
+        if result.returncode != 0:
+            if VERBOSE:
+                print(f"  ✗ Brave search failed: {result.stderr}")
+            session.log_error(f"Brave search failed: {result.stderr}")
+            return []
+
+        # Parse JSON output from JavaScript module
+        try:
+            contracts_data = json.loads(result.stdout)
+        except json.JSONDecodeError as e:
+            if VERBOSE:
+                print(f"  ✗ Failed to parse JSON: {e}")
+            session.log_error(f"Failed to parse contract JSON: {e}")
+            return []
+
+        # Convert JavaScript contract format to Python contract format
+        contracts = []
+        for item in contracts_data:
+            # Skip if no player name or contract value
+            if not item.get('playerName') or not item.get('contractValue'):
+                continue
+
+            contracts.append({
+                'player': item['playerName'],
+                'team': item.get('team', 'Unknown'),
+                'sport': 'Unknown',  # Would need sport detection
+                'contract_value': item['contractValue'],
+                'signing_date': datetime.now().strftime('%Y-%m-%d'),  # Approximate
+                'source_url': item['url'],
+                'notes': item.get('title', '')
+            })
+
+        if VERBOSE:
+            print(f"  ✓ Found {len(contracts)} contracts with complete data")
+
+        session.log_search(f"contracts (last {days} days)", len(contracts),
+                          contracts[0]['source_url'] if contracts else None)
+
+        return contracts
+
+    except subprocess.TimeoutExpired:
+        if VERBOSE:
+            print(f"  ✗ Search timed out")
+        session.log_error("Brave search timed out")
+        return []
+    except Exception as e:
+        if VERBOSE:
+            print(f"  ✗ Search error: {e}")
+        session.log_error(f"Brave search error: {e}")
+        return []
 
 
 def get_known_contracts() -> List[Dict]:
@@ -536,27 +588,33 @@ def main():
     session = ResearchSession()
 
     try:
-        # Step 1: Search for sports news
-        print("\n📊 Step 1: Searching for sports contract news...")
-        search_queries = [
-            "MLB contracts 2024 2025 Spotrac",
-            "NFL contracts mega deals Spotrac",
-            "NBA max contracts recent signings"
-        ]
+        # Step 1: Search for recent contracts via Brave Search
+        print("\n📊 Step 1: Searching for recent sports contracts...")
 
-        all_results = []
-        for query in search_queries:
-            results = search_sports_news(query, session)
-            all_results.extend(results)
+        # Excluded players list
+        exclude_players = ['Juan Soto', 'Shohei Ohtani', 'Shedeur Sanders']
 
-        print(f"  Found {len(all_results)} sources")
+        # Search for contracts in last 30 days
+        found_contracts = search_recent_contracts_via_brave(
+            days=30,
+            exclude_players=exclude_players,
+            session=session
+        )
 
-        # Step 2: Research known contracts
+        # Step 2: Combine with known contracts as fallback
         print("\n📝 Step 2: Researching contracts with verification...")
-        contracts = get_known_contracts()
+
+        # Start with found contracts from search
+        contracts_to_research = found_contracts if found_contracts else []
+
+        # If no new contracts found, fall back to known contracts
+        if not contracts_to_research:
+            print("  ℹ️  No new contracts found, using fallback list...")
+            contracts_to_research = get_known_contracts()
+
         verified_contracts = []
 
-        for contract in contracts:
+        for contract in contracts_to_research:
             result = research_contract(contract, session)
             if result:
                 verified_contracts.append(result)
