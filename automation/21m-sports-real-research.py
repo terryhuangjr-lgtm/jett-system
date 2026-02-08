@@ -313,26 +313,10 @@ def get_known_contracts() -> List[Dict]:
 
     These are manually curated high-profile contracts that we can verify.
     In production, this would come from web search results.
+
+    NOTE: Juan Soto and Shohei Ohtani removed per Terry's request (2026-02-08)
     """
     return [
-        {
-            'player': 'Juan Soto',
-            'team': 'New York Mets',
-            'sport': 'MLB',
-            'contract_value': 765000000,
-            'signing_date': '2024-12-08',
-            'source_url': 'https://www.spotrac.com/mlb/new-york-mets/juan-soto-32574/',
-            'notes': '15-year deal, largest in MLB history'
-        },
-        {
-            'player': 'Shohei Ohtani',
-            'team': 'Los Angeles Dodgers',
-            'sport': 'MLB',
-            'contract_value': 700000000,
-            'signing_date': '2023-12-09',
-            'source_url': 'https://www.spotrac.com/mlb/los-angeles-dodgers/shohei-ohtani-28145/',
-            'notes': '10-year deal with heavy deferrals'
-        },
         {
             'player': 'Patrick Mahomes',
             'team': 'Kansas City Chiefs',

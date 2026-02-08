@@ -92,6 +92,16 @@ class TaskWorker {
         logEntry.status = 'failed';
         logEntry.error = stderr || error.message;
         console.error(`Task ${task.id} failed:`, error.message);
+        
+        // Notify Terry on task failure
+        try {
+          const { execSync } = require('child_process');
+          const errorMsg = (stderr || error.message).substring(0, 500);
+          const notifyCmd = `/home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot message send --channel slack --target "U0ABTP704QK" --message "🚨 Task #${task.id} failed: ${task.name}\\n\\nError: ${errorMsg}" --json`;
+          execSync(notifyCmd, { timeout: 10000 });
+        } catch (notifyError) {
+          console.error('Failed to send notification:', notifyError.message);
+        }
       } else {
         logEntry.status = 'completed';
         console.log(`Task ${task.id} completed in ${duration}ms`);

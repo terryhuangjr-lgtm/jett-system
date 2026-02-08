@@ -196,11 +196,147 @@ const checks = {
       success('All URLs properly formatted');
     }
     return allValid;
+  },
+
+  // CHECK 7: URL Accessibility (NEW - BLOCKING)
+  async checkURLAccessibility(urls) {
+    const https = require('https');
+    const http = require('http');
+
+    console.log('  Checking URL accessibility...');
+
+    // API endpoints that should be skipped from accessibility checks
+    const apiEndpoints = [
+      'api.coingecko.com',
+      'api.coinmarketcap.com',
+      'api.coinbase.com',
+      'api.blockchain.com'
+    ];
+
+    const checkURL = (url) => {
+      return new Promise((resolve) => {
+        try {
+          const urlObj = new URL(url);
+
+          // Skip API endpoints - they don't respond to HEAD requests like web pages
+          if (apiEndpoints.some(api => urlObj.hostname.includes(api))) {
+            console.log(`    ⏭️  Skipping API endpoint: ${urlObj.hostname}`);
+            resolve({ url, status: 'API', accessible: true });
+            return;
+          }
+
+          const options = {
+            method: 'HEAD',
+            hostname: urlObj.hostname,
+            path: urlObj.pathname + urlObj.search,
+            timeout: 5000,
+            headers: {
+              'User-Agent': '21M-Sports-Validator/1.0'
+            }
+          };
+
+          const req = (urlObj.protocol === 'https:' ? https : http).request(options, (res) => {
+            // Accept 200, or 403 for known scraping targets (Spotrac)
+            const accessible = res.statusCode === 200 ||
+                             (res.statusCode === 403 && url.includes('spotrac.com'));
+            resolve({ url, status: res.statusCode, accessible });
+          });
+
+          req.on('error', () => resolve({ url, status: null, accessible: false }));
+          req.on('timeout', () => {
+            req.destroy();
+            resolve({ url, status: null, accessible: false });
+          });
+
+          req.end();
+        } catch (err) {
+          resolve({ url, status: null, accessible: false });
+        }
+      });
+    };
+
+    const results = await Promise.all(urls.map(checkURL));
+    const failed = results.filter(r => !r.accessible);
+
+    if (failed.length > 0) {
+      error('Inaccessible URLs detected (BLOCKING)');
+      failed.forEach(f => {
+        console.log(`    ✗ ${f.url} - Status: ${f.status || 'Timeout/Error'}`);
+      });
+      return false;
+    }
+
+    success('All URLs accessible');
+    return true;
+  },
+
+  // CHECK 8: Calculation Verification (NEW - BLOCKING)
+  verifyBTCCalculations(metadata) {
+    if (!metadata.contract_value || !metadata.btc_price_on_date || !metadata.btc_equivalent) {
+      warning('Missing calculation data, skipping verification');
+      return true;
+    }
+
+    try {
+      // Parse contract value ($765M -> 765000000)
+      const contractStr = metadata.contract_value.replace(/[$,]/g, '');
+      let contractValue = parseFloat(contractStr);
+      if (contractStr.toUpperCase().includes('M')) {
+        contractValue *= 1000000;
+      } else if (contractStr.toUpperCase().includes('B')) {
+        contractValue *= 1000000000;
+      }
+
+      // Parse BTC price ($97,235 -> 97235)
+      const btcPrice = parseFloat(metadata.btc_price_on_date.replace(/[$,]/g, ''));
+
+      // Parse claimed BTC (7,865 BTC -> 7865)
+      const claimedBTC = parseFloat(metadata.btc_equivalent.replace(/[, BTC]/g, ''));
+
+      // Calculate expected BTC
+      const expectedBTC = contractValue / btcPrice;
+
+      // Check for >1% difference
+      const percentDiff = Math.abs((claimedBTC - expectedBTC) / expectedBTC) * 100;
+
+      if (percentDiff > 1) {
+        error('BTC calculation mismatch (BLOCKING)');
+        console.log(`  Expected: ${expectedBTC.toFixed(2)} BTC`);
+        console.log(`  Claimed: ${claimedBTC.toFixed(2)} BTC`);
+        console.log(`  Difference: ${percentDiff.toFixed(2)}%`);
+        return false;
+      }
+
+      success('BTC calculations verified (within 1% tolerance)');
+      return true;
+    } catch (err) {
+      warning(`Calculation verification failed: ${err.message}`);
+      return true; // Don't block on parsing errors
+    }
+  },
+
+  // CHECK 9: Placeholder Detection (NEW - BLOCKING)
+  checkForPlaceholders(tweets) {
+    const placeholders = [/\[.*?\]/, /\{.*?\}/, /XXX/i, /TBD/i, /TODO/i, /PLACEHOLDER/i];
+
+    for (const tweet of tweets) {
+      for (const pattern of placeholders) {
+        if (pattern.test(tweet)) {
+          error('Placeholder text detected (BLOCKING)');
+          console.log(`  Found: "${tweet.match(pattern)[0]}"`);
+          console.log(`  In tweet: "${tweet.substring(0, 60)}..."`);
+          return false;
+        }
+      }
+    }
+
+    success('No placeholder text detected');
+    return true;
   }
 };
 
 // Main validation
-function validateChecklist() {
+async function validateChecklist() {
   header('21M SPORTS CONTENT VERIFICATION');
   console.log('Enforcing mandatory fact-checking requirements...\n');
 
@@ -229,14 +365,24 @@ function validateChecklist() {
 
   header('\nRUNNING VERIFICATION CHECKS:');
 
-  // Run all checks
+  // Run all checks (including new blocking checks)
+  const allUrls = [
+    ...args.sources,
+    ...args.xPosts,
+    ...args.spotracUrls,
+    ...args.btcPriceUrls
+  ];
+
   const results = [
     checks.hasResearch(args),
     checks.hasContractVerification(args),
     checks.hasBTCPriceVerification(args),
     checks.hasContent(args),
     checks.validURLs(args),
-    checks.noFabricationFlags(args) // Warning only
+    checks.noFabricationFlags(args), // Warning only
+    await checks.checkURLAccessibility(allUrls), // NEW - BLOCKING
+    // Note: BTC calculations and placeholder checks require parsed content
+    // These should be called from the generator with metadata
   ];
 
   const passed = results.every(r => r === true);
@@ -252,6 +398,70 @@ function validateChecklist() {
     console.log('One or more requirements NOT met.');
     console.log('DO NOT generate or send content until all checks pass.\n');
     console.log('Read 21M-SPORTS-CHECKLIST.md and complete all steps.\n');
+    return 1;
+  }
+}
+
+// Validate content file (for use by generator/deploy scripts)
+async function validateContentFile(contentFilePath) {
+  header('21M SPORTS CONTENT FILE VALIDATION');
+
+  try {
+    if (!fs.existsSync(contentFilePath)) {
+      error(`Content file not found: ${contentFilePath}`);
+      return 1;
+    }
+
+    const content = JSON.parse(fs.readFileSync(contentFilePath, 'utf8'));
+
+    // Check verified flag
+    if (!content.metadata || !content.metadata.verified) {
+      error('Content is not marked as verified');
+      return 1;
+    }
+    success('Content marked as verified');
+
+    // Check sources exist
+    if (!content.sources || !content.sources.contract && !content.sources.knowledge) {
+      error('Missing contract/knowledge source');
+      return 1;
+    }
+    success('Sources present');
+
+    // Collect all URLs
+    const urls = [];
+    if (content.sources.contract) urls.push(content.sources.contract);
+    if (content.sources.knowledge) urls.push(content.sources.knowledge);
+    if (content.sources.btc_price) urls.push(content.sources.btc_price);
+    if (content.sources.additional) urls.push(...content.sources.additional);
+
+    // URL accessibility check
+    const urlsAccessible = await checks.checkURLAccessibility(urls);
+    if (!urlsAccessible) {
+      return 1;
+    }
+
+    // BTC calculation check
+    if (content.metadata.contract_value) {
+      const calcValid = checks.verifyBTCCalculations(content.metadata);
+      if (!calcValid) {
+        return 1;
+      }
+    }
+
+    // Placeholder check
+    if (content.tweets && content.tweets.length > 0) {
+      const noPlaceholders = checks.checkForPlaceholders(content.tweets);
+      if (!noPlaceholders) {
+        return 1;
+      }
+    }
+
+    header('✅ CONTENT FILE VALIDATION PASSED');
+    return 0;
+
+  } catch (error) {
+    error(`Validation error: ${error.message}`);
     return 1;
   }
 }
@@ -279,9 +489,31 @@ function logValidation(exitCode) {
 
 // Entry point
 if (require.main === module) {
-  const exitCode = validateChecklist();
-  logValidation(exitCode);
-  process.exit(exitCode);
+  // Check if validating a content file
+  const contentFileArg = process.argv.find(arg => arg.startsWith('--content-file='));
+
+  if (contentFileArg) {
+    const contentFile = contentFileArg.split('=')[1];
+    validateContentFile(contentFile)
+      .then(exitCode => {
+        logValidation(exitCode);
+        process.exit(exitCode);
+      })
+      .catch(err => {
+        console.error('Validation error:', err);
+        process.exit(1);
+      });
+  } else {
+    validateChecklist()
+      .then(exitCode => {
+        logValidation(exitCode);
+        process.exit(exitCode);
+      })
+      .catch(err => {
+        console.error('Validation error:', err);
+        process.exit(1);
+      });
+  }
 }
 
-module.exports = { validateChecklist, checks };
+module.exports = { validateChecklist, validateContentFile, checks };
