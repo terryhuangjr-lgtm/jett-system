@@ -3,8 +3,18 @@
 21M Bitcoin Real Research Automation
 Implements JETT RESEARCH & DATABASE PROTOCOL v1.0
 
-Researches Bitcoin news, history, quotes, and community discussions.
-Connects Bitcoin principles to sports/athletes context.
+MISSION: Find unique Bitcoin wisdom that connects to athlete/sports context.
+Discover quotes, principles, and historical moments that make people think differently.
+Draw connections between sound money and athlete finance decisions.
+
+Research focuses on:
+- Austrian economics principles (time preference, sound money)
+- Bitcoin history and key moments
+- Quotes from Bitcoin thinkers (Ammous, Hayek, Alden)
+- Principles that explain athlete financial success/failure
+- Unique angles connecting Bitcoin philosophy to sports
+
+RULE: Only TRUE FACTS and REAL DATA. No speculation.
 
 Exit codes:
   0 = Research successful with verified sources
@@ -297,6 +307,49 @@ def get_bitcoin_history() -> List[Dict]:
     ]
 
 
+def discover_sports_connection(quote_or_principle: str, author: str) -> str:
+    """
+    Discover unique connection between Bitcoin wisdom and athlete/sports context
+
+    This creates "aha!" moments by connecting abstract principles to concrete athlete stories.
+    Makes people see money differently through sports lens.
+
+    Returns: Insight connecting quote to athlete finances
+    """
+    quote_lower = quote_or_principle.lower()
+
+    # Time preference connections
+    if 'time' in quote_lower and ('preference' in quote_lower or 'horizon' in quote_lower):
+        return "TIME_PREFERENCE_LESSON: Athlete who spends $1M on cars today (high time preference) vs. athlete who invests $1M (low time preference). This quote explains why some athletes go broke and others build generational wealth."
+
+    # Sound money / hard money connections
+    if ('sound money' in quote_lower or 'hard money' in quote_lower or 'scarce' in quote_lower):
+        return "SOUND_MONEY_REVEAL: Athletes earn millions in fiat (unlimited supply). This principle explains why their 'huge' contracts lose purchasing power. Bitcoin (21M fixed) shows the truth fiat hides."
+
+    # Fiat debasement connections
+    if ('inflation' in quote_lower or 'debase' in quote_lower or 'printing' in quote_lower):
+        return "FIAT_TRAP: Why do contracts seem to get bigger every year? Not because athletes are better - because fiat is worth less. This principle reveals the illusion. $100M today ≠ $100M in 2010."
+
+    # Savings / wealth preservation
+    if ('save' in quote_lower or 'store of value' in quote_lower or 'preserve' in quote_lower):
+        return "WEALTH_PRESERVATION: Junior Bridgeman turned $350K NBA salary into $600M. Roger Staubach turned $4M into $600M. They understood this principle before Bitcoin existed. Bitcoin is the tool they wish they had."
+
+    # Government / central planning
+    if ('government' in quote_lower or 'central bank' in quote_lower or 'fed' in quote_lower):
+        return "CONTROL_LESSON: Salary caps, luxury tax, escrow - leagues control athlete pay through rules. This quote explains why decentralization matters. Athletes can't opt out of league money. But they can with Bitcoin."
+
+    # Austrian economics general
+    if author in ['F.A. Hayek', 'Ludwig von Mises', 'Murray Rothbard']:
+        return "AUSTRIAN_INSIGHT: Austrian economics predicted athlete bankruptcies before they happened. Unlimited fiat + high time preference = broke. This wisdom applies to everyone earning sudden wealth."
+
+    # Bitcoin-specific
+    if 'bitcoin' in quote_lower and ('21' in quote_lower or 'million' in quote_lower):
+        return "SUPPLY_MATH: Every mega-contract is X% of unlimited fiat supply (∞). But measured in Bitcoin, it's Y% of 21M fixed supply. This perspective shift changes everything."
+
+    # Default connection
+    return f"PRINCIPLE_APPLICATION: {author}'s insight about money applies directly to athlete finances. This principle explains patterns we see in sports contracts and athlete wealth outcomes."
+
+
 def research_bitcoin_quote(quote_data: Dict, session: BitcoinResearchSession, btc_price: float) -> Optional[Dict]:
     """Research and verify a Bitcoin quote"""
     if VERBOSE:
@@ -322,10 +375,18 @@ def research_bitcoin_quote(quote_data: Dict, session: BitcoinResearchSession, bt
     claim = f"{quote_data['author']}: \"{quote_data['quote'][:50]}...\""
     session.log_verified_fact(claim, quote_data.get('source_url', quote_data['source']))
 
-    # Create enriched quote data
+    # Discover sports connection for this quote
+    sports_connection = discover_sports_connection(quote_data['quote'], quote_data['author'])
+
+    if VERBOSE and sports_connection:
+        connection_type = sports_connection.split(':')[0]
+        print(f"  💡 Sports angle: {connection_type}")
+
+    # Create enriched quote data with sports connection
     result = {
         **quote_data,
         'current_btc_price': btc_price,
+        'sports_connection': sports_connection,  # NEW: unique sports angle
         'researched_at': datetime.now().isoformat(),
         'verified': True
     }

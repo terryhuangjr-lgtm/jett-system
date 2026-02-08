@@ -3,8 +3,18 @@
 21M Sports Real Research Automation
 Implements JETT RESEARCH & DATABASE PROTOCOL v1.0
 
-Performs real web searches, verifies sources, logs to database, and creates
-proper verification logs and research markdown files.
+MISSION: Find unique insights connecting sports and Bitcoin that people haven't seen.
+Draw connections between athlete finances and sound money principles.
+Teach lessons through real stories. Make people think differently about money.
+
+Research focuses on:
+- Time preference (athletes who saved vs. spent)
+- Fiat debasement (what contracts bought then vs. now)
+- Sound money principles illustrated through sports
+- Teaching moments (bankruptcies, success stories)
+- Unique angles that aren't obvious
+
+RULE: Only TRUE FACTS and REAL DATA. No speculation.
 
 Exit codes:
   0 = Research successful with verified sources
@@ -493,6 +503,49 @@ def get_financial_success_stories() -> List[Dict]:
     ]
 
 
+def discover_unique_angles(contract: Dict, btc_data: Dict) -> List[str]:
+    """
+    Discover unique insights and angles for content
+
+    This finds connections people haven't thought of:
+    - Time preference lessons
+    - Fiat debasement over time
+    - Purchasing power erosion
+    - Comparisons that reveal truths
+
+    Returns list of insight angles
+    """
+    angles = []
+
+    contract_value = contract['contract_value']
+    btc_equivalent = contract_value / btc_data['price']
+    signing_year = int(contract['signing_date'][:4])
+    years_ago = 2026 - signing_year
+
+    # Angle 1: Time perspective
+    if years_ago > 5:
+        angles.append(f"TIME_DECAY: In {signing_year}, ${contract_value/1e6:.0f}M = {btc_equivalent:.0f} BTC. Today that same dollar amount buys far fewer BTC. Fiat loses purchasing power, Bitcoin doesn't.")
+
+    # Angle 2: Deferred money trap (if recent)
+    if years_ago < 2 and contract_value > 200000000:
+        angles.append(f"DEFERRAL_TRAP: ${contract_value/1e6:.0f}M paid over years loses real value. Each payment buys less. Athletes don't realize they're being paid in melting ice cubes.")
+
+    # Angle 3: Generational wealth comparison
+    if btc_equivalent > 2000:  # Significant BTC amount
+        btc_percent = (btc_equivalent / 21000000) * 100
+        angles.append(f"SUPPLY_PERSPECTIVE: {btc_equivalent:.0f} BTC = {btc_percent:.4f}% of all Bitcoin that will EVER exist. That's generational wealth if held. If spent in fiat, it's just a paycheck.")
+
+    # Angle 4: Time preference lesson
+    if contract_value > 100000000:
+        angles.append(f"TIME_PREFERENCE: {contract['player']} earns ${contract_value/1e6:.0f}M. High time preference = spend on cars, jewelry, entourage NOW. Low time preference = save in hard asset. Bitcoin measures which choice they made.")
+
+    # Angle 5: Historic contract - inflation reveal
+    if years_ago > 10:
+        angles.append(f"INFLATION_REVEAL: {signing_year} contract looked huge. But measured in BTC, it reveals inflation's theft. ${contract_value/1e6:.0f}M then bought {btc_equivalent:.0f} BTC. Same dollars today? Maybe 1/10th of that.")
+
+    return angles
+
+
 def research_contract(contract: Dict, session: ResearchSession) -> Optional[Dict]:
     """
     Research a specific contract and verify sources
@@ -537,13 +590,23 @@ def research_contract(contract: Dict, session: ResearchSession) -> Optional[Dict
     claim = f"{contract['player']} ${contract['contract_value']/1e6:.0f}M contract = {btc_equivalent:.0f} BTC"
     session.log_verified_fact(claim, contract['source_url'])
 
-    # Create enriched contract data
+    # Discover unique angles and insights
+    unique_angles = discover_unique_angles(contract, btc_data)
+
+    if VERBOSE and unique_angles:
+        print(f"  💡 Found {len(unique_angles)} unique angles:")
+        for angle in unique_angles[:2]:  # Show first 2
+            angle_type = angle.split(':')[0]
+            print(f"     - {angle_type}")
+
+    # Create enriched contract data with insights
     result = {
         **contract,
         'btc_price_at_signing': btc_data['price'],
         'btc_equivalent': btc_equivalent,
         'btc_percent_of_supply': btc_percent_of_supply,
         'btc_price_source': btc_data['source'],
+        'unique_angles': unique_angles,  # NEW: unique insights
         'verified': True,
         'verified_at': datetime.now().isoformat()
     }
@@ -644,12 +707,22 @@ def save_to_database(contracts: List[Dict], session: ResearchSession) -> int:
             if VERBOSE:
                 print(f"  ✓ Saved to database: {topic} (ID: {research_id})")
 
-            # Generate content ideas with SMART SCORING
-            content_ideas = [
-                f"{contract['player']}'s contract measured in Bitcoin terms - fiat debasement angle",
-                f"Compare {contract['player']} deal to historical contracts in BTC purchasing power",
-                f"What ${contract['contract_value']/1e6:.0f}M bought in {contract['signing_date'][:4]} vs today in Bitcoin terms"
-            ]
+            # Generate content ideas using UNIQUE ANGLES discovered
+            content_ideas = []
+
+            # Use discovered unique angles if available
+            if contract.get('unique_angles'):
+                for angle in contract['unique_angles'][:3]:  # Top 3 angles
+                    # Extract insight from angle (remove type prefix)
+                    insight = ':'.join(angle.split(':')[1:]).strip()
+                    content_ideas.append(f"{contract['player']}: {insight}")
+
+            # Fallback ideas if no unique angles
+            if not content_ideas:
+                content_ideas = [
+                    f"{contract['player']}'s contract measured in Bitcoin terms - fiat debasement angle",
+                    f"Compare {contract['player']} deal to historical contracts in BTC purchasing power"
+                ]
 
             for idea in content_ideas:
                 # Score the content idea
