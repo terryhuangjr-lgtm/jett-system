@@ -192,30 +192,63 @@ async function searchRecentContracts(options = {}) {
   else if (days <= 7) freshness = 'pw';
   else if (days <= 30) freshness = 'pm';
 
-  // Build query
-  const sportFilter = sport ? sport : 'MLB NBA NFL';
-  const query = `${sportFilter} contract signed 2026`;
+  // Build queries for different content types
+  const sportFilter = sport ? sport : 'MLB NBA NFL NCAA';
+  const queries = [
+    `${sportFilter} contract signed 2026`,  // Recent pro contracts
+    `college football basketball NIL deal 2026`,  // NIL deals
+    `${sportFilter} extension mega deal 2026`  // Extensions
+  ];
 
-  console.log(`   Query: "${query}"`);
+  console.log(`   Searching ${queries.length} query types...`);
   console.log('');
 
   try {
-    const results = await braveSearch(query, {
-      count: 20,
-      freshness
-    });
+    // Search all query types and combine results
+    const allContracts = [];
 
-    const contracts = extractSportsContracts(results);
+    for (const query of queries) {
+      if (queries.length > 1) {
+        console.log(`   Searching: "${query}"`);
+      }
+
+      try {
+        const results = await braveSearch(query, {
+          count: 10,
+          freshness
+        });
+
+        const contracts = extractSportsContracts(results);
+        allContracts.push(...contracts);
+
+        if (queries.length > 1) {
+          console.log(`     ✓ ${contracts.length} results`);
+        }
+      } catch (err) {
+        console.error(`     ✗ Query failed: ${err.message}`);
+      }
+    }
+
+    // Deduplicate by URL
+    const uniqueContracts = [];
+    const seenUrls = new Set();
+
+    for (const contract of allContracts) {
+      if (!seenUrls.has(contract.url)) {
+        seenUrls.add(contract.url);
+        uniqueContracts.push(contract);
+      }
+    }
 
     // Filter out excluded players
-    const filtered = contracts.filter(c => {
+    const filtered = uniqueContracts.filter(c => {
       if (!c.playerName) return true;
       return !excludePlayers.some(excluded =>
         c.playerName.toLowerCase().includes(excluded.toLowerCase())
       );
     });
 
-    console.log(`✓ Found ${filtered.length} contracts (${contracts.length} before filtering)`);
+    console.log(`\n✓ Found ${filtered.length} unique contracts (${uniqueContracts.length} before filtering)`);
 
     return filtered;
 
