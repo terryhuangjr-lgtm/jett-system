@@ -424,6 +424,97 @@ def get_historic_mega_deals() -> List[Dict]:
     ]
 
 
+def get_rookie_contracts() -> List[Dict]:
+    """
+    Notable rookie contracts and signing bonuses
+
+    Perfect for "what if they bought Bitcoin" content - young athletes,
+    signing bonuses from years ago, easy to calculate BTC gains
+    """
+    return [
+        {
+            'player': 'Trevor Lawrence',
+            'team': 'Jacksonville Jaguars',
+            'sport': 'NFL',
+            'contract_value': 36793488,  # 4-year rookie deal
+            'signing_bonus': 24118900,
+            'signing_date': '2021-07-28',
+            'source_url': 'https://www.spotrac.com/nfl/jacksonville-jaguars/trevor-lawrence-54867/',
+            'notes': '#1 overall pick 2021, $24M signing bonus'
+        },
+        {
+            'player': 'Zion Williamson',
+            'team': 'New Orleans Pelicans',
+            'sport': 'NBA',
+            'contract_value': 44271137,  # Rookie scale + extension
+            'signing_bonus': 0,  # NBA doesn't do signing bonuses
+            'signing_date': '2019-07-01',
+            'source_url': 'https://www.spotrac.com/nba/new-orleans-pelicans/zion-williamson-56304/',
+            'notes': '#1 pick 2019, rookie scale $44M over 4 years'
+        },
+        {
+            'player': 'Joe Burrow',
+            'team': 'Cincinnati Bengals',
+            'sport': 'NFL',
+            'contract_value': 36190137,
+            'signing_bonus': 23880100,
+            'signing_date': '2020-07-30',
+            'source_url': 'https://www.spotrac.com/nfl/cincinnati-bengals/joe-burrow-48484/',
+            'notes': '#1 overall 2020, $23.8M signing bonus - imagine in BTC'
+        },
+        {
+            'player': 'Cade Cunningham',
+            'team': 'Detroit Pistons',
+            'sport': 'NBA',
+            'contract_value': 45600000,
+            'signing_bonus': 0,
+            'signing_date': '2021-08-03',
+            'source_url': 'https://www.spotrac.com/nba/detroit-pistons/cade-cunningham-99811/',
+            'notes': '#1 pick 2021 NBA, $45M rookie scale'
+        },
+        {
+            'player': 'Bryce Harper',
+            'team': 'Washington Nationals',
+            'sport': 'MLB',
+            'contract_value': 9900000,  # Signing bonus
+            'signing_bonus': 9900000,
+            'signing_date': '2010-08-16',
+            'source_url': 'https://www.spotrac.com/mlb/philadelphia-phillies/bryce-harper-10915/',
+            'notes': '#1 overall 2010, $9.9M bonus. BTC was $0.06 then!'
+        },
+        {
+            'player': 'Stephen Strasburg',
+            'team': 'Washington Nationals',
+            'sport': 'MLB',
+            'contract_value': 15100000,  # Signing bonus
+            'signing_bonus': 15100000,
+            'signing_date': '2009-08-17',
+            'source_url': 'https://www.spotrac.com/mlb/washington-nationals/stephen-strasburg-7194/',
+            'notes': '#1 overall 2009, $15.1M bonus. BTC didnt exist yet (2009)!'
+        },
+        {
+            'player': 'Paulo Banchero',
+            'team': 'Orlando Magic',
+            'sport': 'NBA',
+            'contract_value': 50157960,
+            'signing_bonus': 0,
+            'signing_date': '2022-07-01',
+            'source_url': 'https://www.spotrac.com/nba/orlando-magic/paolo-banchero-103463/',
+            'notes': '#1 pick 2022, $50M rookie scale'
+        },
+        {
+            'player': 'Andrew Luck',
+            'team': 'Indianapolis Colts',
+            'sport': 'NFL',
+            'contract_value': 22107998,
+            'signing_bonus': 14518544,
+            'signing_date': '2012-07-29',
+            'source_url': 'https://www.spotrac.com/nfl/indianapolis-colts/andrew-luck-7774/',
+            'notes': '#1 overall 2012, $14.5M bonus when BTC was $10'
+        }
+    ]
+
+
 def get_bankruptcy_stories() -> List[Dict]:
     """
     Athlete bankruptcy and financial disaster stories
@@ -825,6 +916,12 @@ def main():
             if random.random() < 0.25:
                 success_stories = get_financial_success_stories()
                 all_content.append(random.choice(success_stories))
+
+            # Add rookie contract (50% chance) - great for "what if they bought BTC" content
+            if random.random() < 0.5:
+                print("  ℹ️  Adding rookie contract/signing bonus...")
+                rookie_contracts = get_rookie_contracts()
+                all_content.append(random.choice(rookie_contracts))
 
         if QUICK_SCAN:
             print(f"  ✓ Quick scan: {len(all_content)} breaking contracts found")
