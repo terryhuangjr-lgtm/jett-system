@@ -81,18 +81,22 @@ function getBestResearchFromDatabase(contentType) {
     // Filter based on content type
     let filtered;
     if (contentType === 'bitcoin') {
-      // Get quotes_and_wisdom or anything with Bitcoin/economics focus
+      // Get Bitcoin quotes, history, principles
       filtered = drafts.filter(d =>
         d.category && (
+          d.category.includes('bitcoin') ||
           d.category.includes('quotes') ||
           d.category.includes('wisdom') ||
           d.category.includes('sound_money')
         )
       );
     } else if (contentType === 'sports') {
-      // Get 21m-sports content
+      // Get sports contracts, athlete stories
+      // EXCLUDE anything with 'bitcoin' in category
       filtered = drafts.filter(d =>
-        d.category && d.category.includes('21m-sports')
+        d.category &&
+        d.category.includes('21m-sports') &&
+        !d.category.includes('bitcoin')
       );
     }
 

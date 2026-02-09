@@ -612,7 +612,7 @@ def save_to_database(quotes: List[Dict], history: List[Dict],
 
                 session.db.add_content_idea(
                     topic=f"Bitcoin Quote - {quote['author']} - {scoring['priority'].upper()}",
-                    category='21m-sports',
+                    category='bitcoin_quotes',
                     content=idea,
                     status=f"draft-{scoring['priority']}"
                 )
@@ -677,7 +677,7 @@ def save_to_database(quotes: List[Dict], history: List[Dict],
 
                 session.db.add_content_idea(
                     topic=f"Bitcoin History - {event['event']} - {scoring['priority'].upper()}",
-                    category='21m-sports',
+                    category='bitcoin_history',
                     content=idea,
                     status=f"draft-{scoring['priority']}"
                 )
