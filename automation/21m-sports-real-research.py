@@ -782,8 +782,8 @@ def main():
             print("\n📊 Step 1: Searching for RECENT sports contracts...")
             search_days = 30
 
-        # Excluded players list
-        exclude_players = ['Juan Soto', 'Shohei Ohtani', 'Shedeur Sanders']
+        # Excluded players list (only exclude pre-draft prospects)
+        exclude_players = ['Shedeur Sanders']
 
         # Search for contracts
         recent_contracts = search_recent_contracts_via_brave(
