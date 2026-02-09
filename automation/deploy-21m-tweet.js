@@ -6,6 +6,8 @@
 
 const fs = require('fs');
 const { execSync } = require('child_process');
+const path = require('path');
+const db = require(path.join(__dirname, 'db-bridge.js'));
 
 // Can pass multiple potential filenames - will use the first that exists
 const POTENTIAL_FILES = process.argv.slice(2).filter(arg => !arg.startsWith('--'));
@@ -192,6 +194,22 @@ try {
 
   if (result.payload && result.payload.ok) {
     console.log('✓ Tweet options posted to #21msports');
+
+    // Mark content as published in database (so it won't be reused)
+    if (data.sources && data.sources.database_id) {
+      const dbId = data.sources.database_id;
+      console.log(`📝 Marking content ID ${dbId} as published in database...`);
+
+      const marked = db.markPublished(dbId);
+      if (marked) {
+        console.log('✓ Content marked as published (will not be selected again)');
+      } else {
+        console.warn('⚠️  Warning: Could not mark content as published');
+      }
+    } else {
+      console.log('ℹ️  No database_id found (manual content, not tracked)');
+    }
+
     console.log('✓ Deployment complete with verified sources\n');
   } else {
     console.error('✗ Failed to post:', result.error || 'Unknown error');
