@@ -229,7 +229,9 @@ class JettDB:
         content: str,
         status: str = "draft",
         scheduled_date: Optional[str] = None,
-        platform: Optional[str] = None
+        platform: Optional[str] = None,
+        quality_score: Optional[int] = 7,
+        source: Optional[str] = None
     ) -> int:
         """
         Add a new content idea.
@@ -241,6 +243,8 @@ class JettDB:
             status: Status (draft, scheduled, published)
             scheduled_date: When to publish (ISO format)
             platform: Target platform (twitter, slack, etc.)
+            quality_score: Quality rating 1-10 (default 7)
+            source: Source URL or reference
 
         Returns:
             ID of inserted content idea
@@ -249,9 +253,9 @@ class JettDB:
             cursor = conn.cursor()
             cursor.execute("""
                 INSERT INTO content_ideas (
-                    topic, category, content, status, scheduled_date, platform, created_date
-                ) VALUES (?, ?, ?, ?, ?, ?, ?)
-            """, (topic, category, content, status, scheduled_date, platform, datetime.now().isoformat()))
+                    topic, category, content, status, scheduled_date, platform, quality_score, source, created_date
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+            """, (topic, category, content, status, scheduled_date, platform, quality_score, source, datetime.now().isoformat()))
             return cursor.lastrowid
 
     def get_content_idea(self, content_id: int) -> Optional[Dict]:
@@ -261,14 +265,52 @@ class JettDB:
             cursor.execute("SELECT * FROM content_ideas WHERE id = ?", (content_id,))
             return self._row_to_dict(cursor.fetchone())
 
-    def get_content_by_status(self, status: str) -> List[Dict]:
-        """Get all content ideas with specified status."""
+    def get_content_by_status(self, status: str, limit: Optional[int] = None) -> List[Dict]:
+        """Get content ideas with specified status, optionally sorted by quality score."""
         with self.get_connection() as conn:
             cursor = conn.cursor()
-            cursor.execute(
-                "SELECT * FROM content_ideas WHERE status = ? ORDER BY created_date DESC",
-                (status,)
-            )
+            query = "SELECT * FROM content_ideas WHERE status = ? ORDER BY quality_score DESC, created_date DESC"
+            if limit:
+                query += f" LIMIT {limit}"
+            cursor.execute(query, (status,))
+            return self._rows_to_dicts(cursor.fetchall())
+
+    def get_content_by_category(
+        self,
+        category: str,
+        status: str = 'draft',
+        min_quality: int = 7,
+        limit: Optional[int] = None
+    ) -> List[Dict]:
+        """
+        Get content ideas filtered by category, status, and quality score.
+        Optimized query that filters in SQL rather than loading all records.
+
+        Args:
+            category: Category to filter by (supports LIKE matching)
+            status: Status to filter by (default 'draft')
+            min_quality: Minimum quality score (default 7)
+            limit: Optional limit on results
+
+        Returns:
+            List of matching content ideas, sorted by quality score descending
+        """
+        with self.get_connection() as conn:
+            cursor = conn.cursor()
+            query = """
+                SELECT * FROM content_ideas
+                WHERE status = ?
+                AND category LIKE ?
+                AND quality_score >= ?
+                ORDER BY quality_score DESC, created_date DESC
+            """
+            if limit:
+                query += f" LIMIT {limit}"
+
+            # Convert category to LIKE pattern
+            category_pattern = f"%{category}%"
+
+            cursor.execute(query, (status, category_pattern, min_quality))
             return self._rows_to_dicts(cursor.fetchall())
 
     def get_pending_content(self) -> List[Dict]:

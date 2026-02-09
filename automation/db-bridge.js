@@ -116,6 +116,41 @@ print(json.dumps(drafts))`;
   }
 
   /**
+   * Get content by category (optimized query)
+   * Filters in SQL rather than loading all records
+   */
+  getContentByCategory(category, status = 'draft', minQuality = 7, limit = 50) {
+    const python = `import sys
+sys.path.insert(0, '${path.dirname(JETT_DB_PATH)}')
+import json
+from jett_db import get_db
+
+db = get_db()
+content = db.get_content_by_category(
+    category='${category}',
+    status='${status}',
+    min_quality=${minQuality},
+    limit=${limit}
+)
+print(json.dumps(content))`;
+
+    const tmpFile = path.join(os.tmpdir(), `db-bridge-${Date.now()}.py`);
+
+    try {
+      fs.writeFileSync(tmpFile, python);
+      const result = execSync(`python3 ${tmpFile}`, {
+        encoding: 'utf8'
+      });
+      fs.unlinkSync(tmpFile);
+      return JSON.parse(result);
+    } catch (err) {
+      try { fs.unlinkSync(tmpFile); } catch {}
+      console.error('Failed to get content by category:', err.message);
+      return [];
+    }
+  }
+
+  /**
    * Get database stats
    */
   getStats() {

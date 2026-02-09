@@ -43,10 +43,31 @@ const OUTPUT_FILE = outputIndex !== -1 && args[outputIndex + 1]
 const DRY_RUN = args.includes('--dry-run');
 const VERBOSE = args.includes('--verbose') || DRY_RUN;
 
+// BTC Price Cache (10 minute TTL)
+const BTC_PRICE_CACHE = {
+  price: null,
+  timestamp: null,
+  ttl: 10 * 60 * 1000 // 10 minutes in milliseconds
+};
+
 /**
- * Get current BTC price
+ * Get current BTC price (with caching)
+ * OPTIMIZED: Caches price for 10 minutes to reduce API calls
  */
 async function getCurrentBTCPrice() {
+  // Check if cache is valid
+  const now = Date.now();
+  if (BTC_PRICE_CACHE.price && BTC_PRICE_CACHE.timestamp) {
+    const age = now - BTC_PRICE_CACHE.timestamp;
+    if (age < BTC_PRICE_CACHE.ttl) {
+      if (VERBOSE) {
+        console.log(`  💾 Using cached BTC price: $${BTC_PRICE_CACHE.price.toLocaleString()} (${Math.round(age/1000)}s old)`);
+      }
+      return BTC_PRICE_CACHE.price;
+    }
+  }
+
+  // Cache miss or expired - fetch new price
   return new Promise((resolve) => {
     https.get('https://api.coinbase.com/v2/prices/BTC-USD/spot', (res) => {
       let data = '';
@@ -55,6 +76,15 @@ async function getCurrentBTCPrice() {
         try {
           const json = JSON.parse(data);
           const price = parseFloat(json.data.amount);
+
+          // Update cache
+          BTC_PRICE_CACHE.price = price;
+          BTC_PRICE_CACHE.timestamp = now;
+
+          if (VERBOSE) {
+            console.log(`  🌐 Fetched fresh BTC price: $${price.toLocaleString()}`);
+          }
+
           resolve(price);
         } catch (e) {
           resolve(100000); // Fallback
@@ -66,57 +96,41 @@ async function getCurrentBTCPrice() {
 
 /**
  * Get best research from database based on content type
+ * OPTIMIZED: Filters in SQL rather than loading all records into JavaScript
  */
 function getBestResearchFromDatabase(contentType) {
   console.log(`📊 Checking Knowledge Database for ${contentType} content...`);
 
   try {
-    const drafts = db.getDraftContent(50);
-
-    if (!drafts || drafts.length === 0) {
-      console.log('  ℹ️  No content in database yet\n');
-      return null;
-    }
-
-    // Filter based on content type
-    let filtered;
+    // Use optimized query that filters in SQL
+    let results;
     if (contentType === 'bitcoin') {
-      // Get Bitcoin quotes, history, principles
-      filtered = drafts.filter(d =>
-        d.category && (
-          d.category.includes('bitcoin') ||
-          d.category.includes('quotes') ||
-          d.category.includes('wisdom') ||
-          d.category.includes('sound_money')
-        )
-      );
+      // Get Bitcoin quotes, history, principles (already filtered by quality >= 7 in SQL)
+      results = db.getContentByCategory('bitcoin', 'draft', 7, 50);
     } else if (contentType === 'sports') {
-      // Get sports contracts, athlete stories
-      // EXCLUDE anything with 'bitcoin' in category
-      filtered = drafts.filter(d =>
-        d.category &&
-        d.category.includes('21m-sports') &&
-        !d.category.includes('bitcoin')
-      );
+      // Get sports contracts (already filtered by quality >= 7 in SQL)
+      results = db.getContentByCategory('21m-sports', 'draft', 7, 50);
     }
 
-    if (!filtered || filtered.length === 0) {
-      console.log(`  ℹ️  No ${contentType} content in database yet\n`);
+    if (!results || results.length === 0) {
+      console.log(`  ℹ️  No high-quality ${contentType} content in database yet\n`);
       return null;
     }
 
-    // Sort by quality score
-    const sorted = filtered
-      .filter(d => d.quality_score >= 7)
-      .sort((a, b) => b.quality_score - a.quality_score);
+    // For sports, exclude any Bitcoin content (safety check)
+    let filtered = results;
+    if (contentType === 'sports') {
+      filtered = results.filter(d => !d.category.includes('bitcoin'));
+    }
 
-    if (sorted.length === 0) {
-      console.log(`  ℹ️  No high-quality ${contentType} content (score >= 7)\n`);
+    if (filtered.length === 0) {
+      console.log(`  ℹ️  No ${contentType} content after filtering\n`);
       return null;
     }
 
-    const best = sorted[0];
-    console.log(`  ✓ Found ${sorted.length} high-quality entries`);
+    // Results are already sorted by quality_score DESC from SQL query
+    const best = filtered[0];
+    console.log(`  ✓ Found ${filtered.length} high-quality entries (quality >= 7)`);
     console.log(`  ✓ Best: "${best.topic.substring(0, 60)}..." (score: ${best.quality_score}/10)\n`);
 
     return best;
