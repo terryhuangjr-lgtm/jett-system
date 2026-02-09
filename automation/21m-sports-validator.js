@@ -205,6 +205,23 @@ const checks = {
 
     console.log('  Checking URL accessibility...');
 
+    // Filter out non-URL sources (Database, Manual entry, etc.)
+    const validUrls = urls.filter(url => {
+      if (!url || typeof url !== 'string') return false;
+      // Skip non-URL sources
+      if (url === 'Database' || url === 'Manual entry' || url === 'N/A') {
+        console.log(`    ⏭️  Skipping non-URL source: ${url}`);
+        return false;
+      }
+      // Must start with http:// or https://
+      return url.startsWith('http://') || url.startsWith('https://');
+    });
+
+    if (validUrls.length === 0) {
+      console.log('    ℹ️  No URLs to check (all sources are database/manual entries)');
+      return true;
+    }
+
     // API endpoints that should be skipped from accessibility checks
     const apiEndpoints = [
       'api.coingecko.com',
@@ -255,7 +272,7 @@ const checks = {
       });
     };
 
-    const results = await Promise.all(urls.map(checkURL));
+    const results = await Promise.all(validUrls.map(checkURL));
     const failed = results.filter(r => !r.accessible);
 
     if (failed.length > 0) {
