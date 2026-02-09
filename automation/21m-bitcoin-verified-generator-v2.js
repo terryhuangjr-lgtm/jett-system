@@ -117,22 +117,108 @@ function generateBitcoinTweetVariations(dbContent, btcPrice) {
 }
 
 /**
+ * Clean up web-scraped content
+ */
+function cleanScrapedContent(text) {
+  return text
+    // Remove HTML tags
+    .replace(/<\/?[^>]+(>|$)/g, '')
+    // Remove source citations like "(1994). "Book Title""
+    .replace(/\(\d{4}\)\.\s*[""][^""]+[""][^.]*\./g, '')
+    // Remove "Author (year)" patterns
+    .replace(/[A-Z][a-z]+(?:\s+[A-Z][a-z]+)*\s+\(\d{4}\)/g, '')
+    // Remove multiple ellipses and clean up
+    .replace(/\.{3,}/g, '.')
+    .replace(/\s*\.\.\.\s*/g, ' ')
+    // Remove "· " separators
+    .replace(/\s*·\s*/g, ' ')
+    // Remove extra whitespace
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+/**
  * Generate quote-focused tweet
  */
 function generateQuoteFocusTweet(topic, lines, btcAngle) {
-  // Extract quote or key principle
-  const quoteLine = lines.find(l => l.includes('"') || l.includes('Quote:') || l.includes('Principle:')) || lines[0];
-  const author = lines.find(l => l.startsWith('Author:'))?.replace('Author:', '').trim();
-
   let tweet = '';
 
-  if (author && quoteLine.includes('"')) {
-    // Clean quote format
-    const quote = quoteLine.replace(/^Quote:\s*/i, '').trim();
-    tweet = `${quote}\n\n— ${author}\n\n${btcAngle}`;
-  } else {
-    // Principle or general content
-    tweet = `${topic}\n\n${btcAngle}\n\nSound money teaches what fiat hides.`;
+  // Try to extract actual quote from content
+  // Format 1: "Quote/Excerpt: "actual quote" ― Author"
+  const excerptLine = lines.find(l => l.includes('Quote/Excerpt:'));
+  if (excerptLine) {
+    // Extract just the quote part (remove "Quote/Excerpt:" prefix)
+    let quote = excerptLine.replace(/^Quote\/Excerpt:\s*/i, '').trim();
+    quote = cleanScrapedContent(quote);
+
+    // Extract author if present (after ― or —)
+    const authorMatch = quote.match(/[―—]\s*(.+?)(?:,\s*The|$)/);
+    if (authorMatch) {
+      const author = authorMatch[1].trim();
+      // Remove author attribution from quote
+      quote = quote.split(/[―—]/)[0].trim();
+
+      // Ensure quote fits with author and btcAngle
+      const maxQuoteLen = 280 - author.length - btcAngle.length - 10;  // 10 for formatting
+      if (quote.length > maxQuoteLen) {
+        quote = quote.substring(0, maxQuoteLen - 3) + '...';
+      }
+
+      tweet = `"${quote}"\n\n— ${author}\n\n${btcAngle}`;
+    } else {
+      const maxLen = 280 - btcAngle.length - 6;
+      if (quote.length > maxLen) {
+        quote = quote.substring(0, maxLen - 3) + '...';
+      }
+      tweet = `"${quote}"\n\n${btcAngle}`;
+    }
+  }
+  // Format 2: "Economic Wisdom: <strong>quote</strong> extra metadata"
+  else {
+    const wisdomLine = lines.find(l => l.includes('Economic Wisdom:'));
+    if (wisdomLine) {
+      let quote = wisdomLine.replace(/^Economic Wisdom:\s*/i, '').trim();
+      quote = cleanScrapedContent(quote);
+
+      // Extract just the first sentence or two (before source citations)
+      const sentences = quote.split(/\.\s+/).filter(s => s.length > 10);
+      quote = sentences.slice(0, 2).join('. ');
+      if (!quote.endsWith('.')) quote += '.';
+
+      const maxLen = 280 - btcAngle.length - 6;
+      if (quote.length > maxLen) {
+        quote = quote.substring(0, maxLen - 3) + '...';
+      }
+
+      tweet = `"${quote}"\n\n${btcAngle}`;
+    }
+    // Format 3: Look for author line and quote separately
+    else {
+      const quoteLine = lines.find(l => l.includes('"') && !l.startsWith('Source:')) || lines[0];
+      const author = lines.find(l => l.startsWith('Author:'))?.replace('Author:', '').trim();
+
+      if (author && quoteLine.includes('"')) {
+        let quote = quoteLine.replace(/^Quote:\s*/i, '').trim();
+        quote = cleanScrapedContent(quote);
+
+        const maxQuoteLen = 280 - author.length - btcAngle.length - 10;
+        if (quote.length > maxQuoteLen) {
+          quote = quote.substring(0, maxQuoteLen - 3) + '...';
+        }
+
+        tweet = `${quote}\n\n— ${author}\n\n${btcAngle}`;
+      } else if (quoteLine.includes('"')) {
+        let quote = cleanScrapedContent(quoteLine.trim());
+        const maxLen = 280 - btcAngle.length - 6;
+        if (quote.length > maxLen) {
+          quote = quote.substring(0, maxLen - 3) + '...';
+        }
+        tweet = `${quote}\n\n${btcAngle}`;
+      } else {
+        // No quote found - use general principle
+        tweet = `${btcAngle}\n\nSound money teaches what fiat hides.`;
+      }
+    }
   }
 
   return tweet.substring(0, 280);
@@ -145,14 +231,47 @@ function generateHistoricalContextTweet(topic, lines, btcAngle) {
   const context = lines.find(l => l.startsWith('Context:') || l.startsWith('Historical:'))?.replace(/^(Context|Historical):\s*/i, '').trim();
   const date = lines.find(l => l.startsWith('Date:'))?.replace('Date:', '').trim();
 
+  // Try to extract key wisdom from content
+  const wisdomLine = lines.find(l => l.includes('Economic Wisdom:'));
+  const excerptLine = lines.find(l => l.includes('Quote/Excerpt:'));
+
   let tweet = '';
 
-  if (context) {
+  if (wisdomLine) {
+    // Extract and clean the wisdom
+    let wisdom = wisdomLine.replace(/Economic Wisdom:\s*/i, '').trim();
+    wisdom = cleanScrapedContent(wisdom);
+
+    // Get first sentence or two
+    const sentences = wisdom.split(/\.\s+/).filter(s => s.length > 10);
+    wisdom = sentences.slice(0, 2).join('. ');
+    if (!wisdom.endsWith('.')) wisdom += '.';
+
+    const remaining = 280 - btcAngle.length - 70;  // 70 for the sports message
+    if (wisdom.length > remaining) {
+      wisdom = wisdom.substring(0, remaining - 3) + '...';
+    }
+
+    tweet = `${btcAngle}\n\n"${wisdom}"\n\nEvery athlete's contract tells a story about money.\n\nBitcoin changes that story.`;
+  } else if (context) {
     tweet = date
       ? `${date}\n\n${context}\n\n${btcAngle}\n\nHistory repeats. Bitcoin remembers.`
       : `${context}\n\n${btcAngle}\n\nThe past informs the present.`;
+  } else if (excerptLine) {
+    // Use excerpt with sports angle
+    let excerpt = excerptLine.replace(/Quote\/Excerpt:\s*/i, '').trim();
+    excerpt = cleanScrapedContent(excerpt);
+    excerpt = excerpt.split(/[―—]/)[0].trim();  // Remove author attribution
+
+    const remaining = 280 - btcAngle.length - 30;
+    if (excerpt.length > remaining) {
+      excerpt = excerpt.substring(0, remaining - 3) + '...';
+    }
+
+    tweet = `${btcAngle}\n\n"${excerpt}"\n\nBitcoin changes that story.`;
   } else {
-    tweet = `${topic}\n\n${btcAngle}\n\nEvery athlete's contract tells a story about money.\n\nBitcoin changes that story.`;
+    // Generic sports connection
+    tweet = `${btcAngle}\n\nEvery athlete's contract tells a story about money.\n\nBitcoin changes that story.`;
   }
 
   return tweet.substring(0, 280);
@@ -164,7 +283,53 @@ function generateHistoricalContextTweet(topic, lines, btcAngle) {
 function generateSportsConnectionTweet(topic, lines, btcAngle, btcPrice) {
   const btcFormatted = `$${Math.round(btcPrice).toLocaleString()}`;
 
-  let tweet = `${topic}\n\nBTC at ${btcFormatted}\n\n${btcAngle}\n\nAthletes earn millions in fiat.\nBitcoin measures what fiat can't.`;
+  // Extract key content to connect to sports
+  const wisdomLine = lines.find(l => l.includes('Economic Wisdom:'));
+  const excerptLine = lines.find(l => l.includes('Quote/Excerpt:'));
+  const quoteLine = lines.find(l => l.includes('"') && !l.startsWith('Source:'));
+
+  let content = null;
+
+  if (wisdomLine) {
+    // Extract and clean wisdom
+    content = wisdomLine.replace(/Economic Wisdom:\s*/i, '').trim();
+    content = cleanScrapedContent(content);
+
+    // Get first sentence
+    const sentences = content.split(/\.\s+/).filter(s => s.length > 10);
+    content = sentences[0];
+    if (!content.endsWith('.')) content += '.';
+  } else if (excerptLine) {
+    // Use quote excerpt
+    content = excerptLine.replace(/Quote\/Excerpt:\s*/i, '').trim();
+    content = cleanScrapedContent(content);
+    content = content.split(/[―—]/)[0].trim();  // Remove author
+
+    // First sentence only
+    const sentences = content.split(/\.\s+/).filter(s => s.length > 10);
+    content = sentences[0];
+    if (!content.endsWith('.')) content += '.';
+  } else if (quoteLine) {
+    content = cleanScrapedContent(quoteLine);
+    const sentences = content.split(/\.\s+/).filter(s => s.length > 10);
+    content = sentences[0];
+    if (!content.endsWith('.')) content += '.';
+  }
+
+  // Build tweet with quote
+  const sportsMessage = 'Athletes earn millions in fiat.\nBitcoin measures what fiat can\'t.';
+  const btcInfo = `BTC at ${btcFormatted}`;
+
+  if (content) {
+    const remaining = 280 - btcInfo.length - sportsMessage.length - 10;  // 10 for newlines
+    if (content.length > remaining) {
+      content = content.substring(0, remaining - 3) + '...';
+    }
+    tweet = `"${content}"\n\n${btcInfo}\n\n${sportsMessage}`;
+  } else {
+    // Fallback
+    tweet = `${btcAngle}\n\n${btcInfo}\n\n${sportsMessage}`;
+  }
 
   return tweet.substring(0, 280);
 }

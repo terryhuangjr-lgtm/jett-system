@@ -157,15 +157,31 @@ function extractSportsContracts(searchResults) {
       const teamMatch = description.match(/(?:to|with)\s+(?:the\s+)?([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)/);
       const team = teamMatch ? teamMatch[1] : null;
 
-      contracts.push({
-        title,
-        url,
-        description,
-        playerName,
-        team,
-        contractValue,
-        source: new URL(url).hostname
-      });
+      // Validate player name - reject common false positives
+      const invalidNames = [
+        'Yahoo Sports', 'Fox Sports', 'ESPN', 'The Athletic',
+        'NBC Sports', 'CBS Sports', 'Sports Illustrated',
+        'Free Agent', 'Trade Deadline', 'Full list', 'agent signing',
+        'rookie contract', 'new offers', 'Silver Slugger'
+      ];
+
+      const isValidPlayer = playerName &&
+        !invalidNames.some(invalid => playerName.includes(invalid)) &&
+        playerName.split(' ').length >= 2 &&  // Must be at least 2 words
+        playerName.split(' ').length <= 4;     // But not more than 4
+
+      // Only add if we have valid player name AND contract value
+      if (isValidPlayer && contractValue) {
+        contracts.push({
+          title,
+          url,
+          description,
+          playerName,
+          team,
+          contractValue,
+          source: new URL(url).hostname
+        });
+      }
     }
   }
 
