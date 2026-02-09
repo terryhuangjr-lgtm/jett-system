@@ -58,6 +58,7 @@ VERIFICATION_LOGS_DIR.mkdir(parents=True, exist_ok=True)
 # Configuration
 DRY_RUN = '--dry-run' in sys.argv
 VERBOSE = '--verbose' in sys.argv or DRY_RUN
+QUICK_SCAN = '--quick-scan' in sys.argv  # Quick mode: skip research, just check database
 
 
 class BitcoinResearchSession:
@@ -701,6 +702,11 @@ def main():
 
     if DRY_RUN:
         print("🔍 DRY RUN MODE - Testing only\n")
+
+    if QUICK_SCAN:
+        print("⚡ QUICK SCAN MODE - Skipping Bitcoin research (no breaking news)")
+        print("   Database has existing quotes/history for content generation\n")
+        return 0
 
     # Initialize session
     session = BitcoinResearchSession()

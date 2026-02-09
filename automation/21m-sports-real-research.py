@@ -58,6 +58,7 @@ VERIFICATION_LOGS_DIR.mkdir(parents=True, exist_ok=True)
 # Configuration
 DRY_RUN = '--dry-run' in sys.argv
 VERBOSE = '--verbose' in sys.argv or DRY_RUN
+QUICK_SCAN = '--quick-scan' in sys.argv  # Quick mode: only check last 7 days for breaking news
 
 
 class ResearchSession:
@@ -774,30 +775,37 @@ def main():
 
     try:
         # Step 1: Search for recent contracts via Brave Search
-        print("\n📊 Step 1: Searching for RECENT sports contracts...")
+        if QUICK_SCAN:
+            print("\n⚡ QUICK SCAN MODE: Checking for breaking news (last 7 days)...")
+            search_days = 7
+        else:
+            print("\n📊 Step 1: Searching for RECENT sports contracts...")
+            search_days = 30
 
         # Excluded players list
         exclude_players = ['Juan Soto', 'Shohei Ohtani', 'Shedeur Sanders']
 
-        # Search for contracts in last 30 days
+        # Search for contracts
         recent_contracts = search_recent_contracts_via_brave(
-            days=30,
+            days=search_days,
             exclude_players=exclude_players,
             session=session
         )
 
         print(f"  ✓ Found {len(recent_contracts)} recent contracts")
 
-        # Step 2: Add diverse content pool
-        print("\n📝 Step 2: Building diverse content pool...")
-
+        # Step 2: Add diverse content pool (skip in quick-scan mode)
         all_content = []
 
         # Add recent contracts (highest priority)
         all_content.extend(recent_contracts)
 
+        # Only build diverse pool in full research mode
+        if not QUICK_SCAN:
+            print("\n📝 Step 2: Building diverse content pool...")
+
         # If recent contracts are slim (<3), add historic mega-deals
-        if len(recent_contracts) < 3:
+        if len(recent_contracts) < 3 and not QUICK_SCAN:
             print("  ℹ️  Adding historic mega-deals to content pool...")
             historic = get_historic_mega_deals()
             # Rotate through them, not always Mahomes
@@ -805,18 +813,23 @@ def main():
             random.shuffle(historic)
             all_content.extend(historic[:2])  # Add 2 historic deals
 
-        # Always include 1 bankruptcy story (teaching moment)
-        print("  ℹ️  Adding financial lesson content...")
-        bankruptcy_stories = get_bankruptcy_stories()
-        import random
-        all_content.append(random.choice(bankruptcy_stories))
+        # Only add bankruptcy/success stories in full research mode
+        if not QUICK_SCAN:
+            # Always include 1 bankruptcy story (teaching moment)
+            print("  ℹ️  Adding financial lesson content...")
+            bankruptcy_stories = get_bankruptcy_stories()
+            import random
+            all_content.append(random.choice(bankruptcy_stories))
 
-        # Occasionally add success story (25% chance)
-        if random.random() < 0.25:
-            success_stories = get_financial_success_stories()
-            all_content.append(random.choice(success_stories))
+            # Occasionally add success story (25% chance)
+            if random.random() < 0.25:
+                success_stories = get_financial_success_stories()
+                all_content.append(random.choice(success_stories))
 
-        print(f"  ✓ Content pool: {len(all_content)} items (contracts + stories)")
+        if QUICK_SCAN:
+            print(f"  ✓ Quick scan: {len(all_content)} breaking contracts found")
+        else:
+            print(f"  ✓ Content pool: {len(all_content)} items (contracts + stories)")
 
         # Step 3: Research and verify content
         print("\n📝 Step 3: Researching and verifying content...")
