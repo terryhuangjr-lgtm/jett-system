@@ -10,8 +10,8 @@ const https = require('https');
 class LLMBridge {
   constructor() {
     this.OLLAMA_URL = 'http://localhost:11434';
-    this.DEFAULT_MODEL = 'llama3.2:1b'; // Fast, lightweight model
-    this.FALLBACK_MODEL = 'llama3.2:3b'; // More capable fallback
+    this.DEFAULT_MODEL = 'llama3.1:8b'; // Llama 3.1 8B - better quality
+    this.FALLBACK_MODEL = 'llama3.1:8b'; // Same model for now
   }
 
   /**
@@ -27,7 +27,11 @@ import json
 analyzer = TaskComplexityAnalyzer()
 result = analyzer.analyze('${escapedMessage}')
 print(json.dumps(result))
-"`, { encoding: 'utf8', timeout: 5000 });
+"`, {
+        encoding: 'utf8',
+        timeout: 5000,
+        cwd: '/home/clawd/clawd'  // Run from correct directory to find llm_router.py
+      });
 
       return JSON.parse(result.trim());
     } catch (error) {
@@ -62,23 +66,44 @@ print(json.dumps(result))
   /**
    * Query Ollama local LLM
    */
-  async queryOllama(message, model = null) {
+  async queryOllama(message, model = null, queryOptions = {}) {
     const http = require('http');
 
     return new Promise((resolve, reject) => {
       const startTime = Date.now();
       const targetModel = model || this.DEFAULT_MODEL;
 
+      // Inject context about Terry's setup (unless disabled)
+      let enhancedPrompt = message;
+      if (!queryOptions.skipContext) {
+        const systemContext = `You are Jett, Terry's AI assistant with knowledge of his systems:
+
+SYSTEMS & TOOLS:
+- Task Manager: Terry uses a custom task management system to track work
+- Athlete Database: Database tracking athletes, contracts, NIL deals, and sports data
+- Contract Tracking: System for monitoring athlete contracts and values
+- Sports Focus: College football, NFL, MLB, basketball (Shedeur Sanders, Juan Soto, etc.)
+
+CONTEXT: Terry is a sports industry professional tracking athletes and contracts.
+When he asks questions, he may be referring to HIS data, HIS systems, or previous conversations.
+
+USER QUESTION: ${message}
+
+Respond as Jett, considering the context above:`;
+
+        enhancedPrompt = systemContext;
+      }
+
       const postData = JSON.stringify({
         model: targetModel,
-        prompt: message,
+        prompt: enhancedPrompt,
         stream: false,
         options: {
           temperature: 0.7
         }
       });
 
-      const options = {
+      const requestOptions = {
         hostname: 'localhost',
         port: 11434,
         path: '/api/generate',
@@ -87,10 +112,10 @@ print(json.dumps(result))
           'Content-Type': 'application/json',
           'Content-Length': Buffer.byteLength(postData)
         },
-        timeout: 60000
+        timeout: 180000 // 3 minutes - allows model load on first request
       };
 
-      const req = http.request(options, (res) => {
+      const req = http.request(requestOptions, (res) => {
         let data = '';
 
         res.on('data', chunk => data += chunk);
@@ -124,6 +149,12 @@ print(json.dumps(result))
         reject(new Error('Ollama request timeout'));
       });
 
+      // Set socket timeout explicitly
+      req.setTimeout(180000, () => {
+        req.destroy();
+        reject(new Error('Ollama socket timeout'));
+      });
+
       req.write(postData);
       req.end();
     });
@@ -139,7 +170,8 @@ print(json.dumps(result))
       // Escape single quotes for shell
       const escapedMessage = message.replace(/'/g, "'\\''");
 
-      const cmd = `clawdbot agent --channel slack --session-id "${sessionId}" --message '${escapedMessage}' --json`;
+      // Remove --channel slack to prevent clawdbot from auto-posting (slack-bridge handles posting)
+      const cmd = `${process.env.HOME}/.nvm/versions/node/v22.22.0/bin/clawdbot agent --session-id "${sessionId}" --message '${escapedMessage}' --json`;
 
       const output = execSync(cmd, {
         encoding: 'utf8',
@@ -191,7 +223,7 @@ print(json.dumps(result))
       const ollamaAvailable = await this.isOllamaAvailable();
       if (ollamaAvailable) {
         try {
-          return await this.queryOllama(message, options.model);
+          return await this.queryOllama(message, options.model, options);
         } catch (error) {
           console.log('⚠️  Ollama failed, falling back to Claude API');
           return await this.queryClaudeAPI(message, sessionId);
@@ -218,8 +250,8 @@ print(json.dumps(result))
 
       if (ollamaAvailable) {
         try {
-          console.log('🟢 Routing to Ollama (local LLM)...');
-          const result = await this.queryOllama(message, options.model);
+          console.log('🟢 Routing to Ollama (local LLM with context injection)...');
+          const result = await this.queryOllama(message, options.model, options);
 
           console.log(`   ✓ Response from Ollama in ${result.time_ms}ms`);
 
