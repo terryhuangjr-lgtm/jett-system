@@ -16,16 +16,21 @@ class LLMBridge {
 
   /**
    * Analyze message complexity using Python router
+   * Uses base64 encoding to safely pass messages with quotes/special chars
    */
   analyzeComplexity(message) {
     try {
-      const escapedMessage = message.replace(/'/g, "'\\''").replace(/\n/g, ' ');
+      // Use base64 to safely pass message (handles quotes, newlines, etc.)
+      const messageBase64 = Buffer.from(message).toString('base64');
 
       const result = execSync(`python3 -c "
+import base64
 from llm_router import TaskComplexityAnalyzer
 import json
+# Decode base64 message
+message = base64.b64decode('${messageBase64}').decode('utf-8')
 analyzer = TaskComplexityAnalyzer()
-result = analyzer.analyze('${escapedMessage}')
+result = analyzer.analyze(message)
 print(json.dumps(result))
 "`, {
         encoding: 'utf8',

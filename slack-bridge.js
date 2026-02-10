@@ -22,30 +22,56 @@ const CLAWDBOT_GATEWAY = 'http://localhost:18789';
 const CLAWDBOT_TOKEN = '5a5132b80dedcc723bec68c13679992b6eaadc7fa848b7af';
 const POLL_INTERVAL = 15000; // Poll every 15 seconds (reduced API calls, still feels instant)
 const FILE_DOWNLOAD_DIR = path.join(process.env.HOME, 'clawd', 'slack-files');
-const TIMESTAMP_FILE = path.join(process.env.HOME, 'clawd', 'slack-bridge-timestamps.json');
+const PROCESSED_MESSAGES_FILE = path.join(process.env.HOME, 'clawd', 'slack-bridge-processed.json');
 
-let lastMessageTimestamps = {};
+// Track processed message IDs per channel (last 200 per channel to prevent reprocessing)
+let processedMessages = {}; // { channelId: [array of message IDs] }
 let isProcessing = false;
 
-// Load saved timestamps on startup to avoid reprocessing old messages
-function loadTimestamps() {
+// Load saved processed message IDs on startup
+function loadProcessedMessages() {
   try {
-    if (fs.existsSync(TIMESTAMP_FILE)) {
-      const data = fs.readFileSync(TIMESTAMP_FILE, 'utf8');
-      lastMessageTimestamps = JSON.parse(data);
-      console.log(`📝 Loaded ${Object.keys(lastMessageTimestamps).length} saved timestamps`);
+    if (fs.existsSync(PROCESSED_MESSAGES_FILE)) {
+      const data = fs.readFileSync(PROCESSED_MESSAGES_FILE, 'utf8');
+      processedMessages = JSON.parse(data);
+      const totalCount = Object.values(processedMessages).reduce((sum, arr) => sum + arr.length, 0);
+      console.log(`📝 Loaded ${totalCount} processed message IDs across ${Object.keys(processedMessages).length} channels`);
     }
   } catch (err) {
-    console.error('Error loading timestamps:', err.message);
+    console.error('Error loading processed messages:', err.message);
+    processedMessages = {};
   }
 }
 
-// Save timestamps periodically
-function saveTimestamps() {
+// Save processed message IDs
+function saveProcessedMessages() {
   try {
-    fs.writeFileSync(TIMESTAMP_FILE, JSON.stringify(lastMessageTimestamps, null, 2));
+    // Keep only last 200 message IDs per channel to prevent file growth
+    const trimmed = {};
+    for (const [channelId, messageIds] of Object.entries(processedMessages)) {
+      trimmed[channelId] = messageIds.slice(-200);
+    }
+    fs.writeFileSync(PROCESSED_MESSAGES_FILE, JSON.stringify(trimmed, null, 2));
   } catch (err) {
-    console.error('Error saving timestamps:', err.message);
+    console.error('Error saving processed messages:', err.message);
+  }
+}
+
+// Check if message was already processed
+function wasMessageProcessed(channelId, messageId) {
+  if (!processedMessages[channelId]) {
+    processedMessages[channelId] = [];
+  }
+  return processedMessages[channelId].includes(messageId);
+}
+
+// Mark message as processed
+function markMessageProcessed(channelId, messageId) {
+  if (!processedMessages[channelId]) {
+    processedMessages[channelId] = [];
+  }
+  if (!processedMessages[channelId].includes(messageId)) {
+    processedMessages[channelId].push(messageId);
   }
 }
 
@@ -237,11 +263,30 @@ async function sendToClawdbot(message, slackChannelId, slackUserId, attachedFile
     // Create a unique session ID based on Slack channel + user
     const sessionId = `slack:${slackChannelId}:${slackUserId}`;
 
+    // Detect if message requires user-specific context (force Claude)
+    const CONTEXT_KEYWORDS = [
+      'task manager', 'our system', 'jett', 'clawdbot', 'our setup',
+      'my task', 'my notes', 'our data', 'our database', 'athlete database',
+      'contract database', 'my athlete', 'our athlete', 'our contract',
+      'what do we have', 'what did we', 'remember when', 'last time we',
+      'our conversation', 'you said', 'we discussed', 'my system'
+    ];
+
+    const requiresContext = CONTEXT_KEYWORDS.some(keyword =>
+      cleanedMessage.toLowerCase().includes(keyword)
+    );
+
     // Use LLM Bridge for smart routing between Ollama and Claude
     const LLMBridge = require('./llm-bridge.js');
     const bridge = new LLMBridge();
 
-    const result = await bridge.route(cleanedMessage, sessionId);
+    // Force Claude if context is required, otherwise let router decide
+    const routingOptions = requiresContext ? { forceAPI: true } : {};
+    if (requiresContext) {
+      console.log('   🔵 Context detected - routing to Claude (Jett)');
+    }
+
+    const result = await bridge.route(cleanedMessage, sessionId, routingOptions);
 
     // Log usage
     bridge.logUsage(result);
@@ -260,17 +305,9 @@ async function sendToClawdbot(message, slackChannelId, slackUserId, attachedFile
 // Check for new messages in a conversation
 async function checkConversation(channelId, channelName) {
   try {
-    // If no saved timestamp for this channel, use current time (don't process old messages)
-    if (!lastMessageTimestamps[channelId]) {
-      lastMessageTimestamps[channelId] = (Date.now() / 1000).toString();
-      saveTimestamps();
-    }
-
-    const lastTs = lastMessageTimestamps[channelId];
-
+    // Get recent messages (last 10)
     const history = await slackAPI('conversations.history', {
       channel: channelId,
-      oldest: lastTs,
       limit: 10
     });
 
@@ -284,26 +321,30 @@ async function checkConversation(channelId, channelName) {
       return;
     }
 
-    // Filter messages from allowed user, not from bot
+    // Filter to only unprocessed messages from allowed user
     const newMessages = (history.messages || [])
-      .filter(msg =>
-        msg.user === ALLOWED_USER_ID &&
-        msg.user !== BOT_USER_ID &&
-        !msg.bot_id &&
-        parseFloat(msg.ts) > parseFloat(lastTs)
-      )
+      .filter(msg => {
+        // Must be from allowed user
+        if (msg.user !== ALLOWED_USER_ID || msg.user === BOT_USER_ID || msg.bot_id) {
+          return false;
+        }
+        // Must not have been processed already
+        const messageId = `${channelId}_${msg.ts}`;
+        return !wasMessageProcessed(channelId, messageId);
+      })
       .reverse(); // Process oldest first
 
     for (const msg of newMessages) {
+      const messageId = `${channelId}_${msg.ts}`;
+
       console.log(`\n📩 New message in ${channelName}:`);
       console.log(`   User: ${msg.user}`);
       console.log(`   Text: ${msg.text || '(no text)'}`);
+      console.log(`   ID: ${messageId}`);
 
-      // Note: File attachments are not supported due to Slack authentication requirements
-      // Use Telegram for file uploads instead
-
-      // Update timestamp
-      lastMessageTimestamps[channelId] = msg.ts;
+      // Mark as processed immediately to prevent duplicate processing
+      markMessageProcessed(channelId, messageId);
+      saveProcessedMessages();
 
       // Send to clawdbot (text only)
       try {
@@ -341,14 +382,6 @@ async function checkConversation(channelId, channelName) {
       }
     }
 
-    // Update timestamp even if no new messages
-    if (history.messages && history.messages.length > 0) {
-      const latestTs = history.messages[0].ts;
-      if (parseFloat(latestTs) > parseFloat(lastTs)) {
-        lastMessageTimestamps[channelId] = latestTs;
-        saveTimestamps(); // Save after updating
-      }
-    }
   } catch (err) {
     console.error(`Error checking ${channelName}:`, err.message);
   }
@@ -452,11 +485,50 @@ if (!fs.existsSync(FILE_DOWNLOAD_DIR)) {
   console.log(`   Created file download directory`);
 }
 
-// Load saved timestamps to avoid reprocessing old messages
-loadTimestamps();
+// Check for --reset flag to mark all current messages as processed
+const RESET_MODE = process.argv.includes('--reset');
 
-console.log(`🚀 Bridge active! File uploads now supported across all channels.\n`);
+if (RESET_MODE) {
+  console.log('🔄 RESET MODE: Marking all current messages as processed...\n');
 
-// Start polling
-setInterval(poll, POLL_INTERVAL);
-poll(); // Run immediately
+  (async () => {
+    try {
+      // Get all monitored channels
+      const channels = await getMonitoredChannels();
+
+      for (const channel of channels) {
+        const history = await slackAPI('conversations.history', {
+          channel: channel.id,
+          limit: 100 // Mark last 100 messages as processed
+        });
+
+        if (history.ok && history.messages) {
+          for (const msg of history.messages) {
+            if (msg.user === ALLOWED_USER_ID) {
+              const messageId = `${channel.id}_${msg.ts}`;
+              markMessageProcessed(channel.id, messageId);
+            }
+          }
+          console.log(`✓ ${channel.name}: Marked ${history.messages.filter(m => m.user === ALLOWED_USER_ID).length} messages as processed`);
+        }
+      }
+
+      saveProcessedMessages();
+      console.log('\n✅ Reset complete! All current messages marked as processed.');
+      console.log('Bridge will only process NEW messages from now on.\n');
+      process.exit(0);
+    } catch (err) {
+      console.error('Reset failed:', err.message);
+      process.exit(1);
+    }
+  })();
+} else {
+  // Normal mode - load existing processed messages
+  loadProcessedMessages();
+
+  console.log(`🚀 Bridge active! Message ID tracking prevents reprocessing.\n`);
+
+  // Start polling
+  setInterval(poll, POLL_INTERVAL);
+  poll(); // Run immediately
+}
