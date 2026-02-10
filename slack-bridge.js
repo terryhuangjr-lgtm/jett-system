@@ -261,7 +261,9 @@ async function sendToClawdbot(message, slackChannelId, slackUserId, attachedFile
     }
 
     // Create a unique session ID based on Slack channel + user
-    const sessionId = `slack:${slackChannelId}:${slackUserId}`;
+    // Use "bridge:" prefix instead of "slack:" to prevent clawdbot from auto-posting
+    // (slack: sessions might have slack channel configured as output)
+    const sessionId = `bridge:${slackChannelId}:${slackUserId}`;
 
     // Detect if message requires user-specific context (force Claude)
     const CONTEXT_KEYWORDS = [
