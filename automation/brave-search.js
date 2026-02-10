@@ -99,6 +99,21 @@ function extractSportsContracts(searchResults) {
   for (const result of searchResults.web.results) {
     const { title, url, description } = result;
 
+    // Filter out prediction/projection articles (not actual contracts)
+    const predictionIndicators = [
+      /predict/i, /projection/i, /could sign/i, /might sign/i,
+      /potential/i, /expected to/i, /likely to/i, /offseason outlook/i,
+      /extension predictions/i, /contract predictions/i, /may sign/i
+    ];
+
+    const isPrediction = predictionIndicators.some(pattern =>
+      pattern.test(title) || pattern.test(description)
+    );
+
+    if (isPrediction) {
+      continue; // Skip prediction articles - we want actual signed contracts only
+    }
+
     // Look for contract indicators
     const contractIndicators = [
       /\$\d+[MB]/i,  // Dollar amounts like $500M, $1B
@@ -209,11 +224,12 @@ async function searchRecentContracts(options = {}) {
   else if (days <= 30) freshness = 'pm';
 
   // Build queries for different content types
+  // Focus on ACTUAL SIGNINGS not predictions
   const sportFilter = sport ? sport : 'MLB NBA NFL NCAA';
   const queries = [
-    `${sportFilter} contract signed 2026`,  // Recent pro contracts
-    `college football basketball NIL deal 2026`,  // NIL deals
-    `${sportFilter} extension mega deal 2026`  // Extensions
+    `${sportFilter} "signed" OR "agrees to" contract 2025 2026`,  // Actual signings
+    `${sportFilter} "finalizes" OR "lands" mega deal 2025 2026`,  // Finalized deals
+    `college football basketball NIL "signing" 2025 2026`,  // NIL actual signings
   ];
 
   console.log(`   Searching ${queries.length} query types...`);

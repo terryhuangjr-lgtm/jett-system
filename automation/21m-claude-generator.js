@@ -199,6 +199,21 @@ CURRENT BTC PRICE: ${btcFormatted}
 YOUR TASK:
 Create 3 tweet variations (max 280 characters each) based on this VERIFIED research.
 
+CONTENT QUALITY PRINCIPLES:
+- Focus on DRAMATIC CONTRASTS (then vs now, rich vs broke, 100x differences)
+- TELL A STORY - don't just state math and facts
+- Show the LESSON (what went wrong/right, what could have been different)
+- Make it EMOTIONAL and relatable (missed opportunities, life lessons)
+- PROVE A POINT about sound money, fiat debasement, or financial mistakes
+
+GOOD EXAMPLE:
+"Robinson Cano signed for $240M in 2013. That was worth 1.2 million Bitcoin. Jaylen Brown signed for $304M in 2023. That was worth 10,857 Bitcoin. More dollars. 110x less value."
+→ Shows dramatic contrast, proves fiat debasement, makes you think
+
+BAD EXAMPLE:
+"Player X's $20M = 290 BTC. Fiat devalues."
+→ Just math, no story, no emotion, no clear lesson
+
 CRITICAL RULES:
 - Only use facts from the research above - NO made-up contracts or players
 - Connect athlete finances to Bitcoin's 21M fixed supply
