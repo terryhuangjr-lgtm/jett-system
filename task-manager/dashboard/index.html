@@ -202,6 +202,15 @@
 
     function getRawTime(schedule) {
       if (!schedule) return '2359';
+      
+      // Handle cron format: cron minute hour * * *
+      const cronMatch = schedule.match(/cron\s+(\d+)\s+(\d+)/);
+      if (cronMatch) {
+        const minute = cronMatch[1];
+        const hour = cronMatch[2].padStart(2, '0');
+        return hour + minute;
+      }
+      
       const match = schedule.match(/(\d{1,2}:\d{2})/);
       if (!match) return '2359';
       return match[1].replace(':', '');
@@ -209,6 +218,18 @@
 
     function extractTime(schedule) {
       if (!schedule) return '';
+      
+      // Handle cron format: cron minute hour * * *
+      const cronMatch = schedule.match(/cron\s+(\d+)\s+(\d+)/);
+      if (cronMatch) {
+        const minute = cronMatch[1];
+        const hour = parseInt(cronMatch[2]);
+        const ampm = hour >= 12 ? 'PM' : 'AM';
+        const h12 = hour % 12 || 12;
+        return `${h12}:${minute.padStart(2, '0')} ${ampm}`;
+      }
+      
+      // Handle standard format: "daily at 04:00"
       const match = schedule.match(/(\d{1,2}:\d{2})/);
       if (!match) return schedule.replace('daily', '').replace('weekly', '');
       
