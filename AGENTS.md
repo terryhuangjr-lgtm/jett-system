@@ -28,6 +28,7 @@ Don't ask permission. Just do it.
 
 **Key system docs:**
 - `/home/clawd/clawd/SYSTEMS.md` — Start here (master index)
+- `/home/clawd/clawd/SYSTEM-HARDENING.md` — Production reliability guide (READ THIS)
 - `/home/clawd/clawd/21M-SYSTEM-FINAL.md` — 21M content pipeline
 - `/home/clawd/skills/podcast-summary/SYSTEM.md` — Podcast system
 - `/home/clawd/clawd/ebay-scanner/SYSTEM.md` — eBay scanner

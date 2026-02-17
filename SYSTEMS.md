@@ -4,6 +4,13 @@
 
 ---
 
+## Production Hardening
+📍 **File:** `/home/clawd/clawd/SYSTEM-HARDENING.md`
+- All 12 reliability improvements documented
+- Cron jobs, scripts, and lessons learned
+
+---
+
 ## 21M Content System
 📍 **File:** `/home/clawd/clawd/21M-SYSTEM-FINAL.md`
 - Sports & Bitcoin tweet generation
