@@ -84,8 +84,11 @@
         ]
       },
       "output_file": "/tmp/griffey-refractors-scan.json",
-      "last_run": null,
-      "last_results": null,
+      "last_run": "2026-02-17T14:00:16.290Z",
+      "last_results": {
+        "timestamp": "2026-02-17T14:00:16.290Z",
+        "success": true
+      },
       "last_updated": "2026-02-11T19:27:10.821Z"
     },
     "wednesday": {
