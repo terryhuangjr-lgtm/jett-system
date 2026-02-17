@@ -49,6 +49,7 @@
 
   <script>
     const API_BASE = 'http://localhost:3000/api';
+    const CRON_API = 'http://localhost:3000/api/cron-jobs';
     let tasks = [];
     let currentView = 'week';
 
@@ -61,9 +62,9 @@
 
     async function refreshTasks() {
       try {
-        const response = await fetch(API_BASE + '/tasks');
+        const response = await fetch(CRON_API);
         tasks = await response.json();
-        tasks = tasks.filter(t => t.enabled && t.schedule);
+        tasks = tasks.filter(t => t.enabled);
         renderCalendar();
         renderNextUp();
       } catch (error) {
@@ -211,6 +212,22 @@
       try {
         const task = tasks.find(t => t.id === id);
         if (!task) return;
+        
+        // For Clawdbot cron jobs, show limited info (no logs from old DB)
+        if (task.source === 'clawdbot') {
+          document.getElementById('task-details').innerHTML = `
+            <h2>${task.name}</h2>
+            <p><strong>Schedule:</strong> ${task.schedule || 'Manual'}</p>
+            <p><strong>Command:</strong> <code>${task.command || 'N/A'}</code></p>
+            <p><strong>Status:</strong> ${task.status}</p>
+            <p><strong>Last Run:</strong> ${task.last_run ? new Date(task.last_run).toLocaleString() : 'Never'}</p>
+            <p><strong>Next Run:</strong> ${task.next_run ? new Date(task.next_run).toLocaleString() : 'N/A'}</p>
+            <p><strong>Source:</strong> Clawdbot Cron</p>
+            <p><em>Logs available in Clawdbot cron runs history</em></p>
+          `;
+          document.getElementById('task-details-modal').style.display = 'block';
+          return;
+        }
         
         const logsRes = await fetch(API_BASE + '/tasks/' + id + '/logs');
         const logs = await logsRes.json();

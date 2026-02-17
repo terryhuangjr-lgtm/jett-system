@@ -120,6 +120,37 @@ class TaskServer {
       return this.sendJSON(res, logs);
     }
 
+    // GET /api/cron-jobs - Fetch from Clawdbot
+    if (pathname === '/api/cron-jobs' && req.method === 'GET') {
+      try {
+        const { execSync } = require('child_process');
+        const output = execSync('clawdbot cron list --json', { encoding: 'utf8' });
+        const data = JSON.parse(output);
+        const jobs = data.jobs || data || [];
+        
+        // Transform to match dashboard format
+        const transformed = jobs.map(job => ({
+          id: job.id,
+          name: job.name,
+          description: job.description || '',
+          schedule: `cron ${job.schedule?.expr || '* * * * *'}`,
+          status: job.state?.lastRunAtMs ? 'completed' : 'pending',
+          priority: 5,
+          enabled: job.enabled ? 1 : 0,
+          last_run: job.state?.lastRunAtMs ? new Date(job.state.lastRunAtMs).toISOString() : null,
+          next_run: job.state?.nextRunAtMs ? new Date(job.state.nextRunAtMs).toISOString() : null,
+          run_count: job.state?.runCount || 0,
+          command: job.payload?.text || '',
+          source: 'clawdbot'
+        }));
+        
+        return this.sendJSON(res, transformed);
+      } catch (e) {
+        console.error('Error fetching cron jobs:', e.message);
+        return this.sendJSON(res, []);
+      }
+    }
+    
     // GET /api/stats
     if (pathname === '/api/stats' && req.method === 'GET') {
       const allTasks = await db.getTasks();
