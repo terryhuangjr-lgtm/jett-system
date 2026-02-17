@@ -62,7 +62,7 @@
 
     async function refreshTasks() {
       try {
-        const response = await fetch(CRON_API);
+        const response = await fetch(CRON_API + '?t=' + Date.now());
         tasks = await response.json();
         tasks = tasks.filter(t => t.enabled);
         renderCalendar();
@@ -123,8 +123,25 @@
         let dayTasks = tasks.filter(t => {
           if (!t.schedule) return false;
           const s = t.schedule.toLowerCase();
+          
+          // Check for "daily" keyword
           if (s.includes('daily')) return true;
           if (s.includes(dayLower)) return true;
+          
+          // Parse cron expression: cron minute hour day-of-month month day-of-week
+          const cronMatch = s.match(/cron\s+(\d+)\s+(\d+)\s+(\*|\d+)\s+(\*|\d+)\s+(\*|[\d,]+)/);
+          if (cronMatch) {
+            const [_, minute, hour, dom, month, dow] = cronMatch;
+            
+            // Daily: when day-of-week and day-of-month are both *
+            if (dom === '*' && month === '*' && dow === '*') return true;
+            
+            // Weekly: specific day of week
+            if (dow !== '*') {
+              const daysList = dow.split(',').map(d => parseInt(d));
+              return daysList.includes(i);
+            }
+          }
           return false;
         });
         
@@ -141,7 +158,7 @@
             <h3 class="day-header">${day}</h3>
             <div class="day-tasks">
               ${dayTasks.length === 0 ? '<p class="empty-day">-</p>' : dayTasks.map(t => `
-                <div class="day-task ${getTaskClass(t.name)}" onclick="showTaskDetails(${t.id})">
+                <div class="day-task ${getTaskClass(t.name)}" onclick="showTaskDetails('${t.id}')">
                   <span class="task-time">${extractTime(t.schedule)}</span>
                   <span class="task-name">${t.name}</span>
                 </div>
@@ -164,7 +181,7 @@
       }
       
       container.innerHTML = upcoming.map(task => `
-        <div class="next-task ${getTaskClass(task.name)}" onclick="showTaskDetails(${task.id})">
+        <div class="next-task ${getTaskClass(task.name)}" onclick="showTaskDetails('${task.id}')">
           <span class="task-time">${formatNextRun(task.next_run)}</span>
           <span class="task-name">${task.name}</span>
         </div>
