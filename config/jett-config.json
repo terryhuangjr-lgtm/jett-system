@@ -1,0 +1,159 @@
+{
+  "_comment": "Jett Task Configuration - Update this file to change automation behavior",
+  "_version": "1.0.0",
+  "_last_updated": "2026-02-07",
+  "_updated_by": "System Setup",
+
+  "sports_research": {
+    "_description": "21M Sports research parameters - what contracts to find",
+
+    "priorities": {
+      "breaking_news_days": 7,
+      "recent_contracts_days": 30,
+      "notable_contracts_days": 60
+    },
+
+    "excluded_players": [
+      "Juan Soto",
+      "Shedeur Sanders",
+      "Shohei Ohtani"
+    ],
+
+    "notes": "Add players here if their contracts have been used recently and shouldn't be reused"
+  },
+
+  "bitcoin_research": {
+    "_description": "21M Bitcoin research parameters - what topics to cover",
+
+    "topics": [
+      "Bitcoin Standard principles",
+      "21 million supply cap",
+      "Hard money vs fiat",
+      "Historical inflation examples",
+      "Bitcoin adoption milestones"
+    ],
+
+    "sources": [
+      "The Bitcoin Standard (Saifedean Ammous)",
+      "Broken Money (Lyn Alden)",
+      "The Bullish Case for Bitcoin (Vijay Boyapati)"
+    ],
+
+    "notes": "Curated Bitcoin knowledge for educational content"
+  },
+
+  "ebay_scans": {
+    "_description": "Daily eBay scan criteria - what to search for each day",
+
+    "schedule": {
+      "monday": {
+        "name": "MJ Topps Finest 1993-1999",
+        "search_terms": ["Michael Jordan", "Topps Finest", "1993-1999"],
+        "filters": {
+          "min_price": 10,
+          "max_price": 5000,
+          "condition": "Used"
+        }
+      },
+      "tuesday": {
+        "name": "Griffey Jr Chrome/Finest Refractors",
+        "search_terms": ["Ken Griffey Jr", "Refractor", "Chrome OR Finest"],
+        "filters": {
+          "min_price": 20,
+          "max_price": 3000,
+          "condition": "Used"
+        }
+      },
+      "wednesday": {
+        "name": "1989 Griffey Jr Rookies",
+        "search_terms": ["Ken Griffey Jr", "1989", "Rookie"],
+        "filters": {
+          "min_price": 15,
+          "max_price": 2000,
+          "condition": "Used"
+        }
+      },
+      "thursday": {
+        "name": "MJ Upper Deck Serial #'d 1996-2000",
+        "search_terms": ["Michael Jordan", "Upper Deck", "Serial", "1996-2000"],
+        "filters": {
+          "min_price": 25,
+          "max_price": 3000,
+          "condition": "Used"
+        }
+      },
+      "friday": {
+        "name": "Multi-Search: Kobe/Duncan/Dirk/Wade",
+        "search_terms": ["Kobe Bryant OR Tim Duncan OR Dirk Nowitzki OR Dwyane Wade", "Refractor OR Serial"],
+        "filters": {
+          "min_price": 20,
+          "max_price": 2500,
+          "condition": "Used"
+        }
+      },
+      "saturday": {
+        "name": "MJ Cards 1994-1999",
+        "search_terms": ["Michael Jordan", "1994-1999"],
+        "filters": {
+          "min_price": 5,
+          "max_price": 500,
+          "condition": "Used"
+        }
+      },
+      "sunday": {
+        "name": "2025 Cam Ward",
+        "search_terms": ["Cam Ward", "2025", "Rookie"],
+        "filters": {
+          "min_price": 10,
+          "max_price": 1000,
+          "condition": "New OR Used"
+        }
+      }
+    },
+
+    "notes": "Change search_terms or filters to adjust what eBay looks for each day"
+  },
+
+  "slack_channels": {
+    "_description": "Where to post different types of content",
+
+    "sports_tweets": "#21msports",
+    "bitcoin_tweets": "#21msports",
+    "podcast_summary": "#podcastsummary",
+    "ebay_scans": "#levelupcards",
+    "notifications_dm": "U0ABTP704QK",
+
+    "notes": "Channel IDs - don't change unless channels change"
+  },
+
+  "schedules": {
+    "_description": "When tasks run (cron format)",
+
+    "sports_research": "0 2 * * *",
+    "bitcoin_research": "30 2 * * *",
+    "sports_content": "0 3 * * *",
+    "sports_deploy": "15 3 * * *",
+    "bitcoin_content": "30 3 * * *",
+    "ebay_scan": "0 8 * * *",
+    "health_monitor": "*/15 * * * *",
+
+    "notes": "Cron format: minute hour day month weekday. Changes require cron update."
+  },
+
+  "content_generation": {
+    "_description": "How to generate tweet content",
+
+    "tweet_variations": 3,
+    "max_tweet_length": 280,
+    "include_hashtags": ["#21MBitcoin"],
+    "include_sources": true,
+
+    "notes": "Parameters for tweet drafting"
+  },
+
+  "instructions": {
+    "_for_jett": "You can update any field in this config file. After updating, run: node ~/clawd/scripts/validate-config.js to test changes.",
+    "_for_terry": "Ask Jett to update this file when you want to change scan criteria or research topics. Simple changes don't need Claude.",
+    "_for_claude": "Complex changes (cron schedules, new tasks, major refactors) should involve you."
+  }
+}

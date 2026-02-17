@@ -9,88 +9,244 @@
 <body>
   <div class="container">
     <header>
-      <h1>📋 Task Manager</h1>
-      <div class="stats" id="stats">
-        <div class="stat">
-          <span class="stat-value" id="stat-total">0</span>
-          <span class="stat-label">Total</span>
-        </div>
-        <div class="stat">
-          <span class="stat-value" id="stat-pending">0</span>
-          <span class="stat-label">Pending</span>
-        </div>
-        <div class="stat">
-          <span class="stat-value" id="stat-running">0</span>
-          <span class="stat-label">Running</span>
-        </div>
-        <div class="stat">
-          <span class="stat-value" id="stat-completed">0</span>
-          <span class="stat-label">Completed</span>
-        </div>
-        <div class="stat">
-          <span class="stat-value" id="stat-failed">0</span>
-          <span class="stat-label">Failed</span>
+      <div class="header-top">
+        <h1>Task Manager Dashboard</h1>
+        <div class="header-links">
+          <span id="health-status" class="health-status">Loading...</span>
+          <a href="/health.html" class="health-link">💓 Health</a>
+          <a href="/ebay" class="ebay-link">📦 eBay Scanner</a>
         </div>
       </div>
+      <p class="subtitle">Jett's automated routines</p>
+      <nav class="main-nav">
+        <a href="http://localhost:3000" class="nav-link active">Task Manager</a>
+        <a href="http://localhost:5000" class="nav-link">Level Up Cards</a>
+        <a href="http://localhost:5001" class="nav-link">Podcast Summary</a>
+        <a href="/ebay" class="nav-link">eBay Scanner</a>
+      </nav>
     </header>
 
-    <div class="actions">
-      <button class="btn btn-primary" onclick="showAddTaskModal()">+ Add Task</button>
-      <button class="btn btn-secondary" onclick="refreshTasks()">🔄 Refresh</button>
-      <select id="filter-status" onchange="refreshTasks()">
-        <option value="">All Tasks</option>
-        <option value="pending">Pending</option>
-        <option value="running">Running</option>
-        <option value="completed">Completed</option>
-        <option value="failed">Failed</option>
-      </select>
-    </div>
+    <section class="calendar-view">
+      <h2>📅 This Week</h2>
+      <div class="calendar-grid" id="calendar-grid">
+      </div>
+    </section>
 
-    <div class="tasks-list" id="tasks-list">
-      <p class="loading">Loading tasks...</p>
-    </div>
+    <section class="next-up">
+      <h2>📌 Next Up</h2>
+      <div id="next-up-list" class="next-up-list">
+        <p class="loading">Loading...</p>
+      </div>
+    </section>
   </div>
 
-  <!-- Add Task Modal -->
-  <div id="add-task-modal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="hideAddTaskModal()">&times;</span>
-      <h2>Add New Task</h2>
-      <form id="add-task-form" onsubmit="addTask(event)">
-        <div class="form-group">
-          <label>Task Name *</label>
-          <input type="text" name="name" required placeholder="e.g., Scrape eBay for jerseys">
-        </div>
-        <div class="form-group">
-          <label>Description</label>
-          <textarea name="description" placeholder="Optional description"></textarea>
-        </div>
-        <div class="form-group">
-          <label>Command *</label>
-          <input type="text" name="command" required placeholder="e.g., node lib/stealth-browser/cli.js scrape --url ...">
-        </div>
-        <div class="form-group">
-          <label>Schedule</label>
-          <input type="text" name="schedule" placeholder="e.g., daily at 06:00, hourly, every 30 minutes">
-          <small>Leave empty for one-time task</small>
-        </div>
-        <div class="form-group">
-          <label>Priority (1-10)</label>
-          <input type="number" name="priority" value="5" min="1" max="10">
-        </div>
-        <button type="submit" class="btn btn-primary">Create Task</button>
-      </form>
-    </div>
-  </div>
-
-  <!-- Task Details Modal -->
   <div id="task-details-modal" class="modal">
-    <div class="modal-content modal-large">
+    <div class="modal-content">
       <span class="close" onclick="hideTaskDetailsModal()">&times;</span>
       <div id="task-details"></div>
     </div>
   </div>
 
-  <script src="app.js"></script>
+  <script>
+    const API_BASE = 'http://localhost:3000/api';
+    let tasks = [];
+    let currentView = 'week';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      refreshTasks();
+      refreshHealth();
+      setInterval(refreshTasks, 30000);
+      setInterval(refreshHealth, 120000);
+    });
+
+    async function refreshTasks() {
+      try {
+        const response = await fetch(API_BASE + '/tasks');
+        tasks = await response.json();
+        tasks = tasks.filter(t => t.enabled && t.schedule);
+        renderCalendar();
+        renderNextUp();
+      } catch (error) {
+        console.error('Error fetching tasks:', error);
+      }
+    }
+
+    async function refreshHealth() {
+      try {
+        const response = await fetch(API_BASE + '/health');
+        const health = await response.json();
+        const statusEl = document.getElementById('health-status');
+        
+        if (health.status === 'healthy') {
+          statusEl.innerHTML = '✓ Healthy';
+          statusEl.className = 'health-status healthy';
+        } else if (health.status === 'warning') {
+          const failed = health.checks.filter(c => c.status !== 'healthy').length;
+          statusEl.innerHTML = `⚠ ${failed} issue${failed > 1 ? 's' : ''}`;
+          statusEl.className = 'health-status warning';
+        } else {
+          statusEl.innerHTML = '✕ Issues';
+          statusEl.className = 'health-status error';
+        }
+      } catch (error) {
+        document.getElementById('health-status').innerHTML = '✕ Offline';
+        document.getElementById('health-status').className = 'health-status error';
+      }
+    }
+
+    function renderAlwaysRunning() {
+      const container = document.getElementById('always-running-tasks');
+      const running = tasks.filter(t => t.schedule && (t.schedule.includes('reboot') || t.schedule.includes('always')));
+      
+      if (running.length === 0) {
+        container.innerHTML = '<p class="empty">No always-running tasks</p>';
+        return;
+      }
+      
+      container.innerHTML = running.map(task => `
+        <div class="task-card running" onclick="showTaskDetails(${task.id})">
+          <span class="task-name">${task.name}</span>
+          <span class="task-schedule">${task.schedule}</span>
+        </div>
+      `).join('');
+    }
+
+    function renderCalendar() {
+      const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+      const today = new Date().getDay();
+      const container = document.getElementById('calendar-grid');
+      
+      let html = '';
+      days.forEach((day, i) => {
+        const dayLower = day.toLowerCase();
+        let dayTasks = tasks.filter(t => {
+          if (!t.schedule) return false;
+          const s = t.schedule.toLowerCase();
+          if (s.includes('daily')) return true;
+          if (s.includes(dayLower)) return true;
+          return false;
+        });
+        
+        dayTasks.sort((a, b) => {
+          const timeA = getRawTime(a.schedule);
+          const timeB = getRawTime(b.schedule);
+          return timeA.localeCompare(timeB);
+        });
+        
+        const isToday = i === today ? ' today' : '';
+        
+        html += `
+          <div class="calendar-day${isToday}">
+            <h3 class="day-header">${day}</h3>
+            <div class="day-tasks">
+              ${dayTasks.length === 0 ? '<p class="empty-day">-</p>' : dayTasks.map(t => `
+                <div class="day-task ${getTaskClass(t.name)}" onclick="showTaskDetails(${t.id})">
+                  <span class="task-time">${extractTime(t.schedule)}</span>
+                  <span class="task-name">${t.name}</span>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        `;
+      });
+      
+      container.innerHTML = html;
+    }
+
+    function renderNextUp() {
+      const container = document.getElementById('next-up-list');
+      const upcoming = tasks.filter(t => t.schedule && !t.schedule.includes('reboot')).slice(0, 5);
+      
+      if (upcoming.length === 0) {
+        container.innerHTML = '<p class="empty">No upcoming tasks</p>';
+        return;
+      }
+      
+      container.innerHTML = upcoming.map(task => `
+        <div class="next-task ${getTaskClass(task.name)}" onclick="showTaskDetails(${task.id})">
+          <span class="task-time">${formatNextRun(task.next_run)}</span>
+          <span class="task-name">${task.name}</span>
+        </div>
+      `).join('');
+    }
+
+    function getTaskClass(name) {
+      const n = name.toLowerCase();
+      if (n.includes('podcast')) return 'podcast';
+      if (n.includes('betting')) return 'sports-betting';
+      if (n.includes('bitcoin') || n.includes('btc')) return 'bitcoin';
+      if (n.includes('sports') || n.includes('21m')) return 'sports';
+      if (n.includes('ebay')) return 'ebay';
+      if (n.includes('health') || n.includes('monitor')) return 'health';
+      if (n.includes('brief') || n.includes('family') || n.includes('notion')) return 'family';
+      return 'default';
+    }
+
+    function getRawTime(schedule) {
+      if (!schedule) return '2359';
+      const match = schedule.match(/(\d{1,2}:\d{2})/);
+      if (!match) return '2359';
+      return match[1].replace(':', '');
+    }
+
+    function extractTime(schedule) {
+      if (!schedule) return '';
+      const match = schedule.match(/(\d{1,2}:\d{2})/);
+      if (!match) return schedule.replace('daily', '').replace('weekly', '');
+      
+      const [hours, minutes] = match[1].split(':');
+      const h = parseInt(hours);
+      const ampm = h >= 12 ? 'PM' : 'AM';
+      const h12 = h % 12 || 12;
+      return `${h12}:${minutes} ${ampm}`;
+    }
+
+    function formatNextRun(dateStr) {
+      if (!dateStr) return '';
+      const d = new Date(dateStr);
+      return d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
+    }
+
+    async function showTaskDetails(id) {
+      try {
+        const task = tasks.find(t => t.id === id);
+        if (!task) return;
+        
+        const logsRes = await fetch(API_BASE + '/tasks/' + id + '/logs');
+        const logs = await logsRes.json();
+        
+        document.getElementById('task-details').innerHTML = `
+          <h2>${task.name}</h2>
+          <p><strong>Schedule:</strong> ${task.schedule || 'Manual'}</p>
+          <p><strong>Command:</strong> <code>${task.command}</code></p>
+          <p><strong>Status:</strong> ${task.status}</p>
+          <p><strong>Last Run:</strong> ${task.last_run ? new Date(task.last_run).toLocaleString() : 'Never'}</p>
+          <p><strong>Next Run:</strong> ${task.next_run ? new Date(task.next_run).toLocaleString() : 'N/A'}</p>
+          <h3>Recent Logs</h3>
+          <div class="logs">${logs.slice(0, 5).map(l => `
+            <div class="log-entry ${l.status}">
+              <span>${l.status.toUpperCase()}</span>
+              <span>${l.started_at ? new Date(l.started_at).toLocaleString() : ''}</span>
+              ${l.error ? `<div class="error">${l.error}</div>` : ''}
+            </div>
+          `).join('') || '<p>No logs yet</p>'}</div>
+        `;
+        
+        document.getElementById('task-details-modal').style.display = 'block';
+      } catch (error) {
+        console.error('Error loading details:', error);
+      }
+    }
+
+    function hideTaskDetailsModal() {
+      document.getElementById('task-details-modal').style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+      if (event.target.id === 'task-details-modal') {
+        hideTaskDetailsModal();
+      }
+    }
+  </script>
 </body>
 </html>

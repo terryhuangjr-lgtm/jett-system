@@ -199,25 +199,33 @@ class TaskDatabase {
     });
   }
 
-  // Calculate next run time based on schedule
+  // Calculate next run time based on schedule (ALL TIMES IN EST)
   calculateNextRun(schedule) {
     const now = new Date();
+    const EST = 'America/New_York';
 
     // Parse schedule format: "daily at HH:MM", "weekly on [day] at HH:MM", "hourly", "every N minutes", etc.
+    // ALL SCHEDULE TIMES ARE INTERPRETED IN EST TIMEZONE
     if (schedule.startsWith('daily at ')) {
       const time = schedule.replace('daily at ', '');
       const [hours, minutes] = time.split(':').map(Number);
-      const next = new Date(now);
+
+      // Get current date in EST
+      const estNowStr = now.toLocaleString('en-US', { timeZone: EST });
+      const estNow = new Date(estNowStr);
+
+      // Create next run at specified time in EST
+      const next = new Date(estNow);
       next.setHours(hours, minutes, 0, 0);
 
-      // If time has passed today, schedule for tomorrow
-      if (next <= now) {
+      // If time has passed today in EST, schedule for tomorrow
+      if (next <= estNow) {
         next.setDate(next.getDate() + 1);
       }
 
       return next.toISOString();
     } else if (schedule.startsWith('weekly on ')) {
-      // Format: "weekly on Tuesday at 04:00"
+      // Format: "weekly on Tuesday at 09:00" (ALL TIMES EST)
       const match = schedule.match(/weekly on (\w+) at (\d{2}):(\d{2})/i);
       if (match) {
         const [, dayName, hours, minutes] = match;
@@ -228,15 +236,19 @@ class TaskDatabase {
 
         const targetDay = dayMap[dayName.toLowerCase()];
         if (targetDay !== undefined) {
-          const next = new Date(now);
+          // Get current date in EST
+          const estNowStr = now.toLocaleString('en-US', { timeZone: EST });
+          const estNow = new Date(estNowStr);
+
+          const next = new Date(estNow);
           next.setHours(parseInt(hours), parseInt(minutes), 0, 0);
 
-          // Calculate days until target day
-          const currentDay = now.getDay();
+          // Calculate days until target day in EST
+          const currentDay = estNow.getDay();
           let daysUntil = targetDay - currentDay;
 
           // If target day is today but time has passed, or target day is in the past, go to next week
-          if (daysUntil < 0 || (daysUntil === 0 && next <= now)) {
+          if (daysUntil < 0 || (daysUntil === 0 && next <= estNow)) {
             daysUntil += 7;
           }
 

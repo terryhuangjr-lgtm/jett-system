@@ -1,0 +1,117 @@
+======================================================================
+SPORTS BETTING RESEARCH SYSTEM - QUICK START
+======================================================================
+
+SYSTEM STATUS: ✅ READY TO USE
+
+DAILY USAGE:
+------------
+
+1. Morning: Check Slack for daily analysis
+2. Review: Read recommendation and reasoning
+3. Decide: Place bet or pass (paper trading recommended)
+4. After game: Log result
+
+   python3 log_result.py nba_YYYYMMDD_Away_Home win/loss/push
+
+
+VIEW STATS:
+-----------
+
+   python3 show_stats.py
+
+
+MANUAL RUN:
+-----------
+
+   cd ~/clawd/sports_betting
+   python3 orchestrator.py
+
+
+AUTOMATION (Optional):
+----------------------
+
+Set up nightly cron job:
+
+   ./setup_cron.sh
+
+Or manually:
+
+   crontab -e
+   # Add line:
+   0 1 * * * cd ~/clawd/sports_betting && python3 orchestrator.py >> logs/nightly_$(date +\%Y\%m\%d).log 2>&1
+
+
+CHECK HEALTH:
+-------------
+
+   python3 check_system.py
+
+
+FILES TO KNOW:
+--------------
+
+  config.py        - System settings
+  README.md        - Full documentation
+  SETUP.md         - Installation guide
+  show_stats.py    - View performance
+  log_result.py    - Log bet outcomes
+
+
+IMPORTANT SETTINGS (config.py):
+--------------------------------
+
+  MAX_BET_AMOUNT = 10.0      # Max bet size
+  MIN_CONFIDENCE = 7.0       # Min score to recommend
+  PAPER_TRADING = True       # Safe mode (no real money)
+  SLACK_WEBHOOK_URL          # Notifications
+
+
+UNDERSTANDING CONFIDENCE:
+-------------------------
+
+  9-10  = Very Strong (rare, bet with confidence)
+  8-9   = Strong (good opportunity)
+  7-8   = Good (solid bet)
+  <7    = Pass (not enough edge)
+
+
+FIRST STEPS:
+------------
+
+1. ✅ System is installed and working
+2. ⚠️  Configure Slack webhook (optional but recommended)
+3. ⚠️  Set up cron job for automation
+4. ✅ Run manually to test: python3 orchestrator.py
+5. ✅ Start with paper trading
+6. ✅ Log results after each game
+7. ✅ Review stats weekly
+
+
+GETTING HELP:
+-------------
+
+  Full docs:       cat README.md
+  Setup guide:     cat SETUP.md
+  System check:    python3 check_system.py
+  View logs:       ls -lt logs/
+
+
+SAFETY REMINDERS:
+-----------------
+
+  ⚠️  This is research/entertainment, not financial advice
+  ⚠️  Only bet what you can afford to lose
+  ⚠️  Start with paper trading for several weeks
+  ⚠️  Past performance does not guarantee future results
+  ⚠️  Gambling involves risk of financial loss
+
+
+======================================================================
+READY TO START!
+======================================================================
+
+Run your first analysis:
+  python3 orchestrator.py
+
+Questions? Read README.md for full documentation.

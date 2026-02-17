@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Usage Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/date-fns@3.0.6/index.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="header-content">
+                <h1>📊 API Usage Dashboard</h1>
+                <div class="header-meta">
+                    <span id="last-updated">Loading...</span>
+                    <button id="refresh-btn" class="btn-icon" title="Refresh data">🔄</button>
+                    <button id="theme-toggle" class="btn-icon" title="Toggle theme">🌙</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Filters -->
+        <div class="filters">
+            <div class="filter-group">
+                <label>Date Range:</label>
+                <select id="date-range">
+                    <option value="today">Today</option>
+                    <option value="week">This Week</option>
+                    <option value="month" selected>This Month</option>
+                    <option value="all">All Time</option>
+                    <option value="custom">Custom Range</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Agent:</label>
+                <select id="agent-filter">
+                    <option value="all">All Agents</option>
+                    <option value="jett">Jett</option>
+                    <option value="subagent">Subagents</option>
+                    <option value="subagent-grok">Grok Subagents</option>
+                    <option value="cron">Cron Jobs</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Project:</label>
+                <select id="project-filter">
+                    <option value="all">All Projects</option>
+                    <option value="21m-sports">21M Sports</option>
+                    <option value="batting-cage">Batting Cage</option>
+                    <option value="investing">Investing</option>
+                    <option value="morning-brief">Morning Brief</option>
+                    <option value="general">General</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Model:</label>
+                <select id="model-filter">
+                    <option value="all">All Models</option>
+                    <option value="claude-sonnet-4-5">Claude Sonnet 4.5</option>
+                    <option value="grok-3">Grok-3</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Overview Cards -->
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">💰</span>
+                    <h3>All Time</h3>
+                </div>
+                <div class="card-value" id="total-spend">$0.00</div>
+                <div class="card-meta" id="total-tokens">0 tokens</div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">📅</span>
+                    <h3>This Month</h3>
+                </div>
+                <div class="card-value" id="month-spend">$0.00</div>
+                <div class="card-meta">
+                    <span id="month-budget"></span>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">📆</span>
+                    <h3>This Week</h3>
+                </div>
+                <div class="card-value" id="week-spend">$0.00</div>
+                <div class="card-meta">
+                    <span id="week-budget"></span>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">📊</span>
+                    <h3>Today</h3>
+                </div>
+                <div class="card-value" id="today-spend">$0.00</div>
+                <div class="card-meta">
+                    <span id="today-budget"></span>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">📈</span>
+                    <h3>Avg Per Day</h3>
+                </div>
+                <div class="card-value" id="avg-day">$0.00</div>
+                <div class="card-meta" id="trend-indicator"></div>
+            </div>
+        </div>
+
+        <!-- Charts Row 1 -->
+        <div class="charts-row">
+            <div class="chart-container">
+                <h2>💵 Daily Spend Over Time</h2>
+                <canvas id="daily-spend-chart"></canvas>
+            </div>
+        </div>
+
+        <!-- Charts Row 2 -->
+        <div class="charts-row two-col">
+            <div class="chart-container">
+                <h2>🎯 Cost by Project</h2>
+                <canvas id="project-chart"></canvas>
+            </div>
+            <div class="chart-container">
+                <h2>🤖 Cost by Agent</h2>
+                <canvas id="agent-chart"></canvas>
+            </div>
+        </div>
+
+        <!-- Charts Row 3 -->
+        <div class="charts-row">
+            <div class="chart-container">
+                <h2>🔢 Token Usage Over Time</h2>
+                <canvas id="token-chart"></canvas>
+            </div>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="table-container">
+            <div class="table-header">
+                <h2>⚡ Recent Activity</h2>
+                <div class="table-controls">
+                    <input type="text" id="table-search" placeholder="Search...">
+                    <select id="table-limit">
+                        <option value="20">Show 20</option>
+                        <option value="50">Show 50</option>
+                        <option value="100">Show 100</option>
+                    </select>
+                </div>
+            </div>
+            <div class="table-wrapper">
+                <table id="activity-table">
+                    <thead>
+                        <tr>
+                            <th data-sort="timestamp">Timestamp ↕</th>
+                            <th data-sort="agent">Agent ↕</th>
+                            <th data-sort="project">Project ↕</th>
+                            <th data-sort="model">Model ↕</th>
+                            <th data-sort="tokens">Tokens ↕</th>
+                            <th data-sort="cost">Cost ↕</th>
+                        </tr>
+                    </thead>
+                    <tbody id="activity-tbody">
+                        <!-- Populated by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>Dashboard built for Terry • Data updates every 15 minutes • <a href="../README.md">Documentation</a></p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

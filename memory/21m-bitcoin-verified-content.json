@@ -1,0 +1,49 @@
+{
+  "type": "21m_bitcoin_tweets",
+  "timestamp": "2026-02-17T09:00:24.028Z",
+  "tweets": [
+    "Your savings erode by design. Inflation has destroyed 97% of the dollar's value since 1913. Bitcoin's supply is capped at 21 million forever. One preserves wealth. One doesn't.",
+    "Laszlo bought two pizzas with 10,000 Bitcoin in 2010 for $41. That transaction is now worth $688 million. Not volatility. Appreciation. And it's still accelerating.",
+    "You signed a million-dollar contract. Inflation will steal 20% of it over five years. Or you put 10% in Bitcoin, forget about it, and that 10% becomes 90% of your net worth."
+  ],
+  "sources": {
+    "btc_price": "https://api.coinbase.com/v2/prices/BTC-USD/spot",
+    "content_count": 3,
+    "knowledge": "https://github.com/bitcoinbook/bitcoinbook"
+  },
+  "metadata": {
+    "btc_price_now": "$68,136",
+    "verified": true,
+    "char_counts": [
+      176,
+      164,
+      173
+    ],
+    "topics": [
+      "\"Your keys, your Bitcoin. Not your keys, not your Bitcoin.\"",
+      "Bitcoin Genesis Block - 2009-01-03",
+      "Bitcoin Whitepaper Published - 2008-10-31",
+      "From Quotes:",
+      "From History:",
+      "Bitcoin Pizza Day - 2010-05-22",
+      "Bitcoin market analysis",
+      "Crypto adoption news",
+      "Bitcoin network stats",
+      "Bitcoin price",
+      "Crypto market",
+      "Network stats",
+      "Bitcoin price action",
+      "Crypto market cap",
+      "Bitcoin network",
+      "Bitcoin price action",
+      "Crypto market cap",
+      "Bitcoin network",
+      "Bitcoin price action",
+      "Crypto market cap",
+      "Bitcoin network",
+      "Bitcoin price action",
+      "Crypto market cap",
+      "Bitcoin network"
+    ]
+  }
+}

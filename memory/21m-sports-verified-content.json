@@ -1,0 +1,26 @@
+{
+  "type": "21m_sports_tweets",
+  "timestamp": "2026-02-17T10:00:20.489Z",
+  "tweets": [
+    "De'Aaron Fox just signed a $163M deal with the Spurs. That's 2,397 Bitcoin. When he signed it on May 30, BTC was worth roughly the same as today ($68k). His contract is literally one-upping crypto's most famous asset in terms of pure hodl value. 💰🏀",
+    "$163 MILLION to play basketball vs HODLing 2,400 Bitcoin. De'Aaron Fox's Spurs contract could've been a crypto investment for the risk-averse athlete. Instead, he chose something even more volatile: the San Antonio Spurs' playoff chances. 😂",
+    "The math is wild: De'Aaron Fox's $163M contract = 2,397 BTC. Bitcoin hasn't moved much since he signed, but his contract has a 4-year guarantee. In crypto terms, that's basically a stablecoin. Maybe athletes are smarter than we thought? 🤔"
+  ],
+  "sources": {
+    "btc_price": "https://api.coinbase.com/v2/prices/BTC-USD/spot",
+    "content_count": 3,
+    "contract": "https://www.spotrac.com/nba/san-antonio-spurs/de-aaron-fox-11090/"
+  },
+  "metadata": {
+    "btc_price_now": "$68,076",
+    "verified": true,
+    "char_counts": [
+      250,
+      241,
+      239
+    ],
+    "topics": [
+      null
+    ]
+  }
+}

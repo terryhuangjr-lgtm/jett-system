@@ -1,0 +1,159 @@
+═══════════════════════════════════════════════════════════════
+eBay API - STEP-BY-STEP SETUP GUIDE
+═══════════════════════════════════════════════════════════════
+
+Follow these steps to get your FREE eBay API key and start using
+the eBay API integration.
+
+───────────────────────────────────────────────────────────────
+STEP 1: CREATE EBAY DEVELOPER ACCOUNT
+───────────────────────────────────────────────────────────────
+
+1. Open your browser and go to:
+   https://developer.ebay.com/
+
+2. Click "Register" in the top right corner
+
+3. Sign in with your eBay account
+   - If you don't have an eBay account, create one (it's free)
+   - Use your regular eBay credentials
+
+4. Accept the Developer Terms of Service
+
+5. You now have a Developer account!
+
+───────────────────────────────────────────────────────────────
+STEP 2: CREATE AN APPLICATION
+───────────────────────────────────────────────────────────────
+
+1. Go to:
+   https://developer.ebay.com/my/keys
+
+2. Click "Create a Keyset"
+
+3. Fill in the form:
+   - Keyset Title: "Price Monitor" (or any name you like)
+   - Select: "Production" (for real eBay data, not test data)
+
+4. Click "Create Keyset"
+
+───────────────────────────────────────────────────────────────
+STEP 3: GET YOUR APP ID
+───────────────────────────────────────────────────────────────
+
+After creating your keyset, you'll see:
+
+  App ID (Client ID): XXXXXXXXXXXXXXXXXXXXXXXX
+
+Copy this! You'll need it in the next step.
+
+It looks something like:
+  MyApp-PriceMon-PRD-123456789-abcdefgh
+
+───────────────────────────────────────────────────────────────
+STEP 4: RUN SETUP WIZARD
+───────────────────────────────────────────────────────────────
+
+Now configure the eBay API tool:
+
+1. Open your terminal
+
+2. Navigate to the eBay API directory:
+   cd /home/clawd/clawd/lib/ebay-api
+
+3. Run the setup wizard:
+   node setup.js
+
+4. Follow the prompts:
+   - Do you have an eBay Developer account? y
+   - Enter your App ID: [paste the App ID you copied]
+   - Enter your Client Secret: [press Enter to skip]
+   - Use Sandbox mode? n
+
+5. The wizard will test your API connection
+
+6. If successful, you'll see:
+   ✓ API connection successful!
+   Setup Complete!
+
+───────────────────────────────────────────────────────────────
+STEP 5: TEST IT OUT
+───────────────────────────────────────────────────────────────
+
+Try your first API call:
+
+cd /home/clawd/clawd/lib/ebay-api
+node cli.js search "vintage jersey"
+
+You should see results in ~0.5 seconds!
+
+───────────────────────────────────────────────────────────────
+COMMON COMMANDS
+───────────────────────────────────────────────────────────────
+
+Search:
+  node cli.js search "vintage jersey"
+  node cli.js search "nike shoes" --minPrice 50 --maxPrice 150
+
+Price Statistics:
+  node cli.js prices "nintendo switch"
+
+Monitor & Alert:
+  node cli.js monitor "rare coins" --threshold 100
+
+Save Results:
+  node cli.js search "collectibles" --output results.json
+
+───────────────────────────────────────────────────────────────
+TROUBLESHOOTING
+───────────────────────────────────────────────────────────────
+
+Problem: "API credentials required"
+Solution: Run node setup.js again
+
+Problem: "API test failed"
+Solution: Double-check your App ID is correct
+
+Problem: Can't find App ID
+Solution: Go to https://developer.ebay.com/my/keys
+
+Problem: Need help
+Solution: Check README.md for full documentation
+
+───────────────────────────────────────────────────────────────
+NEXT STEPS
+───────────────────────────────────────────────────────────────
+
+Once setup is complete:
+
+1. Test with searches:
+   node cli.js search "your favorite item"
+
+2. Try price monitoring:
+   node cli.js monitor "item" --threshold 50
+
+3. Schedule automated tasks:
+   node task-manager/cli.js add "Daily eBay" \
+     "node lib/ebay-api/cli.js search 'item' --output /tmp/daily.json" \
+     --schedule "daily at 06:00"
+
+4. Explore all features:
+   node cli.js help
+
+───────────────────────────────────────────────────────────────
+BENEFITS
+───────────────────────────────────────────────────────────────
+
+✓ 50-100x faster than web scraping
+✓ Much more reliable (never breaks)
+✓ FREE (5,000 calls/day)
+✓ Clean, structured data
+✓ Official eBay API
+✓ Perfect for automation
+
+═══════════════════════════════════════════════════════════════
+
+Need more help? Read the full documentation:
+cat /home/clawd/clawd/lib/ebay-api/README.md
+
+═══════════════════════════════════════════════════════════════

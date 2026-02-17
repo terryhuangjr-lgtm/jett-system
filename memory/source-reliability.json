@@ -45,9 +45,9 @@
     "notes": "Mastering Bitcoin - Andreas Antonopoulos"
   },
   "saifedean.com": {
-    "score": 10,
+    "score": 6,
     "category": "bitcoin",
-    "notes": "The Bitcoin Standard author"
+    "notes": "The Bitcoin Standard author | Failure: HTTP 404 on 2026-02-07 | Failure: HTTP 404 on 2026-02-08 | Failure: HTTP 404 on 2026-02-09 | Failure: HTTP 404 on 2026-02-10"
   },
   "en.bitcoin.it": {
     "score": 9,
@@ -70,19 +70,19 @@
     "notes": "Official CoinGecko API for prices"
   },
   "bloomberg.com": {
-    "score": 9,
+    "score": 5,
     "category": "finance",
-    "notes": "Premium financial journalism"
+    "notes": "Premium financial journalism | Failure: HTTP 403 on 2026-02-07 | Failure: HTTP 403 on 2026-02-08 | Failure: HTTP 403 on 2026-02-09 | Failure: HTTP 403 on 2026-02-10"
   },
   "investopedia.com": {
-    "score": 8,
+    "score": 5.5,
     "category": "finance",
-    "notes": "Educational, good for definitions"
+    "notes": "Educational, good for definitions | Failure: HTTP 403 on 2026-02-07 | Failure: HTTP 403 on 2026-02-08 | Failure: HTTP 403 on 2026-02-09"
   },
   "bbc.com": {
-    "score": 9,
+    "score": 5,
     "category": "news",
-    "notes": "High editorial standards"
+    "notes": "High editorial standards | Failure: HTTP 404 on 2026-02-07 | Failure: HTTP 404 on 2026-02-08 | Failure: HTTP 404 on 2026-02-09 | Failure: HTTP 404 on 2026-02-10"
   },
   "reuters.com": {
     "score": 9,
@@ -95,9 +95,9 @@
     "notes": "Established journalism"
   },
   "twitter.com": {
-    "score": 5,
+    "score": 1,
     "category": "social",
-    "notes": "Verify all claims, user-generated content"
+    "notes": "Verify all claims, user-generated content | Failure: HTTP 403 on 2026-02-07 | Failure: HTTP 403 on 2026-02-08 | Failure: HTTP 403 on 2026-02-09 | Failure: HTTP 403 on 2026-02-10"
   },
   "reddit.com": {
     "score": 4,

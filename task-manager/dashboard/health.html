@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>System Health</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { padding: 20px; }
+    .health-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin-top: 24px; }
+    .check-card { background: rgba(28, 28, 30, 0.7); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 20px; }
+    .check-card.healthy { border-left: 3px solid #32d74b; }
+    .check-card.unhealthy { border-left: 3px solid #ff453a; }
+    .check-status { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+    .check-status.healthy { color: #32d74b; }
+    .check-status.unhealthy { color: #ff453a; }
+    .check-message { color: rgba(255,255,255,0.7); font-size: 14px; }
+    h1 { margin-bottom: 8px; }
+    .back-link { color: #0a84ff; text-decoration: none; font-size: 14px; }
+    .back-link:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <a href="/" class="back-link">← Back to Dashboard</a>
+  <h1>💓 System Health</h1>
+  <div id="health-grid" class="health-grid">
+    <p class="loading">Loading...</p>
+  </div>
+  <script>
+    async function loadHealth() {
+      try {
+        const res = await fetch('http://localhost:3000/api/health');
+        const health = await res.json();
+        
+        const grid = document.getElementById('health-grid');
+        
+        if (health.checks && health.checks.length > 0) {
+          grid.innerHTML = health.checks.map(check => `
+            <div class="check-card ${check.status === 'healthy' ? 'healthy' : 'unhealthy'}">
+              <div class="check-status ${check.status}">
+                <span>${check.status === 'healthy' ? '✓' : '✕'}</span>
+                <strong>${check.status === 'healthy' ? 'Healthy' : 'Issue'}</strong>
+              </div>
+              <p class="check-message">${check.message}</p>
+            </div>
+          `).join('');
+        } else {
+          grid.innerHTML = '<p>No health checks available</p>';
+        }
+      } catch (e) {
+        document.getElementById('health-grid').innerHTML = '<p class="error">Failed to load health data</p>';
+      }
+    }
+    loadHealth();
+    setInterval(loadHealth, 30000);
+  </script>
+</body>
+</html>

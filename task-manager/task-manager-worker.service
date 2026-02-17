@@ -1,0 +1,16 @@
+[Unit]
+Description=Clawd Task Manager Worker
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/clawd/clawd/task-manager
+ExecStart=/home/clawd/.nvm/versions/node/v22.22.0/bin/node /home/clawd/clawd/task-manager/worker.js
+Restart=always
+RestartSec=10
+StandardOutput=append:/home/clawd/clawd/task-manager/logs/worker.log
+StandardError=append:/home/clawd/clawd/task-manager/logs/worker-error.log
+Environment=NODE_ENV=production
+
+[Install]
+WantedBy=default.target

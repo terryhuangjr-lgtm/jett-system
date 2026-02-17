@@ -1,0 +1,243 @@
+═══════════════════════════════════════════════════════════════
+JETT KNOWLEDGE BASE - QUICK START GUIDE
+═══════════════════════════════════════════════════════════════
+
+✅ DATABASE INITIALIZED AND READY!
+
+Location: /home/clawd/clawd/data/jett_knowledge.db
+
+───────────────────────────────────────────────────────────────
+WHAT THIS DOES
+───────────────────────────────────────────────────────────────
+
+Replaces constantly re-reading markdown files with fast database queries.
+
+TOKEN SAVINGS:
+  • Reading markdown: 2-5k tokens per file
+  • Database query: 200-500 tokens
+  • SAVINGS: 80-95% reduction!
+
+SPEED:
+  • Markdown: Must read entire file
+  • Database: Instant indexed queries
+  • 10-100x faster!
+
+───────────────────────────────────────────────────────────────
+QUICK USAGE - FOR JETT (PYTHON)
+───────────────────────────────────────────────────────────────
+
+# Initialize
+from jett_db import get_db
+db = get_db()
+
+# Find athletes
+athletes = db.search_athletes(sport="Basketball", min_value=1000000)
+for athlete in athletes:
+    print(f"{athlete['name']}: ${athlete['contract_value']:,.0f}")
+
+# Get pending content
+content = db.get_pending_content()
+
+# Search research
+research = db.search_research(query="NIL", tag="2024")
+
+# Manage tasks
+tasks = db.get_tasks_by_status("pending")
+
+# Get stats
+stats = db.get_stats()
+
+───────────────────────────────────────────────────────────────
+COMMON QUERIES
+───────────────────────────────────────────────────────────────
+
+1. HIGH-VALUE NIL DEALS:
+   athletes = db.search_athletes(deal_type="NIL", min_value=2000000)
+
+2. BASKETBALL PLAYERS:
+   athletes = db.search_athletes(sport="Basketball")
+
+3. PENDING CONTENT:
+   content = db.get_content_by_status("draft")
+
+4. HIGH-PRIORITY TASKS:
+   tasks = db.get_tasks_by_priority("high")
+
+5. SEARCH RESEARCH:
+   research = db.search_research(query="market size")
+
+6. GET SPECIFIC ATHLETE:
+   athlete = db.get_athlete("Caitlin Clark")
+
+───────────────────────────────────────────────────────────────
+ADDING NEW DATA
+───────────────────────────────────────────────────────────────
+
+# Add athlete
+db.add_athlete(
+    name="Player Name",
+    sport="Basketball",
+    contract_value=5000000,
+    deal_type="NIL"
+)
+
+# Add content idea
+db.add_content_idea(
+    topic="Content Title",
+    category="21m-sports",
+    content="Full content text...",
+    status="draft"
+)
+
+# Add research
+db.add_research(
+    topic="Research Topic",
+    findings="Key findings...",
+    sources=["https://..."],
+    tags=["tag1", "tag2"]
+)
+
+# Add task
+db.add_task(
+    description="Task description",
+    category="research",
+    priority="high"
+)
+
+───────────────────────────────────────────────────────────────
+EXAMPLE SCRIPTS
+───────────────────────────────────────────────────────────────
+
+Run examples:
+  python3 jett_db_examples.py
+
+Test database:
+  python3 test_db.py
+
+View stats:
+  python3 jett_db.py
+
+───────────────────────────────────────────────────────────────
+IMPORTING MARKDOWN FILES
+───────────────────────────────────────────────────────────────
+
+To import existing markdown files into database:
+
+  python3 migrate_markdown.py
+
+This scans:
+  • 21m-sports/athletes/*.md
+  • 21m-research/athletes/*.md
+  • opportunities/*.md
+
+And imports into database automatically.
+
+───────────────────────────────────────────────────────────────
+WHEN TO USE DATABASE VS FILES
+───────────────────────────────────────────────────────────────
+
+USE DATABASE:
+  ✓ Querying/searching data
+  ✓ Filtering and sorting
+  ✓ Getting statistics
+  ✓ Repeated access to same data
+  ✓ Token efficiency matters
+
+USE MARKDOWN FILES:
+  ✓ Long-form reading
+  ✓ Rich formatting needed
+  ✓ One-time full document read
+
+BEST PRACTICE:
+  • Query database first (fast, cheap)
+  • Read markdown only if you need full context
+  • Link using source_file field
+
+───────────────────────────────────────────────────────────────
+TABLES IN DATABASE
+───────────────────────────────────────────────────────────────
+
+1. athletes - Athlete profiles and contract data
+2. content_ideas - Content drafts and publishing pipeline
+3. research_findings - Research notes and sources
+4. tasks - Task management and tracking
+
+All tables have proper indexes for fast queries!
+
+───────────────────────────────────────────────────────────────
+TOKEN SAVINGS EXAMPLE
+───────────────────────────────────────────────────────────────
+
+Query: "Find basketball players with contracts over $5M"
+
+BEFORE (Markdown):
+  1. List directory: 500 tokens
+  2. Read 10 files @ 3k each: 30,000 tokens
+  3. Parse and filter: 1,000 tokens
+  TOTAL: 31,500 tokens ($0.09)
+
+AFTER (Database):
+  1. SQL query: 200 tokens
+  2. Parse results: 200 tokens
+  TOTAL: 400 tokens ($0.001)
+
+SAVINGS: 98.7% reduction!
+
+For 20 queries/day:
+  • Before: 630,000 tokens/day ($1.89/day = $57/month)
+  • After: 8,000 tokens/day ($0.02/day = $0.60/month)
+  • MONTHLY SAVINGS: $56!
+
+───────────────────────────────────────────────────────────────
+FILES CREATED
+───────────────────────────────────────────────────────────────
+
+Core:
+  • jett_db.py - Main Python library
+  • data/jett_knowledge.db - SQLite database
+
+Setup:
+  • init_db.py - Initialize database
+  • migrate_markdown.py - Import markdown files
+
+Testing:
+  • test_db.py - Comprehensive tests
+  • jett_db_examples.py - Usage examples
+
+Documentation:
+  • JETT-DATABASE.md - Full documentation
+  • JETT-DB-QUICK-START.txt - This file
+
+───────────────────────────────────────────────────────────────
+MAINTENANCE
+───────────────────────────────────────────────────────────────
+
+Backup:
+  cp data/jett_knowledge.db data/jett_knowledge.backup.db
+
+View directly:
+  sqlite3 data/jett_knowledge.db
+  .tables
+  SELECT * FROM athletes LIMIT 10;
+
+Re-import markdown:
+  python3 migrate_markdown.py
+
+───────────────────────────────────────────────────────────────
+FULL DOCUMENTATION
+───────────────────────────────────────────────────────────────
+
+Read comprehensive guide:
+  cat JETT-DATABASE.md
+
+Or open in editor for full details.
+
+═══════════════════════════════════════════════════════════════
+
+✓ Database is ready to use!
+✓ 97-99% token savings on queries!
+✓ 10-100x faster than reading files!
+
+Start using: from jett_db import get_db
+
+═══════════════════════════════════════════════════════════════

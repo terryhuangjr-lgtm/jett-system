@@ -55,6 +55,10 @@ class TaskServer {
     // Serve dashboard files
     if (pathname === '/' || pathname === '/index.html') {
       return this.serveFile(res, 'dashboard/index.html', 'text/html');
+    } else if (pathname === '/health.html') {
+      return this.serveFile(res, 'dashboard/health.html', 'text/html');
+    } else if (pathname === '/ebay') {
+      return this.serveFile(res, 'dashboard/ebay.html', 'text/html');
     } else if (pathname === '/style.css') {
       return this.serveFile(res, 'dashboard/style.css', 'text/css');
     } else if (pathname === '/app.js') {
@@ -128,6 +132,129 @@ class TaskServer {
         scheduled: allTasks.filter(t => t.schedule).length
       };
       return this.sendJSON(res, stats);
+    }
+
+    // GET /api/health
+    if (pathname === '/api/health' && req.method === 'GET') {
+      const checks = [];
+      
+      // Check Slack Bridge
+      try {
+        const { execSync } = require('child_process');
+        const ps = execSync('ps aux | grep clawdbot | grep -v grep', { encoding: 'utf8' });
+        if (ps.includes('gateway') || ps.includes('bridge')) {
+          checks.push({ status: 'healthy', message: 'Slack Bridge running' });
+        } else {
+          checks.push({ status: 'unhealthy', message: 'Slack Bridge not running' });
+        }
+      } catch (e) {
+        checks.push({ status: 'unhealthy', message: 'Slack Bridge not running' });
+      }
+      
+      // Check Gateway
+      try {
+        const { execSync } = require('child_process');
+        const ps = execSync('ps aux | grep clawdbot-gateway | grep -v grep', { encoding: 'utf8' });
+        checks.push({ status: 'healthy', message: 'Gateway running' });
+      } catch (e) {
+        checks.push({ status: 'unhealthy', message: 'Gateway not running' });
+      }
+      
+      // Check Ollama
+      try {
+        const http = require('http');
+        const ollama = await new Promise((resolve) => {
+          const req = http.get('http://localhost:11434/api/tags', (res) => {
+            resolve({ status: 'healthy' });
+          });
+          req.on('error', () => resolve({ status: 'unhealthy' }));
+          req.setTimeout(3000, () => resolve({ status: 'unhealthy' }));
+        });
+        checks.push({ status: ollama.status, message: ollama.status === 'healthy' ? 'Ollama responding' : 'Ollama not responding' });
+      } catch (e) {
+        checks.push({ status: 'unhealthy', message: 'Ollama not responding' });
+      }
+      
+      // Check running tasks
+      const allTasks = await db.getTasks();
+      const running = allTasks.filter(t => t.status === 'running').length;
+      checks.push({ status: 'healthy', message: `${running} task${running !== 1 ? 's' : ''} running` });
+      
+      const unhealthyCount = checks.filter(c => c.status !== 'healthy').length;
+      const healthStatus = unhealthyCount === 0 ? 'healthy' : unhealthyCount <= 2 ? 'warning' : 'unhealthy';
+      
+      return this.sendJSON(res, { status: healthStatus, checks });
+    }
+
+    // eBay Scans API
+    const EBAY_CONFIG_FILE = path.join(__dirname, 'ebay-scans-config.json');
+    
+    if (pathname === '/api/ebay-scans' && req.method === 'GET') {
+      try {
+        const content = await fs.readFile(EBAY_CONFIG_FILE, 'utf-8');
+        return this.sendJSON(res, JSON.parse(content));
+      } catch (e) {
+        return this.sendJSON(res, { error: 'Config not found' }, 404);
+      }
+    }
+    
+    if (pathname === '/api/ebay-scans/global-rules' && req.method === 'GET') {
+      try {
+        const content = await fs.readFile(EBAY_CONFIG_FILE, 'utf-8');
+        const config = JSON.parse(content);
+        return this.sendJSON(res, config.global_filters);
+      } catch (e) {
+        return this.sendJSON(res, { error: 'Config not found' }, 404);
+      }
+    }
+    
+    if (pathname === '/api/ebay-scans/global-rules' && req.method === 'PUT') {
+      try {
+        const data = await this.readBody(req);
+        const content = await fs.readFile(EBAY_CONFIG_FILE, 'utf-8');
+        const config = JSON.parse(content);
+        config.global_filters = data;
+        config.last_updated = new Date().toISOString();
+        await fs.writeFile(EBAY_CONFIG_FILE, JSON.stringify(config, null, 2));
+        return this.sendJSON(res, { success: true });
+      } catch (e) {
+        return this.sendJSON(res, { error: e.message }, 500);
+      }
+    }
+    
+    const ebayScanMatch = pathname.match(/^\/api\/ebay-scans\/(\w+)$/);
+    if (ebayScanMatch && req.method === 'GET') {
+      const day = ebayScanMatch[1];
+      try {
+        const content = await fs.readFile(EBAY_CONFIG_FILE, 'utf-8');
+        const config = JSON.parse(content);
+        if (config.scans && config.scans[day]) {
+          return this.sendJSON(res, config.scans[day]);
+        }
+        return this.sendJSON(res, { error: 'Day not found' }, 404);
+      } catch (e) {
+        return this.sendJSON(res, { error: e.message }, 500);
+      }
+    }
+    
+    if (ebayScanMatch && req.method === 'PUT') {
+      const day = ebayScanMatch[1];
+      try {
+        const data = await this.readBody(req);
+        const content = await fs.readFile(EBAY_CONFIG_FILE, 'utf-8');
+        const config = JSON.parse(content);
+        if (!config.scans) config.scans = {};
+        config.scans[day] = { ...config.scans[day], ...data, last_updated: new Date().toISOString() };
+        config.last_updated = new Date().toISOString();
+        await fs.writeFile(EBAY_CONFIG_FILE, JSON.stringify(config, null, 2));
+        return this.sendJSON(res, { success: true });
+      } catch (e) {
+        return this.sendJSON(res, { error: e.message }, 500);
+      }
+    }
+    
+    if (pathname === '/api/ebay-deploy' && req.method === 'POST') {
+      return this.sendJSON(res, { message: 'Deploy triggered', success: true });
     }
 
     // 404

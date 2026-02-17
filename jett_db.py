@@ -222,6 +222,29 @@ class JettDB:
 
     # ==================== CONTENT IDEAS ====================
 
+    def topic_exists(self, topic: str) -> bool:
+        """
+        Check if a topic already exists in the database.
+        Checks for exact match or normalized match (without priority suffixes).
+
+        Args:
+            topic: Topic to check
+
+        Returns:
+            True if topic exists, False otherwise
+        """
+        # Normalize topic by removing priority suffixes
+        normalized_topic = topic.replace(' - LOW', '').replace(' - HIGH', '').replace(' - MEDIUM', '')
+
+        with self.get_connection() as conn:
+            cursor = conn.cursor()
+            cursor.execute("""
+                SELECT COUNT(*) as count FROM content_ideas
+                WHERE REPLACE(REPLACE(REPLACE(topic, ' - LOW', ''), ' - HIGH', ''), ' - MEDIUM', '') = ?
+            """, (normalized_topic,))
+            result = cursor.fetchone()
+            return result['count'] > 0
+
     def add_content_idea(
         self,
         topic: str,
@@ -231,7 +254,8 @@ class JettDB:
         scheduled_date: Optional[str] = None,
         platform: Optional[str] = None,
         quality_score: Optional[int] = 7,
-        source: Optional[str] = None
+        source: Optional[str] = None,
+        skip_duplicate_check: bool = False
     ) -> int:
         """
         Add a new content idea.
@@ -245,10 +269,15 @@ class JettDB:
             platform: Target platform (twitter, slack, etc.)
             quality_score: Quality rating 1-10 (default 7)
             source: Source URL or reference
+            skip_duplicate_check: If True, skip duplicate checking (default False)
 
         Returns:
-            ID of inserted content idea
+            ID of inserted content idea, or None if duplicate skipped
         """
+        # Check for duplicates unless explicitly skipped
+        if not skip_duplicate_check and self.topic_exists(topic):
+            return None  # Duplicate detected, skip insertion
+
         with self.get_connection() as conn:
             cursor = conn.cursor()
             cursor.execute("""
@@ -299,7 +328,7 @@ class JettDB:
             cursor = conn.cursor()
             query = """
                 SELECT * FROM content_ideas
-                WHERE status = ?
+                WHERE status LIKE ?
                 AND category LIKE ?
                 AND quality_score >= ?
                 ORDER BY quality_score DESC, created_date DESC
@@ -307,10 +336,11 @@ class JettDB:
             if limit:
                 query += f" LIMIT {limit}"
 
-            # Convert category to LIKE pattern
+            # Convert status and category to LIKE patterns
+            status_pattern = f"%{status}%"
             category_pattern = f"%{category}%"
 
-            cursor.execute(query, (status, category_pattern, min_quality))
+            cursor.execute(query, (status_pattern, category_pattern, min_quality))
             return self._rows_to_dicts(cursor.fetchall())
 
     def get_pending_content(self) -> List[Dict]:

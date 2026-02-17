@@ -1,0 +1,338 @@
+{
+  "requests": [
+    {
+      "timestamp": 1770749478146,
+      "provider": "claude",
+      "success": true,
+      "durationMs": 6062,
+      "tokens": 0,
+      "costUsd": 0.000044999999999999996
+    },
+    {
+      "timestamp": 1770749522620,
+      "provider": "ollama",
+      "success": true,
+      "durationMs": 40887,
+      "tokens": 18,
+      "costUsd": 0
+    },
+    {
+      "timestamp": 1770749533195,
+      "provider": "ollama",
+      "success": true,
+      "durationMs": 1379,
+      "tokens": 9,
+      "costUsd": 0
+    },
+    {
+      "timestamp": 1770751169944,
+      "provider": "ollama",
+      "success": true,
+      "durationMs": 47362,
+      "tokens": 13,
+      "costUsd": 0
+    },
+    {
+      "timestamp": 1770751187396,
+      "provider": "claude",
+      "success": true,
+      "durationMs": 17026,
+      "tokens": 0,
+      "costUsd": 0.00010200000000000001
+    },
+    {
+      "timestamp": 1770751299936,
+      "provider": "claude",
+      "success": true,
+      "durationMs": 41821,
+      "tokens": 0,
+      "costUsd": 0.00048300000000000003
+    },
+    {
+      "timestamp": 1770751321756,
+      "provider": "claude",
+      "success": true,
+      "durationMs": 11051,
+      "tokens": 0,
+      "costUsd": 0.000366
+    },
+    {
+      "timestamp": 1770751639971,
+      "provider": "claude",
+      "success": true,
+      "durationMs": 7325,
+      "tokens": 0,
+      "costUsd": 0.000255
+    },
+    {
+      "timestamp": 1770757611350,
+      "provider": "claude",
+      "success": true,
+      "durationMs": 5830,
+      "tokens": 0,
+      "costUsd": 0.000009
+    },
+    {
+      "timestamp": 1770767675704,
+      "provider": "claude",
+      "success": true,
+      "durationMs": 25231,
+      "tokens": 0,
+      "costUsd": 0.000354
+    },
+    {
+      "timestamp": 1770768690178,
+      "provider": "claude",
+      "success": true,
+      "durationMs": 22645,
+      "tokens": 0,
+      "costUsd": 0.000786
+    },
+    {
+      "timestamp": 1770769321982,
+      "provider": "claude",
+      "success": true,
+      "durationMs": 40832,
+      "tokens": 0,
+      "costUsd": 0.000531
+    },
+    {
+      "timestamp": 1770769742616,
+      "provider": "claude",
+      "success": true,
+      "durationMs": 9674,
+      "tokens": 0,
+      "costUsd": 0.000048
+    },
+    {
+      "timestamp": 1770769795124,
+      "provider": "claude",
+      "success": true,
+      "durationMs": 11669,
+      "tokens": 0,
+      "costUsd": 0.000378
+    },
+    {
+      "timestamp": 1770769956410,
+      "provider": "claude",
+      "success": true,
+      "durationMs": 10506,
+      "tokens": 0,
+      "costUsd": 0.000273
+    },
+    {
+      "timestamp": 1770770757715,
+      "provider": "claude",
+      "success": true,
+      "durationMs": 40184,
+      "tokens": 0,
+      "costUsd": 0.000291
+    },
+    {
+      "timestamp": 1770771059780,
+      "provider": "claude",
+      "success": true,
+      "durationMs": 21239,
+      "tokens": 0,
+      "costUsd": 0.000044999999999999996
+    },
+    {
+      "timestamp": 1770771541497,
+      "provider": "claude",
+      "success": true,
+      "durationMs": 10785,
+      "tokens": 0,
+      "costUsd": 0.000078
+    },
+    {
+      "timestamp": 1770772568162,
+      "provider": "claude",
+      "success": true,
+      "durationMs": 25485,
+      "tokens": 0,
+      "costUsd": 0.00021000000000000004
+    },
+    {
+      "timestamp": 1770772926586,
+      "provider": "ollama",
+      "success": true,
+      "durationMs": 47402,
+      "tokens": 11,
+      "costUsd": 0
+    },
+    {
+      "timestamp": 1770773381900,
+      "provider": "claude",
+      "success": true,
+      "durationMs": 10743,
+      "tokens": 0,
+      "costUsd": 0.002196
+    },
+    {
+      "timestamp": 1770813599833,
+      "provider": "claude",
+      "success": true,
+      "durationMs": 46727,
+      "tokens": 0,
+      "costUsd": 0.000234
+    },
+    {
+      "timestamp": 1770813663439,
+      "provider": "claude",
+      "success": true,
+      "durationMs": 13921,
+      "tokens": 0,
+      "costUsd": 0.00016800000000000002
+    },
+    {
+      "timestamp": 1770816427143,
+      "provider": "claude",
+      "success": false,
+      "durationMs": 58826,
+      "tokens": 0,
+      "costUsd": 0
+    },
+    {
+      "timestamp": 1770816686861,
+      "provider": "claude",
+      "success": true,
+      "durationMs": 13719,
+      "tokens": 0,
+      "costUsd": 0.000015
+    },
+    {
+      "timestamp": 1770816752713,
+      "provider": "claude",
+      "success": true,
+      "durationMs": 16054,
+      "tokens": 0,
+      "costUsd": 0.000021000000000000002
+    },
+    {
+      "timestamp": 1770818055617,
+      "provider": "claude",
+      "success": true,
+      "durationMs": 17366,
+      "tokens": 0,
+      "costUsd": 0.000444
+    },
+    {
+      "timestamp": 1770818549756,
+      "provider": "claude",
+      "success": true,
+      "durationMs": 13052,
+      "tokens": 0,
+      "costUsd": 0.001761
+    },
+    {
+      "timestamp": 1770818577073,
+      "provider": "claude",
+      "success": true,
+      "durationMs": 16489,
+      "tokens": 0,
+      "costUsd": 0.00042899999999999997
+    },
+    {
+      "timestamp": 1770818656835,
+      "provider": "claude",
+      "success": false,
+      "durationMs": 58680,
+      "tokens": 0,
+      "costUsd": 0
+    },
+    {
+      "timestamp": 1770820088689,
+      "provider": "claude",
+      "success": true,
+      "durationMs": 22634,
+      "tokens": 0,
+      "costUsd": 0.000318
+    },
+    {
+      "timestamp": 1770823027175,
+      "provider": "claude",
+      "success": true,
+      "durationMs": 40628,
+      "tokens": 0,
+      "costUsd": 0.001356
+    },
+    {
+      "timestamp": 1770823062448,
+      "provider": "claude",
+      "success": true,
+      "durationMs": 24269,
+      "tokens": 0,
+      "costUsd": 0.000285
+    },
+    {
+      "timestamp": 1770823615165,
+      "provider": "claude",
+      "success": true,
+      "durationMs": 15864,
+      "tokens": 0,
+      "costUsd": 0.00007500000000000001
+    },
+    {
+      "timestamp": 1770823738199,
+      "provider": "claude",
+      "success": true,
+      "durationMs": 14539,
+      "tokens": 0,
+      "costUsd": 0.002232
+    },
+    {
+      "timestamp": 1770823853180,
+      "provider": "claude",
+      "success": true,
+      "durationMs": 46094,
+      "tokens": 0,
+      "costUsd": 0.00040800000000000005
+    },
+    {
+      "timestamp": 1770827607091,
+      "provider": "claude",
+      "success": false,
+      "durationMs": 59110,
+      "tokens": 0,
+      "costUsd": 0
+    },
+    {
+      "timestamp": 1770827704737,
+      "provider": "claude",
+      "success": true,
+      "durationMs": 7597,
+      "tokens": 0,
+      "costUsd": 0.000036
+    },
+    {
+      "timestamp": 1770827760556,
+      "provider": "claude",
+      "success": true,
+      "durationMs": 24323,
+      "tokens": 0,
+      "costUsd": 0.000051000000000000006
+    },
+    {
+      "timestamp": 1770828361121,
+      "provider": "claude",
+      "success": true,
+      "durationMs": 7218,
+      "tokens": 0,
+      "costUsd": 0.000048
+    }
+  ],
+  "daily": {
+    "2026-02-10": {
+      "ollama": 3,
+      "claude": 7,
+      "cost": 0.0016139999999999998,
+      "errors": 0
+    },
+    "2026-02-11": {
+      "ollama": 1,
+      "claude": 29,
+      "cost": 0.012717000000000001,
+      "errors": 3
+    }
+  }
+}

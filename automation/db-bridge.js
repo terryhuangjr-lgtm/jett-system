@@ -15,8 +15,14 @@ const JETT_DB_PATH = path.join(__dirname, '..', 'jett_db.py');
 class DatabaseBridge {
   /**
    * Add content to database
+   * Returns contentId if added, null if duplicate or error
    */
   addContent(topic, content, category, source, btcAngle, qualityScore = 8) {
+    // Check for duplicates first
+    if (this.topicExists(topic)) {
+      return null; // Topic already exists, skip
+    }
+
     // Write Python code to temp file to avoid shell escaping issues
     const python = `import sys
 sys.path.insert(0, '${path.dirname(JETT_DB_PATH)}')
@@ -207,6 +213,42 @@ print(json.dumps(athletes))
   }
 
   /**
+   * Check if topic already exists in database
+   * Returns true if topic exists (to prevent duplicates)
+   */
+  topicExists(topic) {
+    const python = `import sys
+sys.path.insert(0, '${path.dirname(JETT_DB_PATH)}')
+from jett_db import get_db
+
+db = get_db()
+with db.get_connection() as conn:
+    cursor = conn.cursor()
+    # Check for exact match or normalized match (without priority suffixes)
+    cursor.execute("""
+        SELECT COUNT(*) as count FROM content_ideas
+        WHERE topic = ? OR topic LIKE ? || ' - %'
+    """, (${JSON.stringify(topic)}, ${JSON.stringify(topic)}))
+    result = cursor.fetchone()
+    print('exists' if result['count'] > 0 else 'new')`;
+
+    const tmpFile = path.join(os.tmpdir(), `db-bridge-${Date.now()}.py`);
+
+    try {
+      fs.writeFileSync(tmpFile, python);
+      const result = execSync(`python3 ${tmpFile}`, {
+        encoding: 'utf8'
+      });
+      fs.unlinkSync(tmpFile);
+      return result.trim() === 'exists';
+    } catch (err) {
+      try { fs.unlinkSync(tmpFile); } catch {}
+      console.error('Failed to check if topic exists:', err.message);
+      return false; // Default to allowing if check fails
+    }
+  }
+
+  /**
    * Mark content as published
    */
   markPublished(contentId) {
@@ -232,6 +274,13 @@ print('ok' if result else 'failed')`;
       console.error('Failed to mark as published:', err.message);
       return false;
     }
+  }
+
+  /**
+   * Mark content as published (camelCase alias)
+   */
+  markContentPublished(contentId) {
+    return this.markPublished(contentId);
   }
 
   /**

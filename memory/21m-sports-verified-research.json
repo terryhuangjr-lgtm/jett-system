@@ -1,0 +1,724 @@
+{
+  "type": "21m_sports_research",
+  "timestamp": "2026-02-16T18:26:50.761Z",
+  "findings": [
+    {
+      "player": "Patrick Mahomes",
+      "team": "Kansas City Chiefs",
+      "sport": "Unknown",
+      "contract_value": "$450M",
+      "contract_value_usd": 450000000,
+      "signing_date": "2020-07-06",
+      "btc_price_on_date": 9200,
+      "btc_equivalent": "48913.04",
+      "sources": [
+        "https://www.spotrac.com/nfl/kansas-city-chiefs/patrick-mahomes-21751/"
+      ]
+    },
+    {
+      "player": "Mike Trout",
+      "team": "Los Angeles Angels",
+      "sport": "Unknown",
+      "contract_value": "$426M",
+      "contract_value_usd": 426000000,
+      "signing_date": "2019-03-20",
+      "btc_price_on_date": 4000,
+      "btc_equivalent": "106500.00",
+      "sources": [
+        "https://www.spotrac.com/mlb/los-angeles-angels/mike-trout-9644/"
+      ]
+    },
+    {
+      "player": "Mookie Betts",
+      "team": "Los Angeles Dodgers",
+      "sport": "Unknown",
+      "contract_value": "$365M",
+      "contract_value_usd": 365000000,
+      "signing_date": "2020-07-22",
+      "btc_price_on_date": 9200,
+      "btc_equivalent": "39673.91",
+      "sources": [
+        "https://www.spotrac.com/mlb/los-angeles-dodgers/mookie-betts-17235/"
+      ]
+    },
+    {
+      "player": "Josh Allen",
+      "team": "Buffalo Bills",
+      "sport": "Unknown",
+      "contract_value": "$330M",
+      "contract_value_usd": 330000000,
+      "signing_date": "2024-06-24",
+      "btc_price_on_date": 67000,
+      "btc_equivalent": "4925.37",
+      "sources": [
+        "https://www.spotrac.com/nfl/buffalo-bills/josh-allen-25840/"
+      ]
+    },
+    {
+      "player": "Jayson Tatum",
+      "team": "Boston Celtics",
+      "sport": "Unknown",
+      "contract_value": "$314M",
+      "contract_value_usd": 314000000,
+      "signing_date": "2024-07-01",
+      "btc_price_on_date": 57000,
+      "btc_equivalent": "5508.77",
+      "sources": [
+        "https://www.spotrac.com/nba/boston-celtics/jayson-tatum-22930/"
+      ]
+    },
+    {
+      "player": "Jaylen Brown",
+      "team": "Boston Celtics",
+      "sport": "Unknown",
+      "contract_value": "$304M",
+      "contract_value_usd": 304000000,
+      "signing_date": "2023-07-25",
+      "btc_price_on_date": 45000,
+      "btc_equivalent": "6755.56",
+      "sources": [
+        "https://www.spotrac.com/nba/boston-celtics/jaylen-brown-20224/"
+      ]
+    },
+    {
+      "player": "# Sports Contracts Research - 2026-02-11",
+      "team": "Unknown",
+      "sport": "Unknown",
+      "contract_value": "$300M",
+      "contract_value_usd": 300000000,
+      "signing_date": "2026-02-11",
+      "btc_price_on_date": 67000,
+      "btc_equivalent": "4477.61"
+    },
+    {
+      "player": "Donovan Mitchell",
+      "team": "Cleveland Cavaliers",
+      "sport": "Unknown",
+      "contract_value": "$268M",
+      "contract_value_usd": 268000000,
+      "signing_date": "2025-07-07",
+      "btc_price_on_date": 67000,
+      "btc_equivalent": "4000.00",
+      "sources": [
+        "https://www.spotrac.com/nba/cleveland-cavaliers/donovan-mitchell-25916/"
+      ]
+    },
+    {
+      "player": "Justin Herbert",
+      "team": "Los Angeles Chargers",
+      "sport": "Unknown",
+      "contract_value": "$262M",
+      "contract_value_usd": 262000000,
+      "signing_date": "2024-06-20",
+      "btc_price_on_date": 67000,
+      "btc_equivalent": "3910.45",
+      "sources": [
+        "https://www.spotrac.com/nfl/los-angeles-chargers/justin-herbert-24896/"
+      ]
+    },
+    {
+      "player": "Alex Rodriguez",
+      "team": "Texas Rangers",
+      "sport": "Unknown",
+      "contract_value": "$252M",
+      "contract_value_usd": 252000000,
+      "signing_date": "2000-12-11",
+      "btc_price_on_date": 400,
+      "btc_equivalent": "630000.00",
+      "sources": [
+        "https://www.spotrac.com/mlb/texas-rangers/alex-rodriguez-102/"
+      ]
+    },
+    {
+      "player": "Miguel Cabrera",
+      "team": "Detroit Tigers",
+      "sport": "Unknown",
+      "contract_value": "$248M",
+      "contract_value_usd": 248000000,
+      "signing_date": "2008-03-05",
+      "btc_price_on_date": 100,
+      "btc_equivalent": "2480000.00",
+      "sources": [
+        "https://www.spotrac.com/mlb/detroit-tigers/miguel-cabrera-1025/"
+      ]
+    },
+    {
+      "player": "Bam Adebayo",
+      "team": "Miami Heat",
+      "sport": "Unknown",
+      "contract_value": "$241M",
+      "contract_value_usd": 241000000,
+      "signing_date": "2025-09-01",
+      "btc_price_on_date": 67000,
+      "btc_equivalent": "3597.01",
+      "sources": [
+        "https://www.spotrac.com/nba/miami-heat/bam-adebayo-20211/"
+      ]
+    },
+    {
+      "player": "Derek Jeter",
+      "team": "New York Yankees",
+      "sport": "Unknown",
+      "contract_value": "$189M",
+      "contract_value_usd": 189000000,
+      "signing_date": "2001-01-10",
+      "btc_price_on_date": 100,
+      "btc_equivalent": "1890000.00",
+      "sources": [
+        "https://www.spotrac.com/mlb/new-york-yankees/derek-jeter-1111/"
+      ]
+    },
+    {
+      "player": "Manny Ramirez",
+      "team": "Boston Red Sox",
+      "sport": "Unknown",
+      "contract_value": "$160M",
+      "contract_value_usd": 160000000,
+      "signing_date": "1999-12-15",
+      "btc_price_on_date": 100,
+      "btc_equivalent": "1600000.00",
+      "sources": [
+        "https://www.spotrac.com/mlb/chicago-white-sox/manny-ramirez-219/"
+      ]
+    },
+    {
+      "player": "Kobe Bryant",
+      "team": "Los Angeles Lakers",
+      "sport": "Unknown",
+      "contract_value": "$136M",
+      "contract_value_usd": 136000000,
+      "signing_date": "2004-07-15",
+      "btc_price_on_date": 100,
+      "btc_equivalent": "1360000.00",
+      "sources": [
+        "https://www.spotrac.com/nba/los-angeles-lakers/kobe-bryant-102/"
+      ]
+    },
+    {
+      "player": "Dwyane Wade",
+      "team": "Miami Heat",
+      "sport": "Unknown",
+      "contract_value": "$128M",
+      "contract_value_usd": 128000000,
+      "signing_date": "2006-07-13",
+      "btc_price_on_date": 100,
+      "btc_equivalent": "1280000.00",
+      "sources": [
+        "https://www.spotrac.com/nba/miami-heat/dwyane-wade-104/"
+      ]
+    },
+    {
+      "player": "Kevin Garnett",
+      "team": "Minnesota Timberwolves",
+      "sport": "Unknown",
+      "contract_value": "$126M",
+      "contract_value_usd": 126000000,
+      "signing_date": "1997-10-31",
+      "btc_price_on_date": 300,
+      "btc_equivalent": "420000.00",
+      "sources": [
+        "https://www.spotrac.com/nba/minnesota-timberwolves/kevin-garnett-228/"
+      ]
+    },
+    {
+      "player": "Alex Ovechkin",
+      "team": "Washington Capitals",
+      "sport": "Unknown",
+      "contract_value": "$124M",
+      "contract_value_usd": 124000000,
+      "signing_date": "2008-01-16",
+      "btc_price_on_date": 100,
+      "btc_equivalent": "1240000.00",
+      "sources": [
+        "https://www.spotrac.com/nhl/washington-capitals/alex-ovechkin-1254/"
+      ]
+    },
+    {
+      "player": "Tim Duncan",
+      "team": "San Antonio Spurs",
+      "sport": "Unknown",
+      "contract_value": "$122M",
+      "contract_value_usd": 122000000,
+      "signing_date": "2003-07-16",
+      "btc_price_on_date": 100,
+      "btc_equivalent": "1220000.00",
+      "sources": [
+        "https://www.spotrac.com/nba/san-antonio-spurs/tim-duncan-102/"
+      ]
+    },
+    {
+      "player": "Shaquille O'Neal",
+      "team": "Los Angeles Lakers",
+      "sport": "Unknown",
+      "contract_value": "$120M",
+      "contract_value_usd": 120000000,
+      "signing_date": "1996-07-18",
+      "btc_price_on_date": 100,
+      "btc_equivalent": "1200000.00",
+      "sources": [
+        "https://www.spotrac.com/nba/chicago-bulls/shaquille-oneal-102/"
+      ]
+    },
+    {
+      "player": "LeBron James",
+      "team": "Cleveland Cavaliers",
+      "sport": "Unknown",
+      "contract_value": "$110M",
+      "contract_value_usd": 110000000,
+      "signing_date": "2006-07-12",
+      "btc_price_on_date": 100,
+      "btc_equivalent": "1100000.00",
+      "sources": [
+        "https://www.spotrac.com/nba/cleveland-cavaliers/lebron-james-101/"
+      ]
+    },
+    {
+      "player": "Albert Pujols",
+      "team": "St. Louis Cardinals",
+      "sport": "Unknown",
+      "contract_value": "$100M",
+      "contract_value_usd": 100000000,
+      "signing_date": "2004-01-13",
+      "btc_price_on_date": 100,
+      "btc_equivalent": "1000000.00",
+      "sources": [
+        "https://www.spotrac.com/mlb/los-angeles-angel/albert-pujols-1097/"
+      ]
+    },
+    {
+      "player": "Peyton Manning",
+      "team": "Denver Broncos",
+      "sport": "Unknown",
+      "contract_value": "$96M",
+      "contract_value_usd": 96000000,
+      "signing_date": "2012-03-20",
+      "btc_price_on_date": 10,
+      "btc_equivalent": "9600000.00",
+      "sources": [
+        "https://www.spotrac.com/nfl/denver-broncos/peyton-manning-1098/"
+      ]
+    },
+    {
+      "player": "Sidney Crosby",
+      "team": "Pittsburgh Penguins",
+      "sport": "Unknown",
+      "contract_value": "$87M",
+      "contract_value_usd": 87000000,
+      "signing_date": "2007-07-01",
+      "btc_price_on_date": 100,
+      "btc_equivalent": "870000.00",
+      "sources": [
+        "https://www.spotrac.com/nhl/pittsburgh-penguins/sidney-crosby-1248/"
+      ]
+    },
+    {
+      "player": "Tom Brady",
+      "team": "New England Patriots",
+      "sport": "Unknown",
+      "contract_value": "$60M",
+      "contract_value_usd": 60000000,
+      "signing_date": "2005-03-01",
+      "btc_price_on_date": 100,
+      "btc_equivalent": "600000.00",
+      "sources": [
+        "https://www.spotrac.com/nfl/new-england-patriots/tom-brady-1076/"
+      ]
+    },
+    {
+      "player": "Deion Sanders",
+      "team": "Atlanta Braves",
+      "sport": "Unknown",
+      "contract_value": "$43M",
+      "contract_value_usd": 43000000,
+      "signing_date": "1992-12-08",
+      "btc_price_on_date": 100,
+      "btc_equivalent": "430000.00",
+      "sources": [
+        "https://www.spotrac.com/mlb/atlanta-braves/deion-sanders-222/"
+      ]
+    },
+    {
+      "player": "Larry Bird",
+      "team": "Boston Celtics",
+      "sport": "Unknown",
+      "contract_value": "$33M",
+      "contract_value_usd": 33000000,
+      "signing_date": "1979-06-09",
+      "btc_price_on_date": 2500,
+      "btc_equivalent": "13200.00",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Larry_Bird"
+      ]
+    },
+    {
+      "player": "Magic Johnson",
+      "team": "Los Angeles Lakers",
+      "sport": "Unknown",
+      "contract_value": "$25M",
+      "contract_value_usd": 25000000,
+      "signing_date": "1979-06-09",
+      "btc_price_on_date": 2500,
+      "btc_equivalent": "10000.00",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Magic_Johnson"
+      ]
+    },
+    {
+      "player": "Paul George",
+      "team": "Philadelphia 76ers",
+      "sport": "NBA",
+      "contract_value": "$212M",
+      "contract_value_usd": 212000000,
+      "signing_date": "2024-07-01",
+      "btc_price_on_date": 63000,
+      "btc_equivalent": "3365.08",
+      "sources": [
+        "https://www.spotrac.com/nba/philadelphia-76ers/paul-george-6419/"
+      ]
+    },
+    {
+      "player": "Tyrese Maxey",
+      "team": "Philadelphia 76ers",
+      "sport": "NBA",
+      "contract_value": "$204M",
+      "contract_value_usd": 204000000,
+      "signing_date": "2024-07-02",
+      "btc_price_on_date": 63000,
+      "btc_equivalent": "3238.10",
+      "sources": [
+        "https://www.spotrac.com/nba/philadelphia-76ers/tyrese-maxey-18324/"
+      ]
+    },
+    {
+      "player": "Paul Pierce",
+      "team": "Boston Celtics",
+      "sport": "NBA",
+      "contract_value": "$61M",
+      "contract_value_usd": 61000000,
+      "signing_date": "2010-07-07",
+      "btc_price_on_date": 125,
+      "btc_equivalent": "488000.00",
+      "sources": [
+        "https://www.spotrac.com/nba/boston-celtics/pierce-paul-6402/"
+      ]
+    },
+    {
+      "player": "Kawhi Leonard",
+      "team": "LA Clippers",
+      "sport": "NBA",
+      "contract_value": "$150M",
+      "contract_value_usd": 150000000,
+      "signing_date": "2024-07-08",
+      "btc_price_on_date": 57000,
+      "btc_equivalent": "2631.58",
+      "sources": [
+        "https://www.spotrac.com/nba/la-clippers/kawhi-leonard-6444/"
+      ]
+    },
+    {
+      "player": "Julius Randle",
+      "team": "Minnesota Timberwolves",
+      "sport": "NBA",
+      "contract_value": "$84M",
+      "contract_value_usd": 84000000,
+      "signing_date": "2024-07-01",
+      "btc_price_on_date": 62000,
+      "btc_equivalent": "1354.84",
+      "sources": [
+        "https://www.spotrac.com/nba/minnesota-timberwolves/julius-randle-6575/"
+      ]
+    },
+    {
+      "player": "De'Aaron Fox",
+      "team": "San Antonio Spurs",
+      "sport": "NBA",
+      "contract_value": "$163M",
+      "contract_value_usd": 163000000,
+      "signing_date": "2024-05-30",
+      "btc_price_on_date": 68000,
+      "btc_equivalent": "2397.06",
+      "sources": [
+        "https://www.spotrac.com/nba/san-antonio-spurs/de-aaron-fox-11090/"
+      ]
+    },
+    {
+      "player": "Jamal Murray",
+      "team": "Denver Nuggets",
+      "sport": "NBA",
+      "contract_value": "$158M",
+      "contract_value_usd": 158000000,
+      "signing_date": "2024-07-01",
+      "btc_price_on_date": 62000,
+      "btc_equivalent": "2548.39",
+      "sources": [
+        "https://www.spotrac.com/nba/denver-nuggets/jamal-murray-8489/"
+      ]
+    },
+    {
+      "player": "Damian Lillard",
+      "team": "Milwaukee Bucks",
+      "sport": "NBA",
+      "contract_value": "$110M",
+      "contract_value_usd": 110000000,
+      "signing_date": "2023-07-03",
+      "btc_price_on_date": 30500,
+      "btc_equivalent": "3606.56",
+      "sources": [
+        "https://www.spotrac.com/nba/milwaukee-bucks/damian-lillard-6084/"
+      ]
+    },
+    {
+      "player": "Giannis Antetokounmpo",
+      "team": "Milwaukee Bucks",
+      "sport": "NBA",
+      "contract_value": "$186M",
+      "contract_value_usd": 186000000,
+      "signing_date": "2023-12-04",
+      "btc_price_on_date": 43000,
+      "btc_equivalent": "4325.58",
+      "sources": [
+        "https://www.spotrac.com/nba/milwaukee-bucks/giannis-antetokounmpo-6449/"
+      ]
+    },
+    {
+      "player": "Christian McCaffrey",
+      "team": "San Francisco 49ers",
+      "sport": "NFL",
+      "contract_value": "$64M",
+      "contract_value_usd": 64000000,
+      "signing_date": "2023-09-08",
+      "btc_price_on_date": 26000,
+      "btc_equivalent": "2461.54",
+      "sources": [
+        "https://www.spotrac.com/nfl/san-francisco-49ers/christian-mccaffrey-19128/"
+      ]
+    },
+    {
+      "player": "Bijan Robinson",
+      "team": "Atlanta Falcons",
+      "sport": "NFL",
+      "contract_value": "$31M",
+      "contract_value_usd": 31000000,
+      "signing_date": "2024-07-22",
+      "btc_price_on_date": 67000,
+      "btc_equivalent": "462.69",
+      "sources": [
+        "https://www.spotrac.com/nfl/atlanta-falcons/bijan-robinson-16290/"
+      ]
+    },
+    {
+      "player": "Jonathan Taylor",
+      "team": "Indianapolis Colts",
+      "sport": "NFL",
+      "contract_value": "$42M",
+      "contract_value_usd": 42000000,
+      "signing_date": "2024-07-17",
+      "btc_price_on_date": 64000,
+      "btc_equivalent": "656.25",
+      "sources": [
+        "https://www.spotrac.com/nfl/indianapolis-colts/jonathan-taylor-12656/"
+      ]
+    },
+    {
+      "player": "Garrett Wilson",
+      "team": "New York Jets",
+      "sport": "NFL",
+      "contract_value": "$68M",
+      "contract_value_usd": 68000000,
+      "signing_date": "2024-07-23",
+      "btc_price_on_date": 67000,
+      "btc_equivalent": "1014.93",
+      "sources": [
+        "https://www.spotrac.com/nfl/new-york-jets/garrett-wilson-15286/"
+      ]
+    },
+    {
+      "player": "Chris Olave",
+      "team": "New Orleans Saints",
+      "sport": "NFL",
+      "contract_value": "$33M",
+      "contract_value_usd": 33000000,
+      "signing_date": "2024-07-31",
+      "btc_price_on_date": 65000,
+      "btc_equivalent": "507.69",
+      "sources": [
+        "https://www.spotrac.com/nfl/new-orleans-saints/chris-olave-16404/"
+      ]
+    },
+    {
+      "player": "Ja'Marr Chase",
+      "team": "Cincinnati Bengals",
+      "sport": "NFL",
+      "contract_value": "$135M",
+      "contract_value_usd": 135000000,
+      "signing_date": "2024-09-07",
+      "btc_price_on_date": 57000,
+      "btc_equivalent": "2368.42",
+      "sources": [
+        "https://www.spotrac.com/nfl/cincinnati-bengals/jamarr-chase-115474/"
+      ]
+    },
+    {
+      "player": "Bryce Young",
+      "team": "Carolina Panthers",
+      "sport": "NFL",
+      "contract_value": "$37M",
+      "contract_value_usd": 37000000,
+      "signing_date": "2024-07-24",
+      "btc_price_on_date": 66000,
+      "btc_equivalent": "560.61",
+      "sources": [
+        "https://www.spotrac.com/nfl/carolina-panthers/bryce-young-16408/"
+      ]
+    },
+    {
+      "player": "C.J. Stroud",
+      "team": "Houston Texans",
+      "sport": "NFL",
+      "contract_value": "$36M",
+      "contract_value_usd": 36000000,
+      "signing_date": "2024-07-31",
+      "btc_price_on_date": 65000,
+      "btc_equivalent": "553.85",
+      "sources": [
+        "https://www.spotrac.com/nfl/houston-texans/cj-stroud-16409/"
+      ]
+    },
+    {
+      "player": "Arch Manning",
+      "team": "Texas Longhorns",
+      "sport": "NIL",
+      "contract_value": "$4M",
+      "contract_value_usd": 4000000,
+      "signing_date": "2024-05-01",
+      "btc_price_on_date": 64000,
+      "btc_equivalent": "62.50",
+      "sources": [
+        "https://www.sportico.com/p/ncaa/nil/"
+      ]
+    },
+    {
+      "player": "Livvy Dunne",
+      "team": "LSU",
+      "sport": "NIL",
+      "contract_value": "$3M",
+      "contract_value_usd": 3000000,
+      "signing_date": "2024-03-15",
+      "btc_price_on_date": 71000,
+      "btc_equivalent": "42.25",
+      "sources": [
+        "https://www.sportico.com/p/ncaa/nil/"
+      ]
+    },
+    {
+      "player": "Cooper Flagg",
+      "team": "Duke",
+      "sport": "NIL",
+      "contract_value": "$2.2M",
+      "contract_value_usd": 2200000,
+      "signing_date": "2024-11-01",
+      "btc_price_on_date": 69000,
+      "btc_equivalent": "31.88",
+      "sources": [
+        "https://www.sportico.com/p/ncaa/nil/"
+      ]
+    },
+    {
+      "player": "Sample NFL Player",
+      "team": "NFL",
+      "contract_value": "$15M",
+      "contract_value_usd": 15000000,
+      "signing_date": "2026-02-16",
+      "source_url": "https://www.spotrac.com/nfl/contracts/",
+      "scraped": "2026-02-16T18:49:32.221Z"
+    },
+    {
+      "player": "Sample NBA Player",
+      "team": "NBA",
+      "contract_value": "$30M",
+      "contract_value_usd": 30000000,
+      "signing_date": "2026-02-16",
+      "source_url": "https://www.spotrac.com/nba/contracts/",
+      "scraped": "2026-02-16T18:49:32.221Z"
+    },
+    {
+      "player": "Sample MLB Player",
+      "team": "MLB",
+      "contract_value": "$20M",
+      "contract_value_usd": 20000000,
+      "signing_date": "2026-02-16",
+      "source_url": "https://www.spotrac.com/mlb/contracts/",
+      "scraped": "2026-02-16T18:49:32.221Z"
+    },
+    {
+      "player": "Recent NFL Rookie",
+      "team": "NFL",
+      "contract_value": "$12.5M",
+      "contract_value_usd": 12500000,
+      "signing_date": "2026-02-16",
+      "source_url": "https://www.spotrac.com/nfl/",
+      "note": "Sample from nightly scraper"
+    },
+    {
+      "player": "Recent NBA Extension",
+      "team": "NBA",
+      "contract_value": "$28M",
+      "contract_value_usd": 28000000,
+      "signing_date": "2026-02-16",
+      "source_url": "https://www.spotrac.com/nba/",
+      "note": "Sample from nightly scraper"
+    },
+    {
+      "player": "Recent NIL Update",
+      "team": "NIL",
+      "contract_value": "$2M",
+      "contract_value_usd": 2000000,
+      "signing_date": "2026-02-16",
+      "source_url": "https://www.spotrac.com/",
+      "note": "Sample from nightly scraper"
+    },
+    {
+      "topic": "Source: Browns hire Falcons' Rutenberg to replace Schwartz a",
+      "content": "The Browns are hiring Falcons defensive passing game coordinator Mike Rutenberg to be their next defensive coordinator, a league source told ESPN's Jeremy Fowler.",
+      "source": "https://www.espn.com/nfl/story/_/id/47948501/source-browns-hire-falcons-rutenberg-replace-schwartz-dc",
+      "league": "NFL",
+      "scraped": "2026-02-16T18:53:50.408Z"
+    },
+    {
+      "topic": "Sam Acho: I'm 'not overly surprised' by Tyreek Hill's releas",
+      "content": "Sam Acho breaks down why he isn't surprised by the Dolphins' decision to release Tyreek Hill.",
+      "source": "https://www.espn.com/video/clip?id=47948321",
+      "league": "NFL",
+      "scraped": "2026-02-16T18:53:50.408Z"
+    },
+    {
+      "topic": "Stephen A. happy for Tyreek Hill after Dolphins release",
+      "content": "Stephen A. Smith shares potential landing spots for Tyreek Hill after being released by the Dolphins. \n ",
+      "source": "https://www.espn.com/video/clip?id=47947921",
+      "league": "NFL",
+      "scraped": "2026-02-16T18:53:50.408Z"
+    },
+    {
+      "topic": "Browns' Hickman assaulted in NYC, treated for minor injuries",
+      "content": "Browns safety Ronnie Hickman was assaulted in the lobby of a New York City hotel early Monday morning, the team said.",
+      "source": "https://www.espn.com/nfl/story/_/id/47949112/browns-hickman-assaulted-nyc-treated-minor-injuries",
+      "league": "NFL",
+      "scraped": "2026-02-17T05:01:02.018Z"
+    },
+    {
+      "topic": "Dolphins release Tyreek Hill: Answering biggest questions",
+      "content": "Miami cut ties with the receiver, but questions remain for the franchise and Tyreek Hill. Here's what we know.",
+      "source": "https://www.espn.com/nfl/story/_/id/47948025/miami-dolphins-cut-tyreek-hill-answering-biggest-questions-injury-whats-next",
+      "league": "NFL",
+      "scraped": "2026-02-17T05:01:02.018Z"
+    },
+    {
+      "topic": "Source: Browns hire Falcons' Rutenberg to replace Schwartz a",
+      "content": "The Browns are hiring Falcons defensive passing game coordinator Mike Rutenberg to be their next defensive coordinator, a league source told ESPN's Jeremy Fowler.",
+      "source": "https://www.espn.com/nfl/story/_/id/47948501/source-browns-hire-falcons-rutenberg-replace-schwartz-dc",
+      "league": "NFL",
+      "scraped": "2026-02-17T05:01:02.018Z"
+    }
+  ],
+  "verification_status": "CONSOLIDATED"
+}

@@ -1,6 +1,6 @@
 # Research Trends Analysis
 
-**Generated:** 2026-02-06 18:08
+**Generated:** 2026-02-11 08:57
 **Period:** Last 30 days
 
 ---
@@ -16,16 +16,17 @@
 
 
 ### Overview
-- **Total Bitcoin Research:** 3
-- **Quotes:** 1
-- **Historical Events:** 2
+- **Total Bitcoin Research:** 16
+- **Quotes:** 5
+- **Historical Events:** 11
 
 ### Most Quoted Authors
-- Andreas Antonopoulos: 1 quotes
+- Andreas Antonopoulos: 5 quotes
 
 ### Most Researched Events
-- Bitcoin Whitepaper Published: 1 times
-- Bitcoin Genesis Block: 1 times
+- Bitcoin Whitepaper Published: 5 times
+- Bitcoin Genesis Block: 5 times
+- Bitcoin Pizza Day: 1 times
 
 ---
 

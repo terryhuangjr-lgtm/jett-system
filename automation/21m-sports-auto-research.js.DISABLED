@@ -1,0 +1,543 @@
+#!/usr/bin/env node
+/**
+ * 21M Sports Automated Research
+ *
+ * Automatically searches for recent sports contracts using Brave Search
+ * Prioritizes breaking news, recent deals, notable contracts
+ * Excludes old players (Juan Soto, Shedeur Sanders, etc.)
+ * Saves verified research for content generation
+ *
+ * Usage:
+ *   node 21m-sports-auto-research.js           Run full automated research
+ *   node 21m-sports-auto-research.js --dry-run Test without saving
+ */
+
+const fs = require('fs');
+const path = require('path');
+const { searchRecentContracts } = require('./brave-search.js');
+const db = require('./db-bridge.js');
+
+const MEMORY_DIR = path.join(process.env.HOME, 'clawd', 'memory');
+const OUTPUT_FILE = path.join(MEMORY_DIR, '21m-sports-verified-research.json');
+const GUIDELINES_FILE = path.join(process.env.HOME, 'clawd', 'config', 'content-guidelines.json');
+
+// Date ranges
+const TODAY = new Date();
+const DAYS_AGO_7 = new Date(TODAY - 7 * 24 * 60 * 60 * 1000);
+const DAYS_AGO_30 = new Date(TODAY - 30 * 24 * 60 * 60 * 1000);
+const DAYS_AGO_60 = new Date(TODAY - 60 * 24 * 60 * 60 * 1000);
+
+// Exclusion list
+const EXCLUDE_PLAYERS = [
+  'Juan Soto',
+  'Shedeur Sanders',
+  'Shohei Ohtani'
+];
+
+/**
+ * Fetch BTC price for a given date from CoinGecko
+ */
+async function fetchBTCPrice(date) {
+  const https = require('https');
+
+  // Format date as DD-MM-YYYY for CoinGecko API
+  const d = new Date(date);
+  const dateStr = `${String(d.getDate()).padStart(2, '0')}-${String(d.getMonth() + 1).padStart(2, '0')}-${d.getFullYear()}`;
+
+  const url = `https://api.coingecko.com/api/v3/coins/bitcoin/history?date=${dateStr}`;
+
+  return new Promise((resolve, reject) => {
+    https.get(url, (res) => {
+      let data = '';
+      res.on('data', chunk => data += chunk);
+      res.on('end', () => {
+        try {
+          const json = JSON.parse(data);
+          if (json.market_data && json.market_data.current_price) {
+            resolve({
+              price: json.market_data.current_price.usd,
+              source: url,
+              date: dateStr
+            });
+          } else {
+            reject(new Error('BTC price not found in CoinGecko response'));
+          }
+        } catch (err) {
+          reject(err);
+        }
+      });
+    }).on('error', reject);
+  });
+}
+
+/**
+ * Verify contract on Spotrac
+ */
+function generateSpotracURL(playerName, sport) {
+  const slug = playerName.toLowerCase().replace(/\s+/g, '-');
+  const league = sport.toLowerCase();
+  return `https://www.spotrac.com/${league}/${slug}/`;
+}
+
+/**
+ * Calculate BTC equivalent
+ */
+function calculateBTCEquivalent(contractValueUSD, btcPrice) {
+  return contractValueUSD / btcPrice;
+}
+
+/**
+ * Evaluate content quality based on guidelines (ENHANCED)
+ * Returns a score from 1-10
+ *
+ * Uses same thorough evaluation as Bitcoin researcher
+ */
+function evaluateContentQuality(finding) {
+  let score = 5; // Start at baseline
+
+  const title = finding.title?.toLowerCase() || '';
+  const description = finding.description?.toLowerCase() || '';
+  const source = finding.source?.toLowerCase() || '';
+  const url = finding.url?.toLowerCase() || '';
+  const combined = title + ' ' + description;
+
+  // ===== CONTRACT VALUE (0-3 points) =====
+  if (finding.contractValue) {
+    if (finding.contractValue >= 500000000) {
+      score += 3; // $500M+ mega-deal (rare, huge attention)
+    } else if (finding.contractValue >= 200000000) {
+      score += 2; // $200M+ major deal
+    } else if (finding.contractValue >= 100000000) {
+      score += 2; // $100M+ notable
+    } else if (finding.contractValue >= 50000000) {
+      score += 1; // $50M+ decent
+    }
+  }
+
+  // ===== STORY TYPE (0-2 points) =====
+  // Financial mistakes are MORE interesting than just contracts
+  if (combined.includes('bankrupt') || combined.includes('broke') ||
+      combined.includes('lost') || combined.includes('fraud')) {
+    score += 2; // Financial disasters teach powerful lessons
+  } else if (combined.includes('endorsement') || combined.includes('nike') ||
+             combined.includes('adidas') || combined.includes('shoe deal')) {
+    score += 1; // Endorsements interesting but common
+  } else if (combined.includes('draft') || combined.includes('rookie')) {
+    score += 1; // Draft stories have good angles
+  }
+
+  // ===== TIMELINESS (0-2 points) =====
+  if (finding.priority === 'breaking') {
+    score += 2; // Breaking news (last 7 days)
+  } else if (finding.priority === 'recent') {
+    score += 1; // Recent news (last 30 days)
+  }
+
+  // ===== SOURCE CREDIBILITY (0-2 points) =====
+  const trustedSources = [
+    'espn.com',
+    'spotrac.com',
+    'theathletic.com',
+    'si.com',
+    'nba.com',
+    'nfl.com',
+    'mlb.com',
+    'bleacherreport.com',
+    'yahoo.com/sports'
+  ];
+
+  if (trustedSources.some(trusted => url.includes(trusted) || source.includes(trusted))) {
+    score += 2; // Verified, credible source
+  } else if (source.includes('.com') && !source.includes('reddit') && !source.includes('twitter')) {
+    score += 1; // Legitimate news site (but not top-tier)
+  }
+
+  // ===== TEACHING MOMENT (0-2 points) =====
+  // Does this teach a financial lesson?
+  const teachingWords = [
+    'lesson', 'mistake', 'warning', 'advice', 'advisor',
+    'investment', 'financial', 'wealth', 'savings', 'retirement',
+    'tax', 'manage', 'planning'
+  ];
+
+  if (teachingWords.some(word => combined.includes(word))) {
+    score += 1; // Has educational angle
+  }
+
+  // Clear Bitcoin angle (always present for money stories)
+  score += 1;
+
+  // ===== VIRAL POTENTIAL (0-1 point) =====
+  // Surprising, counterintuitive, or record-breaking
+  if (combined.includes('record') || combined.includes('highest') ||
+      combined.includes('largest') || combined.includes('first ever')) {
+    score += 1; // Superlatives attract attention
+  }
+
+  // ===== BONUS: Specific high-value players (0-1 point) =====
+  const starPlayers = [
+    'lebron', 'curry', 'mahomes', 'messi', 'ronaldo',
+    'ohtani', 'judge', 'trout', 'giannis', 'jokic'
+  ];
+
+  if (starPlayers.some(star => combined.includes(star))) {
+    score += 1; // Household names get more engagement
+  }
+
+  // Cap at 10
+  return Math.min(score, 10);
+}
+
+/**
+ * Determine content category based on story type (ENHANCED)
+ * Matches content-guidelines.json categories
+ */
+function determineCategory(finding) {
+  const title = finding.title?.toLowerCase() || '';
+  const description = finding.description?.toLowerCase() || '';
+  const combined = title + ' ' + description;
+  const value = finding.contractValue || 0;
+
+  // Financial mistakes (highest priority - most interesting)
+  if (combined.includes('bankrupt') || combined.includes('broke') ||
+      combined.includes('lost') || combined.includes('fraud') ||
+      combined.includes('lawsuit') || combined.includes('debt')) {
+    return 'financial_mistakes';
+  }
+
+  // Wealth preservation / smart moves
+  if (combined.includes('invest') || combined.includes('savings') ||
+      combined.includes('retirement') || combined.includes('frugal') ||
+      combined.includes('financial planning')) {
+    return 'wealth_preservation';
+  }
+
+  // Endorsements
+  if (combined.includes('endorsement') || combined.includes('nike') ||
+      combined.includes('adidas') || combined.includes('shoe deal') ||
+      combined.includes('sponsor')) {
+    return 'endorsements';
+  }
+
+  // Draft picks
+  if (combined.includes('draft') || combined.includes('rookie') ||
+      combined.includes('#1 pick') || combined.includes('first overall')) {
+    return 'draft_picks';
+  }
+
+  // Team valuations
+  if (combined.includes('franchise') || combined.includes('team sale') ||
+      combined.includes('ownership') || combined.includes('valuation')) {
+    return 'team_valuations';
+  }
+
+  // Contracts (default, categorized by size)
+  if (value >= 500000000) {
+    return 'mega_contracts'; // $500M+ (rare)
+  } else if (value >= 200000000) {
+    return 'contracts'; // $200M+
+  } else if (value >= 100000000) {
+    return 'contracts'; // $100M+
+  } else if (value >= 50000000) {
+    return 'notable_contracts'; // $50M+
+  } else {
+    return 'contracts'; // Default
+  }
+}
+
+/**
+ * Main research execution
+ */
+async function runAutomatedResearch(options = {}) {
+  const { dryRun = false } = options;
+
+  console.log('\n🏈 21M Sports Automated Research');
+  console.log('═'.repeat(70));
+  console.log(`\n📅 Date Ranges:`);
+  console.log(`   Breaking:  Last 7 days  (since ${DAYS_AGO_7.toISOString().split('T')[0]})`);
+  console.log(`   Recent:    Last 30 days (since ${DAYS_AGO_30.toISOString().split('T')[0]})`);
+  console.log(`   Notable:   Last 60 days (since ${DAYS_AGO_60.toISOString().split('T')[0]})`);
+  console.log(`   Today:     ${TODAY.toISOString().split('T')[0]}`);
+  console.log('');
+  console.log(`❌ Excluding: ${EXCLUDE_PLAYERS.join(', ')}`);
+  console.log('');
+
+  const allFindings = [];
+
+  // Priority 1: Breaking news (last 7 days)
+  console.log('\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+  console.log('🔴 PRIORITY 1: Breaking News (Last 7 Days)');
+  console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+
+  const breaking = await searchRecentContracts({
+    days: 7,
+    excludePlayers: EXCLUDE_PLAYERS
+  });
+
+  if (breaking.length > 0) {
+    console.log(`✓ Found ${breaking.length} breaking contracts`);
+    allFindings.push(...breaking.map(c => ({ ...c, priority: 'breaking' })));
+  } else {
+    console.log('ℹ️  No breaking contracts found');
+  }
+
+  // Priority 2: Recent contracts (last 30 days)
+  if (allFindings.length < 3) {
+    console.log('\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+    console.log('🟡 PRIORITY 2: Recent Contracts (Last 30 Days)');
+    console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+
+    const recent = await searchRecentContracts({
+      days: 30,
+      excludePlayers: EXCLUDE_PLAYERS
+    });
+
+    if (recent.length > 0) {
+      console.log(`✓ Found ${recent.length} recent contracts`);
+
+      // Deduplicate (don't add if already in breaking)
+      const newRecent = recent.filter(r =>
+        !allFindings.some(f => f.url === r.url)
+      );
+
+      allFindings.push(...newRecent.map(c => ({ ...c, priority: 'recent' })));
+    } else {
+      console.log('ℹ️  No recent contracts found');
+    }
+  }
+
+  // Priority 3: Notable contracts (last 60 days)
+  if (allFindings.length < 3) {
+    console.log('\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+    console.log('🟢 PRIORITY 3: Notable Contracts (Last 60 Days)');
+    console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+
+    const notable = await searchRecentContracts({
+      days: 60,
+      excludePlayers: EXCLUDE_PLAYERS
+    });
+
+    if (notable.length > 0) {
+      console.log(`✓ Found ${notable.length} notable contracts`);
+
+      // Deduplicate
+      const newNotable = notable.filter(n =>
+        !allFindings.some(f => f.url === n.url)
+      );
+
+      allFindings.push(...newNotable.map(c => ({ ...c, priority: 'notable' })));
+    } else {
+      console.log('ℹ️  No notable contracts found');
+    }
+  }
+
+  // Select best contract
+  console.log('\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+  console.log('🎯 Selecting Best Contract');
+  console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+
+  if (allFindings.length === 0) {
+    console.log('\n❌ No contracts found in any priority level');
+    console.log('   Recommendation: Fallback to historic mega-deals');
+    console.log('   (Juan Soto $765M, Patrick Mahomes $450M, etc.)');
+    console.log('');
+    return null;
+  }
+
+  // Sort by priority, then by contract value
+  const priorityOrder = { breaking: 1, recent: 2, notable: 3 };
+  allFindings.sort((a, b) => {
+    if (a.priority !== b.priority) {
+      return priorityOrder[a.priority] - priorityOrder[b.priority];
+    }
+    return (b.contractValue || 0) - (a.contractValue || 0);
+  });
+
+  const selected = allFindings[0];
+
+  console.log(`\n✅ Selected: ${selected.title}`);
+  console.log(`   Priority: ${selected.priority.toUpperCase()}`);
+  console.log(`   Player: ${selected.playerName || 'Unknown'}`);
+  console.log(`   Team: ${selected.team || 'Unknown'}`);
+  if (selected.contractValue) {
+    console.log(`   Value: $${(selected.contractValue / 1e6).toFixed(1)}M`);
+  }
+  console.log(`   Source: ${selected.source}`);
+  console.log(`   URL: ${selected.url}`);
+
+  // Evaluate content quality
+  const qualityScore = evaluateContentQuality(selected);
+  console.log(`   Quality Score: ${qualityScore}/10`);
+
+  // Fetch BTC price (estimate today's price for recent contracts)
+  console.log('\n📊 Fetching BTC Price Data...');
+
+  let btcPrice;
+  try {
+    const btcData = await fetchBTCPrice(TODAY);
+    btcPrice = btcData.price;
+    console.log(`✓ BTC Price (${btcData.date}): $${btcPrice.toLocaleString()}`);
+  } catch (err) {
+    console.log(`⚠️  Could not fetch BTC price: ${err.message}`);
+    btcPrice = null;
+  }
+
+  // Build research file
+  const researchData = {
+    type: '21m_sports_research',
+    timestamp: new Date().toISOString(),
+    status: 'AUTOMATED',
+    date_range: {
+      breaking_news_cutoff: DAYS_AGO_7.toISOString().split('T')[0],
+      recent_cutoff: DAYS_AGO_30.toISOString().split('T')[0],
+      notable_cutoff: DAYS_AGO_60.toISOString().split('T')[0]
+    },
+    excluded_players: EXCLUDE_PLAYERS,
+    findings: [
+      {
+        player: selected.playerName || 'Unknown',
+        team: selected.team || 'Unknown',
+        sport: 'Unknown', // Would need better detection
+        contract_value: selected.contractValue ? `$${(selected.contractValue / 1e6).toFixed(0)}M` : 'Unknown',
+        contract_value_usd: selected.contractValue || 0,
+        signing_date: TODAY.toISOString().split('T')[0], // Estimate
+        source_type: 'Web Search',
+        sources: [
+          selected.url,
+          selected.playerName ? generateSpotracURL(selected.playerName, 'nfl') : null
+        ].filter(Boolean),
+        btc_equivalent: btcPrice && selected.contractValue
+          ? `${calculateBTCEquivalent(selected.contractValue, btcPrice).toFixed(0)} BTC`
+          : 'Unknown',
+        notes: `Found via automated research. Priority: ${selected.priority}. Original title: "${selected.title}"`
+      }
+    ],
+    btc_prices: btcPrice ? {
+      [TODAY.toISOString().split('T')[0]]: {
+        price: btcPrice,
+        source: 'https://api.coingecko.com/api/v3/coins/bitcoin/history'
+      }
+    } : {},
+    verification_status: 'NEEDS_MANUAL_REVIEW',
+    all_candidates: allFindings.slice(0, 10).map(f => ({
+      title: f.title,
+      url: f.url,
+      priority: f.priority,
+      player: f.playerName,
+      value: f.contractValue
+    }))
+  };
+
+  // Save research
+  if (!dryRun) {
+    console.log('\n💾 Saving Research Data...');
+
+    if (!fs.existsSync(MEMORY_DIR)) {
+      fs.mkdirSync(MEMORY_DIR, { recursive: true });
+    }
+
+    // Save to JSON (backward compatibility)
+    fs.writeFileSync(OUTPUT_FILE, JSON.stringify(researchData, null, 2));
+    console.log(`✓ Saved to: ${OUTPUT_FILE}`);
+
+    // Add to knowledge database (if quality score >= 7)
+    if (qualityScore >= 7) {
+      console.log('\n📊 Adding to Knowledge Database...');
+
+      const category = determineCategory(selected);
+      const btcAngle = btcPrice && selected.contractValue
+        ? `That's ${calculateBTCEquivalent(selected.contractValue, btcPrice).toFixed(0)} BTC at today's price`
+        : 'Bitcoin value comparison';
+
+      const topic = `${selected.playerName || 'Athlete'} ${selected.contractValue ? '$' + (selected.contractValue / 1e6).toFixed(0) + 'M' : ''} contract`;
+
+      const contentDetails = `${selected.title}\n\nPlayer: ${selected.playerName || 'Unknown'}\nTeam: ${selected.team || 'Unknown'}\nValue: ${selected.contractValue ? '$' + (selected.contractValue / 1e6).toFixed(0) + 'M' : 'Unknown'}\nPriority: ${selected.priority}\n\nBTC Angle: ${btcAngle}\n\nSource: ${selected.url}`;
+
+      try {
+        const contentId = db.addContent(
+          topic,
+          contentDetails,
+          category,
+          selected.url,
+          btcAngle,
+          qualityScore
+        );
+
+        if (contentId) {
+          console.log(`✓ Added to database (Content ID: ${contentId}, Score: ${qualityScore}/10)`);
+
+          // Also add athlete to database
+          if (selected.playerName && selected.contractValue) {
+            const athleteId = db.addAthlete(
+              selected.playerName,
+              selected.sport || 'Unknown',
+              selected.team || '',
+              selected.contractValue,
+              new Date().getFullYear(),
+              'Contract',
+              `${selected.priority} priority, found via automated research`,
+              selected.url
+            );
+
+            if (athleteId) {
+              console.log(`✓ Added athlete to database (Athlete ID: ${athleteId})`);
+            }
+          }
+        } else {
+          console.log('⚠️  Database add failed (non-critical, continuing...)');
+        }
+      } catch (err) {
+        console.log(`⚠️  Database error: ${err.message} (non-critical, continuing...)`);
+      }
+    } else {
+      console.log(`\n⏭️  Skipping database save (quality score ${qualityScore} < 7)`);
+    }
+  } else {
+    console.log('\n🔍 DRY RUN - Not saving (preview only)');
+  }
+
+  console.log('\n═'.repeat(70));
+  console.log('✅ AUTOMATED RESEARCH COMPLETE');
+  console.log('');
+  console.log('⚠️  IMPORTANT: This is automated research');
+  console.log('   - Manual review required');
+  console.log('   - Verify contract details on Spotrac');
+  console.log('   - Verify BTC price for actual signing date');
+  console.log('   - Run validator before content generation');
+  console.log('');
+  console.log('📝 Next Steps:');
+  console.log('   1. Review research file');
+  console.log('   2. Verify data accuracy');
+  console.log('   3. Run: node ~/clawd/automation/21m-sports-validator.js');
+  console.log('   4. Generate: node ~/clawd/automation/21m-sports-verified-generator-v2.js');
+  console.log('');
+
+  return researchData;
+}
+
+/**
+ * CLI Entry Point
+ */
+async function main() {
+  const dryRun = process.argv.includes('--dry-run');
+
+  try {
+    await runAutomatedResearch({ dryRun });
+    return 0;
+  } catch (error) {
+    console.error('\n❌ Error:', error.message);
+    console.error(error.stack);
+    return 1;
+  }
+}
+
+if (require.main === module) {
+  main()
+    .then(code => process.exit(code))
+    .catch(error => {
+      console.error('Fatal error:', error);
+      process.exit(1);
+    });
+}
+
+module.exports = { runAutomatedResearch };

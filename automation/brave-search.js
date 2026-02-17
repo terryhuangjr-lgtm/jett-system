@@ -8,8 +8,9 @@
 
 const https = require('https');
 const zlib = require('zlib');
+const { getSecret } = require('../lib/secrets-manager');
 
-const BRAVE_API_KEY = 'BSA42Y7KAuT2JbIsWjI1CUkm57PTxfi';
+const BRAVE_API_KEY = getSecret('BRAVE_API_KEY');
 const BRAVE_SEARCH_API = 'https://api.search.brave.com/res/v1/web/search';
 
 /**
@@ -99,19 +100,30 @@ function extractSportsContracts(searchResults) {
   for (const result of searchResults.web.results) {
     const { title, url, description } = result;
 
-    // Filter out prediction/projection articles (not actual contracts)
-    const predictionIndicators = [
-      /predict/i, /projection/i, /could sign/i, /might sign/i,
-      /potential/i, /expected to/i, /likely to/i, /offseason outlook/i,
-      /extension predictions/i, /contract predictions/i, /may sign/i
+    // Filter out prediction/projection/speculation articles (not actual contracts)
+    const speculationIndicators = [
+      /predict/i, /projection/i, /could sign/i, /might sign/i, /may sign/i,
+      /potential/i, /expected to/i, /likely to/i, /should sign/i, /will sign/i,
+      /offseason outlook/i, /extension predictions/i, /contract predictions/i,
+      /situations to monitor/i, /to watch/i, /rumors/i, /speculation/i,
+      /candidates for/i, /in line for/i, /next up for/i, /due for/i,
+      /contract year/i, /free agent/i, /upcoming/i, /preview/i
     ];
 
-    const isPrediction = predictionIndicators.some(pattern =>
+    const isSpeculation = speculationIndicators.some(pattern =>
       pattern.test(title) || pattern.test(description)
     );
 
-    if (isPrediction) {
-      continue; // Skip prediction articles - we want actual signed contracts only
+    if (isSpeculation) {
+      continue; // Skip speculation - we ONLY want confirmed signed contracts
+    }
+
+    // MUST contain confirmation keywords
+    const confirmationRequired = /signed|agrees to|finalizes|lands|inks|officially|announced/i;
+    const hasConfirmation = confirmationRequired.test(title) || confirmationRequired.test(description);
+
+    if (!hasConfirmation) {
+      continue; // Skip - no confirmation language
     }
 
     // Look for contract indicators
@@ -224,12 +236,12 @@ async function searchRecentContracts(options = {}) {
   else if (days <= 30) freshness = 'pm';
 
   // Build queries for different content types
-  // Focus on ACTUAL SIGNINGS not predictions
-  const sportFilter = sport ? sport : 'MLB NBA NFL NCAA';
+  // Focus on ACTUAL SIGNINGS not predictions - use Spotrac and official sources
+  const sportFilter = sport ? sport : 'MLB NBA NFL';
   const queries = [
-    `${sportFilter} "signed" OR "agrees to" contract 2025 2026`,  // Actual signings
-    `${sportFilter} "finalizes" OR "lands" mega deal 2025 2026`,  // Finalized deals
-    `college football basketball NIL "signing" 2025 2026`,  // NIL actual signings
+    `site:spotrac.com ${sportFilter} contract extension signed 2025 2026`,  // Spotrac only
+    `site:espn.com ${sportFilter} "has signed" OR "agrees to" contract 2025 2026`,  // ESPN official
+    `${sportFilter} "officially signed" OR "contract finalized" 2025 2026`,  // Official confirmations
   ];
 
   console.log(`   Searching ${queries.length} query types...`);

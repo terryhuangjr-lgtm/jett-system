@@ -2,41 +2,51 @@
 /**
  * eBay Scan Deployment Script
  * Reads eBay scan JSON files and posts formatted results to #levelupcards
+ * Uses task-manager/ebay-scans-config.json as single source of truth
  */
 
 const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
 
-const SLACK_CHANNEL = 'C0ACEEDAC68'; // #levelupcards
+const SLACK_CHANNEL = '#levelupcards';
 
-// Map of scan files to scan names
-const SCAN_FILES = {
-  '/tmp/mj-finest-scan.json': 'MJ Topps Finest 1993-1999 (Monday)',
-  '/tmp/griffey-refractors-scan.json': 'Griffey Jr Chrome/Finest Refractors (Tuesday)',
-  '/tmp/griffey-1989-scan.json': '1989 Griffey Jr Rookies (Wednesday)',
-  '/tmp/mj-upperdeck-scan.json': 'MJ Upper Deck Serial #\'d 1996-2000 (Thursday)',
-  '/tmp/topps-refractors-multi-scan.json': 'Multi-Search: Kobe/Duncan/Dirk/Wade (Friday)',
-  '/tmp/mj-base-scan.json': 'MJ Base 1994-1999 (Saturday)',
-  '/tmp/cam-ward-scan.json': '2025 Cam Ward (Sunday)'
-};
+// Load config from task manager (single source of truth)
+const CONFIG_PATH = path.join(__dirname, '..', 'task-manager', 'ebay-scans-config.json');
 
-// Get today's scan file
-function getTodayScanFile() {
-  const dayOfWeek = new Date().getDay(); // 0 = Sunday, 1 = Monday, etc.
-  const files = Object.keys(SCAN_FILES);
+function loadConfig() {
+  try {
+    if (fs.existsSync(CONFIG_PATH)) {
+      return JSON.parse(fs.readFileSync(CONFIG_PATH, 'utf8'));
+    }
+  } catch (e) {
+    console.warn('Could not load config:', e.message);
+  }
+  return null;
+}
 
+function getTodayScanConfig() {
+  const dayNames = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+  const today = dayNames[new Date().getDay()];
+  
+  const config = loadConfig();
+  if (config && config.scans && config.scans[today]) {
+    return config.scans[today];
+  }
+  return null;
+}
+
+function getScanFileFromDay() {
   const dayMap = {
-    1: files[0], // Monday
-    2: files[1], // Tuesday
-    3: files[2], // Wednesday
-    4: files[3], // Thursday
-    5: files[4], // Friday
-    6: files[5], // Saturday
-    0: files[6]  // Sunday
+    1: '/tmp/mj-finest-scan.json',      // Monday
+    2: '/tmp/griffey-refractors-scan.json', // Tuesday
+    3: '/tmp/kobe-refractors-scan.json',    // Wednesday
+    4: '/tmp/mj-upperdeck-scan.json',       // Thursday
+    5: '/tmp/topps-refractors-multi-scan.json', // Friday
+    6: '/tmp/mj-base-scan.json',           // Saturday
+    0: '/tmp/cam-ward-scan.json'           // Sunday
   };
-
-  return dayMap[dayOfWeek];
+  return dayMap[new Date().getDay()];
 }
 
 // Format results for Slack
@@ -49,7 +59,7 @@ function formatResults(data, scanName) {
   }
 
   const { results, timestamp } = data;
-  const topResults = results.slice(0, 10);
+  const topResults = results.slice(0, 20);
 
   let message = `📊 *eBay Scan: ${scanName}*\n`;
   message += `🔍 Found ${results.length} results (showing top ${topResults.length})\n`;
@@ -108,21 +118,25 @@ function postToSlack(message) {
     // Escape single quotes for shell
     const escapedMessage = message.replace(/'/g, "'\\''");
 
-    // Use clawdbot to send message
-    const cmd = `clawdbot message send --channel slack --target "${SLACK_CHANNEL}" --message '${escapedMessage}' --json`;
+    // Use correct clawdbot message syntax
+    const cmd = `/home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot message send --channel slack --target "${SLACK_CHANNEL}" --message '${escapedMessage}' --json`;
 
     const output = execSync(cmd, {
       encoding: 'utf8',
-      timeout: 30000
+      timeout: 30000,
+      env: {
+        ...process.env,
+        PATH: `/home/clawd/.nvm/versions/node/v22.22.0/bin:${process.env.PATH}`
+      }
     });
 
     const result = JSON.parse(output.trim());
 
-    if (result.payload && result.payload.ok) {
+    if (result && (result.ok || (result.payload && result.payload.ok))) {
       console.log('✓ Posted to #levelupcards');
       return true;
     } else {
-      console.error('✗ Failed to post to Slack:', result.error || 'Unknown error');
+      console.error('✗ Failed to post to Slack:', result.error || JSON.stringify(result));
       return false;
     }
   } catch (error) {
@@ -135,12 +149,23 @@ function postToSlack(message) {
 try {
   console.log('📤 Deploying eBay scan results to Slack...');
 
+  // Get today's scan config from task manager
+  const todayConfig = getTodayScanConfig();
+  
   // Determine which scan to deploy
-  const scanFile = process.argv[2] || getTodayScanFile();
-  const scanName = SCAN_FILES[scanFile] || 'eBay Scan';
+  const scanFile = process.argv[2] || getScanFileFromDay();
+  
+  // Get scan name from config, fallback to generic
+  let scanName = 'eBay Scan';
+  if (todayConfig && todayConfig.name) {
+    scanName = todayConfig.name;
+  } else if (todayConfig) {
+    scanName = `eBay Scan: ${todayConfig.search_terms ? todayConfig.search_terms[0] : 'Unknown'}`;
+  }
 
   console.log(`  Scan file: ${scanFile}`);
   console.log(`  Scan name: ${scanName}`);
+  console.log(`  Source: task-manager/ebay-scans-config.json`);
 
   // Check if file exists
   if (!fs.existsSync(scanFile)) {

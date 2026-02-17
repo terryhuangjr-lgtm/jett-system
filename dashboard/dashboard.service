@@ -1,0 +1,19 @@
+[Unit]
+Description=API Usage Dashboard Server
+After=network.target
+
+[Service]
+Type=simple
+User=clawd
+WorkingDirectory=/home/clawd/clawd/dashboard
+ExecStart=/usr/bin/python3 /home/clawd/clawd/dashboard/server.py
+Restart=always
+RestartSec=10
+StandardOutput=append:/home/clawd/clawd/dashboard/dashboard.log
+StandardError=append:/home/clawd/clawd/dashboard/dashboard.log
+
+# Environment variables if needed
+Environment="PATH=/usr/bin:/usr/local/bin"
+
+[Install]
+WantedBy=multi-user.target

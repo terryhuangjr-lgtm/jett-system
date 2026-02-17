@@ -7,7 +7,9 @@
 const fs = require('fs');
 const { execSync } = require('child_process');
 const path = require('path');
+const https = require('https');
 const db = require(path.join(__dirname, 'db-bridge.js'));
+const { getSecret } = require(path.join(__dirname, '..', 'lib', 'secrets-manager.js'));
 
 // Can pass multiple potential filenames - will use the first that exists
 const POTENTIAL_FILES = process.argv.slice(2).filter(arg => !arg.startsWith('--'));
@@ -19,6 +21,7 @@ const AUDIT_LOG = '/home/clawd/clawd/memory/21m-sports-deployments.log';
 // Check for --dry-run flag
 const DRY_RUN = process.argv.includes('--dry-run');
 
+(async () => {
 try {
   console.log('📨 Deploying 21M Sports tweet to #21msports...');
   if (DRY_RUN) {
@@ -170,29 +173,61 @@ try {
     console.warn('⚠ Warning: Could not write to audit log:', err.message);
   }
 
+  // Update usage tracking (only after real deployment)
+  if (!DRY_RUN) {
+    try {
+      const { execSync } = require('child_process');
+      execSync(`node "${path.join(__dirname, 'update-usage.js')}" "${TWEET_FILE}"`, { encoding: 'utf8' });
+    } catch (e) {
+      console.warn('⚠ Could not update usage tracking:', e.message);
+    }
+  }
+
+  // Note: Usage tracking is now handled by 21m-generator.js --mark-used
+  // Content is marked as used immediately after generation
+
   if (DRY_RUN) {
     console.log('✅ DRY RUN COMPLETE - Verification passed, would deploy to Slack\n');
     process.exit(0);
   }
 
-  // Escape single quotes for shell
-  const escapedMessage = message.replace(/'/g, "'\\''");
+  // Post to Slack channel using Slack Web API directly
+  const SLACK_BOT_TOKEN = getSecret('SLACK_BOT_TOKEN');
+  const channelId = 'C0ABK99L0B1'; // #21msports channel ID
 
-  // Post to Slack channel using clawdbot
-  const cmd = `/home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot message send --channel slack --target "${SLACK_CHANNEL}" --message '${escapedMessage}' --json`;
-
-  const output = execSync(cmd, {
-    encoding: 'utf8',
-    timeout: 30000,
-    env: {
-      ...process.env,
-      PATH: `/home/clawd/.nvm/versions/node/v22.22.0/bin:${process.env.PATH}`
-    }
+  const postData = JSON.stringify({
+    channel: channelId,
+    text: message
   });
 
-  const result = JSON.parse(output.trim());
+  const result = await new Promise((resolve, reject) => {
+    const req = https.request({
+      hostname: 'slack.com',
+      path: '/api/chat.postMessage',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${SLACK_BOT_TOKEN}`,
+        'Content-Length': Buffer.byteLength(postData)
+      }
+    }, (res) => {
+      let data = '';
+      res.on('data', chunk => data += chunk);
+      res.on('end', () => {
+        try {
+          resolve(JSON.parse(data));
+        } catch (e) {
+          reject(new Error(`Failed to parse Slack response: ${e.message}`));
+        }
+      });
+    });
 
-  if (result.payload && result.payload.ok) {
+    req.on('error', reject);
+    req.write(postData);
+    req.end();
+  });
+
+  if (result.ok) {
     console.log('✓ Tweet options posted to #21msports');
 
     // Mark content as published in database (so it won't be reused)
@@ -220,3 +255,7 @@ try {
   console.error('Error deploying tweet:', error.message);
   process.exit(1);
 }
+})().catch(err => {
+  console.error('Fatal error:', err.message);
+  process.exit(1);
+});

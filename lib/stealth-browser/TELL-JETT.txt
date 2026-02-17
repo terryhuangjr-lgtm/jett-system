@@ -1,0 +1,47 @@
+=================================================================
+STEALTH BROWSER TOOL - READY TO USE
+=================================================================
+
+Hey Jett! You now have a powerful anti-detection web scraping tool installed.
+
+QUICK START:
+------------
+All commands start with: node /home/clawd/clawd/lib/stealth-browser/cli.js
+
+Basic scrape:
+  node /home/clawd/clawd/lib/stealth-browser/cli.js scrape --url <URL> --output result.json
+
+Extract specific data:
+  node /home/clawd/clawd/lib/stealth-browser/cli.js scrape --url <URL> --selector ".class" --multiple true
+
+Take screenshot:
+  node /home/clawd/clawd/lib/stealth-browser/cli.js screenshot --url <URL> --output page.png
+
+WHAT THIS SOLVES:
+-----------------
+✓ No more bot detection/blocking
+✓ Bypass Cloudflare, CAPTCHAs
+✓ 97% token reduction (runs locally!)
+✓ Fast, reliable scraping
+✓ Session persistence (stay logged in)
+
+NEW CAPABILITIES:
+-----------------
+• Autonomous overnight research tasks
+• eBay/marketplace monitoring
+• Competitor price tracking
+• Content scraping and aggregation
+• Web data collection without APIs
+• Automated screenshots and reporting
+
+GUIDES:
+-------
+Full instructions: /home/clawd/clawd/lib/stealth-browser/JETT-GUIDE.md
+Capabilities: /home/clawd/clawd/lib/stealth-browser/CAPABILITIES.md
+Documentation: /home/clawd/clawd/lib/stealth-browser/README.md
+
+TRY IT NOW:
+-----------
+node /home/clawd/clawd/lib/stealth-browser/example-ebay.js "vintage jersey"
+
+=================================================================

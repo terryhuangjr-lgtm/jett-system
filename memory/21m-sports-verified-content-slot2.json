@@ -1,0 +1,27 @@
+{
+  "type": "21m_sports_tweets",
+  "timestamp": "2026-02-10T16:00:31.248Z",
+  "tweets": [
+    "Alex Rodriguez signed for $252 million in 2000. Bitcoin didn't exist yet. Today that same contract would need to be $620 million just to have equal purchasing power. The dollar lost 60% in 25 years. Bitcoin's supply? Still 21 million.",
+    "2000: A-Rod gets $252M. Could've bought infinite Bitcoin (BTC was $0).\n2025: That contract needs $620M to match the same buying power.\nThe fiat printer never stops. The 21 million cap never changes.",
+    "$252 million became $620 million without anyone working harder or creating more value. That's not growth. That's theft. Athletes negotiate bigger contracts just to stand still while the money supply expands. 21 million Bitcoin. Fixed forever."
+  ],
+  "sources": {
+    "knowledge": "Database",
+    "btc_price": "https://api.coinbase.com/v2/prices/BTC-USD/spot",
+    "database_id": 4,
+    "generated_by": "claude-api"
+  },
+  "metadata": {
+    "topic": "Alex Rodriguez 52M Contract (2000) vs Inflation",
+    "category": "21m-sports",
+    "btc_price_now": "$69,222",
+    "verified": true,
+    "char_counts": [
+      234,
+      198,
+      242
+    ],
+    "generation_method": "claude-sonnet-4-5"
+  }
+}

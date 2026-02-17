@@ -1,0 +1,17 @@
+{
+  "budgets": {
+    "daily": 3.50,
+    "weekly": 25.00,
+    "monthly": 100.00
+  },
+  "alerts": {
+    "enabled": true,
+    "slackChannel": "Terry",
+    "thresholds": [0.8, 0.9, 1.0]
+  },
+  "refresh": {
+    "autoRefresh": true,
+    "intervalMinutes": 15
+  },
+  "notes": "Adjust budgets as needed. Alerts will go to Terry's Slack DM by default."
+}

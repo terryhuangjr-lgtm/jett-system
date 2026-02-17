@@ -454,6 +454,332 @@ select option {
   background: rgba(255, 255, 255, 0.3);
 }
 
+/* Calendar View */
+.calendar-view {
+  margin-bottom: 32px;
+}
+
+.calendar-view h2 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #ffffff;
+  letter-spacing: -0.3px;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 12px;
+}
+
+.calendar-day {
+  background: rgba(28, 28, 30, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 16px;
+  min-height: 200px;
+  transition: all 0.3s ease;
+}
+
+.calendar-day.today {
+  border-color: #0a84ff;
+  box-shadow: 0 0 20px rgba(10, 132, 255, 0.2);
+}
+
+.calendar-day.today .day-header {
+  color: #0a84ff;
+}
+
+.day-header {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.day-tasks {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.empty-day {
+  color: rgba(255, 255, 255, 0.2);
+  font-size: 13px;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.day-task {
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.day-task:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.1);
+}
+
+.task-time {
+  font-size: 11px;
+  font-weight: 500;
+  opacity: 0.7;
+}
+
+.task-name {
+  font-size: 12px;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+/* Task Color Coding */
+.day-task.podcast,
+.task-card.podcast,
+.next-task.podcast {
+  background: rgba(255, 149, 0, 0.2);
+  border: 1px solid rgba(255, 149, 0, 0.3);
+}
+
+.day-task.sports,
+.task-card.sports,
+.next-task.sports {
+  background: rgba(10, 132, 255, 0.2);
+  border: 1px solid rgba(10, 132, 255, 0.3);
+}
+
+.day-task.sports-betting,
+.task-card.sports-betting,
+.next-task.sports-betting {
+  background: rgba(90, 200, 250, 0.2);
+  border: 1px solid rgba(90, 200, 250, 0.3);
+}
+
+.day-task.family,
+.task-card.family,
+.next-task.family {
+  background: rgba(255, 204, 0, 0.2);
+  border: 1px solid rgba(255, 204, 0, 0.3);
+}
+
+.day-task.podcast,
+.task-card.podcast,
+.next-task.podcast {
+  background: rgba(255, 149, 0, 0.2);
+  border: 1px solid rgba(255, 149, 0, 0.3);
+}
+
+.day-task.bitcoin,
+.task-card.bitcoin,
+.next-task.bitcoin {
+  background: rgba(50, 215, 75, 0.2);
+  border: 1px solid rgba(50, 215, 75, 0.3);
+}
+
+.day-task.ebay,
+.task-card.ebay,
+.next-task.ebay {
+  background: rgba(175, 82, 222, 0.2);
+  border: 1px solid rgba(175, 82, 222, 0.3);
+}
+
+.day-task.health,
+.task-card.health,
+.next-task.health {
+  background: rgba(255, 69, 58, 0.2);
+  border: 1px solid rgba(255, 69, 58, 0.3);
+}
+
+.day-task.family,
+.task-card.family,
+.next-task.family {
+  background: rgba(255, 204, 0, 0.2);
+  border: 1px solid rgba(255, 204, 0, 0.3);
+}
+
+.day-task.default,
+.task-card.default,
+.next-task.default {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Always Running Section */
+.always-running {
+  margin-bottom: 32px;
+}
+
+.always-running h2 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #ffffff;
+  letter-spacing: -0.3px;
+}
+
+.running-tasks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 12px;
+}
+
+.task-card.running {
+  background: rgba(50, 215, 75, 0.1);
+  border: 1px solid rgba(50, 215, 75, 0.2);
+}
+
+.task-card.running .task-name {
+  color: #32d74b;
+}
+
+/* Next Up Section */
+.next-up {
+  margin-bottom: 32px;
+}
+
+.next-up h2 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #ffffff;
+  letter-spacing: -0.3px;
+}
+
+.next-up-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.next-task {
+  padding: 12px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.next-task:hover {
+  transform: translateX(4px);
+}
+
+/* Header */
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.header-links {
+  display: flex;
+  gap: 12px;
+}
+
+.ebay-link {
+  padding: 8px 16px;
+  background: rgba(175, 82, 222, 0.2);
+  border: 1px solid rgba(175, 82, 222, 0.3);
+  border-radius: 8px;
+  color: #bf52de;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.ebay-link:hover {
+  background: rgba(175, 82, 222, 0.3);
+  transform: translateY(-1px);
+}
+
+.health-link {
+  padding: 8px 16px;
+  background: rgba(255, 69, 58, 0.2);
+  border: 1px solid rgba(255, 69, 58, 0.3);
+  border-radius: 8px;
+  color: #ff453a;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.health-link:hover {
+  background: rgba(255, 69, 58, 0.3);
+  transform: translateY(-1px);
+}
+
+.health-status {
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.health-status.healthy {
+  background: rgba(50, 215, 75, 0.2);
+  color: #32d74b;
+  border: 1px solid rgba(50, 215, 75, 0.3);
+}
+
+.health-status.warning {
+  background: rgba(255, 159, 10, 0.2);
+  color: #ff9f0a;
+  border: 1px solid rgba(255, 159, 10, 0.3);
+}
+
+.health-status.error {
+  background: rgba(255, 69, 58, 0.2);
+  color: #ff453a;
+  border: 1px solid rgba(255, 69, 58, 0.3);
+}
+
+.subtitle {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 15px;
+}
+
+.main-nav {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.main-nav .nav-link {
+  padding: 8px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.6);
+  transition: all 0.2s;
+}
+
+.main-nav .nav-link:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+
+.main-nav .nav-link.active {
+  background: rgba(10, 132, 255, 0.2);
+  color: #0a84ff;
+  border: 1px solid rgba(10, 132, 255, 0.3);
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   body {
@@ -495,5 +821,13 @@ select option {
     width: 95%;
     margin: 10% auto;
     padding: 24px;
+  }
+
+  .calendar-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .calendar-day {
+    min-height: auto;
   }
 }

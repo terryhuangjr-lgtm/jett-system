@@ -1,0 +1,46 @@
+{
+  "generated_at": "2026-02-06T03:47:47.039Z",
+  "verification_status": "VERIFIED_SOURCES_ONLY",
+  "input_data": {
+    "content_type": "book_excerpt",
+    "content": "Hard money is money that it is costly to produce relative to existing supply.",
+    "context": "Bitcoin's 21M cap makes this truth undeniable",
+    "author": "Saifedean Ammous",
+    "date": null,
+    "fiat_contrast": null,
+    "knowledge_source": "https://saifedean.com/thebitcoinstandard",
+    "btc_price_source": "https://www.coingecko.com/en/coins/bitcoin"
+  },
+  "tweet_options": [
+    {
+      "option": 1,
+      "content": "\"Hard money is money that it is costly to produce relative to existing supply.\"\n\nBitcoin's 21M cap makes this truth undeniable\n\nBitcoin's 21M cap makes this truth undeniable.\n\nRead the books. Understand the revolution.",
+      "pillar": "bitcoin_books",
+      "requires_manual_review": false,
+      "sources": {
+        "knowledge": "https://saifedean.com/thebitcoinstandard",
+        "btc_price": "https://www.coingecko.com/en/coins/bitcoin"
+      }
+    },
+    {
+      "option": 2,
+      "content": "The books explain what governments won't teach:\n\n\"Hard money is money that it is costly to produce relative to existing supply.\"\n\nThis is why Bitcoin's 21M supply matters.",
+      "pillar": "bitcoin_education",
+      "requires_manual_review": false,
+      "sources": {
+        "knowledge": "https://saifedean.com/thebitcoinstandard",
+        "btc_price": "https://www.coingecko.com/en/coins/bitcoin"
+      }
+    },
+    {
+      "option": 3,
+      "content": "Saifedean Ammous: \"Hard money is money that it is costly to produce relative to existing supply.\"\n\nSound money principles, proven by Bitcoin's fixed supply.\n\n1 BTC = 1 BTC. Always.",
+      "pillar": "sound_money",
+      "requires_manual_review": false,
+      "sources": {
+        "knowledge": "https://saifedean.com/thebitcoinstandard",
+        "btc_price": "https://www.coingecko.com/en/coins/bitcoin"
+      }
+    }
+  ]
+}
