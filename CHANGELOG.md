@@ -4,6 +4,16 @@ All notable changes to Jett will be documented here.
 
 ## [Unreleased]
 
+### Fixed
+- Rebuilt AGENTS.md - removed all clawd-slack references
+- Converted ebay-scanner from broken submodule to regular directory
+- Added binary files to .gitignore (jpg, png, pdf, ebay-raw.json)
+
+### Changed
+- Archived 98 historical docs to docs/archive/
+- Moved test files to tests/ directory
+- Moved scripts to lib/ and scripts/ directories
+
 ### In Progress
 - Stabilizing system for 7 consecutive days
 - Monitoring health checks and alerts
