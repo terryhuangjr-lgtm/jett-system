@@ -1,0 +1,1480 @@
+{
+  "timestamp": "2026-02-02T15:50:02.029Z",
+  "scanDuration": "10.52s",
+  "summary": {
+    "totalFound": 200,
+    "afterPriceFilter": 10,
+    "afterScamCheck": 10,
+    "afterPhotoCheck": 10,
+    "analyzed": 10,
+    "top10": 10
+  },
+  "top10Deals": [
+    {
+      "itemId": "v1|358165331025|0",
+      "title": "1999-00 Upper Deck MVP - MJ Exclusives Michael Jordan Near Set 29/30 179-207 HOF",
+      "currentPrice": 79.99,
+      "shippingCost": 6,
+      "totalPrice": 85.99,
+      "condition": "Used",
+      "imageUrl": "https://i.ebayimg.com/images/g/fiYAAeSw2Mppc8ov/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/358165331025?_skw=michael+jordan&hash=item5364513c51:g:fiYAAeSw2Mppc8ov",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "fanzone_terry",
+      "sellerFeedbackScore": 29126,
+      "sellerPositivePercent": "99.9",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Lots",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 7.5,
+        "rating": "🔥 VERY GOOD",
+        "breakdown": [
+          "🎯 Numbered /30 (+1.5 points)",
+          "⭐ Star player: michael jordan (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Very good opportunity - worth serious consideration"
+      }
+    },
+    {
+      "itemId": "v1|227197516394|0",
+      "title": "1995-96 Upper Deck - The Rookie Years Michael Jordan #137 Gold Electric Court",
+      "currentPrice": 180,
+      "shippingCost": 0,
+      "totalPrice": 180,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/XTEAAeSwRytpfupF/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/227197516394?_skw=michael+jordan&hash=item34e606fa6a:g:XTEAAeSwRytpfupF&amdata=enc%3AAQALAAAA8DZq0hFgvSYlgrFkWCFZ3z3yA2WaZBcmGhzFZUaS86EPouebLrD800tWi7g4W2YLSwfDWmSnzPZljpjuB6w%2Ftl4uA4nPJkejXnmAIVml4w%2BIEVMYaKEAqDyqsrjDhGJZc028J5FkAUI1tEO9ZKRsPWJ20FyZoNvhxaVDevyTJaCs2ZhWcutQhbHwcST4gvCbu7L2PnaazRibXAkfFL8bYFD%2FZhx1yKkl9ZUjccnxA8Hx3aDNbqHy6EHUNR3DBhI1OG43OjzD3JtwmLYMAhAemy%2BL%2F4giwJ8XkiNqvMtbfVhabKN5qBsQChXVWI8ueJlk3Q%3D%3D",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "cardvault_co",
+      "sellerFeedbackScore": 73,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "⭐ Star player: michael jordan (+0.5 points)",
+          "🆕 Rookie card (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|277514595629|0",
+      "title": "1994-95 Upper Deck Collector's Choice Michael Jordan Gold Signature #402 Bulls",
+      "currentPrice": 29.81,
+      "shippingCost": 0,
+      "totalPrice": 29.81,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/u7kAAeSw2KFpFMst/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/277514595629?_skw=michael+jordan&hash=item409d28ad2d:g:u7kAAeSw2KFpFMst",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "complete_collectibles",
+      "sellerFeedbackScore": 13553,
+      "sellerPositivePercent": "98.7",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "⭐ Star player: michael jordan (+0.5 points)",
+          "💵 Low entry price (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|136974319725|0",
+      "title": "🔥1992 Upper Deck MICHAEL JORDAN, BIRD +++ FANIMATION COMPLETE SET #506 to #510",
+      "currentPrice": 27.99,
+      "shippingCost": 5.99,
+      "totalPrice": 33.98,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/QPwAAeSwBf9pcTGb/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/136974319725?_skw=michael+jordan&hash=item1fe44e406d:g:QPwAAeSwBf9pcTGb",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "ctownsportscollectibles",
+      "sellerFeedbackScore": 7305,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "⭐ Star player: michael jordan (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|187867199129|0",
+      "title": "1992 Upper Deck Michael Jordan Fanimation Agent 23 #506 GEM 10",
+      "currentPrice": 35.99,
+      "shippingCost": 4.5,
+      "totalPrice": 40.49,
+      "condition": "Graded",
+      "imageUrl": "https://i.ebayimg.com/images/g/tZ4AAeSwcxppSLDi/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/187867199129?_skw=michael+jordan&hash=item2bbdc1f699:g:tZ4AAeSwcxppSLDi",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "tri-fecta-grading",
+      "sellerFeedbackScore": 1948,
+      "sellerPositivePercent": "99.7",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "⭐ Star player: michael jordan (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|147128343972|0",
+      "title": "Michael Jordan Charlotte Bobcats Businesscard TTM 2000s Rare Charlotte Hornets",
+      "currentPrice": 40,
+      "shippingCost": 0.77,
+      "totalPrice": 40.77,
+      "condition": "Used",
+      "imageUrl": "https://i.ebayimg.com/images/g/ny8AAeSwC9ppRIo9/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/147128343972?_skw=michael+jordan&hash=item2241885da4:g:ny8AAeSwC9ppRIo9",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "rebuildwarriors",
+      "sellerFeedbackScore": 3306,
+      "sellerPositivePercent": "99.7",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Basketball-NBA",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "⭐ Star player: michael jordan (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|267553109050|0",
+      "title": "Michael Jordan 1991 Nike Trading Card w/Spike Lee #1 Best on Earth / Mars MINT",
+      "currentPrice": 34.95,
+      "shippingCost": 5.95,
+      "totalPrice": 40.9,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/MAcAAeSwCLNpcSvs/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/267553109050?_skw=michael+jordan&hash=item3e4b68743a:g:MAcAAeSwCLNpcSvs",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "audioa_77",
+      "sellerFeedbackScore": 6595,
+      "sellerPositivePercent": "99.9",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "good",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "⭐ Star player: michael jordan (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|227196970871|0",
+      "title": "Michael Jordan Chicago Bulls Chinese Beckett Plastic Card Cardwon 1998 RARE WOW",
+      "currentPrice": 39.99,
+      "shippingCost": 5,
+      "totalPrice": 44.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/FvYAAeSw39dpflRK/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/227196970871?_skw=michael+jordan&hash=item34e5fea777:g:FvYAAeSw39dpflRK",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "woo-bay",
+      "sellerFeedbackScore": 47205,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "⭐ Star player: michael jordan (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|206036490000|0",
+      "title": "RARE RUBY RED 1996 Fleer Ultra Scoring Kings Kobe Bryant Michael Jordan Holo",
+      "currentPrice": 60,
+      "shippingCost": 0,
+      "totalPrice": 60,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/tZUAAeSwhdFpdRlU/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/206036490000?_skw=michael+jordan&hash=item2ff8bb5710:g:tZUAAeSwhdFpdRlU",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "mar_jed",
+      "sellerFeedbackScore": 186,
+      "sellerPositivePercent": "99.5",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "⭐ Star player: michael jordan (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|227198037798|0",
+      "title": "1995-96 Topps - Spark Plugs Michael Jordan #SP2 Nice!",
+      "currentPrice": 69,
+      "shippingCost": 0,
+      "totalPrice": 69,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/r8QAAeSwUZtpfVPx/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/227198037798?_skw=michael+jordan&hash=item34e60eef26:g:r8QAAeSwUZtpfVPx",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "ripstarshop",
+      "sellerFeedbackScore": 26,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "⭐ Star player: michael jordan (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    }
+  ],
+  "allDeals": [
+    {
+      "itemId": "v1|358165331025|0",
+      "title": "1999-00 Upper Deck MVP - MJ Exclusives Michael Jordan Near Set 29/30 179-207 HOF",
+      "currentPrice": 79.99,
+      "shippingCost": 6,
+      "totalPrice": 85.99,
+      "condition": "Used",
+      "imageUrl": "https://i.ebayimg.com/images/g/fiYAAeSw2Mppc8ov/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/358165331025?_skw=michael+jordan&hash=item5364513c51:g:fiYAAeSw2Mppc8ov",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "fanzone_terry",
+      "sellerFeedbackScore": 29126,
+      "sellerPositivePercent": "99.9",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Lots",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 7.5,
+        "rating": "🔥 VERY GOOD",
+        "breakdown": [
+          "🎯 Numbered /30 (+1.5 points)",
+          "⭐ Star player: michael jordan (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Very good opportunity - worth serious consideration"
+      }
+    },
+    {
+      "itemId": "v1|227197516394|0",
+      "title": "1995-96 Upper Deck - The Rookie Years Michael Jordan #137 Gold Electric Court",
+      "currentPrice": 180,
+      "shippingCost": 0,
+      "totalPrice": 180,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/XTEAAeSwRytpfupF/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/227197516394?_skw=michael+jordan&hash=item34e606fa6a:g:XTEAAeSwRytpfupF&amdata=enc%3AAQALAAAA8DZq0hFgvSYlgrFkWCFZ3z3yA2WaZBcmGhzFZUaS86EPouebLrD800tWi7g4W2YLSwfDWmSnzPZljpjuB6w%2Ftl4uA4nPJkejXnmAIVml4w%2BIEVMYaKEAqDyqsrjDhGJZc028J5FkAUI1tEO9ZKRsPWJ20FyZoNvhxaVDevyTJaCs2ZhWcutQhbHwcST4gvCbu7L2PnaazRibXAkfFL8bYFD%2FZhx1yKkl9ZUjccnxA8Hx3aDNbqHy6EHUNR3DBhI1OG43OjzD3JtwmLYMAhAemy%2BL%2F4giwJ8XkiNqvMtbfVhabKN5qBsQChXVWI8ueJlk3Q%3D%3D",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "cardvault_co",
+      "sellerFeedbackScore": 73,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "⭐ Star player: michael jordan (+0.5 points)",
+          "🆕 Rookie card (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|277514595629|0",
+      "title": "1994-95 Upper Deck Collector's Choice Michael Jordan Gold Signature #402 Bulls",
+      "currentPrice": 29.81,
+      "shippingCost": 0,
+      "totalPrice": 29.81,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/u7kAAeSw2KFpFMst/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/277514595629?_skw=michael+jordan&hash=item409d28ad2d:g:u7kAAeSw2KFpFMst",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "complete_collectibles",
+      "sellerFeedbackScore": 13553,
+      "sellerPositivePercent": "98.7",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "⭐ Star player: michael jordan (+0.5 points)",
+          "💵 Low entry price (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|136974319725|0",
+      "title": "🔥1992 Upper Deck MICHAEL JORDAN, BIRD +++ FANIMATION COMPLETE SET #506 to #510",
+      "currentPrice": 27.99,
+      "shippingCost": 5.99,
+      "totalPrice": 33.98,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/QPwAAeSwBf9pcTGb/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/136974319725?_skw=michael+jordan&hash=item1fe44e406d:g:QPwAAeSwBf9pcTGb",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "ctownsportscollectibles",
+      "sellerFeedbackScore": 7305,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "⭐ Star player: michael jordan (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|187867199129|0",
+      "title": "1992 Upper Deck Michael Jordan Fanimation Agent 23 #506 GEM 10",
+      "currentPrice": 35.99,
+      "shippingCost": 4.5,
+      "totalPrice": 40.49,
+      "condition": "Graded",
+      "imageUrl": "https://i.ebayimg.com/images/g/tZ4AAeSwcxppSLDi/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/187867199129?_skw=michael+jordan&hash=item2bbdc1f699:g:tZ4AAeSwcxppSLDi",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "tri-fecta-grading",
+      "sellerFeedbackScore": 1948,
+      "sellerPositivePercent": "99.7",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "⭐ Star player: michael jordan (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|147128343972|0",
+      "title": "Michael Jordan Charlotte Bobcats Businesscard TTM 2000s Rare Charlotte Hornets",
+      "currentPrice": 40,
+      "shippingCost": 0.77,
+      "totalPrice": 40.77,
+      "condition": "Used",
+      "imageUrl": "https://i.ebayimg.com/images/g/ny8AAeSwC9ppRIo9/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/147128343972?_skw=michael+jordan&hash=item2241885da4:g:ny8AAeSwC9ppRIo9",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "rebuildwarriors",
+      "sellerFeedbackScore": 3306,
+      "sellerPositivePercent": "99.7",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Basketball-NBA",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "⭐ Star player: michael jordan (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|267553109050|0",
+      "title": "Michael Jordan 1991 Nike Trading Card w/Spike Lee #1 Best on Earth / Mars MINT",
+      "currentPrice": 34.95,
+      "shippingCost": 5.95,
+      "totalPrice": 40.9,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/MAcAAeSwCLNpcSvs/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/267553109050?_skw=michael+jordan&hash=item3e4b68743a:g:MAcAAeSwCLNpcSvs",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "audioa_77",
+      "sellerFeedbackScore": 6595,
+      "sellerPositivePercent": "99.9",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "good",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "⭐ Star player: michael jordan (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|227196970871|0",
+      "title": "Michael Jordan Chicago Bulls Chinese Beckett Plastic Card Cardwon 1998 RARE WOW",
+      "currentPrice": 39.99,
+      "shippingCost": 5,
+      "totalPrice": 44.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/FvYAAeSw39dpflRK/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/227196970871?_skw=michael+jordan&hash=item34e5fea777:g:FvYAAeSw39dpflRK",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "woo-bay",
+      "sellerFeedbackScore": 47205,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "⭐ Star player: michael jordan (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|206036490000|0",
+      "title": "RARE RUBY RED 1996 Fleer Ultra Scoring Kings Kobe Bryant Michael Jordan Holo",
+      "currentPrice": 60,
+      "shippingCost": 0,
+      "totalPrice": 60,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/tZUAAeSwhdFpdRlU/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/206036490000?_skw=michael+jordan&hash=item2ff8bb5710:g:tZUAAeSwhdFpdRlU",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "mar_jed",
+      "sellerFeedbackScore": 186,
+      "sellerPositivePercent": "99.5",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "⭐ Star player: michael jordan (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|227198037798|0",
+      "title": "1995-96 Topps - Spark Plugs Michael Jordan #SP2 Nice!",
+      "currentPrice": 69,
+      "shippingCost": 0,
+      "totalPrice": 69,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/r8QAAeSwUZtpfVPx/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/227198037798?_skw=michael+jordan&hash=item34e60eef26:g:r8QAAeSwUZtpfVPx",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "ripstarshop",
+      "sellerFeedbackScore": 26,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "⭐ Star player: michael jordan (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    }
+  ]
+}

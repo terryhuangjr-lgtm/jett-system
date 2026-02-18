@@ -1,0 +1,18 @@
+{
+  "timestamp": "2026-02-02T21:15:33.390Z",
+  "searchQuery": "2003-04 dwyane wade topps chrome finest pristine",
+  "config": {
+    "keywords": "2003-04 dwyane wade topps chrome finest pristine",
+    "minScoreToShow": 7,
+    "topN": 20
+  },
+  "scanDuration": "0.6s",
+  "summary": {
+    "totalFound": 0,
+    "rawCardsOnly": true,
+    "afterRawFilter": 0,
+    "totalScored": 0,
+    "showingResults": 0
+  },
+  "allResults": []
+}

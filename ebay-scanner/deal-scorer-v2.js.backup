@@ -1,0 +1,698 @@
+/**
+ * Deal Scorer V2 - Comprehensive scoring system
+ * Assigns 1-10 score based on multiple factors
+ */
+
+class DealScorerV2 {
+  constructor(searchKeywords = '') {
+    this.searchKeywords = searchKeywords.toLowerCase();
+    this.weights = {
+      sellerQuality: 0.20,      // 20% - Trust matters
+      listingQuality: 0.25,     // 25% - Photos/condition
+      searchRelevance: 0.40,    // 40% - Does it match what you want?
+      listingFreshness: 0.15    // 15% - Age matters
+    };
+  }
+
+  /**
+   * Score a deal comprehensively
+   * @param {Object} item - eBay listing
+   * @param {Object} comps - Comp data (sold or active)
+   * @returns {Object} - Score breakdown
+   */
+  score(item, comps) {
+    const sellerScore = this.scoreSellerQuality(item);
+    const qualityScore = this.scoreListingQuality(item);
+    const relevanceScore = this.scoreSearchRelevance(item);
+    const freshnessScore = this.scoreListingFreshness(item);
+
+    // STRICT FILTER: Auto-reject if condition below NM-MT
+    if (qualityScore.conditionRejected) {
+      return {
+        score: 0,
+        rating: '❌ REJECTED - Condition below NM-MT',
+        breakdown: {
+          sellerQuality: sellerScore,
+          listingQuality: qualityScore,
+          searchRelevance: relevanceScore,
+          listingFreshness: freshnessScore
+        },
+        flags: ['❌ CONDITION REJECTED: Below NM-MT minimum'],
+        conditionRejected: true
+      };
+    }
+
+    // Calculate weighted total
+    const totalScore = (
+      ((sellerScore.points || 0) * this.weights.sellerQuality) +
+      ((qualityScore.points || 0) * this.weights.listingQuality) +
+      ((relevanceScore.points || 0) * this.weights.searchRelevance) +
+      ((freshnessScore.points || 0) * this.weights.listingFreshness)
+    );
+
+    // Normalize to 1-10 scale
+    const finalScore = Math.max(0, Math.min(10, Math.round(totalScore * 10) / 10));
+
+    return {
+      score: finalScore,
+      rating: this.getRating(finalScore),
+      breakdown: {
+        sellerQuality: sellerScore,
+        listingQuality: qualityScore,
+        searchRelevance: relevanceScore,
+        listingFreshness: freshnessScore
+      },
+      flags: this.getFlags(item, null, {
+        sellerScore,
+        qualityScore,
+        relevanceScore,
+        freshnessScore
+      })
+    };
+  }
+
+  /**
+   * CRITERION 1: Price Analysis (40% weight)
+   * Compare to median sold price
+   */
+  scorePriceAnalysis(item, comps) {
+    if (!comps || !comps.foundComps || !comps.psa10 || !comps.psa10.recentSales || comps.psa10.recentSales.length === 0) {
+      return {
+        points: 0,
+        maxPoints: 10,
+        reason: 'No comp data available',
+        percentBelowMedian: null
+      };
+    }
+
+    // Get median sold price (PSA 10 as target grade)
+    const medianPrice = this.calculateMedian(comps.psa10.recentSales.map(s => s.price));
+
+    if (!medianPrice || medianPrice === 0) {
+      return {
+        points: 0,
+        maxPoints: 10,
+        reason: 'No valid median price',
+        percentBelowMedian: null
+      };
+    }
+
+    // Calculate discount from median
+    const discount = ((medianPrice - item.totalPrice) / medianPrice) * 100;
+
+    // Score based on discount
+    let points = 0;
+    let tier = '';
+
+    if (discount >= 50) {
+      points = 10;
+      tier = '50%+ below median - STEAL';
+    } else if (discount >= 30) {
+      points = 7.5;
+      tier = '30-50% below - GREAT DEAL';
+    } else if (discount >= 20) {
+      points = 5;
+      tier = '20-30% below - SOLID DEAL';
+    } else if (discount >= 10) {
+      points = 2.5;
+      tier = '10-20% below - DECENT';
+    } else if (discount >= 0) {
+      points = 0;
+      tier = 'At market price';
+    } else {
+      points = 0;
+      tier = 'Above market price';
+    }
+
+    return {
+      points,
+      maxPoints: 10,
+      medianPrice,
+      itemPrice: item.totalPrice,
+      percentBelowMedian: Math.round(discount),
+      tier,
+      reason: tier
+    };
+  }
+
+  /**
+   * CRITERION 2: Seller Quality (20% weight)
+   * Trust signals from seller feedback
+   */
+  scoreSellerQuality(item) {
+    const feedback = item.sellerPositivePercent || 0;
+    const salesCount = item.sellerFeedbackScore || 0;
+
+    let points = 0;
+    let tier = '';
+    let trust = '';
+
+    if (feedback >= 99 && salesCount >= 1000) {
+      points = 10;
+      tier = 'Elite seller';
+      trust = '✅ TRUSTED';
+    } else if (feedback >= 98 && salesCount >= 500) {
+      points = 7.5;
+      tier = 'Established seller';
+      trust = '✅ Good';
+    } else if (feedback >= 95 && salesCount >= 100) {
+      points = 5;
+      tier = 'Decent seller';
+      trust = 'OK';
+    } else if (feedback >= 90 || salesCount < 100) {
+      points = 2.5;
+      tier = 'New/low feedback seller';
+      trust = '⚠️ New seller';
+    } else {
+      points = 0;
+      tier = 'Low trust seller';
+      trust = '⚠️ Low trust';
+    }
+
+    return {
+      points,
+      maxPoints: 10,
+      feedback,
+      salesCount,
+      tier,
+      trust,
+      reason: `${feedback}% (${salesCount} sales) - ${tier}`
+    };
+  }
+
+  /**
+   * CRITERION 3: Search Relevance (25% weight)
+   * How well does the listing match your search?
+   */
+  scoreSearchRelevance(item) {
+    const title = (item.title || '').toLowerCase();
+    const search = this.searchKeywords;
+
+    let points = 0;
+    let matches = [];
+    let mismatches = [];
+
+    // If no search keywords, can't score relevance
+    if (!search || search.trim() === '') {
+      return {
+        points: 5,
+        maxPoints: 10,
+        matches: [],
+        mismatches: [],
+        reason: 'No search keywords to compare'
+      };
+    }
+
+    // PART 0: Player Name Validation (CRITICAL - -5 to +3 points)
+    // This is the MOST important check - wrong player = severe penalty
+
+    // Exclude brand/card type keywords that shouldn't be treated as names
+    const excludeKeywords = [
+      'topps', 'chrome', 'finest', 'bowman', 'panini', 'prizm', 'optic', 'select',
+      'upper', 'deck', 'fleer', 'ultra', 'donruss', 'stadium', 'club', 'refractor',
+      'auto', 'patch', 'jersey', 'rookie', 'serial', 'parallel', 'numbered', 'insert',
+      'base', 'prizm', 'silver', 'gold', 'black', 'orange', 'green', 'blue', 'red',
+      'rated', 'prospect', 'future', 'stars', 'legends', 'vintage', 'retro', 'throwback',
+      'card', 'cards', 'graded', 'raw', 'mint', 'near', 'excellent', 'good', 'fair',
+      'psa', 'bgs', 'sgc', 'cgc', 'authenticated', 'certified', 'slab', 'graded'
+    ];
+
+    let playerNamePoints = 0;
+    let playerMatches = [];
+    let playerMismatches = [];
+
+    // Extract potential player names from search query
+    const searchPlayers = [];
+
+    // Method 1: Look for common full name patterns (first + last name)
+    // Match: "michael jordan", "ken griffey jr", "lebron james"
+    const fullNamePattern = /\b([a-z]{3,})\s+([a-z]{3,})(?:\s+(jr|sr|iii|ii|iv))?\b/gi;
+    const fullNameMatches = [...search.matchAll(fullNamePattern)];
+
+    fullNameMatches.forEach(match => {
+      const firstName = match[1].toLowerCase();
+      const lastName = match[2].toLowerCase();
+      const suffix = match[3] ? match[3].toLowerCase() : '';
+
+      // Skip if either part is a brand/card keyword
+      if (excludeKeywords.includes(firstName) || excludeKeywords.includes(lastName)) {
+        return;
+      }
+
+      const fullName = `${firstName} ${lastName}${suffix ? ' ' + suffix : ''}`;
+      searchPlayers.push({ fullName, lastName, type: 'full' });
+    });
+
+    // Method 2: Well-known distinctive last names (only use if no full name found)
+    if (searchPlayers.length === 0) {
+      const knownPlayers = [
+        'jordan', 'lebron', 'kobe', 'shaq', 'giannis', 'jokic', 'luka', 'tatum',
+        'curry', 'durant', 'embiid', 'harden', 'westbrook', 'griffin', 'wade',
+        'nowitzki', 'duncan', 'garnett', 'pierce', 'iverson', 'mcgrady', 'carter',
+        'kidd', 'nash', 'howard', 'gasol', 'doncic', 'morant', 'zion', 'wembanyama',
+        'trout', 'judge', 'ohtani', 'betts', 'harper', 'tatis', 'guerrero', 'acuna',
+        'soto', 'lindor', 'machado', 'freeman', 'degrom', 'scherzer', 'kershaw',
+        'verlander', 'arenado', 'altuve', 'bregman', 'mahomes', 'allen', 'burrow',
+        'herbert', 'jackson', 'hurts', 'lawrence', 'rodgers', 'brady', 'brees',
+        'manning', 'favre', 'marino', 'elway', 'montana', 'griffey', 'mantle',
+        'mays', 'aaron', 'williams', 'ruth', 'gehrig', 'dimaggio', 'clemente'
+      ];
+
+      for (const name of knownPlayers) {
+        const regex = new RegExp(`\\b${name}\\b`, 'i');
+        if (regex.test(search)) {
+          searchPlayers.push({ fullName: name, lastName: name, type: 'last' });
+          break; // Only take first match
+        }
+      }
+    }
+
+    // Check if player names appear in title
+    if (searchPlayers.length > 0) {
+      let foundMatch = false;
+
+      for (const player of searchPlayers) {
+        const fullNameInTitle = title.includes(player.fullName);
+        const lastNameInTitle = title.includes(player.lastName);
+
+        if (fullNameInTitle) {
+          playerNamePoints += 3;
+          playerMatches.push(`✓ Player: ${player.fullName}`);
+          matches.push(`Player match: ${player.fullName}`);
+          foundMatch = true;
+          break; // Found exact match, no need to check others
+        } else if (lastNameInTitle) {
+          playerNamePoints += 2;
+          playerMatches.push(`✓ Player (last name): ${player.lastName}`);
+          matches.push(`Last name match: ${player.lastName}`);
+          foundMatch = true;
+          break;
+        }
+      }
+
+      // SEVERE PENALTY if player not found
+      if (!foundMatch) {
+        playerNamePoints = -5;
+        const searchedFor = searchPlayers.map(p => p.fullName).join(', ');
+        playerMismatches.push(`❌ WRONG PLAYER (searched: ${searchedFor})`);
+        mismatches.push(`WRONG PLAYER - searched for: ${searchedFor}`);
+      }
+    }
+
+    points += playerNamePoints;
+
+    // PART 1: Card Type Match (0-4 points)
+    const cardTypes = {
+      refractor: ['refractor', 'xfractor', 'x-fractor', 'atomic refractor', 'pulsar'],
+      prizm: ['prizm', 'silver prizm', 'prizm silver'],
+      chrome: ['chrome', 'topps chrome', 'bowman chrome'],
+      auto: ['auto', 'autograph', 'signed', 'signature'],
+      patch: ['patch', 'jersey', 'memorabilia', 'game used', 'game worn'],
+      rookie: ['rookie', 'rc', 'rookie card', '1st year'],
+      serial: ['/99', '/25', '/10', '/5', 'numbered', 'serial numbered'],
+      parallel: ['parallel', 'variation', 'short print', 'sp', 'ssp']
+    };
+
+    let cardTypePoints = 0;
+    let requestedTypes = [];
+    let foundTypes = [];
+
+    // Check what card types user is searching for
+    for (const [type, patterns] of Object.entries(cardTypes)) {
+      const searchHasType = patterns.some(p => search.includes(p));
+      const titleHasType = patterns.some(p => title.includes(p));
+
+      if (searchHasType) {
+        requestedTypes.push(type);
+        if (titleHasType) {
+          cardTypePoints += 4 / requestedTypes.length; // Split points if multiple types
+          foundTypes.push(type);
+          matches.push(`${type} match`);
+        } else {
+          mismatches.push(`Missing: ${type}`);
+        }
+      }
+    }
+
+    // If no specific type requested, check if it's at least a premium card
+    if (requestedTypes.length === 0) {
+      const hasPremiumType = Object.values(cardTypes).flat().some(p => title.includes(p));
+      if (hasPremiumType) {
+        cardTypePoints = 2; // Some premium type exists
+        matches.push('Premium card type');
+      } else {
+        cardTypePoints = 1; // Probably base card
+        mismatches.push('Likely base card');
+      }
+    }
+
+    points += Math.min(4, cardTypePoints);
+
+    // PART 2: Year/Era Match (0-3 points)
+    const searchYears = search.match(/\b(19\d{2}|20\d{2})\b/g) || [];
+    const titleYears = title.match(/\b(19\d{2}|20\d{2})\b/g) || [];
+
+    if (searchYears.length > 0) {
+      if (titleYears.length > 0) {
+        const searchYear = parseInt(searchYears[0]);
+        const titleYear = parseInt(titleYears[0]);
+        const yearDiff = Math.abs(searchYear - titleYear);
+
+        if (yearDiff === 0) {
+          points += 3;
+          matches.push(`Exact year: ${titleYear}`);
+        } else if (yearDiff <= 2) {
+          points += 2;
+          matches.push(`Close year: ${titleYear} (±2 of ${searchYear})`);
+        } else if (yearDiff <= 5) {
+          points += 1;
+          matches.push(`Same era: ${titleYear} (±5 of ${searchYear})`);
+        } else {
+          mismatches.push(`Wrong year: ${titleYear} vs ${searchYear}`);
+        }
+      } else {
+        // Year requested but not in title - might still be right card
+        points += 1;
+        mismatches.push('Year not specified in title');
+      }
+    } else {
+      // No year requested
+      points += 1.5; // Neutral
+    }
+
+    // PART 3: Brand/Set Match (0-3 points)
+    const brands = {
+      topps: ['topps', 'topps chrome', 'topps finest', 'stadium club'],
+      panini: ['panini', 'prizm', 'optic', 'select', 'donruss'],
+      'upper deck': ['upper deck', 'ud', 'sp authentic', 'spx'],
+      bowman: ['bowman', 'bowman chrome'],
+      fleer: ['fleer', 'ultra', 'flair'],
+      skybox: ['skybox']
+    };
+
+    let brandPoints = 0;
+    let requestedBrands = [];
+    let foundBrands = [];
+
+    for (const [brand, patterns] of Object.entries(brands)) {
+      const searchHasBrand = patterns.some(p => search.includes(p));
+      const titleHasBrand = patterns.some(p => title.includes(p));
+
+      if (searchHasBrand) {
+        requestedBrands.push(brand);
+        if (titleHasBrand) {
+          brandPoints += 3 / requestedBrands.length;
+          foundBrands.push(brand);
+          matches.push(`${brand} match`);
+        } else {
+          mismatches.push(`Not ${brand}`);
+        }
+      }
+    }
+
+    // If no specific brand requested, give partial credit for premium brands
+    if (requestedBrands.length === 0) {
+      const hasPremiumBrand = Object.values(brands).flat().some(p => title.includes(p));
+      if (hasPremiumBrand) {
+        brandPoints = 1.5;
+        matches.push('Premium brand');
+      } else {
+        brandPoints = 0.5;
+      }
+    }
+
+    points += Math.min(3, brandPoints);
+
+    // Clamp to 0-10
+    points = Math.max(0, Math.min(10, points));
+
+    return {
+      points,
+      maxPoints: 10,
+      matches,
+      mismatches,
+      requestedTypes,
+      foundTypes,
+      reason: matches.length > 0
+        ? `✅ ${matches.join(', ')}`
+        : mismatches.length > 0
+          ? `⚠️ ${mismatches.join(', ')}`
+          : 'Partial match'
+    };
+  }
+
+  /**
+   * CRITERION 4: Listing Quality (25% weight)
+   * Photo and description signals
+   * STRICT: Only NM-MT+ condition accepted
+   */
+  scoreListingQuality(item) {
+    let points = 0;
+    let signals = [];
+    let redFlags = [];
+
+    // Title/description analysis
+    const title = (item.title || '').toLowerCase();
+
+    // STRICT CONDITION FILTER: Only NM-MT or better
+    // Reject anything below Near Mint-Mint
+    const belowNMMT = [
+      'excellent', 'ex-mt', 'ex/mt', 'ex mt', 'ex+', 'ex', // Excellent (below NM)
+      'very good', 'vg-ex', 'vg/ex', 'vg ex', 'vg+', 'vg', // Very Good
+      'good', 'fair', 'poor', // Low grades
+      'played', 'worn', 'used condition', // Condition terms
+      'vintage condition', 'reader', 'binder', // Age/handling
+      'damaged', 'crease', 'tear', 'bent', 'corner wear', // Physical damage
+      'stain', 'mark', 'scratch', 'ding', 'surface wear'
+    ];
+
+    for (const conditionTerm of belowNMMT) {
+      if (title.includes(conditionTerm)) {
+        points = 0;
+        redFlags.push(`❌ REJECT: Below NM-MT (found: ${conditionTerm})`);
+        return {
+          points: 0,
+          maxPoints: 10,
+          signals,
+          redFlags,
+          hasPhotos: !!item.imageUrl,
+          conditionRejected: true,
+          reason: `❌ CONDITION BELOW NM-MT: ${conditionTerm}`
+        };
+      }
+    }
+
+    // If we get here, condition is acceptable
+    // Photo count (estimate from image presence)
+    const hasImage = !!item.imageUrl;
+    if (hasImage) {
+      points += 5; // Assume decent photos if image exists
+      signals.push('Has photos');
+    } else {
+      redFlags.push('No photos');
+    }
+
+    // Positive signals for high-grade condition
+    if (title.includes('pack fresh') || title.includes('investment')) {
+      points += 2.5;
+      signals.push('Investment grade');
+    }
+
+    if (title.includes('mint') || title.includes('gem') || title.includes('nm-mt') || 
+        title.includes('nm/mt') || title.includes('near mint')) {
+      points += 1;
+      signals.push('NM-MT+ condition claimed');
+    }
+
+    // Red flags (non-condition related)
+    if (title.includes('as-is') || title.includes('as is')) {
+      points -= 2.5;
+      redFlags.push('"As-is" listing');
+    }
+
+    if (title.includes('see photos') || title.includes('see pictures')) {
+      points -= 1;
+      redFlags.push('Condition unclear');
+    }
+
+    // Clamp to 0-10
+    points = Math.max(0, Math.min(10, points));
+
+    return {
+      points,
+      maxPoints: 10,
+      signals,
+      redFlags,
+      hasPhotos: hasImage,
+      conditionRejected: false,
+      reason: redFlags.length > 0
+        ? `⚠️ ${redFlags.join(', ')}`
+        : signals.length > 0
+          ? `✅ ${signals.join(', ')}`
+          : 'Standard listing'
+    };
+  }
+
+  /**
+   * CRITERION 5: Listing Freshness (15% weight)
+   * How recently listed
+   */
+  scoreListingFreshness(item) {
+    if (!item.itemCreationDate && !item.itemEndDate) {
+      return {
+        points: 5,
+        maxPoints: 10,
+        ageInDays: null,
+        reason: 'Unknown listing age'
+      };
+    }
+
+    const now = Date.now();
+    let listingDate;
+
+    if (item.itemCreationDate) {
+      listingDate = new Date(item.itemCreationDate).getTime();
+    } else if (item.itemEndDate) {
+      // Estimate from end date
+      const endDate = new Date(item.itemEndDate).getTime();
+      listingDate = endDate - (7 * 24 * 60 * 60 * 1000);
+    }
+
+    const ageInDays = (now - listingDate) / (1000 * 60 * 60 * 24);
+    let points = 0;
+    let tier = '';
+
+    if (ageInDays < 1) {
+      points = 10;
+      tier = 'Listed <24 hours - FRESH';
+    } else if (ageInDays <= 7) {
+      points = 5;
+      tier = 'Listed this week';
+    } else if (ageInDays <= 30) {
+      points = 2.5;
+      tier = 'Listed this month';
+    } else {
+      points = 0;
+      tier = 'Old listing - why still available?';
+    }
+
+    return {
+      points,
+      maxPoints: 10,
+      ageInDays: Math.round(ageInDays),
+      tier,
+      reason: tier
+    };
+  }
+
+  /**
+   * CRITERION 5: Comparability (10% weight)
+   * Confidence in comp data
+   */
+  scoreComparability(comps) {
+    if (!comps || !comps.foundComps || !comps.psa10) {
+      return {
+        points: 0,
+        maxPoints: 10,
+        compCount: 0,
+        reason: 'No comps found',
+        confidence: 'None'
+      };
+    }
+
+    const compCount = comps.psa10.count || 0;
+    let points = 0;
+    let confidence = '';
+
+    if (compCount >= 10) {
+      points = 10;
+      confidence = 'High confidence';
+    } else if (compCount >= 5) {
+      points = 5;
+      confidence = 'Medium confidence';
+    } else {
+      points = 0;
+      confidence = 'Low confidence';
+    }
+
+    return {
+      points,
+      maxPoints: 10,
+      compCount,
+      confidence,
+      reason: `${compCount} comps - ${confidence}`
+    };
+  }
+
+  /**
+   * Calculate median from array
+   */
+  calculateMedian(arr) {
+    if (!arr || arr.length === 0) return 0;
+
+    const sorted = [...arr].sort((a, b) => a - b);
+    const mid = Math.floor(sorted.length / 2);
+
+    if (sorted.length % 2 === 0) {
+      return (sorted[mid - 1] + sorted[mid]) / 2;
+    } else {
+      return sorted[mid];
+    }
+  }
+
+  /**
+   * Get rating text from score
+   */
+  getRating(score) {
+    if (score >= 9) return '🔥 POTENTIAL STEAL';
+    if (score >= 8) return '⚡ GREAT DEAL';
+    if (score >= 7) return '💰 SOLID DEAL';
+    if (score >= 6) return '✓ DECENT';
+    if (score >= 5) return '~ MAYBE';
+    if (score >= 4) return '⚠️ QUESTIONABLE';
+    return '❌ SKIP';
+  }
+
+  /**
+   * Get contextual flags
+   */
+  getFlags(item, comps, scores) {
+    const flags = [];
+
+    // Safety checks
+    if (!scores || !scores.sellerScore || !scores.qualityScore || !scores.freshnessScore) {
+      return flags;
+    }
+
+    const relevanceScore = scores.relevanceScore;
+
+    // Low relevance = wrong card
+    if (relevanceScore && relevanceScore.points < 5) {
+      flags.push('⚠️ May not match your search - check details');
+    }
+
+    // Perfect relevance = exactly what you want
+    if (relevanceScore && relevanceScore.points >= 9) {
+      flags.push('✅ Perfect match for your search');
+    }
+
+    // Red flags in listing
+    if (scores.qualityScore.redFlags && scores.qualityScore.redFlags.length > 0) {
+      flags.push(`⚠️ ${scores.qualityScore.redFlags.join(', ')}`);
+    }
+
+    // Old listing at good price = why hasn't it sold?
+    if (scores.freshnessScore.ageInDays !== null && scores.freshnessScore.ageInDays > 30 && scores.priceScore.points >= 5) {
+      flags.push('⚠️ Old listing - investigate why still available');
+    }
+
+    // Trusted seller + perfect match = HIGH CONFIDENCE
+    if (scores.sellerScore.points >= 8 && relevanceScore && relevanceScore.points >= 8) {
+      flags.push('✅ Trusted seller + perfect match - HIGH CONFIDENCE');
+    }
+
+    return flags;
+  }
+}
+
+module.exports = DealScorerV2;

@@ -1,0 +1,1690 @@
+{
+  "timestamp": "2026-02-02T17:28:24.444Z",
+  "scanDuration": "14.47s",
+  "summary": {
+    "totalSearches": 7,
+    "totalItemsFound": 317,
+    "itemsAnalyzed": 11,
+    "hotDeals": 4,
+    "goodDeals": 3
+  },
+  "hotDeals": [
+    {
+      "itemId": "v1|325499555148|0",
+      "title": "1993 Upper Deck Star Rookie #13 Brett Farve RC  Raw",
+      "currentPrice": 15,
+      "shippingCost": 1.5,
+      "totalPrice": 16.5,
+      "condition": "Unspecified",
+      "imageUrl": "https://i.ebayimg.com/images/g/kN0AAOSwdN1jw3fw/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/325499555148?_skw=rookie+card+raw+ungraded&hash=item4bc9490d4c:g:kN0AAOSwdN1jw3fw",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "joshmcatee",
+      "sellerFeedbackScore": 937,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "searchCategory": "Rookie Cards (Raw)",
+      "qualityAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 1,
+          "avgPrice": 459.98,
+          "recentSales": [
+            {
+              "price": 459.98,
+              "title": "1993-94 Upper Deck SE Diecut All Stars East #E13 Shaquille O'Neal PSA 9",
+              "url": "https://www.ebay.com/itm/255434474946?_skw=1993+upper+deck+%2313+PSA+9&hash=item3b7914c5c2:g:RAgAAOSwq5ZiLl10"
+            }
+          ]
+        },
+        "foundComps": true
+      },
+      "profitAnalysis": {
+        "insufficientData": false,
+        "totalCost": 36.5,
+        "rawPrice": 16.5,
+        "gradingCost": 20,
+        "psa10Scenario": {
+          "avgCompPrice": 0,
+          "profit": 0,
+          "multiplier": 0
+        },
+        "psa9Scenario": {
+          "avgCompPrice": 459.98,
+          "profit": 423.48,
+          "multiplier": 12.6
+        },
+        "expectedValue": 169.39,
+        "roi": 464.1,
+        "recommendation": "⚡ GREAT - Very good opportunity"
+      },
+      "dealScore": {
+        "score": 10,
+        "rating": "🔥🔥🔥 EXCEPTIONAL",
+        "breakdown": [
+          "⚡ EV > $100 (+2 points)",
+          "📈 ROI > 200% (+1.5 points)",
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "👍 Established seller (500+ transactions) (+0.5 points)"
+        ],
+        "recommendation": "Strong buy - excellent opportunity with multiple positive factors",
+        "adjustedByPhotoQuality": true
+      },
+      "analyzedAt": "2026-02-02T17:28:17.739Z"
+    },
+    {
+      "itemId": "v1|267485806506|0",
+      "title": "Brooks Reed Autograph 2011 Panini Gridiron Gear Rookie Card #228 - On Card Auto ",
+      "currentPrice": 35.99,
+      "shippingCost": 0,
+      "totalPrice": 35.99,
+      "condition": "Unknown",
+      "imageUrl": "https://i.ebayimg.com/images/g/JKoAAeSw3XppIea2/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/267485806506?_skw=on+card+auto+autograph+rookie&hash=item3e47657faa:g:JKoAAeSw3XppIea2&amdata=enc%3AAQALAAABADZq0hFgvSYlgrFkWCFZ3z2wCiSh6bbJCYOt0p3qlCcWmVx%2FIE2kf4D0MwGXHPAFvVmlre84EWlmvi6sE32SSOgice2WWa%2BwaER3IErTzHNmx2xLYdFirC5xlgVkPVV6ptPU%2Be2WgKREDX96okg9HUFG3lpPohcoyw8oDJqgZu679vkl%2FwjADYIECHDoStV8isbx%2FQhuqyFpNFNEUHLKeT3HCPRDNCikyq4BjiBC04JOYFT1gVXhrLKUah5hf2s8NeiXbe4X5VCCM9OfRcAvGHecbxD4yNhpkg0vrwdWCOvu%2BQEoYA6ME924bMIIqgDsmgXYP5G4Z0IWSQGq21hziC8%3D",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "mrtsports",
+      "sellerFeedbackScore": 2867,
+      "sellerPositivePercent": "99.6",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Other Autographed NFL Items",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "searchCategory": "On-Card Autographs",
+      "qualityAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 9,
+        "rating": "🔥🔥🔥 EXCEPTIONAL",
+        "breakdown": [
+          "✍️ On-card auto (+1 point)",
+          "🆕 Rookie card (+0.5 points)",
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "👍 Experienced seller (1000+ transactions) (+1 point)",
+          "📦 Free shipping (+0.5 points)"
+        ],
+        "recommendation": "Strong buy - excellent opportunity with multiple positive factors",
+        "adjustedByPhotoQuality": true
+      },
+      "analyzedAt": "2026-02-02T17:28:20.396Z"
+    },
+    {
+      "itemId": "v1|257287910920|0",
+      "title": "Rookie Shepard 2024 Stars & Stripes On CARD Auto Autograph RC",
+      "currentPrice": 19.95,
+      "shippingCost": 6,
+      "totalPrice": 25.95,
+      "condition": "Unknown",
+      "imageUrl": "https://i.ebayimg.com/images/g/AWUAAeSwT2ppVo8v/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/257287910920?_skw=on+card+auto+autograph+rookie&hash=item3be78df608:g:AWUAAeSwT2ppVo8v",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "ballzy3l6",
+      "sellerFeedbackScore": 1417,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Other Autographed MLB Items",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "searchCategory": "On-Card Autographs",
+      "qualityAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 9,
+        "rating": "🔥🔥🔥 EXCEPTIONAL",
+        "breakdown": [
+          "✍️ On-card auto (+1 point)",
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "👍 Experienced seller (1000+ transactions) (+1 point)"
+        ],
+        "recommendation": "Strong buy - excellent opportunity with multiple positive factors",
+        "adjustedByPhotoQuality": true
+      },
+      "analyzedAt": "2026-02-02T17:28:21.196Z"
+    },
+    {
+      "itemId": "v1|223979662062|0",
+      "title": "2019 Panini Contenders Easton Stick On Card Auto Autograph Rookie Ticket RC",
+      "currentPrice": 59.95,
+      "shippingCost": 3.49,
+      "totalPrice": 63.44,
+      "condition": "Unknown",
+      "imageUrl": "https://i.ebayimg.com/images/g/N0sAAOSwWG5emJzi/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/223979662062?_skw=on+card+auto+autograph+rookie&hash=item34263a6aee:g:N0sAAOSwWG5emJzi",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "sportscardsetcpgh",
+      "sellerFeedbackScore": 24308,
+      "sellerPositivePercent": "99.6",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "searchCategory": "On-Card Autographs",
+      "qualityAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 8.5,
+        "rating": "🔥🔥 HOT",
+        "breakdown": [
+          "✍️ On-card auto (+1 point)",
+          "🆕 Rookie card (+0.5 points)",
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "👍 Experienced seller (1000+ transactions) (+1 point)"
+        ],
+        "recommendation": "Strong buy - excellent opportunity with multiple positive factors",
+        "adjustedByPhotoQuality": true
+      },
+      "analyzedAt": "2026-02-02T17:28:22.088Z"
+    }
+  ],
+  "goodDeals": [
+    {
+      "itemId": "v1|255493473763|0",
+      "title": "RAZOR LEAF MMA 2010 ROOKIE CARD OF RANDY \" THE NATURAL \" COUTURE!!! #100 (RC)",
+      "currentPrice": 14.68,
+      "shippingCost": 3.67,
+      "totalPrice": 18.35,
+      "condition": "Unspecified",
+      "imageUrl": "https://i.ebayimg.com/images/g/X1MAAOSwpv1iNbCf/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/255493473763?_skw=rookie+card+raw+ungraded&hash=item3b7c9905e3:g:X1MAAOSwpv1iNbCf&amdata=enc%3AAQALAAAA8DZq0hFgvSYlgrFkWCFZ3z06Jp7MVITZwfUOreZCfToEZafEjr22BimRjhbHR7BMx5SYfQwleyU65EwJcd9TWsdLNhFFv4phhQPxTRbZYhUczdD%2FZAfPjgOR0CxCSTXDu%2F2po5tMA1mbJx%2FOnK8Mhx7W5IRXYn9AEYlDKAKBVHfsSQtqlMSI68zNuZoGtZkhOqtfkYmkBRouWJjB%2B%2B6fKY8pnWSGNpUTOzVjJp1oIR8gtju68%2FlzoTld4pb5opC%2BNe5FIkXpMSqUmDiZFwTSZURId1rd3oijVBlfjYr7KWXJecMxUWTWyxTrModcwWNaHA%3D%3D",
+      "location": "",
+      "country": "CA",
+      "sellerUsername": "1big*d",
+      "sellerFeedbackScore": 861,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "searchCategory": "Rookie Cards (Raw)",
+      "qualityAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 7.5,
+        "rating": "🔥 VERY GOOD",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "👍 Established seller (500+ transactions) (+0.5 points)"
+        ],
+        "recommendation": "Very good opportunity - worth serious consideration",
+        "adjustedByPhotoQuality": true
+      },
+      "analyzedAt": "2026-02-02T17:28:15.034Z"
+    },
+    {
+      "itemId": "v1|255502936853|0",
+      "title": "UFC ROUND 2 2009 ROOKIE BLOODLINES CARD OF RANDY \" THE NATURAL \" COUTURE!!! BL-2",
+      "currentPrice": 24.98,
+      "shippingCost": 3.67,
+      "totalPrice": 28.65,
+      "condition": "Unspecified",
+      "imageUrl": "https://i.ebayimg.com/images/g/aMMAAOSwAadgltPP/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/255502936853?_skw=rookie+card+raw+ungraded&hash=item3b7d296b15:g:aMMAAOSwAadgltPP&amdata=enc%3AAQALAAAA8DZq0hFgvSYlgrFkWCFZ3z0vE9uGTTQsAh5AQClKb7NKOcJktGP5NTwxTIXJFZCD5%2BGpxwjkVCVePjKB7sdhZ2WmKjeC8QxK4anbM%2FMmRT2gqafCCs2eNui%2FVaUinD5qjnSjJw5V%2B6ej%2B0y%2FDDcWHIJzfZeqkGVB5IE1L8mc7T4fKFeMpFsZ%2FmnEqGcFAWzefpDb7%2BtoK9LIReOjL99uD2IWPIEhh6IVO3%2BsVc88xkay4IOPtAXuna8ILTwn0CWO7%2FbMQTHCPJwtmCpOyj2Q6WvJYX1dU2S1qqoZqZRxTANBRGjV%2BRfUlnTrEqZynfC7pQ%3D%3D",
+      "location": "",
+      "country": "CA",
+      "sellerUsername": "1big*d",
+      "sellerFeedbackScore": 861,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "searchCategory": "Rookie Cards (Raw)",
+      "qualityAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 7.5,
+        "rating": "🔥 VERY GOOD",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "👍 Established seller (500+ transactions) (+0.5 points)"
+        ],
+        "recommendation": "Very good opportunity - worth serious consideration",
+        "adjustedByPhotoQuality": true
+      },
+      "analyzedAt": "2026-02-02T17:28:16.849Z"
+    },
+    {
+      "itemId": "v1|304805450506|0",
+      "title": "1965 Topps #176 Willie McCovey (BVG 6) Raw Card Review",
+      "currentPrice": 80,
+      "shippingCost": 6,
+      "totalPrice": 86,
+      "condition": "Unspecified",
+      "imageUrl": "https://i.ebayimg.com/images/g/I0EAAOSwJwRj683z/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/304805450506?_skw=rookie+card+raw+ungraded&hash=item46f7d2130a:g:I0EAAOSwJwRj683z",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "rambo_relics",
+      "sellerFeedbackScore": 5527,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "searchCategory": "Rookie Cards (Raw)",
+      "qualityAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 7,
+        "rating": "🔥 VERY GOOD",
+        "breakdown": [
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "👍 Experienced seller (1000+ transactions) (+1 point)"
+        ],
+        "recommendation": "Very good opportunity - worth serious consideration",
+        "adjustedByPhotoQuality": true
+      },
+      "analyzedAt": "2026-02-02T17:28:18.423Z"
+    }
+  ],
+  "allDeals": [
+    {
+      "itemId": "v1|255493473763|0",
+      "title": "RAZOR LEAF MMA 2010 ROOKIE CARD OF RANDY \" THE NATURAL \" COUTURE!!! #100 (RC)",
+      "currentPrice": 14.68,
+      "shippingCost": 3.67,
+      "totalPrice": 18.35,
+      "condition": "Unspecified",
+      "imageUrl": "https://i.ebayimg.com/images/g/X1MAAOSwpv1iNbCf/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/255493473763?_skw=rookie+card+raw+ungraded&hash=item3b7c9905e3:g:X1MAAOSwpv1iNbCf&amdata=enc%3AAQALAAAA8DZq0hFgvSYlgrFkWCFZ3z06Jp7MVITZwfUOreZCfToEZafEjr22BimRjhbHR7BMx5SYfQwleyU65EwJcd9TWsdLNhFFv4phhQPxTRbZYhUczdD%2FZAfPjgOR0CxCSTXDu%2F2po5tMA1mbJx%2FOnK8Mhx7W5IRXYn9AEYlDKAKBVHfsSQtqlMSI68zNuZoGtZkhOqtfkYmkBRouWJjB%2B%2B6fKY8pnWSGNpUTOzVjJp1oIR8gtju68%2FlzoTld4pb5opC%2BNe5FIkXpMSqUmDiZFwTSZURId1rd3oijVBlfjYr7KWXJecMxUWTWyxTrModcwWNaHA%3D%3D",
+      "location": "",
+      "country": "CA",
+      "sellerUsername": "1big*d",
+      "sellerFeedbackScore": 861,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "searchCategory": "Rookie Cards (Raw)",
+      "qualityAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 7.5,
+        "rating": "🔥 VERY GOOD",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "👍 Established seller (500+ transactions) (+0.5 points)"
+        ],
+        "recommendation": "Very good opportunity - worth serious consideration",
+        "adjustedByPhotoQuality": true
+      },
+      "analyzedAt": "2026-02-02T17:28:15.034Z"
+    },
+    {
+      "itemId": "v1|185465918283|0",
+      "title": "ALEXIS LAFRENIERE RANGERS ROOKIE 2020 UPPER DECK - YOUNG GUNS # 250  🏒💥 (NJC)",
+      "currentPrice": 19.99,
+      "shippingCost": 10,
+      "totalPrice": 29.99,
+      "condition": "Unspecified",
+      "imageUrl": "https://i.ebayimg.com/images/g/2MYAAOSwWXNgqtFu/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/185465918283?_skw=rookie+card+raw+ungraded&hash=item2b2ea1534b:g:2MYAAOSwWXNgqtFu&amdata=enc%3AAQALAAAA8DZq0hFgvSYlgrFkWCFZ3z09Cts2S8Mstb9oAiCrJMn0dTULOQien5RP%2B6jyVO0QcnwlWIvE9S8oSKVmuywGhpw8OZMA4DqeNbQ7kgTAu7%2Bw%2BtdOAK%2FXMTV%2FODVKsegSRyYbMRvui31OMbigxHc0K1e0KQCjn5KFFW0%2FUH9StQU3HKtmlU8qN%2FtIcIpHYfnHJFXp%2FHDYmmR2uvTgh6APoYKiLJVXp5IsXcnUqSzngapo%2B7vYkCl3%2FX%2FJvXP%2F694%2BIUhuqz8cKCjQHis180%2BLu2jvlg1GtDtj3PMwmtFLbRgq0l%2FAB1a--O%2Bez%2FMfb3zWBQ%3D%3D",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "njcollectibles07",
+      "sellerFeedbackScore": 1872,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "searchCategory": "Rookie Cards (Raw)",
+      "qualityAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 1,
+          "avgPrice": 410.98,
+          "recentSales": [
+            {
+              "price": 410.98,
+              "title": "2019-20 Upper Deck Series 1 Complete Set 1-250  Quinn Hughes PSA 10",
+              "url": "https://www.ebay.com/itm/266710216481?_skw=2020+upper+deck+%23250+PSA+10&hash=item3e192aef21:g:K8QAAOSwDTxl7UWA"
+            }
+          ]
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": true
+      },
+      "profitAnalysis": {
+        "insufficientData": false,
+        "totalCost": 49.99,
+        "rawPrice": 29.99,
+        "gradingCost": 20,
+        "psa10Scenario": {
+          "avgCompPrice": 410.98,
+          "profit": 360.99,
+          "multiplier": 8.2
+        },
+        "psa9Scenario": {
+          "avgCompPrice": 164.39,
+          "profit": 114.4,
+          "multiplier": 3.3
+        },
+        "expectedValue": 190.16,
+        "roi": 380.4,
+        "recommendation": "⚡ GREAT - Very good opportunity"
+      },
+      "dealScore": {
+        "score": 0,
+        "rating": "❌ SKIP",
+        "breakdown": [
+          "🚫 REJECT: Too cheap (7% of market) - Likely damaged/fake"
+        ],
+        "recommendation": "Too cheap = suspicious",
+        "adjustedByPhotoQuality": true
+      },
+      "analyzedAt": "2026-02-02T17:28:15.946Z"
+    },
+    {
+      "itemId": "v1|255502936853|0",
+      "title": "UFC ROUND 2 2009 ROOKIE BLOODLINES CARD OF RANDY \" THE NATURAL \" COUTURE!!! BL-2",
+      "currentPrice": 24.98,
+      "shippingCost": 3.67,
+      "totalPrice": 28.65,
+      "condition": "Unspecified",
+      "imageUrl": "https://i.ebayimg.com/images/g/aMMAAOSwAadgltPP/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/255502936853?_skw=rookie+card+raw+ungraded&hash=item3b7d296b15:g:aMMAAOSwAadgltPP&amdata=enc%3AAQALAAAA8DZq0hFgvSYlgrFkWCFZ3z0vE9uGTTQsAh5AQClKb7NKOcJktGP5NTwxTIXJFZCD5%2BGpxwjkVCVePjKB7sdhZ2WmKjeC8QxK4anbM%2FMmRT2gqafCCs2eNui%2FVaUinD5qjnSjJw5V%2B6ej%2B0y%2FDDcWHIJzfZeqkGVB5IE1L8mc7T4fKFeMpFsZ%2FmnEqGcFAWzefpDb7%2BtoK9LIReOjL99uD2IWPIEhh6IVO3%2BsVc88xkay4IOPtAXuna8ILTwn0CWO7%2FbMQTHCPJwtmCpOyj2Q6WvJYX1dU2S1qqoZqZRxTANBRGjV%2BRfUlnTrEqZynfC7pQ%3D%3D",
+      "location": "",
+      "country": "CA",
+      "sellerUsername": "1big*d",
+      "sellerFeedbackScore": 861,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "searchCategory": "Rookie Cards (Raw)",
+      "qualityAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 7.5,
+        "rating": "🔥 VERY GOOD",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "👍 Established seller (500+ transactions) (+0.5 points)"
+        ],
+        "recommendation": "Very good opportunity - worth serious consideration",
+        "adjustedByPhotoQuality": true
+      },
+      "analyzedAt": "2026-02-02T17:28:16.849Z"
+    },
+    {
+      "itemId": "v1|325499555148|0",
+      "title": "1993 Upper Deck Star Rookie #13 Brett Farve RC  Raw",
+      "currentPrice": 15,
+      "shippingCost": 1.5,
+      "totalPrice": 16.5,
+      "condition": "Unspecified",
+      "imageUrl": "https://i.ebayimg.com/images/g/kN0AAOSwdN1jw3fw/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/325499555148?_skw=rookie+card+raw+ungraded&hash=item4bc9490d4c:g:kN0AAOSwdN1jw3fw",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "joshmcatee",
+      "sellerFeedbackScore": 937,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "searchCategory": "Rookie Cards (Raw)",
+      "qualityAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 1,
+          "avgPrice": 459.98,
+          "recentSales": [
+            {
+              "price": 459.98,
+              "title": "1993-94 Upper Deck SE Diecut All Stars East #E13 Shaquille O'Neal PSA 9",
+              "url": "https://www.ebay.com/itm/255434474946?_skw=1993+upper+deck+%2313+PSA+9&hash=item3b7914c5c2:g:RAgAAOSwq5ZiLl10"
+            }
+          ]
+        },
+        "foundComps": true
+      },
+      "profitAnalysis": {
+        "insufficientData": false,
+        "totalCost": 36.5,
+        "rawPrice": 16.5,
+        "gradingCost": 20,
+        "psa10Scenario": {
+          "avgCompPrice": 0,
+          "profit": 0,
+          "multiplier": 0
+        },
+        "psa9Scenario": {
+          "avgCompPrice": 459.98,
+          "profit": 423.48,
+          "multiplier": 12.6
+        },
+        "expectedValue": 169.39,
+        "roi": 464.1,
+        "recommendation": "⚡ GREAT - Very good opportunity"
+      },
+      "dealScore": {
+        "score": 10,
+        "rating": "🔥🔥🔥 EXCEPTIONAL",
+        "breakdown": [
+          "⚡ EV > $100 (+2 points)",
+          "📈 ROI > 200% (+1.5 points)",
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "👍 Established seller (500+ transactions) (+0.5 points)"
+        ],
+        "recommendation": "Strong buy - excellent opportunity with multiple positive factors",
+        "adjustedByPhotoQuality": true
+      },
+      "analyzedAt": "2026-02-02T17:28:17.739Z"
+    },
+    {
+      "itemId": "v1|304805450506|0",
+      "title": "1965 Topps #176 Willie McCovey (BVG 6) Raw Card Review",
+      "currentPrice": 80,
+      "shippingCost": 6,
+      "totalPrice": 86,
+      "condition": "Unspecified",
+      "imageUrl": "https://i.ebayimg.com/images/g/I0EAAOSwJwRj683z/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/304805450506?_skw=rookie+card+raw+ungraded&hash=item46f7d2130a:g:I0EAAOSwJwRj683z",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "rambo_relics",
+      "sellerFeedbackScore": 5527,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "searchCategory": "Rookie Cards (Raw)",
+      "qualityAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 7,
+        "rating": "🔥 VERY GOOD",
+        "breakdown": [
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "👍 Experienced seller (1000+ transactions) (+1 point)"
+        ],
+        "recommendation": "Very good opportunity - worth serious consideration",
+        "adjustedByPhotoQuality": true
+      },
+      "analyzedAt": "2026-02-02T17:28:18.423Z"
+    },
+    {
+      "itemId": "v1|206001845349|0",
+      "title": "Paul Skenes 2023 Bowman 1st Draft On-Card Auto Rookie RC Pirates MLB Holo COA",
+      "currentPrice": 399.99,
+      "shippingCost": 5.2,
+      "totalPrice": 405.19,
+      "condition": "Unknown",
+      "imageUrl": "https://i.ebayimg.com/images/g/iFMAAeSwK3ZpaXdQ/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/206001845349?_skw=on+card+auto+autograph+rookie&hash=item2ff6aab465:g:iFMAAeSwK3ZpaXdQ&amdata=enc%3AAQALAAABADZq0hFgvSYlgrFkWCFZ3z2DEXZE7mwk6oWN2qhF%2FW4RLsQvEReQOVM%2B01aLPz6rRMy%2FNmzmI7HTkxoYTFRvuSccMg7qawfBBgfwupgZgTZJ3l8m3JNP%2BBr%2F39Mgz9UtYxuDP%2BSl27IEFKLvXXn76%2BOy%2F6XGwFvBGXjuWYCFXtEiGHVBsn57dfWVnjgeL2dlKlHbq5WBliX7MIb3Umm7z%2Fcfj6ClgkPlXPRO4ajczOjTk%2BOCaFrDS5iL%2BiHlGbVdiDR9bCxVVNgpYwOKVQy9PahGzXl1zJmKlZZzQJWQ1KwYoIZNkYFFzPn%2FkkCefvClDbYKJKrKcf5w4sLeZ5Tr2dk%3D",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "jurufa-trading-co",
+      "sellerFeedbackScore": 946,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Other Autographed MLB Items",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "searchCategory": "On-Card Autographs",
+      "qualityAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 50,
+          "avgPrice": 209.69,
+          "recentSales": [
+            {
+              "price": 103.99,
+              "title": "2023 BOWMAN CHROME LUNAR GLOW REF LAZARO MONTES RC (x2), PSA 10 GEM, MARINERS!",
+              "url": "https://www.ebay.com/itm/336159774758?_skw=2023+bowman+PSA+10&hash=item4e44af1826:g:r18AAeSwcTdouIDL"
+            },
+            {
+              "price": 44.98,
+              "title": "2023 BOWMAN CHROME PROSPECTS BCP61 JUNIOR CAMINERO PSA 10",
+              "url": "https://www.ebay.com/itm/336389642294?_skw=2023+bowman+PSA+10&hash=item4e52629836:g:vkcAAeSw7nRpYQTp"
+            },
+            {
+              "price": 44.98,
+              "title": "2023 BOWMAN CHROME PROSPECTS BCP61 JUNIOR CAMINERO PSA 10",
+              "url": "https://www.ebay.com/itm/336389642291?_skw=2023+bowman+PSA+10&hash=item4e52629833:g:xvIAAeSw5VhpYQUL"
+            },
+            {
+              "price": 44.98,
+              "title": "2023 BOWMAN CHROME PROSPECTS BCP61 JUNIOR CAMINERO PSA 10",
+              "url": "https://www.ebay.com/itm/336389642293?_skw=2023+bowman+PSA+10&hash=item4e52629835:g:o9MAAeSwBM9pYQT0"
+            },
+            {
+              "price": 134.95,
+              "title": "LOT 3 2023 Junior Caminero Bowman Chrome Prospects Rookie RC ALL PSA 10 GEM MINT",
+              "url": "https://www.ebay.com/itm/177754885939?_skw=2023+bowman+PSA+10&hash=item2963044f33:g:1hoAAeSwxEBpXxdp"
+            }
+          ]
+        },
+        "psa9": {
+          "count": 50,
+          "avgPrice": 469.66,
+          "recentSales": [
+            {
+              "price": 215,
+              "title": "🔥 2023 Bowman Draft Paul Skenes PSA 9 1st Bowman Refractor + 1st Chrome & Paper",
+              "url": "https://www.ebay.com/itm/127649448578?_skw=2023+bowman+PSA+9&hash=item1db8800282:g:Lj4AAeSwszlpeTXX"
+            },
+            {
+              "price": 64.98,
+              "title": "2023 BOWMAN DRAFT BDC96 NOLAN McLEAN CHROME PSA 9",
+              "url": "https://www.ebay.com/itm/336389642311?_skw=2023+bowman+PSA+9&hash=item4e52629847:g:dEAAAeSwN4JpYQPP"
+            },
+            {
+              "price": 34.99,
+              "title": "2023 Bowman 1st Edition Druw Jones 1st Diamondbacks ... PSA 9",
+              "url": "https://www.ebay.com/itm/155616905282?_skw=2023+bowman+PSA+9&hash=item243b7d8842:g:N4sAAOSwEB5kj76y"
+            },
+            {
+              "price": 49.95,
+              "title": "Lot of (5) 2023 TOPPS, CHROME, STADIUM CLUB & BOWMAN ROOKIE LOT ~ ALL PSA 9 MINT",
+              "url": "https://www.ebay.com/itm/257300369235?_skw=2023+bowman+PSA+9&hash=item3be84c0f53:g:-3gAAeSwuhppYJ3Y"
+            },
+            {
+              "price": 149.99,
+              "title": "2023 - 24 Paul Skenes PSA 9 Lot of 5 RC Rookie Card- Bowman, Best TP, Donruss +",
+              "url": "https://www.ebay.com/itm/206030081840?_skw=2023+bowman+PSA+9&hash=item2ff8598f30:g:amAAAeSw9nlpeL8-"
+            }
+          ]
+        },
+        "foundComps": true
+      },
+      "profitAnalysis": {
+        "insufficientData": false,
+        "totalCost": 425.19,
+        "rawPrice": 405.19,
+        "gradingCost": 20,
+        "psa10Scenario": {
+          "avgCompPrice": 209.69,
+          "profit": -215.5,
+          "multiplier": 0.5
+        },
+        "psa9Scenario": {
+          "avgCompPrice": 83.88,
+          "profit": -341.31,
+          "multiplier": 0.2
+        },
+        "expectedValue": -222.73,
+        "roi": -52.4,
+        "recommendation": "⚠️ MARGINAL - Proceed with caution"
+      },
+      "dealScore": {
+        "score": 5,
+        "rating": "💰 DECENT",
+        "breakdown": [
+          "⚠️ Price too high (193% of market) - Low margin (-2 points)",
+          "⚠️ Negative EV (-1 point)",
+          "⭐ Star player: paul skenes (+0.5 points)",
+          "✍️ On-card auto (+1 point)",
+          "🆕 Rookie card (+0.5 points)",
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "👍 Established seller (500+ transactions) (+0.5 points)",
+          "⚠️ High price risk (-0.5 points)"
+        ],
+        "recommendation": "Decent opportunity - consider if it fits your strategy",
+        "adjustedByPhotoQuality": true
+      },
+      "analyzedAt": "2026-02-02T17:28:19.550Z"
+    },
+    {
+      "itemId": "v1|267485806506|0",
+      "title": "Brooks Reed Autograph 2011 Panini Gridiron Gear Rookie Card #228 - On Card Auto ",
+      "currentPrice": 35.99,
+      "shippingCost": 0,
+      "totalPrice": 35.99,
+      "condition": "Unknown",
+      "imageUrl": "https://i.ebayimg.com/images/g/JKoAAeSw3XppIea2/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/267485806506?_skw=on+card+auto+autograph+rookie&hash=item3e47657faa:g:JKoAAeSw3XppIea2&amdata=enc%3AAQALAAABADZq0hFgvSYlgrFkWCFZ3z2wCiSh6bbJCYOt0p3qlCcWmVx%2FIE2kf4D0MwGXHPAFvVmlre84EWlmvi6sE32SSOgice2WWa%2BwaER3IErTzHNmx2xLYdFirC5xlgVkPVV6ptPU%2Be2WgKREDX96okg9HUFG3lpPohcoyw8oDJqgZu679vkl%2FwjADYIECHDoStV8isbx%2FQhuqyFpNFNEUHLKeT3HCPRDNCikyq4BjiBC04JOYFT1gVXhrLKUah5hf2s8NeiXbe4X5VCCM9OfRcAvGHecbxD4yNhpkg0vrwdWCOvu%2BQEoYA6ME924bMIIqgDsmgXYP5G4Z0IWSQGq21hziC8%3D",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "mrtsports",
+      "sellerFeedbackScore": 2867,
+      "sellerPositivePercent": "99.6",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Other Autographed NFL Items",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "searchCategory": "On-Card Autographs",
+      "qualityAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 9,
+        "rating": "🔥🔥🔥 EXCEPTIONAL",
+        "breakdown": [
+          "✍️ On-card auto (+1 point)",
+          "🆕 Rookie card (+0.5 points)",
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "👍 Experienced seller (1000+ transactions) (+1 point)",
+          "📦 Free shipping (+0.5 points)"
+        ],
+        "recommendation": "Strong buy - excellent opportunity with multiple positive factors",
+        "adjustedByPhotoQuality": true
+      },
+      "analyzedAt": "2026-02-02T17:28:20.396Z"
+    },
+    {
+      "itemId": "v1|257287910920|0",
+      "title": "Rookie Shepard 2024 Stars & Stripes On CARD Auto Autograph RC",
+      "currentPrice": 19.95,
+      "shippingCost": 6,
+      "totalPrice": 25.95,
+      "condition": "Unknown",
+      "imageUrl": "https://i.ebayimg.com/images/g/AWUAAeSwT2ppVo8v/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/257287910920?_skw=on+card+auto+autograph+rookie&hash=item3be78df608:g:AWUAAeSwT2ppVo8v",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "ballzy3l6",
+      "sellerFeedbackScore": 1417,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Other Autographed MLB Items",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "searchCategory": "On-Card Autographs",
+      "qualityAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 9,
+        "rating": "🔥🔥🔥 EXCEPTIONAL",
+        "breakdown": [
+          "✍️ On-card auto (+1 point)",
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "👍 Experienced seller (1000+ transactions) (+1 point)"
+        ],
+        "recommendation": "Strong buy - excellent opportunity with multiple positive factors",
+        "adjustedByPhotoQuality": true
+      },
+      "analyzedAt": "2026-02-02T17:28:21.196Z"
+    },
+    {
+      "itemId": "v1|223979662062|0",
+      "title": "2019 Panini Contenders Easton Stick On Card Auto Autograph Rookie Ticket RC",
+      "currentPrice": 59.95,
+      "shippingCost": 3.49,
+      "totalPrice": 63.44,
+      "condition": "Unknown",
+      "imageUrl": "https://i.ebayimg.com/images/g/N0sAAOSwWG5emJzi/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/223979662062?_skw=on+card+auto+autograph+rookie&hash=item34263a6aee:g:N0sAAOSwWG5emJzi",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "sportscardsetcpgh",
+      "sellerFeedbackScore": 24308,
+      "sellerPositivePercent": "99.6",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "searchCategory": "On-Card Autographs",
+      "qualityAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 8.5,
+        "rating": "🔥🔥 HOT",
+        "breakdown": [
+          "✍️ On-card auto (+1 point)",
+          "🆕 Rookie card (+0.5 points)",
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "👍 Experienced seller (1000+ transactions) (+1 point)"
+        ],
+        "recommendation": "Strong buy - excellent opportunity with multiple positive factors",
+        "adjustedByPhotoQuality": true
+      },
+      "analyzedAt": "2026-02-02T17:28:22.088Z"
+    },
+    {
+      "itemId": "v1|385298724774|0",
+      "title": "Patrick Wisdom Donruss Optic RATED ROOKIE Refractor On Card Auto Autograph /75",
+      "currentPrice": 33.99,
+      "shippingCost": 5.99,
+      "totalPrice": 39.98,
+      "condition": "Unspecified",
+      "imageUrl": "https://i.ebayimg.com/images/g/L3wAAOSw1eJi1at2/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/385298724774?_skw=on+card+auto+autograph+rookie&hash=item59b597f7a6:g:L3wAAOSw1eJi1at2",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "mainlinesports",
+      "sellerFeedbackScore": 26533,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "searchCategory": "On-Card Autographs",
+      "qualityAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 50,
+          "avgPrice": 363.19,
+          "recentSales": [
+            {
+              "price": 145.98,
+              "title": "Giannis Antetokounmpo Donruss Optic Refractor All Heart Gem Mint PSA 10 Card LOT",
+              "url": "https://www.ebay.com/itm/363625122541?_skw=optic+refractor+PSA+10&hash=item54a9bf0aed:g:KVkAAOSwGcVhhEcW"
+            },
+            {
+              "price": 44,
+              "title": "2019 Panini Donruss Optic Lebron James My House Lakers PSA 10 GEM MINT",
+              "url": "https://www.ebay.com/itm/295621240992?_skw=optic+refractor+PSA+10&hash=item44d46628a0:g:SVEAAOSw24JkMxPw&amdata=enc%3AAQALAAAA8DZq0hFgvSYlgrFkWCFZ3z00VA%2BVYbhbMDrKOxHdQ9EFhNahs%2BhASJ2gDGfSm6drAMDbykMLSD2cwL7S9wWDCD1%2BbW3uxfKxSJ4jHLZHHwg0dOchcSVMBkvI4G1xaGTKvsFJQTBWOm%2Fma0Fos1ZhL%2FyycL5%2BCpI9HNzh1Z7ExFch1AvQWTtmed%2FNZ%2FvG9h9Y2g87vDzMk2rn%2BVbfCMskan57g2NvfdmHNmIYz4mH3R5qFkvHf6gMSmWNj0PUX3WUc4OY25qoigC%2Fx4Ad%2B8MKHDRFDzXmdGysZKsbp01cYEgTFfFxL7GDnVW2MATYnALSxg%3D%3D"
+            },
+            {
+              "price": 199.99,
+              "title": "2018 PANINI DONRUSS OPTIC MOOKIE BETTS CAROLINA BLUE PRIZM PARALLEL 18/50 PSA 10",
+              "url": "https://www.ebay.com/itm/392253611493?_skw=optic+refractor+PSA+10&hash=item5b54231de5:g:cnYAAOSwyMlcftl5"
+            },
+            {
+              "price": 129.89,
+              "title": "MIKE TROUT ~ 2019 Panini Donruss Optic Silver Holo #170 ~ Graded PSA 10 Gem Mint",
+              "url": "https://www.ebay.com/itm/373551683089?_skw=optic+refractor+PSA+10&hash=item56f96a5611:g:Rh0AAOSwo59ggaiG"
+            },
+            {
+              "price": 32.79,
+              "title": "2017-18 Donruss Optic Kawhi Leonard All-Stars HOLO #4 PSA 10 Gem Mint Clippers",
+              "url": "https://www.ebay.com/itm/185510080256?_skw=optic+refractor+PSA+10&hash=item2b31432f00:g:O1sAAOSweJJi2r0X"
+            }
+          ]
+        },
+        "psa9": {
+          "count": 50,
+          "avgPrice": 107.73,
+          "recentSales": [
+            {
+              "price": 150,
+              "title": "2015 BOWMAN CHROME REFRACTOR AARON JUDGE 2017 PANINI OPTIC JASON TATUM PSA 9 RCS",
+              "url": "https://www.ebay.com/itm/266106102567?_skw=optic+refractor+PSA+9&hash=item3df528e327:g:75AAAOSwWD9j1byJ"
+            },
+            {
+              "price": 199.98,
+              "title": "2019 Panini Optic Patrick Mahomes II #1 HOLO SILVER Prizm Refractor PSA 9 MINT🔥",
+              "url": "https://www.ebay.com/itm/114632960338?_skw=optic+refractor+PSA+9&hash=item1ab0a82952:g:n34AAOSwTNJgAiZ~"
+            },
+            {
+              "price": 23.98,
+              "title": "JARRETT CULVER 2019 OPTIC FANATICS PRIZM WAVE REFRACTOR RC #160 PSA 9 MINT! NBA",
+              "url": "https://www.ebay.com/itm/125599815918?_skw=optic+refractor+PSA+9&hash=item1d3e5518ee:g:JdIAAOSw7U9jaEL3"
+            },
+            {
+              "price": 29.08,
+              "title": "2017-18 Panini Optic Robert Covington #111 Blue Disco Prizm 6/50 PSA 9 76ERS",
+              "url": "https://www.ebay.com/itm/314307793949?_skw=optic+refractor+PSA+9&hash=item492e34541d:g:1RsAAOSwBCJjuHix"
+            },
+            {
+              "price": 199.99,
+              "title": "PSA Mint 9 2019 Optic Cam Reddish Purple Shock Prizm Refractor Rookie Card ",
+              "url": "https://www.ebay.com/itm/392876920768?_skw=optic+refractor+PSA+9&hash=item5b794a0fc0:g:KUEAAOSwGzdfEl0W"
+            }
+          ]
+        },
+        "foundComps": true
+      },
+      "profitAnalysis": {
+        "insufficientData": false,
+        "totalCost": 59.98,
+        "rawPrice": 39.98,
+        "gradingCost": 20,
+        "psa10Scenario": {
+          "avgCompPrice": 363.19,
+          "profit": 303.21,
+          "multiplier": 6.1
+        },
+        "psa9Scenario": {
+          "avgCompPrice": 145.28,
+          "profit": 85.3,
+          "multiplier": 2.4
+        },
+        "expectedValue": 155.4,
+        "roi": 259.1,
+        "recommendation": "⚡ GREAT - Very good opportunity"
+      },
+      "dealScore": {
+        "score": 0,
+        "rating": "❌ SKIP",
+        "breakdown": [
+          "🚫 REJECT: Too cheap (11% of market) - Likely damaged/fake"
+        ],
+        "recommendation": "Too cheap = suspicious",
+        "adjustedByPhotoQuality": true
+      },
+      "analyzedAt": "2026-02-02T17:28:23.247Z"
+    },
+    {
+      "itemId": "v1|224476689578|0",
+      "title": "1989 TOPPS TRADED RAW UNGRADED KEN GRIFFEY JR. ROOKIE SEATTLE MARINERS #41T",
+      "currentPrice": 39.99,
+      "shippingCost": 3.99,
+      "totalPrice": 43.98,
+      "condition": "Unspecified",
+      "imageUrl": "https://i.ebayimg.com/images/g/LW4AAOSwUNhgsCl0/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/224476689578?_skw=ken+griffey+jr+rookie+raw&hash=item3443da74aa:g:LW4AAOSwUNhgsCl0",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "strike3collectibles",
+      "sellerFeedbackScore": 12127,
+      "sellerPositivePercent": "99.7",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "searchCategory": "Ken Griffey Jr",
+      "qualityAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 50,
+          "avgPrice": 128.87,
+          "recentSales": [
+            {
+              "price": 156.98,
+              "title": "1989 Topps Traded Deion Sanders PSA 10 #30T & #110T RC 2 Count Lot",
+              "url": "https://www.ebay.com/itm/306678557568?_skw=1989+topps+PSA+10&hash=item4767776b80:g:uwUAAeSwPWlpTwHn"
+            },
+            {
+              "price": 44.95,
+              "title": "1989 TOPPS #94 JOHNNY MEADS PSA 10 GEM MINT ROOKIE RC POP 2 HOUSTON OILERS",
+              "url": "https://www.ebay.com/itm/142784534690?_skw=1989+topps+PSA+10&hash=item213e9f18a2:g:PcEAAOSwiONYOjta"
+            },
+            {
+              "price": 74.95,
+              "title": "1989 TOPPS #353 CHRISTIAN OKOYE PSA 10 GEM MINT POP 8 CHIEFS NIGERIAN NIGHTMARE",
+              "url": "https://www.ebay.com/itm/144119984147?_skw=1989+topps+PSA+10&hash=item218e387013:g:EpMAAOSwqapg9m-m"
+            },
+            {
+              "price": 44.95,
+              "title": "1989 TOPPS #92 CURTIS DUNCAN PSA 10 GEM MINT POP 2 HOUSTON OILERS NORTHWESTERN",
+              "url": "https://www.ebay.com/itm/142784532696?_skw=1989+topps+PSA+10&hash=item213e9f10d8:g:SCwAAOSwe7BWvCy0"
+            },
+            {
+              "price": 185.98,
+              "title": "1989 Topps Traded Deion Sanders PSA 10 #30T & #110T RC 2 Count Lot",
+              "url": "https://www.ebay.com/itm/296114214802?_skw=1989+topps+PSA+10&hash=item44f1c85792:g:bRwAAOSwOrllf2jf"
+            }
+          ]
+        },
+        "psa9": {
+          "count": 50,
+          "avgPrice": 181.05,
+          "recentSales": [
+            {
+              "price": 503.78,
+              "title": "1989 Topps Tiffany #49 Craig Biggio PSA 9",
+              "url": "https://www.ebay.com/itm/254111285204?_skw=1989+topps+PSA+9&hash=item3b2a367fd4:g:WjoAAOSwrm5cWltH"
+            },
+            {
+              "price": 126.94,
+              "title": "1989 Topps Cello pack PSA 9 Mint   Randy Johnson Rookie on Top",
+              "url": "https://www.ebay.com/itm/236565030578?_skw=1989+topps+PSA+9&hash=item37145fe6b2:g:sQIAAeSwJo9pWvpm"
+            },
+            {
+              "price": 83.45,
+              "title": "1989 TOPPS BASEBALL TALK ~ CARL YASTRZEMSKI #33 PSA 9 MINT 1960 SUPER STAR",
+              "url": "https://www.ebay.com/itm/352818607590?_skw=1989+topps+PSA+9&hash=item5225a0b5e6:g:BOwAAOSwIi5dnhs9"
+            },
+            {
+              "price": 1514,
+              "title": "1989 Topps Traded Tiffany Ken Griffey JR PSA 9",
+              "url": "https://www.ebay.com/itm/265082278321?_skw=1989+topps+PSA+9&hash=item3db82291b1:g:yHEAAOSwpUlgPVek"
+            },
+            {
+              "price": 111.98,
+              "title": "1989 Topps Traded Football Complete Set Aikman RC PSA 9 Sanders Rookie PSA 8",
+              "url": "https://www.ebay.com/itm/227177188446?_skw=1989+topps+PSA+9&hash=item34e4d0cc5e:g:zooAAeSwZbFpaqG5"
+            }
+          ]
+        },
+        "foundComps": true
+      },
+      "profitAnalysis": {
+        "insufficientData": false,
+        "totalCost": 63.98,
+        "rawPrice": 43.98,
+        "gradingCost": 20,
+        "psa10Scenario": {
+          "avgCompPrice": 128.87,
+          "profit": 64.89,
+          "multiplier": 2
+        },
+        "psa9Scenario": {
+          "avgCompPrice": 51.55,
+          "profit": -12.43,
+          "multiplier": 0.8
+        },
+        "expectedValue": 20.98,
+        "roi": 32.8,
+        "recommendation": "✓ DECENT - Consider if low risk"
+      },
+      "dealScore": {
+        "score": 0,
+        "rating": "❌ SKIP",
+        "breakdown": [
+          "🚫 REJECT: Too cheap (34% of market) - Likely damaged/fake"
+        ],
+        "recommendation": "Too cheap = suspicious",
+        "adjustedByPhotoQuality": true
+      },
+      "analyzedAt": "2026-02-02T17:28:24.443Z"
+    }
+  ]
+}

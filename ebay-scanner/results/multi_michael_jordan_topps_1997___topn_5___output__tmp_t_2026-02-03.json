@@ -1,0 +1,37 @@
+{
+  "timestamp": "2026-02-03T13:27:14.457Z",
+  "searchQuery": "michael jordan topps 1997 --topN 5 --output /tmp/test-scan.json",
+  "parsed": {
+    "original": "michael jordan topps 1997 --topN 5 --output /tmp/test-scan.json",
+    "isComplex": false,
+    "baseQuery": "michael jordan topps 1997 --topn 5 --output /tmp/test-scan.json",
+    "yearRange": null,
+    "detectedTypes": [],
+    "searches": [
+      "michael jordan topps 1997 --topN 5 --output /tmp/test-scan.json"
+    ],
+    "searchCount": 1,
+    "explanation": "Single search (no splitting needed)"
+  },
+  "searchResults": [
+    {
+      "query": "michael jordan topps 1997 --topN 5 --output /tmp/test-scan.json",
+      "count": 0
+    }
+  ],
+  "config": {
+    "keywords": "michael jordan topps 1997 --topN 5 --output /tmp/test-scan.json",
+    "minScoreToShow": 7,
+    "topN": 20
+  },
+  "scanDuration": "0.5s",
+  "summary": {
+    "totalFound": 0,
+    "uniqueItems": 0,
+    "rawCardsOnly": true,
+    "afterRawFilter": 0,
+    "totalScored": 0,
+    "showingResults": 0
+  },
+  "allResults": []
+}

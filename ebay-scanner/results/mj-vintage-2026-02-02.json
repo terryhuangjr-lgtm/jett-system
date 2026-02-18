@@ -1,0 +1,2307 @@
+{
+  "timestamp": "2026-02-02T15:48:48.877Z",
+  "scanDuration": "18.96s",
+  "summary": {
+    "totalFound": 200,
+    "afterFiltering": 55,
+    "afterScamCheck": 52,
+    "afterPhotoCheck": 52,
+    "analyzed": 20,
+    "top10": 10
+  },
+  "top10Deals": [
+    {
+      "itemId": "v1|187942629665|0",
+      "title": "Rated Rookie Michael Jordan Trading Card",
+      "currentPrice": 4.99,
+      "shippingCost": 0,
+      "totalPrice": 4.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/V54AAeSw1~BpZFIi/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/187942629665?_skw=michael+jordan&hash=item2bc240f121:g:V54AAeSw1~BpZFIi",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "port_tampa_sports_cards",
+      "sellerFeedbackScore": 7235,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "needsYearVerification": true,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 1,
+          "avgPrice": 399,
+          "recentSales": [
+            {
+              "price": 399,
+              "title": "2018 PANINI OPTIC BASKETBALL # 177  LUKA DONIC PSA 10",
+              "url": "https://www.ebay.com/itm/144374202545?_skw=Rated+Rookie+Michael+Jordan+Trading+Card+PSA+10&hash=item219d5f80b1:g:CU8AAOSwY-9h5PHs"
+            }
+          ]
+        },
+        "psa9": {
+          "count": 1,
+          "avgPrice": 225,
+          "recentSales": [
+            {
+              "price": 225,
+              "title": "Jordan Love eBay 1/1 Green & Yellow Color Match PSA9 Press Proof Rookie Lot🧀🏈",
+              "url": "https://www.ebay.com/itm/355818464805?_skw=Rated+Rookie+Michael+Jordan+Trading+Card+PSA+9&hash=item52d86ee625:g:kEMAAOSwuRlmefrP"
+            }
+          ]
+        },
+        "foundComps": true
+      },
+      "profitAnalysis": {
+        "insufficientData": false,
+        "totalCost": 24.99,
+        "rawPrice": 4.99,
+        "gradingCost": 20,
+        "psa10Scenario": {
+          "avgCompPrice": 399,
+          "profit": 374.01,
+          "multiplier": 16
+        },
+        "psa9Scenario": {
+          "avgCompPrice": 159.6,
+          "profit": 134.61,
+          "multiplier": 6.4
+        },
+        "expectedValue": 203.45,
+        "roi": 814.1,
+        "recommendation": "🔥 EXCEPTIONAL - Strong buy candidate"
+      },
+      "dealScore": {
+        "score": 10,
+        "rating": "🔥🔥🔥 EXCEPTIONAL",
+        "breakdown": [
+          "🔥 EV > $200 (+2.5 points)",
+          "📈 ROI > 200% (+1.5 points)",
+          "⭐ Star player: michael jordan (+0.5 points)",
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Strong buy - excellent opportunity with multiple positive factors"
+      }
+    },
+    {
+      "itemId": "v1|388126364675|0",
+      "title": "1999-00 Upper Deck Victory Michael Jordan Contest Card",
+      "currentPrice": 1.84,
+      "shippingCost": 0,
+      "totalPrice": 1.84,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/Xt4AAOSwOZNn3imm/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/388126364675?_skw=michael+jordan&hash=item5a5e225403:g:Xt4AAOSwOZNn3imm",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "jaschufl-0",
+      "sellerFeedbackScore": 3495,
+      "sellerPositivePercent": "99.9",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "⭐ Star player: michael jordan (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|395851799501|0",
+      "title": "MICHAEL JORDAN 1997-98 UPPER DECK COLLECTOR'S CHOICE NBA BASKETBALL CARD #395",
+      "currentPrice": 0.99,
+      "shippingCost": 0.99,
+      "totalPrice": 1.98,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/oJsAAOSwt6dnI9lb/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/395851799501?_skw=michael+jordan&hash=item5c2a9b1bcd:g:oJsAAOSwt6dnI9lb",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "something_4_every_1",
+      "sellerFeedbackScore": 7999,
+      "sellerPositivePercent": "99.7",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "⭐ Star player: michael jordan (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|168057741016|467661953879",
+      "title": "michael jordan cards Complete your set or buy singles",
+      "currentPrice": 2,
+      "shippingCost": 0,
+      "totalPrice": 2,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/PcwAAeSw7ydpWsBy/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/168057741016?_skw=michael+jordan&hash=item2721059ed8:g:PcwAAeSw7ydpWsBy",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "maber-3404",
+      "sellerFeedbackScore": 343,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "needsYearVerification": true,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "⭐ Star player: michael jordan (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|277656883212|0",
+      "title": "1992 Oddball Michael Jordan in Cowboy Hat Card Gold Foil NMMT Condition",
+      "currentPrice": 2.03,
+      "shippingCost": 0,
+      "totalPrice": 2.03,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/5fYAAOSwy-5nIi0V/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/277656883212?_skw=michael+jordan&hash=item40a5a3d00c:g:5fYAAOSwy-5nIi0V",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "mybaseballcardspace",
+      "sellerFeedbackScore": 13021,
+      "sellerPositivePercent": "99.7",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "good",
+          "issues": [
+            "✓ Near Mint condition",
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "⭐ Star player: michael jordan (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|294243051446|592906527387",
+      "title": "Stadium Club Michael Jordan Single Cards Pick From List All Cards Pictured",
+      "currentPrice": 1.35,
+      "shippingCost": 1,
+      "totalPrice": 2.35,
+      "condition": "Unspecified",
+      "imageUrl": "https://i.ebayimg.com/images/g/GdwAAOSwQOdg1P8r/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/294243051446?_skw=michael+jordan&hash=item448240a7b6:g:GdwAAOSwQOdg1P8r",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "futbolb13",
+      "sellerFeedbackScore": 5214,
+      "sellerPositivePercent": "99.9",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "needsYearVerification": true,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "⭐ Star player: michael jordan (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|205972570309|0",
+      "title": "1993-94 NBA HOOPS ALL STAR CARD CHICAGO BULLS MICHAEL JORDAN #257",
+      "currentPrice": 2.49,
+      "shippingCost": 0,
+      "totalPrice": 2.49,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/OvkAAeSwOcppWu5Q/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/205972570309?_skw=michael+jordan&hash=item2ff4ec00c5:g:OvkAAeSwOcppWu5Q",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "mel030783",
+      "sellerFeedbackScore": 51507,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "⭐ Star player: michael jordan (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|265486026926|0",
+      "title": "1993 Upper Deck 1993 NBA Playoff Highlights Michael Jordan Card 187",
+      "currentPrice": 2.49,
+      "shippingCost": 0,
+      "totalPrice": 2.49,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/7e8AAOSw4KRh1fOe/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/265486026926?_skw=michael+jordan&hash=item3dd03348ae:g:7e8AAOSw4KRh1fOe",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "cfdjoh3",
+      "sellerFeedbackScore": 24271,
+      "sellerPositivePercent": "99.9",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "⭐ Star player: michael jordan (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|127560694120|0",
+      "title": "1998 Upper Deck Living Legend #100 Michael Jordan Chicago Bulls Card",
+      "currentPrice": 2.49,
+      "shippingCost": 0,
+      "totalPrice": 2.49,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/i6oAAeSw99lpPZwN/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/127560694120?_skw=michael+jordan&hash=item1db335b968:g:i6oAAeSw99lpPZwN",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "dixonscards",
+      "sellerFeedbackScore": 6427,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "⭐ Star player: michael jordan (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|127637037171|0",
+      "title": "1998 Upper Deck Living Legend #4 Michael Jordan Chicago Bulls Card",
+      "currentPrice": 2.49,
+      "shippingCost": 0,
+      "totalPrice": 2.49,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/EMkAAeSwBsFpcP8b/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/127637037171?_skw=michael+jordan&hash=item1db7c2a073:g:EMkAAeSwBsFpcP8b",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "dixonscards",
+      "sellerFeedbackScore": 6427,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "⭐ Star player: michael jordan (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    }
+  ],
+  "allDeals": [
+    {
+      "itemId": "v1|187942629665|0",
+      "title": "Rated Rookie Michael Jordan Trading Card",
+      "currentPrice": 4.99,
+      "shippingCost": 0,
+      "totalPrice": 4.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/V54AAeSw1~BpZFIi/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/187942629665?_skw=michael+jordan&hash=item2bc240f121:g:V54AAeSw1~BpZFIi",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "port_tampa_sports_cards",
+      "sellerFeedbackScore": 7235,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "needsYearVerification": true,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 1,
+          "avgPrice": 399,
+          "recentSales": [
+            {
+              "price": 399,
+              "title": "2018 PANINI OPTIC BASKETBALL # 177  LUKA DONIC PSA 10",
+              "url": "https://www.ebay.com/itm/144374202545?_skw=Rated+Rookie+Michael+Jordan+Trading+Card+PSA+10&hash=item219d5f80b1:g:CU8AAOSwY-9h5PHs"
+            }
+          ]
+        },
+        "psa9": {
+          "count": 1,
+          "avgPrice": 225,
+          "recentSales": [
+            {
+              "price": 225,
+              "title": "Jordan Love eBay 1/1 Green & Yellow Color Match PSA9 Press Proof Rookie Lot🧀🏈",
+              "url": "https://www.ebay.com/itm/355818464805?_skw=Rated+Rookie+Michael+Jordan+Trading+Card+PSA+9&hash=item52d86ee625:g:kEMAAOSwuRlmefrP"
+            }
+          ]
+        },
+        "foundComps": true
+      },
+      "profitAnalysis": {
+        "insufficientData": false,
+        "totalCost": 24.99,
+        "rawPrice": 4.99,
+        "gradingCost": 20,
+        "psa10Scenario": {
+          "avgCompPrice": 399,
+          "profit": 374.01,
+          "multiplier": 16
+        },
+        "psa9Scenario": {
+          "avgCompPrice": 159.6,
+          "profit": 134.61,
+          "multiplier": 6.4
+        },
+        "expectedValue": 203.45,
+        "roi": 814.1,
+        "recommendation": "🔥 EXCEPTIONAL - Strong buy candidate"
+      },
+      "dealScore": {
+        "score": 10,
+        "rating": "🔥🔥🔥 EXCEPTIONAL",
+        "breakdown": [
+          "🔥 EV > $200 (+2.5 points)",
+          "📈 ROI > 200% (+1.5 points)",
+          "⭐ Star player: michael jordan (+0.5 points)",
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Strong buy - excellent opportunity with multiple positive factors"
+      }
+    },
+    {
+      "itemId": "v1|388126364675|0",
+      "title": "1999-00 Upper Deck Victory Michael Jordan Contest Card",
+      "currentPrice": 1.84,
+      "shippingCost": 0,
+      "totalPrice": 1.84,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/Xt4AAOSwOZNn3imm/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/388126364675?_skw=michael+jordan&hash=item5a5e225403:g:Xt4AAOSwOZNn3imm",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "jaschufl-0",
+      "sellerFeedbackScore": 3495,
+      "sellerPositivePercent": "99.9",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "⭐ Star player: michael jordan (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|395851799501|0",
+      "title": "MICHAEL JORDAN 1997-98 UPPER DECK COLLECTOR'S CHOICE NBA BASKETBALL CARD #395",
+      "currentPrice": 0.99,
+      "shippingCost": 0.99,
+      "totalPrice": 1.98,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/oJsAAOSwt6dnI9lb/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/395851799501?_skw=michael+jordan&hash=item5c2a9b1bcd:g:oJsAAOSwt6dnI9lb",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "something_4_every_1",
+      "sellerFeedbackScore": 7999,
+      "sellerPositivePercent": "99.7",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "⭐ Star player: michael jordan (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|168057741016|467661953879",
+      "title": "michael jordan cards Complete your set or buy singles",
+      "currentPrice": 2,
+      "shippingCost": 0,
+      "totalPrice": 2,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/PcwAAeSw7ydpWsBy/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/168057741016?_skw=michael+jordan&hash=item2721059ed8:g:PcwAAeSw7ydpWsBy",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "maber-3404",
+      "sellerFeedbackScore": 343,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "needsYearVerification": true,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "⭐ Star player: michael jordan (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|277656883212|0",
+      "title": "1992 Oddball Michael Jordan in Cowboy Hat Card Gold Foil NMMT Condition",
+      "currentPrice": 2.03,
+      "shippingCost": 0,
+      "totalPrice": 2.03,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/5fYAAOSwy-5nIi0V/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/277656883212?_skw=michael+jordan&hash=item40a5a3d00c:g:5fYAAOSwy-5nIi0V",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "mybaseballcardspace",
+      "sellerFeedbackScore": 13021,
+      "sellerPositivePercent": "99.7",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "good",
+          "issues": [
+            "✓ Near Mint condition",
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "⭐ Star player: michael jordan (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|294243051446|592906527387",
+      "title": "Stadium Club Michael Jordan Single Cards Pick From List All Cards Pictured",
+      "currentPrice": 1.35,
+      "shippingCost": 1,
+      "totalPrice": 2.35,
+      "condition": "Unspecified",
+      "imageUrl": "https://i.ebayimg.com/images/g/GdwAAOSwQOdg1P8r/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/294243051446?_skw=michael+jordan&hash=item448240a7b6:g:GdwAAOSwQOdg1P8r",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "futbolb13",
+      "sellerFeedbackScore": 5214,
+      "sellerPositivePercent": "99.9",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "needsYearVerification": true,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "⭐ Star player: michael jordan (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|205972570309|0",
+      "title": "1993-94 NBA HOOPS ALL STAR CARD CHICAGO BULLS MICHAEL JORDAN #257",
+      "currentPrice": 2.49,
+      "shippingCost": 0,
+      "totalPrice": 2.49,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/OvkAAeSwOcppWu5Q/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/205972570309?_skw=michael+jordan&hash=item2ff4ec00c5:g:OvkAAeSwOcppWu5Q",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "mel030783",
+      "sellerFeedbackScore": 51507,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "⭐ Star player: michael jordan (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|265486026926|0",
+      "title": "1993 Upper Deck 1993 NBA Playoff Highlights Michael Jordan Card 187",
+      "currentPrice": 2.49,
+      "shippingCost": 0,
+      "totalPrice": 2.49,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/7e8AAOSw4KRh1fOe/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/265486026926?_skw=michael+jordan&hash=item3dd03348ae:g:7e8AAOSw4KRh1fOe",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "cfdjoh3",
+      "sellerFeedbackScore": 24271,
+      "sellerPositivePercent": "99.9",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "⭐ Star player: michael jordan (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|127560694120|0",
+      "title": "1998 Upper Deck Living Legend #100 Michael Jordan Chicago Bulls Card",
+      "currentPrice": 2.49,
+      "shippingCost": 0,
+      "totalPrice": 2.49,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/i6oAAeSw99lpPZwN/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/127560694120?_skw=michael+jordan&hash=item1db335b968:g:i6oAAeSw99lpPZwN",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "dixonscards",
+      "sellerFeedbackScore": 6427,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "⭐ Star player: michael jordan (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|127637037171|0",
+      "title": "1998 Upper Deck Living Legend #4 Michael Jordan Chicago Bulls Card",
+      "currentPrice": 2.49,
+      "shippingCost": 0,
+      "totalPrice": 2.49,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/EMkAAeSwBsFpcP8b/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/127637037171?_skw=michael+jordan&hash=item1db7c2a073:g:EMkAAeSwBsFpcP8b",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "dixonscards",
+      "sellerFeedbackScore": 6427,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "⭐ Star player: michael jordan (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|127621730248|0",
+      "title": "1998 Upper Deck Living Legend #74 Michael Jordan Chicago Bulls Card",
+      "currentPrice": 2.49,
+      "shippingCost": 0,
+      "totalPrice": 2.49,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/rBkAAeSwDK1pZpmC/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/127621730248?_skw=michael+jordan&hash=item1db6d90fc8:g:rBkAAeSwDK1pZpmC",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "dixonscards",
+      "sellerFeedbackScore": 6427,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "⭐ Star player: michael jordan (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|376918839166|0",
+      "title": "1990-91 NBA Hoops Sam Vincent #223 Michael Jordan Wearing #12 Blemish On Card",
+      "currentPrice": 3,
+      "shippingCost": 0,
+      "totalPrice": 3,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/v3oAAeSwCfFpfg8q/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/376918839166?_skw=michael+jordan&hash=item57c21d0f7e:g:v3oAAeSwCfFpfg8q",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "1greatbuyz",
+      "sellerFeedbackScore": 4050,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "⭐ Star player: michael jordan (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|297809758354|0",
+      "title": "1992-93 SkyBox The 1992 NBA Finals Michael Jordan Card #314 - Chicago Bulls",
+      "currentPrice": 3.23,
+      "shippingCost": 0,
+      "totalPrice": 3.23,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/M7kAAeSwtGxpLfDG/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/297809758354?_skw=michael+jordan&hash=item4556d84892:g:M7kAAeSwtGxpLfDG",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "tpscardsjason",
+      "sellerFeedbackScore": 1245,
+      "sellerPositivePercent": "99.9",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "⭐ Star player: michael jordan (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|388993339717|656204569812",
+      "title": "1999 Upper Deck Michael Jordan Athlete Of The Century ~ Choose Your Card",
+      "currentPrice": 2.5,
+      "shippingCost": 1.25,
+      "totalPrice": 3.75,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/PV4AAeSweO1ozzz0/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/388993339717?_skw=michael+jordan&hash=item5a91cf5145:g:PV4AAeSweO1ozzz0",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "sayersbrotherscards",
+      "sellerFeedbackScore": 6789,
+      "sellerPositivePercent": "99.9",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "⭐ Star player: michael jordan (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|168102961631|0",
+      "title": "1990-91 Hoops #358 Michael Jordan Bulls Basketball Card 3001D",
+      "currentPrice": 2.99,
+      "shippingCost": 0.89,
+      "totalPrice": 3.88,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/I90AAeSwmlxpcm5f/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/168102961631?_skw=michael+jordan&hash=item2723b7a1df:g:I90AAeSwmlxpcm5f",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "1800gifts",
+      "sellerFeedbackScore": 8796,
+      "sellerPositivePercent": "99.9",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "⭐ Star player: michael jordan (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|403916572415|673799166758",
+      "title": "1999/00 NBA Legends Michael Jordan - Various Cards",
+      "currentPrice": 2.99,
+      "shippingCost": 0.99,
+      "totalPrice": 3.98,
+      "condition": "Unspecified",
+      "imageUrl": "https://i.ebayimg.com/images/g/StwAAOSw9ddjPkf3/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/403916572415?_skw=michael+jordan&hash=item5e0b4dc6ff:g:StwAAOSw9ddjPkf3",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "bentleyscards",
+      "sellerFeedbackScore": 2365,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "⭐ Star player: michael jordan (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|175086736041|0",
+      "title": "1998 Upper Deck Sticker Michael Jordan  card #  1  *** Gradable *** Rare",
+      "currentPrice": 1.99,
+      "shippingCost": 1.99,
+      "totalPrice": 3.98,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/BFIAAOSwBX1hy-Ev/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/175086736041?_skw=michael+jordan&hash=item28c3fb92a9:g:BFIAAOSwBX1hy-Ev",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "arod253",
+      "sellerFeedbackScore": 2251,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "⭐ Star player: michael jordan (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|326741470893|0",
+      "title": "1990 Living Legend Michael Jordan Series 1 #9 BLUE Border Oddball Card-BULLS",
+      "currentPrice": 3.99,
+      "shippingCost": 0,
+      "totalPrice": 3.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/RxEAAeSwIpBoqM41/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/326741470893?_skw=michael+jordan&hash=item4c134f2ead:g:RxEAAeSwIpBoqM41",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "rookiecard_headquarters",
+      "sellerFeedbackScore": 11001,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "⭐ Star player: michael jordan (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|264750523362|564692759437",
+      "title": "MICHAEL JORDAN CARDS FLEER,TOPPS, SKYBOX, HOOPS, & UPPER DECK SEE SCANS",
+      "currentPrice": 3,
+      "shippingCost": 1,
+      "totalPrice": 4,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/xG8AAOSwgOJe07O5/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/264750523362?_skw=michael+jordan&hash=item3da45c63e2:g:xG8AAOSwgOJe07O5",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "johnjefprks",
+      "sellerFeedbackScore": 34125,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "needsYearVerification": true,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "⭐ Star player: michael jordan (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|376239611055|644945951333",
+      "title": "1998-99 Upper Deck Michael Jordan Living Legend NBA Basketball Cards Pick List",
+      "currentPrice": 2.99,
+      "shippingCost": 1.39,
+      "totalPrice": 4.38,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/EH8AAeSwn61oIMUx/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/376239611055?_skw=michael+jordan&hash=item5799a0dcaf:g:EH8AAeSwn61oIMUx",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "coloradosportscardsdjsc",
+      "sellerFeedbackScore": 65017,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "⭐ Star player: michael jordan (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    }
+  ]
+}

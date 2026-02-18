@@ -1,0 +1,153 @@
+{
+  "timestamp": "2026-02-02T21:04:33.627Z",
+  "searchQuery": "Shaq refractor",
+  "config": {
+    "keywords": "Shaq refractor",
+    "minScoreToShow": 7,
+    "topN": 20
+  },
+  "scanDuration": "2.1s",
+  "summary": {
+    "totalFound": 200,
+    "rawCardsOnly": true,
+    "afterRawFilter": 1,
+    "totalScored": 1,
+    "showingResults": 1
+  },
+  "allResults": [
+    {
+      "itemId": "v1|126361017243|0",
+      "title": "2005-06 Topps Basketball 1952 Style Refractor 8 Card Lot *Shaq, Grant Hill &More",
+      "currentPrice": 149,
+      "shippingCost": 4.95,
+      "totalPrice": 153.95,
+      "condition": "Unspecified",
+      "imageUrl": "https://i.ebayimg.com/images/g/CNQAAOSwom1lsoPD/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/126361017243?_skw=Shaq+refractor&hash=item1d6bb41b9b:g:CNQAAOSwom1lsoPD&amdata=enc%3AAQALAAAA8DZq0hFgvSYlgrFkWCFZ3z28maMcwOHVjROHYsc1LkH9900%2F5oADeezNd86Xjy6ac3o0wTe%2FE3Nm35KqUS2YydsLjpMrOz35t1Q1rlhzwbw2otu4giafGlvf3eTKjzZd3NQCu6jzvKWsTNjBVBzEPHlAIZwWCUFKVbJUQnQqo1oV2Deswf2FKS9GvLi%2BUoFlszkDna%2BzBGCxQhF5N77NR%2BNvWHJ0dYJ0SPvN6Iz2d1Zi55uOPfDlbXlUlv%2Brh2FRs5rykITbFYgpBAxY9wUeMgXX%2Bpdi4DsSEv8RpC%2Fy%2FVCBr6A%2FyoW%2FCwTfFEymBU%2F7Yw%3D%3D",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "bluemandu",
+      "sellerFeedbackScore": 7869,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Lots",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "comps": {
+        "psa10": {
+          "count": 3,
+          "avgPrice": 609.27,
+          "recentSales": [
+            {
+              "price": 772.48,
+              "originalAskingPrice": 908.8,
+              "title": "SHAQUILLE O’NEAL 2005-06 Topps CHROME Blue XFRACTOR /90 #54 PSA 10 GEM MINT",
+              "url": "https://www.ebay.com/itm/146719993195?_skw=2005-06+topps+refractor+shaq+PSA+10&hash=item2229316d6b:g:pcIAAeSwYkxodbN8",
+              "estimated": true
+            },
+            {
+              "price": 27.86,
+              "originalAskingPrice": 32.78,
+              "title": "2005-06 Topps Finest Red Refractor Fact Duncan PSA 10 KIDD McGRADY Webber Wade",
+              "url": "https://www.ebay.com/itm/264677730096?_skw=2005-06+topps+refractor+shaq+PSA+10&hash=item3da005a730:g:8dMAAOSw1PJbKGBL",
+              "estimated": true
+            },
+            {
+              "price": 1027.48,
+              "originalAskingPrice": 1208.8,
+              "title": "TRACY MCGRADY 2006-07 Topps CHROME Black REFRACTOR /99 PSA 10 GEM MINT",
+              "url": "https://www.ebay.com/itm/146339590380?_skw=2005-06+topps+refractor+shaq+PSA+10&hash=item221284f0ec:g:Qr0AAOSwW2tnjH1h",
+              "estimated": true
+            }
+          ]
+        },
+        "psa9": {
+          "count": 4,
+          "avgPrice": 90.84,
+          "recentSales": [
+            {
+              "price": 219.3,
+              "originalAskingPrice": 258,
+              "title": "2005-06 Topps Chrome Shaquille O'Neal BLACK REFRACTOR #54 MINT PSA 9 HEAT/LAKERS",
+              "url": "https://www.ebay.com/itm/177797865962?_skw=2005-06+topps+refractor+shaq+PSA+9&hash=item29659421ea:g:5UEAAeSwRJZpcdd7",
+              "estimated": true
+            },
+            {
+              "price": 72.25,
+              "originalAskingPrice": 85,
+              "title": "2005 Finest Refractor #1 Shaquille O’Neal PSA MINT 9",
+              "url": "https://www.ebay.com/itm/236277463116?_skw=2005-06+topps+refractor+shaq+PSA+9&hash=item37033bf84c:g:NwwAAOSwhIJn4aqU",
+              "estimated": true
+            },
+            {
+              "price": 34.24,
+              "originalAskingPrice": 40.28,
+              "title": "Shaquille O'Neal Ultimate Collection 1992 Upper Deck RC Shaq Topps Chrome Fleer",
+              "url": "https://www.ebay.com/itm/266622509755?_skw=2005-06+topps+refractor+shaq+PSA+9&hash=item3e13f0a2bb:g:h6EAAOSwuPZlqBu7",
+              "estimated": true
+            },
+            {
+              "price": 37.55,
+              "originalAskingPrice": 44.18,
+              "title": "2005-06 Topps Chrome XFractor Refractor Ducan Chosen One Relics GOLD Iverson PSA",
+              "url": "https://www.ebay.com/itm/265501311017?_skw=2005-06+topps+refractor+shaq+PSA+9&hash=item3dd11c8029:g:ayMAAOSw6ttcxvJ9",
+              "estimated": true
+            }
+          ]
+        },
+        "foundComps": true,
+        "estimatedData": true,
+        "dataSource": "Active listings with 85% discount factor"
+      },
+      "dealScore": {
+        "score": 7,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "priceAnalysis": {
+            "points": 10,
+            "maxPoints": 10,
+            "medianPrice": 772.48,
+            "itemPrice": 153.95,
+            "percentBelowMedian": 80,
+            "tier": "50%+ below median - STEAL",
+            "reason": "50%+ below median - STEAL"
+          },
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 7869,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (7869 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "reason": "✅ Has photos"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "comparability": {
+            "points": 0,
+            "maxPoints": 10,
+            "compCount": 3,
+            "confidence": "Low confidence",
+            "reason": "3 comps - Low confidence"
+          }
+        },
+        "flags": []
+      }
+    }
+  ]
+}

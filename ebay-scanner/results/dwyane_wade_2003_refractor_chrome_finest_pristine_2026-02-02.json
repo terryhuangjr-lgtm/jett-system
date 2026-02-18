@@ -1,0 +1,22 @@
+{
+  "timestamp": "2026-02-02T21:16:14.958Z",
+  "searchQuery": "dwyane wade 2003 refractor chrome finest pristine",
+  "config": {
+    "keywords": "dwyane wade 2003 refractor chrome finest pristine",
+    "categoryId": "212",
+    "minPrice": 10,
+    "maxPrice": 5000,
+    "rawOnly": false,
+    "minScoreToShow": 6,
+    "topN": 30
+  },
+  "scanDuration": "0.7s",
+  "summary": {
+    "totalFound": 0,
+    "rawCardsOnly": false,
+    "afterRawFilter": 0,
+    "totalScored": 0,
+    "showingResults": 0
+  },
+  "allResults": []
+}

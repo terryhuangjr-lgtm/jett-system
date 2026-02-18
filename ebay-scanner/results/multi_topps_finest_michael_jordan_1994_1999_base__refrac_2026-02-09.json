@@ -1,0 +1,3455 @@
+{
+  "timestamp": "2026-02-09T09:00:29.822Z",
+  "searchQuery": "topps finest michael jordan 1994-1999 base, refractor",
+  "parsed": {
+    "original": "topps finest michael jordan 1994-1999 base, refractor",
+    "isComplex": true,
+    "baseQuery": "topps finest michael jordan base",
+    "players": null,
+    "yearRange": {
+      "start": 1994,
+      "end": 1999,
+      "years": [
+        1994,
+        1995,
+        1996,
+        1997,
+        1998,
+        1999
+      ]
+    },
+    "detectedTypes": [
+      "refractor"
+    ],
+    "searches": [
+      "1994 topps finest michael jordan base refractor",
+      "1995 topps finest michael jordan base refractor",
+      "1996 topps finest michael jordan base refractor",
+      "1997 topps finest michael jordan base refractor",
+      "1998 topps finest michael jordan base refractor",
+      "1999 topps finest michael jordan base refractor"
+    ],
+    "searchCount": 6,
+    "explanation": "Split into 6 searches: 6 years (1994-1999)"
+  },
+  "searchResults": [
+    {
+      "query": "1994 topps finest michael jordan base refractor",
+      "count": 38
+    },
+    {
+      "query": "1995 topps finest michael jordan base refractor",
+      "count": 12
+    },
+    {
+      "query": "1996 topps finest michael jordan base refractor",
+      "count": 20
+    },
+    {
+      "query": "1997 topps finest michael jordan base refractor",
+      "count": 27
+    },
+    {
+      "query": "1998 topps finest michael jordan base refractor",
+      "count": 11
+    },
+    {
+      "query": "1999 topps finest michael jordan base refractor",
+      "count": 6
+    }
+  ],
+  "config": {
+    "keywords": "topps finest michael jordan 1994-1999 base, refractor",
+    "minScoreToShow": 7,
+    "topN": 15,
+    "minPrice": 10,
+    "maxPrice": 100,
+    "rawOnly": true
+  },
+  "scanDuration": "4.9s",
+  "summary": {
+    "totalFound": 114,
+    "uniqueItems": 98,
+    "rawCardsOnly": true,
+    "afterRawFilter": 47,
+    "totalScored": 47,
+    "showingResults": 6
+  },
+  "allResults": [
+    {
+      "itemId": "v1|127158609553|0",
+      "title": "Anfernee Hardaway 1995-96 Topps Mystery Finest Refractor #M2 Jordan on Back",
+      "currentPrice": 79.99,
+      "shippingCost": 0,
+      "totalPrice": 79.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/ZoAAAOSwO-xoQmB3/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/127158609553?_skw=1995+topps+finest+michael+jordan+base+refractor&hash=item1d9b3e6691:g:ZoAAAOSwO-xoQmB3",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "correllcardshop",
+      "sellerFeedbackScore": 12988,
+      "sellerPositivePercent": "99.9",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 8,
+        "rating": "⚡ GREAT DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "99.9",
+            "salesCount": 12988,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "99.9% (12988 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Last name match: jordan",
+              "refractor match",
+              "Close year: 1995 (±2 of 1994)",
+              "topps match"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Last name match: jordan, refractor match, Close year: 1995 (±2 of 1994), topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|127158581428|0",
+      "title": "Anfernee Hardaway 1995-96 Topps Mystery Finest Refractor #M2 Jordan on Back",
+      "currentPrice": 89.99,
+      "shippingCost": 0,
+      "totalPrice": 89.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/6nMAAOSwCEZoQlsc/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/127158581428?_skw=1995+topps+finest+michael+jordan+base+refractor&hash=item1d9b3df8b4:g:6nMAAOSwCEZoQlsc",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "correllcardshop",
+      "sellerFeedbackScore": 12988,
+      "sellerPositivePercent": "99.9",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 8,
+        "rating": "⚡ GREAT DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "99.9",
+            "salesCount": 12988,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "99.9% (12988 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Last name match: jordan",
+              "refractor match",
+              "Close year: 1995 (±2 of 1994)",
+              "topps match"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Last name match: jordan, refractor match, Close year: 1995 (±2 of 1994), topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|187674518672|0",
+      "title": "1997-98 Topps Finest -RARE -FINISHERS: Michael Jordan #39 Refractor w/Coating NM",
+      "currentPrice": 800,
+      "shippingCost": 15,
+      "totalPrice": 815,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/LNMAAeSw5DRo-VJT/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/187674518672?_skw=1997+topps+finest+michael+jordan+base+refractor&hash=item2bb245e490:g:LNMAAeSw5DRo-VJT",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "osoboy89",
+      "sellerFeedbackScore": 512,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.8,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 7.5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 512,
+            "tier": "Established seller",
+            "trust": "✅ Good",
+            "reason": "100.0% (512 sales) - Established seller"
+          },
+          "listingQuality": {
+            "points": 6,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos",
+              "NM-MT condition"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos, NM-MT condition"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "refractor match",
+              "Same era: 1997 (±5 of 1994)",
+              "topps match"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Player match: michael jordan, refractor match, Same era: 1997 (±5 of 1994), topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|165340780251|0",
+      "title": "1994-95 TOPPS FINEST SERIES 2 BASKETBALL HOBBY 1 PACK From Box MICHAEL JORDAN",
+      "currentPrice": 59.99,
+      "shippingCost": 4.99,
+      "totalPrice": 64.98,
+      "condition": "New/Factory Sealed",
+      "imageUrl": "https://i.ebayimg.com/images/g/3xwAAOSwBkZiDe2d/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/165340780251?_skw=1994+topps+finest+michael+jordan+base+refractor&hash=item267f1416db:g:3xwAAOSwBkZiDe2d",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "skwsports",
+      "sellerFeedbackScore": 11214,
+      "sellerPositivePercent": "99.8",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Sealed Trading Card Packs",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.6,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "99.8",
+            "salesCount": 11214,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "99.8% (11214 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 9,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Exact year: 1994",
+              "topps match"
+            ],
+            "mismatches": [
+              "Missing: refractor"
+            ],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Exact year: 1994, topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|236084270007|0",
+      "title": "1994-95  TOPPS FINEST SERIES 2 BASKETBALL HOBBY 8 PACKS From Box MICHAEL JORDAN",
+      "currentPrice": 300,
+      "shippingCost": 4.51,
+      "totalPrice": 304.51,
+      "condition": "New/Factory Sealed",
+      "imageUrl": "https://i.ebayimg.com/images/g/WYwAAeSwn9poFkAL/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/236084270007?_skw=1994+topps+finest+michael+jordan+base+refractor&hash=item36f7b813b7:g:WYwAAeSwn9poFkAL",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "bighurtcards",
+      "sellerFeedbackScore": 1319,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Sealed Trading Card Packs",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.6,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 1319,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (1319 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 9,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Exact year: 1994",
+              "topps match"
+            ],
+            "mismatches": [
+              "Missing: refractor"
+            ],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Exact year: 1994, topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|267490129317|0",
+      "title": "1997-98 Topps Finest - Common Bronze Michael Jordan #39 Refractor",
+      "currentPrice": 999,
+      "shippingCost": 0,
+      "totalPrice": 999,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/Ja4AAeSwOLNpJP6s/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/267490129317?_skw=1997+topps+finest+michael+jordan+base+refractor&hash=item3e47a775a5:g:Ja4AAeSwOLNpJP6s",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "bravos_house_of_cardz",
+      "sellerFeedbackScore": 984,
+      "sellerPositivePercent": "99.5",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.5,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 7.5,
+            "maxPoints": 10,
+            "feedback": "99.5",
+            "salesCount": 984,
+            "tier": "Established seller",
+            "trust": "✅ Good",
+            "reason": "99.5% (984 sales) - Established seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "refractor match",
+              "Same era: 1997 (±5 of 1994)",
+              "topps match"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Player match: michael jordan, refractor match, Same era: 1997 (±5 of 1994), topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|235990494893|0",
+      "title": "1993-1994 Topps Finest- Michael Jordan Chicago Bulls #1 - RARE Error Card",
+      "currentPrice": 6200,
+      "shippingCost": 0,
+      "totalPrice": 6200,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/P5EAAeSw06xnx8-D/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/235990494893?_skw=1994+topps+finest+michael+jordan+base+refractor&hash=item36f2212ead:g:P5EAAeSw06xnx8-D",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "kbud44",
+      "sellerFeedbackScore": 673,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6.7,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 7.5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 673,
+            "tier": "Established seller",
+            "trust": "✅ Good",
+            "reason": "100.0% (673 sales) - Established seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 8,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Close year: 1993 (±2 of 1994)",
+              "topps match"
+            ],
+            "mismatches": [
+              "Missing: refractor"
+            ],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Close year: 1993 (±2 of 1994), topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": []
+      }
+    },
+    {
+      "itemId": "v1|165418013611|0",
+      "title": "TONI KUKOC 1994-95 Topps Finest  Card #320 CHICAGO BULLS Jordan Dance",
+      "currentPrice": 27.99,
+      "shippingCost": 5,
+      "totalPrice": 32.99,
+      "condition": "Used",
+      "imageUrl": "https://i.ebayimg.com/images/g/VWgAAOSw-LhiS47a/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/165418013611?_skw=1994+topps+finest+michael+jordan+base+refractor&hash=item2683ae93ab:g:VWgAAOSw-LhiS47a",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "dothe2199",
+      "sellerFeedbackScore": 812,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6.7,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 7.5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 812,
+            "tier": "Established seller",
+            "trust": "✅ Good",
+            "reason": "100.0% (812 sales) - Established seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 8,
+            "maxPoints": 10,
+            "matches": [
+              "Last name match: jordan",
+              "Exact year: 1994",
+              "topps match"
+            ],
+            "mismatches": [
+              "Missing: refractor"
+            ],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [],
+            "reason": "✅ Last name match: jordan, Exact year: 1994, topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": []
+      }
+    },
+    {
+      "itemId": "v1|116905941361|0",
+      "title": "MICHAEL JORDAN 1994-1995 Topps Finest  WITH COATING #331 Chicago Bulls ",
+      "currentPrice": 700,
+      "shippingCost": 0,
+      "totalPrice": 700,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/AvcAAeSw6AtpDAIQ/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/116905941361?_skw=1994+topps+finest+michael+jordan+base+refractor&hash=item1b38231971:g:AvcAAeSw6AtpDAIQ",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "sealed_booster_breakers",
+      "sellerFeedbackScore": 126,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6.6,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 126,
+            "tier": "Decent seller",
+            "trust": "OK",
+            "reason": "100.0% (126 sales) - Decent seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 9,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Exact year: 1994",
+              "topps match"
+            ],
+            "mismatches": [
+              "Missing: refractor"
+            ],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Exact year: 1994, topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|387748578788|0",
+      "title": "1994 FINEST REFRACTOR #331 With Coating Michael Jordan",
+      "currentPrice": 999.99,
+      "shippingCost": 19.99,
+      "totalPrice": 1019.98,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/uaIAAOSwDRtnZbp2/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/387748578788?_skw=1994+topps+finest+michael+jordan+base+refractor&hash=item5a479dc5e4:g:uaIAAOSwDRtnZbp2",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "lionheart623",
+      "sellerFeedbackScore": 12,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6.5,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 2.5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 12,
+            "tier": "New/low feedback seller",
+            "trust": "⚠️ New seller",
+            "reason": "100.0% (12 sales) - New/low feedback seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "refractor match",
+              "Exact year: 1994"
+            ],
+            "mismatches": [
+              "Not topps"
+            ],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Player match: michael jordan, refractor match, Exact year: 1994"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|396846857593|0",
+      "title": "1997-98 Topps Finest - Common - Bronze Michael Jordan #39 Refractor",
+      "currentPrice": 999.99,
+      "shippingCost": 0,
+      "totalPrice": 999.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/U4IAAeSwfAtocHdC/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/396846857593?_skw=1997+topps+finest+michael+jordan+base+refractor&hash=item5c65ea7d79:g:U4IAAeSwfAtocHdC",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "lvrefractors",
+      "sellerFeedbackScore": 79,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6.5,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 2.5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 79,
+            "tier": "New/low feedback seller",
+            "trust": "⚠️ New seller",
+            "reason": "100.0% (79 sales) - New/low feedback seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "refractor match",
+              "Same era: 1997 (±5 of 1994)",
+              "topps match"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Player match: michael jordan, refractor match, Same era: 1997 (±5 of 1994), topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|395857288548|0",
+      "title": "1997-98 Topps Finest Michael Jordan Finishers #39 MINT",
+      "currentPrice": 199,
+      "shippingCost": 0,
+      "totalPrice": 199,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/fssAAOSwNBlnJbwA/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/395857288548?_skw=1997+topps+finest+michael+jordan+base+refractor&hash=item5c2aeedd64:g:fssAAOSwNBlnJbwA",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "moonman444",
+      "sellerFeedbackScore": 232,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6.1,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 232,
+            "tier": "Decent seller",
+            "trust": "OK",
+            "reason": "100.0% (232 sales) - Decent seller"
+          },
+          "listingQuality": {
+            "points": 6,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos",
+              "Mint condition claimed"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos, Mint condition claimed"
+          },
+          "searchRelevance": {
+            "points": 7,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Same era: 1997 (±5 of 1994)",
+              "topps match"
+            ],
+            "mismatches": [
+              "Missing: refractor"
+            ],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Same era: 1997 (±5 of 1994), topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": []
+      }
+    },
+    {
+      "itemId": "v1|297977357592|0",
+      "title": "1994 TOPPS FINEST BASKETBALL NEAR COMPLETE SET REFRACTOR (11) + BASE (131 TOTAL)",
+      "currentPrice": 39.99,
+      "shippingCost": 8.75,
+      "totalPrice": 48.74,
+      "condition": "Used",
+      "imageUrl": "https://i.ebayimg.com/images/g/5n4AAeSw39dpefKw/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/297977357592?_skw=1994+topps+finest+michael+jordan+base+refractor&hash=item4560d5a518:g:5n4AAeSw39dpefKw",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "tmb-sports",
+      "sellerFeedbackScore": 1089,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Lots",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 1089,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (1089 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 5,
+            "maxPoints": 10,
+            "matches": [
+              "refractor match",
+              "Exact year: 1994",
+              "topps match"
+            ],
+            "mismatches": [
+              "WRONG PLAYER - searched for: michael jordan"
+            ],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ refractor match, Exact year: 1994, topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": []
+      }
+    },
+    {
+      "itemId": "v1|227170350042|0",
+      "title": "DAVID WINGATE 1994-95 TOPPS FINEST REFRACTOR CHARLOTTE HORNETS CARD #121 W/ PEEL",
+      "currentPrice": 4.99,
+      "shippingCost": 4.75,
+      "totalPrice": 9.74,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/u54AAeSwfH9pWtyD/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/227170350042?_skw=1994+topps+finest+michael+jordan+base+refractor&hash=item34e46873da:g:u54AAeSwfH9pWtyD",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "sir-snipe-alot",
+      "sellerFeedbackScore": 6063,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 6063,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (6063 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 5,
+            "maxPoints": 10,
+            "matches": [
+              "refractor match",
+              "Exact year: 1994",
+              "topps match"
+            ],
+            "mismatches": [
+              "WRONG PLAYER - searched for: michael jordan"
+            ],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ refractor match, Exact year: 1994, topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": []
+      }
+    },
+    {
+      "itemId": "v1|298003409893|0",
+      "title": "* DON MACLEAN * 1994-95 TOPPS FINEST REFRACTOR W/ PEEL SP # 126",
+      "currentPrice": 9.95,
+      "shippingCost": 1.25,
+      "totalPrice": 11.2,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/R-gAAeSwdQVphLzQ/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/298003409893?_skw=1994+topps+finest+michael+jordan+base+refractor&hash=item4562632be5:g:R-gAAeSwdQVphLzQ",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "praze11",
+      "sellerFeedbackScore": 23643,
+      "sellerPositivePercent": "99.8",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "99.8",
+            "salesCount": 23643,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "99.8% (23643 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 5,
+            "maxPoints": 10,
+            "matches": [
+              "refractor match",
+              "Exact year: 1994",
+              "topps match"
+            ],
+            "mismatches": [
+              "WRONG PLAYER - searched for: michael jordan"
+            ],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ refractor match, Exact year: 1994, topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": []
+      }
+    },
+    {
+      "itemId": "v1|227170352517|0",
+      "title": "DANNY AINGE 1994-95 TOPPS FINEST REFRACTOR PHOENIX SUNS CARD #12 W/ PEEL",
+      "currentPrice": 4.99,
+      "shippingCost": 4.75,
+      "totalPrice": 9.74,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/8p8AAeSwU2NpWtiK/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/227170352517?_skw=1994+topps+finest+michael+jordan+base+refractor&hash=item34e4687d85:g:8p8AAeSwU2NpWtiK",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "sir-snipe-alot",
+      "sellerFeedbackScore": 6063,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 6063,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (6063 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 5,
+            "maxPoints": 10,
+            "matches": [
+              "refractor match",
+              "Exact year: 1994",
+              "topps match"
+            ],
+            "mismatches": [
+              "WRONG PLAYER - searched for: michael jordan"
+            ],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ refractor match, Exact year: 1994, topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": []
+      }
+    },
+    {
+      "itemId": "v1|227170350691|0",
+      "title": "KENNY ANDERSON 1994-95 TOPPS FINEST REFRACTOR NEW JERSEY NETS CARD #201 W/ PEEL",
+      "currentPrice": 4.99,
+      "shippingCost": 4.75,
+      "totalPrice": 9.74,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/W7YAAeSwJfVpWtv3/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/227170350691?_skw=1994+topps+finest+michael+jordan+base+refractor&hash=item34e4687663:g:W7YAAeSwJfVpWtv3",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "sir-snipe-alot",
+      "sellerFeedbackScore": 6063,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 6063,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (6063 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 5,
+            "maxPoints": 10,
+            "matches": [
+              "refractor match",
+              "Exact year: 1994",
+              "topps match"
+            ],
+            "mismatches": [
+              "WRONG PLAYER - searched for: michael jordan"
+            ],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ refractor match, Exact year: 1994, topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": []
+      }
+    },
+    {
+      "itemId": "v1|306752140663|0",
+      "title": "* LIONEL SIMMONS * 1994-95 TOPPS FINEST REFRACTOR W/ PEEL SP # 127",
+      "currentPrice": 9.95,
+      "shippingCost": 1.25,
+      "totalPrice": 11.2,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/pEEAAeSwUH5phLwR/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/306752140663?_skw=1994+topps+finest+michael+jordan+base+refractor&hash=item476bda3577:g:pEEAAeSwUH5phLwR&amdata=enc%3AAQALAAABEACCtXRWQnOEpyOqnQQ8KGa%2B%2FNgewDKFixeTRJEBjSXQa8vhsGXsMHa8lYAwztKkEExSKo6XzFMlQ1zLqAHC1WHU7pQBqox2B%2BtZYprtwBx1YIEVQvOKVMNg7K1A5M%2BM0DfzppAza%2BhKaCJzJGXrkGUKKK8u6zbbqoUkvVAHFSmTlItFHzMVGxHjY9%2FIa7Nzpsz2e5a3QHEQU4Hc%2BhHY%2Bq7DqbW1tt1jXM9hllJsd6hhydoKY4Swa2SdzwmA2yDrhj8pLQQ1GqYnzjz2sIG5WfDNLRh3RYYWSjQVaSbtqRfDdIOlkf%2FF9Z8vP%2BQVdJ8F%2BAeJdKzHLhp4DYDIVUsAck1%2FwXp0adakUmv4%2BLnaqCcr",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "praze11",
+      "sellerFeedbackScore": 23643,
+      "sellerPositivePercent": "99.8",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "99.8",
+            "salesCount": 23643,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "99.8% (23643 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 5,
+            "maxPoints": 10,
+            "matches": [
+              "refractor match",
+              "Exact year: 1994",
+              "topps match"
+            ],
+            "mismatches": [
+              "WRONG PLAYER - searched for: michael jordan"
+            ],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ refractor match, Exact year: 1994, topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": []
+      }
+    },
+    {
+      "itemId": "v1|306752140666|0",
+      "title": "* TRACY MURRAY * 1994-95 TOPPS FINEST REFRACTOR W/ PEEL SP # 63",
+      "currentPrice": 9.95,
+      "shippingCost": 1.25,
+      "totalPrice": 11.2,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/Y4oAAeSw00hphLzD/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/306752140666?_skw=1994+topps+finest+michael+jordan+base+refractor&hash=item476bda357a:g:Y4oAAeSw00hphLzD&amdata=enc%3AAQALAAABEACCtXRWQnOEpyOqnQQ8KGYnqiB2i4LuL1fEWc1bwJRGfawErCrfCOytYdUeTzIct0w2sWSbfvIC2ENzyKFTOyRlYhePS%2FgNbwPEdF2LD%2B51b9qmla00GcTlqtgmP659AkNcRXb7JEtNCkmQetTeQaW%2BL4echBr6vEZnLJuc3guGfq%2FtGGz54y3jed7fKfeQwwqncxE2xBUC4fn5f%2Fklrw8HTm5MdP5zFGDgHxyKVo0zRzI3MT3HawWbnAZ9lFcJjyOXQIdajDE3LF6C554cw1zb6UWj4ulfWKvuIsYta5bjiZ5KJeHBiNH6dkzLrw1Zh%2B1cJVDt8Ghh37mnMyMxEPTy0RcvDIHIdh1MnfO7rxWy",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "praze11",
+      "sellerFeedbackScore": 23643,
+      "sellerPositivePercent": "99.8",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "99.8",
+            "salesCount": 23643,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "99.8% (23643 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 5,
+            "maxPoints": 10,
+            "matches": [
+              "refractor match",
+              "Exact year: 1994",
+              "topps match"
+            ],
+            "mismatches": [
+              "WRONG PLAYER - searched for: michael jordan"
+            ],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ refractor match, Exact year: 1994, topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": []
+      }
+    },
+    {
+      "itemId": "v1|306752146221|0",
+      "title": "* BILL CURLEY * 1994-95 TOPPS FINEST REFRACTOR RC W/ PEEL SP # 267",
+      "currentPrice": 14.99,
+      "shippingCost": 0.99,
+      "totalPrice": 15.98,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/WKkAAeSwu2RphL02/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/306752146221?_skw=1994+topps+finest+michael+jordan+base+refractor&hash=item476bda4b2d:g:WKkAAeSwu2RphL02&amdata=enc%3AAQALAAABEACCtXRWQnOEpyOqnQQ8KGa78Jo5TLfhNDNgXVzXOCr2G3dA1ZPIaOWxKv5Upuxji7sotpcU0j5oMQAAXi00oivEjyZM5Ph7oOko5BtBICJ%2BJQW%2BlQl%2FDOfyKAONfzn2jv7AUNq9pmW%2BUhzYg2cv0KVnrnf24eLPk5%2BFC1pCOuAMV1EGoXT%2FwLkFnMgeAe1bS%2BnwwpWD5B2%2FQPP6X6nM1zrQKRQZeb1ANbdGkOECuXfMyVJFCNGhzIufcXsCufGJDVODXZhWVlvxKPg3j18gSrmQvLUh58E47Klo0XIN%2FVJAe%2FjVeLzuO8qc0zbdbhzTgpWwEszBa13ls5DwFpg8reIIJdztRW5NBcsI8ddjVTMT",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "praze11",
+      "sellerFeedbackScore": 23643,
+      "sellerPositivePercent": "99.8",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "99.8",
+            "salesCount": 23643,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "99.8% (23643 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 5,
+            "maxPoints": 10,
+            "matches": [
+              "refractor match",
+              "Exact year: 1994",
+              "topps match"
+            ],
+            "mismatches": [
+              "WRONG PLAYER - searched for: michael jordan"
+            ],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ refractor match, Exact year: 1994, topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": []
+      }
+    },
+    {
+      "itemId": "v1|397354646638|0",
+      "title": "1994-95 Topps Finest Basketball GARY GRANT REFRACTOR #136",
+      "currentPrice": 4.99,
+      "shippingCost": 1.5,
+      "totalPrice": 6.49,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/UCQAAeSwD2BpJnIc/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/397354646638?_skw=1994+topps+finest+michael+jordan+base+refractor&hash=item5c842ebc6e:g:UCQAAeSwD2BpJnIc",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "dankoz-16",
+      "sellerFeedbackScore": 1085,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 1085,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (1085 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 5,
+            "maxPoints": 10,
+            "matches": [
+              "refractor match",
+              "Exact year: 1994",
+              "topps match"
+            ],
+            "mismatches": [
+              "WRONG PLAYER - searched for: michael jordan"
+            ],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ refractor match, Exact year: 1994, topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": []
+      }
+    },
+    {
+      "itemId": "v1|227170352852|0",
+      "title": "ROD STRICKLAND 1994-95 TOPPS FINEST REFRACTOR PORTLAND BLAZERS CARD #165 W/ PEEL",
+      "currentPrice": 4.99,
+      "shippingCost": 4.75,
+      "totalPrice": 9.74,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/NHMAAeSwjsNpWtfZ/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/227170352852?_skw=1994+topps+finest+michael+jordan+base+refractor&hash=item34e4687ed4:g:NHMAAeSwjsNpWtfZ",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "sir-snipe-alot",
+      "sellerFeedbackScore": 6063,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 6063,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (6063 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 5,
+            "maxPoints": 10,
+            "matches": [
+              "refractor match",
+              "Exact year: 1994",
+              "topps match"
+            ],
+            "mismatches": [
+              "WRONG PLAYER - searched for: michael jordan"
+            ],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ refractor match, Exact year: 1994, topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": []
+      }
+    },
+    {
+      "itemId": "v1|376512548887|0",
+      "title": "1991-92 Panini Album Stickers Michael Jordan #96",
+      "currentPrice": 7.95,
+      "shippingCost": 1.25,
+      "totalPrice": 9.2,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/CC0AAeSwTbFosFew/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/376512548887?_skw=1994+topps+finest+michael+jordan+base+refractor&hash=item57a9e59017:g:CC0AAeSwTbFosFew",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "wilsonsportscards1982",
+      "sellerFeedbackScore": 14645,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 5.6,
+        "rating": "~ MAYBE",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 14645,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (14645 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 4,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Same era: 1991 (±5 of 1994)"
+            ],
+            "mismatches": [
+              "Missing: refractor",
+              "Not topps"
+            ],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Same era: 1991 (±5 of 1994)"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "⚠️ May not match your search - check details"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|224493359134|524620744486",
+      "title": "1995-96 Topps Finest Basketball Refractors & INSERTS Finish set UP TO 25% OFF",
+      "currentPrice": 1.5,
+      "shippingCost": 2,
+      "totalPrice": 3.5,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/15IAAOSwNr9gwr14/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/224493359134?_skw=1995+topps+finest+michael+jordan+base+refractor&hash=item3444d8d01e:g:15IAAOSwNr9gwr14",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "keithc70842",
+      "sellerFeedbackScore": 5935,
+      "sellerPositivePercent": "99.2",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 5.6,
+        "rating": "~ MAYBE",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "99.2",
+            "salesCount": 5935,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "99.2% (5935 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 4,
+            "maxPoints": 10,
+            "matches": [
+              "refractor match",
+              "Close year: 1995 (±2 of 1994)",
+              "topps match"
+            ],
+            "mismatches": [
+              "WRONG PLAYER - searched for: michael jordan"
+            ],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ refractor match, Close year: 1995 (±2 of 1994), topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "⚠️ May not match your search - check details"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|166313737606|0",
+      "title": "LIONEL SIMMONS * 1994-95 TOPPS FINEST REFRACTOR W/ PEEL SP # 127",
+      "currentPrice": 1.79,
+      "shippingCost": 0,
+      "totalPrice": 1.79,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/ePIAAOSwP8Jk9YXo/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/166313737606?_skw=1994+topps+finest+michael+jordan+base+refractor&hash=item26b9123d86:g:ePIAAOSwP8Jk9YXo",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "richard5865",
+      "sellerFeedbackScore": 951,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 5.5,
+        "rating": "~ MAYBE",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 7.5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 951,
+            "tier": "Established seller",
+            "trust": "✅ Good",
+            "reason": "100.0% (951 sales) - Established seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 5,
+            "maxPoints": 10,
+            "matches": [
+              "refractor match",
+              "Exact year: 1994",
+              "topps match"
+            ],
+            "mismatches": [
+              "WRONG PLAYER - searched for: michael jordan"
+            ],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ refractor match, Exact year: 1994, topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": []
+      }
+    },
+    {
+      "itemId": "v1|376484595083|0",
+      "title": "1997-98 Topps Finest Checklist Series One 1 NBA W/ Coating #100 Michael Jordan",
+      "currentPrice": 3,
+      "shippingCost": 0,
+      "totalPrice": 3,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/5RQAAeSwnvpon4gj/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/376484595083?_skw=1997+topps+finest+michael+jordan+base+refractor&hash=item57a83b058b:g:5RQAAeSwnvpon4gj",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "jordi713",
+      "sellerFeedbackScore": 31,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 5.3,
+        "rating": "~ MAYBE",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 2.5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 31,
+            "tier": "New/low feedback seller",
+            "trust": "⚠️ New seller",
+            "reason": "100.0% (31 sales) - New/low feedback seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 7,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Same era: 1997 (±5 of 1994)",
+              "topps match"
+            ],
+            "mismatches": [
+              "Missing: refractor"
+            ],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Same era: 1997 (±5 of 1994), topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": []
+      }
+    },
+    {
+      "itemId": "v1|135668435149|0",
+      "title": "1997-98 Topps Finest #271 Michael Jordan Showstoppers w/Coating V919",
+      "currentPrice": 499.99,
+      "shippingCost": 0,
+      "totalPrice": 499.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/ENIAAOSw94Bn7XJi/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/135668435149?_skw=1997+topps+finest+michael+jordan+base+refractor&hash=item1f967808cd:g:ENIAAOSw94Bn7XJi",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "ketcchy",
+      "sellerFeedbackScore": 85,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 5.3,
+        "rating": "~ MAYBE",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 2.5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 85,
+            "tier": "New/low feedback seller",
+            "trust": "⚠️ New seller",
+            "reason": "100.0% (85 sales) - New/low feedback seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 7,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Same era: 1997 (±5 of 1994)",
+              "topps match"
+            ],
+            "mismatches": [
+              "Missing: refractor"
+            ],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Same era: 1997 (±5 of 1994), topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": []
+      }
+    },
+    {
+      "itemId": "v1|176103570380|0",
+      "title": "1996 Topps STARS Finest Jerry West Refractor Mint ",
+      "currentPrice": 15,
+      "shippingCost": 3,
+      "totalPrice": 18,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/gncAAOSwpnNiDk9n/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/176103570380?_skw=1996+topps+finest+michael+jordan+base+refractor&hash=item2900973bcc:g:gncAAOSwpnNiDk9n",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "done-3542",
+      "sellerFeedbackScore": 326,
+      "sellerPositivePercent": "96.4",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 4.9,
+        "rating": "⚠️ QUESTIONABLE",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "feedback": "96.4",
+            "salesCount": 326,
+            "tier": "Decent seller",
+            "trust": "OK",
+            "reason": "96.4% (326 sales) - Decent seller"
+          },
+          "listingQuality": {
+            "points": 6,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos",
+              "Mint condition claimed"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos, Mint condition claimed"
+          },
+          "searchRelevance": {
+            "points": 4,
+            "maxPoints": 10,
+            "matches": [
+              "refractor match",
+              "Close year: 1996 (±2 of 1994)",
+              "topps match"
+            ],
+            "mismatches": [
+              "WRONG PLAYER - searched for: michael jordan"
+            ],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ refractor match, Close year: 1996 (±2 of 1994), topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "⚠️ May not match your search - check details"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|376512547739|0",
+      "title": "1994-95 Finest Otis Thorpe Refractor #295",
+      "currentPrice": 2.95,
+      "shippingCost": 1.25,
+      "totalPrice": 4.2,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/gRYAAeSwQaRosFeE/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/376512547739?_skw=1994+topps+finest+michael+jordan+base+refractor&hash=item57a9e58b9b:g:gRYAAeSwQaRosFeE",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "wilsonsportscards1982",
+      "sellerFeedbackScore": 14645,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 4.8,
+        "rating": "⚠️ QUESTIONABLE",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 14645,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (14645 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 2,
+            "maxPoints": 10,
+            "matches": [
+              "refractor match",
+              "Exact year: 1994"
+            ],
+            "mismatches": [
+              "WRONG PLAYER - searched for: michael jordan",
+              "Not topps"
+            ],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ refractor match, Exact year: 1994"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "⚠️ May not match your search - check details"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|157278506143|0",
+      "title": "1994-95 Finest Dana Barros Refractor #31",
+      "currentPrice": 2.95,
+      "shippingCost": 1.25,
+      "totalPrice": 4.2,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/hiQAAeSw-ulosFdP/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/157278506143?_skw=1994+topps+finest+michael+jordan+base+refractor&hash=item249e878c9f:g:hiQAAeSw-ulosFdP",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "wilsonsportscards1982",
+      "sellerFeedbackScore": 14645,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 4.8,
+        "rating": "⚠️ QUESTIONABLE",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 14645,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (14645 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 2,
+            "maxPoints": 10,
+            "matches": [
+              "refractor match",
+              "Exact year: 1994"
+            ],
+            "mismatches": [
+              "WRONG PLAYER - searched for: michael jordan",
+              "Not topps"
+            ],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ refractor match, Exact year: 1994"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "⚠️ May not match your search - check details"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|264850038532|566942759844",
+      "title": "Dennis Rodman Topps Chrome Finest 1988 Fleer Panini Prizm UD Refractor PSA Gold ",
+      "currentPrice": 9.34,
+      "shippingCost": 5.74,
+      "totalPrice": 15.08,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/zecAAeSwQI5ogEGV/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/264850038532?_skw=1996+topps+finest+michael+jordan+base+refractor&hash=item3daa4adf04:g:zecAAeSwQI5ogEGV",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "hammercards",
+      "sellerFeedbackScore": 4883,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 4.8,
+        "rating": "⚠️ QUESTIONABLE",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 4883,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (4883 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 2,
+            "maxPoints": 10,
+            "matches": [
+              "refractor match",
+              "topps match"
+            ],
+            "mismatches": [
+              "WRONG PLAYER - searched for: michael jordan",
+              "Wrong year: 1988 vs 1994"
+            ],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ refractor match, topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "⚠️ May not match your search - check details"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|204386834757|0",
+      "title": "1997 98 ANTHONY MASON TOPPS FINEST ATOMIC GOLD BASE VARIANT NM TO MINT ",
+      "currentPrice": 2500,
+      "shippingCost": 0,
+      "totalPrice": 2500,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/h~0AAOSw0oZkpJ0U/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/204386834757?_skw=1997+topps+finest+michael+jordan+base+refractor&hash=item2f96679945:g:h~0AAOSw0oZkpJ0U",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "truevariants555",
+      "sellerFeedbackScore": 1736,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 4.5,
+        "rating": "⚠️ QUESTIONABLE",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 1736,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (1736 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 7,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos",
+              "Mint condition claimed",
+              "NM-MT condition"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos, Mint condition claimed, NM-MT condition"
+          },
+          "searchRelevance": {
+            "points": 0,
+            "maxPoints": 10,
+            "matches": [
+              "Same era: 1997 (±5 of 1994)",
+              "topps match"
+            ],
+            "mismatches": [
+              "WRONG PLAYER - searched for: michael jordan",
+              "Missing: refractor"
+            ],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [],
+            "reason": "✅ Same era: 1997 (±5 of 1994), topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "⚠️ May not match your search - check details"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|406601913761|0",
+      "title": "1995-96 Topps \"Mystery Finest\" #M1   🔥 Mint Non-ReFRactor",
+      "currentPrice": 74.99,
+      "shippingCost": 0,
+      "totalPrice": 74.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/JSkAAeSwb5tpaS4f/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/406601913761?_skw=1995+topps+finest+michael+jordan+base+refractor&hash=item5eab5cd5a1:g:JSkAAeSwb5tpaS4f",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "tahoedonnerob",
+      "sellerFeedbackScore": 33,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 4.4,
+        "rating": "⚠️ QUESTIONABLE",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 2.5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 33,
+            "tier": "New/low feedback seller",
+            "trust": "⚠️ New seller",
+            "reason": "100.0% (33 sales) - New/low feedback seller"
+          },
+          "listingQuality": {
+            "points": 6,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos",
+              "Mint condition claimed"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos, Mint condition claimed"
+          },
+          "searchRelevance": {
+            "points": 4,
+            "maxPoints": 10,
+            "matches": [
+              "refractor match",
+              "Close year: 1995 (±2 of 1994)",
+              "topps match"
+            ],
+            "mismatches": [
+              "WRONG PLAYER - searched for: michael jordan"
+            ],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ refractor match, Close year: 1995 (±2 of 1994), topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "⚠️ May not match your search - check details"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|297994099304|0",
+      "title": "1993-94 Through 1997-98 Topps Finest Baskeball Complete Set Run With Inserts",
+      "currentPrice": 1199.99,
+      "shippingCost": 29.99,
+      "totalPrice": 1229.98,
+      "condition": "Used",
+      "imageUrl": "https://i.ebayimg.com/images/g/thUAAeSwW9VpgPLb/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/297994099304?_skw=1994+topps+finest+michael+jordan+base+refractor&hash=item4561d51a68:g:thUAAeSwW9VpgPLb",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "futbolb13",
+      "sellerFeedbackScore": 5245,
+      "sellerPositivePercent": "99.9",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Sets",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 4,
+        "rating": "⚠️ QUESTIONABLE",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "99.9",
+            "salesCount": 5245,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "99.9% (5245 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 0,
+            "maxPoints": 10,
+            "matches": [
+              "Close year: 1993 (±2 of 1994)",
+              "topps match"
+            ],
+            "mismatches": [
+              "WRONG PLAYER - searched for: michael jordan",
+              "Missing: refractor"
+            ],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [],
+            "reason": "✅ Close year: 1993 (±2 of 1994), topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "⚠️ May not match your search - check details"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|313768828332|613231115852",
+      "title": "1995-96 Topps Basketball (251-291) + INSERTS Finish set UP TO 40% OFF",
+      "currentPrice": 20,
+      "shippingCost": 2,
+      "totalPrice": 22,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/FhoAAOSwSENhn99H/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/313768828332?_skw=1995+topps+finest+michael+jordan+base+refractor&hash=item490e145dac:g:FhoAAOSwSENhn99H",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "keithc70842",
+      "sellerFeedbackScore": 5935,
+      "sellerPositivePercent": "99.2",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 4,
+        "rating": "⚠️ QUESTIONABLE",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "99.2",
+            "salesCount": 5935,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "99.2% (5935 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 0,
+            "maxPoints": 10,
+            "matches": [
+              "Close year: 1995 (±2 of 1994)",
+              "topps match"
+            ],
+            "mismatches": [
+              "WRONG PLAYER - searched for: michael jordan",
+              "Missing: refractor"
+            ],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [],
+            "reason": "✅ Close year: 1995 (±2 of 1994), topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "⚠️ May not match your search - check details"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|224597803509|523402598357",
+      "title": "1996-97 Finest Basketball (251-291) + INSERTS Finish Set UP TO 50% OFF",
+      "currentPrice": 2,
+      "shippingCost": 2,
+      "totalPrice": 4,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/VWwAAOSwLr9hNCN8/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/224597803509?_skw=1996+topps+finest+michael+jordan+base+refractor&hash=item344b1281f5:g:VWwAAOSwLr9hNCN8",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "keithc70842",
+      "sellerFeedbackScore": 5935,
+      "sellerPositivePercent": "99.2",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 4,
+        "rating": "⚠️ QUESTIONABLE",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "99.2",
+            "salesCount": 5935,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "99.2% (5935 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 0,
+            "maxPoints": 10,
+            "matches": [
+              "Close year: 1996 (±2 of 1994)"
+            ],
+            "mismatches": [
+              "WRONG PLAYER - searched for: michael jordan",
+              "Missing: refractor",
+              "Not topps"
+            ],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [],
+            "reason": "✅ Close year: 1996 (±2 of 1994)"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "⚠️ May not match your search - check details"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|127537488651|0",
+      "title": "1997-98 Topps Finest Checklist Series One 1 NBA W/ Coating #100 ",
+      "currentPrice": 4.79,
+      "shippingCost": 0.73,
+      "totalPrice": 5.52,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/0vwAAeSwijNpLmwO/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/127537488651?_skw=1997+topps+finest+michael+jordan+base+refractor&hash=item1db1d3a30b:g:0vwAAeSwijNpLmwO",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "jagscollectables",
+      "sellerFeedbackScore": 3436,
+      "sellerPositivePercent": "99.8",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 4,
+        "rating": "⚠️ QUESTIONABLE",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "99.8",
+            "salesCount": 3436,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "99.8% (3436 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 0,
+            "maxPoints": 10,
+            "matches": [
+              "Same era: 1997 (±5 of 1994)",
+              "topps match"
+            ],
+            "mismatches": [
+              "WRONG PLAYER - searched for: michael jordan",
+              "Missing: refractor"
+            ],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [],
+            "reason": "✅ Same era: 1997 (±5 of 1994), topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "⚠️ May not match your search - check details"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|224970116464|523845480328",
+      "title": "1997-98 Topps Finest Basketball (251-326) + INSERTS Finish set UP TO 25% OFF",
+      "currentPrice": 1,
+      "shippingCost": 2,
+      "totalPrice": 3,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/~JcAAOSwE0licc3d/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/224970116464?_skw=1997+topps+finest+michael+jordan+base+refractor&hash=item3461438d70:g:~JcAAOSwE0licc3d",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "keithc70842",
+      "sellerFeedbackScore": 5935,
+      "sellerPositivePercent": "99.2",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 4,
+        "rating": "⚠️ QUESTIONABLE",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "99.2",
+            "salesCount": 5935,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "99.2% (5935 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 0,
+            "maxPoints": 10,
+            "matches": [
+              "Same era: 1997 (±5 of 1994)",
+              "topps match"
+            ],
+            "mismatches": [
+              "WRONG PLAYER - searched for: michael jordan",
+              "Missing: refractor"
+            ],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [],
+            "reason": "✅ Same era: 1997 (±5 of 1994), topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "⚠️ May not match your search - check details"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|357011152823|0",
+      "title": "🔥1997-98 TOPPS FINEST NBA BASKETBALL SERIES1 HOBBY PACK FROM FACTORY SEALED BOX",
+      "currentPrice": 59.99,
+      "shippingCost": 4.51,
+      "totalPrice": 64.5,
+      "condition": "New/Factory Sealed",
+      "imageUrl": "https://i.ebayimg.com/images/g/LR0AAOSwdppmebxs/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/357011152823?_skw=1997+topps+finest+michael+jordan+base+refractor&hash=item531f85dfb7:g:LR0AAOSwdppmebxs",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "fulsrv",
+      "sellerFeedbackScore": 2939,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Sealed Trading Card Packs",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 4,
+        "rating": "⚠️ QUESTIONABLE",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 2939,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (2939 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 0,
+            "maxPoints": 10,
+            "matches": [
+              "Same era: 1997 (±5 of 1994)",
+              "topps match"
+            ],
+            "mismatches": [
+              "WRONG PLAYER - searched for: michael jordan",
+              "Missing: refractor"
+            ],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [],
+            "reason": "✅ Same era: 1997 (±5 of 1994), topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "⚠️ May not match your search - check details"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|357113546072|0",
+      "title": "🔥1997-98 TOPPS FINEST NBA BASKETBALL SERIES2 HOBBY PACK FROM FACTORY SEALED BOX",
+      "currentPrice": 59.99,
+      "shippingCost": 0,
+      "totalPrice": 59.99,
+      "condition": "New/Factory Sealed",
+      "imageUrl": "https://i.ebayimg.com/images/g/IPAAAOSwjhpmhwEI/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/357113546072?_skw=1997+topps+finest+michael+jordan+base+refractor&hash=item5325a04558:g:IPAAAOSwjhpmhwEI",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "fulsrv",
+      "sellerFeedbackScore": 2939,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Sealed Trading Card Packs",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 4,
+        "rating": "⚠️ QUESTIONABLE",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 2939,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (2939 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 0,
+            "maxPoints": 10,
+            "matches": [
+              "Same era: 1997 (±5 of 1994)",
+              "topps match"
+            ],
+            "mismatches": [
+              "WRONG PLAYER - searched for: michael jordan",
+              "Missing: refractor"
+            ],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [],
+            "reason": "✅ Same era: 1997 (±5 of 1994), topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "⚠️ May not match your search - check details"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|266622509755|567128934789",
+      "title": "Shaquille O'Neal Ultimate Collection 1992 Upper Deck RC Shaq Topps Chrome Fleer",
+      "currentPrice": 33.14,
+      "shippingCost": 5.74,
+      "totalPrice": 38.88,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/h6EAAOSwuPZlqBu7/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/266622509755?_skw=1997+topps+finest+michael+jordan+base+refractor&hash=item3e13f0a2bb:g:h6EAAOSwuPZlqBu7",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "hammercards",
+      "sellerFeedbackScore": 4883,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 4,
+        "rating": "⚠️ QUESTIONABLE",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 4883,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (4883 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 0,
+            "maxPoints": 10,
+            "matches": [
+              "Close year: 1992 (±2 of 1994)",
+              "topps match"
+            ],
+            "mismatches": [
+              "WRONG PLAYER - searched for: michael jordan",
+              "Missing: refractor"
+            ],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [],
+            "reason": "✅ Close year: 1992 (±2 of 1994), topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "⚠️ May not match your search - check details"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|266622509755|566381579021",
+      "title": "Shaquille O'Neal Ultimate Collection 1992 Upper Deck RC Shaq Topps Chrome Fleer",
+      "currentPrice": 3.04,
+      "shippingCost": 5.74,
+      "totalPrice": 8.78,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/h6EAAOSwuPZlqBu7/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/266622509755?_skw=1999+topps+finest+michael+jordan+base+refractor&hash=item3e13f0a2bb:g:h6EAAOSwuPZlqBu7",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "hammercards",
+      "sellerFeedbackScore": 4883,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 4,
+        "rating": "⚠️ QUESTIONABLE",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 4883,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (4883 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 0,
+            "maxPoints": 10,
+            "matches": [
+              "Close year: 1992 (±2 of 1994)",
+              "topps match"
+            ],
+            "mismatches": [
+              "WRONG PLAYER - searched for: michael jordan",
+              "Missing: refractor"
+            ],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [],
+            "reason": "✅ Close year: 1992 (±2 of 1994), topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "⚠️ May not match your search - check details"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|145924553304|0",
+      "title": "🏀1996 Popeye Jones #241/ Flawless new break/Clean/ Raptors MVP 10.0 !!🔥",
+      "currentPrice": 1.99,
+      "shippingCost": 0,
+      "totalPrice": 1.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/FhwAAOSwJPZmPaL6/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/145924553304?_skw=1996+topps+finest+michael+jordan+base+refractor&hash=item21f9c7fa58:g:FhwAAOSwJPZmPaL6",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "petes_haberdash",
+      "sellerFeedbackScore": 493,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 3,
+        "rating": "❌ SKIP",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 493,
+            "tier": "Decent seller",
+            "trust": "OK",
+            "reason": "100.0% (493 sales) - Decent seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 0,
+            "maxPoints": 10,
+            "matches": [
+              "Close year: 1996 (±2 of 1994)"
+            ],
+            "mismatches": [
+              "WRONG PLAYER - searched for: michael jordan",
+              "Missing: refractor",
+              "Not topps"
+            ],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [],
+            "reason": "✅ Close year: 1996 (±2 of 1994)"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "⚠️ May not match your search - check details"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|313837990186|0",
+      "title": "THIRTY-THREE 1993-94 & 94-95 Topps Finest Cards. MJ #331 w/coating INCLUDED",
+      "currentPrice": 5750,
+      "shippingCost": 0,
+      "totalPrice": 5750,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/eaQAAOSwL2hh5d1e/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/313837990186?_skw=1994+topps+finest+michael+jordan+base+refractor&hash=item491233b12a:g:eaQAAOSwL2hh5d1e",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "micswid2",
+      "sellerFeedbackScore": 22,
+      "sellerPositivePercent": "0.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 2.5,
+        "rating": "❌ SKIP",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 2.5,
+            "maxPoints": 10,
+            "feedback": "0.0",
+            "salesCount": 22,
+            "tier": "New/low feedback seller",
+            "trust": "⚠️ New seller",
+            "reason": "0.0% (22 sales) - New/low feedback seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 0,
+            "maxPoints": 10,
+            "matches": [
+              "Close year: 1993 (±2 of 1994)",
+              "topps match"
+            ],
+            "mismatches": [
+              "WRONG PLAYER - searched for: michael jordan",
+              "Missing: refractor"
+            ],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [],
+            "reason": "✅ Close year: 1993 (±2 of 1994), topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "⚠️ May not match your search - check details"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|397365027082|0",
+      "title": "1998-99 Topps Finest Series 2 NBA Basketball 🏀 Hobby Box *Factory Sealed*",
+      "currentPrice": 1300,
+      "shippingCost": 0,
+      "totalPrice": 1300,
+      "condition": "New",
+      "imageUrl": "https://i.ebayimg.com/images/g/Jw8AAeSwcyxpNOPI/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/397365027082?_skw=1998+topps+finest+michael+jordan+base+refractor&hash=item5c84cd210a:g:Jw8AAeSwcyxpNOPI",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "gabbycollx",
+      "sellerFeedbackScore": 26,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Every Other Thing",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 2.5,
+        "rating": "❌ SKIP",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 2.5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 26,
+            "tier": "New/low feedback seller",
+            "trust": "⚠️ New seller",
+            "reason": "100.0% (26 sales) - New/low feedback seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 0,
+            "maxPoints": 10,
+            "matches": [
+              "Same era: 1998 (±5 of 1994)",
+              "topps match"
+            ],
+            "mismatches": [
+              "WRONG PLAYER - searched for: michael jordan",
+              "Missing: refractor"
+            ],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [],
+            "reason": "✅ Same era: 1998 (±5 of 1994), topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "⚠️ May not match your search - check details"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|167642765190|0",
+      "title": "MICHAEL JORDAN 1996-97 TOPPS FINEST REFRACTOR BGS 8.5 9.5s EX STERLING CARD #50!",
+      "currentPrice": 500,
+      "shippingCost": 0,
+      "totalPrice": 500,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/MD0AAeSw5A9ocliD/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/167642765190?_skw=1996+topps+finest+michael+jordan+base+refractor&hash=item2708499786:g:MD0AAeSw5A9ocliD",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "harmo_carle",
+      "sellerFeedbackScore": 2,
+      "sellerPositivePercent": "0.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 0,
+        "rating": "❌ REJECTED - BELOW NM-MT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 2.5,
+            "maxPoints": 10,
+            "feedback": "0.0",
+            "salesCount": 2,
+            "tier": "New/low feedback seller",
+            "trust": "⚠️ New seller",
+            "reason": "0.0% (2 sales) - New/low feedback seller"
+          },
+          "listingQuality": {
+            "points": 0,
+            "maxPoints": 10,
+            "signals": [],
+            "redFlags": [
+              "❌ BELOW NM-MT - AUTO-REJECTED"
+            ],
+            "hasPhotos": true,
+            "disqualified": true,
+            "reason": "❌ Condition below NM-MT - AUTO-REJECT"
+          },
+          "searchRelevance": {
+            "points": 0,
+            "reason": "Disqualified by condition"
+          },
+          "listingFreshness": {
+            "points": 0,
+            "reason": "Disqualified by condition"
+          }
+        },
+        "flags": [
+          "❌ Card condition below NM-MT - AUTO-REJECTED"
+        ],
+        "disqualified": true
+      }
+    },
+    {
+      "itemId": "v1|266696356201|566446712886",
+      "title": "1996-97 Topps Kobe Bryant Foil Robinson Reprint Pro Files Michael Jordan PSA 10",
+      "currentPrice": 17.74,
+      "shippingCost": 5.74,
+      "totalPrice": 23.48,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/6ssAAOSwUyxlzQu4/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/266696356201?_skw=1996+topps+finest+michael+jordan+base+refractor&hash=item3e18577169:g:6ssAAOSwUyxlzQu4",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "hammercards",
+      "sellerFeedbackScore": 4883,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 0,
+        "rating": "❌ REJECTED - BELOW NM-MT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 4883,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (4883 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 0,
+            "maxPoints": 10,
+            "signals": [],
+            "redFlags": [
+              "❌ BELOW NM-MT - AUTO-REJECTED"
+            ],
+            "hasPhotos": true,
+            "disqualified": true,
+            "reason": "❌ Condition below NM-MT - AUTO-REJECT"
+          },
+          "searchRelevance": {
+            "points": 0,
+            "reason": "Disqualified by condition"
+          },
+          "listingFreshness": {
+            "points": 0,
+            "reason": "Disqualified by condition"
+          }
+        },
+        "flags": [
+          "❌ Card condition below NM-MT - AUTO-REJECTED"
+        ],
+        "disqualified": true
+      }
+    }
+  ]
+}

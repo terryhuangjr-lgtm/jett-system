@@ -1,0 +1,493 @@
+{
+  "timestamp": "2026-02-02T17:29:08.045Z",
+  "scanDuration": "6.59s",
+  "filterStats": {
+    "titleAnalysisRejects": 3,
+    "scamDetectionRejects": 0,
+    "playerFilterRejects": 6,
+    "photoQualityRejects": 0,
+    "outlierRejects": 0,
+    "duplicateRejects": 0,
+    "totalPassed": 2
+  },
+  "summary": {
+    "totalSearches": 7,
+    "totalItemsFound": 317,
+    "itemsAnalyzed": 11,
+    "hotDeals": 1,
+    "goodDeals": 0
+  },
+  "hotDeals": [
+    {
+      "itemId": "v1|224476689578|0",
+      "title": "1989 TOPPS TRADED RAW UNGRADED KEN GRIFFEY JR. ROOKIE SEATTLE MARINERS #41T",
+      "currentPrice": 39.99,
+      "shippingCost": 3.99,
+      "totalPrice": 43.98,
+      "condition": "Unspecified",
+      "imageUrl": "https://i.ebayimg.com/images/g/LW4AAOSwUNhgsCl0/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/224476689578?_skw=ken+griffey+jr+rookie+raw&hash=item3443da74aa:g:LW4AAOSwUNhgsCl0",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "strike3collectibles",
+      "sellerFeedbackScore": 12127,
+      "sellerPositivePercent": "99.7",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "searchCategory": "Ken Griffey Jr",
+      "qualityAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "titleAnalysis": {
+        "score": 0,
+        "flags": [
+          {
+            "category": "hiddenFlaws",
+            "keyword": "raw",
+            "impact": -1.5
+          }
+        ],
+        "signals": [
+          {
+            "category": "graded",
+            "keyword": "graded",
+            "impact": 1.5
+          }
+        ],
+        "verdict": {
+          "passed": true,
+          "reason": "Neutral - no significant red flags",
+          "level": "neutral"
+        },
+        "passed": true,
+        "reason": "Neutral - no significant red flags"
+      },
+      "playerCheck": {
+        "passed": true,
+        "player": "ken griffey",
+        "reason": "Star player card"
+      },
+      "comps": {
+        "psa10": {
+          "count": 50,
+          "avgPrice": 105.28,
+          "recentSales": [
+            {
+              "price": 156.98,
+              "title": "1989 Topps Traded Deion Sanders PSA 10 #30T & #110T RC 2 Count Lot",
+              "url": "https://www.ebay.com/itm/306678557568?_skw=1989+topps+PSA+10&hash=item4767776b80:g:uwUAAeSwPWlpTwHn"
+            },
+            {
+              "price": 44.95,
+              "title": "1989 TOPPS #94 JOHNNY MEADS PSA 10 GEM MINT ROOKIE RC POP 2 HOUSTON OILERS",
+              "url": "https://www.ebay.com/itm/142784534690?_skw=1989+topps+PSA+10&hash=item213e9f18a2:g:PcEAAOSwiONYOjta"
+            },
+            {
+              "price": 74.95,
+              "title": "1989 TOPPS #353 CHRISTIAN OKOYE PSA 10 GEM MINT POP 8 CHIEFS NIGERIAN NIGHTMARE",
+              "url": "https://www.ebay.com/itm/144119984147?_skw=1989+topps+PSA+10&hash=item218e387013:g:EpMAAOSwqapg9m-m"
+            },
+            {
+              "price": 44.95,
+              "title": "1989 TOPPS #92 CURTIS DUNCAN PSA 10 GEM MINT POP 2 HOUSTON OILERS NORTHWESTERN",
+              "url": "https://www.ebay.com/itm/142784532696?_skw=1989+topps+PSA+10&hash=item213e9f10d8:g:SCwAAOSwe7BWvCy0"
+            },
+            {
+              "price": 185.98,
+              "title": "1989 Topps Traded Deion Sanders PSA 10 #30T & #110T RC 2 Count Lot",
+              "url": "https://www.ebay.com/itm/296114214802?_skw=1989+topps+PSA+10&hash=item44f1c85792:g:bRwAAOSwOrllf2jf"
+            }
+          ]
+        },
+        "psa9": {
+          "count": 50,
+          "avgPrice": 94.01,
+          "recentSales": [
+            {
+              "price": 45.49,
+              "title": "1989 TOPPS TRADED #41T KEN GRIFFEY JR  *ROOKIE PSA 9 MINT*  SEATTLE MARINERS",
+              "url": "https://www.ebay.com/itm/154843521147?_skw=1989+topps+PSA+9&hash=item240d64a07b:g:AeQAAOSwKx9iB1sH"
+            },
+            {
+              "price": 49.99,
+              "title": "1989 TOPPS #264 RAIDERS TEAM CARD MARCUS ALLEN THROUGH THE LINE PSA 9 MINT",
+              "url": "https://www.ebay.com/itm/134426572581?_skw=1989+topps+PSA+9&hash=item1f4c72b725:g:ROUAAOSwcHZj0yw4"
+            },
+            {
+              "price": 100.95,
+              "title": "Lot of (5) Randy Johnson Mariners 1989 Topps Traded #57T Rookie Card rC PSA 9",
+              "url": "https://www.ebay.com/itm/373768899330?_skw=1989+topps+PSA+9&hash=item57065ccb02:g:hsQAAOSwxl5hd3OV"
+            },
+            {
+              "price": 126.94,
+              "title": "1989 Topps Cello pack PSA 9 Mint   Randy Johnson Rookie on Top",
+              "url": "https://www.ebay.com/itm/236565030578?_skw=1989+topps+PSA+9&hash=item37145fe6b2:g:sQIAAeSwJo9pWvpm"
+            },
+            {
+              "price": 55.49,
+              "title": "1989 DONRUSS ROOKIES #3 KEN GRIFFEY JR *ROOKIE PSA 9 MINT*  MARINERS",
+              "url": "https://www.ebay.com/itm/165725686936?_skw=1989+topps+PSA+9&hash=item2696054c98:g:-t0AAOSwcDNjSOX7"
+            }
+          ]
+        },
+        "foundComps": true
+      },
+      "profitAnalysis": {
+        "insufficientData": false,
+        "totalCost": 63.98,
+        "rawPrice": 43.98,
+        "gradingCost": 20,
+        "psa10Scenario": {
+          "avgCompPrice": 105.28,
+          "profit": 41.3,
+          "multiplier": 1.6
+        },
+        "psa9Scenario": {
+          "avgCompPrice": 42.11,
+          "profit": -21.87,
+          "multiplier": 0.7
+        },
+        "expectedValue": 7.77,
+        "roi": 12.1,
+        "recommendation": "⚠️ MARGINAL - Proceed with caution"
+      },
+      "dealScore": {
+        "score": 9.5,
+        "rating": "🔥🔥🔥 EXCEPTIONAL",
+        "breakdown": [
+          "✓ Good price (42% of market) (+1 point)",
+          "✓ Positive EV (+0.5 points)",
+          "⭐ Star player: ken griffey (+0.5 points)",
+          "🆕 Rookie card (+0.5 points)",
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "👍 Experienced seller (1000+ transactions) (+1 point)"
+        ],
+        "recommendation": "Strong buy - excellent opportunity with multiple positive factors",
+        "adjustedByPhotoQuality": true
+      },
+      "analyzedAt": "2026-02-02T17:29:08.042Z"
+    }
+  ],
+  "goodDeals": [],
+  "allDeals": [
+    {
+      "itemId": "v1|185465918283|0",
+      "title": "ALEXIS LAFRENIERE RANGERS ROOKIE 2020 UPPER DECK - YOUNG GUNS # 250  🏒💥 (NJC)",
+      "currentPrice": 19.99,
+      "shippingCost": 10,
+      "totalPrice": 29.99,
+      "condition": "Unspecified",
+      "imageUrl": "https://i.ebayimg.com/images/g/2MYAAOSwWXNgqtFu/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/185465918283?_skw=rookie+card+raw+ungraded&hash=item2b2ea1534b:g:2MYAAOSwWXNgqtFu&amdata=enc%3AAQALAAAA8DZq0hFgvSYlgrFkWCFZ3z09Cts2S8Mstb9oAiCrJMn0dTULOQien5RP%2B6jyVO0QcnwlWIvE9S8oSKVmuywGhpw8OZMA4DqeNbQ7kgTAu7%2Bw%2BtdOAK%2FXMTV%2FODVKsegSRyYbMRvui31OMbigxHc0K1cQWfCDK9DwQglcYne65tSWLOmhzCiS3Dxt1xticTfifXZCqTZBCyjFel6u3PomyIfbi9phvGLLCmYc5j4LeUnAjmesLEOUM2nOOE2wkZYS3fU2zGMqNAnEr5MjRlJvwVWDK2m9vNYSAZbJAoqJLzhAJbLcZROlNOri2JOrpRKUPA%3D%3D",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "njcollectibles07",
+      "sellerFeedbackScore": 1872,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "searchCategory": "Rookie Cards (Raw)",
+      "qualityAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "titleAnalysis": {
+        "score": 0,
+        "flags": [],
+        "signals": [],
+        "verdict": {
+          "passed": true,
+          "reason": "Neutral - no significant red flags",
+          "level": "neutral"
+        },
+        "passed": true,
+        "reason": "Neutral - no significant red flags"
+      },
+      "playerCheck": {
+        "passed": true,
+        "player": "alexis lafreniere",
+        "reason": "Star player card"
+      },
+      "comps": {
+        "psa10": {
+          "count": 1,
+          "avgPrice": 410.98,
+          "recentSales": [
+            {
+              "price": 410.98,
+              "title": "2019-20 Upper Deck Series 1 Complete Set 1-250  Quinn Hughes PSA 10",
+              "url": "https://www.ebay.com/itm/266710216481?_skw=2020+upper+deck+%23250+PSA+10&hash=item3e192aef21:g:K8QAAOSwDTxl7UWA"
+            }
+          ]
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": true
+      },
+      "profitAnalysis": {
+        "insufficientData": false,
+        "totalCost": 49.99,
+        "rawPrice": 29.99,
+        "gradingCost": 20,
+        "psa10Scenario": {
+          "avgCompPrice": 410.98,
+          "profit": 360.99,
+          "multiplier": 8.2
+        },
+        "psa9Scenario": {
+          "avgCompPrice": 164.39,
+          "profit": 114.4,
+          "multiplier": 3.3
+        },
+        "expectedValue": 190.16,
+        "roi": 380.4,
+        "recommendation": "⚡ GREAT - Very good opportunity"
+      },
+      "dealScore": {
+        "score": 0,
+        "rating": "❌ SKIP",
+        "breakdown": [
+          "🚫 REJECT: Too cheap (7% of market) - Likely damaged/fake"
+        ],
+        "recommendation": "Too cheap = suspicious",
+        "adjustedByPhotoQuality": true
+      },
+      "analyzedAt": "2026-02-02T17:29:06.790Z"
+    },
+    {
+      "itemId": "v1|224476689578|0",
+      "title": "1989 TOPPS TRADED RAW UNGRADED KEN GRIFFEY JR. ROOKIE SEATTLE MARINERS #41T",
+      "currentPrice": 39.99,
+      "shippingCost": 3.99,
+      "totalPrice": 43.98,
+      "condition": "Unspecified",
+      "imageUrl": "https://i.ebayimg.com/images/g/LW4AAOSwUNhgsCl0/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/224476689578?_skw=ken+griffey+jr+rookie+raw&hash=item3443da74aa:g:LW4AAOSwUNhgsCl0",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "strike3collectibles",
+      "sellerFeedbackScore": 12127,
+      "sellerPositivePercent": "99.7",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "searchCategory": "Ken Griffey Jr",
+      "qualityAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "titleAnalysis": {
+        "score": 0,
+        "flags": [
+          {
+            "category": "hiddenFlaws",
+            "keyword": "raw",
+            "impact": -1.5
+          }
+        ],
+        "signals": [
+          {
+            "category": "graded",
+            "keyword": "graded",
+            "impact": 1.5
+          }
+        ],
+        "verdict": {
+          "passed": true,
+          "reason": "Neutral - no significant red flags",
+          "level": "neutral"
+        },
+        "passed": true,
+        "reason": "Neutral - no significant red flags"
+      },
+      "playerCheck": {
+        "passed": true,
+        "player": "ken griffey",
+        "reason": "Star player card"
+      },
+      "comps": {
+        "psa10": {
+          "count": 50,
+          "avgPrice": 105.28,
+          "recentSales": [
+            {
+              "price": 156.98,
+              "title": "1989 Topps Traded Deion Sanders PSA 10 #30T & #110T RC 2 Count Lot",
+              "url": "https://www.ebay.com/itm/306678557568?_skw=1989+topps+PSA+10&hash=item4767776b80:g:uwUAAeSwPWlpTwHn"
+            },
+            {
+              "price": 44.95,
+              "title": "1989 TOPPS #94 JOHNNY MEADS PSA 10 GEM MINT ROOKIE RC POP 2 HOUSTON OILERS",
+              "url": "https://www.ebay.com/itm/142784534690?_skw=1989+topps+PSA+10&hash=item213e9f18a2:g:PcEAAOSwiONYOjta"
+            },
+            {
+              "price": 74.95,
+              "title": "1989 TOPPS #353 CHRISTIAN OKOYE PSA 10 GEM MINT POP 8 CHIEFS NIGERIAN NIGHTMARE",
+              "url": "https://www.ebay.com/itm/144119984147?_skw=1989+topps+PSA+10&hash=item218e387013:g:EpMAAOSwqapg9m-m"
+            },
+            {
+              "price": 44.95,
+              "title": "1989 TOPPS #92 CURTIS DUNCAN PSA 10 GEM MINT POP 2 HOUSTON OILERS NORTHWESTERN",
+              "url": "https://www.ebay.com/itm/142784532696?_skw=1989+topps+PSA+10&hash=item213e9f10d8:g:SCwAAOSwe7BWvCy0"
+            },
+            {
+              "price": 185.98,
+              "title": "1989 Topps Traded Deion Sanders PSA 10 #30T & #110T RC 2 Count Lot",
+              "url": "https://www.ebay.com/itm/296114214802?_skw=1989+topps+PSA+10&hash=item44f1c85792:g:bRwAAOSwOrllf2jf"
+            }
+          ]
+        },
+        "psa9": {
+          "count": 50,
+          "avgPrice": 94.01,
+          "recentSales": [
+            {
+              "price": 45.49,
+              "title": "1989 TOPPS TRADED #41T KEN GRIFFEY JR  *ROOKIE PSA 9 MINT*  SEATTLE MARINERS",
+              "url": "https://www.ebay.com/itm/154843521147?_skw=1989+topps+PSA+9&hash=item240d64a07b:g:AeQAAOSwKx9iB1sH"
+            },
+            {
+              "price": 49.99,
+              "title": "1989 TOPPS #264 RAIDERS TEAM CARD MARCUS ALLEN THROUGH THE LINE PSA 9 MINT",
+              "url": "https://www.ebay.com/itm/134426572581?_skw=1989+topps+PSA+9&hash=item1f4c72b725:g:ROUAAOSwcHZj0yw4"
+            },
+            {
+              "price": 100.95,
+              "title": "Lot of (5) Randy Johnson Mariners 1989 Topps Traded #57T Rookie Card rC PSA 9",
+              "url": "https://www.ebay.com/itm/373768899330?_skw=1989+topps+PSA+9&hash=item57065ccb02:g:hsQAAOSwxl5hd3OV"
+            },
+            {
+              "price": 126.94,
+              "title": "1989 Topps Cello pack PSA 9 Mint   Randy Johnson Rookie on Top",
+              "url": "https://www.ebay.com/itm/236565030578?_skw=1989+topps+PSA+9&hash=item37145fe6b2:g:sQIAAeSwJo9pWvpm"
+            },
+            {
+              "price": 55.49,
+              "title": "1989 DONRUSS ROOKIES #3 KEN GRIFFEY JR *ROOKIE PSA 9 MINT*  MARINERS",
+              "url": "https://www.ebay.com/itm/165725686936?_skw=1989+topps+PSA+9&hash=item2696054c98:g:-t0AAOSwcDNjSOX7"
+            }
+          ]
+        },
+        "foundComps": true
+      },
+      "profitAnalysis": {
+        "insufficientData": false,
+        "totalCost": 63.98,
+        "rawPrice": 43.98,
+        "gradingCost": 20,
+        "psa10Scenario": {
+          "avgCompPrice": 105.28,
+          "profit": 41.3,
+          "multiplier": 1.6
+        },
+        "psa9Scenario": {
+          "avgCompPrice": 42.11,
+          "profit": -21.87,
+          "multiplier": 0.7
+        },
+        "expectedValue": 7.77,
+        "roi": 12.1,
+        "recommendation": "⚠️ MARGINAL - Proceed with caution"
+      },
+      "dealScore": {
+        "score": 9.5,
+        "rating": "🔥🔥🔥 EXCEPTIONAL",
+        "breakdown": [
+          "✓ Good price (42% of market) (+1 point)",
+          "✓ Positive EV (+0.5 points)",
+          "⭐ Star player: ken griffey (+0.5 points)",
+          "🆕 Rookie card (+0.5 points)",
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "👍 Experienced seller (1000+ transactions) (+1 point)"
+        ],
+        "recommendation": "Strong buy - excellent opportunity with multiple positive factors",
+        "adjustedByPhotoQuality": true
+      },
+      "analyzedAt": "2026-02-02T17:29:08.042Z"
+    }
+  ]
+}

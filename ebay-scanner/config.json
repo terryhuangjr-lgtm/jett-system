@@ -1,0 +1,71 @@
+{
+  "mode": "auction-hunter",
+  "sports": {
+    "basketball": {
+      "players": [
+        "Michael Jordan",
+        "Kobe Bryant",
+        "LeBron James",
+        "Shaquille O'Neal",
+        "Tim Duncan",
+        "Stephen Curry",
+        "Charles Barkley"
+      ]
+    },
+    "baseball": {
+      "players": [
+        "Ken Griffey Jr",
+        "Chipper Jones",
+        "Ichiro",
+        "Albert Pujols",
+        "Barry Bonds",
+        "Alex Rodriguez",
+        "Mark McGwire",
+        "Frank Thomas"
+      ]
+    },
+    "football": {
+      "players": [
+        "Jerry Rice",
+        "Dan Marino",
+        "John Elway",
+        "Tom Brady"
+      ]
+    }
+  },
+  "listingType": "auction-only",
+  "criteria": {
+    "excludeBase": true,
+    "excludeBaseRookies": {
+      "unless": "pre-2015"
+    },
+    "mustHave": [
+      "numbered parallels",
+      "rare inserts",
+      "case hits",
+      "numbered to 500 or less",
+      "autographs",
+      "numbered autographs",
+      "on-card autographs"
+    ],
+    "grading": [
+      "raw"
+    ],
+    "excludeGraded": true,
+    "bidRange": {
+      "min": 0,
+      "max": null
+    },
+    "minBids": 1
+  },
+  "schedule": {
+    "time": "13:00",
+    "timezone": "America/New_York",
+    "resultsLimit": 10
+  },
+  "email": {
+    "to": "terryhuangjr@gmail.com",
+    "from": "jett.theassistant@gmail.com",
+    "subject": "Daily Card Auction Watch - Top Picks"
+  }
+}
