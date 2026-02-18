@@ -8,6 +8,8 @@ All notable changes to Jett will be documented here.
 - Rebuilt AGENTS.md - removed all clawd-slack references
 - Converted ebay-scanner from broken submodule to regular directory
 - Added binary files to .gitignore (jpg, png, pdf, ebay-raw.json)
+- Enhanced health page with 10 detailed checks and run scan button
+- Removed redundant eBay link from dashboard header
 
 ### Changed
 - Archived 98 historical docs to docs/archive/
