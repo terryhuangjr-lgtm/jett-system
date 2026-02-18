@@ -167,54 +167,14 @@ class TaskServer {
 
     // GET /api/health
     if (pathname === '/api/health' && req.method === 'GET') {
-      const checks = [];
-      
-      // Check Slack Bridge
-      try {
-        const { execSync } = require('child_process');
-        const ps = execSync('ps aux | grep clawdbot | grep -v grep', { encoding: 'utf8' });
-        if (ps.includes('gateway') || ps.includes('bridge')) {
-          checks.push({ status: 'healthy', message: 'Slack Bridge running' });
-        } else {
-          checks.push({ status: 'unhealthy', message: 'Slack Bridge not running' });
-        }
-      } catch (e) {
-        checks.push({ status: 'unhealthy', message: 'Slack Bridge not running' });
-      }
-      
-      // Check Gateway
-      try {
-        const { execSync } = require('child_process');
-        const ps = execSync('ps aux | grep clawdbot-gateway | grep -v grep', { encoding: 'utf8' });
-        checks.push({ status: 'healthy', message: 'Gateway running' });
-      } catch (e) {
-        checks.push({ status: 'unhealthy', message: 'Gateway not running' });
-      }
-      
-      // Check Ollama
-      try {
-        const http = require('http');
-        const ollama = await new Promise((resolve) => {
-          const req = http.get('http://localhost:11434/api/tags', (res) => {
-            resolve({ status: 'healthy' });
-          });
-          req.on('error', () => resolve({ status: 'unhealthy' }));
-          req.setTimeout(3000, () => resolve({ status: 'unhealthy' }));
-        });
-        checks.push({ status: ollama.status, message: ollama.status === 'healthy' ? 'Ollama responding' : 'Ollama not responding' });
-      } catch (e) {
-        checks.push({ status: 'unhealthy', message: 'Ollama not responding' });
-      }
-      
-      // Check running tasks
-      const allTasks = await db.getTasks();
-      const running = allTasks.filter(t => t.status === 'running').length;
-      checks.push({ status: 'healthy', message: `${running} task${running !== 1 ? 's' : ''} running` });
-      
-      const unhealthyCount = checks.filter(c => c.status !== 'healthy').length;
-      const healthStatus = unhealthyCount === 0 ? 'healthy' : unhealthyCount <= 2 ? 'warning' : 'unhealthy';
-      
-      return this.sendJSON(res, { status: healthStatus, checks });
+      return this.sendJSON(res, await this.runHealthCheck());
+    }
+
+    // POST /api/health/run - Run full health scan
+    if (pathname === '/api/health/run' && req.method === 'POST') {
+      console.log('Running manual health scan...');
+      const result = await this.runHealthCheck();
+      return this.sendJSON(res, result);
     }
 
     // eBay Scans API
@@ -323,6 +283,123 @@ class TaskServer {
       });
       req.on('error', reject);
     });
+  }
+
+  async runHealthCheck() {
+    const checks = [];
+    const { execSync } = require('child_process');
+    const http = require('http');
+    
+    // 1. Check Slack Bridge (clawdbot)
+    try {
+      const ps = execSync('ps aux | grep clawdbot | grep -v grep', { encoding: 'utf8' });
+      if (ps.includes('gateway') || ps.includes('bridge') || ps.includes('clawdbot')) {
+        checks.push({ name: 'Slack Bridge (Clawdbot)', status: 'healthy', message: 'Process running' });
+      } else {
+        checks.push({ name: 'Slack Bridge (Clawdbot)', status: 'unhealthy', message: 'Process not found' });
+      }
+    } catch (e) {
+      checks.push({ name: 'Slack Bridge (Clawdbot)', status: 'unhealthy', message: 'Process not running' });
+    }
+    
+    // 2. Check Gateway
+    try {
+      const ps = execSync('ps aux | grep clawdbot-gateway | grep -v grep', { encoding: 'utf8' });
+      checks.push({ name: 'Clawdbot Gateway', status: 'healthy', message: 'Gateway process running' });
+    } catch (e) {
+      checks.push({ name: 'Clawdbot Gateway', status: 'unhealthy', message: 'Gateway not running' });
+    }
+    
+    // 3. Check Ollama
+    try {
+      const ollama = await new Promise((resolve) => {
+        const req = http.get('http://localhost:11434/api/tags', (res) => {
+          resolve({ status: 'healthy' });
+        });
+        req.on('error', () => resolve({ status: 'unhealthy' }));
+        req.setTimeout(3000, () => resolve({ status: 'unhealthy' }));
+      });
+      checks.push({ name: 'Ollama (Local LLM)', status: ollama.status, message: ollama.status === 'healthy' ? 'API responding on port 11434' : 'Not responding' });
+    } catch (e) {
+      checks.push({ name: 'Ollama (Local LLM)', status: 'unhealthy', message: 'Connection failed' });
+    }
+    
+    // 4. Check Task Manager API
+    try {
+      const tm = await new Promise((resolve) => {
+        const req = http.get('http://localhost:3000/api/tasks', (res) => {
+          resolve({ status: 'healthy' });
+        });
+        req.on('error', () => resolve({ status: 'unhealthy' }));
+        req.setTimeout(3000, () => resolve({ status: 'unhealthy' }));
+      });
+      checks.push({ name: 'Task Manager API', status: tm.status, message: tm.status === 'healthy' ? 'API responding' : 'Not responding' });
+    } catch (e) {
+      checks.push({ name: 'Task Manager API', status: 'unhealthy', message: 'Connection failed' });
+    }
+    
+    // 5. Check Cron Jobs
+    try {
+      const output = execSync('clawdbot cron list --json 2>/dev/null', { encoding: 'utf8' });
+      const data = JSON.parse(output);
+      const jobs = data.jobs || data || [];
+      const enabled = jobs.filter(j => j.enabled).length;
+      checks.push({ name: 'Cron Jobs', status: 'healthy', message: `${enabled} jobs enabled` });
+    } catch (e) {
+      checks.push({ name: 'Cron Jobs', status: 'warning', message: 'Could not fetch cron jobs' });
+    }
+    
+    // 6. Check eBay Scanner Config
+    try {
+      const config = JSON.parse(await fs.readFile(path.join(__dirname, 'ebay-scans-config.json'), 'utf-8'));
+      const enabled = Object.values(config.scans || {}).filter(s => s.enabled).length;
+      checks.push({ name: 'eBay Scanner', status: 'healthy', message: `${enabled}/7 scans enabled` });
+    } catch (e) {
+      checks.push({ name: 'eBay Scanner', status: 'warning', message: 'Config not found' });
+    }
+    
+    // 7. Check Database
+    try {
+      const dbPath = path.join(__dirname, 'tasks.db');
+      const exists = await fs.access(dbPath).then(() => true).catch(() => false);
+      if (exists) {
+        checks.push({ name: 'Task Database', status: 'healthy', message: 'tasks.db accessible' });
+      } else {
+        checks.push({ name: 'Task Database', status: 'unhealthy', message: 'Database file not found' });
+      }
+    } catch (e) {
+      checks.push({ name: 'Task Database', status: 'unhealthy', message: 'Error accessing database' });
+    }
+    
+    // 8. Check Disk Space
+    try {
+      const disk = execSync('df -h / | tail -1 | awk \'{print $5}\' | sed "s/%//"', { encoding: 'utf8' }).trim();
+      const status = parseInt(disk) > 90 ? 'unhealthy' : parseInt(disk) > 80 ? 'warning' : 'healthy';
+      checks.push({ name: 'Disk Space', status, message: `${disk}% used` });
+    } catch (e) {
+      checks.push({ name: 'Disk Space', status: 'warning', message: 'Could not check' });
+    }
+    
+    // 9. Check Memory
+    try {
+      const mem = execSync('free -m | grep Mem | awk \'{print $3/$2 * 100}\'', { encoding: 'utf8' }).trim();
+      const pct = parseFloat(mem).toFixed(1);
+      const status = parseFloat(pct) > 90 ? 'unhealthy' : parseFloat(pct) > 80 ? 'warning' : 'healthy';
+      checks.push({ name: 'Memory Usage', status, message: `${pct}% used` });
+    } catch (e) {
+      checks.push({ name: 'Memory Usage', status: 'warning', message: 'Could not check' });
+    }
+    
+    // 10. Check Running Tasks
+    const allTasks = await db.getTasks();
+    const running = allTasks.filter(t => t.status === 'running').length;
+    checks.push({ name: 'Running Tasks', status: 'healthy', message: `${running} task${running !== 1 ? 's' : ''} currently running` });
+    
+    const unhealthyCount = checks.filter(c => c.status === 'unhealthy').length;
+    const warningCount = checks.filter(c => c.status === 'warning').length;
+    const healthStatus = unhealthyCount === 0 ? (warningCount === 0 ? 'healthy' : 'warning') : 'unhealthy';
+    
+    return { status: healthStatus, checks, timestamp: new Date().toISOString() };
   }
 
   async stop() {

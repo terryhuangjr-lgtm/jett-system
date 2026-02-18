@@ -6,51 +6,147 @@
   <title>System Health</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    body { padding: 20px; }
-    .health-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin-top: 24px; }
+    body { padding: 20px; max-width: 1200px; margin: 0 auto; }
+    .header-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+    h1 { margin: 0; }
+    .run-btn {
+      background: #0a84ff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .run-btn:hover { background: #0066cc; }
+    .run-btn:disabled { background: #666; cursor: not-allowed; }
+    .health-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; margin-top: 24px; }
     .check-card { background: rgba(28, 28, 30, 0.7); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 20px; }
     .check-card.healthy { border-left: 3px solid #32d74b; }
+    .check-card.warning { border-left: 3px solid #ff9f0a; }
     .check-card.unhealthy { border-left: 3px solid #ff453a; }
-    .check-status { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+    .check-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+    .check-status { font-weight: 600; }
     .check-status.healthy { color: #32d74b; }
+    .check-status.warning { color: #ff9f0a; }
     .check-status.unhealthy { color: #ff453a; }
+    .check-name { font-size: 16px; color: white; }
     .check-message { color: rgba(255,255,255,0.7); font-size: 14px; }
-    h1 { margin-bottom: 8px; }
     .back-link { color: #0a84ff; text-decoration: none; font-size: 14px; }
     .back-link:hover { text-decoration: underline; }
+    .timestamp { color: rgba(255,255,255,0.5); font-size: 12px; margin-top: 20px; }
+    .summary { display: flex; gap: 20px; margin-top: 16px; padding: 16px; background: rgba(28,28,30,0.5); border-radius: 8px; }
+    .summary-item { text-align: center; }
+    .summary-num { font-size: 24px; font-weight: bold; }
+    .summary-label { font-size: 12px; color: rgba(255,255,255,0.6); }
+    .healthy .summary-num { color: #32d74b; }
+    .warning .summary-num { color: #ff9f0a; }
+    .unhealthy .summary-num { color: #ff453a; }
   </style>
 </head>
 <body>
   <a href="/" class="back-link">← Back to Dashboard</a>
-  <h1>💓 System Health</h1>
+  
+  <div class="header-row">
+    <h1>💓 System Health</h1>
+    <button class="run-btn" onclick="runHealthScan()" id="runBtn">
+      <span>🔄</span> Run Health Scan
+    </button>
+  </div>
+
+  <div class="summary" id="summary">
+    <div class="summary-item">
+      <div class="summary-num" id="healthyCount">-</div>
+      <div class="summary-label">Healthy</div>
+    </div>
+    <div class="summary-item">
+      <div class="summary-num" id="warningCount">-</div>
+      <div class="summary-label">Warning</div>
+    </div>
+    <div class="summary-item">
+      <div class="summary-num" id="unhealthyCount">-</div>
+      <div class="summary-label">Unhealthy</div>
+    </div>
+  </div>
+
   <div id="health-grid" class="health-grid">
     <p class="loading">Loading...</p>
   </div>
+  
+  <p class="timestamp" id="timestamp"></p>
+
   <script>
+    let healthData = null;
+    
     async function loadHealth() {
       try {
         const res = await fetch('http://localhost:3000/api/health');
-        const health = await res.json();
-        
-        const grid = document.getElementById('health-grid');
-        
-        if (health.checks && health.checks.length > 0) {
-          grid.innerHTML = health.checks.map(check => `
-            <div class="check-card ${check.status === 'healthy' ? 'healthy' : 'unhealthy'}">
-              <div class="check-status ${check.status}">
-                <span>${check.status === 'healthy' ? '✓' : '✕'}</span>
-                <strong>${check.status === 'healthy' ? 'Healthy' : 'Issue'}</strong>
-              </div>
-              <p class="check-message">${check.message}</p>
-            </div>
-          `).join('');
-        } else {
-          grid.innerHTML = '<p>No health checks available</p>';
-        }
+        healthData = await res.json();
+        renderHealth();
       } catch (e) {
         document.getElementById('health-grid').innerHTML = '<p class="error">Failed to load health data</p>';
       }
     }
+    
+    function renderHealth() {
+      if (!healthData) return;
+      
+      const { status, checks, timestamp } = healthData;
+      
+      // Update summary
+      const healthy = checks.filter(c => c.status === 'healthy').length;
+      const warning = checks.filter(c => c.status === 'warning').length;
+      const unhealthy = checks.filter(c => c.status === 'unhealthy').length;
+      
+      document.getElementById('healthyCount').textContent = healthy;
+      document.getElementById('warningCount').textContent = warning;
+      document.getElementById('unhealthyCount').textContent = unhealthy;
+      
+      const summary = document.getElementById('summary');
+      summary.className = 'summary ' + status;
+      
+      document.getElementById('timestamp').textContent = 'Last checked: ' + new Date(timestamp).toLocaleString();
+      
+      const grid = document.getElementById('health-grid');
+      
+      if (checks && checks.length > 0) {
+        grid.innerHTML = checks.map(check => `
+          <div class="check-card ${check.status}">
+            <div class="check-header">
+              <span class="check-status ${check.status}">
+                ${check.status === 'healthy' ? '✓' : check.status === 'warning' ? '⚠' : '✕'}
+                ${check.status.charAt(0).toUpperCase() + check.status.slice(1)}
+              </span>
+            </div>
+            <div class="check-name">${check.name}</div>
+            <p class="check-message">${check.message}</p>
+          </div>
+        `).join('');
+      } else {
+        grid.innerHTML = '<p>No health checks available</p>';
+      }
+    }
+    
+    async function runHealthScan() {
+      const btn = document.getElementById('runBtn');
+      btn.disabled = true;
+      btn.innerHTML = '<span>🔄</span> Scanning...';
+      
+      try {
+        const res = await fetch('http://localhost:3000/api/health/run', { method: 'POST' });
+        healthData = await res.json();
+        renderHealth();
+      } catch (e) {
+        alert('Failed to run health scan: ' + e.message);
+      }
+      
+      btn.disabled = false;
+      btn.innerHTML = '<span>🔄</span> Run Health Scan';
+    }
+    
     loadHealth();
     setInterval(loadHealth, 30000);
   </script>
