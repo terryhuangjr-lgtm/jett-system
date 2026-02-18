@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "axios": "^1.13.4",
+    "cheerio": "^1.2.0",
+    "ebay-node-api": "^2.9.0",
+    "pdf-parse": "^2.4.5",
+    "pdf2json": "^4.0.2",
+    "puppeteer": "^22.15.0",
+    "puppeteer-extra": "^3.3.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2",
+    "sqlite3": "^5.1.7"
+  },
+  "scripts": {
+    "stealth-browser": "node lib/stealth-browser/cli.js",
+    "task-manager": "cd task-manager && ./start.sh",
+    "task-manager-stop": "cd task-manager && ./stop.sh"
+  }
+}

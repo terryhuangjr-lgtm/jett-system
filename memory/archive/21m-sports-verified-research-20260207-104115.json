@@ -1,0 +1,24 @@
+{
+  "type": "21m_sports_research",
+  "timestamp": "2026-02-07T13:18:36.320Z",
+  "findings": [
+    {
+      "player": "Juan Soto",
+      "contract_value": "$765M",
+      "contract_value_usd": 765000000,
+      "signing_date": "2024-12-15",
+      "btc_equivalent": "11098.54",
+      "sources": [
+        "https://www.spotrac.com/mlb/new-york-mets/juan-soto-32574/"
+      ]
+    }
+  ],
+  "btc_prices": {
+    "2024-12-15": {
+      "price": 68928,
+      "source": "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd"
+    }
+  },
+  "verification_status": "VERIFIED",
+  "dry_run": true
+}

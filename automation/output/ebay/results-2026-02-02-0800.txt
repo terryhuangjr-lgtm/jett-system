@@ -1,0 +1,9 @@
+Searching eBay for: vintage baseball jersey
+Browser launched with stealth mode...
+Navigated to search results...
+Scrolled through results...
+
+Found 0 items:
+
+Full results saved to: ebay-vintage-baseball-jersey-1770037236153.json
+Browser closed.

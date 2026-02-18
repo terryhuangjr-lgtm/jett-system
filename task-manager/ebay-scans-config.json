@@ -1,0 +1,232 @@
+{
+  "version": "1.0",
+  "last_updated": "2026-02-17T19:53:45.542Z",
+  "global_filters": {
+    "description": "Global filter rules applied to all eBay scans",
+    "graded_keywords": [
+      "psa",
+      "bgs",
+      "cgc",
+      "sgc",
+      "csg",
+      "jumbo",
+      "leaf",
+      "reprint",
+      "custom",
+      "pack",
+      "packs",
+      "hobby",
+      "box"
+    ],
+    "exclude_item_types": [
+      "pack",
+      "packs",
+      "box",
+      "sealed",
+      "reprint",
+      "lot",
+      "set",
+      "bundle",
+      "collection",
+      "custom",
+      "fan made",
+      "reproduction",
+      "leaf",
+      "jumbo"
+    ],
+    "quality_rules": {
+      "seller_feedback_min": 98,
+      "listing_age_max_days": 25,
+      "require_raw_cards": true
+    }
+  },
+  "scans": {
+    "monday": {
+      "name": "MJ Topps Finest 93-99",
+      "enabled": true,
+      "search_terms": [
+        "topps finest michael jordan 1994-1999"
+      ],
+      "filters": {
+        "topN": 20,
+        "minPrice": 10,
+        "maxPrice": 100,
+        "exclude_words": [
+          "pokemon",
+          "magic",
+          "yugioh",
+          "non-sport",
+          "jumbo"
+        ]
+      },
+      "output_file": "/tmp/mj-finest-scan.json",
+      "last_run": "2026-02-17T15:48:54.883Z",
+      "last_results": {
+        "timestamp": "2026-02-17T15:48:54.883Z",
+        "success": true
+      },
+      "last_updated": "2026-02-17T00:40:05.802Z"
+    },
+    "tuesday": {
+      "name": "Griffey Jr Refractors",
+      "enabled": true,
+      "search_terms": [
+        "ken griffey jr topps chrome",
+        "topps finest 1994-1999 refractor"
+      ],
+      "filters": {
+        "topN": 20,
+        "exclude_words": [
+          "pokemon",
+          "magic",
+          "yugioh",
+          "jumbo"
+        ]
+      },
+      "output_file": "/tmp/griffey-refractors-scan.json",
+      "last_run": "2026-02-17T14:00:16.290Z",
+      "last_results": {
+        "timestamp": "2026-02-17T14:00:16.290Z",
+        "success": true
+      },
+      "last_updated": "2026-02-11T19:27:10.821Z"
+    },
+    "wednesday": {
+      "name": "Kobe Bryant Refractors 1997-2005",
+      "enabled": true,
+      "search_terms": [
+        "kobe bryant topps chrome",
+        "topps finest 1997-2005 refractor"
+      ],
+      "filters": {
+        "topN": 20,
+        "exclude_words": [
+          "pokemon",
+          "magic",
+          "yugioh",
+          "jumbo"
+        ]
+      },
+      "output_file": "/tmp/kobe-refractors-scan.json",
+      "last_run": "2026-02-18T12:27:24.912Z",
+      "last_results": {
+        "timestamp": "2026-02-18T12:27:24.912Z",
+        "success": true
+      },
+      "last_updated": "2026-02-11T19:27:27.456Z"
+    },
+    "thursday": {
+      "name": "MJ Upper Deck 96-00",
+      "enabled": true,
+      "search_terms": [
+        "upper deck michael jordan 1996-2000"
+      ],
+      "filters": {
+        "topN": 20,
+        "minPrice": 5,
+        "maxPrice": 100,
+        "exclude_words": [
+          "pokemon",
+          "magic",
+          "yugioh",
+          "jumbo",
+          "custom",
+          "reprint"
+        ]
+      },
+      "output_file": "/tmp/mj-upperdeck-scan.json",
+      "last_run": "2026-02-12T14:00:16.645Z",
+      "last_results": {
+        "timestamp": "2026-02-12T14:00:16.646Z",
+        "success": true
+      },
+      "last_updated": "2026-02-12T15:42:58.022Z"
+    },
+    "friday": {
+      "name": "Multi: hakeem/charles barkley/Dirk/Iverson",
+      "enabled": true,
+      "search_terms": [
+        "hakeem olojuwon",
+        "charles barkley",
+        "dirk nowitzki",
+        "allen iverson",
+        "topps refractor",
+        "1994-1999"
+      ],
+      "filters": {
+        "topN": 20,
+        "exclude_words": [
+          "pokemon",
+          "magic",
+          "yugioh",
+          "jumbo",
+          "holo"
+        ]
+      },
+      "output_file": "/tmp/topps-refractors-multi-scan.json",
+      "last_run": "2026-02-13T15:35:52.467Z",
+      "last_results": {
+        "timestamp": "2026-02-13T15:35:52.468Z",
+        "success": true
+      },
+      "last_updated": "2026-02-17T19:53:45.542Z"
+    },
+    "saturday": {
+      "name": "MJ Base 94-99",
+      "enabled": true,
+      "search_terms": [
+        "michael jordan 1994-1999"
+      ],
+      "filters": {
+        "topN": 20,
+        "minPrice": 5,
+        "maxPrice": 500,
+        "exclude_words": [
+          "pokemon",
+          "magic",
+          "yugioh",
+          "jumbo",
+          "custom"
+        ]
+      },
+      "output_file": "/tmp/mj-base-scan.json",
+      "last_run": "2026-02-14T14:00:25.779Z",
+      "last_results": {
+        "timestamp": "2026-02-14T14:00:25.780Z",
+        "success": true
+      },
+      "last_updated": "2026-02-11T19:27:31.456Z"
+    },
+    "sunday": {
+      "name": "2025 Cam Ward",
+      "enabled": true,
+      "search_terms": [
+        "2025 cam ward gold prizm",
+        "auto",
+        "kaboom",
+        "downtown"
+      ],
+      "filters": {
+        "topN": 20,
+        "exclude_words": [
+          "bowman",
+          "draft picks",
+          "leaf"
+        ]
+      },
+      "output_file": "/tmp/cam-ward-scan.json",
+      "last_run": "2026-02-15T14:00:21.601Z",
+      "last_results": {
+        "timestamp": "2026-02-15T14:00:21.601Z",
+        "success": true
+      },
+      "last_updated": "2026-02-17T00:48:38.253Z"
+    }
+  },
+  "deploy": {
+    "enabled": true,
+    "time": "13:30",
+    "slack_channel": "#levelupcards",
+    "last_run": null
+  }
+}

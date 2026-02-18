@@ -1,0 +1,137 @@
+{
+  "generation_date": "2026-02-03",
+  "scripts": {
+    "morning-brief.js": {
+      "description": "Generates daily morning brief with weather, macro news, tasks, and projects",
+      "uses_llm": false,
+      "token_cost_per_run": 0,
+      "execution_type": "local",
+      "last_modified": "2026-02-03",
+      "dependencies": [
+        "wttr.in API (weather data)",
+        "memory/macro-news.md (manual updates)",
+        "memory/active-projects.md (manual updates)",
+        "task-manager CLI (today's tasks)"
+      ],
+      "outputs": ["/tmp/morning-brief.json"],
+      "scheduled": "6:00 AM daily (Task 24)",
+      "deployed": "7:00 AM daily via deploy-morning-brief.js (Task 35)"
+    },
+    "21m-sports-tweet-generator.js": {
+      "description": "Generates 3 tweet variations using template-based system for Bitcoin-denominated sports content",
+      "uses_llm": false,
+      "token_cost_per_run": 0,
+      "execution_type": "local",
+      "last_modified": "2026-02-02",
+      "dependencies": [
+        "memory/21m-sports-research.md (logs output)",
+        "Hardcoded CONTENT_PILLARS templates (18 templates)",
+        "Hardcoded RECENT_CONTRACTS data"
+      ],
+      "content_pillars": ["contracts", "athlete_wealth", "business", "macro", "quick_hits"],
+      "outputs": ["/tmp/21m-sports-tweet-1.json", "/tmp/21m-sports-tweet-2.json"],
+      "scheduled": "5:00 AM (Tweet #1, Task 25) and 11:00 AM (Tweet #2, Task 26)",
+      "deployed": "7:30 AM and 12:00 PM via deploy-21m-tweet.js (Tasks 36, 37)"
+    },
+    "21m-sports-researcher.js": {
+      "description": "Scrapes ESPN and Spotrac for sports news, extracts contract amounts, converts to BTC equivalents",
+      "uses_llm": false,
+      "token_cost_per_run": 0,
+      "execution_type": "local",
+      "dependencies": [
+        "ESPN.com (web scraping)",
+        "Spotrac.com (web scraping)",
+        "Coinbase API (BTC price)",
+        "Puppeteer (headless browser)",
+        "memory/21m-sports-research.md (appends findings)"
+      ],
+      "outputs": [
+        "memory/21m-sports-research.md (append)",
+        "/tmp/21m-research-summary.json"
+      ],
+      "scheduled": "3:00 AM daily (Task 27)",
+      "notes": "Falls back to hardcoded contracts if scraping fails"
+    },
+    "deploy-morning-brief.js": {
+      "description": "Posts morning brief JSON to Terry's Slack DM",
+      "uses_llm": false,
+      "token_cost_per_run": 0,
+      "execution_type": "local",
+      "last_modified": "2026-02-03",
+      "dependencies": [
+        "clawdbot CLI (Slack posting)",
+        "/tmp/morning-brief.json (input)"
+      ],
+      "slack_target": "Terry's DM (U0ABTP704QK)",
+      "scheduled": "7:00 AM daily (Task 35)"
+    },
+    "deploy-21m-tweet.js": {
+      "description": "Posts 3 tweet variations to #21msports Slack channel with pillar labels",
+      "uses_llm": false,
+      "token_cost_per_run": 0,
+      "execution_type": "local",
+      "last_modified": "2026-02-03",
+      "dependencies": [
+        "clawdbot CLI (Slack posting)",
+        "/tmp/21m-sports-tweet-*.json (input)"
+      ],
+      "slack_target": "#21msports (C0ABK99L0B1)",
+      "scheduled": "7:30 AM (Tweet #1, Task 36) and 12:00 PM (Tweet #2, Task 37)"
+    },
+    "deploy-ebay-scans.js": {
+      "description": "Auto-detects today's eBay scan file and posts top 10 results to #levelupcards",
+      "uses_llm": false,
+      "token_cost_per_run": 0,
+      "execution_type": "local",
+      "last_modified": "2026-02-03",
+      "dependencies": [
+        "clawdbot CLI (Slack posting)",
+        "/tmp/*-scan.json (input, day-based auto-detection)"
+      ],
+      "scan_schedule": {
+        "Monday": "MJ Topps Finest 1993-1999 (Task 28)",
+        "Tuesday": "MJ Upper Deck 96-00 (Task 29)",
+        "Wednesday": "MJ Base 94-99 (Task 30)",
+        "Thursday": "Griffey Jr Refractors (Task 31)",
+        "Friday": "1989 Griffey Jr Rookies (Task 32)",
+        "Saturday": "Topps Refractors Multi (Task 33)",
+        "Sunday": "2025 Cam Ward (Task 34)"
+      },
+      "slack_target": "#levelupcards (C0ACEEDAC68)",
+      "scheduled": "8:30 AM daily (Task 38)"
+    },
+    "post-21m-to-slack.js": {
+      "description": "Legacy script - replaced by deploy-21m-tweet.js",
+      "uses_llm": false,
+      "token_cost_per_run": 0,
+      "execution_type": "local",
+      "last_modified": "2026-02-01",
+      "status": "deprecated",
+      "notes": "Use deploy-21m-tweet.js instead"
+    }
+  },
+  "summary": {
+    "total_scripts": 7,
+    "active_scripts": 6,
+    "deprecated_scripts": 1,
+    "total_llm_usage": "0 tokens/day",
+    "total_cost": "$0.00/day",
+    "execution_model": "100% local execution with templates, web scraping, and regex parsing",
+    "external_apis": [
+      "wttr.in (free weather API)",
+      "ESPN.com (web scraping)",
+      "Spotrac.com (web scraping)",
+      "Coinbase API (free BTC price)"
+    ]
+  },
+  "verification": {
+    "last_audit": "2026-02-03",
+    "method": "Claude Code exploration + file analysis",
+    "findings": "All automation scripts use 0 LLM tokens. Template-based generation with local execution."
+  },
+  "rules": {
+    "before_answering_questions": "cat ~/clawd/automation/SCRIPT-STATUS.json",
+    "before_making_claims": "Verify actual LLM usage from this file, not assumptions",
+    "after_modifications": "Update this file with new last_modified dates and dependency changes"
+  }
+}

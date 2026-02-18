@@ -1,0 +1,48 @@
+{
+  "description": "Optimization settings for Clawdbot operations",
+  "token_limits": {
+    "max_context": 100000,
+    "typical_message": 2000,
+    "heartbeat_check": 500,
+    "memory_read": 5000,
+    "single_file_read": 2000
+  },
+  "caching": {
+    "enabled": true,
+    "default_ttl_minutes": 60,
+    "weather_ttl": 120,
+    "news_ttl": 30,
+    "calendar_ttl": 15,
+    "email_ttl": 5
+  },
+  "intervals": {
+    "heartbeat_minutes": 30,
+    "email_check_minutes": 30,
+    "calendar_check_minutes": 60,
+    "weather_update_hours": 4,
+    "memory_cleanup_days": 30
+  },
+  "batch_operations": {
+    "enabled": true,
+    "max_parallel": 5,
+    "timeout_ms": 30000
+  },
+  "retry": {
+    "max_retries": 3,
+    "initial_delay_ms": 1000,
+    "max_delay_ms": 10000,
+    "backoff_multiplier": 2
+  },
+  "optimizations": {
+    "use_state_tracking": true,
+    "smart_file_loading": true,
+    "truncate_large_files": true,
+    "skip_node_modules": true,
+    "cache_repeated_searches": true,
+    "batch_similar_operations": true
+  },
+  "alerts": {
+    "warn_token_usage_above": 80000,
+    "warn_context_approaching": 95000
+  }
+}

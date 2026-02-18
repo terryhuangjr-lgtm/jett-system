@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>eBay Scanner Manager</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .ebay-dashboard {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .ebay-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid #2a2a2a;
+    }
+    .ebay-header h1 {
+      margin: 0;
+      color: #10b981;
+    }
+    .refresh-btn {
+      background: #2a2a2a;
+      border: 1px solid #3a3a3a;
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.2s;
+    }
+    .refresh-btn:hover {
+      background: #3a3a3a;
+      border-color: #10b981;
+    }
+    .scans-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+      gap: 16px;
+    }
+    .scan-card {
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 12px;
+      padding: 20px;
+      transition: all 0.2s;
+    }
+    .scan-card:hover {
+      border-color: #3a3a3a;
+    }
+    .scan-card.disabled {
+      opacity: 0.5;
+    }
+    .scan-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 12px;
+    }
+    .scan-day {
+      font-size: 12px;
+      text-transform: uppercase;
+      color: #6b7280;
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+    }
+    .scan-name {
+      font-size: 16px;
+      font-weight: 600;
+      color: #fff;
+      margin: 0;
+    }
+    .toggle-switch {
+      position: relative;
+      width: 48px;
+      height: 24px;
+    }
+    .toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .toggle-slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #374151;
+      transition: 0.3s;
+      border-radius: 24px;
+    }
+    .toggle-slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: 0.3s;
+      border-radius: 50%;
+    }
+    input:checked + .toggle-slider {
+      background-color: #10b981;
+    }
+    input:checked + .toggle-slider:before {
+      transform: translateX(24px);
+    }
+    .scan-search {
+      background: #0a0a0a;
+      padding: 12px;
+      border-radius: 8px;
+      margin-bottom: 12px;
+      font-family: monospace;
+      font-size: 13px;
+      color: #10b981;
+      word-break: break-word;
+    }
+    .scan-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .filter-tag {
+      background: #2a2a2a;
+      color: #9ca3af;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 12px;
+    }
+    .filter-tag span {
+      color: #10b981;
+    }
+    .scan-status {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-top: 12px;
+      border-top: 1px solid #2a2a2a;
+    }
+    .status-badge {
+      font-size: 12px;
+      padding: 4px 8px;
+      border-radius: 4px;
+      background: #2a2a2a;
+      color: #9ca3af;
+    }
+    .status-badge.success {
+      background: #064e3b;
+      color: #10b981;
+    }
+    .status-badge.error {
+      background: #451a1a;
+      color: #ef4444;
+    }
+    .action-btn {
+      background: #2a2a2a;
+      border: 1px solid #3a3a3a;
+      color: #fff;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 12px;
+      transition: all 0.2s;
+    }
+    .action-btn:hover {
+      background: #3a3a3a;
+      border-color: #10b981;
+    }
+    .action-btn.primary {
+      background: #10b981;
+      border-color: #10b981;
+      color: #000;
+    }
+    .action-btn.primary:hover {
+      background: #059669;
+    }
+    .deploy-card {
+      grid-column: 1 / -1;
+      background: linear-gradient(135deg, #1a1a1a 0%, #0f2027 100%);
+      border: 1px solid #10b981;
+    }
+    .deploy-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .deploy-info {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+    .deploy-time {
+      font-size: 24px;
+      font-weight: bold;
+      color: #10b981;
+    }
+    .deploy-channel {
+      color: #9ca3af;
+      font-size: 14px;
+    }
+    .edit-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+    .edit-modal.active {
+      display: flex;
+    }
+    .modal-content {
+      background: #1a1a1a;
+      border: 1px solid #3a3a3a;
+      border-radius: 12px;
+      padding: 24px;
+      max-width: 600px;
+      width: 90%;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .modal-header h2 {
+      margin: 0;
+      color: #fff;
+    }
+    .close-btn {
+      background: none;
+      border: none;
+      color: #6b7280;
+      font-size: 24px;
+      cursor: pointer;
+    }
+    .close-btn:hover {
+      color: #fff;
+    }
+    .form-group {
+      margin-bottom: 16px;
+    }
+    .form-group label {
+      display: block;
+      color: #9ca3af;
+      font-size: 12px;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      background: #0a0a0a;
+      border: 1px solid #3a3a3a;
+      border-radius: 6px;
+      padding: 10px;
+      color: #fff;
+      font-size: 14px;
+      font-family: monospace;
+    }
+    .form-group textarea {
+      min-height: 80px;
+      resize: vertical;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #10b981;
+    }
+    .filter-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .save-btn {
+      background: #10b981;
+      border: none;
+      color: #000;
+      padding: 12px 24px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 16px;
+    }
+    .save-btn:hover {
+      background: #059669;
+    }
+    .nav-back {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #6b7280;
+      text-decoration: none;
+      font-size: 14px;
+      margin-bottom: 16px;
+    }
+    .nav-back:hover {
+      color: #10b981;
+    }
+  </style>
+</head>
+<body>
+  <div class="container ebay-dashboard">
+    <a href="/" class="nav-back">← Back to Task Manager</a>
+
+    <div class="ebay-header">
+      <h1>🔍 eBay Scanner Manager</h1>
+      <div>
+        <button class="refresh-btn" onclick="refreshScans()">⟳ Refresh</button>
+        <button class="refresh-btn" onclick="openGlobalRulesModal()">⚙️ Global Rules</button>
+      </div>
+    </div>
+
+    <!-- Global Rules Summary -->
+    <div class="scan-card deploy-card" style="margin-bottom: 20px;" onclick="openGlobalRulesModal()">
+      <div class="scan-header">
+        <div>
+          <div class="scan-day">GLOBAL</div>
+          <h3 class="scan-name">⚙️ Filter Rules</h3>
+        </div>
+        <div style="text-align: right; color: #9ca3af; font-size: 12px;">
+          <span>Graded: ${(config.global_filters?.graded_keywords || []).slice(0, 3).join(', ')}...</span><br>
+          <span>Exclude: ${(config.global_filters?.exclude_item_types || []).slice(0, 3).join(', ')}...</span><br>
+          <span style="color: #10b981;">Click to edit →</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="scans-grid" id="scansGrid">
+      <p class="loading">Loading scan configurations...</p>
+    </div>
+  </div>
+
+  <!-- Global Rules Modal -->
+  <div class="edit-modal" id="globalRulesModal">
+    <div class="modal-content" style="max-width: 700px;">
+      <div class="modal-header">
+        <h2>⚙️ Global Filter Rules</h2>
+        <button class="close-btn" onclick="closeGlobalRulesModal()">&times;</button>
+      </div>
+      <form id="globalRulesForm">
+        <div class="form-group">
+          <label>Graded Card Keywords (comma-separated)</label>
+          <div style="color: #9ca3af; font-size: 11px; margin-bottom: 6px;">Cards with these in title will be EXCLUDED (PSA, BGS, etc.)</div>
+          <textarea id="editGradedKeywords" placeholder="psa, bgs, cgc, sgc, bccg, ksa, ags" style="min-height: 60px;"></textarea>
+        </div>
+        <div class="form-group">
+          <label>Exclude Item Types (comma-separated)</label>
+          <div style="color: #9ca3af; font-size: 11px; margin-bottom: 6px;">Listings with these words will be EXCLUDED (packs, boxes, lots, etc.)</div>
+          <textarea id="editExcludeTypes" placeholder="pack, box, sealed, reprint, lot, set, bundle, custom, fan made" style="min-height: 80px;"></textarea>
+        </div>
+        <div class="filter-row">
+          <div class="form-group">
+            <label>Min Seller Feedback %</label>
+            <input type="number" id="editMinFeedback" placeholder="98">
+          </div>
+          <div class="form-group">
+            <label>Max Listing Age (days)</label>
+            <input type="number" id="editMaxAge" placeholder="7">
+          </div>
+        </div>
+        <div class="form-group">
+          <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+            <input type="checkbox" id="editRequireRaw" style="width: auto;">
+            <span>Require Raw Cards Only (exclude all graded)</span>
+          </label>
+        </div>
+        <button type="submit" class="save-btn">Save Global Rules</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Edit Modal -->
+  <div class="edit-modal" id="editModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="modalTitle">Edit Scan</h2>
+        <button class="close-btn" onclick="closeModal()">&times;</button>
+      </div>
+      <form id="editForm">
+        <input type="hidden" id="editDay">
+        <div class="form-group">
+          <label>Scan Name</label>
+          <input type="text" id="editName" placeholder="e.g., MJ Topps Finest 93-99">
+        </div>
+        <div class="form-group">
+          <label>Search Terms (comma-separated)</label>
+          <textarea id="editTerms" placeholder="michael jordan, topps finest, 1994-1999"></textarea>
+        </div>
+        <div class="form-group">
+          <label>Filters</label>
+          <div class="filter-row">
+            <div>
+              <label style="font-size: 10px;">Min Price</label>
+              <input type="number" id="editMinPrice" placeholder="5">
+            </div>
+            <div>
+              <label style="font-size: 10px;">Max Price</label>
+              <input type="number" id="editMaxPrice" placeholder="500">
+            </div>
+            <div>
+              <label style="font-size: 10px;">Top N Results</label>
+              <input type="number" id="editTopN" placeholder="20">
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Exclude Words (comma-separated)</label>
+          <input type="text" id="editExclude" placeholder="pokemon, magic, yugioh">
+        </div>
+        <button type="submit" class="save-btn">Save Changes</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    let config = null;
+    const API_BASE = 'http://localhost:3000';
+
+    async function loadConfig() {
+      try {
+        const response = await fetch(`${API_BASE}/api/ebay-scans`);
+        config = await response.json();
+        renderScans();
+      } catch (error) {
+        document.getElementById('scansGrid').innerHTML = '<p class="error">Failed to load configurations</p>';
+      }
+    }
+
+    function openGlobalRulesModal() {
+      const gf = config.global_filters || {};
+      document.getElementById('editGradedKeywords').value = (gf.graded_keywords || []).join(', ');
+      document.getElementById('editExcludeTypes').value = (gf.exclude_item_types || []).join(', ');
+      document.getElementById('editMinFeedback').value = (gf.quality_rules || {}).seller_feedback_min || 98;
+      document.getElementById('editMaxAge').value = (gf.quality_rules || {}).listing_age_max_days || 7;
+      document.getElementById('editRequireRaw').checked = (gf.quality_rules || {}).require_raw_cards !== false;
+      document.getElementById('globalRulesModal').classList.add('active');
+    }
+
+    function closeGlobalRulesModal() {
+      document.getElementById('globalRulesModal').classList.remove('active');
+    }
+
+    document.getElementById('globalRulesForm').onsubmit = async (e) => {
+      e.preventDefault();
+      const gradedKeywords = document.getElementById('editGradedKeywords').value.split(',').map(t => t.trim()).filter(t => t);
+      const excludeTypes = document.getElementById('editExcludeTypes').value.split(',').map(t => t.trim()).filter(t => t);
+
+      const updates = {
+        global_filters: {
+          graded_keywords: gradedKeywords,
+          exclude_item_types: excludeTypes,
+          quality_rules: {
+            seller_feedback_min: parseInt(document.getElementById('editMinFeedback').value) || 98,
+            listing_age_max_days: parseInt(document.getElementById('editMaxAge').value) || 7,
+            require_raw_cards: document.getElementById('editRequireRaw').checked
+          }
+        }
+      };
+
+      try {
+        const response = await fetch(`${API_BASE}/api/ebay-scans/global-rules`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(updates)
+        });
+        const result = await response.json();
+        if (result.success) {
+          config.global_filters = updates.global_filters;
+          renderScans();
+          closeGlobalRulesModal();
+          alert('Global rules saved!');
+        } else {
+          alert('Failed to save: ' + result.error);
+        }
+      } catch (error) {
+        alert('Failed to save global rules');
+      }
+    };
+
+    function renderScans() {
+      const grid = document.getElementById('scansGrid');
+      const days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+      const dayNames = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+
+      let html = '';
+
+      days.forEach((day, index) => {
+        const scan = config.scans[day];
+        const lastRun = scan.last_run ? new Date(scan.last_run).toLocaleString() : 'Never';
+        const statusClass = scan.last_results ? 'success' : '';
+
+        html += `
+          <div class="scan-card ${scan.enabled ? '' : 'disabled'}" data-day="${day}">
+            <div class="scan-header">
+              <div>
+                <div class="scan-day">${dayNames[index]}</div>
+                <h3 class="scan-name">${scan.name}</h3>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" ${scan.enabled ? 'checked' : ''} onchange="toggleScan('${day}', this.checked)">
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            <div class="scan-search">${scan.search_terms.join(', ')}</div>
+            <div class="scan-filters">
+              ${scan.filters.minPrice ? `<span class="filter-tag">Min: $<span>${scan.filters.minPrice}</span></span>` : ''}
+              ${scan.filters.maxPrice ? `<span class="filter-tag">Max: $<span>${scan.filters.maxPrice}</span></span>` : ''}
+              <span class="filter-tag">Top <span>${scan.filters.topN}</span></span>
+              ${scan.filters.exclude_words ? `<span class="filter-tag">Excludes: <span>${scan.filters.exclude_words.slice(0, 3).join(', ')}</span></span>` : ''}
+            </div>
+            <div class="scan-status">
+              <span class="status-badge ${statusClass}">Last run: ${lastRun}</span>
+              <button class="action-btn" onclick="editScan('${day}')">Edit</button>
+              <button class="action-btn primary" onclick="runScan('${day}')">▶ Run Now</button>
+            </div>
+          </div>
+        `;
+      });
+
+      // Deploy card
+      const deploy = config.deploy;
+      html += `
+        <div class="scan-card deploy-card">
+          <div class="scan-header deploy-header">
+            <div>
+              <div class="scan-day">Daily</div>
+              <h3 class="scan-name">📤 Deploy to Slack</h3>
+            </div>
+            <div class="deploy-info">
+              <span class="deploy-time">${deploy.time}</span>
+              <span class="deploy-channel">→ ${deploy.slack_channel}</span>
+              <button class="action-btn primary" onclick="triggerDeploy()">▶ Deploy Now</button>
+            </div>
+          </div>
+        </div>
+      `;
+
+      grid.innerHTML = html;
+    }
+
+    async function toggleScan(day, enabled) {
+      try {
+        const response = await fetch(`${API_BASE}/api/ebay-scans/${day}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ enabled })
+        });
+        const result = await response.json();
+        if (result.success) {
+          config.scans[day].enabled = enabled;
+          renderScans();
+        }
+      } catch (error) {
+        alert('Failed to update scan');
+      }
+    }
+
+    function editScan(day) {
+      const scan = config.scans[day];
+      document.getElementById('editDay').value = day;
+      document.getElementById('editName').value = scan.name;
+      document.getElementById('editTerms').value = scan.search_terms.join(', ');
+      document.getElementById('editMinPrice').value = scan.filters.minPrice || '';
+      document.getElementById('editMaxPrice').value = scan.filters.maxPrice || '';
+      document.getElementById('editTopN').value = scan.filters.topN || 20;
+      document.getElementById('editExclude').value = scan.filters.exclude_words?.join(', ') || '';
+      document.getElementById('modalTitle').textContent = `Edit ${day.charAt(0).toUpperCase() + day.slice(1)} Scan`;
+      document.getElementById('editModal').classList.add('active');
+    }
+
+    function closeModal() {
+      document.getElementById('editModal').classList.remove('active');
+    }
+
+    document.getElementById('editForm').onsubmit = async (e) => {
+      e.preventDefault();
+      const day = document.getElementById('editDay').value;
+      const terms = document.getElementById('editTerms').value.split(',').map(t => t.trim()).filter(t => t);
+      const exclude = document.getElementById('editExclude').value.split(',').map(t => t.trim()).filter(t => t);
+
+      const updates = {
+        name: document.getElementById('editName').value,
+        search_terms: terms,
+        filters: {
+          topN: parseInt(document.getElementById('editTopN').value) || 20,
+          minPrice: document.getElementById('editMinPrice').value ? parseInt(document.getElementById('editMinPrice').value) : undefined,
+          maxPrice: document.getElementById('editMaxPrice').value ? parseInt(document.getElementById('editMaxPrice').value) : undefined,
+          exclude_words: exclude
+        }
+      };
+
+      try {
+        const response = await fetch(`${API_BASE}/api/ebay-scans/${day}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(updates)
+        });
+        const result = await response.json();
+        if (result.success) {
+          config.scans[day] = { ...config.scans[day], ...updates };
+          renderScans();
+          closeModal();
+        }
+      } catch (error) {
+        alert('Failed to save changes');
+      }
+    };
+
+    async function runScan(day) {
+      const btn = document.querySelector(`[data-day="${day}"] .action-btn.primary`);
+      btn.textContent = '⏳ Running...';
+      btn.disabled = true;
+
+      try {
+        const response = await fetch(`${API_BASE}/api/ebay-scans/${day}/run`, { method: 'POST' });
+        const result = await response.json();
+        if (result.success) {
+          alert(`${config.scans[day].name} completed!`);
+          loadConfig();
+        } else {
+          alert('Scan failed: ' + result.error);
+        }
+      } catch (error) {
+        alert('Failed to run scan');
+      }
+
+      btn.textContent = '▶ Run Now';
+      btn.disabled = false;
+    }
+
+    async function triggerDeploy() {
+      try {
+        const response = await fetch(`${API_BASE}/api/ebay-deploy`, { method: 'POST' });
+        const result = await response.json();
+        if (result.success) {
+          alert('Deploy triggered!');
+        } else {
+          alert('Deploy failed: ' + result.error);
+        }
+      } catch (error) {
+        alert('Failed to trigger deploy');
+      }
+    }
+
+    function refreshScans() {
+      loadConfig();
+    }
+
+    // Auto-refresh every 30 seconds
+    setInterval(loadConfig, 30000);
+
+    // Load on page load
+    loadConfig();
+  </script>
+</body>
+</html>

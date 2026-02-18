@@ -1,0 +1,32 @@
+{
+  "type": "21m_sports_tweets",
+  "timestamp": "2026-02-07T10:00:09.998Z",
+  "tweets": [
+    "Juan Soto's $765M contract = 12171.12 BTC\n\nWhen signed, Bitcoin was at $62,854. That same contract today? Worth a fraction in BTC terms.\n\nFiat devalues. Bitcoin doesn't.",
+    "Juan Soto signed for $765M\n\nIn BTC terms: 12171.12 BTC\n= 0.057958% of the 21M total supply\n\nEvery contract measured against fixed supply reveals fiat's weakness.",
+    "The Juan Soto contract: $765M\n\nConverted to BTC: 12171.12 BTC @ $62,854\n\nAs fiat loses purchasing power, measuring wealth in Bitcoin reveals true value preservation."
+  ],
+  "sources": {
+    "contract": "https://www.spotrac.com/mlb/new-york-mets/juan-soto-32574/",
+    "btc_price": "https://api.coingecko.com/api/v3/coins/bitcoin/history?date=06-02-2026",
+    "additional": []
+  },
+  "metadata": {
+    "player": "Juan Soto",
+    "contract_value": "$765M",
+    "signing_date": "2026-02-06",
+    "btc_price_on_date": "$62,854",
+    "btc_equivalent": "12171.12 BTC",
+    "verified": true,
+    "char_counts": [
+      169,
+      161,
+      165
+    ],
+    "pillars_used": [
+      "contract_analysis",
+      "bitcoin_standard",
+      "fiat_debasement"
+    ]
+  }
+}

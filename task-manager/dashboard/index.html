@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Manager Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="header-top">
+        <h1>Task Manager Dashboard</h1>
+        <div class="header-links">
+          <span id="health-status" class="health-status">Loading...</span>
+          <a href="/health.html" class="health-link">💓 Health</a>
+          <a href="/ebay" class="ebay-link">📦 eBay Scanner</a>
+        </div>
+      </div>
+      <p class="subtitle">Jett's automated routines</p>
+      <nav class="main-nav">
+        <a href="http://localhost:3000" class="nav-link active">Task Manager</a>
+        <a href="http://localhost:5000" class="nav-link">Level Up Cards</a>
+        <a href="http://localhost:5001" class="nav-link">Podcast Summary</a>
+        <a href="/ebay" class="nav-link">eBay Scanner</a>
+      </nav>
+    </header>
+
+    <section class="calendar-view">
+      <h2>📅 This Week</h2>
+      <div class="calendar-grid" id="calendar-grid">
+      </div>
+    </section>
+
+    <section class="next-up">
+      <h2>📌 Next Up</h2>
+      <div id="next-up-list" class="next-up-list">
+        <p class="loading">Loading...</p>
+      </div>
+    </section>
+  </div>
+
+  <div id="task-details-modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="hideTaskDetailsModal()">&times;</span>
+      <div id="task-details"></div>
+    </div>
+  </div>
+
+  <script>
+    const API_BASE = 'http://localhost:3000/api';
+    const CRON_API = 'http://localhost:3000/api/cron-jobs';
+    let tasks = [];
+    let currentView = 'week';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      refreshTasks();
+      refreshHealth();
+      setInterval(refreshTasks, 30000);
+      setInterval(refreshHealth, 120000);
+    });
+
+    async function refreshTasks() {
+      try {
+        const response = await fetch(CRON_API + '?t=' + Date.now());
+        tasks = await response.json();
+        tasks = tasks.filter(t => t.enabled);
+        renderCalendar();
+        renderNextUp();
+      } catch (error) {
+        console.error('Error fetching tasks:', error);
+      }
+    }
+
+    async function refreshHealth() {
+      try {
+        const response = await fetch(API_BASE + '/health');
+        const health = await response.json();
+        const statusEl = document.getElementById('health-status');
+        
+        if (health.status === 'healthy') {
+          statusEl.innerHTML = '✓ Healthy';
+          statusEl.className = 'health-status healthy';
+        } else if (health.status === 'warning') {
+          const failed = health.checks.filter(c => c.status !== 'healthy').length;
+          statusEl.innerHTML = `⚠ ${failed} issue${failed > 1 ? 's' : ''}`;
+          statusEl.className = 'health-status warning';
+        } else {
+          statusEl.innerHTML = '✕ Issues';
+          statusEl.className = 'health-status error';
+        }
+      } catch (error) {
+        document.getElementById('health-status').innerHTML = '✕ Offline';
+        document.getElementById('health-status').className = 'health-status error';
+      }
+    }
+
+    function renderAlwaysRunning() {
+      const container = document.getElementById('always-running-tasks');
+      const running = tasks.filter(t => t.schedule && (t.schedule.includes('reboot') || t.schedule.includes('always')));
+      
+      if (running.length === 0) {
+        container.innerHTML = '<p class="empty">No always-running tasks</p>';
+        return;
+      }
+      
+      container.innerHTML = running.map(task => `
+        <div class="task-card running" onclick="showTaskDetails(${task.id})">
+          <span class="task-name">${task.name}</span>
+          <span class="task-schedule">${task.schedule}</span>
+        </div>
+      `).join('');
+    }
+
+    function renderCalendar() {
+      const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+      const today = new Date().getDay();
+      const container = document.getElementById('calendar-grid');
+      
+      let html = '';
+      days.forEach((day, i) => {
+        const dayLower = day.toLowerCase();
+        let dayTasks = tasks.filter(t => {
+          if (!t.schedule) return false;
+          const s = t.schedule.toLowerCase();
+          
+          // Check for "daily" keyword
+          if (s.includes('daily')) return true;
+          if (s.includes(dayLower)) return true;
+          
+          // Parse cron expression: cron minute hour day-of-month month day-of-week
+          const cronMatch = s.match(/cron\s+(\d+)\s+(\d+)\s+(\*|\d+)\s+(\*|\d+)\s+(\*|[\d,]+)/);
+          if (cronMatch) {
+            const [_, minute, hour, dom, month, dow] = cronMatch;
+            
+            // Daily: when day-of-week and day-of-month are both *
+            if (dom === '*' && month === '*' && dow === '*') return true;
+            
+            // Weekly: specific day of week
+            if (dow !== '*') {
+              const daysList = dow.split(',').map(d => parseInt(d));
+              return daysList.includes(i);
+            }
+          }
+          return false;
+        });
+        
+        dayTasks.sort((a, b) => {
+          const timeA = getRawTime(a.schedule);
+          const timeB = getRawTime(b.schedule);
+          return timeA.localeCompare(timeB);
+        });
+        
+        const isToday = i === today ? ' today' : '';
+        
+        html += `
+          <div class="calendar-day${isToday}">
+            <h3 class="day-header">${day}</h3>
+            <div class="day-tasks">
+              ${dayTasks.length === 0 ? '<p class="empty-day">-</p>' : dayTasks.map(t => `
+                <div class="day-task ${getTaskClass(t.name)}" onclick="showTaskDetails('${t.id}')">
+                  <span class="task-time">${extractTime(t.schedule)}</span>
+                  <span class="task-name">${t.name}</span>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        `;
+      });
+      
+      container.innerHTML = html;
+    }
+
+    function renderNextUp() {
+      const container = document.getElementById('next-up-list');
+      const upcoming = tasks.filter(t => t.schedule && !t.schedule.includes('reboot')).slice(0, 5);
+      
+      if (upcoming.length === 0) {
+        container.innerHTML = '<p class="empty">No upcoming tasks</p>';
+        return;
+      }
+      
+      container.innerHTML = upcoming.map(task => `
+        <div class="next-task ${getTaskClass(task.name)}" onclick="showTaskDetails('${task.id}')">
+          <span class="task-time">${formatNextRun(task.next_run)}</span>
+          <span class="task-name">${task.name}</span>
+        </div>
+      `).join('');
+    }
+
+    function getTaskClass(name) {
+      const n = name.toLowerCase();
+      if (n.includes('podcast')) return 'podcast';
+      if (n.includes('betting')) return 'sports-betting';
+      if (n.includes('bitcoin') || n.includes('btc')) return 'bitcoin';
+      if (n.includes('sports') || n.includes('21m')) return 'sports';
+      if (n.includes('ebay')) return 'ebay';
+      if (n.includes('health') || n.includes('monitor')) return 'health';
+      if (n.includes('brief') || n.includes('family') || n.includes('notion')) return 'family';
+      return 'default';
+    }
+
+    function getRawTime(schedule) {
+      if (!schedule) return '2359';
+      
+      // Handle cron format: cron minute hour * * *
+      const cronMatch = schedule.match(/cron\s+(\d+)\s+(\d+)/);
+      if (cronMatch) {
+        const minute = cronMatch[1];
+        const hour = cronMatch[2].padStart(2, '0');
+        return hour + minute;
+      }
+      
+      const match = schedule.match(/(\d{1,2}:\d{2})/);
+      if (!match) return '2359';
+      return match[1].replace(':', '');
+    }
+
+    function extractTime(schedule) {
+      if (!schedule) return '';
+      
+      // Handle cron format: cron minute hour * * *
+      const cronMatch = schedule.match(/cron\s+(\d+)\s+(\d+)/);
+      if (cronMatch) {
+        const minute = cronMatch[1];
+        const hour = parseInt(cronMatch[2]);
+        const ampm = hour >= 12 ? 'PM' : 'AM';
+        const h12 = hour % 12 || 12;
+        return `${h12}:${minute.padStart(2, '0')} ${ampm}`;
+      }
+      
+      // Handle standard format: "daily at 04:00"
+      const match = schedule.match(/(\d{1,2}:\d{2})/);
+      if (!match) return schedule.replace('daily', '').replace('weekly', '');
+      
+      const [hours, minutes] = match[1].split(':');
+      const h = parseInt(hours);
+      const ampm = h >= 12 ? 'PM' : 'AM';
+      const h12 = h % 12 || 12;
+      return `${h12}:${minutes} ${ampm}`;
+    }
+
+    function formatNextRun(dateStr) {
+      if (!dateStr) return '';
+      const d = new Date(dateStr);
+      return d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
+    }
+
+    async function showTaskDetails(id) {
+      try {
+        const task = tasks.find(t => t.id === id);
+        if (!task) return;
+        
+        // For Clawdbot cron jobs, show limited info (no logs from old DB)
+        if (task.source === 'clawdbot') {
+          document.getElementById('task-details').innerHTML = `
+            <h2>${task.name}</h2>
+            <p><strong>Schedule:</strong> ${task.schedule || 'Manual'}</p>
+            <p><strong>Command:</strong> <code>${task.command || 'N/A'}</code></p>
+            <p><strong>Status:</strong> ${task.status}</p>
+            <p><strong>Last Run:</strong> ${task.last_run ? new Date(task.last_run).toLocaleString() : 'Never'}</p>
+            <p><strong>Next Run:</strong> ${task.next_run ? new Date(task.next_run).toLocaleString() : 'N/A'}</p>
+            <p><strong>Source:</strong> Clawdbot Cron</p>
+            <p><em>Logs available in Clawdbot cron runs history</em></p>
+          `;
+          document.getElementById('task-details-modal').style.display = 'block';
+          return;
+        }
+        
+        const logsRes = await fetch(API_BASE + '/tasks/' + id + '/logs');
+        const logs = await logsRes.json();
+        
+        document.getElementById('task-details').innerHTML = `
+          <h2>${task.name}</h2>
+          <p><strong>Schedule:</strong> ${task.schedule || 'Manual'}</p>
+          <p><strong>Command:</strong> <code>${task.command}</code></p>
+          <p><strong>Status:</strong> ${task.status}</p>
+          <p><strong>Last Run:</strong> ${task.last_run ? new Date(task.last_run).toLocaleString() : 'Never'}</p>
+          <p><strong>Next Run:</strong> ${task.next_run ? new Date(task.next_run).toLocaleString() : 'N/A'}</p>
+          <h3>Recent Logs</h3>
+          <div class="logs">${logs.slice(0, 5).map(l => `
+            <div class="log-entry ${l.status}">
+              <span>${l.status.toUpperCase()}</span>
+              <span>${l.started_at ? new Date(l.started_at).toLocaleString() : ''}</span>
+              ${l.error ? `<div class="error">${l.error}</div>` : ''}
+            </div>
+          `).join('') || '<p>No logs yet</p>'}</div>
+        `;
+        
+        document.getElementById('task-details-modal').style.display = 'block';
+      } catch (error) {
+        console.error('Error loading details:', error);
+      }
+    }
+
+    function hideTaskDetailsModal() {
+      document.getElementById('task-details-modal').style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+      if (event.target.id === 'task-details-modal') {
+        hideTaskDetailsModal();
+      }
+    }
+  </script>
+</body>
+</html>

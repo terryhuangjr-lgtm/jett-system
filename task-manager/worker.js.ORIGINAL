@@ -1,0 +1,300 @@
+#!/usr/bin/env node
+/**
+ * Task Worker
+ * Background service that executes scheduled tasks
+ * Uses robust file locking with PID verification
+ */
+
+const fs = require('fs');
+const fsp = fs.promises;
+const path = require('path');
+const os = require('os');
+const TaskDatabase = require('./database');
+const { exec } = require('child_process');
+
+const LOCK_FILE = path.join(os.tmpdir(), 'clawd-task-worker.lock');
+
+class TaskWorker {
+  constructor() {
+    this.db = new TaskDatabase();
+    this.running = false;
+    this.checkInterval = 30000;
+    this.currentJobs = new Map();
+    this.workerId = `worker-${process.pid}-${Date.now()}`;
+    this.lockHandle = null;
+    this.isLeader = false;
+  }
+
+  // Check if a PID is still alive
+  isPidAlive(pid) {
+    try {
+      process.kill(pid, 0);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  // Clean up stale lock file
+  async cleanupStaleLock(lockData) {
+    if (lockData && lockData.pid) {
+      // Check if the PID is still alive
+      if (!this.isPidAlive(lockData.pid)) {
+        console.log(`Cleaning up stale lock from dead PID ${lockData.pid}`);
+        try {
+          await fsp.unlink(LOCK_FILE);
+          return true;
+        } catch (e) {
+          if (e.code !== 'ENOENT') {
+            console.warn('Could not clean stale lock:', e.message);
+          }
+        }
+      }
+    }
+    return false;
+  }
+
+  async acquireLock(maxRetries = 3, retryDelayMs = 150) {
+    for (let attempt = 0; attempt < maxRetries; attempt++) {
+      try {
+        // First, check if lock exists and if the holder is alive
+        let lockData = null;
+        try {
+          const content = await fsp.readFile(LOCK_FILE, 'utf8');
+          lockData = JSON.parse(content);
+        } catch (e) {
+          // Lock file doesn't exist, that's fine
+        }
+
+        // Clean up stale lock if holder is dead
+        if (lockData) {
+          const cleaned = await this.cleanupStaleLock(lockData);
+          if (cleaned) {
+            // Lock was cleaned, proceed to acquire
+            lockData = null;
+          }
+        }
+
+        // If lock still exists and holder is alive, we lost the race
+        if (lockData && lockData.pid) {
+          if (attempt < maxRetries - 1) {
+            // Wait and retry (let the other worker establish lock)
+            await new Promise(resolve => setTimeout(resolve, retryDelayMs));
+            continue;
+          } else {
+            console.log(`Another worker is running (PID ${lockData.pid}), exiting...`);
+            return false;
+          }
+        }
+
+        // Try to create lock atomically
+        this.lockHandle = await fsp.open(LOCK_FILE, 'wx');
+        await this.lockHandle.writeFile(JSON.stringify({
+          pid: process.pid,
+          workerId: this.workerId,
+          started: new Date().toISOString()
+        }));
+
+        console.log(`✅ Worker lock acquired: ${LOCK_FILE} (PID ${process.pid})`);
+        this.isLeader = true;
+        return true;
+
+      } catch (error) {
+        if (error.code === 'EEXIST') {
+          // Lock exists, another worker got it first
+          if (attempt < maxRetries - 1) {
+            await new Promise(resolve => setTimeout(resolve, retryDelayMs));
+            continue;
+          }
+          console.log(`Another worker holds the lock, exiting...`);
+          return false;
+        }
+        throw error;
+      }
+    }
+    return false;
+  }
+
+  async releaseLock() {
+    if (this.lockHandle) {
+      try {
+        await this.lockHandle.close();
+      } catch (e) {
+        // Ignore close errors
+      }
+      this.lockHandle = null;
+    }
+
+    // Only remove lock if we're the leader
+    if (this.isLeader) {
+      try {
+        await fsp.unlink(LOCK_FILE);
+      } catch (e) {
+        if (e.code !== 'ENOENT') {
+          console.error('Error releasing lock:', e.message);
+        }
+      }
+      console.log('Worker lock released');
+    }
+  }
+
+  async start() {
+    // Try to acquire lock with retries
+    const acquired = await this.acquireLock();
+    if (!acquired) {
+      process.exit(0);
+    }
+
+    console.log(`Task Worker starting... (ID: ${this.workerId})`);
+    await this.db.init();
+    console.log('Database initialized');
+
+    this.running = true;
+    this.checkLoop();
+
+    console.log(`Task Worker running (checking every ${this.checkInterval/1000}s)`);
+  }
+
+  async checkLoop() {
+    while (this.running) {
+      try {
+        await this.checkAndRunTasks();
+      } catch (error) {
+        console.error('Error in check loop:', error);
+      }
+
+      await new Promise(resolve => setTimeout(resolve, this.checkInterval));
+    }
+  }
+
+  async checkAndRunTasks() {
+    const tasks = await this.db.getTasksReadyToRun();
+
+    if (tasks.length > 0) {
+      console.log(`Found ${tasks.length} task(s) ready to run`);
+    }
+
+    for (const task of tasks) {
+      if (this.currentJobs.has(task.id)) {
+        console.log(`Task ${task.id} already running, skipping`);
+        continue;
+      }
+
+      console.log(`Starting task ${task.id}: ${task.name}`);
+      this.runTask(task);
+    }
+  }
+
+  async runTask(task) {
+    const startTime = new Date();
+    const logEntry = {
+      status: 'running',
+      started_at: startTime.toISOString()
+    };
+
+    await this.db.updateTask(task.id, {
+      status: 'running',
+      last_run: startTime.toISOString()
+    });
+
+    this.currentJobs.set(task.id, true);
+
+    exec(task.command, {
+      cwd: path.dirname(require.main.filename),
+      maxBuffer: 10 * 1024 * 1024,
+      timeout: 600000
+    }, async (error, stdout, stderr) => {
+      const endTime = new Date();
+      const duration = endTime - startTime;
+
+      logEntry.completed_at = endTime.toISOString();
+      logEntry.duration_ms = duration;
+      logEntry.output = stdout;
+
+      if (error) {
+        logEntry.status = 'failed';
+        logEntry.error = stderr || error.message;
+        console.error(`Task ${task.id} failed:`, error.message);
+
+        const shouldNotify = task.name.toLowerCase().includes('deployment') ||
+                           task.name.toLowerCase().includes('deploy');
+
+        if (shouldNotify) {
+          try {
+            const { execSync } = require('child_process');
+            const errorMsg = (stderr || error.message).substring(0, 500);
+            const notifyCmd = `/home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot message send --channel slack --target "U0ABTP704QK" --message "🚨 Task #${task.id} failed: ${task.name}\\n\\nError: ${errorMsg}" --json`;
+            execSync(notifyCmd, { timeout: 10000 });
+          } catch (notifyError) {
+            console.error('Failed to send notification:', notifyError.message);
+          }
+        }
+      } else {
+        logEntry.status = 'completed';
+        console.log(`Task ${task.id} completed in ${duration}ms`);
+      }
+
+      await this.db.addLog(task.id, logEntry);
+
+      const updates = {
+        status: task.schedule ? 'pending' : logEntry.status,
+        run_count: task.run_count + 1
+      };
+
+      if (task.schedule) {
+        updates.next_run = this.db.calculateNextRun(task.schedule);
+        console.log(`Task ${task.id} next run: ${updates.next_run}`);
+      }
+
+      await this.db.updateTask(task.id, updates);
+      this.currentJobs.delete(task.id);
+    });
+  }
+
+  async stop() {
+    console.log('Task Worker stopping...');
+    this.running = false;
+
+    const maxWait = 30000;
+    const startWait = Date.now();
+    while (this.currentJobs.size > 0 && (Date.now() - startWait) < maxWait) {
+      console.log(`Waiting for ${this.currentJobs.size} job(s) to complete...`);
+      await new Promise(resolve => setTimeout(resolve, 5000));
+    }
+
+    if (this.currentJobs.size > 0) {
+      console.log(`Forcibly stopping ${this.currentJobs.size} remaining jobs`);
+    }
+
+    await this.db.close();
+    await this.releaseLock();
+    console.log('Task Worker stopped');
+  }
+}
+
+const worker = new TaskWorker();
+
+process.on('SIGINT', async () => {
+  console.log('\nReceived SIGINT, shutting down gracefully...');
+  await worker.stop();
+  process.exit(0);
+});
+
+process.on('SIGTERM', async () => {
+  console.log('\nReceived SIGTERM, shutting down gracefully...');
+  await worker.stop();
+  process.exit(0);
+});
+
+process.on('exit', async () => {
+  await worker.releaseLock();
+});
+
+if (require.main === module) {
+  worker.start().catch(error => {
+    console.error('Failed to start worker:', error);
+    process.exit(1);
+  });
+}
+
+module.exports = TaskWorker;

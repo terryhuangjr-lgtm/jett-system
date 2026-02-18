@@ -1,0 +1,251 @@
+{
+  "_comment": "Content Guidelines - PRINCIPLES not RULES",
+  "_version": "1.0.0",
+  "_philosophy": "Jett is powered by Claude - trust his judgment on quality content",
+
+  "sports_content": {
+    "core_concept": "Financial stories about athletes that teach Bitcoin/money lessons",
+
+    "what_makes_good_content": {
+      "compelling": "Gets attention, makes people think",
+      "educational": "Teaches financial literacy or Bitcoin principles",
+      "relevant": "Timely or universally relatable",
+      "authentic": "Real stories, verified sources"
+    },
+
+    "content_categories": {
+      "_note": "These are EXAMPLES not LIMITS - use judgment!",
+
+      "contracts": {
+        "description": "Mega-deals, extensions, free agency",
+        "angle": "That's X dollars = Y Bitcoin",
+        "examples": ["$500M contract", "Record-breaking deal", "Rookie contracts vs veteran"]
+      },
+
+      "financial_mistakes": {
+        "description": "Athletes who went broke, bad investments, bankruptcy",
+        "angle": "Bitcoin's fixed supply vs bad advice",
+        "examples": ["Player loses $100M", "Bad advisor stories", "Lifestyle inflation"]
+      },
+
+      "wealth_preservation": {
+        "description": "Smart financial moves, long-term thinking, savings",
+        "angle": "Sound money principles in action",
+        "examples": ["Player invests wisely", "Frugal millionaire stories", "Long-term planning"]
+      },
+
+      "draft_picks": {
+        "description": "Draft economics, pick values, rookie contracts",
+        "angle": "Valuation in Bitcoin terms",
+        "examples": ["#1 pick worth $X", "Trade value in BTC", "Rookie scale"]
+      },
+
+      "endorsements": {
+        "description": "Shoe deals, sponsorships, branding",
+        "angle": "Alternative income in Bitcoin",
+        "examples": ["Jordan deal", "LeBron Nike", "Signature shoes"]
+      },
+
+      "team_valuations": {
+        "description": "Franchise sales, team worth, ownership",
+        "angle": "Billion-dollar franchises in BTC",
+        "examples": ["Team sells for $X", "Valuation changes", "Ownership stakes"]
+      },
+
+      "any_financial_story": {
+        "description": "IF IT INVOLVES MONEY + ATHLETES → potential content",
+        "judgment_call": "Does this teach a Bitcoin/money lesson? Is it interesting? Then use it!"
+      }
+    },
+
+    "quality_criteria": {
+      "must_have": [
+        "Real story (not rumor)",
+        "Verified source (Spotrac, ESPN, official)",
+        "Clear Bitcoin angle",
+        "Dollar amount or financial impact"
+      ],
+      "nice_to_have": [
+        "Breaking news",
+        "Viral potential",
+        "Contrarian angle",
+        "Surprising facts"
+      ]
+    },
+
+    "research_sources": {
+      "web_search": ["ESPN", "Spotrac", "Athletic", "Yahoo Sports", "Bleacher Report"],
+      "x_search": ["@spotrac", "@espn", "@TheAthletic", "sports finance accounts"],
+      "direct": ["Spotrac.com", "Team announcements", "Player statements"]
+    }
+  },
+
+  "bitcoin_content": {
+    "core_concept": "Educational Bitcoin content that teaches sound money principles",
+
+    "what_makes_good_content": {
+      "thought_provoking": "Makes people question fiat assumptions",
+      "educational": "Teaches Bitcoin/economics clearly",
+      "quotable": "Shareable, memorable phrases",
+      "timeless": "Principles that always apply"
+    },
+
+    "content_categories": {
+      "_note": "These are EXAMPLES not LIMITS - use judgment!",
+
+      "sound_money_principles": {
+        "description": "Why hard money matters, inflation effects, store of value",
+        "sources": ["Bitcoin Standard", "Broken Money", "Hayek quotes"],
+        "examples": ["Fixed supply", "Inflation stats", "Monetary history"]
+      },
+
+      "adoption_milestones": {
+        "description": "Countries adopting, companies buying, ETF news",
+        "angle": "21M supply being discovered",
+        "examples": ["El Salvador", "MicroStrategy", "ETF approvals"]
+      },
+
+      "supply_scarcity": {
+        "description": "21M cap, halvings, mining difficulty, lost coins",
+        "angle": "Fixed supply vs unlimited fiat",
+        "examples": ["Halving events", "Mining stats", "Lost BTC stories"]
+      },
+
+      "quotes_and_wisdom": {
+        "description": "Powerful quotes from books, economists, Bitcoin OGs",
+        "sources": ["Saifedean Ammous", "Lyn Alden", "Hayek", "Satoshi", "Vijay Boyapati"],
+        "examples": ["Sound money quotes", "Inflation warnings", "Bitcoin principles"]
+      },
+
+      "historical_comparisons": {
+        "description": "Fiat failures, gold standard, monetary history",
+        "angle": "This time is different (Bitcoin)",
+        "examples": ["Weimar inflation", "Gold confiscation", "Currency collapses"]
+      },
+
+      "any_bitcoin_story": {
+        "description": "IF IT TEACHES SOUND MONEY → potential content",
+        "judgment_call": "Is it educational? Thought-provoking? Shareable? Then use it!"
+      }
+    },
+
+    "quality_criteria": {
+      "must_have": [
+        "Accurate information",
+        "Educational value",
+        "Clear principle",
+        "Cited source"
+      ],
+      "nice_to_have": [
+        "Viral potential",
+        "Contrarian angle",
+        "Surprising stat",
+        "Perfect quote"
+      ]
+    },
+
+    "research_sources": {
+      "web_search": ["Bitcoin Magazine", "CoinDesk", "Unchained Capital", "Fidelity Digital Assets"],
+      "x_search": ["@saifedean", "@LynAldenContact", "@saylor", "@jack", "@Bitcoin"],
+      "grokipedia": ["Bitcoin", "Austrian Economics", "Monetary History"],
+      "books": ["The Bitcoin Standard", "Broken Money", "The Bullish Case for Bitcoin"]
+    }
+  },
+
+  "content_scoring": {
+    "_description": "How to judge if content is worth saving",
+
+    "score_high_if": [
+      "Teaching moment (financial literacy)",
+      "Surprising or counterintuitive",
+      "Viral potential (quotable, shareable)",
+      "Timely (breaking news or trending)",
+      "Clear Bitcoin angle",
+      "Verified/credible source"
+    ],
+
+    "score_low_if": [
+      "Boring or generic",
+      "Unverified rumor",
+      "No clear lesson",
+      "Weak Bitcoin connection",
+      "Already covered recently"
+    ],
+
+    "scoring_scale": {
+      "9-10": "Perfect content - save and prioritize",
+      "7-8": "Good content - save for use",
+      "5-6": "Maybe - save if slow news day",
+      "1-4": "Skip - not worth posting"
+    }
+  },
+
+  "research_protocol": {
+    "_description": "How to research and save content",
+
+    "search_process": [
+      "1. Web search for recent stories",
+      "2. X search for trending topics",
+      "3. Check Spotrac/official sources",
+      "4. Evaluate quality (score 1-10)",
+      "5. If score >= 7: Save to database",
+      "6. Add: topic, content, source, score, notes"
+    ],
+
+    "database_fields": {
+      "topic": "Brief description (e.g., 'LeBron endorsement deal')",
+      "content": "Full story details and angles",
+      "category": "Which category it fits (contracts, quotes, etc.)",
+      "source": "URL or reference",
+      "quality_score": "1-10 rating",
+      "btc_angle": "How it connects to Bitcoin lesson",
+      "draft_tweets": "3 potential tweet variations",
+      "saved_at": "Timestamp"
+    },
+
+    "accumulation_strategy": {
+      "daily": "Add new findings to database",
+      "never_delete": "Keep all good content (score >= 7)",
+      "rotate": "Use fresh content first, archive after posting",
+      "mix": "Combine fresh + archived for variety"
+    }
+  },
+
+  "trust_jetts_judgment": {
+    "_message_to_jett": "You are powered by Claude. You understand nuance, context, and quality. These guidelines are PRINCIPLES not RULES. Use your judgment. If something is compelling and teaches a lesson - save it. If it's boring or weak - skip it. Trust yourself.",
+
+    "_message_to_terry": "Jett is Claude-powered. He can judge quality content just like I can. Don't over-specify. Give principles and trust the model.",
+
+    "_message_to_claude": "This is a principles-based system. Jett should use LLM judgment, not rigid rules. Evaluate quality, not checklist compliance."
+  },
+
+  "examples_of_good_content": {
+    "sports_example_1": {
+      "story": "NFL player loses $50M to financial advisor fraud",
+      "why_good": "Teaching moment about custody and trust",
+      "btc_angle": "Your keys, your coins - Bitcoin prevents this",
+      "quality_score": 9
+    },
+
+    "sports_example_2": {
+      "story": "Rookie signs $200M contract",
+      "why_good": "Big number, timely, clear BTC conversion",
+      "btc_angle": "That's 2,000 BTC at today's price",
+      "quality_score": 8
+    },
+
+    "bitcoin_example_1": {
+      "story": "Hayek quote on sound money",
+      "why_good": "Timeless wisdom, quotable, educational",
+      "btc_angle": "Bitcoin is the hardest money ever created",
+      "quality_score": 9
+    },
+
+    "bitcoin_example_2": {
+      "story": "El Salvador adds 1,000 more BTC",
+      "why_good": "Nation-state adoption, scarcity angle",
+      "btc_angle": "21M supply being claimed by countries",
+      "quality_score": 8
+    }
+  }
+}

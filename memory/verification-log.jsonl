@@ -1,0 +1,130 @@
+{"timestamp":"2026-02-04T13:40:07.166Z","passed":false,"args":["--content","Test tweet without sources"]}
+{"timestamp":"2026-02-04T13:40:12.428Z","passed":true,"args":["--sources","https://espn.com/nba/story","--spotrac","https://spotrac.com/nba/player-contract","--btc-price","https://coingecko.com/en/coins/bitcoin/historical_data","--content","Player signed for 300M in 2024. That equals 3000 BTC at 100K per coin."]}
+{"timestamp":"2026-02-04T13:54:26.738Z","passed":true,"type":"general","claim":"BTC price is around 100K","sources":["https://coingecko.com/bitcoin"],"args":["--claim","BTC price is around 100K","--sources","https://coingecko.com/bitcoin"]}
+{"timestamp":"2026-02-04T13:57:21.778Z","passed":true,"type":"general","claim":"Test verification system","sources":["https://example.com"],"args":["--claim","Test verification system","--sources","https://example.com","--type","general"]}
+{"timestamp":"2026-02-04T18:52:57.130Z","passed":true,"args":["--sources","https://www.spotrac.com/mlb/player/_/id/17620/kyle-tucker,https://www.mlb.com/news/kyle-tucker-dodgers-contract","--spotrac","https://www.spotrac.com/mlb/player/_/id/17620/kyle-tucker","--btc-price","https://www.coingecko.com/en/coins/bitcoin","--content","Kyle Tucker just signed for 240M with the Dodgers. At 95K per BTC, that's roughly 2,526 BTC. In 2015, you could buy the entire Dodgers franchise for less Bitcoin than Tucker's contract."]}
+{"timestamp":"2026-02-04T18:53:03.202Z","passed":true,"args":["--sources","https://www.spotrac.com/mlb/player/_/id/17620/kyle-tucker,https://www.coingecko.com/en/coins/bitcoin","--content","Kyle Tucker signed for 40M in 2026.\n\nIn Bitcoin terms: 2,526 BTC\n\nSame contract today? [Calculate with current BTC price]\n\nYour purchasing power is being silently stolen."]}
+{"timestamp":"2026-02-04T18:53:03.251Z","passed":true,"args":["--sources","https://www.spotrac.com/mlb/player/_/id/17620/kyle-tucker,https://www.coingecko.com/en/coins/bitcoin","--content","Kyle Tucker's 40M contract (2026) = 2,526 BTC\n\nThat's [X% of fixed 21M supply]\n\nWhen athletes measure wealth in Bitcoin, everything changes."]}
+{"timestamp":"2026-02-04T18:53:03.300Z","passed":true,"args":["--sources","https://www.spotrac.com/mlb/player/_/id/17620/kyle-tucker,https://www.coingecko.com/en/coins/bitcoin","--content","2026: Kyle Tucker signs for 40M\n\n2026: That same Bitcoin (2,526 BTC) is worth [current value]\n\nFiat contracts look different through a Bitcoin lens."]}
+{"timestamp":"2026-02-06T00:15:10.751Z","passed":true,"args":["--sources","https://www.spotrac.com/mlb/juan-soto/,https://www.coingecko.com/en/coins/bitcoin","--content","Juan Soto signed for 65M in 15.\n\nIn Bitcoin terms: 11,392 BTC\n\nSame contract today? [Calculate with current BTC price]\n\nYour purchasing power is being silently stolen."]}
+{"timestamp":"2026-02-06T00:15:10.782Z","passed":true,"args":["--sources","https://www.spotrac.com/mlb/juan-soto/,https://www.coingecko.com/en/coins/bitcoin","--content","Juan Soto's 65M contract (15) = 11,392 BTC\n\nThat's [X% of fixed 21M supply]\n\nWhen athletes measure wealth in Bitcoin, everything changes."]}
+{"timestamp":"2026-02-06T00:15:10.811Z","passed":true,"args":["--sources","https://www.spotrac.com/mlb/juan-soto/,https://www.coingecko.com/en/coins/bitcoin","--content","15: Juan Soto signs for 65M\n\n2026: That same Bitcoin (11,392 BTC) is worth [current value]\n\nFiat contracts look different through a Bitcoin lens."]}
+{"timestamp":"2026-02-06T00:20:27.612Z","passed":true,"args":["--sources","https://www.spotrac.com/mlb/juan-soto/,https://www.coingecko.com/en/coins/bitcoin","--content","Juan Soto signed for 65M in 15.\n\nIn Bitcoin terms: 11,392 BTC\n\nSame contract today? [Calculate with current BTC price]\n\nYour purchasing power is being silently stolen."]}
+{"timestamp":"2026-02-06T00:20:27.642Z","passed":true,"args":["--sources","https://www.spotrac.com/mlb/juan-soto/,https://www.coingecko.com/en/coins/bitcoin","--content","Juan Soto's 65M contract (15) = 11,392 BTC\n\nThat's [X% of fixed 21M supply]\n\nWhen athletes measure wealth in Bitcoin, everything changes."]}
+{"timestamp":"2026-02-06T00:20:27.670Z","passed":true,"args":["--sources","https://www.spotrac.com/mlb/juan-soto/,https://www.coingecko.com/en/coins/bitcoin","--content","15: Juan Soto signs for 65M\n\n2026: That same Bitcoin (11,392 BTC) is worth [current value]\n\nFiat contracts look different through a Bitcoin lens."]}
+{"timestamp":"2026-02-06T03:47:47.067Z","passed":false,"args":["--sources","https://saifedean.com/thebitcoinstandard,https://www.coingecko.com/en/coins/bitcoin","--content","Hard","money","is","money","that","it","is","costly","to","produce","relative","to","existing","supply.\n\nBitcoin's 21M cap makes this truth undeniable\n\nBitcoin's 21M cap makes this truth undeniable.\n\nRead the books. Understand the revolution."]}
+{"timestamp":"2026-02-06T03:47:47.100Z","passed":false,"args":["--sources","https://saifedean.com/thebitcoinstandard,https://www.coingecko.com/en/coins/bitcoin","--content","The books explain what governments won't teach:\n\nHard","money","is","money","that","it","is","costly","to","produce","relative","to","existing","supply.\n\nThis is why Bitcoin's 21M supply matters."]}
+{"timestamp":"2026-02-06T03:47:47.132Z","passed":false,"args":["--sources","https://saifedean.com/thebitcoinstandard,https://www.coingecko.com/en/coins/bitcoin","--content","Saifedean Ammous: Hard","money","is","money","that","it","is","costly","to","produce","relative","to","existing","supply.\n\nSound money principles, proven by Bitcoin's fixed supply.\n\n1 BTC = 1 BTC. Always."]}
+{"timestamp":"2026-02-06T10:00:03.716Z","passed":true,"args":["--sources","https://www.spotrac.com/mlb/juan-soto/,https://www.coingecko.com/en/coins/bitcoin","--content","Juan Soto signed for 65M in 15.\n\nIn Bitcoin terms: 11,817 BTC\n\nSame contract today? [Calculate with current BTC price]\n\nYour purchasing power is being silently stolen."]}
+{"timestamp":"2026-02-06T10:00:03.746Z","passed":true,"args":["--sources","https://www.spotrac.com/mlb/juan-soto/,https://www.coingecko.com/en/coins/bitcoin","--content","Juan Soto's 65M contract (15) = 11,817 BTC\n\nThat's [X% of fixed 21M supply]\n\nWhen athletes measure wealth in Bitcoin, everything changes."]}
+{"timestamp":"2026-02-06T10:00:03.773Z","passed":true,"args":["--sources","https://www.spotrac.com/mlb/juan-soto/,https://www.coingecko.com/en/coins/bitcoin","--content","15: Juan Soto signs for 65M\n\n2026: That same Bitcoin (11,817 BTC) is worth [current value]\n\nFiat contracts look different through a Bitcoin lens."]}
+{"timestamp":"2026-02-06T14:31:31.604Z","passed":false,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content.json"]}
+{"timestamp":"2026-02-06T14:31:47.684Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content.json"]}
+{"timestamp":"2026-02-06T14:31:47.881Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content.json"]}
+{"timestamp":"2026-02-06T14:40:22.498Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content.json"]}
+{"timestamp":"2026-02-06T14:40:22.673Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content.json"]}
+{"timestamp":"2026-02-06T17:16:42.881Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content-slot2.json"]}
+{"timestamp":"2026-02-06T17:19:08.944Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content-slot2.json"]}
+{"timestamp":"2026-02-06T17:19:19.308Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content-slot2.json"]}
+{"timestamp":"2026-02-06T17:23:32.803Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content-slot2.json"]}
+{"timestamp":"2026-02-06T17:24:17.662Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content-slot2.json"]}
+{"timestamp":"2026-02-07T12:30:09.305Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content.json"]}
+{"timestamp":"2026-02-09T08:15:01.368Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content.json"]}
+{"timestamp":"2026-02-09T11:00:02.614Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-bitcoin-verified-content.json"]}
+{"timestamp":"2026-02-09T12:30:07.722Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content.json"]}
+{"timestamp":"2026-02-09T18:30:49.256Z","passed":false,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content-slot2.json"]}
+{"timestamp":"2026-02-09T18:34:18.984Z","passed":true,"args":["--content-file=/tmp/test-sports-deploy.json"]}
+{"timestamp":"2026-02-09T18:39:27.715Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content-slot2.json"]}
+{"timestamp":"2026-02-09T18:41:24.583Z","passed":true,"args":["--content-file=/tmp/test-sports-deploy.json"]}
+{"timestamp":"2026-02-09T18:41:58.500Z","passed":true,"args":["--content-file=/tmp/test-sports-deploy.json"]}
+{"timestamp":"2026-02-09T18:43:26.335Z","passed":true,"args":["--content-file=/tmp/test-content.json"]}
+{"timestamp":"2026-02-09T23:49:21.901Z","passed":true,"args":["--content-file=/tmp/test-sports-deploy.json"]}
+{"timestamp":"2026-02-10T08:15:01.906Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content.json"]}
+{"timestamp":"2026-02-10T11:00:28.127Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-bitcoin-verified-content.json"]}
+{"timestamp":"2026-02-10T12:30:03.501Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content.json"]}
+{"timestamp":"2026-02-10T17:00:19.733Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content-slot2.json"]}
+{"timestamp":"2026-02-10T19:25:25.376Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content-slot2.json"]}
+{"timestamp":"2026-02-10T19:25:33.078Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content-slot2.json"]}
+{"timestamp":"2026-02-11T11:00:05.748Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-bitcoin-verified-content.json"]}
+{"timestamp":"2026-02-11T12:30:00.824Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content.json"]}
+{"timestamp":"2026-02-11T14:04:11.944Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-bitcoin-verified-content.json"]}
+{"timestamp":"2026-02-11T14:04:16.935Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content.json"]}
+{"timestamp":"2026-02-11T17:00:05.712Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content-slot2.json"]}
+{"timestamp":"2026-02-12T12:30:02.055Z","passed":false,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content.json"]}
+{"timestamp":"2026-02-12T13:00:06.602Z","passed":false,"args":["--content-file=/home/clawd/clawd/memory/21m-bitcoin-verified-content.json"]}
+{"timestamp":"2026-02-12T13:13:40.504Z","passed":false,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content.json"]}
+{"timestamp":"2026-02-12T13:24:35.399Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-test-content.json"]}
+{"timestamp":"2026-02-12T14:33:52.394Z","passed":false,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content.json"]}
+{"timestamp":"2026-02-12T14:34:31.375Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content.json"]}
+{"timestamp":"2026-02-12T14:50:55.006Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content.json"]}
+{"timestamp":"2026-02-12T15:15:17.822Z","passed":false,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content.json"]}
+{"timestamp":"2026-02-12T15:16:56.314Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content.json"]}
+{"timestamp":"2026-02-12T15:24:05.095Z","passed":false,"args":["--content-file=/home/clawd/clawd/memory/21m-bitcoin-verified-content.json"]}
+{"timestamp":"2026-02-12T15:24:24.637Z","passed":false,"args":["--content-file=/home/clawd/clawd/memory/21m-bitcoin-verified-content.json"]}
+{"timestamp":"2026-02-12T15:24:54.266Z","passed":false,"args":["--content-file=/home/clawd/clawd/memory/21m-bitcoin-verified-content.json"]}
+{"timestamp":"2026-02-12T15:25:06.516Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-bitcoin-verified-content.json"]}
+{"timestamp":"2026-02-12T15:50:43.300Z","passed":false,"args":["--content-file=/home/clawd/clawd/memory/21m-bitcoin-verified-content.json"]}
+{"timestamp":"2026-02-12T15:50:58.635Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-bitcoin-verified-content.json"]}
+{"timestamp":"2026-02-12T15:56:06.868Z","passed":false,"args":["--content-file=/home/clawd/clawd/memory/21m-bitcoin-verified-content.json"]}
+{"timestamp":"2026-02-12T15:57:04.566Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-bitcoin-verified-content.json"]}
+{"timestamp":"2026-02-12T15:58:38.491Z","passed":false,"args":["--content-file=/home/clawd/clawd/memory/21m-bitcoin-verified-content.json"]}
+{"timestamp":"2026-02-12T15:59:10.821Z","passed":false,"args":["--content-file=/home/clawd/clawd/memory/21m-bitcoin-verified-content.json"]}
+{"timestamp":"2026-02-12T16:00:31.581Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-bitcoin-verified-content.json"]}
+{"timestamp":"2026-02-12T16:19:25.773Z","passed":false,"args":["--content-file=/home/clawd/clawd/memory/21m-bitcoin-verified-content.json"]}
+{"timestamp":"2026-02-12T16:20:31.535Z","passed":false,"args":["--content-file=/home/clawd/clawd/memory/21m-bitcoin-verified-content.json"]}
+{"timestamp":"2026-02-12T16:21:13.401Z","passed":false,"args":["--content-file=/home/clawd/clawd/memory/21m-bitcoin-verified-content.json"]}
+{"timestamp":"2026-02-12T16:21:49.905Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-bitcoin-verified-content.json"]}
+{"timestamp":"2026-02-12T16:22:14.618Z","passed":false,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content.json"]}
+{"timestamp":"2026-02-12T16:25:38.323Z","passed":false,"args":["--content-file=/home/clawd/clawd/memory/21m-bitcoin-verified-content.json"]}
+{"timestamp":"2026-02-12T16:25:38.387Z","passed":false,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content.json"]}
+{"timestamp":"2026-02-12T16:26:50.366Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-bitcoin-verified-content.json"]}
+{"timestamp":"2026-02-12T16:27:15.730Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content.json"]}
+{"timestamp":"2026-02-12T17:00:10.841Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content-slot2.json"]}
+{"timestamp":"2026-02-12T17:14:27.956Z","passed":false,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content.json"]}
+{"timestamp":"2026-02-12T17:45:03.083Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-bitcoin-verified-content.json"]}
+{"timestamp":"2026-02-12T17:45:08.104Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content.json"]}
+{"timestamp":"2026-02-12T17:49:25.917Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content.json"]}
+{"timestamp":"2026-02-12T17:49:31.820Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-bitcoin-verified-content.json"]}
+{"timestamp":"2026-02-12T17:51:41.801Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content.json"]}
+{"timestamp":"2026-02-12T19:00:12.117Z","passed":false,"args":["--content-file=/home/clawd/clawd/memory/21m-bitcoin-verified-content.json"]}
+{"timestamp":"2026-02-12T20:00:11.457Z","passed":false,"args":["--content-file=/home/clawd/clawd/memory/21m-bitcoin-verified-content.json"]}
+{"timestamp":"2026-02-13T12:11:15.288Z","passed":false,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content.json"]}
+{"timestamp":"2026-02-13T12:11:43.018Z","passed":false,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content.json"]}
+{"timestamp":"2026-02-13T12:11:58.002Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content.json"]}
+{"timestamp":"2026-02-13T12:30:25.989Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content.json"]}
+{"timestamp":"2026-02-13T13:00:21.872Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-bitcoin-verified-content.json"]}
+{"timestamp":"2026-02-13T17:00:25.156Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content-slot2.json"]}
+{"timestamp":"2026-02-14T12:30:17.444Z","passed":false,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content.json"]}
+{"timestamp":"2026-02-14T13:00:18.403Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-bitcoin-verified-content.json"]}
+{"timestamp":"2026-02-14T13:17:19.024Z","passed":false,"args":[]}
+{"timestamp":"2026-02-14T13:18:41.483Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content.json"]}
+{"timestamp":"2026-02-14T13:19:25.037Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content.json"]}
+{"timestamp":"2026-02-14T13:23:31.566Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content.json"]}
+{"timestamp":"2026-02-14T17:00:25.578Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content-slot2.json"]}
+{"timestamp":"2026-02-15T12:30:15.537Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content.json"]}
+{"timestamp":"2026-02-15T13:00:16.258Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-bitcoin-verified-content.json"]}
+{"timestamp":"2026-02-15T17:00:23.645Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content-slot2.json"]}
+{"timestamp":"2026-02-15T17:50:33.786Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content.json"]}
+{"timestamp":"2026-02-15T18:16:55.238Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content.json"]}
+{"timestamp":"2026-02-15T19:26:19.449Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content.json"]}
+{"timestamp":"2026-02-16T12:35:48.084Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content.json"]}
+{"timestamp":"2026-02-16T12:38:02.935Z","passed":true,"args":["--content-file=memory/21m-sports-verified-content.json"]}
+{"timestamp":"2026-02-16T12:38:06.609Z","passed":true,"args":["--content-file=memory/21m-bitcoin-verified-content.json"]}
+{"timestamp":"2026-02-16T13:00:18.988Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-bitcoin-verified-content.json"]}
+{"timestamp":"2026-02-16T14:24:45.215Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-bitcoin-verified-content.json"]}
+{"timestamp":"2026-02-16T17:08:25.282Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-bitcoin-verified-content.json"]}
+{"timestamp":"2026-02-16T17:08:32.025Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content.json"]}
+{"timestamp":"2026-02-16T17:20:17.065Z","passed":false,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content.json"]}
+{"timestamp":"2026-02-16T17:21:21.226Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content.json"]}
+{"timestamp":"2026-02-16T17:36:51.109Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content.json"]}
+{"timestamp":"2026-02-16T18:11:13.940Z","passed":false,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content.json"]}
+{"timestamp":"2026-02-16T18:17:52.203Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content.json"]}
+{"timestamp":"2026-02-16T18:20:16.903Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content.json"]}
+{"timestamp":"2026-02-17T12:30:01.776Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content.json"]}
+{"timestamp":"2026-02-17T12:30:06.306Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content.json"]}
+{"timestamp":"2026-02-17T13:00:01.913Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-bitcoin-verified-content.json"]}
+{"timestamp":"2026-02-17T13:00:07.490Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-bitcoin-verified-content.json"]}
+{"timestamp":"2026-02-18T12:06:36.578Z","passed":true,"args":["--content-file=memory/21m-sports-verified-content.json"]}
+{"timestamp":"2026-02-18T12:06:41.110Z","passed":true,"args":["--content-file=memory/21m-bitcoin-verified-content.json"]}
+{"timestamp":"2026-02-18T12:26:51.019Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content.json"]}
+{"timestamp":"2026-02-18T12:26:56.389Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-bitcoin-verified-content.json"]}

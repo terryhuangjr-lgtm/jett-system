@@ -1,0 +1,50 @@
+{
+  "lastChecks": {
+    "test-1769778719": 1769778719669,
+    "weather": 1769778719985,
+    "email": 1769778720012,
+    "calendar": 1769778720018,
+    "morning-brief": 1769778720054
+  },
+  "cache": {
+    "weather": {
+      "value": {
+        "temp": 45,
+        "condition": "Sunny",
+        "location": "Long Island"
+      },
+      "timestamp": 1769778719984,
+      "ttl": 120
+    },
+    "calendar": {
+      "value": {
+        "today": 2,
+        "upcoming": 5
+      },
+      "timestamp": 1769778720017,
+      "ttl": 15
+    },
+    "btc_price_06-02-2026": {
+      "value": 62853.69038445987,
+      "timestamp": 1770388225853,
+      "ttl": 1440
+    },
+    "btc_price_15-12-2024": {
+      "value": 68928,
+      "timestamp": 1770470316079,
+      "ttl": 1440
+    },
+    "btc_price_12-02-2026": {
+      "value": 66937.58141157958,
+      "timestamp": 1770901827525,
+      "ttl": 1440
+    },
+    "btc_price_15-02-2026": {
+      "value": 69765.59638824302,
+      "timestamp": 1771177643626,
+      "ttl": 1440
+    }
+  },
+  "counters": {},
+  "flags": {}
+}

@@ -1,0 +1,26 @@
+{
+  "type": "21m_sports_tweets",
+  "timestamp": "2026-02-18T12:26:09.712Z",
+  "tweets": [
+    "Peyton Manning signed a $96M contract with Denver in 2012. If he'd taken it all in Bitcoin instead? 9.6M BTC.\n\nWorth $648 BILLION today.\n\nThe king of quarterbacks met the king of crypto at the worst possible time. 💀",
+    "The math hits different:\n• Peyton Manning: $96M (2012)\n• Same value in Bitcoin then: 9.6M BTC\n• Same Bitcoin today: $648B\n\nSometimes getting paid in the \"safe\" option is the real gamble.",
+    "2012 Peyton: \"I'll take the $96M guaranteed contract\"\n2012 Bitcoin: \"cool story bro\"\n2025 Bitcoin: 💰💰💰💰💰\n\nThat 9.6M BTC would've been a better dynasty than any Broncos Super Bowl run. 📉➡️🚀"
+  ],
+  "sources": {
+    "btc_price": "https://api.coinbase.com/v2/prices/BTC-USD/spot",
+    "content_count": 3,
+    "contract": "https://www.spotrac.com/nfl/denver-broncos/peyton-manning-1098/"
+  },
+  "metadata": {
+    "btc_price_now": "$67,506",
+    "verified": true,
+    "char_counts": [
+      216,
+      186,
+      195
+    ],
+    "topics": [
+      null
+    ]
+  }
+}

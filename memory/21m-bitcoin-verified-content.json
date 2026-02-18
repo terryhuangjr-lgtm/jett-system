@@ -1,0 +1,31 @@
+{
+  "type": "21m_bitcoin_tweets",
+  "timestamp": "2026-02-18T12:25:59.630Z",
+  "tweets": [
+    "Your dollars are melting. The dollar lost 97% since 1913. Bitcoin was literally designed as the antidote. Not a meme. A necessity.",
+    "10,000 Bitcoin bought 2 pizzas in 2010. Those pizzas would cost $689M today. That's not about pizza. That's what happens when you bet on scarcity and get it right.",
+    "You don't need a million to win. $50/month starting in 2015 is worth $1.2M now. Bitcoin doesn't care how small you start. Time compounds everything."
+  ],
+  "sources": {
+    "btc_price": "https://api.coinbase.com/v2/prices/BTC-USD/spot",
+    "content_count": 3,
+    "knowledge": "https://github.com/bitcoinbook/bitcoinbook"
+  },
+  "metadata": {
+    "btc_price_now": "$67,519",
+    "verified": true,
+    "char_counts": [
+      130,
+      163,
+      148
+    ],
+    "topics": [
+      "\"Your keys, your Bitcoin. Not your keys, not your Bitcoin.\"",
+      "Bitcoin Genesis Block - 2009-01-03",
+      "Bitcoin Whitepaper Published - 2008-10-31",
+      "From Quotes:",
+      "From History:",
+      "Bitcoin Pizza Day - 2010-05-22"
+    ]
+  }
+}

@@ -1,0 +1,155 @@
+
+> 21m-sports-generator@1.0.0 generate
+> node index.js theme timechain-thursday
+
+
+╔═══════════════════════════════════════════════════════════╗
+║                                                           ║
+║   ██████╗  ▄███╗ ███╗   ███╗    ███████╗██████╗  ██████╗ ║
+║  ╚════██╗███╔══╝ ████╗ ████║    ██╔════╝██╔══██╗██╔════╝ ║
+║   █████╔╝███████╗██╔████╔██║    ███████╗██████╔╝██║  ███╗║
+║  ██╔═══╝ ██║  ██║██║╚██╔╝██║    ╚════██║██╔═══╝ ██║   ██║║
+║  ███████╗╚██████║██║ ╚═╝ ██║    ███████║██║     ╚██████╔╝║
+║  ╚══════╝ ╚═════╝╚═╝     ╚═╝    ╚══════╝╚═╝      ╚═════╝ ║
+║                                                           ║
+║          Content Generator for 21M Sports                ║
+║          Bitcoin Standard Sports Analysis                ║
+║                                                           ║
+╚═══════════════════════════════════════════════════════════╝
+
+- Generating timechain-thursday content...
+✔ Content generated!
+
+TIMECHAIN-THURSDAY
+
+
+─── Option 1 ───
+Bryce Harper signed for 44000.00 BTC in 2019.
+
+Anthony Davis just signed for 17272.73 BTC.
+
+The "historic" deal is actually 0.4x smaller in real terms.
+
+This is fiat debasement.
+
+Characters: 177/280
+
+─── Option 2 ───
+Which contract was bigger?
+
+A) Bryce Harper: $330,000,000 (2019)
+B) Anthony Davis: $190,000,000 (2020)
+
+In Bitcoin terms:
+A) 44000.00 BTC
+B) 17272.73 BTC
+
+The old deal was 2.5x bigger. Money printer goes brrr.
+
+Characters: 209/280
+
+─── Option 3 ───
+Anthony Davis's $190,000,000 contract sounds massive.
+
+Bryce Harper made $330,000,000 in 2019.
+
+In Bitcoin terms:
+Bryce Harper: 44000.00 BTC
+Anthony Davis: 17272.73 BTC
+
+The "smaller" contract was actually worth 2.5x more.
+
+Characters: 222/280
+
+─── Option 4 ───
+📊 FIAT DEBASEMENT FRIDAY
+
+2019: Bryce Harper → 44000.00 BTC
+2020: Anthony Davis → 17272.73 BTC
+
+Same dollars. Different value.
+This is why we Bitcoin.
+
+Characters: 151/280
+
+─── Option 5 ───
+Let's talk about Bryce Harper's 2019 contract.
+
+Fiat bros: "Only $330,000,000? That's nothing!"
+
+Bitcoin standard: 44000.00 BTC
+
+Anthony Davis's "huge" $190,000,000 deal today?
+17272.73 BTC
+
+Inflation is theft.
+
+Characters: 210/280
+
+─── Option 6 ───
+Bryce Harper could've bought 25 houses with that contract.
+
+Anthony Davis can buy 10 houses with his.
+
+Same "purchasing power"? Not even close.
+
+This is what fiat does to wealth.
+
+Characters: 178/280
+
+─── Option 7 ───
+What $330,000,000 could buy in 2019:
+→ 44000.00 BTC
+
+What $190,000,000 can buy today:
+→ 17272.73 BTC
+
+The numbers went up. The value went down.
+
+Characters: 143/280
+
+─── Option 8 ───
+If Bryce Harper saved in BTC instead of dollars...
+
+2019 contract: 44000.00 BTC
+Worth today: ~$484,000,000
+
+If Anthony Davis saves in BTC...
+He understands sound money.
+
+Low time preference wins.
+
+Characters: 195/280
+
+─── Option 9 ───
+Bryce Harper (Philadelphia Phillies): 44000.00 BTC
+Anthony Davis (Los Angeles Lakers): 17272.73 BTC
+
+One is a legend. One is... playing today.
+
+In real terms, the legend made 2.5x more.
+
+Fiat made the difference.
+
+Characters: 212/280
+
+─── Option 10 ───
+The Philadelphia Phillies paid Bryce Harper 44000.00 BTC in 2019.
+
+The Los Angeles Lakers is paying Anthony Davis 17272.73 BTC today.
+
+Which team got better value?
+
+Fix the money, fix the world.
+
+Characters: 194/280
+
+📊 DATA & SOURCES
+────────────────────────────────────────
+vintageContract: Bryce Harper: $330,000,000.00 (2019-02-28) = 44000.00 BTC
+modernContract: Anthony Davis: $190,000,000.00 (2020-12-03) = 17272.73 BTC
+ratio: 2.55x difference in real terms
+
+Sources:
+  • Historical BTC price data: CoinGecko
+  • Contract data: Sports reference databases

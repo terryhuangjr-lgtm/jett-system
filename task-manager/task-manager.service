@@ -1,0 +1,18 @@
+[Unit]
+Description=Task Manager Server
+After=network.target clawdbot-gateway.service
+Wants=clawdbot-gateway.service task-manager-worker.service
+
+[Service]
+Type=simple
+WorkingDirectory=/home/clawd/clawd/task-manager
+ExecStart=/home/clawd/.nvm/versions/node/v22.22.0/bin/node server.js
+Restart=always
+RestartSec=10
+StandardOutput=append:/home/clawd/clawd/task-manager/logs/server.log
+StandardError=append:/home/clawd/clawd/task-manager/logs/server.log
+
+Environment="PATH=/home/clawd/.nvm/versions/node/v22.22.0/bin:/usr/bin:/usr/local/bin"
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,11 @@
+{"timestamp":"2026-02-06T14:29:00.142Z","api":"coingecko","url":"https://api.coingecko.com/api/v3/coins/bitcoin/history?date=08-12-2024","success":false,"error":"BTC price not found in API response","dry_run":true}
+{"timestamp":"2026-02-06T14:29:42.550Z","api":"coingecko","url":"https://api.coingecko.com/api/v3/coins/bitcoin/history?date=06-02-2026","success":false,"error":"BTC price not found in API response","dry_run":true}
+{"timestamp":"2026-02-06T14:30:09.011Z","api":"coingecko","url":"https://api.coingecko.com/api/v3/coins/bitcoin/history?date=06-02-2026","success":false,"error":"BTC price not found in API response","dry_run":true}
+{"timestamp":"2026-02-06T14:30:25.853Z","api":"coingecko","url":"https://api.coingecko.com/api/v3/coins/bitcoin/history?date=06-02-2026","success":true,"error":null,"dry_run":true}
+{"timestamp":"2026-02-07T13:18:36.080Z","api":"coingecko","url":"https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd","success":true,"error":null,"dry_run":true}
+{"timestamp":"2026-02-12T13:10:27.526Z","api":"coingecko","url":"https://api.coingecko.com/api/v3/coins/bitcoin/history?date=12-02-2026","success":true,"error":null,"dry_run":false}
+{"timestamp":"2026-02-12T13:23:36.301Z","api":"brave_search","url":"searchRecentContracts","success":true,"error":null,"dry_run":true}
+{"timestamp":"2026-02-12T14:32:21.266Z","api":"brave_search","url":"searchRecentContracts","success":false,"error":"No contracts found in search results","dry_run":true}
+{"timestamp":"2026-02-12T14:49:50.649Z","api":"brave_search","url":"searchRecentContracts","success":false,"error":"No contracts found in search results","dry_run":false}
+{"timestamp":"2026-02-15T17:47:23.626Z","api":"coingecko","url":"https://api.coingecko.com/api/v3/coins/bitcoin/history?date=15-02-2026","success":true,"error":null,"dry_run":false}
+{"timestamp":"2026-02-15T17:47:24.756Z","api":"brave_search","url":"searchRecentContracts","success":false,"error":"No contracts found in search results","dry_run":false}

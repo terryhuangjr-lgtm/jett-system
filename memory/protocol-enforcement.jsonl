@@ -1,0 +1,14 @@
+{"timestamp":"2026-02-07T13:27:36.090Z","action":"block","passed":false,"reason":"Invalid content file","context":{"userMessage":"Generate 21m sports tweet","stage":"content"}}
+{"timestamp":"2026-02-07T13:27:54.007Z","action":"allow","passed":true,"reason":"All validations passed","context":{"userMessage":"Generate 21m sports tweet","player":"Juan Soto"}}
+{"timestamp":"2026-02-07T15:18:12.488Z","action":"skip","passed":true,"reason":"Not 21M Sports content","context":{"userMessage":"What's the weather today?"}}
+{"timestamp":"2026-02-07T15:18:12.519Z","action":"allow","passed":true,"reason":"All validations passed","context":{"userMessage":"Generate 21m sports tweet","player":"Juan Soto"}}
+{"timestamp":"2026-02-07T15:18:44.273Z","action":"skip","passed":true,"reason":"Not 21M Sports content","context":{"userMessage":"What's the weather today?"}}
+{"timestamp":"2026-02-07T15:18:44.303Z","action":"allow","passed":true,"reason":"All validations passed","context":{"userMessage":"Generate 21m sports tweet","player":"Juan Soto"}}
+{"timestamp":"2026-02-07T15:18:44.334Z","action":"block","passed":false,"reason":"Missing player: Juan Soto","context":{"userMessage":"Tell me about athlete contracts","response":"Shedeur Sanders signed a 00M contract with Jackson State. In BTC terms, that's 5000 BTC.","stage":"response"}}
+{"timestamp":"2026-02-07T15:18:44.365Z","action":"allow","passed":true,"reason":"All validations passed","context":{"userMessage":"Tell me about Juan Soto","player":"Juan Soto"}}
+{"timestamp":"2026-02-07T15:27:08.489Z","action":"skip","passed":true,"reason":"Not 21M Sports content","context":{"userMessage":"What's the weather today?"}}
+{"timestamp":"2026-02-07T15:27:08.519Z","action":"allow","passed":true,"reason":"All validations passed","context":{"userMessage":"Generate 21m sports tweet","player":"Juan Soto"}}
+{"timestamp":"2026-02-07T15:27:08.548Z","action":"block","passed":false,"reason":"Missing player: Juan Soto","context":{"userMessage":"Tell me about athlete contracts","response":"Shedeur Sanders signed a 00M contract with Jackson State. In BTC terms, that's 5000 BTC.","stage":"response"}}
+{"timestamp":"2026-02-07T15:27:08.581Z","action":"allow","passed":true,"reason":"All validations passed","context":{"userMessage":"Tell me about Juan Soto","player":"Juan Soto"}}
+{"timestamp":"2026-02-07T15:53:52.866Z","action":"skip","passed":true,"reason":"Not 21M Sports content","context":{"userMessage":"What's the weather today?"}}
+{"timestamp":"2026-02-07T15:53:52.893Z","action":"block","passed":false,"reason":"Research file missing","context":{"userMessage":"Generate 21m sports tweet","stage":"research"}}

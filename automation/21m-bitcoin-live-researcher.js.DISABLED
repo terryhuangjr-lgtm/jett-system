@@ -1,0 +1,372 @@
+#!/usr/bin/env node
+/**
+ * 21M Bitcoin Live Researcher
+ *
+ * Actively searches the web for compelling Bitcoin/sound money content:
+ * - Quotes from books (Bitcoin Standard, Broken Money, etc.)
+ * - Sound money principles
+ * - Bitcoin adoption news
+ * - Historical monetary examples
+ * - Economics wisdom (Hayek, Friedman, etc.)
+ *
+ * Evaluates quality (1-10) and saves to database if compelling (>= 7)
+ */
+
+const fs = require('fs');
+const path = require('path');
+const https = require('https');
+const { braveSearch } = require('./brave-search.js');
+const db = require('./db-bridge.js');
+
+const MEMORY_DIR = path.join(process.env.HOME, 'clawd', 'memory');
+const RESEARCH_FILE = path.join(MEMORY_DIR, '21m-bitcoin-live-research.json');
+const GUIDELINES_FILE = path.join(process.env.HOME, 'clawd', 'config', 'content-guidelines.json');
+
+// Get BTC price
+async function getBTCPrice() {
+  return new Promise((resolve, reject) => {
+    https.get('https://api.coinbase.com/v2/prices/BTC-USD/spot', (res) => {
+      let data = '';
+      res.on('data', chunk => data += chunk);
+      res.on('end', () => {
+        try {
+          const json = JSON.parse(data);
+          resolve(parseFloat(json.data.amount));
+        } catch (e) {
+          resolve(100000); // Fallback
+        }
+      });
+    }).on('error', () => resolve(100000));
+  });
+}
+
+/**
+ * Search topics based on content guidelines
+ */
+const RESEARCH_TOPICS = [
+  // Sound money principles
+  {
+    query: '"The Bitcoin Standard" Saifedean Ammous quote',
+    category: 'quotes_and_wisdom',
+    type: 'book_quote'
+  },
+  {
+    query: '"Broken Money" Lyn Alden excerpt sound money',
+    category: 'quotes_and_wisdom',
+    type: 'book_quote'
+  },
+  {
+    query: 'F.A. Hayek quote money government central bank',
+    category: 'quotes_and_wisdom',
+    type: 'economist_quote'
+  },
+  {
+    query: 'Milton Friedman quote inflation monetary policy',
+    category: 'quotes_and_wisdom',
+    type: 'economist_quote'
+  },
+
+  // Bitcoin adoption
+  {
+    query: 'Bitcoin adoption country legal tender 2026',
+    category: 'adoption_milestones',
+    type: 'adoption_news',
+    freshness: 'pm' // past month
+  },
+  {
+    query: 'Bitcoin ETF institutional buying 2026',
+    category: 'adoption_milestones',
+    type: 'adoption_news',
+    freshness: 'pm'
+  },
+  {
+    query: 'company Bitcoin treasury MicroStrategy Saylor',
+    category: 'adoption_milestones',
+    type: 'adoption_news',
+    freshness: 'pm'
+  },
+
+  // Supply scarcity
+  {
+    query: 'Bitcoin 21 million supply cap scarcity halving',
+    category: 'supply_scarcity',
+    type: 'principle'
+  },
+  {
+    query: 'Bitcoin mining difficulty hash rate 2026',
+    category: 'supply_scarcity',
+    type: 'technical_data',
+    freshness: 'pw' // past week
+  },
+
+  // Historical monetary failures
+  {
+    query: 'hyperinflation Weimar Zimbabwe Venezuela fiat currency collapse',
+    category: 'historical_comparisons',
+    type: 'historical_lesson'
+  },
+  {
+    query: 'gold standard history Nixon 1971 monetary policy',
+    category: 'historical_comparisons',
+    type: 'historical_lesson'
+  },
+
+  // Bitcoin principles
+  {
+    query: 'Satoshi Nakamoto quote whitepaper peer-to-peer',
+    category: 'quotes_and_wisdom',
+    type: 'satoshi_quote'
+  },
+  {
+    query: 'Bitcoin energy proof of work security',
+    category: 'sound_money_principles',
+    type: 'principle'
+  }
+];
+
+/**
+ * Evaluate content quality (1-10)
+ */
+function evaluateContentQuality(result, topic) {
+  let score = 5; // Baseline
+
+  const title = result.title?.toLowerCase() || '';
+  const description = result.description?.toLowerCase() || '';
+  const combined = title + ' ' + description;
+
+  // Score HIGH if: Educational / thought-provoking
+  if (combined.includes('quote') || combined.includes('said')) {
+    score += 2; // Quotes are shareable
+  }
+
+  if (combined.includes('bitcoin') || combined.includes('btc')) {
+    score += 1; // Clear Bitcoin angle
+  }
+
+  // Score HIGH if: Verified/credible source
+  const trustedSources = [
+    'bitcoin.org',
+    'bitcoinmagazine.com',
+    'nakamotoinstitute.org',
+    'saifedean.com',
+    'lynalden.com',
+    'unchained.com',
+    'fidelitydigitalassets.com'
+  ];
+
+  const url = result.url?.toLowerCase() || '';
+  if (trustedSources.some(source => url.includes(source))) {
+    score += 2; // Verified source
+  }
+
+  // Score HIGH if: Recent/timely (for adoption news)
+  if (topic.freshness && combined.includes('2026')) {
+    score += 1; // Current/timely
+  }
+
+  // Score HIGH if: Historical lesson
+  if (combined.includes('history') || combined.includes('historical')) {
+    score += 1; // Educational context
+  }
+
+  // Bonus for specific thought leaders
+  const thoughtLeaders = [
+    'saifedean',
+    'lyn alden',
+    'michael saylor',
+    'hayek',
+    'friedman',
+    'satoshi',
+    'vijay boyapati'
+  ];
+
+  if (thoughtLeaders.some(leader => combined.includes(leader))) {
+    score += 1; // Authoritative source
+  }
+
+  return Math.min(score, 10);
+}
+
+/**
+ * Extract meaningful content from search result
+ */
+function extractContent(result, topic) {
+  const title = result.title || 'Untitled';
+  const description = result.description || '';
+  const url = result.url || '';
+
+  // Build content summary
+  let content = description;
+
+  // Add context based on type
+  if (topic.type === 'book_quote' && description) {
+    content = `Quote/Excerpt: ${description}`;
+  } else if (topic.type === 'economist_quote' && description) {
+    content = `Economic Wisdom: ${description}`;
+  } else if (topic.type === 'adoption_news' && description) {
+    content = `Bitcoin Adoption: ${description}`;
+  } else if (topic.type === 'historical_lesson' && description) {
+    content = `Historical Context: ${description}`;
+  }
+
+  content += `\n\nSource: ${title}\nURL: ${url}`;
+
+  return content;
+}
+
+/**
+ * Determine Bitcoin angle for content
+ */
+function determineBitcoinAngle(result, topic) {
+  if (topic.category === 'quotes_and_wisdom') {
+    return 'Wisdom that explains why Bitcoin matters';
+  } else if (topic.category === 'adoption_milestones') {
+    return '21M supply being claimed - scarcity in action';
+  } else if (topic.category === 'supply_scarcity') {
+    return 'Fixed supply vs unlimited fiat printing';
+  } else if (topic.category === 'historical_comparisons') {
+    return 'Bitcoin prevents this - sound money protects wealth';
+  } else {
+    return 'Bitcoin embodies sound money principles';
+  }
+}
+
+/**
+ * Main research execution
+ */
+async function runLiveResearch() {
+  console.log('\n₿ 21M Bitcoin Live Researcher');
+  console.log('═'.repeat(70));
+  console.log('\n🔍 Searching for compelling Bitcoin content...\n');
+
+  const btcPrice = await getBTCPrice();
+  console.log(`📊 BTC Price: $${btcPrice.toLocaleString()}\n`);
+
+  const allFindings = [];
+  let savedCount = 0;
+
+  // Rotate through research topics (pick 3 per run to avoid rate limits)
+  const dayOfYear = Math.floor((Date.now() - new Date(new Date().getFullYear(), 0, 0)) / 86400000);
+  const startIndex = dayOfYear % RESEARCH_TOPICS.length;
+  const selectedTopics = [
+    RESEARCH_TOPICS[startIndex],
+    RESEARCH_TOPICS[(startIndex + 1) % RESEARCH_TOPICS.length],
+    RESEARCH_TOPICS[(startIndex + 2) % RESEARCH_TOPICS.length]
+  ];
+
+  for (const topic of selectedTopics) {
+    console.log(`🔍 Searching: ${topic.query.substring(0, 60)}...`);
+
+    try {
+      const results = await braveSearch(topic.query, {
+        count: 5,
+        freshness: topic.freshness
+      });
+
+      if (!results.web || !results.web.results || results.web.results.length === 0) {
+        console.log('  ℹ️  No results found\n');
+        continue;
+      }
+
+      console.log(`  ✓ Found ${results.web.results.length} results`);
+
+      // Evaluate each result
+      for (const result of results.web.results) {
+        const qualityScore = evaluateContentQuality(result, topic);
+
+        if (qualityScore >= 7) {
+          console.log(`  ✓ Quality result: ${result.title?.substring(0, 50)}... (score: ${qualityScore}/10)`);
+
+          const content = extractContent(result, topic);
+          const btcAngle = determineBitcoinAngle(result, topic);
+
+          // Save to database
+          try {
+            const contentId = db.addContent(
+              result.title,
+              content,
+              topic.category,
+              result.url,
+              btcAngle,
+              qualityScore
+            );
+
+            if (contentId) {
+              savedCount++;
+              allFindings.push({
+                id: contentId,
+                topic: result.title,
+                category: topic.category,
+                score: qualityScore,
+                url: result.url
+              });
+            } else {
+              console.log(`  ℹ️  Skipped duplicate: ${result.title?.substring(0, 50)}...`);
+            }
+          } catch (err) {
+            console.log(`  ⚠️  Database error: ${err.message}`);
+          }
+        }
+      }
+
+      console.log('');
+
+      // Rate limit: small delay between searches
+      await new Promise(resolve => setTimeout(resolve, 1000));
+
+    } catch (err) {
+      console.log(`  ✗ Search failed: ${err.message}\n`);
+    }
+  }
+
+  // Save research summary (JSON for backward compatibility)
+  const summary = {
+    type: '21m_bitcoin_live_research',
+    timestamp: new Date().toISOString(),
+    btc_price: btcPrice,
+    topics_searched: selectedTopics.length,
+    results_found: allFindings.length,
+    saved_to_database: savedCount,
+    findings: allFindings
+  };
+
+  if (!fs.existsSync(MEMORY_DIR)) {
+    fs.mkdirSync(MEMORY_DIR, { recursive: true });
+  }
+
+  fs.writeFileSync(RESEARCH_FILE, JSON.stringify(summary, null, 2));
+
+  console.log('═'.repeat(70));
+  console.log('✅ LIVE RESEARCH COMPLETE\n');
+  console.log(`📊 Results:`);
+  console.log(`   Topics searched: ${selectedTopics.length}`);
+  console.log(`   High-quality findings: ${allFindings.length}`);
+  console.log(`   Saved to database: ${savedCount}`);
+  console.log('');
+
+  if (savedCount > 0) {
+    console.log('✓ Top findings:');
+    allFindings.slice(0, 3).forEach(f => {
+      console.log(`  • ${f.topic.substring(0, 60)}... (${f.score}/10)`);
+    });
+    console.log('');
+  }
+
+  console.log(`📁 Summary saved: ${RESEARCH_FILE}`);
+  console.log('');
+
+  return summary;
+}
+
+// Run if called directly
+if (require.main === module) {
+  runLiveResearch()
+    .then(() => process.exit(0))
+    .catch(error => {
+      console.error('Error:', error.message);
+      console.error(error.stack);
+      process.exit(1);
+    });
+}
+
+module.exports = { runLiveResearch };
