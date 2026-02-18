@@ -201,6 +201,12 @@ cython_debug/
 .cursorignore
 .cursorindexingignore
 
+# Binary files
+*.jpg
+*.png
+*.pdf
+ebay-raw.json
+
 # Marimo
 marimo/_static/
 marimo/_lsp/
