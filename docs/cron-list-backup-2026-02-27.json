@@ -1,0 +1,686 @@
+{
+  "jobs": [
+    {
+      "id": "2e634eff-54f6-46fd-9dfd-faae6845fc3d",
+      "name": "Reminder Checker",
+      "enabled": true,
+      "deleteAfterRun": false,
+      "createdAtMs": 1771374949025,
+      "updatedAtMs": 1772171100000,
+      "schedule": {
+        "kind": "cron",
+        "expr": "*/5 * * * *"
+      },
+      "sessionTarget": "main",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "systemEvent",
+        "text": "run bash: cd /home/clawd/skills/notion-assistant && /usr/bin/python3 check_reminders.py >> /tmp/jett_reminders.log 2>&1"
+      },
+      "state": {
+        "nextRunAtMs": 1772171400000,
+        "lastRunAtMs": 1772171100000,
+        "lastStatus": "skipped",
+        "lastDurationMs": 9,
+        "lastError": "empty-heartbeat-file"
+      }
+    },
+    {
+      "id": "340ac7bf-22ab-4227-bc4b-ffbed654921d",
+      "name": "Task Manager Health Monitor",
+      "enabled": true,
+      "deleteAfterRun": false,
+      "createdAtMs": 1771374931249,
+      "updatedAtMs": 1772168400001,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 * * * *"
+      },
+      "sessionTarget": "main",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "systemEvent",
+        "text": "run bash: cd /home/clawd/clawd/task-manager && node health-monitor.js >> /home/clawd/clawd/task-manager/logs/health-monitor.log 2>&1"
+      },
+      "state": {
+        "nextRunAtMs": 1772172000000,
+        "lastRunAtMs": 1772168400001,
+        "lastStatus": "skipped",
+        "lastDurationMs": 9,
+        "lastError": "empty-heartbeat-file"
+      }
+    },
+    {
+      "id": "758a9234-947b-43b8-b949-7000cd9b21ac",
+      "name": "Log Rotate",
+      "enabled": true,
+      "deleteAfterRun": false,
+      "createdAtMs": 1771387763603,
+      "updatedAtMs": 1772091000001,
+      "schedule": {
+        "kind": "cron",
+        "expr": "30 2 * * *"
+      },
+      "sessionTarget": "main",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "systemEvent",
+        "text": "run bash: /home/clawd/scripts/log-rotate.sh"
+      },
+      "state": {
+        "nextRunAtMs": 1772177400000,
+        "lastRunAtMs": 1772091000010,
+        "lastStatus": "skipped",
+        "lastDurationMs": 1,
+        "lastError": "empty-heartbeat-file"
+      }
+    },
+    {
+      "id": "c143da29-2bc5-4685-8372-42c78df5a1ee",
+      "name": "Backup",
+      "enabled": true,
+      "deleteAfterRun": false,
+      "createdAtMs": 1771387771148,
+      "updatedAtMs": 1772091900000,
+      "schedule": {
+        "kind": "cron",
+        "expr": "45 2 * * *"
+      },
+      "sessionTarget": "main",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "systemEvent",
+        "text": "run bash: /home/clawd/scripts/backup.sh >> /home/clawd/logs/backup.log 2>&1"
+      },
+      "state": {
+        "nextRunAtMs": 1772178300000,
+        "lastRunAtMs": 1772091900010,
+        "lastStatus": "skipped",
+        "lastDurationMs": 0,
+        "lastError": "empty-heartbeat-file"
+      }
+    },
+    {
+      "id": "9fea2eec-d185-4264-9898-5469c87a9b47",
+      "name": "Podcast Processing",
+      "enabled": true,
+      "deleteAfterRun": false,
+      "createdAtMs": 1771374736475,
+      "updatedAtMs": 1772092800000,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 3 * * *"
+      },
+      "sessionTarget": "main",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "systemEvent",
+        "text": "run bash: python3 /home/clawd/skills/podcast-summary/run_background.py"
+      },
+      "state": {
+        "nextRunAtMs": 1772179200000,
+        "lastRunAtMs": 1772092800000,
+        "lastStatus": "skipped",
+        "lastDurationMs": 9,
+        "lastError": "empty-heartbeat-file"
+      }
+    },
+    {
+      "id": "9c035604-7837-4fdd-8786-dfb30dd7fd58",
+      "name": "Bitcoin Tweet Generation",
+      "enabled": true,
+      "deleteAfterRun": false,
+      "createdAtMs": 1771374739003,
+      "updatedAtMs": 1772096400001,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 4 * * *"
+      },
+      "sessionTarget": "main",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "systemEvent",
+        "text": "run bash: node /home/clawd/clawd/automation/21m-claude-generator.js --type bitcoin"
+      },
+      "state": {
+        "nextRunAtMs": 1772182800000,
+        "lastRunAtMs": 1772096400002,
+        "lastStatus": "skipped",
+        "lastDurationMs": 7,
+        "lastError": "empty-heartbeat-file"
+      }
+    },
+    {
+      "id": "0905b8d2-60f7-4df7-9121-622bc7e4c8fd",
+      "name": "Sports Tweet Generation (Morning)",
+      "enabled": true,
+      "deleteAfterRun": false,
+      "createdAtMs": 1771374741501,
+      "updatedAtMs": 1772100000002,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 5 * * *"
+      },
+      "sessionTarget": "main",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "systemEvent",
+        "text": "run bash: node /home/clawd/clawd/automation/21m-claude-generator.js --type sports"
+      },
+      "state": {
+        "nextRunAtMs": 1772186400000,
+        "lastRunAtMs": 1772100000003,
+        "lastStatus": "skipped",
+        "lastDurationMs": 10,
+        "lastError": "empty-heartbeat-file"
+      }
+    },
+    {
+      "id": "c5087e50-350e-4abe-9bbc-b612756f89d2",
+      "name": "Performance Check",
+      "enabled": true,
+      "deleteAfterRun": false,
+      "createdAtMs": 1771374941400,
+      "updatedAtMs": 1772168400001,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 */6 * * *"
+      },
+      "sessionTarget": "main",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "systemEvent",
+        "text": "run bash: /home/clawd/scripts/performance_check.sh"
+      },
+      "state": {
+        "nextRunAtMs": 1772190000000,
+        "lastRunAtMs": 1772168400010,
+        "lastStatus": "skipped",
+        "lastDurationMs": 1,
+        "lastError": "empty-heartbeat-file"
+      }
+    },
+    {
+      "id": "1ccd5684-55b7-46de-8460-6a70939cedeb",
+      "name": "Podcast Summary Deployment",
+      "enabled": true,
+      "deleteAfterRun": false,
+      "createdAtMs": 1771374744017,
+      "updatedAtMs": 1772105400001,
+      "schedule": {
+        "kind": "cron",
+        "expr": "30 6 * * *"
+      },
+      "sessionTarget": "main",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "systemEvent",
+        "text": "run bash: node /home/clawd/clawd/automation/deploy-podcast-summary.js"
+      },
+      "state": {
+        "nextRunAtMs": 1772191800000,
+        "lastRunAtMs": 1772105400001,
+        "lastStatus": "skipped",
+        "lastDurationMs": 10,
+        "lastError": "empty-heartbeat-file"
+      }
+    },
+    {
+      "id": "2ee02df9-f837-45e6-85e0-8af2d5f392b7",
+      "name": "Morning Family Brief",
+      "enabled": true,
+      "deleteAfterRun": false,
+      "createdAtMs": 1771387793698,
+      "updatedAtMs": 1772109000003,
+      "schedule": {
+        "kind": "cron",
+        "expr": "30 7 * * *"
+      },
+      "sessionTarget": "main",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "systemEvent",
+        "text": "run bash: python3 /home/clawd/skills/notion-assistant/morning_brief.py --post"
+      },
+      "state": {
+        "nextRunAtMs": 1772195400000,
+        "lastError": "empty-heartbeat-file",
+        "lastRunAtMs": 1772109000012,
+        "lastStatus": "skipped",
+        "lastDurationMs": 1
+      }
+    },
+    {
+      "id": "8d32012f-c650-4934-8453-8ce57afdca8e",
+      "name": "Sports Tweet Deployment (Morning)",
+      "enabled": true,
+      "deleteAfterRun": false,
+      "createdAtMs": 1771387848544,
+      "updatedAtMs": 1772109900001,
+      "schedule": {
+        "kind": "cron",
+        "expr": "45 7 * * *"
+      },
+      "sessionTarget": "main",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "systemEvent",
+        "text": "run bash: node /home/clawd/clawd/automation/deploy-21m-tweet.js /home/clawd/clawd/memory/21m-sports-verified-content.json"
+      },
+      "state": {
+        "nextRunAtMs": 1772196300000,
+        "lastError": "empty-heartbeat-file",
+        "lastRunAtMs": 1772109900016,
+        "lastStatus": "skipped",
+        "lastDurationMs": 0
+      }
+    },
+    {
+      "id": "dad5af81-ab12-4217-96ab-a189cd994423",
+      "name": "System Health Check",
+      "enabled": true,
+      "deleteAfterRun": false,
+      "createdAtMs": 1771387778527,
+      "updatedAtMs": 1772112600002,
+      "schedule": {
+        "kind": "cron",
+        "expr": "30 8 * * *"
+      },
+      "sessionTarget": "main",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "systemEvent",
+        "text": "run bash: /home/clawd/scripts/health_check.sh >> /home/clawd/clawd/task-manager/logs/health-check.log 2>&1"
+      },
+      "state": {
+        "nextRunAtMs": 1772199000000,
+        "lastError": "empty-heartbeat-file",
+        "lastRunAtMs": 1772112600019,
+        "lastStatus": "skipped",
+        "lastDurationMs": 1
+      }
+    },
+    {
+      "id": "aabe7045-d052-4993-b9aa-d6f7846c56d5",
+      "name": "Bitcoin Tweet Deployment",
+      "enabled": true,
+      "deleteAfterRun": false,
+      "createdAtMs": 1771387822012,
+      "updatedAtMs": 1772113500000,
+      "schedule": {
+        "kind": "cron",
+        "expr": "45 8 * * *"
+      },
+      "sessionTarget": "main",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "systemEvent",
+        "text": "run bash: node /home/clawd/clawd/automation/deploy-21m-tweet.js /home/clawd/clawd/memory/21m-bitcoin-verified-content.json"
+      },
+      "state": {
+        "nextRunAtMs": 1772199900000,
+        "lastError": "empty-heartbeat-file",
+        "lastRunAtMs": 1772113500010,
+        "lastStatus": "skipped",
+        "lastDurationMs": 1
+      }
+    },
+    {
+      "id": "6b55455d-7e08-4105-b74f-d3a5cb27b0d7",
+      "name": "eBay Scan - Friday (Multi Player)",
+      "enabled": true,
+      "deleteAfterRun": false,
+      "createdAtMs": 1771386628968,
+      "updatedAtMs": 1771596000004,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 9 * * 5",
+        "tz": "America/New_York"
+      },
+      "sessionTarget": "main",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "systemEvent",
+        "text": "run bash: cd /home/clawd/clawd/ebay-scanner && node run-from-config.js friday"
+      },
+      "state": {
+        "nextRunAtMs": 1772200800000,
+        "lastError": "empty-heartbeat-file",
+        "lastRunAtMs": 1771596000014,
+        "lastStatus": "skipped",
+        "lastDurationMs": 1
+      }
+    },
+    {
+      "id": "2288701a-869e-4a89-b70f-08a53e6a6877",
+      "name": "System Health Check - Slack",
+      "enabled": true,
+      "deleteAfterRun": false,
+      "createdAtMs": 1771387786166,
+      "updatedAtMs": 1772116200001,
+      "schedule": {
+        "kind": "cron",
+        "expr": "30 9 * * *"
+      },
+      "sessionTarget": "main",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "systemEvent",
+        "text": "run bash: node /home/clawd/clawd/automation/post-health-to-slack.js"
+      },
+      "state": {
+        "nextRunAtMs": 1772202600000,
+        "lastError": "empty-heartbeat-file",
+        "lastRunAtMs": 1772116200009,
+        "lastStatus": "skipped",
+        "lastDurationMs": 0
+      }
+    },
+    {
+      "id": "985780f4-1165-43a7-a25b-fa7c2b93388c",
+      "name": "eBay Scans - Deploy",
+      "enabled": true,
+      "deleteAfterRun": false,
+      "createdAtMs": 1771374756493,
+      "updatedAtMs": 1772118000001,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 10 * * *"
+      },
+      "sessionTarget": "main",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "systemEvent",
+        "text": "run bash: node /home/clawd/clawd/automation/deploy-ebay-scans.js"
+      },
+      "state": {
+        "nextRunAtMs": 1772204400000,
+        "lastError": "empty-heartbeat-file",
+        "lastRunAtMs": 1772118000001,
+        "lastStatus": "skipped",
+        "lastDurationMs": 8
+      }
+    },
+    {
+      "id": "3740214e-266b-4b49-aa54-c4b044de32e4",
+      "name": "Sports Betting - Scout Mode",
+      "enabled": true,
+      "deleteAfterRun": false,
+      "createdAtMs": 1771374786826,
+      "updatedAtMs": 1772118000001,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 10 * * *"
+      },
+      "sessionTarget": "main",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "systemEvent",
+        "text": "run bash: cd /home/clawd/clawd/sports_betting && /usr/bin/python3 orchestrator.py --mode scout >> /home/clawd/clawd/logs/betting_scout.log 2>&1"
+      },
+      "state": {
+        "nextRunAtMs": 1772204400000,
+        "lastError": "empty-heartbeat-file",
+        "lastRunAtMs": 1772118000009,
+        "lastStatus": "skipped",
+        "lastDurationMs": 1
+      }
+    },
+    {
+      "id": "cbdc33d3-25c9-4f8c-8fbd-f8c7a4aad1c0",
+      "name": "Sports Betting - Pick of the Day",
+      "enabled": true,
+      "deleteAfterRun": false,
+      "createdAtMs": 1771374791997,
+      "updatedAtMs": 1772139600000,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 16 * * *"
+      },
+      "sessionTarget": "main",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "systemEvent",
+        "text": "run bash: cd /home/clawd/clawd/sports_betting && /usr/bin/python3 orchestrator.py --mode final >> /home/clawd/clawd/logs/betting_final.log 2>&1"
+      },
+      "state": {
+        "nextRunAtMs": 1772226000000,
+        "lastError": "empty-heartbeat-file",
+        "lastRunAtMs": 1772139600000,
+        "lastStatus": "skipped",
+        "lastDurationMs": 8
+      }
+    },
+    {
+      "id": "b5bb44d6-8f6b-40c6-8887-bf4a4fdf1aa6",
+      "name": "21M Sports BTC and Sports Research",
+      "enabled": true,
+      "deleteAfterRun": false,
+      "createdAtMs": 1771387522548,
+      "updatedAtMs": 1772168400001,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 0 * * *"
+      },
+      "sessionTarget": "main",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "systemEvent",
+        "text": "run bash: cd /home/clawd && /home/clawd/.nvm/versions/node/v22.22.0/bin/node /home/clawd/clawd/automation/21m-nightly-scraper.js >> /home/clawd/clawd/task-manager/logs/cron-nightly-scraper.log 2>&1"
+      },
+      "state": {
+        "nextRunAtMs": 1772254800000,
+        "lastRunAtMs": 1772168400012,
+        "lastStatus": "skipped",
+        "lastDurationMs": 0,
+        "lastError": "empty-heartbeat-file"
+      }
+    },
+    {
+      "id": "33accdb9-fda7-49fc-8f12-f20161cd764e",
+      "name": "eBay Scan - Saturday (MJ 94-99)",
+      "enabled": true,
+      "deleteAfterRun": false,
+      "createdAtMs": 1771386631387,
+      "updatedAtMs": 1771682400001,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 9 * * 6",
+        "tz": "America/New_York"
+      },
+      "sessionTarget": "main",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "systemEvent",
+        "text": "run bash: cd /home/clawd/clawd/ebay-scanner && node run-from-config.js saturday"
+      },
+      "state": {
+        "nextRunAtMs": 1772287200000,
+        "lastError": "empty-heartbeat-file",
+        "lastRunAtMs": 1771682400011,
+        "lastStatus": "skipped",
+        "lastDurationMs": 0
+      }
+    },
+    {
+      "id": "3cd3dcad-098c-488a-b1c6-fdcfddceb0c0",
+      "name": "Podcast Cleanup",
+      "enabled": true,
+      "deleteAfterRun": false,
+      "createdAtMs": 1771374802107,
+      "updatedAtMs": 1771747200001,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 3 * * 0"
+      },
+      "sessionTarget": "main",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "systemEvent",
+        "text": "run bash: bash /home/clawd/skills/podcast-summary/cleanup.sh"
+      },
+      "state": {
+        "nextRunAtMs": 1772352000000,
+        "lastError": "empty-heartbeat-file",
+        "lastRunAtMs": 1771747200011,
+        "lastStatus": "skipped",
+        "lastDurationMs": 0
+      }
+    },
+    {
+      "id": "d14204a7-52a5-4490-b73e-4804e50693ad",
+      "name": "eBay Scan - Sunday (Cam Ward)",
+      "enabled": true,
+      "deleteAfterRun": false,
+      "createdAtMs": 1771386633825,
+      "updatedAtMs": 1771768800001,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 9 * * 0",
+        "tz": "America/New_York"
+      },
+      "sessionTarget": "main",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "systemEvent",
+        "text": "run bash: cd /home/clawd/clawd/ebay-scanner && node run-from-config.js sunday"
+      },
+      "state": {
+        "nextRunAtMs": 1772373600000,
+        "lastError": "empty-heartbeat-file",
+        "lastRunAtMs": 1771768800011,
+        "lastStatus": "skipped",
+        "lastDurationMs": 0
+      }
+    },
+    {
+      "id": "3a219800-ea42-4d17-8dd8-35a0ccc63a4d",
+      "name": "Weekly Summary",
+      "enabled": true,
+      "deleteAfterRun": false,
+      "createdAtMs": 1771374946505,
+      "updatedAtMs": 1771808400002,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 20 * * 0"
+      },
+      "sessionTarget": "main",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "systemEvent",
+        "text": "run bash: /home/clawd/scripts/weekly_summary.sh"
+      },
+      "state": {
+        "nextRunAtMs": 1772413200000,
+        "lastError": "empty-heartbeat-file",
+        "lastRunAtMs": 1771808400010,
+        "lastStatus": "skipped",
+        "lastDurationMs": 1
+      }
+    },
+    {
+      "id": "1f88932a-cbba-4174-8acd-8cc3eb191268",
+      "name": "eBay Scan - Monday (MJ Finest)",
+      "enabled": true,
+      "deleteAfterRun": false,
+      "createdAtMs": 1771386619086,
+      "updatedAtMs": 1771855200000,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 9 * * 1",
+        "tz": "America/New_York"
+      },
+      "sessionTarget": "main",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "systemEvent",
+        "text": "run bash: cd /home/clawd/clawd/ebay-scanner && node run-from-config.js monday"
+      },
+      "state": {
+        "nextRunAtMs": 1772460000000,
+        "lastError": "empty-heartbeat-file",
+        "lastRunAtMs": 1771855200009,
+        "lastStatus": "skipped",
+        "lastDurationMs": 1
+      }
+    },
+    {
+      "id": "9216228c-c2d1-4eaf-9456-2b35fa1e7f13",
+      "name": "eBay Scan - Tuesday (Griffey)",
+      "enabled": true,
+      "deleteAfterRun": false,
+      "createdAtMs": 1771386621514,
+      "updatedAtMs": 1771941600002,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 9 * * 2",
+        "tz": "America/New_York"
+      },
+      "sessionTarget": "main",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "systemEvent",
+        "text": "run bash: cd /home/clawd/clawd/ebay-scanner && node run-from-config.js tuesday"
+      },
+      "state": {
+        "nextRunAtMs": 1772546400000,
+        "lastError": "empty-heartbeat-file",
+        "lastRunAtMs": 1771941600011,
+        "lastStatus": "skipped",
+        "lastDurationMs": 1
+      }
+    },
+    {
+      "id": "671e0b4d-9f22-4491-9f99-a05c4e54fef2",
+      "name": "eBay Scan - Wednesday (Kobe)",
+      "enabled": true,
+      "deleteAfterRun": false,
+      "createdAtMs": 1771386623969,
+      "updatedAtMs": 1772028000007,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 9 * * 3",
+        "tz": "America/New_York"
+      },
+      "sessionTarget": "main",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "systemEvent",
+        "text": "run bash: cd /home/clawd/clawd/ebay-scanner && node run-from-config.js wednesday"
+      },
+      "state": {
+        "nextRunAtMs": 1772632800000,
+        "lastError": "empty-heartbeat-file",
+        "lastRunAtMs": 1772028000015,
+        "lastStatus": "skipped",
+        "lastDurationMs": 1
+      }
+    },
+    {
+      "id": "29f0f772-06fc-4201-815e-6c61ebce4f72",
+      "name": "eBay Scan - Thursday (MJ UD)",
+      "enabled": true,
+      "deleteAfterRun": false,
+      "createdAtMs": 1771386626415,
+      "updatedAtMs": 1772114400000,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 9 * * 4",
+        "tz": "America/New_York"
+      },
+      "sessionTarget": "main",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "systemEvent",
+        "text": "run bash: cd /home/clawd/clawd/ebay-scanner && node run-from-config.js thursday"
+      },
+      "state": {
+        "nextRunAtMs": 1772719200000,
+        "lastError": "empty-heartbeat-file",
+        "lastRunAtMs": 1772114400008,
+        "lastStatus": "skipped",
+        "lastDurationMs": 1
+      }
+    }
+  ]
+}
