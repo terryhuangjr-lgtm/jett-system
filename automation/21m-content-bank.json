@@ -111,7 +111,9 @@
       "btc_allocation": 16,
       "verified_fact": "Caleb Williams signed his $10.4M rookie deal in 2024 when BTC was $65,000. 10% allocation = 16 BTC.",
       "source": "Spotrac",
-      "used_dates": [],
+      "used_dates": [
+        "2026-02-27"
+      ],
       "cooldown_days": 90
     },
     {
@@ -426,6 +428,21 @@
       "source": "LA Clippers official, ESPN",
       "used_dates": [],
       "cooldown_days": 90
+    },
+    {
+      "category": "historic_contract",
+      "athlete": "Derek Jeter",
+      "sport": "MLB",
+      "year": 2001,
+      "contract_value": 189000000,
+      "btc_price_then": 0,
+      "btc_allocation": 0,
+      "verified_fact": "Derek Jeter signed a $189.0M contract in 2001 (before Bitcoin).",
+      "source": "",
+      "used_dates": [],
+      "cooldown_days": 90,
+      "contract_years": 10,
+      "id": 31
     }
   ]
 }

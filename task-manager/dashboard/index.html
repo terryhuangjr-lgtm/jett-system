@@ -57,7 +57,6 @@
 
   <script>
     const API_BASE = 'http://localhost:3000/api';
-    const CRON_API = 'http://localhost:3000/api/cron-jobs';
     let tasks = [];
     let currentView = 'week';
 
@@ -70,7 +69,7 @@
 
     async function refreshTasks() {
       try {
-        const response = await fetch(CRON_API + '?t=' + Date.now());
+        const response = await fetch(`${API_BASE}/tasks`);
         tasks = await response.json();
         tasks = tasks.filter(t => t.enabled);
         renderCalendar();
@@ -166,7 +165,7 @@
             <h3 class="day-header">${day}</h3>
             <div class="day-tasks">
               ${dayTasks.length === 0 ? '<p class="empty-day">-</p>' : dayTasks.map(t => `
-                <div class="day-task ${getTaskClass(t.name)}" onclick="showTaskDetails('${t.id}')">
+                <div class="day-task ${getTaskClass(t.name)}" onclick="showTaskDetails(${t.id})">
                   <span class="task-time">${extractTime(t.schedule)}</span>
                   <span class="task-name">${t.name}</span>
                 </div>
@@ -181,7 +180,10 @@
 
     function renderNextUp() {
       const container = document.getElementById('next-up-list');
-      const upcoming = tasks.filter(t => t.schedule && !t.schedule.includes('reboot')).slice(0, 5);
+      const upcoming = tasks
+        .filter(t => t.schedule && !t.schedule.includes('reboot'))
+        .sort((a, b) => new Date(a.next_run) - new Date(b.next_run))
+        .slice(0, 5);
       
       if (upcoming.length === 0) {
         container.innerHTML = '<p class="empty">No upcoming tasks</p>';
@@ -189,7 +191,7 @@
       }
       
       container.innerHTML = upcoming.map(task => `
-        <div class="next-task ${getTaskClass(task.name)}" onclick="showTaskDetails('${task.id}')">
+        <div class="next-task ${getTaskClass(task.name)}" onclick="showTaskDetails(${task.id})">
           <span class="task-time">${formatNextRun(task.next_run)}</span>
           <span class="task-name">${task.name}</span>
         </div>
@@ -258,23 +260,7 @@
       try {
         const task = tasks.find(t => t.id === id);
         if (!task) return;
-        
-        // For Clawdbot cron jobs, show limited info (no logs from old DB)
-        if (task.source === 'clawdbot') {
-          document.getElementById('task-details').innerHTML = `
-            <h2>${task.name}</h2>
-            <p><strong>Schedule:</strong> ${task.schedule || 'Manual'}</p>
-            <p><strong>Command:</strong> <code>${task.command || 'N/A'}</code></p>
-            <p><strong>Status:</strong> ${task.status}</p>
-            <p><strong>Last Run:</strong> ${task.last_run ? new Date(task.last_run).toLocaleString() : 'Never'}</p>
-            <p><strong>Next Run:</strong> ${task.next_run ? new Date(task.next_run).toLocaleString() : 'N/A'}</p>
-            <p><strong>Source:</strong> Clawdbot Cron</p>
-            <p><em>Logs available in Clawdbot cron runs history</em></p>
-          `;
-          document.getElementById('task-details-modal').style.display = 'block';
-          return;
-        }
-        
+
         const logsRes = await fetch(API_BASE + '/tasks/' + id + '/logs');
         const logs = await logsRes.json();
         
