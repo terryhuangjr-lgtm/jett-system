@@ -16,7 +16,7 @@ from collectors.player_stats_collector import PlayerStatsCollector
 from collectors.odds_collector import OddsCollector
 from collectors.news_monitor import NewsMonitor
 from analyzer.bet_scorer import BetScorer
-from notifiers.slack_notifier_bot import SlackNotifier
+from notifiers.clawdbot_notifier import SlackNotifier
 from dashboard_integration import DashboardIntegration
 import config
 from bet_tracker import BetTracker
