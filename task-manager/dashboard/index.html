@@ -13,7 +13,8 @@
         <h1>Task Manager Dashboard</h1>
         <div class="header-links">
           <span id="health-status" class="health-status">Loading...</span>
-          <a href="/health.html" class="health-link">💓 Health</a>
+          <button class="header-btn" onclick="showPM2Status()">⬛ PM2 Status</button>
+          <button class="header-btn" onclick="showCronList()">📋 Cron List</button>
           <a href="/ebay" class="ebay-link">📦 eBay Scanner</a>
         </div>
       </div>
@@ -38,6 +39,13 @@
         <p class="loading">Loading...</p>
       </div>
     </section>
+  </div>
+
+  <div id="system-info-modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="hideSystemInfoModal()">&times;</span>
+      <div id="system-info-body"></div>
+    </div>
   </div>
 
   <div id="task-details-modal" class="modal">
@@ -298,8 +306,90 @@
     }
 
     window.onclick = function(event) {
-      if (event.target.id === 'task-details-modal') {
-        hideTaskDetailsModal();
+      if (event.target.id === 'task-details-modal') hideTaskDetailsModal();
+      if (event.target.id === 'system-info-modal') hideSystemInfoModal();
+    }
+
+    function hideSystemInfoModal() {
+      document.getElementById('system-info-modal').style.display = 'none';
+    }
+
+    function formatBytes(bytes) {
+      if (!bytes) return '0 MB';
+      return (bytes / 1024 / 1024).toFixed(1) + ' MB';
+    }
+
+    function formatUptime(ms) {
+      if (!ms) return '-';
+      const elapsed = Date.now() - ms;
+      const s = Math.floor(elapsed / 1000);
+      if (s < 60) return s + 's';
+      const m = Math.floor(s / 60);
+      if (m < 60) return m + 'm';
+      const h = Math.floor(m / 60);
+      if (h < 24) return h + 'h ' + (m % 60) + 'm';
+      return Math.floor(h / 24) + 'd ' + (h % 24) + 'h';
+    }
+
+    async function showPM2Status() {
+      const body = document.getElementById('system-info-body');
+      body.innerHTML = '<p style="padding:16px">Loading...</p>';
+      document.getElementById('system-info-modal').style.display = 'block';
+      try {
+        const res = await fetch(API_BASE + '/pm2-status');
+        const apps = await res.json();
+        if (apps.error) throw new Error(apps.error);
+        const statusColor = s => ({ online: '#32d74b', error: '#ff453a', stopped: '#ff453a', waiting: '#f0c040' }[s] || '#888');
+        body.innerHTML = `
+          <h2>⬛ PM2 Status</h2>
+          <table style="width:100%;border-collapse:collapse;margin-top:12px;font-size:13px">
+            <thead>
+              <tr style="text-align:left;border-bottom:1px solid #333;color:#888">
+                <th style="padding:6px 8px">Name</th>
+                <th style="padding:6px 8px">Status</th>
+                <th style="padding:6px 8px">PID</th>
+                <th style="padding:6px 8px">Uptime</th>
+                <th style="padding:6px 8px">Restarts</th>
+                <th style="padding:6px 8px">Memory</th>
+                <th style="padding:6px 8px">CPU</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${apps.map(a => `
+                <tr style="border-bottom:1px solid #222">
+                  <td style="padding:8px">${a.name}</td>
+                  <td style="padding:8px;color:${statusColor(a.status)};font-weight:bold">${a.status}</td>
+                  <td style="padding:8px;color:#888">${a.pid || '-'}</td>
+                  <td style="padding:8px">${formatUptime(a.uptime)}</td>
+                  <td style="padding:8px;color:${a.restarts > 5 ? '#f0c040' : 'inherit'}">${a.restarts}</td>
+                  <td style="padding:8px">${formatBytes(a.memory)}</td>
+                  <td style="padding:8px">${a.cpu}%</td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+          <p style="color:#888;font-size:11px;margin-top:12px">Updated: ${new Date().toLocaleTimeString()}</p>
+        `;
+      } catch (e) {
+        body.innerHTML = `<h2>⬛ PM2 Status</h2><p style="color:#ff453a">Error: ${e.message}</p>`;
+      }
+    }
+
+    async function showCronList() {
+      const body = document.getElementById('system-info-body');
+      body.innerHTML = '<p style="padding:16px">Loading...</p>';
+      document.getElementById('system-info-modal').style.display = 'block';
+      try {
+        const res = await fetch(API_BASE + '/cron-list');
+        const data = await res.json();
+        if (data.error) throw new Error(data.error);
+        body.innerHTML = `
+          <h2>📋 Clawdbot Cron List</h2>
+          <pre style="background:#111;padding:16px;border-radius:8px;font-size:12px;overflow:auto;max-height:70vh;margin-top:12px;white-space:pre-wrap">${data.output}</pre>
+          <p style="color:#888;font-size:11px;margin-top:12px">Updated: ${new Date().toLocaleTimeString()}</p>
+        `;
+      } catch (e) {
+        body.innerHTML = `<h2>📋 Clawdbot Cron List</h2><p style="color:#ff453a">Error: ${e.message}</p>`;
       }
     }
   </script>

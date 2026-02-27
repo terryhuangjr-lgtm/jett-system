@@ -217,6 +217,39 @@ class TaskServer {
       return this.sendJSON(res, { status: healthStatus, checks });
     }
 
+    // GET /api/pm2-status
+    if (pathname === '/api/pm2-status' && req.method === 'GET') {
+      try {
+        const { execSync } = require('child_process');
+        const output = execSync('/home/clawd/.nvm/versions/node/v22.22.0/bin/pm2 jlist', { encoding: 'utf8' });
+        const apps = JSON.parse(output);
+        const formatted = apps.map(app => ({
+          name: app.name,
+          status: app.pm2_env?.status || 'unknown',
+          pid: app.pid || null,
+          restarts: app.pm2_env?.restart_time || 0,
+          uptime: app.pm2_env?.pm_uptime || null,
+          memory: app.monit?.memory || 0,
+          cpu: app.monit?.cpu || 0,
+          version: app.pm2_env?.version || null
+        }));
+        return this.sendJSON(res, formatted);
+      } catch (e) {
+        return this.sendJSON(res, { error: e.message }, 500);
+      }
+    }
+
+    // GET /api/cron-list
+    if (pathname === '/api/cron-list' && req.method === 'GET') {
+      try {
+        const { execSync } = require('child_process');
+        const output = execSync('clawdbot cron list', { encoding: 'utf8', timeout: 10000 });
+        return this.sendJSON(res, { output });
+      } catch (e) {
+        return this.sendJSON(res, { error: e.message }, 500);
+      }
+    }
+
     // eBay Scans API
     const EBAY_CONFIG_FILE = path.join(__dirname, 'ebay-scans-config.json');
     
