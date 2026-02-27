@@ -173,20 +173,22 @@ Credentials:   ~/.claude.json (API key), memory/credentials.md (other)
 ```
 
 ### Active scripts (do not delete or rename):
-- `automation/21m-daily-generator-v2.js` — 21M content generation
-- `automation/21m-content-bank.json` — verified content entries
-- `automation/deploy-21m-tweet.js` — tweet deployment
-- `automation/deploy-podcast-summary.js` — podcast deployment
-- `automation/jett-daily-research.js` — overnight research
+- `automation/21m-daily-generator-v2.js` — 21M content generation (Sonnet-powered)
+- `automation/21m-content-bank.json` — verified content entries (58 entries)
+- `automation/deploy-21m-tweet.js` — tweet deployment (via clawdbot)
+- `automation/deploy-podcast-summary.js` — podcast deployment (via clawdbot)
+- `automation/add-to-content-bank.js` — CLI tool for adding entries
 - `task-manager/server.js` — dashboard API
 - `task-manager/worker.js` — task execution engine
 - `skills/podcast-summary/app.py` — podcast processor
+- `skills/notion-assistant/morning_brief.py` — family morning brief
+- `sports_betting/orchestrator.py` — sports betting scout/pick
 - `ecosystem.config.js` — PM2 process config
 
 ### Deprecated (do not use, do not delete yet):
 - `automation/21m-claude-generator.js` — replaced by v2
-- `automation/21m-sports-real-research.py` — replaced by jett-daily-research.js
-- `21m-sports-generator/` — old module, not wired to anything
+- `automation/21m-sports-real-research.py` — replaced by v2
+- `jett-daily-research.js` — disabled (low quality output)
 
 ---
 

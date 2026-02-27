@@ -53,17 +53,20 @@ The Task Manager runs scheduled jobs at configured times:
 
 | Time | Task | Status |
 |------|------|--------|
-| 00:00 | BTC and Sports Research | ON |
-| 03:00 | Podcast Processing | ON |
-| 04:00 | Bitcoin Tweet Generation | ON |
-| 05:00 | Sports Tweet Generation | ON |
-| 06:30 | Podcast Summary Deployment | ON |
-| 07:30 | Sports Tweet Deployment | ON |
-| 08:00 | Bitcoin Tweet Deployment | ON |
+| 02:00 | Podcast Processing | ON |
+| 07:00 | Bitcoin Tweet Generation | ON |
+| 07:30 | Sports Tweet Generation | ON |
 | 08:00 | Morning Family Brief | ON |
+| 08:30 | Podcast Summary Deployment | ON |
+| 09:00 | System Health Check | ON |
+| 10:00 | eBay Scans Deploy | ON |
 | 10:00 | Sports Betting Scout | ON |
-| 10:00 | eBay Scan Deploy (Wed) | ON |
 | 16:00 | Sports Betting Pick | ON |
+
+### Disabled Tasks
+- BTC and Sports Research (disabled - low quality)
+- Sports Tweet Deployment (disabled - redundant)
+- Bitcoin Tweet Deployment (disabled - redundant)
 
 ---
 
