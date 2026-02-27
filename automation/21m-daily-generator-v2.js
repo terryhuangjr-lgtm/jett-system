@@ -265,7 +265,7 @@ function parseTweets(rawText) {
 
 function postToSlack(message) {
   const clawdbotPath = process.env.CLAWDBOT_PATH || 'clawdbot';
-  const userId = process.env.SLACK_USER_ID || 'U0ABTP704QK';
+  const userId = '#21msports';
 
   // Escape message for shell
   const escaped = message.replace(/'/g, "'\\''");
