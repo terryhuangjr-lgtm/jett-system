@@ -7,12 +7,10 @@
 
 const fs = require('fs');
 const path = require('path');
-const https = require('https');
 const os = require('os');
 
 const SUMMARY_DIR = '/home/clawd/data/podcasts/summaries';
 const DEPLOYED_FILE = '/home/clawd/data/podcasts/deployed.json';
-const CHANNEL_ID = 'C0AEZKJNQBG'; // #podcastsummary
 
 function getSecret(name) {
   const homeDir = os.homedir();
@@ -72,59 +70,91 @@ function getLatestSummary() {
 
 function parseSummary(content) {
   const lines = content.split('\n');
-  
   let title = '';
   let overview = '';
   let keyPoints = [];
-  let bestClips = [];
   let takeaways = [];
-  
-  let currentSection = null;
-  let currentClip = '';
-  
+
+  // Extract title - handles both old format (TITLE:) and new markdown (Episode Title:)
   for (const line of lines) {
     const trimmed = line.trim();
-    if (trimmed.toUpperCase().startsWith('TITLE:')) {
-      title = trimmed.replace(/^TITLE:\s*/i, '');
-    } else if (trimmed.toUpperCase().includes('OVERVIEW')) {
-      currentSection = 'overview';
-    } else if (trimmed.toUpperCase().includes('KEY POINTS')) {
-      currentSection = 'key_points';
-    } else if (trimmed.toUpperCase().includes('BEST CLIPS')) {
-      currentSection = 'clips';
-    } else if (trimmed.toUpperCase().includes('ACTIONABLE') || trimmed.toUpperCase().includes('TAKEAWAYS')) {
-      currentSection = 'takeaways';
-    } else if (/^\d+\.\s+"/.test(trimmed) || /^\d+\.\s+/.test(trimmed)) {
-      // Start of numbered clip item - save previous if exists
-      if (currentClip && currentSection === 'clips') {
-        bestClips.push(currentClip.trim());
-      }
-      currentClip = trimmed + '\n';
-    } else if (currentSection === 'clips' && (trimmed.startsWith('Context:') || trimmed.startsWith('Use:') || trimmed.startsWith('"') || trimmed.length > 0)) {
-      // Continuation of clip (Context, Use lines, or quote continuation)
-      currentClip += trimmed + '\n';
-    } else if (trimmed.startsWith('*') || trimmed.startsWith('-') || trimmed.startsWith('•')) {
-      // Bullet points for key points or takeaways
-      if (currentSection === 'key_points') {
-        keyPoints.push(trimmed);
-      } else if (currentSection === 'takeaways') {
-        takeaways.push(trimmed);
-      }
-    } else if (currentSection === 'overview' && trimmed && !trimmed.startsWith('=') && trimmed.length > 10) {
-      overview += trimmed + ' ';
+    if (trimmed.match(/^Title:\s*/i) || trimmed.match(/\*\*Episode Title\*\*:/i)) {
+      title = trimmed.replace(/^.*Title\*?\*?:\s*/i, '').replace(/\*\*/g, '').trim();
+      if (title) break;
     }
   }
-  
-  // Don't forget last clip
-  if (currentClip && currentSection === 'clips') {
-    bestClips.push(currentClip.trim());
+
+  // Extract executive summary / overview
+  let inSummary = false;
+  for (const line of lines) {
+    const trimmed = line.trim();
+    if (trimmed.match(/EXECUTIVE SUMMARY|OVERVIEW/i)) {
+      inSummary = true;
+      continue;
+    }
+    if (inSummary && trimmed.startsWith('##')) {
+      break;
+    }
+    if (inSummary && trimmed && !trimmed.startsWith('#') && !trimmed.startsWith('---') && trimmed.length > 20) {
+      overview += trimmed + ' ';
+      if (overview.length > 400) break;
+    }
   }
-  
+
+  // Extract key points / insights
+  let inKeyPoints = false;
+  for (const line of lines) {
+    const trimmed = line.trim();
+    if (trimmed.match(/KEY TOPICS|KEY POINTS|INSIGHTS/i)) {
+      inKeyPoints = true;
+      continue;
+    }
+    if (inKeyPoints && trimmed.startsWith('## ') && !trimmed.match(/KEY/i)) {
+      break;
+    }
+    if (inKeyPoints && trimmed.match(/^###\s+\d+\./)) {
+      const point = trimmed.replace(/^###\s+\d+\.\s*/, '').replace(/\*\*/g, '').trim();
+      if (point) keyPoints.push(`• ${point}`);
+      if (keyPoints.length >= 5) break;
+    }
+  }
+
+  // Extract takeaways
+  let inTakeaways = false;
+  for (const line of lines) {
+    const trimmed = line.trim();
+    if (trimmed.match(/TAKEAWAY|ACTION|CONCLUSION/i)) {
+      inTakeaways = true;
+      continue;
+    }
+    if (inTakeaways && trimmed.startsWith('## ')) break;
+    if (inTakeaways && (trimmed.startsWith('-') || trimmed.startsWith('*') || trimmed.startsWith('•') || trimmed.match(/^\d+\./))) {
+      const point = trimmed.replace(/^[-*•\d.]\s*/, '').replace(/\*\*/g, '').trim();
+      if (point && point.length > 10) takeaways.push(`• ${point}`);
+      if (takeaways.length >= 3) break;
+    }
+  }
+
+  // Fallbacks if parsing finds nothing
+  if (!title) title = 'Latest Episode';
+  if (!overview) {
+    // Just grab first substantial paragraph
+    for (const line of lines) {
+      const trimmed = line.trim();
+      if (trimmed.length > 100 && !trimmed.startsWith('#') && !trimmed.startsWith('=')) {
+        overview = trimmed.substring(0, 400);
+        break;
+      }
+    }
+  }
+  if (keyPoints.length === 0) keyPoints = ['• See full summary for details'];
+  if (takeaways.length === 0) takeaways = ['• See full summary for details'];
+
   return {
-    title: title,
-    overview: overview.trim(),
+    title,
+    overview: overview.trim().substring(0, 400),
     keyPoints: keyPoints.slice(0, 5),
-    bestClips: bestClips.slice(0, 3),
+    bestClips: [],
     takeaways: takeaways.slice(0, 3)
   };
 }
@@ -152,43 +182,22 @@ ${takeaways.join('\n')}
 
 async function postToSlack(message) {
   return new Promise((resolve, reject) => {
-    const SLACK_BOT_TOKEN = getSecret('SLACK_BOT_TOKEN');
-    
-    const postData = JSON.stringify({
-      channel: CHANNEL_ID,
-      text: message,
-      mrkdwn: true
-    });
-    
-    const req = https.request({
-      hostname: 'slack.com',
-      path: '/api/chat.postMessage',
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${SLACK_BOT_TOKEN}`,
-        'Content-Length': Buffer.byteLength(postData)
-      }
-    }, (res) => {
-      let data = '';
-      res.on('data', chunk => data += chunk);
-      res.on('end', () => {
-        try {
-          const result = JSON.parse(data);
-          if (result.ok) {
-            resolve(result);
-          } else {
-            reject(new Error(result.error || 'Slack error'));
-          }
-        } catch (e) {
-          reject(e);
+    const CLAWDBOT = '/home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot';
+    const { exec } = require('child_process');
+    const escaped = message.replace(/"/g, '\\"').replace(/`/g, '\\`');
+    exec(
+      `${CLAWDBOT} message send --channel slack --target U0ABTP704QK --message "${escaped}" --json`,
+      { timeout: 15000 },
+      (error, stdout, stderr) => {
+        if (error) {
+          console.error('✗ Failed to post:', stderr || error.message);
+          reject(error);
+        } else {
+          console.log('✓ Podcast summary posted to Slack');
+          resolve(stdout);
         }
-      });
-    });
-    
-    req.on('error', reject);
-    req.write(postData);
-    req.end();
+      }
+    );
   });
 }
 
