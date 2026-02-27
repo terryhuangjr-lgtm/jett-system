@@ -165,27 +165,34 @@ async function parseResearchResults(jettResponse, topic, category) {
 
   // Clean up the response
   let cleaned = jettResponse
-    .replace(/\*\*/g, '')  // Remove bold markers
-    .replace(/Note:.*$/si, '')  // Remove notes at end
+    .replace(/\*\*/g, '')         // Remove bold markers (**text**)
+    .replace(/^-{3,}\s*$/gm, '')  // Remove --- separator lines
+    .replace(/Note:.*$/si, '')    // Remove trailing note sections
     .trim();
 
-  // Split by numbered facts
-  const segments = cleaned.split(/\d+\.\s+/).filter(s => s.trim().length > 20);
+  // Split by "Fact:" or "Fact N:" labels (Ollama outputs both numbered and unnumbered)
+  const segments = cleaned
+    .split(/(?:^|\n)Fact\s*\d*\s*:/i)
+    .filter(s => {
+      const t = s.trim();
+      // Must have financial/date data — filters out preamble/intro paragraphs
+      return t.length > 20 && /\$\d|\d{4}|million|billion|percent/i.test(t);
+    });
 
   for (const segment of segments.slice(0, 3)) {
-    // Extract source URL
+    // Extract source URL — Ollama uses [Source: Text - https://url] or bare URLs
     let source = '';
-    const urlMatch = segment.match(/\[Source:\s*(https?:\/\/[^\]]+)\]/i) ||
-                     segment.match(/https?:\/\/[^\s\)]+/);
-    if (urlMatch) {
-      source = urlMatch[0];
-    }
+    const urlMatch =
+      segment.match(/\[Source:[^\]]*?(https?:\/\/[^\]\s]+)\]/) || // [Source: text - url]
+      segment.match(/\]\((https?:\/\/[^\)]+)\)/) ||               // markdown [text](url)
+      segment.match(/https?:\/\/[^\s\)\]]+/);                     // bare URL
+    if (urlMatch) source = urlMatch[1] || urlMatch[0];
 
     // Clean up the fact text
     let fact = segment
-      .replace(/\[Source:\s*[^\]]+\]/gi, '')
-      .replace(/\[Source: [^\]]+\]/gi, '')
-      .replace(/\([^\)]+\)/g, '')
+      .replace(/\[Source:[^\]]*\]/gi, '')    // remove [Source: any text]
+      .replace(/\[[^\]]+\]\([^\)]+\)/g, '')  // remove markdown [text](url)
+      .replace(/https?:\/\/\S+/g, '')        // remove bare URLs
       .replace(/^[^\w]*/, '')
       .trim();
 
@@ -194,7 +201,7 @@ async function parseResearchResults(jettResponse, topic, category) {
         topic,
         category,
         content: fact,
-        source: source,
+        source,
         quality_score: 7,
         created_at: new Date().toISOString()
       });
@@ -210,7 +217,7 @@ async function addToDatabase(items, dryRun = false) {
     return 0;
   }
 
-  const added = 0;
+  let added = 0;
   for (const item of items) {
     if (dryRun) {
       console.log(`  [DRY-RUN] Would add: ${item.content.substring(0, 50)}...`);
@@ -232,24 +239,6 @@ async function addToDatabase(items, dryRun = false) {
   }
 
   return items.length;
-}
-
-async function selectNextTopic() {
-  const lastTopic = await getLastResearchedTopic();
-  let rotationIndex = 0;
-
-  for (let i = 0; i < TOPIC_ROTATION.length; i++) {
-    const cat = TOPIC_ROTATION[i];
-    if (cat.topics.includes(lastTopic)) {
-      rotationIndex = (i + 1) % TOPIC_ROTATION.length;
-      break;
-    }
-  }
-
-  const selected = TOPIC_ROTATION[rotationIndex];
-  const topic = selected.topics[Math.floor(Math.random() * selected.topics.length)];
-
-  return { topic, category: selected.category };
 }
 
 async function selectTopic(categoryPool) {
@@ -298,6 +287,142 @@ async function buildTopicList(args) {
   return { topics, dryRun };
 }
 
+// ─── Content Bank Wiring ──────────────────────────────────────────────────────
+
+const CONTENT_BANK_PATH = path.join(__dirname, '21m-content-bank.json');
+
+// Approximate BTC prices by year — consistent with existing content bank entries
+const BTC_PRICE_BY_YEAR = {
+  2026: 95000, 2025: 90000, 2024: 65000, 2023: 27000,
+  2022: 20000, 2021: 46000, 2020: 10000, 2019: 3500,
+  2018: 8000,  2017: 2500,  2016: 600,   2015: 250,
+  2014: 500,   2013: 100,   2012: 13,    2011: 5
+};
+function getBtcPriceForYear(year) { return BTC_PRICE_BY_YEAR[year] || 0; }
+
+// Maps research category names → content bank category names
+const SPORTS_TO_BANK_CATEGORY = {
+  historic_contracts: 'historic_contract',
+  mega_contracts:     'historic_contract',
+  nfl_qb_contracts:  'historic_contract',
+  nba_contracts:     'historic_contract',
+  nil_contracts:     'nil_contract'
+};
+
+/**
+ * Second Ollama call: extract structured contract data from raw research text.
+ * Returns null if no usable contract found.
+ */
+async function extractStructuredFact(researchText, category) {
+  const bankCategory = SPORTS_TO_BANK_CATEGORY[category];
+  if (!bankCategory) return null; // BTC categories don't map to content bank
+
+  const prompt = `Extract structured contract data from this sports research. Return ONLY valid JSON, nothing else.
+
+Research text:
+${researchText}
+
+Return this exact JSON shape:
+{
+  "found": true or false,
+  "athlete": "Full athlete name",
+  "sport": "NFL, NBA, NHL, MLB, NCAA Football, or NCAA Basketball",
+  "year": <4-digit year the contract was signed, as integer>,
+  "contract_value_usd": <total contract value in dollars as integer>,
+  "contract_years": <number of years, as integer, or null>,
+  "source_url": "url string or empty string"
+}
+
+Set "found" to false if you cannot identify a specific athlete with a verified contract value and signing year. Do not guess.`;
+
+  try {
+    const res = await fetch('http://localhost:11434/api/generate', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ model: 'minimax-m2.5:cloud', prompt, stream: false })
+    });
+    const data = await res.json();
+    const text = (data.response || '').trim();
+
+    const jsonMatch = text.match(/\{[\s\S]+\}/);
+    if (!jsonMatch) return null;
+
+    const parsed = JSON.parse(jsonMatch[0]);
+    if (!parsed.found || !parsed.athlete || !parsed.year || !parsed.contract_value_usd) return null;
+
+    const btcPrice  = getBtcPriceForYear(parsed.year);
+    const isNil     = bankCategory === 'nil_contract';
+    const pct       = isNil ? 0.10 : 0.05;
+    const pctLabel  = isNil ? '10%' : '5%';
+    const dealLabel = isNil ? 'NIL deal' : 'contract';
+    const btcAmt    = btcPrice > 0 ? Math.round((parsed.contract_value_usd * pct) / btcPrice) : 0;
+    const contractM = (parsed.contract_value_usd / 1000000).toFixed(1);
+
+    const verifiedFact = btcPrice > 0
+      ? `${parsed.athlete} signed a $${contractM}M ${dealLabel} in ${parsed.year} when BTC was $${btcPrice.toLocaleString()}. ${pctLabel} allocation = ${btcAmt.toLocaleString()} BTC.`
+      : `${parsed.athlete} signed a $${contractM}M ${dealLabel} in ${parsed.year} (before Bitcoin).`;
+
+    const entry = {
+      category:        bankCategory,
+      athlete:         parsed.athlete,
+      sport:           parsed.sport,
+      year:            parsed.year,
+      contract_value:  parsed.contract_value_usd,
+      btc_price_then:  btcPrice,
+      btc_allocation:  btcAmt,
+      verified_fact:   verifiedFact,
+      source:          parsed.source_url || '',
+      used_dates:      [],
+      cooldown_days:   90
+    };
+    if (parsed.contract_years) entry.contract_years = parsed.contract_years;
+
+    return entry;
+  } catch (e) {
+    console.log(`  ⚠ Structured extraction error: ${e.message}`);
+    return null;
+  }
+}
+
+/**
+ * Append a structured entry to 21m-content-bank.json.
+ * Skips if the same athlete+year already exists.
+ */
+function addToContentBank(entry, dryRun) {
+  try {
+    const bank = JSON.parse(fs.readFileSync(CONTENT_BANK_PATH, 'utf8'));
+
+    const duplicate = bank.entries.some(e =>
+      e.athlete && e.athlete.toLowerCase() === entry.athlete.toLowerCase() &&
+      e.year === entry.year
+    );
+    if (duplicate) {
+      console.log(`  ⚠ Already in content bank: ${entry.athlete} (${entry.year}), skipping`);
+      return false;
+    }
+
+    const maxId = Math.max(...bank.entries.map(e => e.id || 0));
+    entry.id = maxId + 1;
+
+    if (dryRun) {
+      console.log(`  [DRY-RUN] Would add to content bank: ${entry.athlete} (${entry.sport}, ${entry.year})`);
+      console.log(`    → ${entry.verified_fact}`);
+      return true;
+    }
+
+    bank.entries.push(entry);
+    bank.last_updated = new Date().toISOString().split('T')[0];
+    fs.writeFileSync(CONTENT_BANK_PATH, JSON.stringify(bank, null, 2));
+    console.log(`  ✓ Added to content bank: ${entry.athlete} → ID ${entry.id}`);
+    return true;
+  } catch (e) {
+    console.log(`  ✗ Content bank write failed: ${e.message}`);
+    return false;
+  }
+}
+
+// ──────────────────────────────────────────────────────────────────────────────
+
 async function main() {
   const args = process.argv.slice(2);
   const { topics, dryRun } = await buildTopicList(args);
@@ -323,6 +448,21 @@ async function main() {
     console.log(`   Found ${items.length} verified items:\n`);
     const added = await addToDatabase(items, dryRun);
     totalAdded += added;
+
+    // Wire sports research into content bank
+    if (SPORTS_TO_BANK_CATEGORY[category]) {
+      console.log('\n   📋 Extracting structured entry for content bank...');
+      // Pass cleaned facts only — raw response confuses the extraction model
+      const factsText = items.length > 0
+        ? items.map(i => i.content).join('\n')
+        : response.replace(/\*\*/g, '').replace(/Note:.*$/si, '').trim();
+      const structured = await extractStructuredFact(factsText, category);
+      if (structured) {
+        addToContentBank(structured, dryRun);
+      } else {
+        console.log('  ⚠ Could not extract structured contract data (no athlete/value/year found)');
+      }
+    }
 
     await saveResearchLog(topic, category, added);
 
