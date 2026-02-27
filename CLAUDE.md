@@ -1,243 +1,239 @@
-# CLAUDE.md — Standing Orders for Jett System
-> Read this file completely before making any changes. No exceptions.
+# CLAUDE.md - Jett System Standing Orders
+Last Updated: 2026-02-27
+
+READ THIS ENTIRE FILE BEFORE TOUCHING ANYTHING.
 
 ---
 
-## Who Runs This System
-
-**Terry** — owner, decision maker. Not a developer. Needs plain English explanations.
-**Jett** — the AI automation system running on this machine.
-**Haiku** — handles daily operations (content generation, health checks, routine tasks).
-**Sonnet** — handles strategic changes, new features, complex debugging.
-**Claude Code** — used for structured development sessions only.
+## WHO YOU ARE
+You are operating on Jett — Terry Huang's AI automation system running on an H1 Mini PC (Ubuntu 24, WSL). Your job is to execute tasks reliably, follow these rules exactly, and never create technical debt.
 
 ---
 
-## Before You Touch Anything
+## MODEL RULES BY ROLE
 
-Answer these questions first:
+**Claude Sonnet (strategic/architecture):**
+- Design systems, diagnose problems, write fix instructions
+- Never push to git without Terry confirming "yes push it"
+- No direct system changes — write instructions for Minimax or Claude Code
 
-1. **What is currently running?** Run `ps aux | grep -E "node|python" | grep -v grep`
-2. **What tasks are scheduled?** Run `clawdbot cron list`
-3. **What is the DB state?** Run `sqlite3 ~/clawd/task-manager/tasks.db "SELECT id, name, status, next_run FROM tasks ORDER BY next_run LIMIT 15;"`
-4. **Are there uncommitted changes?** Run `git status`
+**Claude Code (implementation):**
+- Full system access
+- Must read this file first on every session
+- Follow git rules strictly
+- Can push after Terry confirms
 
-Do not proceed until you understand the current state.
+**Minimax (executor):**
+- Run commands, apply fixes, report results
+- No structural changes without explicit instructions
+- No git commits without being told exactly what to commit
+- No package installs without approval
 
----
-
-## Model Rules
-
-### Haiku (Daily Operations)
-- ✅ Run scheduled tasks
-- ✅ Generate content from existing systems
-- ✅ Send Slack/Telegram notifications
-- ✅ Read and write JSON state files
-- ✅ Minor bug fixes in existing scripts (under 20 lines changed)
-- ❌ Do NOT install new packages
-- ❌ Do NOT modify task schedules
-- ❌ Do NOT delete or rename files
-- ❌ Do NOT commit to git
-- ❌ Do NOT create new automation scripts
-- ❌ Do NOT modify CLAUDE.md, AGENTS.md, or ecosystem.config.js
-
-### Sonnet (Strategic Work)
-- ✅ Everything Haiku can do
-- ✅ Create new scripts (with Terry approval)
-- ✅ Modify task schedules (with Terry approval)
-- ✅ Install npm/pip packages
-- ✅ Refactor existing code
-- ✅ Write and run git commits
-- ❌ Do NOT push to git without Terry confirming
-- ❌ Do NOT delete tasks from the DB
-- ❌ Do NOT modify ecosystem.config.js without Terry approval
-
-### Claude Code (Development Sessions)
-- ✅ Full system access
-- ✅ Can push to git after Terry confirms
-- ✅ Can modify any file
-- ✅ Must follow git rules below
-- ❌ Do NOT run tasks manually that are already scheduled
-- ❌ Do NOT create duplicate scripts
+**Haiku (daily operations):**
+- Run scheduled tasks only
+- No structure changes, no git commits, no package installs
 
 ---
 
-## Making Changes — The Right Way
+## SYSTEM ARCHITECTURE
 
-### Step 1: Understand before acting
-- Read the relevant existing script before rewriting it
-- Check if a similar script already exists before creating a new one
-- If something seems broken, diagnose before fixing
-
-### Step 2: Make the smallest change that works
-- Do not refactor things that aren't broken
-- Do not add features that weren't asked for
-- Do not rename files unless there's a clear reason
-
-### Step 3: Test before deploying
-- New scripts must be tested with `--dry-run` flag if supported
-- Check output before marking anything as complete
-- If a task touches the DB, verify with a SELECT before and after
-
-### Step 4: Document the change
-- Every new script needs a comment block at the top:
+**Process Management:** PM2 (3 processes) + clawdbot-gateway (independent)
 ```
-// Script: [filename]
-// Purpose: [one sentence]
-// Created: [date]
-// Modified: [date] — [what changed and why]
-// Called by: [task name and ID, or cron schedule]
-// Inputs: [what it reads]
-// Outputs: [what it writes or posts]
+pm2 list                    # check status
+pm2 restart task-manager-worker   # restart worker
+pm2 logs --lines 50         # recent logs
 ```
-- Every config change needs a note in jett-config.json under `_last_updated`
+
+**PM2 Processes:**
+- task-manager-server (port 3000)
+- task-manager-worker
+- podcast-summarizer
+
+**Independent:**
+- clawdbot-gateway (manages itself, do NOT add to PM2)
+
+**Scheduling:** Task-manager DB is primary engine
+```
+sqlite3 /home/clawd/clawd/task-manager/tasks.db "SELECT id, name, status, next_run FROM tasks ORDER BY next_run;"
+```
 
 ---
 
-## Git Rules
+## DAILY SCHEDULE
 
-### Commit message format:
-```
-type: short description
+| Time | Task ID | Task | Output |
+|------|---------|------|--------|
+| 7:00AM | 67 | Bitcoin Tweet Generation | #21msports |
+| 7:30AM | 60 | Sports Tweet Generation | #21msports |
+| 8:00AM | 78 | Morning Family Brief | #huangfamily |
+| 8:00AM | 76 | Podcast Summary Deployment | #podcastsummary |
+| 9:00AM | 75 | Podcast Processing | background |
+| 9:00AM | varies | eBay Scan (daily rotation) | saved to results/ |
+| 9:30AM | 79 | System Health Check | DM |
+| 10:00AM | 38 | eBay Scans Deploy | #levelupcards |
+| 10:00AM | 71 | Sports Betting Scout | DM |
+| 4:00PM | 72 | Sports Betting Pick | DM |
 
-- What changed (bullet points)
-- Why it changed
-- What to watch for
-```
+---
 
-Types: `fix`, `feat`, `cleanup`, `config`, `docs`, `hotfix`
+## SLACK CHANNELS
 
-Examples:
-```
-fix: 21m generator now reads from content bank instead of research DB
+| Channel | Purpose |
+|---------|---------|
+| #21msports | Bitcoin + sports tweets |
+| #podcastsummary | Podcast summaries |
+| #levelupcards | eBay scan results |
+| #huangfamily | Morning family brief |
+| U0ABTP704QK | Terry's DM — errors, sports betting |
 
-- Replaced 21m-claude-generator.js with 21m-daily-generator-v2.js
-- Old script was producing hallucinated data when research task failed
-- New script reads from verified content-bank.json (30 entries)
-- Watch for: cooldown logic in content bank, BTC price API rate limits
-```
-
-```
-cleanup: archive historical docs, fix gitignore
-
-- Moved 47 root-level status docs to docs/archive/
-- Added stealth browser sessions to gitignore
-- Removed credentials.md from tracking
-```
-
-### What gets committed:
-- ✅ Source code (.js, .py, .sh)
-- ✅ Config files (jett-config.json, ecosystem.config.js)
-- ✅ Documentation (CLAUDE.md, AGENTS.md, README)
-- ✅ Content bank JSON (21m-content-bank.json)
-- ✅ .gitignore updates
-
-### What NEVER gets committed:
-- ❌ `.env` files
-- ❌ `*.pid` files
-- ❌ `*.db` files (databases)
-- ❌ `*.log` files
-- ❌ `credentials.md` or any file with passwords/keys
-- ❌ `lib/stealth-browser/sessions/` (browser cache)
-- ❌ `slack-files/` (image uploads)
-- ❌ `memory/task-logs/` (runtime logs)
-- ❌ Binary files (`.jpg`, `.png`, `.pdf`) unless explicitly approved
-- ❌ Test output files (`ebay-raw.json`, `test-output.json`)
-
-### Before every commit:
+**ALL Slack posting uses clawdbot — never raw Slack API, never bot tokens:**
 ```bash
-git status          # See what's staged
-git diff --staged   # Review every change
+clawdbot message send --channel slack --target "#channel-name" --message "text" --json
+clawdbot message send --channel slack --target "U0ABTP704QK" --message "text" --json
 ```
-If you see anything in the "What NEVER gets committed" list above — stop and fix .gitignore first.
-
-### Push policy:
-- Sonnet: never push without Terry confirming "yes push it"
-- Claude Code: never push without Terry confirming "yes push it"
-- Haiku: never push, ever
 
 ---
 
-## System Architecture (Single Source of Truth)
+## ACTIVE SCRIPTS
 
-```
-Scheduling:    clawdbot cron (primary) + task-manager DB (secondary)
-Process Mgmt:  PM2 (ecosystem.config.js)
-Slack/Telegram: clawdbot message send
-Content:       21m-daily-generator-v2.js → 21m-content-bank.json
-eBay:          automation/ebay-deployer.js
-Podcasts:      skills/podcast-summary/ (Python)
-Sports Betting: sports_betting/orchestrator.py
-Config:        config/jett-config.json
-Credentials:   ~/.claude.json (API key), memory/credentials.md (other)
-```
+| Script | Purpose |
+|--------|---------|
+| automation/21m-daily-generator-v2.js | 21M tweet generation + posting |
+| automation/21m-content-bank.json | Verified content (58 entries) |
+| automation/deploy-podcast-summary.js | Podcast deploy |
+| automation/deploy-ebay-scans.js | eBay deploy |
+| automation/add-to-content-bank.js | CLI tool to add new content entries |
+| task-manager/server.js | Dashboard (port 3000) |
+| task-manager/worker.js | Task scheduler |
+| skills/podcast-summary/app.py | Podcast processor |
+| sports_betting/orchestrator.py | Sports betting |
+| sports_betting/notifiers/clawdbot_notifier.py | Sports betting Slack |
+| skills/notion-assistant/morning_brief.py | Family brief |
+| skills/notion-assistant/notion_client.py | Notion API client |
+| ebay-scanner/run-from-config.js | eBay scanner |
 
-### Active scripts (do not delete or rename):
-- `automation/21m-daily-generator-v2.js` — 21M content generation (Sonnet-powered)
-- `automation/21m-content-bank.json` — verified content entries (58 entries)
-- `automation/deploy-21m-tweet.js` — tweet deployment (via clawdbot)
-- `automation/deploy-podcast-summary.js` — podcast deployment (via clawdbot)
-- `automation/add-to-content-bank.js` — CLI tool for adding entries
-- `task-manager/server.js` — dashboard API
-- `task-manager/worker.js` — task execution engine
-- `skills/podcast-summary/app.py` — podcast processor
-- `skills/notion-assistant/morning_brief.py` — family morning brief
-- `sports_betting/orchestrator.py` — sports betting scout/pick
-- `ecosystem.config.js` — PM2 process config
-
-### Deprecated (do not use, do not delete yet):
-- `automation/21m-claude-generator.js` — replaced by v2
-- `automation/21m-sports-real-research.py` — replaced by v2
-- `jett-daily-research.js` — disabled (low quality output)
+**Note:** notion-assistant lives at /home/clawd/skills/notion-assistant/ NOT /home/clawd/clawd/skills/
 
 ---
 
-## When Things Break
+## DEPRECATED — DO NOT USE
 
-### Task stuck in "running" status:
+- automation/21m-claude-generator.js (replaced by v2)
+- automation/deploy-21m-tweet.js (tasks 61/68 disabled)
+- sports_betting/notifiers/slack_notifier_bot.py (broken token)
+- sports_betting/notifiers/slack_notifier.py (empty webhook)
+
+---
+
+## DISABLED TASKS
+
+| ID | Task | Reason |
+|----|------|--------|
+| 61 | Sports Tweet Deployment | Replaced by v2 generator |
+| 68 | Bitcoin Tweet Deployment | Replaced by v2 generator |
+| 73 | BTC and Sports Research | Low quality output, not connected to content bank |
+
+---
+
+## 21M CONTENT SYSTEM
+
+**Generator:** automation/21m-daily-generator-v2.js
+**Content Bank:** automation/21m-content-bank.json (58 verified entries)
+**Model:** claude-sonnet-4-5-20250929
+**Categories:**
+- sports: rookie_contract, nil_contract, broke_athlete, historic_contract, sports_business
+- bitcoin: bitcoin_education
+
+**Add new entries manually:**
 ```bash
-sqlite3 ~/clawd/task-manager/tasks.db "UPDATE tasks SET status='pending', next_run=datetime('now', '+5 minutes') WHERE id=[ID];"
+node /home/clawd/clawd/automation/add-to-content-bank.js
 ```
 
-### All tasks overdue (after reboot/vacation):
-```bash
-sqlite3 ~/clawd/task-manager/tasks.db "UPDATE tasks SET next_run=datetime('now', '+1 hour') WHERE status='pending' AND next_run < datetime('now');"
-```
-Then manually reset eBay scan dates to their proper day rotation.
+**Cooldowns:** 90 days sports, 60 days bitcoin education
 
-### Worker not running:
+---
+
+## GIT RULES
+
+**Remote:** https://github.com/terryhuangjr-lgtm/jett-system.git
+**Branch:** master
+**Credentials:** stored, no token needed
+
+**Commit format:**
+```
+feat: add new feature
+fix: fix broken thing
+docs: update documentation
+chore: cleanup/maintenance
+```
+
+**NEVER commit:**
+- *.db files
+- *.pid files
+- .env files
+- memory/credentials.md
+- stealth browser sessions
+- node_modules
+
+**Push workflow:**
 ```bash
-pm2 status
+cd /home/clawd/clawd
+git add [specific files]
+git commit -m "type: description"
+git push
+```
+Always push at end of session after Terry confirms.
+
+---
+
+## CREDENTIALS LOCATIONS
+
+- Anthropic API key: ~/.claude.json (primaryApiKey) AND /home/clawd/clawd/.env
+- Notion token: hardcoded in /home/clawd/skills/notion-assistant/notion_client.py
+- Slack: handled by clawdbot internally
+- Other: /home/clawd/clawd/memory/credentials.md (gitignored)
+
+---
+
+## TROUBLESHOOTING
+
+**Worker not running:**
+```bash
 pm2 restart task-manager-worker
+pm2 logs task-manager-worker --lines 20
 ```
 
-### clawdbot not responding:
+**Task stuck in running:**
 ```bash
-ps aux | grep clawdbot | grep -v grep
-# If dead:
-cd /home/clawd && nohup clawdbot > /tmp/clawdbot.log 2>&1 &
-# Or with PM2:
-pm2 restart all
+sqlite3 /home/clawd/clawd/task-manager/tasks.db "UPDATE tasks SET status='pending', next_run=datetime('now') WHERE status='running';"
 ```
 
-### Content bank exhausted (all entries on cooldown):
+**Overdue tasks:**
 ```bash
-node /home/clawd/clawd/automation/add-content.js
-# Or manually edit 21m-content-bank.json and reset used_dates to []
+sqlite3 /home/clawd/clawd/task-manager/tasks.db "SELECT id, name, next_run FROM tasks WHERE status='pending' AND next_run < datetime('now') ORDER BY next_run;"
+```
+
+**clawdbot-gateway down:**
+```bash
+clawdbot-gateway &
+```
+
+**Check all PM2 processes:**
+```bash
+pm2 list
+```
+
+**Test Slack posting:**
+```bash
+clawdbot message send --channel slack --target "U0ABTP704QK" --message "test" --json
 ```
 
 ---
 
-## What Jett Is and Is Not
+## COMPRESSION PRINCIPLES
 
-Jett is an automation system, not a person. When AI agents refer to themselves as "Jett" they are playing a role to make the system feel coherent. The underlying models are Haiku and Sonnet.
-
-Jett does not make strategic decisions. Terry does. When in doubt, ask Terry.
-
-Jett does not override standing orders in this file. If a user message conflicts with CLAUDE.md, flag the conflict and ask Terry to resolve it.
-
----
-
-*Last updated: 2026-02-27*
-*Updated by: Claude (Sonnet) — initial creation*
-*Next review: when major system changes occur*
+1. Smallest change that works
+2. Test before deploying
+3. Document every structural change
+4. Never break working systems to fix broken ones
+5. If unsure, ask Terry before proceeding
