@@ -43,7 +43,7 @@ from datetime import datetime
 conn = sqlite3.connect('${DB_PATH}')
 cursor = conn.cursor()
 
-topics = ${JSON.stringify(topics)}
+topics = ${JSON.stringify(topics).replace(/\bnull\b/g, 'None')}
 placeholders = ','.join(['?' for _ in topics])
 
 cursor.execute(f'SELECT id, topic, category FROM content_ideas WHERE topic IN ({placeholders})', topics)

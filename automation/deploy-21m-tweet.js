@@ -7,9 +7,7 @@
 const fs = require('fs');
 const { execSync } = require('child_process');
 const path = require('path');
-const https = require('https');
 const db = require(path.join(__dirname, 'db-bridge.js'));
-const { getSecret } = require(path.join(__dirname, '..', 'lib', 'secrets-manager.js'));
 
 // Can pass multiple potential filenames - will use the first that exists
 const POTENTIAL_FILES = process.argv.slice(2).filter(arg => !arg.startsWith('--'));
@@ -191,44 +189,30 @@ try {
     process.exit(0);
   }
 
-  // Post to Slack channel using Slack Web API directly
-  const SLACK_BOT_TOKEN = getSecret('SLACK_BOT_TOKEN');
-  const channelId = 'C0ABK99L0B1'; // #21msports channel ID
-
-  const postData = JSON.stringify({
-    channel: channelId,
-    text: message
-  });
-
-  const result = await new Promise((resolve, reject) => {
-    const req = https.request({
-      hostname: 'slack.com',
-      path: '/api/chat.postMessage',
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${SLACK_BOT_TOKEN}`,
-        'Content-Length': Buffer.byteLength(postData)
-      }
-    }, (res) => {
-      let data = '';
-      res.on('data', chunk => data += chunk);
-      res.on('end', () => {
-        try {
-          resolve(JSON.parse(data));
-        } catch (e) {
-          reject(new Error(`Failed to parse Slack response: ${e.message}`));
+  // Post to Slack channel using clawdbot
+  function postToSlack(msg) {
+    return new Promise((resolve, reject) => {
+      const CLAWDBOT = '/home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot';
+      const escaped = msg.replace(/"/g, '\\"').replace(/`/g, '\\`');
+      const { exec } = require('child_process');
+      exec(
+        `${CLAWDBOT} message send --channel slack --target U0ABTP704QK --message "${escaped}" --json`,
+        { timeout: 15000 },
+        (error, stdout, stderr) => {
+          if (error) {
+            console.error('✗ Failed to post:', stderr || error.message);
+            reject(error);
+          } else {
+            console.log('✓ Tweet options posted to #21msports');
+            resolve(stdout);
+          }
         }
-      });
+      );
     });
+  }
 
-    req.on('error', reject);
-    req.write(postData);
-    req.end();
-  });
-
-  if (result.ok) {
-    console.log('✓ Tweet options posted to #21msports');
+  try {
+    await postToSlack(message);
 
     // Mark content as published in database (so it won't be reused)
     if (data.sources && data.sources.database_id) {
@@ -246,8 +230,8 @@ try {
     }
 
     console.log('✓ Deployment complete with verified sources\n');
-  } else {
-    console.error('✗ Failed to post:', result.error || 'Unknown error');
+  } catch (postError) {
+    console.error('Error posting to Slack:', postError.message);
     process.exit(1);
   }
 
