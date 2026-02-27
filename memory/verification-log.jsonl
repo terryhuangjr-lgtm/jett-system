@@ -130,3 +130,9 @@
 {"timestamp":"2026-02-18T12:26:56.389Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-bitcoin-verified-content.json"]}
 {"timestamp":"2026-02-19T14:53:57.543Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content.json"]}
 {"timestamp":"2026-02-19T14:53:57.926Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-bitcoin-verified-content.json"]}
+{"timestamp":"2026-02-27T06:13:22.354Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content.json"]}
+{"timestamp":"2026-02-27T06:13:22.644Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-bitcoin-verified-content.json"]}
+{"timestamp":"2026-02-27T12:30:23.386Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content.json"]}
+{"timestamp":"2026-02-27T13:00:23.828Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-bitcoin-verified-content.json"]}
+{"timestamp":"2026-02-27T13:42:04.711Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content.json"]}
+{"timestamp":"2026-02-27T13:58:50.464Z","passed":true,"args":["--content-file=/home/clawd/clawd/memory/21m-sports-verified-content.json"]}
