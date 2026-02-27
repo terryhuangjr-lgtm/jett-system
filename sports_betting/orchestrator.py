@@ -500,7 +500,9 @@ class BettingOrchestrator:
 
         scores = pick['analysis']['scores']
         for factor, data in scores.items():
-            score_val = data['score']
+            score_val = data.get('score')
+            if score_val is None:
+                continue
             bar_len = int(abs(score_val))
             bar_char = '█' if score_val >= 0 else '▓'
             bar = bar_char * bar_len

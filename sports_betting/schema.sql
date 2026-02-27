@@ -47,7 +47,18 @@ CREATE TABLE player_stats (
     injury_description TEXT,
     impact_score REAL DEFAULT 5.0,
     last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    ppg REAL DEFAULT 0,
+    mpg REAL DEFAULT 0,
+    per REAL DEFAULT 0,
+    is_starter INTEGER DEFAULT 0,
     UNIQUE(player_name, team_name, last_updated)
+);
+
+CREATE TABLE IF NOT EXISTS watch_list (
+    game_id TEXT NOT NULL,
+    date DATE NOT NULL,
+    confidence REAL DEFAULT 0,
+    PRIMARY KEY (game_id, date)
 );
 
 CREATE INDEX idx_player_team ON player_stats(team_name);
