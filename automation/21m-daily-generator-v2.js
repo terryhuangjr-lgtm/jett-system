@@ -35,8 +35,8 @@ const typeIdx = process.argv.indexOf('--type');
 const CONTENT_TYPE = typeIdx !== -1 ? process.argv[typeIdx + 1] : 'sports';
 
 // Category mappings
-const SPORTS_CATEGORIES = ['rookie_contract', 'nil_contract', 'broke_athlete', 'historic_contract'];
-const BITCOIN_CATEGORIES = ['rookie_contract', 'nil_contract', 'historic_contract', 'sports_business'];
+const SPORTS_CATEGORIES = ['rookie_contract', 'nil_contract', 'broke_athlete', 'historic_contract', 'sports_business'];
+const BITCOIN_CATEGORIES = ['bitcoin_education'];
 
 function loadContentBank() {
   const raw = fs.readFileSync(CONTENT_BANK_PATH, 'utf8');

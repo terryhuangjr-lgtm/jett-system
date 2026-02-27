@@ -169,7 +169,9 @@
       "btc_allocation": 7,
       "verified_fact": "Angel Reese earned $1.8M in NIL in 2023 when BTC was $27,000. 10% allocation = 7 BTC.",
       "source": "On3 NIL valuations",
-      "used_dates": [],
+      "used_dates": [
+        "2026-02-27"
+      ],
       "cooldown_days": 90
     },
     {
@@ -281,7 +283,9 @@
       "btc_price_then": 13,
       "verified_fact": "Warren Sapp earned $82M in his NFL career and filed for bankruptcy in 2012. BTC was $13 that year.",
       "source": "Bankruptcy filings",
-      "used_dates": [],
+      "used_dates": [
+        "2026-02-27"
+      ],
       "cooldown_days": 90
     },
     {
@@ -443,6 +447,118 @@
       "cooldown_days": 90,
       "contract_years": 10,
       "id": 31
+    },
+    {
+      "id": 32,
+      "category": "bitcoin_education",
+      "athlete": null,
+      "deal": "21 Million Supply Cap",
+      "sport": "Bitcoin",
+      "year": 2009,
+      "contract_value": null,
+      "btc_price_then": 0,
+      "verified_fact": "Bitcoin's supply is mathematically capped at 21 million coins forever. No CEO, government, or Fed can change it. The last coin will be mined around 2140.",
+      "source": "Bitcoin whitepaper",
+      "used_dates": [],
+      "cooldown_days": 60
+    },
+    {
+      "id": 33,
+      "category": "bitcoin_education",
+      "athlete": null,
+      "deal": "Bitcoin Pizza Day",
+      "sport": "Bitcoin",
+      "year": 2010,
+      "contract_value": null,
+      "btc_price_then": 0.004,
+      "verified_fact": "In 2010, Laszlo Hanyecz paid 10,000 BTC for two pizzas worth $41. Those 10,000 BTC are worth $680M today.",
+      "source": "Bitcoin history",
+      "used_dates": [],
+      "cooldown_days": 60
+    },
+    {
+      "id": 34,
+      "category": "bitcoin_education",
+      "athlete": null,
+      "deal": "Dollar Debasement Since 1913",
+      "sport": "Bitcoin",
+      "year": 1913,
+      "contract_value": null,
+      "btc_price_then": null,
+      "verified_fact": "The US dollar has lost 97% of its purchasing power since the Federal Reserve was created in 1913. Bitcoin has a fixed supply that cannot be inflated.",
+      "source": "Federal Reserve historical data",
+      "used_dates": [],
+      "cooldown_days": 60
+    },
+    {
+      "id": 35,
+      "category": "bitcoin_education",
+      "athlete": null,
+      "deal": "Bitcoin Halving 2024",
+      "sport": "Bitcoin",
+      "year": 2024,
+      "contract_value": null,
+      "btc_price_then": 65000,
+      "verified_fact": "Bitcoin's 4th halving occurred in April 2024. Block reward dropped from 6.25 to 3.125 BTC. New supply cut in half by code, not committee.",
+      "source": "Bitcoin protocol",
+      "used_dates": [],
+      "cooldown_days": 60
+    },
+    {
+      "id": 36,
+      "category": "bitcoin_education",
+      "athlete": null,
+      "deal": "Gold vs Bitcoin Store of Value",
+      "sport": "Bitcoin",
+      "year": 2020,
+      "contract_value": null,
+      "btc_price_then": 10000,
+      "verified_fact": "Gold has been mined for 5,000 years and humans keep finding more. Bitcoin's supply is provably fixed at 21M. One is hard money. One just feels like it.",
+      "source": "The Bitcoin Standard - Saifedean Ammous",
+      "used_dates": [],
+      "cooldown_days": 60
+    },
+    {
+      "id": 37,
+      "category": "bitcoin_education",
+      "athlete": null,
+      "deal": "Inflation Hidden Tax",
+      "sport": "Bitcoin",
+      "year": 2021,
+      "contract_value": null,
+      "btc_price_then": 45000,
+      "verified_fact": "US inflation hit 9.1% in June 2022 — highest since 1981. A $1M contract signed in 2020 had $820K of real purchasing power by 2022. Inflation is a tax nobody voted for.",
+      "source": "US Bureau of Labor Statistics",
+      "used_dates": [],
+      "cooldown_days": 60
+    },
+    {
+      "id": 38,
+      "category": "bitcoin_education",
+      "athlete": null,
+      "deal": "Nation State Adoption El Salvador",
+      "sport": "Bitcoin",
+      "year": 2021,
+      "contract_value": null,
+      "btc_price_then": 52000,
+      "verified_fact": "El Salvador became the first country to adopt Bitcoin as legal tender in September 2021. President Bukele bought 2,381 BTC for the national treasury.",
+      "source": "El Salvador government",
+      "used_dates": [],
+      "cooldown_days": 60
+    },
+    {
+      "id": 39,
+      "category": "bitcoin_education",
+      "athlete": null,
+      "deal": "MicroStrategy Bitcoin Treasury",
+      "sport": "Bitcoin",
+      "year": 2020,
+      "contract_value": 250000000,
+      "btc_price_then": 11000,
+      "verified_fact": "MicroStrategy bought 21,454 BTC for $250M in August 2020 at $11,652 per coin. That position is now worth over $1.4B. CFOs who ignored this are still explaining why.",
+      "source": "MicroStrategy SEC filings",
+      "used_dates": [],
+      "cooldown_days": 60
     }
   ]
 }
