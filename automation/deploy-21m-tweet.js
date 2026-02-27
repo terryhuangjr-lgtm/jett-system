@@ -196,7 +196,7 @@ try {
       const escaped = msg.replace(/"/g, '\\"').replace(/`/g, '\\`');
       const { exec } = require('child_process');
       exec(
-        `${CLAWDBOT} message send --channel slack --target U0ABTP704QK --message "${escaped}" --json`,
+        `${CLAWDBOT} message send --channel slack --target "#21msports" --message "${escaped}" --json`,
         { timeout: 15000 },
         (error, stdout, stderr) => {
           if (error) {

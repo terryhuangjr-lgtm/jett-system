@@ -186,7 +186,7 @@ async function postToSlack(message) {
     const { exec } = require('child_process');
     const escaped = message.replace(/"/g, '\\"').replace(/`/g, '\\`');
     exec(
-      `${CLAWDBOT} message send --channel slack --target U0ABTP704QK --message "${escaped}" --json`,
+      `${CLAWDBOT} message send --channel slack --target "#podcastsummary" --message "${escaped}" --json`,
       { timeout: 15000 },
       (error, stdout, stderr) => {
         if (error) {
