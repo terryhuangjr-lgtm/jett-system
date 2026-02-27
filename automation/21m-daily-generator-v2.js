@@ -216,7 +216,7 @@ async function callClaudeHaiku(prompt) {
   if (!apiKey) throw new Error('ANTHROPIC_API_KEY not set in environment');
 
   const body = JSON.stringify({
-    model: 'claude-haiku-4-5-20251001',
+    model: 'claude-sonnet-4-5-20250929',
     max_tokens: 400,
     messages: [{ role: 'user', content: prompt }]
   });
