@@ -1,23 +1,23 @@
 {
   "type": "21m_sports_tweets",
-  "timestamp": "2026-02-17T10:00:20.489Z",
+  "timestamp": "2026-02-19T14:54:10.985Z",
   "tweets": [
-    "De'Aaron Fox just signed a $163M deal with the Spurs. That's 2,397 Bitcoin. When he signed it on May 30, BTC was worth roughly the same as today ($68k). His contract is literally one-upping crypto's most famous asset in terms of pure hodl value. 💰🏀",
-    "$163 MILLION to play basketball vs HODLing 2,400 Bitcoin. De'Aaron Fox's Spurs contract could've been a crypto investment for the risk-averse athlete. Instead, he chose something even more volatile: the San Antonio Spurs' playoff chances. 😂",
-    "The math is wild: De'Aaron Fox's $163M contract = 2,397 BTC. Bitcoin hasn't moved much since he signed, but his contract has a 4-year guarantee. In crypto terms, that's basically a stablecoin. Maybe athletes are smarter than we thought? 🤔"
+    "Justin Herbert signed for $262M with the Chargers in June 2024. At that time, it was worth 3,910 BTC. Today? Still worth roughly the same in Bitcoin. 📉 \n\nThe real question: is his contract more or less volatile than crypto? 🤔",
+    "Imagine explaining to Justin Herbert that his massive $262M contract could've been worth MORE if he'd just taken it all in Bitcoin and hodled. (It was basically Bitcoin-neutral since June.) Maybe athletes should start negotiating in sats? 🏈₿",
+    "$262M QB Contract = 3,910 BTC in June 2024 ✅\n$262M QB Contract = 3,944 BTC today 📈\n\nBitcoin holders: 1\nNFL salary cap: 0\n\nThe best financial move? Get paid like Herbert, then convert to crypto. 💰"
   ],
   "sources": {
     "btc_price": "https://api.coinbase.com/v2/prices/BTC-USD/spot",
     "content_count": 3,
-    "contract": "https://www.spotrac.com/nba/san-antonio-spurs/de-aaron-fox-11090/"
+    "contract": "https://www.spotrac.com/nfl/los-angeles-chargers/justin-herbert-24896/"
   },
   "metadata": {
-    "btc_price_now": "$68,076",
+    "btc_price_now": "$66,435",
     "verified": true,
     "char_counts": [
-      250,
-      241,
-      239
+      227,
+      242,
+      197
     ],
     "topics": [
       null

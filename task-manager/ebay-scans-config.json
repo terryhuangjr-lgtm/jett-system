@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "last_updated": "2026-02-17T00:48:38.253Z",
+  "last_updated": "2026-02-17T19:53:45.542Z",
   "global_filters": {
     "description": "Global filter rules applied to all eBay scans",
     "graded_keywords": [
@@ -108,9 +108,9 @@
         ]
       },
       "output_file": "/tmp/kobe-refractors-scan.json",
-      "last_run": "2026-02-12T17:13:08.683Z",
+      "last_run": "2026-02-19T15:35:30.595Z",
       "last_results": {
-        "timestamp": "2026-02-12T17:13:08.684Z",
+        "timestamp": "2026-02-19T15:35:30.595Z",
         "success": true
       },
       "last_updated": "2026-02-11T19:27:27.456Z"
@@ -143,14 +143,15 @@
       "last_updated": "2026-02-12T15:42:58.022Z"
     },
     "friday": {
-      "name": "Multi: Kobe/Duncan/Dirk/Wade",
+      "name": "Multi: hakeem/charles barkley/Dirk/Iverson",
       "enabled": true,
       "search_terms": [
         "hakeem olojuwon",
-        "tim duncan",
+        "charles barkley",
         "dirk nowitzki",
         "allen iverson",
-        "topps refractor"
+        "topps refractor",
+        "1994-1999"
       ],
       "filters": {
         "topN": 20,
@@ -168,7 +169,7 @@
         "timestamp": "2026-02-13T15:35:52.468Z",
         "success": true
       },
-      "last_updated": "2026-02-13T15:53:45.651Z"
+      "last_updated": "2026-02-17T19:53:45.542Z"
     },
     "saturday": {
       "name": "MJ Base 94-99",

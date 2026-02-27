@@ -1,6 +1,6 @@
 {
   "type": "21m_bitcoin_research",
-  "timestamp": "2026-02-16T18:26:50.796Z",
+  "timestamp": "2026-02-18T12:26:19.613Z",
   "findings": [
     {
       "topic": "\"Your keys, your Bitcoin. Not your keys, not your Bitcoin.\"",
@@ -40,108 +40,6 @@
       "sources": [
         "https://www.investopedia.com/news/bitcoin-pizza-day-celebrating-20-million-pizza-order/](https://www.investopedia.com/news/bitcoin-pizza-day-celebrating-20-million-pizza-order/"
       ]
-    },
-    {
-      "topic": "Bitcoin market analysis",
-      "content": "BTC trading at $67,973 - analysis of current market conditions",
-      "source": "coingecko.com"
-    },
-    {
-      "topic": "Crypto adoption news",
-      "content": "Latest developments in cryptocurrency adoption and institutional investment",
-      "source": "coingecko.com"
-    },
-    {
-      "topic": "Bitcoin network stats",
-      "content": "Network hashrate and transaction volume metrics",
-      "source": "blockchain.com"
-    },
-    {
-      "topic": "Bitcoin price",
-      "content": "BTC at $67,924",
-      "source": "coingecko.com"
-    },
-    {
-      "topic": "Crypto market",
-      "content": "Daily market overview",
-      "source": "coingecko.com"
-    },
-    {
-      "topic": "Network stats",
-      "content": "On-chain metrics",
-      "source": "blockchain.com"
-    },
-    {
-      "topic": "Bitcoin price action",
-      "content": "Bitcoin trading at $67,924 - current market price",
-      "source": "https://www.coingecko.com/en/coins/bitcoin",
-      "created": "2026-02-16T18:49:57.967Z"
-    },
-    {
-      "topic": "Crypto market cap",
-      "content": "Total crypto market cap showing bullish sentiment",
-      "source": "https://www.coingecko.com/",
-      "created": "2026-02-16T18:49:57.967Z"
-    },
-    {
-      "topic": "Bitcoin network",
-      "content": "Network activity and on-chain metrics update",
-      "source": "https://www.blockchain.com/explorer",
-      "created": "2026-02-16T18:49:57.967Z"
-    },
-    {
-      "topic": "Bitcoin price action",
-      "content": "Bitcoin trading at $67,911 - current market price",
-      "source": "https://www.coingecko.com/en/coins/bitcoin",
-      "created": "2026-02-16T18:53:21.817Z"
-    },
-    {
-      "topic": "Crypto market cap",
-      "content": "Total crypto market showing bullish sentiment",
-      "source": "https://www.coingecko.com/",
-      "created": "2026-02-16T18:53:21.817Z"
-    },
-    {
-      "topic": "Bitcoin network",
-      "content": "Network activity and on-chain metrics update",
-      "source": "https://www.blockchain.com/explorer",
-      "created": "2026-02-16T18:53:21.817Z"
-    },
-    {
-      "topic": "Bitcoin price action",
-      "content": "Bitcoin trading at $67,905 - current market price",
-      "source": "https://www.coingecko.com/en/coins/bitcoin",
-      "created": "2026-02-16T18:53:50.409Z"
-    },
-    {
-      "topic": "Crypto market cap",
-      "content": "Total crypto market showing bullish sentiment",
-      "source": "https://www.coingecko.com/",
-      "created": "2026-02-16T18:53:50.409Z"
-    },
-    {
-      "topic": "Bitcoin network",
-      "content": "Network activity and on-chain metrics update",
-      "source": "https://www.blockchain.com/explorer",
-      "created": "2026-02-16T18:53:50.409Z"
-    },
-    {
-      "topic": "Bitcoin price action",
-      "content": "Bitcoin trading at $68,444 - current market price",
-      "source": "https://www.coingecko.com/en/coins/bitcoin",
-      "created": "2026-02-17T05:01:02.019Z"
-    },
-    {
-      "topic": "Crypto market cap",
-      "content": "Total crypto market showing bullish sentiment",
-      "source": "https://www.coingecko.com/",
-      "created": "2026-02-17T05:01:02.019Z"
-    },
-    {
-      "topic": "Bitcoin network",
-      "content": "Network activity and on-chain metrics update",
-      "source": "https://www.blockchain.com/explorer",
-      "created": "2026-02-17T05:01:02.019Z"
     }
   ],
   "verification_status": "CONSOLIDATED"

@@ -65,3 +65,11 @@ test-output.json
 # Generated files
 automation/output/
 slack-files/
+.env
+
+# Stealth browser sessions
+lib/stealth-browser/sessions/
+
+# Raw data files
+ebay-raw.json
+slack-queue/*.json
