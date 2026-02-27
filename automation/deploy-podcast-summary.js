@@ -69,115 +69,47 @@ function getLatestSummary() {
 }
 
 function parseSummary(content) {
-  const lines = content.split('\n');
+  // Extract title from either format
   let title = '';
-  let overview = '';
-  let keyPoints = [];
-  let takeaways = [];
+  const titleMatch = content.match(/\*\*Episode Title\*\*:\s*(.+)/i) ||
+                     content.match(/^Title:\s*(.+)/im);
+  if (titleMatch) title = titleMatch[1].replace(/\*\*/g, '').trim();
 
-  // Extract title - handles both old format (TITLE:) and new markdown (Episode Title:)
-  for (const line of lines) {
-    const trimmed = line.trim();
-    if (trimmed.match(/^Title:\s*/i) || trimmed.match(/\*\*Episode Title\*\*:/i)) {
-      title = trimmed.replace(/^.*Title\*?\*?:\s*/i, '').replace(/\*\*/g, '').trim();
-      if (title) break;
-    }
-  }
+  // Extract guest
+  let guest = '';
+  const guestMatch = content.match(/\*\*Guest\*\*:\s*(.+)/i);
+  if (guestMatch) guest = guestMatch[1].replace(/\*\*/g, '').trim();
 
-  // Extract executive summary / overview
-  let inSummary = false;
-  for (const line of lines) {
-    const trimmed = line.trim();
-    if (trimmed.match(/EXECUTIVE SUMMARY|OVERVIEW/i)) {
-      inSummary = true;
-      continue;
-    }
-    if (inSummary && trimmed.startsWith('##')) {
-      break;
-    }
-    if (inSummary && trimmed && !trimmed.startsWith('#') && !trimmed.startsWith('---') && trimmed.length > 20) {
-      overview += trimmed + ' ';
-      if (overview.length > 400) break;
-    }
-  }
+  // Extract podcast name
+  let podcastName = '';
+  const podcastMatch = content.match(/\*\*Podcast Name\*\*:\s*(.+)/i);
+  if (podcastMatch) podcastName = podcastMatch[1].replace(/\*\*/g, '').trim();
 
-  // Extract key points / insights
-  let inKeyPoints = false;
-  for (const line of lines) {
-    const trimmed = line.trim();
-    if (trimmed.match(/KEY TOPICS|KEY POINTS|INSIGHTS/i)) {
-      inKeyPoints = true;
-      continue;
-    }
-    if (inKeyPoints && trimmed.startsWith('## ') && !trimmed.match(/KEY/i)) {
-      break;
-    }
-    if (inKeyPoints && trimmed.match(/^###\s+\d+\./)) {
-      const point = trimmed.replace(/^###\s+\d+\.\s*/, '').replace(/\*\*/g, '').trim();
-      if (point) keyPoints.push(`• ${point}`);
-      if (keyPoints.length >= 5) break;
-    }
-  }
+  // Get everything after the header divider (the real meat)
+  const dividerIndex = content.indexOf('---');
+  const bodyContent = dividerIndex > -1 ? content.substring(dividerIndex + 3) : content;
 
-  // Extract takeaways
-  let inTakeaways = false;
-  for (const line of lines) {
-    const trimmed = line.trim();
-    if (trimmed.match(/TAKEAWAY|ACTION|CONCLUSION/i)) {
-      inTakeaways = true;
-      continue;
-    }
-    if (inTakeaways && trimmed.startsWith('## ')) break;
-    if (inTakeaways && (trimmed.startsWith('-') || trimmed.startsWith('*') || trimmed.startsWith('•') || trimmed.match(/^\d+\./))) {
-      const point = trimmed.replace(/^[-*•\d.]\s*/, '').replace(/\*\*/g, '').trim();
-      if (point && point.length > 10) takeaways.push(`• ${point}`);
-      if (takeaways.length >= 3) break;
-    }
-  }
-
-  // Fallbacks if parsing finds nothing
-  if (!title) title = 'Latest Episode';
-  if (!overview) {
-    // Just grab first substantial paragraph
-    for (const line of lines) {
-      const trimmed = line.trim();
-      if (trimmed.length > 100 && !trimmed.startsWith('#') && !trimmed.startsWith('=')) {
-        overview = trimmed.substring(0, 400);
-        break;
-      }
-    }
-  }
-  if (keyPoints.length === 0) keyPoints = ['• See full summary for details'];
-  if (takeaways.length === 0) takeaways = ['• See full summary for details'];
-
-  return {
-    title,
-    overview: overview.trim().substring(0, 400),
-    keyPoints: keyPoints.slice(0, 5),
-    bestClips: [],
-    takeaways: takeaways.slice(0, 3)
-  };
+  return { title, guest, podcastName, bodyContent: bodyContent.trim() };
 }
 
 function formatSlackMessage(summaryData, filename) {
-  const { title, overview, keyPoints, bestClips, takeaways } = summaryData;
-  
-  const titleLine = title ? `🎙️ *${title}*\n\n` : '';
-  
-  return `🎧 *New Podcast Summary*
-${titleLine}📝 *Overview:*
-${overview}
+  const { title, guest, podcastName, bodyContent } = summaryData;
 
-💡 *Key Points:*
-${keyPoints.join('\n')}
+  let header = `🎧 *PODCAST SUMMARY*\n`;
+  if (podcastName) header += `📻 *${podcastName}*\n`;
+  if (title) header += `🎙️ *${title}*\n`;
+  if (guest) header += `👤 *Guest:* ${guest}\n`;
+  header += `\n${'─'.repeat(40)}\n\n`;
 
-🎯 *Best Clips:*
-${bestClips.join('\n')}
+  // Clean up markdown for Slack - convert ## headers to bold
+  const cleaned = bodyContent
+    .replace(/^#{1,3}\s+/gm, '*')
+    .replace(/\*\*(.+?)\*\*/g, '*$1*')
+    .replace(/^(\*[^*\n]+)$/gm, '$1*')
+    .replace(/\n{3,}/g, '\n\n')
+    .trim();
 
-✅ *Takeaways:*
-${takeaways.join('\n')}
-
-📄 *File:* \`${filename}\``;
+  return header + cleaned + `\n\n📄 _${filename}_`;
 }
 
 async function postToSlack(message) {
