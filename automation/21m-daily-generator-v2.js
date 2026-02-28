@@ -267,9 +267,9 @@ function postToSlack(message) {
   const clawdbotPath = process.env.CLAWDBOT_PATH || 'clawdbot';
   const userId = '#21msports';
 
-  // Escape message for shell
-  const escaped = message.replace(/'/g, "'\\''");
-  const cmd = `${clawdbotPath} message send --channel slack --target ${userId} --message '${escaped}'`;
+  const tmpFile = `/tmp/tweet-${Date.now()}.txt`;
+  fs.writeFileSync(tmpFile, message);
+  const cmd = `${clawdbotPath} message send --channel slack --target '${userId}' --message "$(cat ${tmpFile})" && rm ${tmpFile}`;
 
   try {
     execSync(cmd, { stdio: 'pipe' });
