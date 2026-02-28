@@ -171,27 +171,53 @@ ${currentValueStr ? `That BTC would be worth: ${currentValueStr} today` : ''}
 BTC price today: ${btcNow}`;
   } else if (entry.category === 'historic_contract') {
     const total = `$${(entry.contract_value / 1000000).toFixed(1)}M`;
-    const btcThen = `$${entry.btc_price_then.toLocaleString()}`;
-    const btcNow = formattedPrice;
-    const btcAmount = entry.btc_allocation;
-    const currentValue = btcPrice ? Math.round(btcAmount * btcPrice) : null;
-    const currentValueStr = currentValue ? `$${(currentValue / 1000000).toFixed(1)}M` : 'current value';
 
-    context = `Athlete: ${entry.athlete} (${entry.sport})
+    if (!entry.btc_price_then) {
+      const inflationFactor = 3.47;
+      const inflationAdjusted = Math.round(entry.contract_value * inflationFactor);
+      const inflationAdjustedStr = `$${(inflationAdjusted / 1000000).toFixed(0)}M`;
+
+      context = `Athlete: ${entry.athlete} (${entry.sport})
+Contract: ${total}${entry.contract_years ? ` over ${entry.contract_years} years` : ''} in ${entry.year}
+Note: This contract was signed before Bitcoin existed (${entry.year})
+Today's inflation-adjusted value: ${inflationAdjustedStr} in current dollars
+This shows what inflation did to the real value — the purchasing power erosion`;
+    } else {
+      const btcThen = `$${entry.btc_price_then.toLocaleString()}`;
+      const btcNow = formattedPrice;
+      const btcAmount = entry.btc_allocation;
+      const currentValue = btcPrice ? Math.round(btcAmount * btcPrice) : null;
+      const currentValueStr = currentValue ? `$${(currentValue / 1000000).toFixed(1)}M` : 'current value';
+
+      context = `Athlete: ${entry.athlete} (${entry.sport})
 Contract: ${total}${entry.contract_years ? ` over ${entry.contract_years} years` : ''} in ${entry.year}
 BTC price in ${entry.year}: ${btcThen}
 5% of contract in BTC: ${btcAmount} BTC
 BTC price today: ${btcNow}
 That ${btcAmount} BTC would be worth: ${currentValueStr} today`;
+    }
   } else if (entry.category === 'sports_business') {
     const total = `$${(entry.deal_value / 1000000000).toFixed(1)}B`;
-    const btcThen = `$${entry.btc_price_then.toLocaleString()}`;
-    const btcNow = formattedPrice;
 
-    context = `Deal: ${entry.deal || entry.athlete} (${entry.sport})
+    if (!entry.btc_price_then) {
+      const inflationFactor = 3.47;
+      const inflationAdjusted = Math.round(entry.deal_value * inflationFactor);
+      const inflationAdjustedStr = `$${(inflationAdjusted / 1000000000).toFixed(1)}B`;
+
+      context = `Deal: ${entry.deal || entry.athlete} (${entry.sport})
+Value: ${total}${entry.deal_years ? ` over ${entry.deal_years} years` : ''} in ${entry.year}
+Note: This deal was signed before Bitcoin existed (${entry.year})
+Today's inflation-adjusted value: ${inflationAdjustedStr} in current dollars
+This shows what inflation did to the real value — the purchasing power erosion`;
+    } else {
+      const btcThen = `$${entry.btc_price_then.toLocaleString()}`;
+      const btcNow = formattedPrice;
+
+      context = `Deal: ${entry.deal || entry.athlete} (${entry.sport})
 Value: ${total}${entry.deal_years ? ` over ${entry.deal_years} years` : ''} in ${entry.year}
 BTC price when signed: ${btcThen}
 BTC price today: ${btcNow}`;
+    }
   } else if (entry.category === 'bitcoin_education') {
     context = `Fact: ${entry.fact || entry.verified_fact}
 ${entry.additional_context ? 'Context: ' + entry.additional_context : ''}`;
@@ -266,6 +292,22 @@ function parseTweets(rawText) {
   return tweets;
 }
 
+function formatSlackMessage(tweets, entry, btcPrice, contentType) {
+  const timestamp = new Date().toISOString().replace('T', ' ').substring(0, 16);
+  const categoryLabel = contentType === 'bitcoin' ? 'Bitcoin' : 'Sports';
+  const formattedPrice = btcPrice ? `$${btcPrice.toLocaleString()}` : 'unavailable';
+
+  let message = `*21M ${categoryLabel} - Tweet Options*\n_Generated at ${timestamp}_ ✅ VERIFIED SOURCES\n\n`;
+
+  tweets.forEach((tweet, i) => {
+    message += `*Option ${i + 1}:*\n${tweet}\n_Length: ${tweet.length} chars_\n\n`;
+  });
+
+  message += `*Sources:*\n- ${entry.source || 'Content bank'}\n- BTC Price: ${formattedPrice} (CoinGecko)\n\nPick your favorite and post to X! 🧡`;
+
+  return message;
+}
+
 function postToSlack(message) {
   const clawdbotPath = process.env.CLAWDBOT_PATH || 'clawdbot';
   const userId = '#21msports';
@@ -306,7 +348,7 @@ async function main() {
 
   // Build prompt and call Claude Haiku
   const prompt = buildPrompt(entry, btcPrice, CONTENT_TYPE);
-  console.log('\nCalling Claude Haiku to generate tweets...');
+  console.log('\nCalling Claude Sonnet to generate tweets...');
   const rawTweets = await callClaudeHaiku(prompt);
   const tweets = parseTweets(rawTweets);
 
@@ -321,21 +363,19 @@ async function main() {
     console.log(`\n[${i + 1}] (${t.length} chars)\n${t}`);
   });
 
-  // Pick first tweet for posting
-  const selectedTweet = tweets[0];
-  console.log(`\nSelected tweet [1] for posting (${selectedTweet.length} chars)`);
+  const slackMessage = formatSlackMessage(tweets, entry, btcPrice, CONTENT_TYPE);
 
   if (DRY_RUN) {
-    console.log('\n[DRY RUN] Would post to Slack:');
-    console.log(selectedTweet);
-    console.log('\n[DRY RUN] Would mark entry as used in content bank');
+    console.log('\n========== DRY RUN - FULL SLACK MESSAGE ==========\n');
+    console.log(slackMessage);
+    console.log('\n========== END DRY RUN ==========\n');
     console.log('\nDry run complete. No changes made.');
     return;
   }
 
   // Post to Slack
   console.log('\nPosting to Slack...');
-  const posted = postToSlack(selectedTweet);
+  const posted = postToSlack(slackMessage);
   if (posted) {
     console.log('Posted successfully');
   } else {
