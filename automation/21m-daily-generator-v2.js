@@ -192,9 +192,12 @@ That ${btcAmount} BTC would be worth: ${currentValueStr} today`;
 Value: ${total}${entry.deal_years ? ` over ${entry.deal_years} years` : ''} in ${entry.year}
 BTC price when signed: ${btcThen}
 BTC price today: ${btcNow}`;
+  } else if (entry.category === 'bitcoin_education') {
+    context = `Fact: ${entry.fact || entry.verified_fact}
+${entry.additional_context ? 'Context: ' + entry.additional_context : ''}`;
   }
 
-  return `You write sharp, math-forward tweets about sports contracts vs Bitcoin. No hype, no emojis, no BS.
+  return `You write sharp, math-forward tweets about ${entry.category === 'bitcoin_education' ? 'Bitcoin facts and education' : 'sports contracts vs Bitcoin'}. No hype, no emojis, no BS.
 
 Voice: Direct, factual, slight edge. Like a guy who ran the numbers and can't believe what he found.
 Rules:
