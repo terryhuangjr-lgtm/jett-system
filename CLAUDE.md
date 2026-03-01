@@ -52,9 +52,10 @@ pm2 logs --lines 50         # recent logs
 **Independent:**
 - clawdbot-gateway (manages itself, do NOT add to PM2)
 
-**Scheduling:** Task-manager DB is primary engine
+**Scheduling:** clawdbot cron (primary) — tasks run through clawdbot gateway
+**Process Mgmt:** PM2 (task-manager-server dashboard only)
 ```
-sqlite3 /home/clawd/clawd/task-manager/tasks.db "SELECT id, name, status, next_run FROM tasks ORDER BY next_run;"
+clawdbot cron list
 ```
 
 ---
