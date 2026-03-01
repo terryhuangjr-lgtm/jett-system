@@ -7,7 +7,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const { execSync } = require('child_process');
+const { execFileSync } = require('child_process');
 
 const SLACK_CHANNEL = '#levelupcards';
 
@@ -115,13 +115,7 @@ function formatResults(data, scanName) {
 // Post to Slack
 function postToSlack(message) {
   try {
-    // Escape single quotes for shell
-    const escapedMessage = message.replace(/'/g, "'\\''");
-
-    // Use correct clawdbot message syntax
-    const cmd = `/home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot message send --channel slack --target "${SLACK_CHANNEL}" --message '${escapedMessage}' --json`;
-
-    const output = execSync(cmd, {
+    const output = execFileSync('/home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot', ['message', 'send', '--channel', 'slack', '--target', SLACK_CHANNEL, '--message', message], {
       encoding: 'utf8',
       timeout: 30000,
       env: {

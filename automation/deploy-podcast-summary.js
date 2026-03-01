@@ -117,9 +117,7 @@ async function postToSlack(message) {
     const CLAWDBOT = '/home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot';
     const { exec } = require('child_process');
     const escaped = message.replace(/"/g, '\\"').replace(/`/g, '\\`');
-    exec(
-      `${CLAWDBOT} message send --channel slack --target "#podcastsummary" --message "${escaped}" --json`,
-      { timeout: 15000 },
+    execFileSync(CLAWDBOT, ['message', 'send', '--channel', 'slack', '--target', '#podcastsummary', '--message', message], { timeout: 15000 }),
       (error, stdout, stderr) => {
         if (error) {
           console.error('✗ Failed to post:', stderr || error.message);
