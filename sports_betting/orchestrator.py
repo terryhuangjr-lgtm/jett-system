@@ -620,11 +620,19 @@ class BettingOrchestrator:
 
 # Entry point
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Sports Betting Analysis System')
-    parser.add_argument('--mode', choices=['scout', 'final', 'full'],
-                       default='full', help='Analysis mode: scout (morning), final (afternoon), or full (both)')
-    parser.add_argument('--target', default=None, help='Slack target for notifications (user ID or #channel; default: env SPORTS_BETTING_CHANNEL or DM)')
-    args = parser.parse_args()
+    try:
+        parser = argparse.ArgumentParser(description='Sports Betting Analysis System')
+        parser.add_argument('--mode', choices=['scout', 'final', 'full'],
+                           default='full', help='Analysis mode: scout (morning), final (afternoon), or full (both)')
+        parser.add_argument('--target', default=None, help='Slack target for notifications (user ID or #channel; default: env SPORTS_BETTING_CHANNEL or DM)')
+        args = parser.parse_args()
 
-    orchestrator = BettingOrchestrator(slack_target=args.target)
-    orchestrator.run_analysis(mode=args.mode)
+        orchestrator = BettingOrchestrator(slack_target=args.target)
+        orchestrator.run_analysis(mode=args.mode)
+    except Exception as e:
+        import subprocess
+        msg = f"⚠️ *Jett Task Failed*\n*Task:* Sports Betting\n*Error:* {str(e)}"
+        subprocess.run(['/home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot', 
+                       'message', 'send', '--channel', 'slack', 
+                       '--target', 'U0ABTP704QK', '--message', msg])
+        raise

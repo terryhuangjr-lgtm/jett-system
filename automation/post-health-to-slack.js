@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 const { execFileSync, execSync } = require('child_process');
 const fs = require('fs');
+const notifyFailure = require('../lib/notify-failure');
 
 async function main() {
   try {
@@ -16,6 +17,7 @@ async function main() {
     console.log('✅ Health check posted to Slack');
   } catch (error) {
     console.error('Error:', error.message);
+    notifyFailure('System Health Check', error);
     process.exit(1);
   }
 }

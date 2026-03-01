@@ -9,6 +9,7 @@ const fs = require('fs');
 const path = require('path');
 const https = require('https');
 const { execSync } = require('child_process');
+const notifyFailure = require('../lib/notify-failure');
 
 // Load env from .env file manually
 const ENV_PATH = path.join(__dirname, '..', '.env');
@@ -394,5 +395,6 @@ async function main() {
 
 main().catch(err => {
   console.error('\nFATAL ERROR:', err.message);
+  notifyFailure('21M Daily Generator', err);
   process.exit(1);
 });

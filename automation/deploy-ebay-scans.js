@@ -8,6 +8,7 @@
 const fs = require('fs');
 const path = require('path');
 const { execFileSync } = require('child_process');
+const notifyFailure = require('../lib/notify-failure');
 
 // Load config from task manager (single source of truth)
 const CONFIG_PATH = path.join(__dirname, '..', 'task-manager', 'ebay-scans-config.json');
@@ -197,5 +198,7 @@ try {
 
 } catch (error) {
   console.error('Error deploying scan:', error.message);
+  const notifyFailure = require('../lib/notify-failure');
+  notifyFailure('eBay Scans Deploy', error);
   process.exit(1);
 }
