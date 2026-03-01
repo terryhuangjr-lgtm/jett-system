@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "last_updated": "2026-02-27",
+  "last_updated": "2026-02-28",
   "entries": [
     {
       "id": 1,
@@ -501,7 +501,9 @@
       "btc_price_then": 65000,
       "verified_fact": "Bitcoin's 4th halving occurred in April 2024. Block reward dropped from 6.25 to 3.125 BTC. New supply cut in half by code, not committee.",
       "source": "Bitcoin protocol",
-      "used_dates": [],
+      "used_dates": [
+        "2026-02-28"
+      ],
       "cooldown_days": 60
     },
     {

@@ -69,6 +69,12 @@ class BettingOrchestrator:
 
             if not games:
                 print("   ⚠️  No games found for scouting")
+                # Send notification that no games were found
+                self.notifier.post_message(
+                    "🔍 *SCOUT MODE ALERT*\n\n"
+                    "⚠️  No games found for scouting today.\n"
+                    "Unable to collect ESPN data - check network connection."
+                )
                 return
 
             # Step 2: Update team statistics
@@ -144,6 +150,12 @@ class BettingOrchestrator:
 
             if not watch_list:
                 print("   ⚠️  No games in watch list - run scout mode first")
+                # Send notification that no watch list is available
+                self.notifier.post_message(
+                    "🎯 *FINAL MODE ALERT*\n\n"
+                    "⚠️  No games in watch list for final analysis.\n"
+                    "Scout mode did not find qualifying games this morning."
+                )
                 return
 
             print(f"   ✅ {len(watch_list)} games to analyze\n")
