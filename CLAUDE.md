@@ -237,3 +237,26 @@ clawdbot message send --channel slack --target "U0ABTP704QK" --message "test" --
 3. Document every structural change
 4. Never break working systems to fix broken ones
 5. If unsure, ask Terry before proceeding
+
+---
+
+## CRITICAL PATTERN: CLAWDBOT CALLS
+
+**ALWAYS use execFileSync with array args — NEVER string interpolation:**
+```javascript
+// ✅ CORRECT
+const { execFileSync } = require('child_process');
+execFileSync('/home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot', [
+  'message', 'send', '--channel', 'slack',
+  '--target', '#21msports',
+  '--message', message
+], { timeout: 15000, stdio: 'pipe' });
+
+// ❌ WRONG - breaks on apostrophes, quotes, special chars
+execSync(`clawdbot message send --target "#21msports" --message "${message}"`);
+```
+
+String interpolation causes `--target <dest> argument missing` errors when
+message contains apostrophes or quotes. execFileSync array args bypass shell
+entirely. This has been fixed in: worker.js, 21m-daily-generator-v2.js,
+post-health-to-slack.js. Apply this pattern to ALL new clawdbot calls.
