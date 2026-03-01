@@ -310,14 +310,9 @@ function formatSlackMessage(tweets, entry, btcPrice, contentType) {
 
 function postToSlack(message) {
   const clawdbotPath = process.env.CLAWDBOT_PATH || 'clawdbot';
-  const userId = '#21msports';
-
-  const tmpFile = `/tmp/tweet-${Date.now()}.txt`;
-  fs.writeFileSync(tmpFile, message);
-  const cmd = `${clawdbotPath} message send --channel slack --target '${userId}' --message "$(cat ${tmpFile})" && rm ${tmpFile}`;
-
   try {
-    execSync(cmd, { stdio: 'pipe' });
+    const { execFileSync } = require('child_process');
+    execFileSync(clawdbotPath, ['message', 'send', '--channel', 'slack', '--target', '#21msports', '--message', message], { stdio: 'pipe' });
     return true;
   } catch (e) {
     console.error('Slack post failed:', e.message);

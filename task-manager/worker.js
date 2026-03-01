@@ -208,14 +208,18 @@ class TaskWorker {
     
     // Alert on worker start/restart
     try {
-      const { execSync } = require('child_process');
+      const { execFileSync } = require('child_process');
       const startMsg = `✅ Task Worker STARTED\nID: ${this.workerId}\nPID: ${process.pid}`;
-      const slackCmd = `/home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot message send --channel slack --target "U0ABTP704QK" --message "${startMsg.replace(/"/g, '\\"')}" --json`;
-      execSync(slackCmd, { timeout: 10000, stdio: 'ignore' });
+      execFileSync('/home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot', ['message', 'send', '--channel', 'slack', '--target', 'U0ABTP704QK', '--message', startMsg], { timeout: 10000, stdio: 'ignore' });
     } catch (e) {}
     
     await this.db.init();
     console.log('Database initialized');
+    await this.db.db.run("UPDATE tasks SET status='pending' WHERE status='running'");
+    console.log('Reset stuck running tasks');
+    // Reset any tasks stuck in 'running' state from previous crash
+    await this.db.db.run("UPDATE tasks SET status='pending' WHERE status='running'");
+    console.log('Reset any stuck running tasks');
 
     this.running = true;
     this.healthCheckInterval = setInterval(() => this.updateHeartbeat(), 60000);
@@ -309,7 +313,6 @@ class TaskWorker {
 
         // Send alert to Slack and Telegram on ANY failure
         try {
-          const { execSync } = require('child_process');
           const errorMsg = (stderr || error.message).substring(0, 300);
           const durationSec = Math.round(duration / 1000);
           
@@ -319,12 +322,11 @@ class TaskWorker {
 🐛 Error: ${errorMsg}`;
 
           // Send to Slack
-          const slackCmd = `/home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot message send --channel slack --target "U0ABTP704QK" --message "${alertMsg.replace(/"/g, '\\"')}" --json`;
-          execSync(slackCmd, { timeout: 10000, stdio: 'ignore' });
+          const { execFileSync } = require('child_process');
+          execFileSync('/home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot', ['message', 'send', '--channel', 'slack', '--target', 'U0ABTP704QK', '--message', alertMsg], { timeout: 10000, stdio: 'ignore' });
           
           // Send to Telegram
-          const telegramCmd = `/home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot message send --channel telegram --target "5867308866" --message "${alertMsg.replace(/"/g, '\\"')}" --json`;
-          execSync(telegramCmd, { timeout: 10000, stdio: 'ignore' });
+          execFileSync('/home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot', ['message', 'send', '--channel', 'telegram', '--target', '5867308866', '--message', alertMsg], { timeout: 10000, stdio: 'ignore' });
           
           console.log(`✅ Alerts sent for failed task ${task.id}`);
         } catch (notifyError) {
