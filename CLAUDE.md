@@ -260,3 +260,17 @@ String interpolation causes `--target <dest> argument missing` errors when
 message contains apostrophes or quotes. execFileSync array args bypass shell
 entirely. This has been fixed in: worker.js, 21m-daily-generator-v2.js,
 post-health-to-slack.js. Apply this pattern to ALL new clawdbot calls.
+
+---
+
+## GIT REPOS
+
+| Repo | Path | Remote |
+|------|------|--------|
+| jett-system | /home/clawd/clawd | https://github.com/terryhuangjr-lgtm/jett-system.git |
+| jett-skills | /home/clawd/skills | https://github.com/terryhuangjr-lgtm/jett-skills.git |
+| ebay-scanner | /home/clawd/clawd/ebay-scanner | separate repo |
+
+IMPORTANT: Skills live at /home/clawd/skills/ (NOT /home/clawd/clawd/skills/)
+notion_client.py is gitignored due to hardcoded NOTION_TOKEN - back up manually
+When modifying skills, cd to /home/clawd/skills and commit there, NOT jett-system
