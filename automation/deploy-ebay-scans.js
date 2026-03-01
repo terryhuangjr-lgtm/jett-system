@@ -9,8 +9,6 @@ const fs = require('fs');
 const path = require('path');
 const { execFileSync } = require('child_process');
 
-const SLACK_CHANNEL = '#levelupcards';
-
 // Load config from task manager (single source of truth)
 const CONFIG_PATH = path.join(__dirname, '..', 'task-manager', 'ebay-scans-config.json');
 
@@ -115,7 +113,7 @@ function formatResults(data, scanName) {
 // Post to Slack
 function postToSlack(message) {
   try {
-    const output = execFileSync('/home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot', ['message', 'send', '--channel', 'slack', '--target', SLACK_CHANNEL, '--message', message], {
+    const output = execFileSync('/home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot', ['message', 'send', '--channel', 'slack', '--target', '"#levelupcards"', '--message', message], {
       encoding: 'utf8',
       timeout: 30000,
       env: {
