@@ -213,8 +213,8 @@
     function getRawTime(schedule) {
       if (!schedule) return '2359';
       
-      // Handle cron format: cron minute hour * * *
-      const cronMatch = schedule.match(/cron\s+(\d+)\s+(\d+)/);
+      // Handle cron format: "0 7 * * *" or "cron 0 7 * * *"
+      const cronMatch = schedule.match(/(?:cron\s+)?(\d+)\s+(\d+)/);
       if (cronMatch) {
         const minute = cronMatch[1];
         const hour = cronMatch[2].padStart(2, '0');
@@ -229,8 +229,8 @@
     function extractTime(schedule) {
       if (!schedule) return '';
       
-      // Handle cron format: cron minute hour * * *
-      const cronMatch = schedule.match(/cron\s+(\d+)\s+(\d+)/);
+      // Handle cron format: "0 7 * * *" or "cron 0 7 * * *"
+      const cronMatch = schedule.match(/(?:cron\s+)?(\d+)\s+(\d+)/);
       if (cronMatch) {
         const minute = cronMatch[1];
         const hour = parseInt(cronMatch[2]);
