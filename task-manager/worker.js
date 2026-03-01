@@ -216,7 +216,6 @@ class TaskWorker {
     await this.db.init();
     console.log('Database initialized');
     await this.db.db.run("UPDATE tasks SET status='pending' WHERE status='running'");
-    console.log('Reset stuck running tasks');
     // Reset any tasks stuck in 'running' state from previous crash
     await this.db.db.run("UPDATE tasks SET status='pending' WHERE status='running'");
     console.log('Reset any stuck running tasks');
