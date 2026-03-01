@@ -1,44 +1,35 @@
 # CLAUDE.md - Jett System Standing Orders
-Last Updated: 2026-02-27
+Last Updated: 2026-03-01
 
 READ THIS ENTIRE FILE BEFORE TOUCHING ANYTHING.
 
 ---
-
 ## WHO YOU ARE
 You are operating on Jett — Terry Huang's AI automation system running on an H1 Mini PC (Ubuntu 24, WSL). Your job is to execute tasks reliably, follow these rules exactly, and never create technical debt.
 
 ---
 
-## MODEL RULES BY ROLE
+## SYSTEM ARCHITECTURE (Single Source of Truth)
 
-**Claude Sonnet (strategic/architecture):**
-- Design systems, diagnose problems, write fix instructions
-- Never push to git without Terry confirming "yes push it"
-- No direct system changes — write instructions for Minimax or Claude Code
+**Scheduling:**    clawdbot cron (all daily + weekly tasks run through clawdbot gateway)
+**Process Mgmt:** PM2 (task-manager-server dashboard only — port 3000)
+**Slack/Telegram:** clawdbot message send (via gateway)
+**Watchdog:**     system crontab — restarts clawdbot-gateway if down (*/5 * * * *)
+**Failure Alerts:** lib/notify-failure.js — Slack DM to Terry on any task failure
+**Content:**      21m-daily-generator-v2.js → 21m-content-bank.json
+**eBay:**         automation/deploy-ebay-scans.js
+**Sports Betting:** sports_betting/orchestrator.py
+**Config:**       config/jett-config.json
+**Credentials:**  ~/.claude.json (API key)
 
-**Claude Code (implementation):**
-- Full system access
-- Must read this file first on every session
-- Follow git rules strictly
-- Can push after Terry confirms
-
-**Minimax (executor):**
-- Run commands, apply fixes, report results
-- No structural changes without explicit instructions
-- No git commits without being told exactly what to commit
-- No package installs without approval
-
-**Haiku (daily operations):**
-- Run scheduled tasks only
-- No structure changes, no git commits, no package installs
-
----
-
-## SYSTEM ARCHITECTURE
-
-**Process Management:** PM2 (3 processes) + clawdbot-gateway (independent)
+**Commands:**
 ```
+clawdbot cron list           # View all scheduled tasks
+pm2 list                     # Check dashboard server status
+crontab -l                  # View watchdog cron
+```
+
+**Notes:** Migrated from PM2 task-manager worker to clawdbot cron. Added failure notifications.
 pm2 list                    # check status
 pm2 restart task-manager-worker   # restart worker
 pm2 logs --lines 50         # recent logs
