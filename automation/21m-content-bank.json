@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "last_updated": "2026-02-28",
+  "last_updated": "2026-03-01",
   "entries": [
     {
       "id": 1,
@@ -330,7 +330,9 @@
       "btc_allocation": 1296,
       "verified_fact": "Shohei Ohtani signed a 10-year $700M deal in December 2023 when BTC was $27,000. 5% allocation = 1,296 BTC.",
       "source": "Spotrac",
-      "used_dates": [],
+      "used_dates": [
+        "2026-03-01"
+      ],
       "cooldown_days": 90
     },
     {
@@ -389,7 +391,9 @@
       "btc_price_then": 27000,
       "verified_fact": "NFL Sunday Ticket deal with YouTube TV: $14B over 7 years (2023). BTC was $27,000 when signed.",
       "source": "Sports Business Journal",
-      "used_dates": [],
+      "used_dates": [
+        "2026-03-01"
+      ],
       "cooldown_days": 90
     },
     {
@@ -770,7 +774,9 @@
       "btc_price_then": 0,
       "verified_fact": "Satoshi Nakamoto mined approximately 1.1 million BTC in Bitcoin's early days and never moved them. At today's prices that's $74B sitting untouched. The creator of the hardest money ever invented never sold.",
       "source": "Bitcoin research - Sergio Demian Lerner",
-      "used_dates": [],
+      "used_dates": [
+        "2026-03-01"
+      ],
       "cooldown_days": 60
     },
     {
