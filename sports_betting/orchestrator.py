@@ -22,7 +22,7 @@ import config
 from bet_tracker import BetTracker
 
 class BettingOrchestrator:
-    def __init__(self):
+    def __init__(self, slack_target=None):
         self.db_path = '/home/clawd/clawd/data/sports_betting.db'
         self.conn = sqlite3.connect(self.db_path)
 
@@ -34,7 +34,7 @@ class BettingOrchestrator:
         self.news_monitor = NewsMonitor(self.db_path)
         self.odds_collector = OddsCollector(self.db_path)
         self.scorer = BetScorer(self.db_path)
-        self.notifier = SlackNotifier()  # Uses bot token, not webhook
+        self.notifier = SlackNotifier(target=slack_target)  # Configurable Slack target
         self.dashboard = DashboardIntegration()
         self.bet_tracker = BetTracker()
 
@@ -623,7 +623,8 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Sports Betting Analysis System')
     parser.add_argument('--mode', choices=['scout', 'final', 'full'],
                        default='full', help='Analysis mode: scout (morning), final (afternoon), or full (both)')
+    parser.add_argument('--target', default=None, help='Slack target for notifications (user ID or #channel; default: env SPORTS_BETTING_CHANNEL or DM)')
     args = parser.parse_args()
 
-    orchestrator = BettingOrchestrator()
+    orchestrator = BettingOrchestrator(slack_target=args.target)
     orchestrator.run_analysis(mode=args.mode)

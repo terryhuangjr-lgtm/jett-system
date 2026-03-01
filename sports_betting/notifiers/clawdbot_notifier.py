@@ -7,19 +7,24 @@ Replaces: slack_notifier_bot.py, slack_notifier.py
 """
 
 import subprocess
+import os
 from datetime import datetime
 
 CLAWDBOT = '/home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot'
 SLACK_USER = 'U0ABTP704QK'
+SLACK_CHANNEL = os.getenv('SPORTS_BETTING_CHANNEL', SLACK_USER)  # Can override via env
 
-def send_via_clawdbot(message):
-    """Send message to Slack via clawdbot"""
+def send_via_clawdbot(message, target=None):
+    """Send message to Slack via clawdbot to a specific target (user or channel)"""
     try:
+        if target is None:
+            target = SLACK_CHANNEL
+        
         escaped = message.replace('"', '\\"').replace('`', '\\`')
         result = subprocess.run(
             [CLAWDBOT, 'message', 'send',
              '--channel', 'slack',
-             '--target', SLACK_USER,
+             '--target', target,
              '--message', escaped,
              '--json'],
             capture_output=True,
@@ -27,7 +32,7 @@ def send_via_clawdbot(message):
             timeout=15
         )
         if result.returncode == 0:
-            print("✅ Posted to Slack via clawdbot")
+            print(f"✅ Posted to Slack via clawdbot (target: {target})")
             return True
         else:
             print(f"❌ clawdbot error: {result.stderr[:200]}")
@@ -40,11 +45,13 @@ def send_via_clawdbot(message):
 class SlackNotifier:
     """Posts to Slack using clawdbot"""
 
-    def __init__(self):
-        pass  # No tokens needed
+    def __init__(self, target=None):
+        """Initialize with optional target override (default: SLACK_CHANNEL env or DM)"""
+        self.target = target or SLACK_CHANNEL
 
-    def post_message(self, text):
-        return send_via_clawdbot(text)
+    def post_message(self, text, target=None):
+        """Post message to Slack (optionally override target)"""
+        return send_via_clawdbot(text, target=target or self.target)
 
     def send_scout_report(self, watch_list, total_games):
         message = f"🔍 *SCOUT REPORT*\n\n"
