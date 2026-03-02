@@ -309,13 +309,20 @@ const SPORTS_TO_BANK_CATEGORY = {
   nil_contracts:     'nil_contract'
 };
 
+const BTC_TO_BANK_CATEGORY = {
+  bitcoin_history:   'bitcoin_education',
+  bitcoin_quotes:    'bitcoin_education',
+  sound_money:       'bitcoin_education',
+  bitcoin_adoption:  'bitcoin_education'
+};
+
 /**
  * Second Ollama call: extract structured contract data from raw research text.
  * Returns null if no usable contract found.
  */
 async function extractStructuredFact(researchText, category) {
-  const bankCategory = SPORTS_TO_BANK_CATEGORY[category];
-  if (!bankCategory) return null; // BTC categories don't map to content bank
+  const bankCategory = SPORTS_TO_BANK_CATEGORY[category] || BTC_TO_BANK_CATEGORY[category];
+  if (!bankCategory) return null;
 
   const prompt = `Extract structured contract data from this sports research. Return ONLY valid JSON, nothing else.
 
