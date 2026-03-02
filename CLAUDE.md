@@ -256,7 +256,7 @@ systemd=true
 ```
 
 **Subagent Configuration:**
-- Default subagent model: ollama/minimax-m2.5:cloud (free via Ollama)
+- Default subagent model: ollama/qwen3.5:4b (local)
 - Fallback: anthropic/claude-haiku-4-5
 - Config location: `~/.openclaw/openclaw.json` → `agents.defaults.subagents`
 
@@ -272,7 +272,7 @@ spawn a subagent to [describe task]
 
 **How it works:**
 - Subagents run in parallel with reduced context
-- Uses minimax (free) by default, falls back to Haiku if unavailable
+- Uses qwen3.5:4b (local) by default, falls back to Haiku if unavailable
 - Results return to main conversation when complete
 
 ---
@@ -349,7 +349,7 @@ When modifying skills, cd to /home/clawd/skills and commit there, NOT jett-syste
 ### 4. Ollama Service Restored
 **Problem:** Ollama process was not running; model discovery failing intermittently.
 **Solution:** Restarted Ollama service (`pkill -f ollama; ollama serve &`).
-**Verification:** API responding, 2 models available (llama3.1:8b, minimax-m2.5:cloud).
+**Verification:** API responding, 2 models available (qwen3.5:4b, minimax-m2.5:cloud).
 **Status:** ✅ Ollama operational.
 
 ---
@@ -360,9 +360,9 @@ When modifying skills, cd to /home/clawd/skills and commit there, NOT jett-syste
 |------|-------|-------|
 | Default (all automation) | claude-haiku-4-5 | Fast, reliable, prevents Ollama dependency |
 | Tweet generation (Bitcoin/Sports) | claude-sonnet-4-5 | Hardcoded in 21m-daily-generator-v2.js |
-| Overnight research | ollama/llama3.1:8b | Isolated task, won't cascade failures |
+| Overnight research | ollama/qwen3.5:4b | Local model, faster than remote |
 | Slack/Telegram responses | claude-haiku-4-5 | Agent default |
-| Subagents | claude-haiku-4-5 | Fallback (minimax not yet in allowlist) |
+| Subagents | ollama/qwen3.5:4b | Local model for subtasks |
 
 ---
 
