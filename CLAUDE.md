@@ -235,6 +235,27 @@ openclaw doctor --fix
 
 **Slack posts failing with "argument missing":**
 - Check for extra quotes in --target (use #channel, NOT "#channel")
+
+---
+
+**WSL2 Auto-Start Configuration:**
+
+Systemd is not available in WSL2 by default. Using crontab for auto-start instead:
+
+```bash
+# Current crontab (crontab -l):
+@reboot /home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot gateway --force >> /tmp/gateway.log 2>&1
+@reboot sleep 30 && cd /home/clawd/clawd && pm2 resurrect >> /tmp/pm2.log 2>&1
+*/5 * * * * pgrep -f 'openclaw-gateway' > /dev/null || /home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot gateway --force >> /tmp/gateway.log 2>&1
+```
+
+To enable systemd in WSL2 (alternative):
+```bash
+# Add to /etc/wsl.conf:
+[boot]
+systemd=true
+# Then run: wsl --shutdown (from PowerShell)
+```
 - Fix in automation scripts: execFileSync array args must not have quotes around target
 
 ---
