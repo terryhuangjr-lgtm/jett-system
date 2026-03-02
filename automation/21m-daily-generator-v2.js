@@ -313,7 +313,7 @@ function postToSlack(message) {
   const clawdbotPath = process.env.CLAWDBOT_PATH || 'clawdbot';
   try {
     const { execFileSync } = require('child_process');
-    execFileSync(clawdbotPath, ['message', 'send', '--channel', 'slack', '--target', '"#21msports"', '--message', message], { stdio: 'pipe' });
+    execFileSync(clawdbotPath, ['message', 'send', '--channel', 'slack', '--target', '#21msports', '--message', message], { stdio: 'pipe' });
     return true;
   } catch (e) {
     console.error('Slack post failed:', e.message);

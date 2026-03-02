@@ -220,6 +220,23 @@ pm2 list
 clawdbot message send --channel slack --target "U0ABTP704QK" --message "test" --json
 ```
 
+**PM2 daemon restarted (all processes down):**
+```bash
+pm2 resurrect
+pm2 start /home/clawd/clawd/task-manager/worker.js --name task-manager-worker
+pm2 save
+```
+
+**clawdbot message failing (JSON config error):**
+```bash
+openclaw doctor --fix
+# OR manually fix ~/.openclaw/openclaw.json JSON structure error at line ~130
+```
+
+**Slack posts failing with "argument missing":**
+- Check for extra quotes in --target (use #channel, NOT "#channel")
+- Fix in automation scripts: execFileSync array args must not have quotes around target
+
 ---
 
 ## COMPRESSION PRINCIPLES
