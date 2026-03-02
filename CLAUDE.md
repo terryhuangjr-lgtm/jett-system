@@ -258,14 +258,24 @@ systemd=true
 ```
 
 **Subagent Configuration:**
-- Default subagent model: minimax/MiniMax-Text-01 (free, Kilo's backend)
+- Default subagent model: minimax/MiniMax-Text-01 (free)
 - Fallback: anthropic/claude-haiku-4-5
 - Config location: `~/.openclaw/openclaw.json` → `agents.defaults.subagents`
 
-To spawn a subagent:
+**To spawn a subagent for coding tasks:**
 ```
-Jett, spawn a subagent to help with [task description]
+spawn a subagent to [describe task]
 ```
+
+**Example prompts:**
+- "spawn a subagent to fix the bug in automation.js"
+- "spawn a subagent to build a new script that does X"
+- "spawn a subagent to review this code and suggest improvements"
+
+**How it works:**
+- Subagents run in parallel with reduced context
+- Uses minimax (free) by default, falls back to Haiku if unavailable
+- Results return to main conversation when complete
 
 ---
 
