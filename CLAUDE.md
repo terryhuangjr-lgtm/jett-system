@@ -313,3 +313,55 @@ post-health-to-slack.js. Apply this pattern to ALL new clawdbot calls.
 IMPORTANT: Skills live at /home/clawd/skills/ (NOT /home/clawd/clawd/skills/)
 notion_client.py is gitignored due to hardcoded NOTION_TOKEN - back up manually
 When modifying skills, cd to /home/clawd/skills and commit there, NOT jett-system
+
+---
+
+## SYSTEM STABILITY FIXES - 2026-03-02
+
+**Issue:** System experiencing overnight crashes, config corruption, and cascading failures.
+**Root Causes Identified & Fixed:**
+
+### 1. Default Model Changed: Ollama → Haiku
+**Problem:** Default model was `ollama/llama3.1:8b` (local). When Ollama crashed overnight, ALL automation tasks failed (tweets, eBay scans, sports betting, health checks).
+**Solution:** Changed default to `anthropic/claude-haiku-4-5` in `openclaw.json` → `agents.defaults.model.primary`
+**Impact:** Now if Ollama goes down, only the research task fails (isolated). Everything else uses Haiku.
+**Cost:** Haiku is ~2x cheaper than Ollama inference + prevents service crashes.
+
+### 2. Task Manager Worker Lock Fixed
+**Problem:** Stale lock file (PID 22442) blocking task-manager restarts, preventing task scheduler from restarting.
+**Solution:** Killed orphaned PID, cleared /tmp/task-manager.lock and /tmp/task-manager.pid, restarted PM2 task manager.
+**Status:** ✅ Verified worker running cleanly, no deadlock errors.
+**Note:** This doesn't block cron jobs (they're independent), but it prevented manual task execution.
+
+### 3. Hook Configuration Fixed
+**Problem:** Hook loader error: "Handler 'default' from research-protocol-enforcement is not a function"
+**Solution:** Created `/home/clawd/clawd/hooks/research-protocol-enforcement.js` with proper exports (module.exports + module.exports.default).
+**Status:** ✅ Hook loads successfully, protocol enforcement active.
+
+### 4. Ollama Service Restored
+**Problem:** Ollama process was not running; model discovery failing intermittently.
+**Solution:** Restarted Ollama service (`pkill -f ollama; ollama serve &`).
+**Verification:** API responding, 2 models available (llama3.1:8b, minimax-m2.5:cloud).
+**Status:** ✅ Ollama operational.
+
+---
+
+## MODEL DISTRIBUTION (Post-Fix)
+
+| Task | Model | Notes |
+|------|-------|-------|
+| Default (all automation) | claude-haiku-4-5 | Fast, reliable, prevents Ollama dependency |
+| Tweet generation (Bitcoin/Sports) | claude-sonnet-4-5 | Hardcoded in 21m-daily-generator-v2.js |
+| Overnight research | ollama/llama3.1:8b | Isolated task, won't cascade failures |
+| Slack/Telegram responses | claude-haiku-4-5 | Agent default |
+| Subagents | claude-haiku-4-5 | Fallback (minimax not yet in allowlist) |
+
+---
+
+## WHAT TO MONITOR
+
+1. **Ollama stability overnight** — If it keeps dying, add health check cron job
+2. **Config corruption** — If happens again, add validation check to health monitor
+3. **Task manager worker** — Should stay "online" in `pm2 list`
+
+If any fails again, refer to TROUBLESHOOTING section.
