@@ -148,7 +148,7 @@ Requirements:
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      model: 'minimax-m2.5:cloud',
+model: 'qwen3.5:4b',
       prompt,
       stream: false
     })
@@ -346,7 +346,7 @@ Set "found" to false if you cannot identify a specific athlete with a verified c
     const res = await fetch('http://localhost:11434/api/generate', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ model: 'minimax-m2.5:cloud', prompt, stream: false })
+      body: JSON.stringify({ model: 'qwen3.5:4b', prompt, stream: false })
     });
     const data = await res.json();
     const text = (data.response || '').trim();
