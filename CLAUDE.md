@@ -256,7 +256,16 @@ To enable systemd in WSL2 (alternative):
 systemd=true
 # Then run: wsl --shutdown (from PowerShell)
 ```
-- Fix in automation scripts: execFileSync array args must not have quotes around target
+
+**Subagent Configuration:**
+- Default subagent model: minimax/MiniMax-Text-01 (free, Kilo's backend)
+- Fallback: anthropic/claude-haiku-4-5
+- Config location: `~/.openclaw/openclaw.json` → `agents.defaults.subagents`
+
+To spawn a subagent:
+```
+Jett, spawn a subagent to help with [task description]
+```
 
 ---
 
