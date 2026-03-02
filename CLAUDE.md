@@ -258,7 +258,7 @@ systemd=true
 ```
 
 **Subagent Configuration:**
-- Default subagent model: minimax/MiniMax-Text-01 (free)
+- Default subagent model: ollama/minimax-m2.5:cloud (free via Ollama)
 - Fallback: anthropic/claude-haiku-4-5
 - Config location: `~/.openclaw/openclaw.json` → `agents.defaults.subagents`
 
