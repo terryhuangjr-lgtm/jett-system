@@ -169,26 +169,17 @@ class TaskServer {
     if (pathname === '/api/health' && req.method === 'GET') {
       const checks = [];
       
-      // Check Slack Bridge
-      try {
-        const { execSync } = require('child_process');
-        const ps = execSync('ps aux | grep clawdbot | grep -v grep', { encoding: 'utf8' });
-        if (ps.includes('gateway') || ps.includes('bridge')) {
-          checks.push({ status: 'healthy', message: 'Slack Bridge running' });
-        } else {
-          checks.push({ status: 'unhealthy', message: 'Slack Bridge not running' });
-        }
-      } catch (e) {
-        checks.push({ status: 'unhealthy', message: 'Slack Bridge not running' });
-      }
-      
       // Check Gateway
       try {
         const { execSync } = require('child_process');
-        const ps = execSync('ps aux | grep clawdbot-gateway | grep -v grep', { encoding: 'utf8' });
-        checks.push({ status: 'healthy', message: 'Gateway running' });
+        const ps = execSync('ps aux | grep -E "openclaw-gateway|clawdbot-gateway" | grep -v grep', { encoding: 'utf8' });
+        if (ps.includes('gateway')) {
+          checks.push({ name: 'Gateway', status: 'healthy', message: 'openclaw-gateway running' });
+        } else {
+          checks.push({ name: 'Gateway', status: 'unhealthy', message: 'Gateway not running' });
+        }
       } catch (e) {
-        checks.push({ status: 'unhealthy', message: 'Gateway not running' });
+        checks.push({ name: 'Gateway', status: 'unhealthy', message: 'Gateway not running' });
       }
       
       // Check Ollama
@@ -201,18 +192,85 @@ class TaskServer {
           req.on('error', () => resolve({ status: 'unhealthy' }));
           req.setTimeout(3000, () => resolve({ status: 'unhealthy' }));
         });
-        checks.push({ status: ollama.status, message: ollama.status === 'healthy' ? 'Ollama responding' : 'Ollama not responding' });
+        checks.push({ name: 'Ollama', status: ollama.status, message: ollama.status === 'healthy' ? 'AI models responding' : 'Ollama not responding' });
       } catch (e) {
-        checks.push({ status: 'unhealthy', message: 'Ollama not responding' });
+        checks.push({ name: 'Ollama', status: 'unhealthy', message: 'Ollama not responding' });
       }
       
-      // Check running tasks
-      const allTasks = await db.getTasks();
-      const running = allTasks.filter(t => t.status === 'running').length;
-      checks.push({ status: 'healthy', message: `${running} task${running !== 1 ? 's' : ''} running` });
+      // Check PM2 processes
+      try {
+        const { execSync } = require('child_process');
+        const output = execSync('/home/clawd/.nvm/versions/node/v22.22.0/bin/pm2 jlist', { encoding: 'utf8' });
+        const apps = JSON.parse(output);
+        const running = apps.filter(a => a.pm2_env?.status === 'online').length;
+        const stopped = apps.filter(a => a.pm2_env?.status !== 'online').length;
+        if (stopped === 0) {
+          checks.push({ name: 'PM2', status: 'healthy', message: `${running} process(es) online` });
+        } else {
+          checks.push({ name: 'PM2', status: 'warning', message: `${running} online, ${stopped} stopped` });
+        }
+      } catch (e) {
+        checks.push({ name: 'PM2', status: 'unhealthy', message: 'PM2 not responding' });
+      }
       
-      const unhealthyCount = checks.filter(c => c.status !== 'healthy').length;
-      const healthStatus = unhealthyCount === 0 ? 'healthy' : unhealthyCount <= 2 ? 'warning' : 'unhealthy';
+      // Check disk space
+      try {
+        const { execSync } = require('child_process');
+        const df = execSync('df -h / | tail -1', { encoding: 'utf8' });
+        const match = df.match(/(\d+)%/);
+        if (match) {
+          const pct = parseInt(match[1]);
+          if (pct < 80) {
+            checks.push({ name: 'Disk', status: 'healthy', message: `${pct}% used` });
+          } else if (pct < 90) {
+            checks.push({ name: 'Disk', status: 'warning', message: `${pct}% used` });
+          } else {
+            checks.push({ name: 'Disk', status: 'unhealthy', message: `${pct}% used - low space` });
+          }
+        }
+      } catch (e) {
+        checks.push({ name: 'Disk', status: 'unhealthy', message: 'Could not check disk' });
+      }
+      
+      // Check internet connectivity
+      try {
+        const { execSync } = require('child_process');
+        execSync('curl -s --connect-timeout 5 https://api.anthropic.com > /dev/null', { encoding: 'utf8' });
+        checks.push({ name: 'Internet', status: 'healthy', message: 'Connected to internet' });
+      } catch (e) {
+        checks.push({ name: 'Internet', status: 'unhealthy', message: 'No internet connection' });
+      }
+      
+      // Check Clawdbot CLI
+      try {
+        const { execSync } = require('child_process');
+        const version = execSync('/home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot --version', { encoding: 'utf8' });
+        checks.push({ name: 'Clawdbot', status: 'healthy', message: 'CLI responding' });
+      } catch (e) {
+        checks.push({ name: 'Clawdbot', status: 'unhealthy', message: 'CLI not responding' });
+      }
+      
+      // Check database
+      try {
+        const tasks = await db.getTasks();
+        checks.push({ name: 'Database', status: 'healthy', message: `${tasks.length} tasks in DB` });
+      } catch (e) {
+        checks.push({ name: 'Database', status: 'unhealthy', message: 'DB connection failed' });
+      }
+      
+      // Check cron jobs
+      try {
+        const { execSync } = require('child_process');
+        const output = execSync('/home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot cron list', { encoding: 'utf8', timeout: 10000 });
+        const jobCount = (output.match(/\n/g) || []).length;
+        checks.push({ name: 'Cron Jobs', status: 'healthy', message: `${jobCount} cron jobs configured` });
+      } catch (e) {
+        checks.push({ name: 'Cron Jobs', status: 'unhealthy', message: 'Could not list cron jobs' });
+      }
+      
+      const unhealthyCount = checks.filter(c => c.status === 'unhealthy').length;
+      const warningCount = checks.filter(c => c.status === 'warning').length;
+      const healthStatus = unhealthyCount === 0 ? (warningCount === 0 ? 'healthy' : 'warning') : 'unhealthy';
       
       return this.sendJSON(res, { status: healthStatus, checks });
     }

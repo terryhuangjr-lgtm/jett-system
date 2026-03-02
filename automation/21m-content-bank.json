@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "last_updated": "2026-03-01",
+  "last_updated": "2026-03-02",
   "entries": [
     {
       "id": 1,
@@ -83,7 +83,9 @@
       "btc_allocation": 35,
       "verified_fact": "CJ Stroud signed his $9.4M rookie deal in 2023 when BTC was $27,000. 10% allocation = 35 BTC.",
       "source": "Spotrac",
-      "used_dates": [],
+      "used_dates": [
+        "2026-03-02"
+      ],
       "cooldown_days": 90
     },
     {
@@ -804,7 +806,9 @@
       "btc_price_then": 40000,
       "verified_fact": "The US government holds approximately 200,000 BTC seized from criminals — worth $13.5B. The government that calls Bitcoin risky is one of its largest holders.",
       "source": "US DOJ public records",
-      "used_dates": [],
+      "used_dates": [
+        "2026-03-02"
+      ],
       "cooldown_days": 60
     },
     {
@@ -834,6 +838,21 @@
       "source": "CoinGecko / S&P historical",
       "used_dates": [],
       "cooldown_days": 60
+    },
+    {
+      "category": "historic_contract",
+      "athlete": "Joe Burrow",
+      "sport": "NFL",
+      "year": 2023,
+      "contract_value": 275000000,
+      "btc_price_then": 27000,
+      "btc_allocation": 509,
+      "verified_fact": "Joe Burrow signed a $275.0M contract in 2023 when BTC was $27,000. 5% allocation = 509 BTC.",
+      "source": "",
+      "used_dates": [],
+      "cooldown_days": 90,
+      "contract_years": 5,
+      "id": 60
     }
   ]
 }

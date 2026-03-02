@@ -12,9 +12,7 @@
       <div class="header-top">
         <h1>Task Manager Dashboard</h1>
         <div class="header-links">
-          <span id="health-status" class="health-status">Loading...</span>
-          <button class="header-btn" onclick="showPM2Status()">⬛ PM2 Status</button>
-          <button class="header-btn" onclick="showCronList()">📋 Cron List</button>
+          <span id="health-status" class="health-status" onclick="showHealthDetails()" style="cursor:pointer">Loading...</span>
           <a href="/ebay" class="ebay-link">📦 eBay Scanner</a>
         </div>
       </div>
@@ -69,7 +67,7 @@
 
     async function refreshTasks() {
       try {
-        const response = await fetch(`${API_BASE}/tasks`);
+        const response = await fetch(`${API_BASE}/cron-jobs`);
         tasks = await response.json();
         tasks = tasks.filter(t => t.enabled);
         renderCalendar();
@@ -99,6 +97,48 @@
       } catch (error) {
         document.getElementById('health-status').innerHTML = '✕ Offline';
         document.getElementById('health-status').className = 'health-status error';
+      }
+    }
+
+    async function showHealthDetails() {
+      const body = document.getElementById('system-info-body');
+      body.innerHTML = '<p style="padding:16px">Loading...</p>';
+      document.getElementById('system-info-modal').style.display = 'block';
+      try {
+        const res = await fetch(API_BASE + '/health');
+        const health = await res.json();
+        
+        const statusIcon = { healthy: '✅', warning: '⚠️', unhealthy: '❌' };
+        const color = { healthy: '#32d74b', warning: '#f0c040', unhealthy: '#ff453a' };
+        
+        let html = `<h2>🟢 System Health</h2>
+          <p style="margin-bottom:16px;color:${color[health.status]};font-size:18px;font-weight:bold">
+            ${statusIcon[health.status]} ${health.status.toUpperCase()}
+          </p>
+          <table style="width:100%;border-collapse:collapse;font-size:14px">
+            <thead>
+              <tr style="text-align:left;border-bottom:1px solid #333;color:#888">
+                <th style="padding:8px">Check</th>
+                <th style="padding:8px">Status</th>
+                <th style="padding:8px">Details</th>
+              </tr>
+            </thead>
+            <tbody>`;
+        
+        health.checks.forEach(check => {
+          html += `<tr style="border-bottom:1px solid #222">
+            <td style="padding:8px;font-weight:bold">${check.name}</td>
+            <td style="padding:8px;color:${color[check.status]}">${statusIcon[check.status]} ${check.status}</td>
+            <td style="padding:8px;color:#888">${check.message}</td>
+          </tr>`;
+        });
+        
+        html += `</tbody></table>
+          <p style="color:#666;font-size:11px;margin-top:16px">Updated: ${new Date().toLocaleTimeString()} | Click outside to close</p>`;
+        
+        body.innerHTML = html;
+      } catch (e) {
+        body.innerHTML = `<h2>System Health</h2><p style="color:#ff453a">Error: ${e.message}</p>`;
       }
     }
 
@@ -261,24 +301,17 @@
         const task = tasks.find(t => t.id === id);
         if (!task) return;
 
-        const logsRes = await fetch(API_BASE + '/tasks/' + id + '/logs');
-        const logs = await logsRes.json();
+        const cronStatus = task.status || 'idle';
         
         document.getElementById('task-details').innerHTML = `
           <h2>${task.name}</h2>
           <p><strong>Schedule:</strong> ${task.schedule || 'Manual'}</p>
-          <p><strong>Command:</strong> <code>${task.command}</code></p>
-          <p><strong>Status:</strong> ${task.status}</p>
+          <p><strong>Command:</strong> <code>${task.command || 'Managed by clawdbot'}</code></p>
+          <p><strong>Status:</strong> ${cronStatus}</p>
           <p><strong>Last Run:</strong> ${task.last_run ? new Date(task.last_run).toLocaleString() : 'Never'}</p>
           <p><strong>Next Run:</strong> ${task.next_run ? new Date(task.next_run).toLocaleString() : 'N/A'}</p>
-          <h3>Recent Logs</h3>
-          <div class="logs">${logs.slice(0, 5).map(l => `
-            <div class="log-entry ${l.status}">
-              <span>${l.status.toUpperCase()}</span>
-              <span>${l.started_at ? new Date(l.started_at).toLocaleString() : ''}</span>
-              ${l.error ? `<div class="error">${l.error}</div>` : ''}
-            </div>
-          `).join('') || '<p>No logs yet</p>'}</div>
+          <p><strong>Run Count:</strong> ${task.run_count || 0}</p>
+          <p style="color:#888;font-size:12px;margin-top:16px">Task managed by clawdbot cron</p>
         `;
         
         document.getElementById('task-details-modal').style.display = 'block';
@@ -317,67 +350,6 @@
       return Math.floor(h / 24) + 'd ' + (h % 24) + 'h';
     }
 
-    async function showPM2Status() {
-      const body = document.getElementById('system-info-body');
-      body.innerHTML = '<p style="padding:16px">Loading...</p>';
-      document.getElementById('system-info-modal').style.display = 'block';
-      try {
-        const res = await fetch(API_BASE + '/pm2-status');
-        const apps = await res.json();
-        if (apps.error) throw new Error(apps.error);
-        const statusColor = s => ({ online: '#32d74b', error: '#ff453a', stopped: '#ff453a', waiting: '#f0c040' }[s] || '#888');
-        body.innerHTML = `
-          <h2>⬛ PM2 Status</h2>
-          <table style="width:100%;border-collapse:collapse;margin-top:12px;font-size:13px">
-            <thead>
-              <tr style="text-align:left;border-bottom:1px solid #333;color:#888">
-                <th style="padding:6px 8px">Name</th>
-                <th style="padding:6px 8px">Status</th>
-                <th style="padding:6px 8px">PID</th>
-                <th style="padding:6px 8px">Uptime</th>
-                <th style="padding:6px 8px">Restarts</th>
-                <th style="padding:6px 8px">Memory</th>
-                <th style="padding:6px 8px">CPU</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${apps.map(a => `
-                <tr style="border-bottom:1px solid #222">
-                  <td style="padding:8px">${a.name}</td>
-                  <td style="padding:8px;color:${statusColor(a.status)};font-weight:bold">${a.status}</td>
-                  <td style="padding:8px;color:#888">${a.pid || '-'}</td>
-                  <td style="padding:8px">${formatUptime(a.uptime)}</td>
-                  <td style="padding:8px;color:${a.restarts > 5 ? '#f0c040' : 'inherit'}">${a.restarts}</td>
-                  <td style="padding:8px">${formatBytes(a.memory)}</td>
-                  <td style="padding:8px">${a.cpu}%</td>
-                </tr>
-              `).join('')}
-            </tbody>
-          </table>
-          <p style="color:#888;font-size:11px;margin-top:12px">Updated: ${new Date().toLocaleTimeString()}</p>
-        `;
-      } catch (e) {
-        body.innerHTML = `<h2>⬛ PM2 Status</h2><p style="color:#ff453a">Error: ${e.message}</p>`;
-      }
-    }
-
-    async function showCronList() {
-      const body = document.getElementById('system-info-body');
-      body.innerHTML = '<p style="padding:16px">Loading...</p>';
-      document.getElementById('system-info-modal').style.display = 'block';
-      try {
-        const res = await fetch(API_BASE + '/cron-list');
-        const data = await res.json();
-        if (data.error) throw new Error(data.error);
-        body.innerHTML = `
-          <h2>📋 Clawdbot Cron List</h2>
-          <pre style="background:#111;padding:16px;border-radius:8px;font-size:12px;overflow:auto;max-height:70vh;margin-top:12px;white-space:pre-wrap">${data.output}</pre>
-          <p style="color:#888;font-size:11px;margin-top:12px">Updated: ${new Date().toLocaleTimeString()}</p>
-        `;
-      } catch (e) {
-        body.innerHTML = `<h2>📋 Clawdbot Cron List</h2><p style="color:#ff453a">Error: ${e.message}</p>`;
-      }
-    }
   </script>
 </body>
 </html>

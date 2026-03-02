@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "last_updated": "2026-02-17T19:53:45.542Z",
+  "last_updated": "2026-03-02T15:33:28.353Z",
   "global_filters": {
     "description": "Global filter rules applied to all eBay scans",
     "graded_keywords": [
@@ -56,16 +56,16 @@
           "magic",
           "yugioh",
           "non-sport",
-          "jumbo"
+          "jumbo. mystery"
         ]
       },
       "output_file": "/tmp/mj-finest-scan.json",
-      "last_run": "2026-02-27T14:13:10.235Z",
+      "last_run": "2026-03-02T14:00:47.239Z",
       "last_results": {
-        "timestamp": "2026-02-27T14:13:10.235Z",
+        "timestamp": "2026-03-02T14:00:47.240Z",
         "success": true
       },
-      "last_updated": "2026-02-17T00:40:05.802Z"
+      "last_updated": "2026-03-02T15:33:28.353Z"
     },
     "tuesday": {
       "name": "Griffey Jr Refractors",
@@ -164,9 +164,9 @@
         ]
       },
       "output_file": "/tmp/topps-refractors-multi-scan.json",
-      "last_run": "2026-02-27T17:25:45.100Z",
+      "last_run": "2026-03-02T12:43:28.795Z",
       "last_results": {
-        "timestamp": "2026-02-27T17:25:45.100Z",
+        "timestamp": "2026-03-02T12:43:28.795Z",
         "success": true
       },
       "last_updated": "2026-02-17T19:53:45.542Z"

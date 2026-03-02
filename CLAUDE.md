@@ -31,20 +31,18 @@ crontab -l                  # View watchdog cron
 
 **Notes:** Migrated from PM2 task-manager worker to clawdbot cron. Added failure notifications.
 pm2 list                    # check status
-pm2 restart task-manager-worker   # restart worker
 pm2 logs --lines 50         # recent logs
 ```
 
 **PM2 Processes:**
-- task-manager-server (port 3000)
-- task-manager-worker
-- podcast-summarizer
+- task-manager-server (port 3000) - dashboard only
+- (task-manager-worker removed - scheduling via clawdbot cron)
 
 **Independent:**
 - clawdbot-gateway (manages itself, do NOT add to PM2)
 
-**Scheduling:** clawdbot cron (primary) — tasks run through clawdbot gateway
-**Process Mgmt:** PM2 (task-manager-server dashboard only)
+**Scheduling:** clawdbot cron (primary) — all tasks run through clawdbot gateway
+**Dashboard:** Reads from clawdbot cron at http://localhost:3000
 ```
 clawdbot cron list
 ```
