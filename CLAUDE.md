@@ -373,3 +373,17 @@ When modifying skills, cd to /home/clawd/skills and commit there, NOT jett-syste
 3. **Task manager worker** — Should stay "online" in `pm2 list`
 
 If any fails again, refer to TROUBLESHOOTING section.
+
+---
+
+## HEALTH MONITOR DISABLED - 2026-03-02
+
+**Why:** Task-manager-worker was disabled (migrated to clawdbot cron). Health monitor was checking for its lock file every 15 minutes and sending false "Task Worker DOWN" alerts.
+
+**Action Taken:**
+- Removed cron job: `*/15 * * * * jett-health-monitor.sh`
+- Kept health-monitor.js file (not needed but harmless)
+- System Health Check still runs daily @ 9:30 AM via clawdbot cron
+
+**Result:** No more false hourly alerts. System stays quiet unless there's an actual problem.
+
