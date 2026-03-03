@@ -211,31 +211,6 @@ class TaskServer {
         checks.push({ name: 'Ollama', status: 'unhealthy', message: 'Ollama not responding' });
       }
       
-      // Check qwen3.5 model specifically
-      try {
-        const http = require('http');
-        const qwen = await new Promise((resolve) => {
-          const req = http.get('http://localhost:11434/api/tags', (res) => {
-            let data = '';
-            res.on('data', chunk => data += chunk);
-            res.on('end', () => {
-              try {
-                const models = JSON.parse(data).models || [];
-                const hasQwen = models.some(m => m.name.includes('qwen'));
-                resolve({ status: hasQwen ? 'healthy' : 'unhealthy', hasQwen });
-              } catch {
-                resolve({ status: 'unhealthy', hasQwen: false });
-              }
-            });
-          });
-          req.on('error', () => resolve({ status: 'unhealthy', hasQwen: false }));
-          req.setTimeout(3000, () => resolve({ status: 'unhealthy', hasQwen: false }));
-        });
-        checks.push({ name: 'Qwen3.5', status: qwen.status, message: qwen.status === 'healthy' ? 'Local model available' : 'qwen3.5 not available' });
-      } catch (e) {
-        checks.push({ name: 'Qwen3.5', status: 'unhealthy', message: 'qwen3.5 not available' });
-      }
-      
       // Check PM2 processes
       try {
         const { execSync } = require('child_process');
