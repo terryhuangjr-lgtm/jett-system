@@ -419,9 +419,28 @@ Vector: ready ✅
 |------|-------|-------|
 | Default (all automation) | claude-haiku-4-5 | Fast, reliable, prevents Ollama dependency |
 | Tweet generation (Bitcoin/Sports) | claude-sonnet-4-5 | Hardcoded in 21m-daily-generator-v2.js |
-| Overnight research | ollama/qwen3.5:4b | Local model, faster than remote |
+| Overnight research | ollama/llama3.1:8b | Local model - qwen3.5 was too slow on CPU |
 | Slack/Telegram responses | claude-haiku-4-5 | Agent default |
-| Subagents | ollama/qwen3.5:4b | Local model for subtasks |
+| Subagents | ollama/llama3.1:8b | Local model for subtasks |
+
+---
+
+## EBAY SCANNER FIXES - 2026-03-03
+
+### 1. Raw Card Filter Bug Fixed
+**Problem:** Cards with "PSA 10" in title were slipping through because filter checked condition field first.
+**Solution:** Reordered filter logic in `ebay-scanner/raw-card-filter.js` to check title for graded keywords FIRST.
+**Status:** ✅ Tested - PSA/BGS now filtered regardless of condition field.
+
+### 2. Global Rules Save Fixed
+**Problem:** Dashboard saved global filters as nested `global_filters.global_filters`.
+**Solution:** Fixed server.js API to unwrap correctly, fixed config structure.
+**Status:** ✅ Global rules now save properly.
+
+### 3. Dashboard UI Simplified
+**Problem:** Redundant buttons and messy display.
+**Solution:** Removed duplicate "Global Rules" button, simplified "Filter Rules" card with green border.
+**Status:** ✅ Cleaner UI.
 
 ---
 
