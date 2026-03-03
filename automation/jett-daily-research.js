@@ -17,80 +17,177 @@
 
 const fs = require('fs');
 const path = require('path');
+const { execSync, exec } = require('child_process');
 const db = require('./db-bridge.js');
 
 const MEMORY_DIR = path.join(require('os').homedir(), 'clawd', 'memory');
 const RESEARCH_LOG = path.join(MEMORY_DIR, 'daily-research-log.json');
+const SCRAPER_SCRIPT = path.join(__dirname, 'jett-scraper.py');
 
-// Topic rotation by category
+// Topic rotation by category - comprehensive lists
 const BTC_CATEGORIES = [
   { category: 'bitcoin_history', topics: [
-    'Bitcoin halving impact on price history',
-    'Satoshi Nakamoto disappearence mystery',
     'Bitcoin Pizza Day 10000 BTC value now',
-    'Bitcoin first blocks genesis',
-    'Mt Gox collapse',
-    'Bitcoin ETF approval 2024'
+    'Satoshi Nakamoto disappearance mystery',
+    'Mt Gox collapse 2014',
+    'Bitcoin first blocks genesis block 2009',
+    'Bitcoin halving schedule impact',
+    'Winklevoss twins Bitcoin purchase 2012',
+    'First Bitcoin exchange Mt Gox 2010',
+    'Silk Road FBI Bitcoin seizure 2013'
   ]},
   { category: 'bitcoin_quotes', topics: [
-    'Michael Saylor Bitcoin treasury strategy quote',
-    'Ray Dalio Bitcoin vs gold quote',
-    'Nassim Taleb Bitcoin criticism',
-    'Peter Schiff Bitcoin prediction',
-    'Elon Musk Bitcoin Tesla tweet',
-    'Jack Dorsey Bitcoin tweet'
+    'Michael Saylor Bitcoin treasury strategy',
+    'Jack Dorsey Bitcoin tweet "best money"',
+    'Elon Musk Bitcoin Tesla purchase 2021',
+    'Ray Dalio Bitcoin vs gold comparison',
+    'Peter Schiff Bitcoin criticism gold bug',
+    'Nassim Taleb Bitcoin debate',
+    'Warren Buffett Bitcoin criticism',
+    'Bill Gates Bitcoin opinion'
   ]},
   { category: 'sound_money', topics: [
-    'US dollar inflation since 1971',
-    'Federal Reserve money printing history',
+    'US dollar inflation since 1971 Nixon',
+    'Federal Reserve money printing QE',
     'Gold standard US ended 1971',
-    'Quantitative easing examples',
-    'Hyperinflation examples Venezuela Zimbabwe'
+    'Quantitative easing 2008 financial crisis',
+    'Hyperinflation Venezuela Zimbabwe history',
+    'Fiat currency vs sound money',
+    'Dollar losing purchasing power 50 years',
+    'Historical gold money vs paper money'
   ]},
   { category: 'bitcoin_adoption', topics: [
-    'MicroStrategy Bitcoin holdings 2024',
-    'Tesla Bitcoin purchase history',
-    'Country Bitcoin adoption El Salvador',
-    'BlackRock Bitcoin ETF holdings',
-    'Major company Bitcoin treasury'
+    'MicroStrategy Bitcoin treasury 2024',
+    'Tesla Bitcoin purchase and sale 2021',
+    'El Salvador Bitcoin adoption 2021',
+    'BlackRock Bitcoin ETF approval 2024',
+    'Major company Bitcoin treasury holdings',
+    'PayPal Bitcoin integration 2020',
+    'Square Cash App Bitcoin adoption',
+    'Bitcoin ATM growth worldwide'
+  ]},
+  { category: 'bitcoin_scarcity', topics: [
+    'Bitcoin 21 million supply cap',
+    'Bitcoin halving 2024 block reward',
+    'Bitcoin last coin mining year 2140',
+    'Bitcoin scarcity digital gold',
+    'Bitcoin stock to flow model',
+    'Bitcoin controlled supply formula',
+    'Bitcoin inflation rate decreasing',
+    'Bitcoin issuance schedule'
+  ]},
+  { category: 'bitcoin_energy', topics: [
+    'Bitcoin energy consumption renewable',
+    'Bitcoin mining energy usage comparison',
+    'Bitcoin proof of work security',
+    'Bitcoin energy FUD misinformation',
+    'Bitcoin mining grid stability',
+    'Bitcoin energy vs banking system',
+    'Bitcoin mining geographic distribution',
+    'Bitcoin carbon footprint debate'
+  ]},
+  { category: 'bitcoin_network', topics: [
+    'Bitcoin Lightning Network capacity 2024',
+    'Bitcoin node distribution worldwide',
+    'Bitcoin network hashrate record',
+    'Bitcoin block size debate history',
+    'Bitcoin SegWit adoption',
+    'Bitcoin transaction speed vs Visa',
+    'Bitcoin Lightning Network use cases',
+    'Bitcoin custody solutions institutional'
+  ]},
+  { category: 'bitcoin_education', topics: [
+    'Bitcoin whitepaper Satoshi 2008',
+    'Bitcoin public key cryptography',
+    'Bitcoin decentralized trustless',
+    'Bitcoin mining proof of work',
+    'Bitcoin digital store of value',
+    'Bitcoin censorship resistance',
+    'Bitcoin divisible smallest unit satoshi',
+    'Bitcoin network effects adoption'
   ]}
 ];
 
 const SPORTS_CATEGORIES = [
   { category: 'mega_contracts', topics: [
-    'Largest NFL contract 2024 2025',
-    'Largest NBA contract history',
-    'MLB largest contract ever',
-    'NHL largest contract 2024',
-    'Highest paid athlete 2024 2025'
+    'Patrick Mahomes Chiefs contract 2022',
+    'Joe Burrow Bengals contract 2023',
+    'Justin Fields Bears contract',
+    'Jalen Hurts Eagles contract 2023',
+    'Lamar Jackson Ravens contract 2023',
+    'Dak Prescott Cowboys contract 2024',
+    'Josh Allen Bills contract 2024',
+    'Travis Kelce contract Chiefs'
   ]},
   { category: 'historic_contracts', topics: [
-    'Wayne Gretzky Edmonton Oilers 1988',
-    'Michael Jordan Bulls 1997',
+    'Michael Jordan Bulls 1997 $30M',
+    'Wayne Gretzky Oilers 1988',
+    'LeBron James career contracts',
+    'Tom Brady Patriots contracts history',
     'Derek Jeter Yankees extension',
-    'Tom Brady Patriots contracts',
-    'LeBron James career contracts'
-  ]},
-  { category: 'nfl_qb_contracts', topics: [
-    'Joe Burrow contract Bengals',
-    'Jordan Love contract Packers',
-    'Justin Herbert contract Chargers',
-    'Jared Goff contract Lions',
-    'Kirk Cousins contract Vikings'
+    'Kevin Durant Thunder contract 2016',
+    'Stephen Curry Warriors contract 2017',
+    'Mike Trout Angels contract 2019'
   ]},
   { category: 'nba_contracts', topics: [
-    'Jaylen Brown max contract Celtics',
-    'Donovan Mitchell contract Cavs',
-    'Jayson Tatum contract Celtics',
-    'Bam Adebayo contract Heat',
-    'Tyrese Haliburton contract Pacers'
+    'Jaylen Brown Celtics max contract',
+    'Donovan Mitchell Cavs contract',
+    'Jayson Tatum Celtics extension',
+    'Luka Doncic Mavericks contract',
+    'Giannis Antetokounmpo Bucks extension',
+    'Nikola Jokic Nuggets contract',
+    'Joel Embiid 76ers max contract',
+    'Devin Booker Suns contract'
+  ]},
+  { category: 'nfl_contracts', topics: [
+    'Christian McCaffrey 49ers contract',
+    'Tyreek Hill Dolphins contract',
+    'Davante Adams Raiders contract',
+    'DeAndre Hopkins contract 2023',
+    'Amon-Ra St. Brown Lions extension',
+    'Ja\'Marr Chase Bengals contract',
+    'Bijan Robinson Falcons draft',
+    'Breece Hall Jets contract'
   ]},
   { category: 'nil_contracts', topics: [
-    'NIL deal record 2024',
-    'highest paid college athlete NIL',
-    'NIL athlete Bitcoin investment',
-    'college athlete financial planning',
-    'NIL money management tips'
+    'Travis Hunter NIL deal 2024',
+    'Arch Manning NIL value Texas',
+    'Caleb Williams NIL USC',
+    'Bronny James NIL Lakers',
+    'Olivia Miles Notre Dame NIL',
+    'Caitlin Clark Iowa NIL',
+    'JJ McCarthy Michigan NIL',
+    'Drake Maye UNC NIL'
+  ]},
+  { category: 'signing_bonuses', topics: [
+    'NFL rookie signing bonus record',
+    'NBA draft pick signing bonus',
+    'MLB draft bonus history',
+    'NHL draft signing bonus',
+    'NFL quarterback signing bonus comparison',
+    'NBA rookie contract first round',
+    'MLS signing bonus growth',
+    'WNBA rookie contract salary'
+  ]},
+  { category: 'financial_hardship', topics: [
+    'Mike Tyson bankruptcy $400M earnings',
+    'Allen Iverson financial troubles',
+    'Antoine Walker bankruptcy $110M',
+    'Terrell Owens bankruptcy story',
+    'Scottie Pippen bankruptcy pension',
+    'Marcus Camby bankruptcy trustee',
+    'Darryl Strawberry tax issues',
+    'Vince Young NFL bankruptcy'
+  ]},
+  { category: 'rookie_contracts', topics: [
+    'NFL rookie contract scale 2024',
+    'NBA rookie scale contract history',
+    'MLB signing bonus draft 2024',
+    'NFL first overall pick contract',
+    'NBA first overall pick contract',
+    'NHL rookie entry level contract',
+    'MLS homegrown player contracts',
+    'WNBA rookie salary scale'
   ]}
 ];
 
@@ -132,20 +229,122 @@ async function saveResearchLog(topic, category, count) {
   fs.writeFileSync(RESEARCH_LOG, JSON.stringify(log, null, 2));
 }
 
-async function getJettResponse(query) {
-  const prompt = `You are a research assistant for a Twitter account that posts about Bitcoin and sports contracts.
+// BTC price lookup by year
+const BTC_PRICE_BY_YEAR = {
+  2026: 95000, 2025: 90000, 2024: 65000, 2023: 27000,
+  2022: 20000, 2021: 46000, 2020: 10000, 2019: 3500,
+  2018: 8000,  2017: 2500,  2016: 600,   2015: 250,
+  2014: 500,   2013: 100,   2012: 13,    2011: 5,
+  2010: 0.004, 2009: 0
+};
 
-Research TOPIC: ${query}
+function getBtcPriceForYear(year) {
+  return BTC_PRICE_BY_YEAR[year] || 0;
+}
+
+async function scrapeWeb(topic, category) {
+  return new Promise((resolve) => {
+    let cmd = '';
+    let args = [];
+    
+    // Map topics to scraper calls
+    if (category === 'nil_contracts' || category === 'mega_contracts' || 
+        category === 'historic_contracts' || category === 'nfl_qb_contracts') {
+      // Sports: Extract player name from topic and fetch from Spotrac
+      const playerMatch = topic.match(/^([A-Z][a-z]+(?:\s+[A-Z][a-z]+)+)/);
+      const sport = category.includes('nfl') || category.includes('nil') ? 'nfl' : 'nba';
+      if (playerMatch) {
+        cmd = 'python3';
+        args = [SCRAPER_SCRIPT, '--spotrac-player', playerMatch[1], '--spotrac-sport', sport];
+      }
+    } else if (category.startsWith('bitcoin_') || category === 'sound_money' || 
+               category === 'bitcoin_adoption' || category === 'bitcoin_history' ||
+               category === 'bitcoin_quotes') {
+      // Bitcoin: Map to Wikipedia topics
+      const topicLower = topic.toLowerCase();
+      let wikiTopic = 'Bitcoin';
+      if (topicLower.includes('pizza')) wikiTopic = 'pizza';
+      else if (topicLower.includes('halving')) wikiTopic = 'halving';
+      else if (topicLower.includes('saylor')) wikiTopic = 'saylor';
+      else if (topicLower.includes('etf')) wikiTopic = 'etf';
+      else if (topicLower.includes('adoption')) wikiTopic = 'adoption';
+      else if (topicLower.includes('mt gox')) wikiTopic = 'mtgox';
+      
+      cmd = 'python3';
+      args = [SCRAPER_SCRIPT, '--bitcoin', wikiTopic];
+    }
+    
+    if (!cmd) {
+      resolve('');
+      return;
+    }
+    
+    try {
+      const result = execSync(cmd, args, { timeout: 30000, encoding: 'utf8' });
+      resolve(result);
+    } catch (e) {
+      console.log(`  ⚠ Scraper error: ${e.message}`);
+      resolve('');
+    }
+  });
+}
+
+async function getJettResponse(topic, category) {
+  // Step 1: Scrape real web data
+  console.log(`  🌐 Scraping web for: ${topic}`);
+  const scrapedData = await scrapeWeb(topic, category);
+  
+  // Step 2: Build prompt with scraped data for LLM to format
+  const isBitcoin = category.startsWith('bitcoin_') || category === 'sound_money' || 
+                    category === 'bitcoin_adoption' || category === 'bitcoin_history' ||
+                    category === 'bitcoin_quotes';
+  
+  let prompt;
+  if (isBitcoin) {
+    prompt = `You are a research assistant for a Bitcoin education Twitter account.
+
+Research TOPIC: ${topic}
+
+Scraped web data:
+${scrapedData || 'No scraped data available - use your knowledge but prioritize verifiable facts'}
+
+Output EXACTLY in this format (one fact per line):
+Fact: In YEAR, KEY_FACT_HERE [Source: source-name]
+Fact: In YEAR, KEY_FACT_HERE [Source: source-name]
+
+Example:
+Fact: In 2021, MicroStrategy held 114,000 Bitcoin [Source: Wikipedia]
+Fact: In 2020, MicroStrategy purchased 43,318 Bitcoin at ~$34,000 each [Source: MicroStrategy SEC filing]
 
 Requirements:
-- Find 2-3 VERIFIED facts with actual sources
-- Sources must be: Wikipedia, Spotrac, official announcements, major news (WSJ, Bloomberg, ESPN, etc.)
-- NO speculation, NO predictions, NO unverified claims
-- Include specific numbers, dates, dollar amounts when available
-- Format each fact as: Fact: [the fact] [Source: URL]`;
+- Must include specific year and dollar amount or BTC amount
+- NO speculation, NO predictions
+- Start each line with "Fact:"`;
+  } else {
+    prompt = `You are a research assistant for a sports contract Twitter account.
+
+Research TOPIC: ${topic}
+
+Scraped web data:
+${scrapedData || 'No scraped data available - use your knowledge but prioritize verifiable facts from Spotrac or official sources'}
+
+Output EXACTLY in this format (one fact per line):
+Fact: ATHLETE_NAME signed a $XXM CONTRACT_TYPE in YEAR [Source: source-name]
+Fact: ATHLETE_NAME signed a $XXM CONTRACT_TYPE in YEAR [Source: source-name]
+
+Example:
+Fact: Patrick Mahomes signed a $16.4M rookie contract in 2017 [Source: Spotrac]
+Fact: Joe Burrow signed a $27.5M rookie contract in 2023 [Source: Spotrac]
+
+Requirements:
+- Must include: athlete name, contract year, total value in USD
+- Source must be: Spotrac, Wikipedia, or official announcements
+- NO speculation, NO predictions
+- Start each line with "Fact:"`;
+  }
 
   const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 60000);
+  const timeout = setTimeout(() => controller.abort(), 90000);
 
   try {
     const response = await fetch('http://localhost:11434/api/generate', {
@@ -165,7 +364,7 @@ Requirements:
     return data.response || '';
   } catch (error) {
     if (error.name === 'AbortError') {
-      console.error('   ❌ Ollama request timed out after 60s');
+      console.error('   ❌ Ollama request timed out after 90s');
     } else {
       console.error('   ❌ Ollama request failed:', error.message);
     }
@@ -254,9 +453,118 @@ async function addToDatabase(items, dryRun = false) {
   return items.length;
 }
 
+// Load content bank to check for duplicates
+let contentBankCache = null;
+function loadContentBank() {
+  if (contentBankCache) return contentBankCache;
+  try {
+    const bank = JSON.parse(fs.readFileSync(CONTENT_BANK_PATH, 'utf8'));
+    contentBankCache = bank;
+    return bank;
+  } catch (e) {
+    return { entries: [] };
+  }
+}
+
+// Get recently researched topics from log
+function getRecentlyResearchedTopics() {
+  try {
+    if (fs.existsSync(RESEARCH_LOG)) {
+      const log = JSON.parse(fs.readFileSync(RESEARCH_LOG, 'utf8'));
+      const weekAgo = Date.now() - (7 * 24 * 60 * 60 * 1000);
+      const recent = [];
+      
+      // Check last_run vs current time
+      if (log.last_run) {
+        const runTime = new Date(log.last_run).getTime();
+        if (runTime > weekAgo) {
+          recent.push(log.last_topic);
+        }
+      }
+      
+      // Also check history array if exists
+      if (log.history) {
+        for (const entry of log.history) {
+          const runTime = new Date(entry.timestamp || entry.last_run).getTime();
+          if (runTime > weekAgo) {
+            recent.push(entry.topic);
+          }
+        }
+      }
+      
+      return recent;
+    }
+  } catch (e) {}
+  return [];
+}
+
+// Extract athlete/deal name from topic for duplicate check
+function extractKeyFromTopic(topic) {
+  // For sports: extract player name (first capitalized words)
+  const playerMatch = topic.match(/^([A-Z][a-z]+(?:\s+[A-Z][a-z]+)+)/);
+  if (playerMatch) return { type: 'athlete', key: playerMatch[1].toLowerCase() };
+  
+  // For BTC: extract key terms
+  const btcKeywords = ['bitcoin', 'satoshi', 'mt gox', 'halving', 'pizza', 'lightning', 
+    'microstrategy', 'tesla', 'saylor', 'dorsey', 'musk', 'el salvador', 'etf'];
+  for (const kw of btcKeywords) {
+    if (topic.toLowerCase().includes(kw)) {
+      return { type: 'deal', key: kw };
+    }
+  }
+  
+  return { type: 'topic', key: topic.toLowerCase() };
+}
+
+// Check if topic would create duplicate in content bank
+function isDuplicate(topic, category) {
+  const bank = loadContentBank();
+  const { key } = extractKeyFromTopic(topic);
+  const isBtc = category.startsWith('bitcoin_') || 
+    ['sound_money', 'bitcoin_adoption', 'bitcoin_history', 'bitcoin_quotes',
+     'bitcoin_scarcity', 'bitcoin_energy', 'bitcoin_network', 'bitcoin_education'].includes(category);
+  
+  for (const entry of bank.entries) {
+    if (isBtc) {
+      // Check deal or source
+      if (entry.deal && entry.deal.toLowerCase().includes(key)) return true;
+      if (entry.source && entry.source.toLowerCase().includes(key)) return true;
+    } else {
+      // Check athlete name
+      if (entry.athlete && entry.athlete.toLowerCase().includes(key)) return true;
+    }
+  }
+  return false;
+}
+
 async function selectTopic(categoryPool) {
+  const recentTopics = getRecentlyResearchedTopics();
+  const bank = loadContentBank();
+  
+  // Try up to 10 times to find non-duplicate topic
+  for (let attempt = 0; attempt < 10; attempt++) {
+    const cat = categoryPool[Math.floor(Math.random() * categoryPool.length)];
+    const topic = cat.topics[Math.floor(Math.random() * cat.topics.length)];
+    
+    // Skip if recently researched
+    if (recentTopics.includes(topic)) {
+      console.log(`  ⏭ Skipping recently researched: ${topic}`);
+      continue;
+    }
+    
+    // Skip if duplicate in content bank
+    if (isDuplicate(topic, cat.category)) {
+      console.log(`  ⏭ Skipping duplicate: ${topic}`);
+      continue;
+    }
+    
+    return { topic, category: cat.category };
+  }
+  
+  // Fallback: just pick random
   const cat = categoryPool[Math.floor(Math.random() * categoryPool.length)];
   const topic = cat.topics[Math.floor(Math.random() * cat.topics.length)];
+  console.log(`  ⚠ Could not find unique topic, using: ${topic}`);
   return { topic, category: cat.category };
 }
 
@@ -304,15 +612,6 @@ async function buildTopicList(args) {
 
 const CONTENT_BANK_PATH = path.join(__dirname, '21m-content-bank.json');
 
-// Approximate BTC prices by year — consistent with existing content bank entries
-const BTC_PRICE_BY_YEAR = {
-  2026: 95000, 2025: 90000, 2024: 65000, 2023: 27000,
-  2022: 20000, 2021: 46000, 2020: 10000, 2019: 3500,
-  2018: 8000,  2017: 2500,  2016: 600,   2015: 250,
-  2014: 500,   2013: 100,   2012: 13,    2011: 5
-};
-function getBtcPriceForYear(year) { return BTC_PRICE_BY_YEAR[year] || 0; }
-
 // Maps research category names → content bank category names
 const SPORTS_TO_BANK_CATEGORY = {
   historic_contracts: 'historic_contract',
@@ -330,14 +629,92 @@ const BTC_TO_BANK_CATEGORY = {
 };
 
 /**
- * Second Ollama call: extract structured contract data from raw research text.
- * Returns null if no usable contract found.
+ * Fallback: Create entry from raw text when JSON parsing fails
+ */
+function createFallbackEntry(rawText, category, isBitcoin) {
+  const yearMatch = rawText.match(/(20\d{2})/);
+  const year = yearMatch ? parseInt(yearMatch[1]) : new Date().getFullYear();
+  
+  if (isBitcoin) {
+    // Try to extract Bitcoin info
+    const dollarMatch = rawText.match(/\$[\d,]+(\.\d+)?\s*(billion|million|B|M)?/i);
+    const btcMatch = rawText.match(/([\d,]+)\s*BTC/i);
+    
+    return {
+      category: 'bitcoin_education',
+      athlete: null,
+      deal: 'Bitcoin Education Fact',
+      sport: 'Bitcoin',
+      year: year,
+      contract_value: null,
+      btc_price_then: btcMatch ? parseFloat(btcMatch[1].replace(/,/g, '')) : 0,
+      verified_fact: rawText.replace(/\*\*/g, '').substring(0, 280),
+      source: 'Research',
+      used_dates: [],
+      cooldown_days: 60
+    };
+  } else {
+    // Try to extract sports info
+    const athleteMatch = rawText.match(/([A-Z][a-z]+(?:\s+[A-Z][a-z]+)+)/);
+    const valueMatch = rawText.match(/\$?([\d,]+(\.\d+)?)\s*(million|M|billion|B)/i);
+    
+    let contractValue = 0;
+    if (valueMatch) {
+      const num = parseFloat(valueMatch[1].replace(/,/g, ''));
+      const unit = valueMatch[3].toUpperCase();
+      contractValue = unit === 'B' || unit === 'BILLION' ? num * 1e9 : num * 1e6;
+    }
+    
+    const btcPrice = getBtcPriceForYear(year);
+    const btcAmt = btcPrice > 0 ? Math.round((contractValue * 0.05) / btcPrice) : 0;
+    
+    return {
+      category: SPORTS_TO_BANK_CATEGORY[category] || 'historic_contract',
+      athlete: athleteMatch ? athleteMatch[1] : 'Unknown Athlete',
+      sport: 'NFL',
+      year: year,
+      contract_value: contractValue,
+      btc_price_then: btcPrice,
+      btc_allocation: btcAmt,
+      verified_fact: rawText.replace(/\*\*/g, '').substring(0, 280),
+      source: 'Research',
+      used_dates: [],
+      cooldown_days: 90
+    };
+  }
+}
+
+/**
+ * Second Ollama call: extract structured data from research text.
+ * Returns null if no usable data found.
  */
 async function extractStructuredFact(researchText, category) {
+  const isBitcoin = BTC_TO_BANK_CATEGORY[category];
   const bankCategory = SPORTS_TO_BANK_CATEGORY[category] || BTC_TO_BANK_CATEGORY[category];
   if (!bankCategory) return null;
 
-  const prompt = `Extract structured contract data from this sports research. Return ONLY valid JSON, nothing else.
+  let prompt;
+  if (isBitcoin) {
+    // Bitcoin education format
+    prompt = `Extract Bitcoin education facts from this research. Return ONLY valid JSON, nothing else.
+
+Research text:
+${researchText}
+
+Return this exact JSON shape:
+{
+  "found": true or false,
+  "deal": "Short descriptive title for this Bitcoin fact (e.g., 'Bitcoin Pizza Day', '21 Million Supply')",
+  "year": <4-digit year as integer>,
+  "btc_price_then": <BTC price in USD at that time (e.g., 0.004 for pizza, 0 for supply cap)>,
+  "verified_fact": "The educational fact in tweet-ready format",
+  "source_url": "Source URL or name"
+}
+
+Set "found" to false if you cannot identify a verifiable Bitcoin fact with a year. Do not guess.`;
+  } else {
+    // Sports contract format
+    prompt = `Extract structured contract data from this sports research. Return ONLY valid JSON, nothing else.
 
 Research text:
 ${researchText}
@@ -354,6 +731,7 @@ Return this exact JSON shape:
 }
 
 Set "found" to false if you cannot identify a specific athlete with a verified contract value and signing year. Do not guess.`;
+  }
 
   try {
     const controller = new AbortController();
@@ -371,39 +749,70 @@ Set "found" to false if you cannot identify a specific athlete with a verified c
     const text = (data.response || '').trim();
 
     const jsonMatch = text.match(/\{[\s\S]+\}/);
-    if (!jsonMatch) return null;
+    if (!jsonMatch) {
+      console.log('  ⚠ No JSON found in response, trying fallback...');
+      return createFallbackEntry(text, category, isBitcoin);
+    }
 
-    const parsed = JSON.parse(jsonMatch[0]);
-    if (!parsed.found || !parsed.athlete || !parsed.year || !parsed.contract_value_usd) return null;
+    let parsed;
+    try {
+      parsed = JSON.parse(jsonMatch[0]);
+    } catch (e) {
+      console.log(`  ⚠ JSON parse error: ${e.message}, trying fallback...`);
+      return createFallbackEntry(text, category, isBitcoin);
+    }
+    
+    if (isBitcoin) {
+      // Handle Bitcoin education entry
+      if (!parsed.found || !parsed.deal || !parsed.year) return null;
+      
+      const entry = {
+        category:        'bitcoin_education',
+        athlete:         null,
+        deal:            parsed.deal,
+        sport:           'Bitcoin',
+        year:            parsed.year,
+        contract_value:  null,
+        btc_price_then:  parsed.btc_price_then || 0,
+        verified_fact:   parsed.verified_fact || '',
+        source:          parsed.source_url || '',
+        used_dates:      [],
+        cooldown_days:   60
+      };
+      return entry;
+    } else {
+      // Handle sports contract entry
+      if (!parsed.found || !parsed.athlete || !parsed.year || !parsed.contract_value_usd) return null;
 
-    const btcPrice  = getBtcPriceForYear(parsed.year);
-    const isNil     = bankCategory === 'nil_contract';
-    const pct       = isNil ? 0.10 : 0.05;
-    const pctLabel  = isNil ? '10%' : '5%';
-    const dealLabel = isNil ? 'NIL deal' : 'contract';
-    const btcAmt    = btcPrice > 0 ? Math.round((parsed.contract_value_usd * pct) / btcPrice) : 0;
-    const contractM = (parsed.contract_value_usd / 1000000).toFixed(1);
+      const btcPrice  = getBtcPriceForYear(parsed.year);
+      const isNil     = bankCategory === 'nil_contract';
+      const pct       = isNil ? 0.10 : 0.05;
+      const pctLabel  = isNil ? '10%' : '5%';
+      const dealLabel = isNil ? 'NIL deal' : 'contract';
+      const btcAmt    = btcPrice > 0 ? Math.round((parsed.contract_value_usd * pct) / btcPrice) : 0;
+      const contractM = (parsed.contract_value_usd / 1000000).toFixed(1);
 
-    const verifiedFact = btcPrice > 0
-      ? `${parsed.athlete} signed a $${contractM}M ${dealLabel} in ${parsed.year} when BTC was $${btcPrice.toLocaleString()}. ${pctLabel} allocation = ${btcAmt.toLocaleString()} BTC.`
-      : `${parsed.athlete} signed a $${contractM}M ${dealLabel} in ${parsed.year} (before Bitcoin).`;
+      const verifiedFact = btcPrice > 0
+        ? `${parsed.athlete} signed a $${contractM}M ${dealLabel} in ${parsed.year} when BTC was $${btcPrice.toLocaleString()}. ${pctLabel} allocation = ${btcAmt.toLocaleString()} BTC.`
+        : `${parsed.athlete} signed a $${contractM}M ${dealLabel} in ${parsed.year} (before Bitcoin).`;
 
-    const entry = {
-      category:        bankCategory,
-      athlete:         parsed.athlete,
-      sport:           parsed.sport,
-      year:            parsed.year,
-      contract_value:  parsed.contract_value_usd,
-      btc_price_then:  btcPrice,
-      btc_allocation:  btcAmt,
-      verified_fact:   verifiedFact,
-      source:          parsed.source_url || '',
-      used_dates:      [],
-      cooldown_days:   90
-    };
-    if (parsed.contract_years) entry.contract_years = parsed.contract_years;
+      const entry = {
+        category:        bankCategory,
+        athlete:         parsed.athlete,
+        sport:           parsed.sport,
+        year:            parsed.year,
+        contract_value:  parsed.contract_value_usd,
+        btc_price_then:  btcPrice,
+        btc_allocation:  btcAmt,
+        verified_fact:   verifiedFact,
+        source:          parsed.source_url || '',
+        used_dates:      [],
+        cooldown_days:   90
+      };
+      if (parsed.contract_years) entry.contract_years = parsed.contract_years;
 
-    return entry;
+      return entry;
+    }
   } catch (e) {
     console.log(`  ⚠ Structured extraction error: ${e.message}`);
     return null;
@@ -418,12 +827,23 @@ function addToContentBank(entry, dryRun) {
   try {
     const bank = JSON.parse(fs.readFileSync(CONTENT_BANK_PATH, 'utf8'));
 
-    const duplicate = bank.entries.some(e =>
-      e.athlete && e.athlete.toLowerCase() === entry.athlete.toLowerCase() &&
-      e.year === entry.year
-    );
+    // Check for duplicates - sports use athlete+year, Bitcoin uses deal+year
+    let duplicate = false;
+    if (entry.athlete) {
+      duplicate = bank.entries.some(e =>
+        e.athlete && e.athlete.toLowerCase() === entry.athlete.toLowerCase() &&
+        e.year === entry.year
+      );
+    } else if (entry.deal) {
+      duplicate = bank.entries.some(e =>
+        e.deal && e.deal.toLowerCase() === entry.deal.toLowerCase() &&
+        e.year === entry.year
+      );
+    }
+    
     if (duplicate) {
-      console.log(`  ⚠ Already in content bank: ${entry.athlete} (${entry.year}), skipping`);
+      const key = entry.athlete || entry.deal;
+      console.log(`  ⚠ Already in content bank: ${key} (${entry.year}), skipping`);
       return false;
     }
 
@@ -431,7 +851,8 @@ function addToContentBank(entry, dryRun) {
     entry.id = maxId + 1;
 
     if (dryRun) {
-      console.log(`  [DRY-RUN] Would add to content bank: ${entry.athlete} (${entry.sport}, ${entry.year})`);
+      const key = entry.athlete || entry.deal;
+      console.log(`  [DRY-RUN] Would add to content bank: ${key} (${entry.sport}, ${entry.year})`);
       console.log(`    → ${entry.verified_fact}`);
       return true;
     }
@@ -439,7 +860,9 @@ function addToContentBank(entry, dryRun) {
     bank.entries.push(entry);
     bank.last_updated = new Date().toISOString().split('T')[0];
     fs.writeFileSync(CONTENT_BANK_PATH, JSON.stringify(bank, null, 2));
-    console.log(`  ✓ Added to content bank: ${entry.athlete} → ID ${entry.id}`);
+    
+    const key = entry.athlete || entry.deal;
+    console.log(`  ✓ Added to content bank: ${key} → ID ${entry.id}`);
     return true;
   } catch (e) {
     console.log(`  ✗ Content bank write failed: ${e.message}`);
@@ -468,7 +891,7 @@ async function main() {
     console.log(`📚 Research ${i + 1}/${topics.length}: ${topic}`);
     console.log(`   Category: ${category}\n`);
 
-    const response = await getJettResponse(topic);
+    const response = await getJettResponse(topic, category);
     const items = await parseResearchResults(response, topic, category);
 
     console.log(`   Found ${items.length} verified items:\n`);
@@ -476,18 +899,84 @@ async function main() {
     totalAdded += added;
 
     // Wire sports research into content bank
-    if (SPORTS_TO_BANK_CATEGORY[category]) {
-      console.log('\n   📋 Extracting structured entry for content bank...');
-      // Pass cleaned facts only — raw response confuses the extraction model
-      const factsText = items.length > 0
-        ? items.map(i => i.content).join('\n')
-        : response.replace(/\*\*/g, '').replace(/Note:.*$/si, '').trim();
-      const structured = await extractStructuredFact(factsText, category);
-      if (structured) {
-        addToContentBank(structured, dryRun);
-      } else {
-        console.log('  ⚠ Could not extract structured contract data (no athlete/value/year found)');
+    if (SPORTS_TO_BANK_CATEGORY[category] && items.length > 0) {
+      console.log('\n   📋 Adding sports entry to content bank...');
+      const item = items[0];
+      const yearMatch = item.content.match(/\b(20\d{2})\b/);
+      const year = yearMatch ? parseInt(yearMatch[1]) : new Date().getFullYear();
+      const valueMatch = item.content.match(/\$?([\d,]+(\.\d+)?)\s*(million|M|billion|B)/i);
+      
+      let contractValue = 0;
+      if (valueMatch) {
+        const num = parseFloat(valueMatch[1].replace(/,/g, ''));
+        const unit = valueMatch[3].toUpperCase();
+        contractValue = (unit === 'B' || unit === 'BILLION') ? num * 1e9 : num * 1e6;
       }
+      
+      const athleteMatch = item.content.match(/([A-Z][a-z]+(?:\s+[A-Z][a-z]+)+)/);
+      const sport = item.content.includes('NBA') ? 'NBA' : 
+                   item.content.includes('NHL') ? 'NHL' : 
+                   item.content.includes('MLB') ? 'MLB' : 'NFL';
+      
+      const btcPrice = getBtcPriceForYear(year);
+      const btcAmt = btcPrice > 0 ? Math.round((contractValue * 0.05) / btcPrice) : 0;
+      const contractM = (contractValue / 1000000).toFixed(1);
+      
+      // Clean up the fact text
+      const cleanFact = item.content
+        .replace(/\[Source:[^\]]*\]/gi, '')
+        .replace(/https?:\/\/\S+/g, '')
+        .replace(/\s+/g, ' ')
+        .trim()
+        .substring(0, 280);
+      
+      const entry = {
+        category: SPORTS_TO_BANK_CATEGORY[category],
+        athlete: athleteMatch ? athleteMatch[1] : 'Unknown',
+        sport: sport,
+        year: year,
+        contract_value: contractValue,
+        btc_price_then: btcPrice,
+        btc_allocation: btcAmt,
+        verified_fact: cleanFact || `${athleteMatch ? athleteMatch[1] : 'Athlete'} signed a $${contractM}M contract in ${year}`,
+        source: item.source || 'Research',
+        used_dates: [],
+        cooldown_days: 90
+      };
+      
+      addToContentBank(entry, dryRun);
+    }
+
+    // Wire BTC research into content bank
+    if (BTC_TO_BANK_CATEGORY[category] && items.length > 0) {
+      console.log('\n   📋 Adding Bitcoin entry to content bank...');
+      const item = items[0];
+      const yearMatch = item.content.match(/\b(19\d{2}|20\d{2})\b/);
+      const year = yearMatch ? parseInt(yearMatch[1]) : new Date().getFullYear();
+      
+      // Clean up the fact text - remove Source: parts and URLs
+      const cleanFact = item.content
+        .replace(/\[Source:[^\]]*\]/gi, '')
+        .replace(/https?:\/\/\S+/g, '')
+        .replace(/\s+/g, ' ')
+        .trim()
+        .substring(0, 280);
+      
+      const entry = {
+        category: 'bitcoin_education',
+        athlete: null,
+        deal: topic,
+        sport: 'Bitcoin',
+        year: year,
+        contract_value: null,
+        btc_price_then: 0,
+        verified_fact: cleanFact,
+        source: item.source || 'Research',
+        used_dates: [],
+        cooldown_days: 60
+      };
+      
+      addToContentBank(entry, dryRun);
     }
 
     await saveResearchLog(topic, category, added);
