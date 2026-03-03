@@ -324,20 +324,17 @@
       <h1>🔍 eBay Scanner Manager</h1>
       <div>
         <button class="refresh-btn" onclick="refreshScans()">⟳ Refresh</button>
-        <button class="refresh-btn" onclick="openGlobalRulesModal()">⚙️ Global Rules</button>
       </div>
     </div>
 
     <!-- Global Rules Summary -->
-    <div class="scan-card deploy-card" style="margin-bottom: 20px;" onclick="openGlobalRulesModal()">
+    <div class="scan-card deploy-card" style="margin-bottom: 20px; border: 2px solid #10b981;" onclick="openGlobalRulesModal()">
       <div class="scan-header">
         <div>
           <div class="scan-day">GLOBAL</div>
           <h3 class="scan-name">⚙️ Filter Rules</h3>
         </div>
-        <div style="text-align: right; color: #9ca3af; font-size: 12px;">
-          <span>Graded: ${(config.global_filters?.graded_keywords || []).slice(0, 3).join(', ')}...</span><br>
-          <span>Exclude: ${(config.global_filters?.exclude_item_types || []).slice(0, 3).join(', ')}...</span><br>
+        <div style="text-align: right; color: #10b981; font-size: 14px;">
           <span style="color: #10b981;">Click to edit →</span>
         </div>
       </div>
