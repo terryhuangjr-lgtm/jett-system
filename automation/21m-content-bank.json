@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "last_updated": "2026-03-02",
+  "last_updated": "2026-03-03",
   "entries": [
     {
       "id": 1,
@@ -157,7 +157,9 @@
       "btc_allocation": 14,
       "verified_fact": "Bronny James earned $2.9M in NIL in 2022 when BTC was $20,000. 10% allocation = 14 BTC.",
       "source": "On3 NIL valuations",
-      "used_dates": [],
+      "used_dates": [
+        "2026-03-03"
+      ],
       "cooldown_days": 90
     },
     {
@@ -465,7 +467,9 @@
       "btc_price_then": 0,
       "verified_fact": "Bitcoin's supply is mathematically capped at 21 million coins forever. No CEO, government, or Fed can change it. The last coin will be mined around 2140.",
       "source": "Bitcoin whitepaper",
-      "used_dates": [],
+      "used_dates": [
+        "2026-03-03"
+      ],
       "cooldown_days": 60
     },
     {
@@ -493,7 +497,9 @@
       "btc_price_then": null,
       "verified_fact": "The US dollar has lost 97% of its purchasing power since the Federal Reserve was created in 1913. Bitcoin has a fixed supply that cannot be inflated.",
       "source": "Federal Reserve historical data",
-      "used_dates": [],
+      "used_dates": [
+        "2026-03-03"
+      ],
       "cooldown_days": 60
     },
     {

@@ -77,10 +77,23 @@ Help with automation, find opportunities, handle tech/code, stay on top of sport
 ## Known Issues and Fixes Applied
 
 - **MTU fix:** WSL2 needs `sudo ip link set dev eth0 mtu 1350` - runs on startup
-- **Gateway:** Managed by systemd at `~/.config/systemd/user/clawdbot-gateway.service`
+- **Gateway:** Managed via crontab (not systemd) with watchdog every 5min
 - **Port 3000:** PM2 task-manager-server only
 - **Channel fix:** Use `--target "#channel"` not `--target #channel`
 - **Config corruption:** Use `config-protector.sh` before running openclaw commands
+- **Weekly restart:** Gateway restarts every Sunday 3am to prevent stale processes
+- **Daily backup:** Config backed up daily at 1am to `~/.openclaw/openclaw.json.daily-*.bak`
+- **Log rotation:** Gateway log truncated if over 50MB
+
+## Crontab (crontab -l)
+
+```
+@reboot gateway + pm2 + ollama
+*/5 * * * * gateway watchdog
+0 3 * * 0 weekly gateway restart
+0 1 * * * daily config backup
+0 0 * * * log rotation
+```
 
 ## How to Check System State
 
@@ -90,7 +103,7 @@ pm2 list                    # Dashboard status
 curl -s localhost:3000/api/health  # Health API
 ip link show eth0 | grep mtu  # MTU check (should be 1350)
 ls ~/.config/systemd/user/   # Systemd services
-crontab -l                  # Gateway watchdog + Ollama
+crontab -l                  # All cron jobs
 ```
 
 ---

@@ -252,6 +252,12 @@ Systemd is not available in WSL2 by default. Using crontab for auto-start instea
 @reboot sleep 30 && cd /home/clawd/clawd && pm2 resurrect >> /tmp/pm2.log 2>&1
 @reboot ollama serve
 */5 * * * * pgrep -f 'openclaw-gateway' > /dev/null || /home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot gateway --force >> /tmp/gateway.log 2>&1
+# Weekly gateway restart (Sunday 3am) - prevents stale processes
+0 3 * * 0 pkill -f 'openclaw-gateway' && /home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot gateway --force >> /tmp/gateway.log 2>&1
+# Daily config backup (1am)
+0 1 * * * cp ~/.openclaw/openclaw.json ~/.openclaw/openclaw.json.daily-$(date +\%Y\%m\%d).bak
+# Log rotation for gateway (truncate if over 50MB)
+0 0 * * * find /tmp/gateway.log -size +50M -exec truncate -s 20M {} \; 2>/dev/null || true
 ```
 
 To enable systemd in WSL2 (alternative):

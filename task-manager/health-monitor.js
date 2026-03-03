@@ -62,20 +62,57 @@ async function checkHealth() {
   const heartbeat = await getHeartbeat();
   const lock = await getLock();
   
-  if (!lock) {
-    sendAlert('🚨 Task Worker DOWN - No lock file found!');
-    return;
-  }
-  
-  if (!heartbeat) {
-    sendAlert('🚨 Task Worker DOWN - No heartbeat file!');
-    return;
+  if (!lock || !heartbeat) {
+    console.log('⚠️ Worker down, attempting restart...');
+    try {
+      const { spawn } = require('child_process');
+      const workerProcess = spawn('node', ['worker.js'], {
+        cwd: '/home/clawd/clawd/task-manager',
+        detached: true,
+        stdio: 'ignore'
+      });
+      workerProcess.unref();
+      
+      // Wait a bit and check if it's running
+      setTimeout(async () => {
+        const newHeartbeat = await getHeartbeat();
+        const newLock = await getLock();
+        if (newHeartbeat && newLock) {
+          console.log('✅ Worker restarted successfully');
+        } else {
+          console.log('❌ Worker restart may have failed');
+        }
+      }, 3000);
+      
+      return;
+    } catch (e) {
+      console.error('Failed to restart worker:', e.message);
+      sendAlert('🚨 Task Worker DOWN - Restart failed!');
+      return;
+    }
   }
   
   const elapsed = Date.now() - heartbeat.lastBeat;
   
   if (elapsed > STALE_THRESHOLD_MS) {
-    sendAlert(`🚨 Task Worker STALE - No heartbeat for ${Math.round(elapsed/1000)}s\nPID: ${lock.pid}`);
+    console.log('⚠️ Worker stale, attempting restart...');
+    try {
+      const { execSync } = require('child_process');
+      // Kill stale process
+      execSync(`kill ${lock.pid} 2>/dev/null || true`);
+      
+      // Start new worker
+      const { spawn } = require('child_process');
+      const workerProcess = spawn('node', ['worker.js'], {
+        cwd: '/home/clawd/clawd/task-manager',
+        detached: true,
+        stdio: 'ignore'
+      });
+      workerProcess.unref();
+      return;
+    } catch (e) {
+      sendAlert('🚨 Task Worker STALE - Restart failed!');
+    }
   } else {
     console.log(`✅ Worker healthy - heartbeat ${Math.round(elapsed/1000)}s ago`);
   }

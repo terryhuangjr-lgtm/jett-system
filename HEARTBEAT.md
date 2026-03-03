@@ -61,6 +61,14 @@ Attempt automatically before alerting:
 | 10:00 AM | Sports Betting Scout | Terry DM |
 | 4:00 PM | Sports Betting Pick | Terry DM |
 
+## Background Maintenance (Automated)
+
+These run automatically - no alerts needed:
+
+- **Weekly (Sunday 3am):** Gateway restarts to prevent stale processes
+- **Daily (1am):** Config backup to `~/.openclaw/openclaw.json.daily-*.bak`
+- **Daily (midnight):** Gateway log truncated if over 50MB
+
 ---
 
 *Only speak up when there's a problem. Silence is golden.*
