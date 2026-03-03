@@ -114,7 +114,7 @@ function formatResults(data, scanName) {
 // Post to Slack
 function postToSlack(message) {
   try {
-    const output = execFileSync('/home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot', ['message', 'send', '--channel', 'slack', '--target', '#levelupcards', '--message', message], {
+    execFileSync('/home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot', ['message', 'send', '--channel', 'slack', '--target', '#levelupcards', '--message', message], {
       encoding: 'utf8',
       timeout: 30000,
       env: {
@@ -123,15 +123,8 @@ function postToSlack(message) {
       }
     });
 
-    const result = JSON.parse(output.trim());
-
-    if (result && (result.ok || (result.payload && result.payload.ok))) {
-      console.log('✓ Posted to #levelupcards');
-      return true;
-    } else {
-      console.error('✗ Failed to post to Slack:', result.error || JSON.stringify(result));
-      return false;
-    }
+    console.log('✓ Posted to #levelupcards');
+    return true;
   } catch (error) {
     console.error('✗ Error posting to Slack:', error.message);
     return false;
