@@ -227,8 +227,14 @@ pm2 save
 
 **clawdbot message failing (JSON config error):**
 ```bash
-openclaw doctor --fix
-# OR manually fix ~/.openclaw/openclaw.json JSON structure error at line ~130
+# Check if config is valid
+node -e "JSON.parse(require('fs').readFileSync('/home/clawd/.openclaw/openclaw.json'))"
+
+# If broken, restore from backup
+cp ~/.openclaw/openclaw.json.bak ~/.openclaw/openclaw.json
+
+# OR use config protector to fix safely
+config-protector protect openclaw doctor --fix
 ```
 
 **Slack posts failing with "argument missing":**
@@ -244,6 +250,7 @@ Systemd is not available in WSL2 by default. Using crontab for auto-start instea
 # Current crontab (crontab -l):
 @reboot /home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot gateway --force >> /tmp/gateway.log 2>&1
 @reboot sleep 30 && cd /home/clawd/clawd && pm2 resurrect >> /tmp/pm2.log 2>&1
+@reboot ollama serve
 */5 * * * * pgrep -f 'openclaw-gateway' > /dev/null || /home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot gateway --force >> /tmp/gateway.log 2>&1
 ```
 
@@ -321,6 +328,52 @@ post-health-to-slack.js. Apply this pattern to ALL new clawdbot calls.
 IMPORTANT: Skills live at /home/clawd/skills/ (NOT /home/clawd/clawd/skills/)
 notion_client.py is gitignored due to hardcoded NOTION_TOKEN - back up manually
 When modifying skills, cd to /home/clawd/skills and commit there, NOT jett-system
+
+---
+
+## SYSTEM STABILITY FIXES - 2026-03-03
+
+**Issue:** System down March 3 morning - gateway not responding.
+**Root Cause:** Config file corruption from `openclaw doctor --fix` command.
+
+### 1. Config Protection Script Created
+**Problem:** `openclaw doctor --fix` corrupted openclaw.json (5994 bytes → 560 bytes on March 2).
+**Solution:** Created `/home/clawd/.local/bin/config-protector.sh` with these commands:
+```bash
+config-protector backup     # Backup before changes
+config-protector validate   # Check if config is valid
+config-protector protect <cmd>  # Run command safely with validation
+config-protector restore    # Restore from latest backup
+```
+**Usage:** Before running any openclaw command that modifies config:
+```bash
+# Instead of: openclaw doctor --fix
+# Use:
+config-protector protect openclaw doctor --fix
+```
+**Or manually backup:** `cp ~/.openclaw/openclaw.json ~/.openclaw/openclaw.json.bak`
+
+### 2. Memory Search Enabled
+**Problem:** Memory search was enabled but no embedding provider configured.
+**Solution:** Configured local Ollama embeddings:
+- Model: `nomic-embed-text` (installed 274MB)
+- Provider: `ollama` (local)
+- Config: `agents.defaults.memorySearch` in openclaw.json
+- Added to crontab: `@reboot ollama serve`
+
+**Status:**
+```
+Memory Search (telegram)
+Provider: ollama
+Model: nomic-embed-text
+Vector: ready ✅
+```
+
+**What this enables:** Semantic search across memory files and sessions - ask "what did we discuss about Bitcoin?" and Jett finds it.
+
+### 3. OpenClaw Upgraded to v2026.3.2
+**What changed:** Auto-upgraded from v2026.2.26 → v2026.3.2
+**New features:** PDF tool, MiniMax M2.5 support, health endpoints (/health, /ready)
 
 ---
 
