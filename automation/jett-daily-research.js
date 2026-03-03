@@ -144,20 +144,33 @@ Requirements:
 - Include specific numbers, dates, dollar amounts when available
 - Format each fact as: Fact: [the fact] [Source: URL]`;
 
-  const response = await fetch('http://localhost:11434/api/generate', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-model: 'qwen3.5:4b',
-      prompt,
-      stream: false
-    })
-  });
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 60000);
 
-  const data = await response.json();
-  const startTime = Date.now();
-  await logLLMUsage('ollama', true, Date.now() - startTime);
-  return data.response || '';
+  try {
+    const response = await fetch('http://localhost:11434/api/generate', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'llama3.1:8b',
+        prompt,
+        stream: false
+      }),
+        signal: controller.signal
+    });
+
+    clearTimeout(timeout);
+
+    const data = await response.json();
+    return data.response || '';
+  } catch (error) {
+    if (error.name === 'AbortError') {
+      console.error('   ❌ Ollama request timed out after 60s');
+    } else {
+      console.error('   ❌ Ollama request failed:', error.message);
+    }
+    return '';
+  }
 }
 
 async function parseResearchResults(jettResponse, topic, category) {
@@ -343,11 +356,17 @@ Return this exact JSON shape:
 Set "found" to false if you cannot identify a specific athlete with a verified contract value and signing year. Do not guess.`;
 
   try {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 60000);
+
     const res = await fetch('http://localhost:11434/api/generate', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ model: 'qwen3.5:4b', prompt, stream: false })
+      body: JSON.stringify({ model: 'llama3.1:8b', prompt, stream: false }),
+      signal: controller.signal
     });
+    clearTimeout(timeout);
+
     const data = await res.json();
     const text = (data.response || '').trim();
 
