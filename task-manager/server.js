@@ -76,12 +76,26 @@ class TaskServer {
   }
 
   async handleAPI(req, res, pathname, url) {
-    // GET /api/tasks
+    // GET /api/tasks - read from clawdbot cron list (source of truth)
     if (pathname === '/api/tasks' && req.method === 'GET') {
-      const status = url.searchParams.get('status');
-      const filter = status ? { status } : {};
-      const tasks = await db.getTasks(filter);
-      return this.sendJSON(res, tasks);
+      try {
+        const { execSync } = require('child_process');
+        const output = execSync('/home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot cron list --json', { encoding: 'utf8', timeout: 10000 });
+        const jobs = JSON.parse(output);
+        const tasks = jobs.jobs.map((job, idx) => ({
+          id: idx,
+          name: job.name,
+          command: job.payload?.text || '',
+          schedule: job.schedule?.expr || '',
+          status: job.state?.lastStatus || 'pending',
+          next_run: job.state?.nextRunAtMs ? new Date(job.state.nextRunAtMs).toISOString() : null,
+          last_run: job.state?.lastRunAtMs ? new Date(job.state.lastRunAtMs).toISOString() : null,
+          enabled: job.enabled
+        }));
+        return this.sendJSON(res, tasks);
+      } catch (e) {
+        return this.sendJSON(res, { error: e.message }, 500);
+      }
     }
 
     // GET /api/tasks/:id
