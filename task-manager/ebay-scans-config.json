@@ -1,76 +1,52 @@
 {
   "version": "1.0",
-  "last_updated": "2026-03-02T15:34:15.108Z",
+  "last_updated": "2026-03-03T16:43:47.773Z",
   "global_filters": {
-    "global_filters": {
-      "graded_keywords": [
-        "psa",
-        "bgs",
-        "cgc",
-        "sgc",
-        "csg",
-        "jumbo",
-        "leaf",
-        "reprint",
-        "custom",
-        "pack",
-        "packs",
-        "hobby",
-        "box"
-      ],
-      "exclude_item_types": [
-        "pack",
-        "packs",
-        "box",
-        "sealed",
-        "reprint",
-        "lot",
-        "set",
-        "bundle",
-        "collection",
-        "custom",
-        "fan made",
-        "reproduction",
-        "leaf",
-        "jumbo",
-        "psa",
-        "bgs",
-        "cgc",
-        "sgc",
-        "csg",
-        "jumbo",
-        "leaf",
-        "reprint",
-        "custom",
-        "pack",
-        "packs",
-        "hobby",
-        "box"
-      ],
-      "quality_rules": {
-        "seller_feedback_min": 98,
-        "listing_age_max_days": 25,
-        "require_raw_cards": true
-      }
+    "graded_keywords": [
+      "psa",
+      "bgs",
+      "sgc",
+      "leaf",
+      "replica",
+      "custom",
+      "cgs",
+      "hga",
+      "fan",
+      "lot"
+    ],
+    "exclude_item_types": [
+      "psa",
+      "bgs",
+      "sgc",
+      "leaf",
+      "replica",
+      "custom",
+      "cgs",
+      "hga",
+      "fan",
+      "lot"
+    ],
+    "quality_rules": {
+      "seller_feedback_min": 98,
+      "listing_age_max_days": 25,
+      "require_raw_cards": true
     }
   },
   "scans": {
     "monday": {
-      "name": "MJ Topps Finest 93-99",
+      "name": "MJ Topps Finest 1993-1999",
       "enabled": true,
       "search_terms": [
-        "topps finest michael jordan 1994-1999"
+        "topps finest michael jordan 1993-1999"
       ],
       "filters": {
         "topN": 20,
         "minPrice": 10,
-        "maxPrice": 100,
+        "maxPrice": 150,
         "exclude_words": [
-          "pokemon",
-          "magic",
-          "yugioh",
-          "non-sport",
-          "jumbo. mystery"
+          "mystery",
+          "refractor",
+          "prizm"
         ]
       },
       "output_file": "/tmp/mj-finest-scan.json",
@@ -79,7 +55,7 @@
         "timestamp": "2026-03-02T14:00:47.240Z",
         "success": true
       },
-      "last_updated": "2026-03-02T15:33:28.353Z"
+      "last_updated": "2026-03-03T16:43:47.773Z"
     },
     "tuesday": {
       "name": "Griffey Jr Refractors",
@@ -90,6 +66,8 @@
       ],
       "filters": {
         "topN": 20,
+        "minPrice": 20,
+        "maxPrice": 500,
         "exclude_words": [
           "pokemon",
           "magic",
@@ -103,7 +81,7 @@
         "timestamp": "2026-03-03T14:00:23.426Z",
         "success": true
       },
-      "last_updated": "2026-02-11T19:27:10.821Z"
+      "last_updated": "2026-03-03T16:42:23.161Z"
     },
     "wednesday": {
       "name": "Kobe Bryant Refractors 1997-2005",

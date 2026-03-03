@@ -349,7 +349,15 @@ class TaskServer {
         const data = await this.readBody(req);
         const content = await fs.readFile(EBAY_CONFIG_FILE, 'utf-8');
         const config = JSON.parse(content);
-        config.global_filters = data;
+        
+        // Fix nested global_filters issue - save directly, not under another global_filters
+        if (data.global_filters && !data.global_filters.graded_keywords) {
+          // Data is wrapped in extra global_filters, unwrap it
+          config.global_filters = data.global_filters;
+        } else {
+          config.global_filters = data.global_filters;
+        }
+        
         config.last_updated = new Date().toISOString();
         await fs.writeFile(EBAY_CONFIG_FILE, JSON.stringify(config, null, 2));
         return this.sendJSON(res, { success: true });
