@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "last_updated": "2026-03-03",
+  "last_updated": "2026-03-04",
   "entries": [
     {
       "id": 1,
@@ -828,7 +828,9 @@
       "btc_price_then": 65000,
       "verified_fact": "There are only about 88,000 Bitcoin wallets holding 1 BTC or more. There are 22 million millionaires in the US alone. The math on scarcity hasn't fully hit yet.",
       "source": "Glassnode on-chain data",
-      "used_dates": [],
+      "used_dates": [
+        "2026-03-04"
+      ],
       "cooldown_days": 60
     },
     {

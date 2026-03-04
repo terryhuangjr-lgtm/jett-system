@@ -393,9 +393,12 @@ Vector: ready ✅
 
 **What this enables:** Semantic search across memory files and sessions - ask "what did we discuss about Bitcoin?" and Jett finds it.
 
-### 3. OpenClaw Upgraded to v2026.3.2
-**What changed:** Auto-upgraded from v2026.2.26 → v2026.3.2
-**New features:** PDF tool, MiniMax M2.5 support, health endpoints (/health, /ready)
+### 3. OpenClaw Downgraded to v2026.2.26 (from v2026.3.2)
+**When:** 2026-03-04
+**Problem:** v2026.3.2 health-monitor was aggressively restarting Slack/Telegram providers every ~30 min due to "stale-socket", eventually crashing the gateway overnight.
+**Solution:** Downgraded to v2026.2.26 (previous stable).
+**Impact:** Health-monitor is less aggressive, system more stable.
+**Note:** memorySearch disabled (not supported in 2026.2.26).
 
 ---
 
