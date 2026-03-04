@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "last_updated": "2026-03-03T16:43:47.773Z",
+  "last_updated": "2026-03-03T16:57:50.467Z",
   "global_filters": {
     "graded_keywords": [
       "psa",
@@ -55,14 +55,16 @@
         "timestamp": "2026-03-02T14:00:47.240Z",
         "success": true
       },
-      "last_updated": "2026-03-03T16:43:47.773Z"
+      "last_updated": "2026-03-03T16:43:53.090Z"
     },
     "tuesday": {
       "name": "Griffey Jr Refractors",
       "enabled": true,
       "search_terms": [
-        "ken griffey jr topps chrome",
-        "topps finest 1994-1999 refractor"
+        "ken griffey jr",
+        "topps chrome",
+        "topps finest",
+        "1994-1999 refractor"
       ],
       "filters": {
         "topN": 20,
@@ -72,7 +74,8 @@
           "pokemon",
           "magic",
           "yugioh",
-          "jumbo"
+          "jumbo",
+          "mystery"
         ]
       },
       "output_file": "/tmp/griffey-refractors-scan.json",
@@ -81,14 +84,15 @@
         "timestamp": "2026-03-03T14:00:23.426Z",
         "success": true
       },
-      "last_updated": "2026-03-03T16:42:23.161Z"
+      "last_updated": "2026-03-03T16:44:31.409Z"
     },
     "wednesday": {
-      "name": "Kobe Bryant Refractors 1997-2005",
+      "name": "Kobe Bryant Refractors 1997-2004",
       "enabled": true,
       "search_terms": [
         "kobe bryant topps chrome",
-        "topps finest 1997-2005 refractor"
+        "topps finest",
+        "1997-2004 refractor"
       ],
       "filters": {
         "topN": 20,
@@ -96,7 +100,8 @@
           "pokemon",
           "magic",
           "yugioh",
-          "jumbo"
+          "jumbo",
+          "custom"
         ]
       },
       "output_file": "/tmp/kobe-refractors-scan.json",
@@ -105,7 +110,7 @@
         "timestamp": "2026-02-19T15:35:30.595Z",
         "success": true
       },
-      "last_updated": "2026-02-11T19:27:27.456Z"
+      "last_updated": "2026-03-03T16:45:13.230Z"
     },
     "thursday": {
       "name": "MJ Upper Deck 96-00",
@@ -147,12 +152,15 @@
       ],
       "filters": {
         "topN": 20,
+        "maxPrice": 500,
         "exclude_words": [
           "pokemon",
           "magic",
           "yugioh",
           "jumbo",
-          "holo"
+          "holo",
+          "prizm",
+          "mystery"
         ]
       },
       "output_file": "/tmp/topps-refractors-multi-scan.json",
@@ -161,24 +169,31 @@
         "timestamp": "2026-03-02T12:43:28.795Z",
         "success": true
       },
-      "last_updated": "2026-02-17T19:53:45.542Z"
+      "last_updated": "2026-03-03T16:56:55.391Z"
     },
     "saturday": {
-      "name": "MJ Base 94-99",
+      "name": "1991 Fleer Pro-Visions",
       "enabled": true,
       "search_terms": [
-        "michael jordan 1994-1999"
+        "1991 Fleer Bo Jackson",
+        "Mark McGwire",
+        "Don Mattingly",
+        "Roger Clemens",
+        "Barry Larkin"
       ],
       "filters": {
         "topN": 20,
-        "minPrice": 5,
-        "maxPrice": 500,
+        "minPrice": 2,
+        "maxPrice": 30,
         "exclude_words": [
           "pokemon",
           "magic",
           "yugioh",
           "jumbo",
-          "custom"
+          "custom",
+          "psa",
+          "bgs",
+          "HGA"
         ]
       },
       "output_file": "/tmp/mj-base-scan.json",
@@ -187,16 +202,14 @@
         "timestamp": "2026-02-28T17:51:52.083Z",
         "success": true
       },
-      "last_updated": "2026-02-11T19:27:31.456Z"
+      "last_updated": "2026-03-03T16:56:29.209Z"
     },
     "sunday": {
-      "name": "2025 Cam Ward",
+      "name": "2025 Derek Queen (Typo)",
       "enabled": true,
       "search_terms": [
-        "2025 cam ward gold prizm",
-        "auto",
-        "kaboom",
-        "downtown"
+        "2025 Derek Queen Auto",
+        "2025 Derek Queen Refractor"
       ],
       "filters": {
         "topN": 20,
@@ -212,7 +225,7 @@
         "timestamp": "2026-02-15T14:00:21.601Z",
         "success": true
       },
-      "last_updated": "2026-02-17T00:48:38.253Z"
+      "last_updated": "2026-03-03T16:57:50.467Z"
     }
   },
   "deploy": {
