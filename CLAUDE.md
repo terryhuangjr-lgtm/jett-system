@@ -1,5 +1,5 @@
 # CLAUDE.md - Jett System Standing Orders
-Last Updated: 2026-03-01
+Last Updated: 2026-03-04
 
 READ THIS ENTIRE FILE BEFORE TOUCHING ANYTHING.
 
@@ -10,6 +10,8 @@ You are operating on Jett — Terry Huang's AI automation system running on an H
 ---
 
 ## SYSTEM ARCHITECTURE (Single Source of Truth)
+
+**Detailed Architecture:** See `SYSTEMS.md` for complete system diagram and documentation.
 
 **Scheduling:**    clawdbot cron (all daily + weekly tasks run through clawdbot gateway)
 **Process Mgmt:** PM2 (task-manager-server dashboard only — port 3000)
