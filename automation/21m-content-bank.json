@@ -916,7 +916,9 @@
       "btc_allocation": 33,
       "verified_fact": "Justin Herbert signed a $6.5M rookie contract in 2020",
       "source": "Research",
-      "used_dates": [],
+      "used_dates": [
+        "2026-03-04"
+      ],
       "cooldown_days": 90,
       "id": 64
     },
