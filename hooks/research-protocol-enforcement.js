@@ -9,7 +9,7 @@
 const { execSync } = require('child_process');
 const path = require('path');
 
-module.exports = function(context) {
+function handler(context) {
   if (!context) {
     console.error('[Hook] Invalid context passed to research-protocol-enforcement');
     return { allowed: true };
@@ -57,7 +57,8 @@ module.exports = function(context) {
   }
 };
 
-module.exports.default = module.exports;
+module.exports = handler;
+module.exports.default = handler;
 
 /**
  * Check if message is requesting 21M Sports content

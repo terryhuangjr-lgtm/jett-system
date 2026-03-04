@@ -300,6 +300,20 @@ spawn a subagent to [describe task]
 
 ---
 
+## KILO PROCESS RULES — DO NOT VIOLATE
+
+**NEVER kill any `kilo`, `bun`, or `kilo --model` process without explicit confirmation from Terry.**
+
+- `kilo --model minimax*` processes are Terry's active coding sessions — killing them corrupts the TUI mid-session and causes a garbage output loop
+- High CPU from kilo/minimax is **NORMAL USER ACTIVITY**, not a hung zombie
+- If you detect high CPU from kilo: **REPORT it to Terry via Slack and ASK before doing anything**
+- The correct message: "I see kilo/minimax using X% CPU — do you want me to kill it? (y/n)"
+- **Never autonomously kill kilo processes** — this has broken sessions repeatedly
+
+**Root cause history:** Jett detected `kilo --model minimax-m2.1:free` at 25% CPU, killed it autonomously (PID 2613), corrupted Terry's active kilo session, causing a garbage-output doom loop that required a full restart.
+
+---
+
 ## CRITICAL PATTERN: CLAWDBOT CALLS
 
 **ALWAYS use execFileSync with array args — NEVER string interpolation:**

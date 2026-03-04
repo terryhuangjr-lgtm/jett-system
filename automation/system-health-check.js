@@ -143,6 +143,9 @@ async function main() {
   }
   
   console.log('\n' + '='.repeat(60));
+  console.log('\n⚠️  PROCESS KILL RULES:');
+  console.log('   🚫 NEVER kill kilo/bun/kilo--model processes — these are Terry\'s active coding sessions');
+  console.log('   🚫 High CPU from kilo is NORMAL — ask Terry before killing anything');
   console.log(`\n✅ Health check complete at ${new Date().toLocaleString()}\n`);
 }
 
