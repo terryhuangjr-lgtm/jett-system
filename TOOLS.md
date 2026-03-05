@@ -24,17 +24,28 @@ clawdbot message send --channel slack --target "U0ABTP704QK" --message "text"
 - Key location: `/home/clawd/clawd/.env` (ANTHROPIC_API_KEY)
 - Also: `~/.claude.json`
 
+### Anthropic API (Legacy - Sonnet only)
+- Config: `/home/clawd/.openclaw/openclaw.json`
+
 **Models:**
-- `claude-haiku-4-5` - Default for all operations (fast, low cost)
 - `claude-sonnet-4-5` - ONLY for 21M Sports content generation (manually called)
-- `anthropic/claude-haiku-4-5` - Full reference in config
 - `anthropic/claude-sonnet-4-5` - Full reference in config
 
 **Usage:**
-- Haiku: health checks, simple formatting, routing, daily ops
 - Sonnet: tweet generation, research synthesis (21M only)
 
-### Ollama (Local Models)
+### xAI API (Primary - Cheapest)
+- Config: `/home/clawd/.openclaw/openclaw.json`
+- API Key: Already configured in openclaw.json
+
+**Models:**
+- `grok-4-1-fast` - Default for all operations (5x cheaper than Haiku!)
+- `xai/grok-4-1-fast` - Full reference in config
+
+**Usage:**
+- Default for Slack/Telegram, health checks, simple formatting, routing, daily ops
+
+### Ollama (Local Models - Fallback Only)
 - Endpoint: http://localhost:11434
 - Models available:
   - `llama3.1:8b` - Research tasks only (subagent fallback)
@@ -78,8 +89,8 @@ spawn a subagent to [describe task]
 4. Read CLAUDE.md first
 5. Set timeout - don't run indefinitely
 
-**Default model:** `anthropic/claude-haiku-4-5`
-**Fallback:** `ollama/llama3.1:8b`
+**Default model:** `xai/grok-4-1-fast`
+**Fallback:** `ollama/llama3.1:8b` (last resort only)
 
 ## System Tools
 

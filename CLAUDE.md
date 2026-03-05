@@ -273,8 +273,8 @@ systemd=true
 ```
 
 **Subagent Configuration:**
-- Default subagent model: anthropic/claude-haiku-4-5
-- Fallback: ollama/llama3.1:8b (local)
+- Default subagent model: xai/grok-4-1-fast
+- Fallback: ollama/llama3.1:8b (last resort only)
 - Config location: `~/.openclaw/openclaw.json` → `agents.defaults.subagents`
 
 **To spawn a subagent for coding tasks:**
@@ -416,11 +416,11 @@ Vector: ready ✅
 **Issue:** System experiencing overnight crashes, config corruption, and cascading failures.
 **Root Causes Identified & Fixed:**
 
-### 1. Default Model Changed: Ollama → Haiku
+### 1. Default Model Changed: Ollama → Haiku → Grok
 **Problem:** Default model was `ollama/llama3.1:8b` (local). When Ollama crashed overnight, ALL automation tasks failed (tweets, eBay scans, sports betting, health checks).
-**Solution:** Changed default to `anthropic/claude-haiku-4-5` in `openclaw.json` → `agents.defaults.model.primary`
-**Impact:** Now if Ollama goes down, only the research task fails (isolated). Everything else uses Haiku.
-**Cost:** Haiku is ~2x cheaper than Ollama inference + prevents service crashes.
+**Solution:** Changed default to `anthropic/claude-haiku-4-5` in `openclaw.json` → `agents.defaults.model.primary` (later changed to xai/grok-4-1-fast for 5x cost savings)
+**Impact:** Now if Ollama goes down, only the research task fails (isolated). Everything else uses Grok.
+**Cost:** Grok 4.1-fast is ~5x cheaper than Haiku with similar performance.
 
 ### 2. Task Manager Worker Lock Fixed
 **Problem:** Stale lock file (PID 22442) blocking task-manager restarts, preventing task scheduler from restarting.

@@ -285,11 +285,12 @@ crontab -l                  # View watchdog cron
 
 | Task | Model | Notes |
 |------|-------|-------|
-| Default (automation) | claude-haiku-4-5 | Fast, reliable |
+| Default (automation) | xai/grok-4-1-fast | 5x cheaper than Haiku |
 | Tweet generation | claude-sonnet-4-5 | Hardcoded in 21m-daily-generator-v2.js |
-| Research | ollama/llama3.1:8b | Local model |
-| Subagents | claude-haiku-4-5 | Primary, fallback to llama3.1:8b |
-| Slack/Telegram | claude-haiku-4-5 | Agent default |
+| Research | xai/grok-4-1-fast | Cheaper than Haiku, better than local llama |
+| Subagents | xai/grok-4-1-fast | Primary, fallback to llama3.1:8b |
+| Slack/Telegram | xai/grok-4-1-fast | Agent default |
+| **FALLBACK ONLY** | ollama/llama3.1:8b | If Grok AND Haiku unreachable |
 
 ---
 
