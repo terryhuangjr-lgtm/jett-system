@@ -24,6 +24,20 @@ const MEMORY_DIR = path.join(require('os').homedir(), 'clawd', 'memory');
 const RESEARCH_LOG = path.join(MEMORY_DIR, 'daily-research-log.json');
 const SCRAPER_SCRIPT = path.join(__dirname, 'jett-scraper.py');
 
+// Read xAI API key from openclaw config (safer than hardcoding)
+let XAI_API_KEY = '';
+let XAI_MODEL = 'grok-4-0125-fast';
+
+try {
+  const config = JSON.parse(fs.readFileSync(path.join(process.env.HOME, '.openclaw', 'openclaw.json'), 'utf8'));
+  const xaiProvider = config?.models?.providers?.xai;
+  if (xaiProvider?.apiKey) {
+    XAI_API_KEY = xaiProvider.apiKey;
+  }
+} catch (e) {
+  console.error('   ⚠️ Could not read xAI config, research will use Ollama fallback');
+}
+
 // Topic rotation by category - comprehensive lists
 const BTC_CATEGORIES = [
   { category: 'bitcoin_history', topics: [
@@ -346,29 +360,69 @@ Requirements:
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 90000);
 
-  try {
-    const response = await fetch('http://localhost:11434/api/generate', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        model: 'llama3.1:8b',
-        prompt,
-        stream: false
-      }),
+  // Use xAI Grok (5x cheaper than Haiku, better than local llama)
+  // Only attempt if API key is available
+  if (XAI_API_KEY) {
+    try {
+      const xaiResponse = await fetch('https://api.x.ai/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${XAI_API_KEY}`
+        },
+        body: JSON.stringify({
+          model: XAI_MODEL,
+          messages: [{ role: 'user', content: prompt }],
+          stream: false
+        }),
         signal: controller.signal
-    });
+      });
 
-    clearTimeout(timeout);
+      clearTimeout(timeout);
 
-    const data = await response.json();
-    return data.response || '';
-  } catch (error) {
-    if (error.name === 'AbortError') {
-      console.error('   ❌ Ollama request timed out after 90s');
-    } else {
-      console.error('   ❌ Ollama request failed:', error.message);
+      const data = await xaiResponse.json();
+      return data.choices?.[0]?.message?.content || '';
+    } catch (error) {
+      console.log('   ⚠️ xAI failed, trying Ollama fallback...');
+      
+      // Fallback to Ollama if xAI fails
+      try {
+        const ollamaResponse = await fetch('http://localhost:11434/api/generate', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            model: 'llama3.1:8b',
+            prompt,
+            stream: false
+          })
+        });
+        
+        const ollamaData = await ollamaResponse.json();
+        return ollamaData.response || '';
+      } catch (ollamaError) {
+        console.error('   ❌ Both xAI and Ollama failed:', ollamaError.message);
+        return '';
+      }
     }
-    return '';
+  } else {
+    // No xAI key - use Ollama directly
+    try {
+      const ollamaResponse = await fetch('http://localhost:11434/api/generate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          model: 'llama3.1:8b',
+          prompt,
+          stream: false
+        })
+      });
+      
+      const ollamaData = await ollamaResponse.json();
+      return ollamaData.response || '';
+    } catch (ollamaError) {
+      console.error('   ❌ Ollama request failed:', ollamaError.message);
+      return '';
+    }
   }
 }
 
