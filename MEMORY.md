@@ -85,6 +85,16 @@ Help with automation, find opportunities, handle tech/code, stay on top of sport
 - **Daily backup:** Config backed up daily at 1am to `~/.openclaw/openclaw.json.daily-*.bak`
 - **Log rotation:** Gateway log truncated if over 50MB
 
+## CRON "run bash:" Rule (IMPORTANT - March 5, 2026)
+
+When you receive a prompt starting with "run bash: <command>":
+1. **IMMEDIATELY exec the full command** (workdir=/home/clawd/clawd if automation)
+2. Do NOT use tools/memory_search first — exec the command
+3. On success → reply NO_REPLY (no chat response needed)
+4. On failure → DM Terry: "Cron fail: <cmd> error: <stdout/stderr>"
+
+This is critical — cron tasks depend on this to work.
+
 ## Crontab (crontab -l)
 
 ```

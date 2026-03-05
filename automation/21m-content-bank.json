@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "last_updated": "2026-03-04",
+  "last_updated": "2026-03-05",
   "entries": [
     {
       "id": 1,
@@ -13,7 +13,9 @@
       "btc_allocation": 656,
       "verified_fact": "Mahomes signed his 4-year $16.4M rookie deal in 2017 when BTC was $2,500. 10% allocation = 656 BTC.",
       "source": "Spotrac",
-      "used_dates": [],
+      "used_dates": [
+        "2026-03-05"
+      ],
       "cooldown_days": 90
     },
     {
@@ -203,7 +205,9 @@
       "btc_allocation": 14,
       "verified_fact": "Livvy Dunne earned $2.9M in NIL in 2022 when BTC was $20,000. 10% allocation = 14 BTC.",
       "source": "On3 NIL valuations",
-      "used_dates": [],
+      "used_dates": [
+        "2026-03-05"
+      ],
       "cooldown_days": 90
     },
     {
@@ -425,7 +429,9 @@
       "btc_price_then": 65000,
       "verified_fact": "NBA new media rights deal: $76B over 11 years (2024). BTC was $65,000 when announced.",
       "source": "Sports Business Journal",
-      "used_dates": [],
+      "used_dates": [
+        "2026-03-05"
+      ],
       "cooldown_days": 90
     },
     {
@@ -529,7 +535,9 @@
       "btc_price_then": 10000,
       "verified_fact": "Gold has been mined for 5,000 years and humans keep finding more. Bitcoin's supply is provably fixed at 21M. One is hard money. One just feels like it.",
       "source": "The Bitcoin Standard - Saifedean Ammous",
-      "used_dates": [],
+      "used_dates": [
+        "2026-03-05"
+      ],
       "cooldown_days": 60
     },
     {
@@ -728,7 +736,9 @@
       "btc_price_then": 0,
       "verified_fact": "The average lifespan of a fiat currency is 27 years. The US dollar has survived longer by continuously losing value. Bitcoin has a fixed supply that cannot be inflated.",
       "source": "Broken Money - Lyn Alden",
-      "used_dates": [],
+      "used_dates": [
+        "2026-03-05"
+      ],
       "cooldown_days": 60
     },
     {
@@ -756,7 +766,9 @@
       "btc_price_then": null,
       "verified_fact": "In 1971 Nixon ended the dollar's gold convertibility. Since then the dollar has lost 85% of its value. Every currency in the world became backed by nothing but government promises that same day.",
       "source": "Federal Reserve historical data",
-      "used_dates": [],
+      "used_dates": [
+        "2026-03-05"
+      ],
       "cooldown_days": 60
     },
     {
@@ -800,7 +812,9 @@
       "btc_price_then": 65000,
       "verified_fact": "BlackRock's Bitcoin ETF (IBIT) accumulated $17B in assets in its first 50 days — the fastest ETF launch in history. The world's largest asset manager chose Bitcoin over every other asset class for its first crypto product.",
       "source": "Bloomberg ETF data",
-      "used_dates": [],
+      "used_dates": [
+        "2026-03-05"
+      ],
       "cooldown_days": 60
     },
     {
@@ -846,7 +860,9 @@
       "btc_price_then": 7000,
       "verified_fact": "Bitcoin crashed 50% in March 2020 with stocks during COVID panic. By December it hit all-time highs while the economy struggled. Short-term it trades like risk. Long-term it trades like hard money.",
       "source": "CoinGecko / S&P historical",
-      "used_dates": [],
+      "used_dates": [
+        "2026-03-05"
+      ],
       "cooldown_days": 60
     },
     {

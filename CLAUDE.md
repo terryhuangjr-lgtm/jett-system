@@ -454,23 +454,20 @@ Vector: ready ✅
 **Status:** ✅ Gateway now stays up (tested 11+ minutes without crash)
 **Warning:** This patch will be lost if openclaw is reinstalled/updated.
 
-### 6. Cron Tasks Fixed - Isolated Subagent (2026-03-05)
-**Problem:** All automation cron tasks (Bitcoin, Sports, Family Brief, eBay) weren't executing. Cron fired but agent ignored "run bash:" payload - treated it as text instead of executing.
-**Root Cause:** Using `sessionTarget: "main"` with `systemEvent` - agent treats "run bash:" as query to respond to.
-**Solution:** Changed all automation crons to use isolated subagent:
-```json
-{
-  "sessionTarget": "isolated",
-  "wakeMode": "now", 
-  "payload": {
-    "kind": "agentTurn",
-    "message": "Strictly exec: node /path/to/script.js && NO_REPLY"
-  }
-}
+### 6. Cron "run bash:" Not Executing (2026-03-05)
+**Problem:** Bitcoin (7AM), Sports (7:30AM), Family Brief (8AM) crons fired OK but didn't post to Slack.
+**Root Cause:** Grok 4.1-fast is smarter than previous models. When cron injects "run bash: <cmd>", Grok "reasons" about it instead of blindly executing - calls tools like cron list to investigate.
+**Solution:** Added to MEMORY.md - prime agent to ALWAYS exec "run bash:" commands immediately:
 ```
-**Fixed crons:** Bitcoin Tweet, Sports Tweet, Morning Family Brief, eBay Scans Deploy, all eBay Scans
-**Config location:** `~/.openclaw/cron/jobs.json`
-**Status:** Applied - using isolated subagent which actually executes commands.
+## CRON "run bash:" Rule
+When you receive a prompt starting with "run bash: <command>":
+1. IMMEDIATELY exec the full command
+2. Do NOT use tools/memory_search first
+3. On success → reply NO_REPLY
+4. On failure → DM Terry with error
+```
+**Files updated:** MEMORY.md, memory/2026-03-05.md
+**Status:** Should work for tomorrow's crons.
 
 ---
 
