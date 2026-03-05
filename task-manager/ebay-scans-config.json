@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "last_updated": "2026-03-03T16:57:50.467Z",
+  "last_updated": "2026-03-05T17:53:02.425Z",
   "global_filters": {
     "graded_keywords": [
       "psa",
@@ -128,7 +128,8 @@
           "yugioh",
           "jumbo",
           "custom",
-          "reprint"
+          "reprint",
+          "size"
         ]
       },
       "output_file": "/tmp/mj-upperdeck-scan.json",
@@ -137,7 +138,7 @@
         "timestamp": "2026-03-05T15:15:17.484Z",
         "success": true
       },
-      "last_updated": "2026-02-12T15:42:58.022Z"
+      "last_updated": "2026-03-05T17:53:02.425Z"
     },
     "friday": {
       "name": "Multi: hakeem/charles barkley/Dirk/Iverson",
