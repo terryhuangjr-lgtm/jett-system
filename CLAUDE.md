@@ -1,5 +1,5 @@
 # CLAUDE.md - Jett System Standing Orders
-Last Updated: 2026-03-04
+Last Updated: 2026-03-05
 
 READ THIS ENTIRE FILE BEFORE TOUCHING ANYTHING.
 
@@ -23,6 +23,15 @@ You are operating on Jett — Terry Huang's AI automation system running on an H
 **Sports Betting:** sports_betting/orchestrator.py
 **Config:**       config/jett-config.json
 **Credentials:**  ~/.claude.json (API key)
+
+**CRITICAL — Two clawdbot packages exist. Only ONE is the real gateway:**
+| Binary | Package | Config File | Status |
+|--------|---------|-------------|--------|
+| `/home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot` | `openclaw` | `~/.openclaw/openclaw.json` | ✅ ACTIVE — used by crontab |
+| `/home/clawd/.npm-global/bin/clawdbot` | `clawdbot` | `~/.openclaw/clawdbot.json` | ❌ ORPHANED — never called |
+
+**When changing models or any gateway config: ONLY edit `~/.openclaw/openclaw.json`**
+`clawdbot.json` is dead weight — do not edit it, do not trust it.
 
 **Commands:**
 ```
@@ -48,6 +57,27 @@ pm2 logs --lines 50         # recent logs
 ```
 clawdbot cron list
 ```
+
+---
+
+## MODEL CHANGE PROCEDURE — FOLLOW EXACTLY
+
+Changing the default model requires 4 steps. Skipping any will cause Jett to report the wrong model or use the wrong one.
+
+1. **Edit `~/.openclaw/openclaw.json`** — update `agents.defaults.model.primary` and each agent entry in `agents.list` (slack + telegram)
+2. **DO NOT touch `clawdbot.json`** — it is orphaned and ignored by the gateway
+3. **Archive all poisoned sessions** — old sessions cache the previous model in snapshots; if not cleared, Jett will report the old model even after config change:
+   ```bash
+   TS=$(date +%Y-%m-%dT%H-%M-%S)
+   for f in /home/clawd/.openclaw/agents/slack/sessions/*.jsonl; do mv "$f" "${f}.deleted.${TS}"; done
+   for f in /home/clawd/.openclaw/agents/telegram/sessions/*.jsonl; do mv "$f" "${f}.deleted.${TS}"; done
+   ```
+4. **Restart gateway:**
+   ```bash
+   pkill -f 'openclaw-gateway'; sleep 2
+   nohup /home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot gateway >> /tmp/gateway.log 2>&1 &
+   ```
+5. **Verify:** Ask Jett "what model are you?" in a **new** Slack/Telegram message. Should match the new model.
 
 ---
 
