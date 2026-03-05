@@ -87,9 +87,9 @@ Last Updated: 2026-03-04
 |-----------|-------|
 | Process | `ollama serve` |
 | Auto-start | Via crontab @reboot |
-| Models | qwen3.5:4b, minimax-m2.5:cloud |
+| Models | llama3.1:8b, minimax-m2.5:cloud |
 
-**Note:** Used for research tasks and subagents. Default model for automation is Haiku (cloud).
+**Note:** Used for research tasks only. Default model for automation is Haiku (cloud).
 
 ---
 
@@ -288,7 +288,7 @@ crontab -l                  # View watchdog cron
 | Default (automation) | claude-haiku-4-5 | Fast, reliable |
 | Tweet generation | claude-sonnet-4-5 | Hardcoded in 21m-daily-generator-v2.js |
 | Research | ollama/llama3.1:8b | Local model |
-| Subagents | ollama/qwen3.5:4b | Local model |
+| Subagents | claude-haiku-4-5 | Primary, fallback to llama3.1:8b |
 | Slack/Telegram | claude-haiku-4-5 | Agent default |
 
 ---

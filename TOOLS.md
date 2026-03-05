@@ -37,7 +37,7 @@ clawdbot message send --channel slack --target "U0ABTP704QK" --message "text"
 ### Ollama (Local Models)
 - Endpoint: http://localhost:11434
 - Models available:
-  - `qwen3.5:4b` - Subagents, research tasks
+  - `llama3.1:8b` - Research tasks only (subagent fallback)
   - `nomic-embed-text` - Memory search embeddings
   - `minimax-m2.5:cloud` - Cloud-hosted MiniMax
 
@@ -78,8 +78,8 @@ spawn a subagent to [describe task]
 4. Read CLAUDE.md first
 5. Set timeout - don't run indefinitely
 
-**Default model:** `ollama/qwen3.5:4b` (local)
-**Fallback:** `anthropic/claude-haiku-4-5`
+**Default model:** `anthropic/claude-haiku-4-5`
+**Fallback:** `ollama/llama3.1:8b`
 
 ## System Tools
 

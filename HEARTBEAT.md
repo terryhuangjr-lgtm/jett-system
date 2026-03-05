@@ -16,7 +16,7 @@ System issue detected:
 
 ### Every Check
 1. **Gateway** - `pgrep -f 'openclaw-gateway'` running?
-2. **Ollama** - models responding? (qwen3.5 available?)
+2. **Ollama** - models responding? (llama3.1:8b available?)
 3. **Dashboard** - port 3000 responding?
 4. **Memory Search** - indexing current?
 

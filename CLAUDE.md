@@ -253,11 +253,13 @@ Systemd is not available in WSL2 by default. Using crontab for auto-start instea
 @reboot /home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot gateway --force >> /tmp/gateway.log 2>&1
 @reboot sleep 30 && cd /home/clawd/clawd && pm2 resurrect >> /tmp/pm2.log 2>&1
 @reboot ollama serve
-*/5 * * * * pgrep -f 'openclaw-gateway' > /dev/null || /home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot gateway --force >> /tmp/gateway.log 2>&1
-# Weekly gateway restart (Sunday 3am) - prevents stale processes
-0 3 * * 0 pkill -f 'openclaw-gateway' && /home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot gateway --force >> /tmp/gateway.log 2>&1
+
+# Health check every 4 hours - simple restart if down
+0 */4 * * * pgrep -f 'openclaw-gateway' > /dev/null || /home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot gateway --force >> /tmp/gateway.log 2>&1
+
 # Daily config backup (1am)
 0 1 * * * cp ~/.openclaw/openclaw.json ~/.openclaw/openclaw.json.daily-$(date +\%Y\%m\%d).bak
+
 # Log rotation for gateway (truncate if over 50MB)
 0 0 * * * find /tmp/gateway.log -size +50M -exec truncate -s 20M {} \; 2>/dev/null || true
 ```
@@ -271,8 +273,8 @@ systemd=true
 ```
 
 **Subagent Configuration:**
-- Default subagent model: ollama/qwen3.5:4b (local)
-- Fallback: anthropic/claude-haiku-4-5
+- Default subagent model: anthropic/claude-haiku-4-5
+- Fallback: ollama/llama3.1:8b (local)
 - Config location: `~/.openclaw/openclaw.json` → `agents.defaults.subagents`
 
 **To spawn a subagent for coding tasks:**
@@ -287,7 +289,7 @@ spawn a subagent to [describe task]
 
 **How it works:**
 - Subagents run in parallel with reduced context
-- Uses qwen3.5:4b (local) by default, falls back to Haiku if unavailable
+- Uses Haiku by default, falls back to llama3.1:8b if unavailable
 - Results return to main conversation when complete
 
 ---
@@ -427,7 +429,7 @@ Vector: ready ✅
 ### 4. Ollama Service Restored
 **Problem:** Ollama process was not running; model discovery failing intermittently.
 **Solution:** Restarted Ollama service (`pkill -f ollama; ollama serve &`).
-**Verification:** API responding, 2 models available (qwen3.5:4b, minimax-m2.5:cloud).
+**Verification:** API responding, 2 models available (llama3.1:8b, minimax-m2.5:cloud).
 **Status:** ✅ Ollama operational.
 
 ---

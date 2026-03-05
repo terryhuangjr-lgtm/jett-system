@@ -57,7 +57,7 @@ Help with automation, find opportunities, handle tech/code, stay on top of sport
 
 - **Haiku:** Default for all operations
 - **Sonnet:** ONLY for 21M Sports content generation (manually called)
-- **Ollama qwen3.5:** For subagents and research tasks
+- **Ollama llama3.1:8b:** Research tasks only (subagent fallback)
 
 ## Daily Task Schedule (from clawdbot cron list)
 
