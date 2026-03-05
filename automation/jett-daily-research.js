@@ -26,7 +26,7 @@ const SCRAPER_SCRIPT = path.join(__dirname, 'jett-scraper.py');
 
 // Read xAI API key from openclaw config (safer than hardcoding)
 let XAI_API_KEY = '';
-let XAI_MODEL = 'grok-4-0125-fast';
+let XAI_MODEL = 'grok-4-1-fast';
 
 try {
   const config = JSON.parse(fs.readFileSync(path.join(process.env.HOME, '.openclaw', 'openclaw.json'), 'utf8'));
