@@ -445,10 +445,10 @@ Vector: ready ✅
 
 | Task | Model | Notes |
 |------|-------|-------|
-| Default (all automation) | claude-haiku-4-5 | Fast, reliable, prevents Ollama dependency |
+| Default (all automation) | xai/grok-4-0125-fast | Cheaper than Haiku, same performance |
 | Tweet generation (Bitcoin/Sports) | claude-sonnet-4-5 | Hardcoded in 21m-daily-generator-v2.js |
 | Overnight research | ollama/llama3.1:8b | Local model - qwen3.5 was too slow on CPU |
-| Slack/Telegram responses | claude-haiku-4-5 | Agent default |
+| Slack/Telegram responses | xai/grok-4-0125-fast | Agent default |
 | Subagents | ollama/llama3.1:8b | Local model for subtasks |
 
 ---
