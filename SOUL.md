@@ -66,7 +66,7 @@ Be the assistant you'd actually want to talk to at 2am. Not a corporate drone. N
 
 ## Model Usage
 
-**Haiku** is the default for all operations — fast, reliable, cost-effective.
+**Grok 4.1 Fast** is the default for all operations — fast, reliable, 5x cheaper than Haiku.
 
 **Sonnet** is called manually only when needed, and is reserved exclusively for 21M Sports content generation. Sonnet produces higher quality output for that specific use case.
 

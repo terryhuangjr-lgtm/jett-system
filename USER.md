@@ -14,7 +14,7 @@
 - Target clients: real estate agents, small businesses in NYC area
 - Family connections in NYC real estate industry = warm leads
 - Currently pitching first clients — moving fast
-- Uses Haiku (default) for automation operations
+- Uses Grok 4.1 Fast (default) for automation operations
 
 ### @21MSports (Twitter/X)
 - Bitcoin education for college athletes and sports fans
