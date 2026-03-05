@@ -402,6 +402,13 @@ Vector: ready ✅
 **Impact:** Health-monitor is less aggressive, system more stable.
 **Note:** memorySearch disabled (not supported in 2026.2.26).
 
+### 4. Health-Monitor Disabled via Config (2026-03-05)
+**Problem:** Even with v2026.2.26, health-monitor was killing the gateway every ~7-9 minutes. It was detecting Slack/Telegram as unhealthy and restarting the entire gateway.
+**Solution:** Added `"channelHealthCheckMinutes": 0` to `gateway` section in openclaw.json.
+**Config location:** `~/.openclaw/openclaw.json` → `gateway.channelHealthCheckMinutes`
+**Impact:** Health-monitor no longer starts. Gateway stays stable.
+**Note:** Also removed --force flag from gateway startup commands to prevent kill loops.
+
 ---
 
 ## SYSTEM STABILITY FIXES - 2026-03-02
