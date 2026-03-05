@@ -278,12 +278,16 @@ Systemd is not available in WSL2 by default. Using crontab for auto-start instea
 
 ```bash
 # Current crontab (crontab -l):
-@reboot /home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot gateway --force >> /tmp/gateway.log 2>&1
+@reboot /home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot gateway >> /tmp/gateway.log 2>&1
 @reboot sleep 30 && cd /home/clawd/clawd && pm2 resurrect >> /tmp/pm2.log 2>&1
 @reboot ollama serve
+@reboot cd /home/clawd/level_up_cards && python3 app.py >> /home/clawd/level_up_cards/logs/server.log 2>&1
 
-# Health check every 4 hours - simple restart if down
-0 */4 * * * pgrep -f 'openclaw-gateway' > /dev/null || /home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot gateway --force >> /tmp/gateway.log 2>&1
+# Health check every 2 hours - restart gateway if down (NO --force, just let it restart naturally)
+0 */2 * * * pgrep -f 'openclaw-gateway' > /dev/null || /home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot gateway >> /tmp/gateway.log 2>&1
+
+# Health check every 5 min - restart Level Up Cards if down
+*/5 * * * * curl -s http://localhost:5000 > /dev/null || cd /home/clawd/level_up_cards && python3 app.py >> /home/clawd/level_up_cards/logs/server.log 2>&1
 
 # Daily config backup (1am)
 0 1 * * * cp ~/.openclaw/openclaw.json ~/.openclaw/openclaw.json.daily-$(date +\%Y\%m\%d).bak
@@ -436,6 +440,19 @@ Vector: ready ✅
 **Config location:** `~/.openclaw/openclaw.json` → `gateway.channelHealthCheckMinutes`
 **Impact:** Health-monitor no longer starts. Gateway stays stable.
 **Note:** Also removed --force flag from gateway startup commands to prevent kill loops.
+
+### 5. Health-Monitor Bug - Patched Library (2026-03-05)
+**Problem:** Despite `channelHealthCheckMinutes: 0` in config, the health-monitor STILL started with 5-min interval and killed the gateway. This was a bug in openclaw 2026.2.26 - the config value was being ignored.
+**Root Cause:** The code checked `healthCheckMinutes === 0` but the health-monitor still started anyway.
+**Solution:** Patched the openclaw library directly to force-disable health-monitor:
+- `/home/clawd/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/dist/gateway-cli-BSPSAjqx.js`
+- `/home/clawd/.nvm/versions/node/v22.22.0/lib/node_modules/openclaw/dist/gateway-cli-CD7BHA7a.js`
+**Fix:** Changed line ~21297 from:
+  `const channelHealthMonitor = healthCheckMinutes === 0 ? null : startChannelHealthMonitor({`
+  To:
+  `const channelHealthMonitor = null; // FORCE DISABLED`
+**Status:** ✅ Gateway now stays up (tested 11+ minutes without crash)
+**Warning:** This patch will be lost if openclaw is reinstalled/updated.
 
 ---
 
