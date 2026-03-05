@@ -454,6 +454,24 @@ Vector: ready ✅
 **Status:** ✅ Gateway now stays up (tested 11+ minutes without crash)
 **Warning:** This patch will be lost if openclaw is reinstalled/updated.
 
+### 6. Cron Tweet Tasks Fixed (2026-03-05)
+**Problem:** Bitcoin (7AM) and Sports (7:30AM) tweets weren't firing. Cron fired but agent ignored "run bash:" payload - treated it as text instead of executing.
+**Root Cause:** Cron payload format:
+- `sessionTarget: "main"` + `wakeMode: "next-heartbeat"` = agent treats "run bash:" as query
+**Solution:** Changed cron config to use isolated subagent:
+```json
+{
+  "sessionTarget": "isolated",
+  "wakeMode": "now",
+  "payload": {
+    "kind": "agentTurn", 
+    "message": "Strictly exec: node /home/clawd/clawd/automation/21m-daily-generator-v2.js --type bitcoin && NO_REPLY"
+  }
+}
+```
+**Config location:** `~/.openclaw/cron/jobs.json` → Bitcoin Tweet / Sports Tweet
+**Status:** Applied - should fire correctly on next schedule.
+
 ---
 
 ## SYSTEM STABILITY FIXES - 2026-03-02
