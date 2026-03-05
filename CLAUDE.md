@@ -24,14 +24,13 @@ You are operating on Jett — Terry Huang's AI automation system running on an H
 **Config:**       config/jett-config.json
 **Credentials:**  ~/.claude.json (API key)
 
-**CRITICAL — Two clawdbot packages exist. Only ONE is the real gateway:**
+**CRITICAL — Two clawdbot binaries exist. Only ONE is the real gateway:**
 | Binary | Package | Config File | Status |
 |--------|---------|-------------|--------|
 | `/home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot` | `openclaw` | `~/.openclaw/openclaw.json` | ✅ ACTIVE — used by crontab |
-| `/home/clawd/.npm-global/bin/clawdbot` | `clawdbot` | `~/.openclaw/clawdbot.json` | ❌ ORPHANED — never called |
+| `/home/clawd/.npm-global/bin/clawdbot` | `clawdbot` (old) | n/a | ❌ ORPHANED — never called, config deleted |
 
-**When changing models or any gateway config: ONLY edit `~/.openclaw/openclaw.json`**
-`clawdbot.json` is dead weight — do not edit it, do not trust it.
+**The only gateway config is `~/.openclaw/openclaw.json`. There is no other config file.**
 
 **Commands:**
 ```
@@ -65,8 +64,7 @@ clawdbot cron list
 Changing the default model requires 4 steps. Skipping any will cause Jett to report the wrong model or use the wrong one.
 
 1. **Edit `~/.openclaw/openclaw.json`** — update `agents.defaults.model.primary` and each agent entry in `agents.list` (slack + telegram)
-2. **DO NOT touch `clawdbot.json`** — it is orphaned and ignored by the gateway
-3. **Archive all poisoned sessions** — old sessions cache the previous model in snapshots; if not cleared, Jett will report the old model even after config change:
+2. **Archive all poisoned sessions** — old sessions cache the previous model in snapshots; if not cleared, Jett will report the old model even after config change:
    ```bash
    TS=$(date +%Y-%m-%dT%H-%M-%S)
    for f in /home/clawd/.openclaw/agents/slack/sessions/*.jsonl; do mv "$f" "${f}.deleted.${TS}"; done
