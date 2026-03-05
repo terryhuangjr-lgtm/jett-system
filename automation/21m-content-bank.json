@@ -635,7 +635,9 @@
       "btc_allocation": null,
       "verified_fact": "Derrick Coleman earned $91M in his NBA career and filed for bankruptcy in 2010. Bitcoin was $0.06 that year. $9.1M would have bought 151M BTC. Do the math.",
       "source": "ESPN",
-      "used_dates": [],
+      "used_dates": [
+        "2026-03-05"
+      ],
       "cooldown_days": 90
     },
     {
@@ -782,7 +784,9 @@
       "btc_price_then": 27000,
       "verified_fact": "Bitcoin uses roughly 0.5% of global energy consumption. The traditional banking system uses an estimated 263 TWh per year. Bitcoin uses about 127 TWh. The incumbent uses more energy and inflates your savings.",
       "source": "Cambridge Centre for Alternative Finance",
-      "used_dates": [],
+      "used_dates": [
+        "2026-03-05"
+      ],
       "cooldown_days": 60
     },
     {
