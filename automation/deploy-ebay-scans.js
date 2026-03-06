@@ -131,15 +131,36 @@ function postToSlack(message) {
   }
 }
 
-// Main execution
-try {
-  console.log('📤 Deploying eBay scan results to Slack...');
+// Send via email
+function postToEmail(message, scanName) {
+  try {
+    const emailScript = path.join(__dirname, '..', 'lib', 'send-email.js');
+    const subject = `${scanName} - eBay Scan Results`;
+    const env = { ...process.env };
+    execFileSync('node', [emailScript, '--to', 'terryhuangjr@gmail.com', '--subject', subject, '--body', message], {
+      encoding: 'utf8',
+      timeout: 30000,
+      env: env
+    });
+    console.log('✓ Emailed to terryhuangjr@gmail.com');
+    return true;
+  } catch (error) {
+    console.error('✗ Error sending email:', error.message);
+    return false;
+  }
+}
 
+// Main execution
+const useEmail = process.argv.includes('--email');
+// Get first non-flag argument as scan file, or use today's default
+const scanFileArg = process.argv.find((arg, i) => i > 1 && !arg.startsWith('--'));
+const scanFile = scanFileArg || getScanFileFromDay();
+
+console.log(useEmail ? '📤 Emailing eBay scan results...' : '📤 Deploying eBay scan results to Slack...');
+
+try {
   // Get today's scan config from task manager
   const todayConfig = getTodayScanConfig();
-  
-  // Determine which scan to deploy
-  const scanFile = process.argv[2] || getScanFileFromDay();
   
   // Get scan name from config, fallback to generic
   let scanName = 'eBay Scan';
@@ -158,9 +179,13 @@ try {
     console.log(`⚠️  Scan file not found: ${scanFile}`);
     console.log('   This scan may not have run yet.');
 
-    // Post notification to Slack
+    // Post notification
     const noResultsMessage = `📊 *${scanName}*\n\n⚠️ Scan not completed yet or no results file found.`;
-    postToSlack(noResultsMessage);
+    if (useEmail) {
+      postToEmail(noResultsMessage, scanName);
+    } else {
+      postToSlack(noResultsMessage);
+    }
     process.exit(0);
   }
 
@@ -179,8 +204,13 @@ try {
   }
   console.log('--- End Preview ---\n');
 
-  // Post to Slack
-  const success = postToSlack(text);
+  // Post
+  let success;
+  if (useEmail) {
+    success = postToEmail(text, scanName);
+  } else {
+    success = postToSlack(text);
+  }
 
   if (success) {
     console.log('\n✓ Deployment complete');
