@@ -343,8 +343,8 @@ Scraped web data:
 ${scrapedData || 'No scraped data available - use your knowledge but prioritize verifiable facts from Spotrac or official sources'}
 
 Output EXACTLY in this format (one fact per line):
-Fact: ATHLETE_NAME signed a $XXM CONTRACT_TYPE in YEAR [Source: source-name]
-Fact: ATHLETE_NAME signed a $XXM CONTRACT_TYPE in YEAR [Source: source-name]
+Fact: ATHLETE_NAME signed a $MM CONTRACT_TYPE in YEAR [Source: source-name]
+Fact: ATHLETE_NAME signed a $MM CONTRACT_TYPE in YEAR [Source: source-name]
 
 Example:
 Fact: Patrick Mahomes signed a $16.4M rookie contract in 2017 [Source: Spotrac]
