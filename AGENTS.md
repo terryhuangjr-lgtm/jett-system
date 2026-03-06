@@ -19,6 +19,7 @@ Always start with the latest version to avoid conflicts.
 cat README.md        # System overview
 cat CHANGELOG.md     # Recent changes
 cat AGENTS.md        # This file
+cat CLAUDE.md        # System rules and updates
 ```
 
 This gives you full context on:
