@@ -83,14 +83,13 @@ Changing the default model requires 4 steps. Skipping any will cause Jett to rep
 
 | Time | Task ID | Task | Output |
 |------|---------|------|--------|
-| 7:00AM | 67 | Bitcoin Tweet Generation | #21msports |
-| 7:30AM | 60 | Sports Tweet Generation | #21msports |
+| 4:00AM | 75 | Podcast Processing | background |
+| 7:00AM | 67 | Bitcoin Tweet Generation | email |
+| 7:30AM | 60 | Sports Tweet Generation | email |
 | 8:00AM | 78 | Morning Family Brief | #huangfamily |
-| 8:00AM | 76 | Podcast Summary Deployment | #podcastsummary |
-| 9:00AM | 75 | Podcast Processing | background |
 | 9:00AM | varies | eBay Scan (daily rotation) | saved to results/ |
 | 9:30AM | 79 | System Health Check | DM |
-| 10:00AM | 38 | eBay Scans Deploy | #levelupcards |
+| 10:00AM | 38 | eBay Scans Deploy | email |
 | 10:00AM | 71 | Sports Betting Scout | DM |
 | 4:00PM | 72 | Sports Betting Pick | DM |
 
