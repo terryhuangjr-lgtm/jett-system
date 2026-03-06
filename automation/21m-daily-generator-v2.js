@@ -321,6 +321,24 @@ function postToSlack(message) {
   }
 }
 
+function postToEmail(message, type) {
+  const { execFileSync } = require('child_process');
+  const emailScript = path.join(__dirname, '..', 'lib', 'send-email.js');
+  const subject = type === 'bitcoin' ? 'Bitcoin Tweet' : 'Sports Tweet';
+  try {
+    execFileSync('node', [emailScript, '--to', 'terryhuangjr@gmail.com', '--subject', subject, '--body', message], {
+      encoding: 'utf8',
+      timeout: 30000,
+      env: process.env
+    });
+    console.log('✓ Emailed to terryhuangjr@gmail.com');
+    return true;
+  } catch (e) {
+    console.error('Email post failed:', e.message);
+    return false;
+  }
+}
+
 async function main() {
   console.log(`\n21M Daily Generator v2 | type: ${CONTENT_TYPE} | dry-run: ${DRY_RUN}\n`);
 
@@ -369,14 +387,28 @@ async function main() {
     return;
   }
 
-  // Post to Slack
-  console.log('\nPosting to Slack...');
-  const posted = postToSlack(slackMessage);
-  if (posted) {
-    console.log('Posted successfully');
+  // Check if email mode
+  const USE_EMAIL = process.argv.includes('--email');
+  
+  // Post
+  if (USE_EMAIL) {
+    console.log('\nPosting via email...');
+    const posted = postToEmail(slackMessage, CONTENT_TYPE);
+    if (posted) {
+      console.log('Emailed successfully');
+    } else {
+      console.error('Failed to send email');
+      process.exit(1);
+    }
   } else {
-    console.error('Failed to post to Slack');
-    process.exit(1);
+    console.log('\nPosting to Slack...');
+    const posted = postToSlack(slackMessage);
+    if (posted) {
+      console.log('Posted successfully');
+    } else {
+      console.error('Failed to post to Slack');
+      process.exit(1);
+    }
   }
 
   // Mark entry as used
