@@ -476,6 +476,21 @@ When you receive a prompt starting with "run bash: <command>":
 **Cron updates:** All tweet/eBay deploy crons now use `--email` flag to send via email instead of Slack
 **Config:** `.env` contains `AGENTMAIL_API_KEY` and `AGENTMAIL_INBOX`
 
+### 8. Podcast Summarizer - RSS + Email (2026-03-06)
+**Overview:** Podcast dashboard now supports RSS feeds and emails summaries instead of Slack
+**Location:** `/home/clawd/skills/podcast-summary/`
+**Dashboard:** http://localhost:5001
+**Features:**
+- Accepts YouTube URLs OR RSS feeds (auto-detects)
+- Uses Grok 4.1 Fast for summarization
+- Emails summary to terryhuangjr@gmail.com on completion
+**Cron:** 4 AM daily - processes one podcast from queue
+**Config:** `config.py` - Whisper model (tiny), Ollama model, etc
+**Usage:**
+- Add RSS feed to queue via dashboard
+- Or click "Transcribe Now" for immediate processing
+- Email sent with detailed summary
+
 ---
 
 ## SYSTEM STABILITY FIXES - 2026-03-02
