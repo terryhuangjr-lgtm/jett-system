@@ -32,17 +32,45 @@ You are operating on Jett — Terry Huang's AI automation system running on an H
 
 ## DOCUMENTATION RULES (CRITICAL)
 
-**When you change ANY system, you MUST update the relevant documentation:**
+### File Responsibilities (Single Source of Truth)
 
-| If you change... | Then you MUST update... |
-|------------------|------------------------|
-| Automation script | `SYSTEMS.md` + relevant `skills/*/SYSTEM.md` |
-| Cron schedule | `SYSTEMS.md` (cron table section) |
-| AI model routing | `CLAUDE.md` (MODEL DISTRIBUTION section) |
-| Port/service | `SYSTEMS.md` (ports section) |
-| Credentials/keys | Update `.env` and document in SYSTEMS.md |
+| File | Owner | When to Update |
+|------|-------|----------------|
+| **`CLAUDE.md`** | All AI agents | Model routing changes, core rules, file hierarchy |
+| **`SYSTEMS.md`** | All AI agents | System architecture, ports, cron schedules, services |
+| **`IDENTITY.md`** | All AI agents | Personality/values changes (merged from SOUL) |
+| **`USER.md`** | All AI agents | User info changes |
+| **`memory/YYYY-MM-DD.md`** | All AI agents | Daily work logs, what happened |
+| **`MEMORY.md`** | All AI agents | Long-term memory (curated learnings) |
+| **`skills/*/SYSTEM.md`** | All AI agents | Specific skill/system details |
 
-**Golden Rule:** If you modified code that affects system behavior, the docs must reflect it. No exceptions.
+### What to Update (Git-style Rules)
+
+```
+WHEN YOU MODIFY CODE → Update the corresponding SYSTEM.md
+WHEN YOU ADD SCRIPT  → Add to SYSTEMS.md automation section
+WHEN YOU CHANGE PORT → Update SYSTEMS.md ports table
+WHEN YOU CHANGE MODEL → Update CLAUDE.md MODEL DISTRIBUTION
+WHEN YOU FIX A BUG    → Add entry to SYSTEMS.md troubleshooting
+WHEN YOU ADD CRON     → Update SYSTEMS.md cron table
+```
+
+### Golden Rule
+> If you modified code that affects system behavior, the docs must reflect it. **No exceptions.**
+
+### Commit+Push After Doc Updates
+```bash
+git add [files] && git commit -m "docs: [what changed]" && git push
+```
+
+### Example
+```
+Task: Add new daily research cron at 3 AM
+Action:
+1. Add cron via clawdbot
+2. Update SYSTEMS.md cron table
+3. git add SYSTEMS.md && git commit -m "docs: add research cron at 3am" && git push
+```
 
 ---
 
