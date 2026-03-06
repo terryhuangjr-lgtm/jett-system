@@ -43,7 +43,9 @@
       "btc_allocation": 136,
       "verified_fact": "Zion signed his $9.76M rookie deal in 2019 when BTC was $7,200. 10% allocation = 136 BTC.",
       "source": "Spotrac",
-      "used_dates": [],
+      "used_dates": [
+        "2026-03-06"
+      ],
       "cooldown_days": 90
     },
     {
@@ -682,7 +684,9 @@
       "btc_allocation": null,
       "verified_fact": "Joe Lacob bought the Golden State Warriors for $450M in 2010 when BTC was $0.06. The team is now worth $7.7B. $45M in Bitcoin that year would be worth $500B. Different kind of asset.",
       "source": "Forbes NBA valuations",
-      "used_dates": [],
+      "used_dates": [
+        "2026-03-06"
+      ],
       "cooldown_days": 90
     },
     {
@@ -954,7 +958,9 @@
       "btc_price_then": 0,
       "verified_fact": "In 2008, Satoshi Nakamoto created the Bitcoin whitepaper",
       "source": "Research",
-      "used_dates": [],
+      "used_dates": [
+        "2026-03-06"
+      ],
       "cooldown_days": 60,
       "id": 65
     },
@@ -971,6 +977,34 @@
       "used_dates": [],
       "cooldown_days": 90,
       "id": 66
+    },
+    {
+      "category": "historic_contract",
+      "athlete": "Tom Brady",
+      "sport": "NFL",
+      "year": 2000,
+      "contract_value": 3300000,
+      "btc_price_then": 0,
+      "btc_allocation": 0,
+      "verified_fact": "Tom Brady signed a $3.3M rookie contract in 2000",
+      "source": "Research",
+      "used_dates": [],
+      "cooldown_days": 90,
+      "id": 67
+    },
+    {
+      "category": "bitcoin_education",
+      "athlete": null,
+      "deal": "Hyperinflation Venezuela Zimbabwe history",
+      "sport": "Bitcoin",
+      "year": 2008,
+      "contract_value": null,
+      "btc_price_then": 0,
+      "verified_fact": "In 2008, Zimbabwe's monthly inflation rate peaked at 79,600,000,000% in November",
+      "source": "Research",
+      "used_dates": [],
+      "cooldown_days": 60,
+      "id": 68
     }
   ]
 }
