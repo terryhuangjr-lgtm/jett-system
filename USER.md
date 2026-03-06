@@ -31,8 +31,8 @@
 ## Career & Projects
 
 - **Current Status:** Not working; entrepreneurial spirit
+- **Level Up Digital** Working on doing web design + SEO services full time with a focus on smaller/local businesses that need website. Uses Figma Make + Vercel to build nice, modern websites fast.
 - **Active Side Hustle:** Buying/selling/trading sports cards with brother (hobby → potential scale in 2026)
-- **On Hold:** Batting cage business (paused to explore other opportunities)
 - **Always:** Looking for better and new opportunities
 - **Tech:** Into tech but doesn't code (I handle that)
 
@@ -67,41 +67,14 @@
 **Tedious Tasks (delegate to Jett):**
 - Real estate searching
 
-## Batting Cage Business Details
-
-**Target Location (Long Island):**
-- **Primary area:** Nassau County - North Shore
-- **Specific towns:** New Hyde Park, Roslyn, Manhasset, Great Neck, Lynbrook, Valley Stream
-- **Also considering:** Western Nassau
-
-**Funding:**
-- **Plan:** Self-funded (betting on himself)
-- **Budget:** $100-150K initially
-- **Backup:** May seek investors depending on size/opportunity
-- **Potential partners:** Brothers or ex-boss Pat (trusted, experienced business owner)
-
-**Timeline:**
-- **Target:** Q2 2026 to seriously start searching for property
-- **Phase 1:** Find property, build website, buy equipment
-- **Goal:** Get operational ASAP
-
-**Current Blockers:**
-- **Big question:** Is this the right move?
-- **Family timing:** Waiting for right moment
-- **Business model:** What kind of batting cage? Boutique or large? What size?
-
-**Goal:**
-- Primary: Cash flow
-- Secondary: Possibly sell or hold long-term (TBD)
-- Philosophy: Easy to run and scale
-
 ## Tool Routing Strategy
 
 **Model Selection Rules (Phase 1):**
 
-- **Grok-3** → X/Twitter searches, social media research, real-time trending topics, sports news
+- **Grok-4.1-fast (default)** → communications through slack/telegram, task orchesatration, overnight research task
 - **21M Sports Generator** → Daily content creation (built by Claude Code, production ready)
-- **Claude Sonnet 4.5 (default)** → Everything else (analysis, planning, execution, writing)
+- **Claude Sonnet 4.5 (used for 21m content gen and by request only)** → Everything else (analysis, planning, execution, writing)
+- **Ollama / llama 3.1:8b local - back up and not used for anything currently
 
 **21M Sports Workflow:**
 1. Use built-in content generator for daily posts (fast, fact-checked)
@@ -110,9 +83,6 @@
 
 **Implementation:** Jett automatically uses the right tool for each task.
 
-**Why:** Generator is faster + fact-checked. Grok finds what's trending. Claude handles everything else.
-
-**Future (Phase 2):** Add Gemini for web searches if costs justify it.
 
 ---
 
@@ -171,7 +141,7 @@
 - Status symbols
 - Hustle culture BS
 
-## Sports Card Business (Active Side Hustle)
+## Level Up Cards Sports Card Business (Active Side Hustle)
 
 **Current Operation:**
 - Terry + his brother buy/sell/trade sports cards
