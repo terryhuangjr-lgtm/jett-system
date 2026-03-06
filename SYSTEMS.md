@@ -87,9 +87,9 @@ Last Updated: 2026-03-04
 |-----------|-------|
 | Process | `ollama serve` |
 | Auto-start | Via crontab @reboot |
-| Models | llama3.1:8b, minimax-m2.5:cloud |
+| Models | minimax-m2.5:cloud (embeddings only) |
 
-**Note:** Used for research tasks only. Default model for automation is Haiku (cloud).
+**Note:** Ollama now only runs for memory search embeddings. llama3.1:8b removed. All other tasks use Grok/Haiku.
 
 ---
 
@@ -285,12 +285,10 @@ crontab -l                  # View watchdog cron
 
 | Task | Model | Notes |
 |------|-------|-------|
-| Default (automation) | xai/grok-4-1-fast | 5x cheaper than Haiku |
-| Tweet generation | claude-sonnet-4-5 | Hardcoded in 21m-daily-generator-v2.js |
-| Research | xai/grok-4-1-fast | Cheaper than Haiku, better than local llama |
-| Subagents | xai/grok-4-1-fast | Primary, fallback to llama3.1:8b |
-| Slack/Telegram | xai/grok-4-1-fast | Agent default |
-| **FALLBACK ONLY** | ollama/llama3.1:8b | If Grok AND Haiku unreachable |
+| **DEFAULT** | xai/grok-4-1-fast | Everything: automation, research, Slack/Telegram, subagents |
+| **BACKUP** | anthropic/claude-haiku-4-5 | If Grok down |
+| Tweet generation | claude-sonnet-4-5 | Hardcoded in 21m-daily-generator-v2.js (21M content only) |
+| Ollama | minimax-m2.5:cloud | Memory search embeddings only (llama3.1:8b removed) |
 
 ---
 

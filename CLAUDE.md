@@ -305,7 +305,7 @@ systemd=true
 
 **Subagent Configuration:**
 - Default subagent model: xai/grok-4-1-fast
-- Fallback: ollama/llama3.1:8b (last resort only)
+- Fallback: anthropic/claude-haiku-4-5 (if Grok unavailable)
 - Config location: `~/.openclaw/openclaw.json` → `agents.defaults.subagents`
 
 **To spawn a subagent for coding tasks:**
@@ -320,7 +320,7 @@ spawn a subagent to [describe task]
 
 **How it works:**
 - Subagents run in parallel with reduced context
-- Uses Haiku by default, falls back to llama3.1:8b if unavailable
+- Uses Grok 4.1-fast by default, falls back to Haiku if unavailable
 - Results return to main conversation when complete
 
 ---
@@ -534,15 +534,15 @@ When you receive a prompt starting with "run bash: <command>":
 
 ---
 
-## MODEL DISTRIBUTION (Post-Fix)
+## MODEL DISTRIBUTION
 
-| Task | Model | Notes |
-|------|-------|-------|
-| Default (all automation) | xai/grok-4-1-fast | Cheaper than Haiku, same performance |
-| Tweet generation (Bitcoin/Sports) | claude-sonnet-4-5 | Hardcoded in 21m-daily-generator-v2.js |
-| Overnight research | ollama/llama3.1:8b | Local model - qwen3.5 was too slow on CPU |
-| Slack/Telegram responses | xai/grok-4-1-fast | Agent default |
-| Subagents | ollama/llama3.1:8b | Local model for subtasks |
+| Model | Purpose | When Used |
+|-------|---------|-----------|
+| **grok-4-1-fast** | DEFAULT for everything | Slack/Telegram responses, automation, subagents, research |
+| **claude-haiku-4-5** | BACKUP if Grok down | Fallback when Grok unavailable |
+| **claude-sonnet-4-5** | Content generation | 21M sports tweet generation ONLY (hardcoded) |
+
+**Ollama models:** Only minimax-m2.5:cloud remains (for memory search embeddings). llama3.1:8b removed.
 
 ---
 

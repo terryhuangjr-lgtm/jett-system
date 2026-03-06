@@ -55,9 +55,10 @@ Help with automation, find opportunities, handle tech/code, stay on top of sport
 
 ## Model Usage
 
-- **Grok 4.1 Fast:** Default for all operations (5x cheaper than Haiku)
-- **Sonnet:** ONLY for 21M Sports content generation (manually called)
-- **Ollama llama3.1:8b:** Last resort fallback only
+- **Grok 4.1 Fast:** DEFAULT for everything (Slack/Telegram, automation, research)
+- **Haiku 4.5:** BACKUP if Grok down
+- **Sonnet 4.5:** ONLY for 21M Sports content generation
+- **Ollama:** Only minimax-m2.5:cloud for memory search embeddings (llama3.1:8b removed)
 
 ## Daily Task Schedule (from clawdbot cron list)
 

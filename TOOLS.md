@@ -39,18 +39,17 @@ clawdbot message send --channel slack --target "U0ABTP704QK" --message "text"
 - API Key: Already configured in openclaw.json
 
 **Models:**
-- `grok-4-1-fast` - Default for all operations (5x cheaper than Haiku!)
-- `xai/grok-4-1-fast` - Full reference in config
+- `grok-4-1-fast` - DEFAULT for everything (Slack/Telegram, automation, research, subagents)
+- `claude-haiku-4-5` - BACKUP if Grok down
+- `claude-sonnet-4-5` - 21M sports content generation only
 
-**Usage:**
-- Default for Slack/Telegram, health checks, simple formatting, routing, daily ops
-
-### Ollama (Local Models - Fallback Only)
+### Ollama (Memory Search Only)
 - Endpoint: http://localhost:11434
 - Models available:
-  - `llama3.1:8b` - Research tasks only (subagent fallback)
   - `nomic-embed-text` - Memory search embeddings
-  - `minimax-m2.5:cloud` - Cloud-hosted MiniMax
+  - `minimax-m2.5:cloud` - Cloud-hosted MiniMax (for embeddings)
+
+**Note:** llama3.1:8b removed. Ollama no longer used for research.
 
 ### CoinGecko API (Free, no key)
 - BTC price: `https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd`
@@ -90,7 +89,7 @@ spawn a subagent to [describe task]
 5. Set timeout - don't run indefinitely
 
 **Default model:** `xai/grok-4-1-fast`
-**Fallback:** `ollama/llama3.1:8b` (last resort only)
+**Fallback:** `anthropic/claude-haiku-4-5` (if Grok unavailable)
 
 ## System Tools
 
