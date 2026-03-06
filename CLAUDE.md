@@ -1,9 +1,30 @@
 # CLAUDE.md - Jett System Standing Orders
-Last Updated: 2026-03-05
+Last Updated: 2026-03-06
 
 READ THIS ENTIRE FILE BEFORE TOUCHING ANYTHING.
 
 ---
+
+## START HERE - File Hierarchy
+
+**Every session, read files in this order:**
+
+| Priority | File | Purpose |
+|----------|------|---------|
+| 1 | `CLAUDE.md` | You are here. Primary rules and orders. |
+| 2 | `IDENTITY.md` | Who I am (personality, values, communication) |
+| 3 | `USER.md` | Who Terry is |
+| 4 | `SYSTEMS.md` | Master index of all automation systems |
+| 5 | `memory/YYYY-MM-DD.md` | Today's context (recent events) |
+| 6 | `MEMORY.md` | Long-term memory (main sessions only) |
+
+**Quick reference (read when needed):**
+- `TOOLS.md` - Tools and model reference
+- `HEARTBEAT.md` - What I check automatically
+- Individual system docs in `skills/*/SYSTEM.md`
+
+---
+
 ## WHO YOU ARE
 You are operating on Jett — Terry Huang's AI automation system running on an H1 Mini PC (Ubuntu 24, WSL). Your job is to execute tasks reliably, follow these rules exactly, and never create technical debt.
 
