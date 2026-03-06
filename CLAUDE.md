@@ -30,32 +30,37 @@ You are operating on Jett — Terry Huang's AI automation system running on an H
 
 ---
 
-## SYSTEM ARCHITECTURE (Single Source of Truth)
+## DOCUMENTATION RULES (CRITICAL)
+
+**When you change ANY system, you MUST update the relevant documentation:**
+
+| If you change... | Then you MUST update... |
+|------------------|------------------------|
+| Automation script | `SYSTEMS.md` + relevant `skills/*/SYSTEM.md` |
+| Cron schedule | `SYSTEMS.md` (cron table section) |
+| AI model routing | `CLAUDE.md` (MODEL DISTRIBUTION section) |
+| Port/service | `SYSTEMS.md` (ports section) |
+| Credentials/keys | Update `.env` and document in SYSTEMS.md |
+
+**Golden Rule:** If you modified code that affects system behavior, the docs must reflect it. No exceptions.
+
+---
+
+## MODEL DISTRIBUTION (Single Source of Truth)
+
+| Model | Purpose | When Used |
+|-------|---------|-----------|
+| **grok-4-1-fast** | DEFAULT for everything | Slack/Telegram, automation, research, subagents |
+| **claude-haiku-4-5** | BACKUP if Grok down | Fallback when Grok unavailable |
+| **claude-sonnet-4-5** | Content generation | 21M sports tweet generation ONLY |
+
+**Ollama:** Only minimax-m2.5:cloud remains (memory search embeddings). llama3.1:8b removed.
+
+---
+
+## SYSTEM ARCHITECTURE
 
 **Detailed Architecture:** See `SYSTEMS.md` for complete system diagram and documentation.
-
-**Scheduling:**    clawdbot cron (all daily + weekly tasks run through clawdbot gateway)
-**Process Mgmt:** PM2 (task-manager-server dashboard only — port 3000)
-**Slack/Telegram:** clawdbot message send (via gateway)
-**Watchdog:**     system crontab — restarts clawdbot-gateway if down (*/5 * * * *)
-**Failure Alerts:** lib/notify-failure.js — Slack DM to Terry on any task failure
-**Content:**      21m-daily-generator-v2.js → 21m-content-bank.json
-**eBay:**         automation/deploy-ebay-scans.js
-**Sports Betting:** sports_betting/orchestrator.py
-**Config:**       config/jett-config.json
-**Credentials:**  ~/.claude.json (API key)
-
-**CRITICAL — Two clawdbot binaries exist. Only ONE is the real gateway:**
-| Binary | Package | Config File | Status |
-|--------|---------|-------------|--------|
-| `/home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot` | `openclaw` | `~/.openclaw/openclaw.json` | ✅ ACTIVE — used by crontab |
-| `/home/clawd/.npm-global/bin/clawdbot` | `clawdbot` (old) | n/a | ❌ ORPHANED — never called, config deleted |
-
-**The only gateway config is `~/.openclaw/openclaw.json`. There is no other config file.**
-
-**Commands:**
-```
-clawdbot cron list           # View all scheduled tasks
 pm2 list                     # Check dashboard server status
 crontab -l                  # View watchdog cron
 ```

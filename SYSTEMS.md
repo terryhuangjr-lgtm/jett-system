@@ -283,12 +283,7 @@ crontab -l                  # View watchdog cron
 
 ## Model Distribution
 
-| Task | Model | Notes |
-|------|-------|-------|
-| **DEFAULT** | xai/grok-4-1-fast | Everything: automation, research, Slack/Telegram, subagents |
-| **BACKUP** | anthropic/claude-haiku-4-5 | If Grok down |
-| Tweet generation | claude-sonnet-4-5 | Hardcoded in 21m-daily-generator-v2.js (21M content only) |
-| Ollama | minimax-m2.5:cloud | Memory search embeddings only (llama3.1:8b removed) |
+**Single source of truth:** See `CLAUDE.md` → MODEL DISTRIBUTION section.
 
 ---
 
