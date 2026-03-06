@@ -467,7 +467,14 @@ When you receive a prompt starting with "run bash: <command>":
 4. On failure → DM Terry with error
 ```
 **Files updated:** MEMORY.md, memory/2026-03-05.md
-**Status:** ✅ VERIFIED WORKING - Bitcoin cron posted to Slack automatically on March 5 afternoon.
+**Status:** ✅ VERIFIED WORKING - Cron posts via email instead of Slack (March 6)
+
+### 7. Email via AgentMail (2026-03-06)
+**Setup:** AgentMail account jett@agentmail.to for sending emails
+**Script:** `lib/send-email.js` - sends via AgentMail API
+**Usage:** `node lib/send-email.js --to "email" --subject "Subject" --body "Message"`
+**Cron updates:** All tweet/eBay deploy crons now use `--email` flag to send via email instead of Slack
+**Config:** `.env` contains `AGENTMAIL_API_KEY` and `AGENTMAIL_INBOX`
 
 ---
 
