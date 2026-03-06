@@ -475,20 +475,32 @@ When you receive a prompt starting with "run bash: <command>":
 **Cron updates:** All tweet/eBay deploy crons now use `--email` flag to send via email instead of Slack
 **Config:** `.env` contains `AGENTMAIL_API_KEY` and `AGENTMAIL_INBOX`
 
-### 8. Podcast Summarizer - RSS + Email (2026-03-06)
-**Overview:** Podcast dashboard now supports RSS feeds and emails summaries instead of Slack
+### 8. Podcast Summarizer - Direct MP3 + Email (2026-03-06)
+**Overview:** Podcast dashboard now supports direct MP3 URLs and emails summaries
 **Location:** `/home/clawd/skills/podcast-summary/`
 **Dashboard:** http://localhost:5001
 **Features:**
-- Accepts YouTube URLs OR RSS feeds (auto-detects)
+- Accepts direct MP3 URLs (best), RSS feeds, or YouTube (deprecated)
 - Uses Grok 4.1 Fast for summarization
 - Emails summary to terryhuangjr@gmail.com on completion
 **Cron:** 4 AM daily - processes one podcast from queue
 **Config:** `config.py` - Whisper model (tiny), Ollama model, etc
-**Usage:**
-- Add RSS feed to queue via dashboard
-- Or click "Transcribe Now" for immediate processing
-- Email sent with detailed summary
+
+**How to add podcasts (BEST METHOD):**
+1. Go to Podcast Index (podcastindex.org)
+2. Find episode → Click download button
+3. Copy the direct .mp3 URL
+4. Add to queue: `python3 manage_queue.py add "MP3_URL" "Episode Title - Guest Name"`
+
+**Weekly cleanup:** Sundays - deletes audio files older than 7 days
+
+### 9. Research Script - Grok Only, No Ollama (2026-03-06)
+**Problem:** Research script (`jett-daily-research.js`) had Ollama fallbacks that would trigger when Grok failed, causing unnecessary load and errors.
+**Solution:** Removed ALL Ollama code paths - now uses ONLY Grok 4.1-fast via xAI API.
+- `getJettResponse()`: Now fails cleanly if xAI unavailable (no fallback)
+- `extractStructuredFact()`: Now uses Grok for JSON extraction (no Ollama)
+**Email reports:** Now includes what was added to each content bank (Sports vs Bitcoin entries)
+**Status:** ✅ Tested with dry-run - working correctly
 
 ---
 

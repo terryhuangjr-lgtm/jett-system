@@ -360,69 +360,34 @@ Requirements:
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 90000);
 
-  // Use xAI Grok (5x cheaper than Haiku, better than local llama)
-  // Only attempt if API key is available
-  if (XAI_API_KEY) {
-    try {
-      const xaiResponse = await fetch('https://api.x.ai/v1/chat/completions', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${XAI_API_KEY}`
-        },
-        body: JSON.stringify({
-          model: XAI_MODEL,
-          messages: [{ role: 'user', content: prompt }],
-          stream: false
-        }),
-        signal: controller.signal
-      });
+  // Use xAI Grok - no Ollama fallback
+  if (!XAI_API_KEY) {
+    console.error('   ❌ No xAI API key configured');
+    return '';
+  }
 
-      clearTimeout(timeout);
+  try {
+    const xaiResponse = await fetch('https://api.x.ai/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${XAI_API_KEY}`
+      },
+      body: JSON.stringify({
+        model: XAI_MODEL,
+        messages: [{ role: 'user', content: prompt }],
+        stream: false
+      }),
+      signal: controller.signal
+    });
 
-      const data = await xaiResponse.json();
-      return data.choices?.[0]?.message?.content || '';
-    } catch (error) {
-      console.log('   ⚠️ xAI failed, trying Ollama fallback...');
-      
-      // Fallback to Ollama if xAI fails
-      try {
-        const ollamaResponse = await fetch('http://localhost:11434/api/generate', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            model: 'llama3.1:8b',
-            prompt,
-            stream: false
-          })
-        });
-        
-        const ollamaData = await ollamaResponse.json();
-        return ollamaData.response || '';
-      } catch (ollamaError) {
-        console.error('   ❌ Both xAI and Ollama failed:', ollamaError.message);
-        return '';
-      }
-    }
-  } else {
-    // No xAI key - use Ollama directly
-    try {
-      const ollamaResponse = await fetch('http://localhost:11434/api/generate', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          model: 'llama3.1:8b',
-          prompt,
-          stream: false
-        })
-      });
-      
-      const ollamaData = await ollamaResponse.json();
-      return ollamaData.response || '';
-    } catch (ollamaError) {
-      console.error('   ❌ Ollama request failed:', ollamaError.message);
-      return '';
-    }
+    clearTimeout(timeout);
+
+    const data = await xaiResponse.json();
+    return data.choices?.[0]?.message?.content || '';
+  } catch (error) {
+    console.error('   ❌ xAI request failed:', error.message);
+    return '';
   }
 }
 
@@ -787,20 +752,32 @@ Return this exact JSON shape:
 Set "found" to false if you cannot identify a specific athlete with a verified contract value and signing year. Do not guess.`;
   }
 
+  if (!XAI_API_KEY) {
+    console.log('  ⚠ No xAI API key, using fallback');
+    return createFallbackEntry(text, category, isBitcoin);
+  }
+
   try {
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 60000);
 
-    const res = await fetch('http://localhost:11434/api/generate', {
+    const res = await fetch('https://api.x.ai/v1/chat/completions', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ model: 'llama3.1:8b', prompt, stream: false }),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${XAI_API_KEY}`
+      },
+      body: JSON.stringify({
+        model: XAI_MODEL,
+        messages: [{ role: 'user', content: prompt }],
+        stream: false
+      }),
       signal: controller.signal
     });
     clearTimeout(timeout);
 
     const data = await res.json();
-    const text = (data.response || '').trim();
+    const text = data.choices?.[0]?.message?.content || '';
 
     const jsonMatch = text.match(/\{[\s\S]+\}/);
     if (!jsonMatch) {
@@ -1048,9 +1025,24 @@ async function main() {
   console.log(`   Items added: ${totalAdded}`);
   console.log(`   Log: ${RESEARCH_LOG}\n`);
 
+  // Track what was added to each content bank
+  let sportsAdded = 0;
+  let bitcoinAdded = 0;
+  let addedEntries = [];
+
+  for (const { topic, category } of topics) {
+    if (SPORTS_TO_BANK_CATEGORY[category]) {
+      sportsAdded++;
+      addedEntries.push(`Sports: ${topic}`);
+    }
+    if (BTC_TO_BANK_CATEGORY[category]) {
+      bitcoinAdded++;
+      addedEntries.push(`Bitcoin: ${topic}`);
+    }
+  }
+
   // Consolidate research files for content generation
   console.log('📂 Running consolidators...');
-  const { execSync } = require('child_process');
   try {
     execSync('node consolidate-research.js', { cwd: __dirname });
     console.log('   ✓ Sports consolidated');
@@ -1062,6 +1054,40 @@ async function main() {
     console.log('   ✓ Bitcoin consolidated');
   } catch (e) {
     console.log('   ⚠ Bitcoin consolidation failed:', e.message);
+  }
+
+  // Build email content
+  let emailBody = `JETT Daily Research Complete\n`;
+  emailBody += `========================\n\n`;
+  emailBody += `Status: ${totalAdded > 0 ? 'SUCCESS' : 'No new items'}\n`;
+  emailBody += `Topics researched: ${topics.length}\n`;
+  emailBody += `Total items added: ${totalAdded}\n\n`;
+  
+  if (sportsAdded > 0) {
+    emailBody += `SPORTS Content Bank: +${sportsAdded} entries\n`;
+    addedEntries.filter(e => e.startsWith('Sports:')).forEach(e => {
+      emailBody += `  - ${e.replace('Sports: ', '')}\n`;
+    });
+    emailBody += `\n`;
+  }
+  
+  if (bitcoinAdded > 0) {
+    emailBody += `BITCOIN Content Bank: +${bitcoinAdded} entries\n`;
+    addedEntries.filter(e => e.startsWith('Bitcoin: ')).forEach(e => {
+      emailBody += `  - ${e.replace('Bitcoin: ', '')}\n`;
+    });
+    emailBody += `\n`;
+  }
+  
+  emailBody += `Content banks updated and ready for tweet generation.`;
+  
+  // Send email via send-email.js
+  const emailScript = path.join(__dirname, '..', 'lib', 'send-email.js');
+  try {
+    execSync(`node ${emailScript} --to "terryhuangjr@gmail.com" --subject "JETT Research: ${sportsAdded + bitcoinAdded} entries added" --body "${emailBody.replace(/"/g, '\\"')}"`, { timeout: 30000 });
+    console.log('   📧 Email sent with results');
+  } catch (e) {
+    console.log('   ⚠ Email send failed:', e.message);
   }
 }
 
