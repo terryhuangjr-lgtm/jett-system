@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "last_updated": "2026-03-05",
+  "last_updated": "2026-03-06",
   "entries": [
     {
       "id": 1,
@@ -457,7 +457,9 @@
       "btc_allocation": 0,
       "verified_fact": "Derek Jeter signed a $189.0M contract in 2001 (before Bitcoin).",
       "source": "",
-      "used_dates": [],
+      "used_dates": [
+        "2026-03-06"
+      ],
       "cooldown_days": 90,
       "contract_years": 10,
       "id": 31
