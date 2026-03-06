@@ -40,6 +40,7 @@ You are operating on Jett — Terry Huang's AI automation system running on an H
 | **`SYSTEMS.md`** | All AI agents | System architecture, ports, cron schedules, services |
 | **`IDENTITY.md`** | All AI agents | Personality/values changes (merged from SOUL) |
 | **`USER.md`** | All AI agents | User info changes |
+| **`HEARTBEAT.md`** | All AI agents | Health monitoring, watchdogs, auto-healing rules |
 | **`memory/YYYY-MM-DD.md`** | All AI agents | Daily work logs, what happened |
 | **`MEMORY.md`** | All AI agents | Long-term memory (curated learnings) |
 | **`skills/*/SYSTEM.md`** | All AI agents | Specific skill/system details |
@@ -53,6 +54,7 @@ WHEN YOU CHANGE PORT → Update SYSTEMS.md ports table
 WHEN YOU CHANGE MODEL → Update CLAUDE.md MODEL DISTRIBUTION
 WHEN YOU FIX A BUG    → Add entry to SYSTEMS.md troubleshooting
 WHEN YOU ADD CRON     → Update SYSTEMS.md cron table
+WHEN YOU ADD HEALTH CHECK → Update HEARTBEAT.md monitoring rules
 ```
 
 ### Golden Rule
