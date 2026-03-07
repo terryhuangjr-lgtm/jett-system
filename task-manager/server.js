@@ -196,7 +196,7 @@ class TaskServer {
         checks.push({ name: 'Gateway', status: 'unhealthy', message: 'Gateway not running' });
       }
       
-      // Check Ollama
+      // Check Ollama (for memory embeddings + minimax)
       try {
         const http = require('http');
         const ollama = await new Promise((resolve) => {
@@ -206,7 +206,7 @@ class TaskServer {
           req.on('error', () => resolve({ status: 'unhealthy' }));
           req.setTimeout(3000, () => resolve({ status: 'unhealthy' }));
         });
-        checks.push({ name: 'Ollama', status: ollama.status, message: ollama.status === 'healthy' ? 'AI models responding' : 'Ollama not responding' });
+        checks.push({ name: 'Ollama', status: ollama.status, message: ollama.status === 'healthy' ? 'nomic-embed + minimax-m2.5 ready' : 'Ollama not responding' });
       } catch (e) {
         checks.push({ name: 'Ollama', status: 'unhealthy', message: 'Ollama not responding' });
       }
@@ -264,24 +264,46 @@ class TaskServer {
         checks.push({ name: 'Clawdbot', status: 'unhealthy', message: 'CLI not responding' });
       }
       
-      // Check database
-      try {
-        const tasks = await db.getTasks();
-        checks.push({ name: 'Database', status: 'healthy', message: `${tasks.length} tasks in DB` });
-      } catch (e) {
-        checks.push({ name: 'Database', status: 'unhealthy', message: 'DB connection failed' });
-      }
-      
-      // Check cron jobs
+      // Check clawdbot cron (primary scheduler - source of truth)
       try {
         const { execSync } = require('child_process');
         const output = execSync('/home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot cron list', { encoding: 'utf8', timeout: 10000 });
         const jobCount = (output.match(/\n/g) || []).length;
-        checks.push({ name: 'Cron Jobs', status: 'healthy', message: `${jobCount} cron jobs configured` });
+        checks.push({ name: 'Cron Jobs', status: 'healthy', message: `${jobCount} jobs in clawdbot` });
       } catch (e) {
         checks.push({ name: 'Cron Jobs', status: 'unhealthy', message: 'Could not list cron jobs' });
       }
       
+      // Check Level Up Cards (port 5000)
+      try {
+        const http = require('http');
+        const levelup = await new Promise((resolve) => {
+          const req = http.get('http://localhost:5000', (res) => {
+            resolve({ status: 'healthy' });
+          });
+          req.on('error', () => resolve({ status: 'unhealthy' }));
+          req.setTimeout(3000, () => resolve({ status: 'unhealthy' }));
+        });
+        checks.push({ name: 'Level Up Cards', status: levelup.status, message: levelup.status === 'healthy' ? 'Web app responding' : 'Not responding' });
+      } catch (e) {
+        checks.push({ name: 'Level Up Cards', status: 'unhealthy', message: 'Not responding' });
+      }
+      
+      // Check Podcast Summarizer (port 5001)
+      try {
+        const http = require('http');
+        const podcast = await new Promise((resolve) => {
+          const req = http.get('http://localhost:5001', (res) => {
+            resolve({ status: 'healthy' });
+          });
+          req.on('error', () => resolve({ status: 'unhealthy' }));
+          req.setTimeout(3000, () => resolve({ status: 'unhealthy' }));
+        });
+        checks.push({ name: 'Podcast', status: podcast.status, message: podcast.status === 'healthy' ? 'Dashboard responding' : 'Not responding' });
+      } catch (e) {
+        checks.push({ name: 'Podcast', status: 'unhealthy', message: 'Not responding' });
+      }
+       
       const unhealthyCount = checks.filter(c => c.status === 'unhealthy').length;
       const warningCount = checks.filter(c => c.status === 'warning').length;
       const healthStatus = unhealthyCount === 0 ? (warningCount === 0 ? 'healthy' : 'warning') : 'unhealthy';

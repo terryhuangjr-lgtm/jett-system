@@ -58,8 +58,8 @@ The Task Manager runs scheduled jobs at configured times:
 | 07:30 | Sports Tweet Generation | ON |
 | 08:00 | Morning Family Brief | ON |
 | 08:30 | Podcast Summary Deployment | ON |
-| 09:00 | System Health Check | ON |
-| 10:00 | eBay Scans Deploy | ON |
+| 09:00 | eBay Scan (includes deploy) | ON |
+| 09:30 | System Health Check | ON |
 | 10:00 | Sports Betting Scout | ON |
 | 16:00 | Sports Betting Pick | ON |
 

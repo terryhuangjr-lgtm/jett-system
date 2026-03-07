@@ -1,6 +1,6 @@
 # Jett System Architecture
 
-Last Updated: 2026-03-04
+Last Updated: 2026-03-06
 
 ---
 
@@ -49,7 +49,7 @@ Last Updated: 2026-03-04
 | Port | 18789 (WS), 18791 (canvas), 18792 (browser) |
 | PID | 680 |
 | Auto-start | Via crontab @reboot |
-| Health check | `*/5 * * * *` (crontab) |
+| Health check | `*/10 * * * *` (clawdbot cron) + `0 */2 * * *` (crontab) |
 
 **Responsibilities:**
 - Message routing (Slack/Telegram → Jett)
@@ -87,9 +87,9 @@ Last Updated: 2026-03-04
 |-----------|-------|
 | Process | `ollama serve` |
 | Auto-start | Via crontab @reboot |
-| Models | minimax-m2.5:cloud (embeddings only) |
+| Models | nomic-embed-text (embeddings), minimax-m2.5:cloud |
 
-**Note:** Ollama now only runs for memory search embeddings. llama3.1:8b removed. All other tasks use Grok/Haiku.
+**Note:** Ollama runs for memory search embeddings + minimax. All other tasks use Grok/Haiku.
 
 ---
 
@@ -101,16 +101,19 @@ Last Updated: 2026-03-04
 
 | Task ID | Name | Schedule | Status |
 |---------|------|----------|--------|
+| e9b801b1 | Gateway Ping | */10 * * * * | idle |
+| 99986221 | PM2 Monitor | */15 * * * * | idle |
+| 2e634eff | Reminder Checker | */5 * * * * | ok |
+| c5087e50 | Performance Check | 0 */6 * * * | ok |
 | 5b2e8a15 | Bitcoin Tweet | 0 7 * * * | ok |
 | 8caf62e2 | Sports Tweet | 30 7 * * * | ok |
-| 373b6818 | Morning Family Brief | 0 8 * * * | ok |
-| d47c0e71 | System Health Check | 30 9 * * * | ok |
-| df43bbde | eBay Scans Deploy | 0 10 * * * | ok |
+| de3f5203 | Morning Family Brief | 0 8 * * * | ok |
+| 7da794a0 | Podcast Queue Nightly | 0 4 * * * | ok |
 | 34f4d211 | eBay Scan Monday | 0 9 * * 1 | ok |
 | cb846aad | eBay Scan Tuesday | 0 9 * * 2 | ok |
 | cf2665e4 | eBay Scan Wednesday | 0 9 * * 3 | idle |
 | ccedb5e5 | eBay Scan Thursday | 0 9 * * 4 | idle |
-| 07ceb4b8 | eBay Scan Friday | 0 9 * * 5 | idle |
+| 07ceb4b8 | eBay Scan Friday | 0 9 * * 5 | ok |
 | 9b58aa01 | eBay Scan Saturday | 0 9 * * 6 | idle |
 | 6e1b794f | eBay Scan Sunday | 0 9 * * 0 | idle |
 

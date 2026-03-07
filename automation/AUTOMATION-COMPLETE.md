@@ -86,9 +86,10 @@ All automation scripts use **100% local execution**:
 - Command: `node ~/clawd/automation/deploy-21m-tweet.js /tmp/21m-sports-tweet-1.json`
 - Posts to #21msports
 
-**8:30 AM - eBay Scans Deploy** (Task 38)
-- Command: `node ~/clawd/automation/deploy-ebay-scans.js`
-- Posts today's eBay scan to #levelupcards
+**9:00 AM - eBay Scan** (includes deploy)
+- Scan: `node ~/clawd/ebay-scanner/run-from-config.js [day]`
+- Deploy: `node ~/clawd/automation/deploy-ebay-scans.js --email`
+- Now runs as single job at 9 AM (scan + email)
 
 **11:00 AM - Tweet #2 Prep** (Task 26)
 - Command: `node ~/clawd/automation/21m-sports-tweet-generator.js /tmp/21m-sports-tweet-2.json`

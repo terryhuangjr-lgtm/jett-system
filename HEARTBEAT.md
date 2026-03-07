@@ -21,10 +21,12 @@ These run automatically at OS level - no alerts needed unless they fail repeated
 
 ## Clawdbot Health Crons
 
-These run via Clawdbot gateway:
+These run via Clawdbot gateway (alerts to main session on failure):
 
 | Job | Schedule | What It Does |
 |-----|----------|--------------|
+| Gateway Ping | `*/10 * * * *` | Pings gateway health endpoint, alerts if down |
+| PM2 Monitor | `*/15 * * * *` | Checks task-manager-server running, alerts if down |
 | Reminder Checker | `*/5 * * * *` | Check for due reminders, post to Slack |
 | Performance Check | `0 */6 * * *` | System health every 6 hours |
 
@@ -39,6 +41,7 @@ When receiving heartbeat polls, check these silently:
 2. **Ollama** - responding? (`curl -s http://localhost:11434/api/tags`)
 3. **Dashboard (3000)** - port responding?
 4. **Level Up (5000)** - port responding?
+5. **Podcast (5001)** - port responding?
 
 ### Hourly
 1. **Git status** - uncommitted changes?
@@ -67,7 +70,7 @@ When receiving heartbeat polls, check these silently:
 | Issue | Fix Command |
 |-------|-------------|
 | MTU wrong | `sudo ip link set dev eth0 mtu 1350` |
-| Gateway down | `clawdbot gateway --force &` |
+| Gateway down | `nohup /home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot gateway >> /tmp/gateway.log 2>&1 &` |
 | Dashboard down | `pm2 restart task-manager-server` |
 | Level Up down | `cd /home/clawd/level_up_cards && python3 app.py &` |
 | Stale lock | `rm -f /tmp/clawd-*.lock` |
@@ -87,7 +90,7 @@ When receiving heartbeat polls, check these silently:
 
 ```bash
 # Run this to check everything
-echo "=== Gateway ===" && pgrep -f 'openclaw-gateway' && echo "=== PM2 ===" && pm2 list && echo "=== Ollama ===" && curl -s http://localhost:11434/api/tags | head -5 && echo "=== Ports ===" && ss -tlnp | grep -E '3000|5000|8080'
+echo "=== Gateway ===" && pgrep -f 'openclaw-gateway' && echo "=== PM2 ===" && pm2 list && echo "=== Ollama ===" && curl -s http://localhost:11434/api/tags | head -5 && echo "=== Ports ===" && ss -tlnp | grep -E '3000|5000|5001|8080'
 ```
 
 ---

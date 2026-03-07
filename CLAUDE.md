@@ -143,9 +143,8 @@ Changing the default model requires 4 steps. Skipping any will cause Jett to rep
 | 7:00AM | 67 | Bitcoin Tweet Generation | email |
 | 7:30AM | 60 | Sports Tweet Generation | email |
 | 8:00AM | 78 | Morning Family Brief | #huangfamily |
-| 9:00AM | varies | eBay Scan (daily rotation) | saved to results/ |
+| 9:00AM | varies | eBay Scan (daily rotation) | email |
 | 9:30AM | 79 | System Health Check | DM |
-| 10:00AM | 38 | eBay Scans Deploy | email |
 | 10:00AM | 71 | Sports Betting Scout | DM |
 | 4:00PM | 72 | Sports Betting Pick | DM |
 
@@ -558,6 +557,30 @@ When you receive a prompt starting with "run bash: <command>":
 **Email reports:** Now includes what was added to each content bank (Sports vs Bitcoin entries)
 **Status:** ✅ Tested with dry-run - working correctly
 
+### 10. Dual Gateway Conflict Resolved (2026-03-06)
+**Problem:** System experiencing service flaps and instability due to dual gateway conflict.
+- Old systemd service `clawdbot-gateway.service` was still registered and interfering
+- New gateway started via cron `@reboot` was running fine
+- Both fighting for port/state causing intermittent failures
+
+**Solution:** Removed old systemd service:
+```bash
+systemctl --user stop clawdbot-gateway.service
+systemctl --user disable clawdbot-gateway.service
+rm ~/.config/systemd/user/clawdbot-gateway.service
+openclaw doctor --repair
+```
+**Status:** ✅ Single gateway (cron-launched) now running cleanly
+
+### 11. Health Checks Added (2026-03-06)
+Added proactive monitoring via clawdbot cron:
+- **Gateway Ping** (every 10 min): Pings health endpoint, alerts if down
+- **PM2 Monitor** (every 15 min): Checks task-manager-server running, alerts if down
+- **Dashboard Health** (port 3000): Updated to check Level Up Cards + Podcast
+- **Ollama**: Now shows specific models (nomic-embed + minimax-m2.5)
+
+**Status:** ✅ All health checks operational
+
 ---
 
 ## SYSTEM STABILITY FIXES - 2026-03-02
@@ -598,7 +621,7 @@ When you receive a prompt starting with "run bash: <command>":
 | **claude-haiku-4-5** | BACKUP if Grok down | Fallback when Grok unavailable |
 | **claude-sonnet-4-5** | Content generation | 21M sports tweet generation ONLY (hardcoded) |
 
-**Ollama models:** Only minimax-m2.5:cloud remains (for memory search embeddings). llama3.1:8b removed.
+**Ollama models:** nomic-embed-text (embeddings), minimax-m2.5:cloud (memory search)
 
 ---
 

@@ -33,7 +33,7 @@ Help with automation, find opportunities, handle tech/code, stay on top of sport
 - **Scheduling:** clawdbot cron - ALL tasks run through clawdbot gateway
 - **Process Mgmt:** PM2 - task-manager-server ONLY (dashboard on port 3000)
 - **Slack:** clawdbot message send via gateway
-- **Watchdog:** system crontab restarts clawdbot-gateway every 5min if down
+- **Watchdog:** system crontab restarts gateway every 2h if down
 - **Failure Alerts:** lib/notify-failure.js - Slack DM to Terry on any failure
 - **Git:** https://github.com/terryhuangjr-lgtm/jett-system.git
 - **Memory Search:** Ollama + nomic-embed-text (enabled March 2026)
@@ -69,8 +69,7 @@ Help with automation, find opportunities, handle tech/code, stay on top of sport
 | 8:00 AM | Morning Family Brief | #huangfamily |
 | 8:30 AM | System Health Check | Terry DM |
 | 9:00 AM | System Health Check | Terry DM |
-| 9:00 AM | eBay Scan (rotation) | - |
-| 10:00 AM | eBay Scans Deploy | #levelupcards |
+| 9:00 AM | eBay Scan (rotation, includes deploy) | email |
 | 10:00 AM | Sports Betting Scout | Terry DM |
 | 4:00 PM | Sports Betting Pick | Terry DM |
 | 3:00 AM | BTC and Sports Research | (every 2 days) |
@@ -78,7 +77,7 @@ Help with automation, find opportunities, handle tech/code, stay on top of sport
 ## Known Issues and Fixes Applied
 
 - **MTU fix:** WSL2 needs `sudo ip link set dev eth0 mtu 1350` - runs on startup
-- **Gateway:** Managed via crontab (not systemd) with watchdog every 5min
+- **Gateway:** Managed via crontab (not systemd) with watchdog every 2 hours
 - **Port 3000:** PM2 task-manager-server only
 - **Channel fix:** Use `--target "#channel"` not `--target #channel`
 - **Config corruption:** Use `config-protector.sh` before running openclaw commands
