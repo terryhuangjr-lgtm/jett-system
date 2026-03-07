@@ -112,23 +112,10 @@ function formatSlackMessage(summaryData, filename) {
   return header + cleaned + `\n\n📄 _${filename}_`;
 }
 
+// Post to Slack (DISABLED - using email)
 async function postToSlack(message) {
-  return new Promise((resolve, reject) => {
-    const CLAWDBOT = '/home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot';
-    const { exec } = require('child_process');
-    const escaped = message.replace(/"/g, '\\"').replace(/`/g, '\\`');
-    execFileSync(CLAWDBOT, ['message', 'send', '--channel', 'slack', '--target', '"#podcastsummary"', '--message', message], { timeout: 15000 }),
-      (error, stdout, stderr) => {
-        if (error) {
-          console.error('✗ Failed to post:', stderr || error.message);
-          reject(error);
-        } else {
-          console.log('✓ Podcast summary posted to Slack');
-          resolve(stdout);
-        }
-      }
-    );
-  });
+  console.log('Slack posting disabled - using email only');
+  return false;
 }
 
 async function main() {

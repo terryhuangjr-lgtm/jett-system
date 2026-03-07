@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
 """
-Slack notifier using clawdbot (replaces broken bot token approach)
-Uses clawdbot message send which handles auth internally.
-Created: 2026-02-27
-Replaces: slack_notifier_bot.py, slack_notifier.py
+Telegram notifier using clawdbot
+Migrated from Slack on 2026-03-07
 """
 
 import subprocess
@@ -11,19 +9,18 @@ import os
 from datetime import datetime
 
 CLAWDBOT = '/home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot'
-SLACK_USER = 'U0ABTP704QK'
-SLACK_CHANNEL = os.getenv('SPORTS_BETTING_CHANNEL', SLACK_USER)  # Can override via env
+TELEGRAM_USER = '5867308866'  # Terry's Telegram ID
 
 def send_via_clawdbot(message, target=None):
-    """Send message to Slack via clawdbot to a specific target (user or channel)"""
+    """Send message to Telegram via clawdbot"""
     try:
         if target is None:
-            target = SLACK_CHANNEL
+            target = TELEGRAM_USER
         
         escaped = message.replace('"', '\\"').replace('`', '\\`')
         result = subprocess.run(
             [CLAWDBOT, 'message', 'send',
-             '--channel', 'slack',
+             '--channel', 'telegram',
              '--target', target,
              '--message', escaped,
              '--json'],
@@ -32,7 +29,7 @@ def send_via_clawdbot(message, target=None):
             timeout=15
         )
         if result.returncode == 0:
-            print(f"✅ Posted to Slack via clawdbot (target: {target})")
+            print(f"✅ Posted to Telegram via clawdbot (target: {target})")
             return True
         else:
             print(f"❌ clawdbot error: {result.stderr[:200]}")
@@ -42,12 +39,12 @@ def send_via_clawdbot(message, target=None):
         return False
 
 
-class SlackNotifier:
-    """Posts to Slack using clawdbot"""
+class TelegramNotifier:
+    """Posts to Telegram using clawdbot"""
 
     def __init__(self, target=None):
-        """Initialize with optional target override (default: SLACK_CHANNEL env or DM)"""
-        self.target = target or SLACK_CHANNEL
+        """Initialize with optional target override (default: TELEGRAM_USER)"""
+        self.target = target or TELEGRAM_USER
 
     def post_message(self, text, target=None):
         """Post message to Slack (optionally override target)"""
@@ -111,14 +108,14 @@ class SlackNotifier:
 
     def send_test_message(self):
         message = "🏀 *Sports Betting System Test*\n\n"
-        message += "✅ Connected to Slack via clawdbot\n"
+        message += "✅ Connected to Telegram via clawdbot\n"
         message += f"System ready! Time: {datetime.now().strftime('%I:%M %p')}"
         return self.post_message(message)
 
 
 if __name__ == '__main__':
     import sys
-    notifier = SlackNotifier()
+    notifier = TelegramNotifier()
     if len(sys.argv) > 1 and sys.argv[1] == 'test':
         notifier.send_test_message()
     else:

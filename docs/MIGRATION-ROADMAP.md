@@ -182,19 +182,29 @@ gws sheets spreadsheets values append \
 - [x] Phase 2: Migrate email to Gmail (lib/send-email.js)
 - [x] Phase 3: Migrate calendar to Google (morning_brief.py → gcal_client.py)
 - [x] Phase 4: Migrate messaging to Telegram (health-monitor.js, notify-failure.js, morning_brief.py)
-- [ ] Phase 5: Remove Slack completely (deferred)
+- [x] Phase 5: Remove Slack completely (2026-03-07)
 - [ ] Phase 6: Future - Lead gen to Sheets
 
-## Implementation Details (2026-03-06)
+## Implementation Details (2026-03-06 to 2026-03-07)
 
 ### Files Created
 - `skills/notion-assistant/gcal_client.py` - Google Calendar API via gws
 
-### Files Modified
+### Files Modified (Phase 1-4)
 - `lib/send-email.js` - Rewrote for GWS Gmail API
 - `skills/notion-assistant/morning_brief.py` - Use gcal_client.py + Telegram
 - `task-manager/health-monitor.js` - Telegram only (removed Slack)
 - `lib/notify-failure.js` - Telegram only (removed Slack)
+
+### Files Modified (Phase 5 - Slack Removal 2026-03-07)
+- `~/.openclaw/openclaw.json` - Removed Slack from channels, agents, bindings, plugins
+- `automation/21m-daily-generator-v2.js` - Email only (removed Slack)
+- `automation/deploy-ebay-scans.js` - Email only (removed Slack)
+- `automation/deploy-podcast-summary.js` - Disabled Slack
+- `automation/post-health-to-slack.js` → Telegram
+- `sports_betting/notifiers/clawdbot_notifier.py` → TelegramNotifier
+- `sports_betting/orchestrator.py` - Uses TelegramNotifier
+- `task-manager/worker.js` - Telegram only
 
 ### Verified Working
 ```bash

@@ -211,11 +211,11 @@ class TaskWorker {
 
     console.log(`Task Worker starting... (ID: ${this.workerId})`);
     
-    // Alert on worker start/restart
+    // Alert on worker start/restart (Telegram only - Slack removed)
     try {
       const { execFileSync } = require('child_process');
       const startMsg = `✅ Task Worker STARTED\nID: ${this.workerId}\nPID: ${process.pid}`;
-      execFileSync('/home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot', ['message', 'send', '--channel', 'slack', '--target', 'U0ABTP704QK', '--message', startMsg], { timeout: 10000, stdio: 'ignore' });
+      execFileSync('/home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot', ['message', 'send', '--channel', 'telegram', '--target', '5867308866', '--message', startMsg], { timeout: 10000, stdio: 'ignore' });
     } catch (e) {}
     
     await this.db.init();
@@ -325,11 +325,8 @@ class TaskWorker {
 ⏱ Duration: ${durationSec}s
 🐛 Error: ${errorMsg}`;
 
-          // Send to Slack
+          // Send to Telegram only (Slack removed 2026-03-07)
           const { execFileSync } = require('child_process');
-          execFileSync('/home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot', ['message', 'send', '--channel', 'slack', '--target', 'U0ABTP704QK', '--message', alertMsg], { timeout: 10000, stdio: 'ignore' });
-          
-          // Send to Telegram
           execFileSync('/home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot', ['message', 'send', '--channel', 'telegram', '--target', '5867308866', '--message', alertMsg], { timeout: 10000, stdio: 'ignore' });
           
           console.log(`✅ Alerts sent for failed task ${task.id}`);

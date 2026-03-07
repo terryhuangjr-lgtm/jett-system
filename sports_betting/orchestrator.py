@@ -16,7 +16,7 @@ from collectors.player_stats_collector import PlayerStatsCollector
 from collectors.odds_collector import OddsCollector
 from collectors.news_monitor import NewsMonitor
 from analyzer.bet_scorer import BetScorer
-from notifiers.clawdbot_notifier import SlackNotifier
+from notifiers.clawdbot_notifier import TelegramNotifier
 from dashboard_integration import DashboardIntegration
 import config
 from bet_tracker import BetTracker
@@ -34,7 +34,7 @@ class BettingOrchestrator:
         self.news_monitor = NewsMonitor(self.db_path)
         self.odds_collector = OddsCollector(self.db_path)
         self.scorer = BetScorer(self.db_path)
-        self.notifier = SlackNotifier(target=slack_target)  # Configurable Slack target
+        self.notifier = TelegramNotifier(target=slack_target)  # Telegram notifier
         self.dashboard = DashboardIntegration()
         self.bet_tracker = BetTracker()
 
@@ -633,6 +633,6 @@ if __name__ == '__main__':
         import subprocess
         msg = f"⚠️ *Jett Task Failed*\n*Task:* Sports Betting\n*Error:* {str(e)}"
         subprocess.run(['/home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot', 
-                       'message', 'send', '--channel', 'slack', 
-                       '--target', 'U0ABTP704QK', '--message', msg])
+                       'message', 'send', '--channel', 'telegram', 
+                       '--target', '5867308866', '--message', msg])
         raise

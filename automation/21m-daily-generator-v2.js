@@ -310,15 +310,8 @@ function formatSlackMessage(tweets, entry, btcPrice, contentType) {
 }
 
 function postToSlack(message) {
-  const clawdbotPath = process.env.CLAWDBOT_PATH || 'clawdbot';
-  try {
-    const { execFileSync } = require('child_process');
-    execFileSync(clawdbotPath, ['message', 'send', '--channel', 'slack', '--target', '#21msports', '--message', message], { stdio: 'pipe' });
-    return true;
-  } catch (e) {
-    console.error('Slack post failed:', e.message);
-    return false;
-  }
+  console.log('Slack posting disabled - using email only');
+  return false;
 }
 
 function postToEmail(message, type) {
@@ -387,28 +380,14 @@ async function main() {
     return;
   }
 
-  // Check if email mode
-  const USE_EMAIL = process.argv.includes('--email');
-  
-  // Post
-  if (USE_EMAIL) {
-    console.log('\nPosting via email...');
-    const posted = postToEmail(slackMessage, CONTENT_TYPE);
-    if (posted) {
-      console.log('Emailed successfully');
-    } else {
-      console.error('Failed to send email');
-      process.exit(1);
-    }
+  // Post - Email only (Slack disabled)
+  console.log('\nPosting via email...');
+  const posted = postToEmail(slackMessage, CONTENT_TYPE);
+  if (posted) {
+    console.log('Emailed successfully');
   } else {
-    console.log('\nPosting to Slack...');
-    const posted = postToSlack(slackMessage);
-    if (posted) {
-      console.log('Posted successfully');
-    } else {
-      console.error('Failed to post to Slack');
-      process.exit(1);
-    }
+    console.error('Failed to send email');
+    process.exit(1);
   }
 
   // Mark entry as used

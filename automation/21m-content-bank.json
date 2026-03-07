@@ -147,7 +147,9 @@
       "btc_allocation": 11,
       "verified_fact": "Caitlin Clark earned $3.1M in NIL in 2023 when BTC was $27,000. 10% allocation = 11 BTC.",
       "source": "On3 NIL valuations",
-      "used_dates": [],
+      "used_dates": [
+        "2026-03-07"
+      ],
       "cooldown_days": 90
     },
     {
@@ -237,7 +239,9 @@
       "btc_price_then": 0,
       "verified_fact": "Mike Tyson earned over $400M in his boxing career and filed for bankruptcy in 2003. Bitcoin didn't exist yet.",
       "source": "Court filings, ESPN",
-      "used_dates": [],
+      "used_dates": [
+        "2026-03-07"
+      ],
       "cooldown_days": 90
     },
     {
@@ -446,7 +450,9 @@
       "btc_price_then": 65000,
       "verified_fact": "LA Clippers opened the $2B Intuit Dome in 2024. BTC was $65,000 during construction completion.",
       "source": "LA Clippers official, ESPN",
-      "used_dates": [],
+      "used_dates": [
+        "2026-03-07"
+      ],
       "cooldown_days": 90
     },
     {
@@ -716,7 +722,9 @@
       "btc_allocation": 9428,
       "verified_fact": "Bryce Harper signed a $330M deal with the Phillies in 2019 when BTC was $3,500. 10% = 9,428 BTC worth $638M today. His contract is still paying out. Bitcoin already won.",
       "source": "Spotrac",
-      "used_dates": [],
+      "used_dates": [
+        "2026-03-07"
+      ],
       "cooldown_days": 90
     },
     {

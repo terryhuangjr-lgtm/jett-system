@@ -157,12 +157,11 @@ Changing the default model requires 4 steps. Skipping any will cause Jett to rep
 | #21msports | Bitcoin + sports tweets |
 | #podcastsummary | Podcast summaries |
 | #levelupcards | eBay scan results |
-| #huangfamily | Morning family brief |
-| U0ABTP704QK | Terry's DM — errors, sports betting |
+| 5867308866 | Terry's Telegram DM — all notifications |
 
-**ALL messaging uses clawdbot — Telegram primary (Slack deprecated):**
+**ALL messaging uses clawdbot — Telegram only:**
 ```bash
-# Telegram (primary)
+# Telegram (primary - Slack removed 2026-03-07)
 clawdbot message send --channel telegram --target "5867308866" --message "text" --json
 ```
 
@@ -181,7 +180,7 @@ clawdbot message send --channel telegram --target "5867308866" --message "text" 
 | task-manager/worker.js | Task scheduler |
 | skills/podcast-summary/app.py | Podcast processor |
 | sports_betting/orchestrator.py | Sports betting |
-| sports_betting/notifiers/clawdbot_notifier.py | Sports betting Slack |
+| sports_betting/notifiers/clawdbot_notifier.py | Sports betting Telegram |
 | skills/notion-assistant/morning_brief.py | Family brief |
 | skills/notion-assistant/notion_client.py | Notion API client |
 | ebay-scanner/run-from-config.js | eBay scanner |

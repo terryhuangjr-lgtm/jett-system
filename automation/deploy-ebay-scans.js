@@ -111,24 +111,10 @@ function formatResults(data, scanName) {
   };
 }
 
-// Post to Slack
+// Post to Slack (DISABLED - Slack removed)
 function postToSlack(message) {
-  try {
-    execFileSync('/home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot', ['message', 'send', '--channel', 'slack', '--target', '#levelupcards', '--message', message], {
-      encoding: 'utf8',
-      timeout: 30000,
-      env: {
-        ...process.env,
-        PATH: `/home/clawd/.nvm/versions/node/v22.22.0/bin:${process.env.PATH}`
-      }
-    });
-
-    console.log('✓ Posted to #levelupcards');
-    return true;
-  } catch (error) {
-    console.error('✗ Error posting to Slack:', error.message);
-    return false;
-  }
+  console.log('Slack posting disabled - using email only');
+  return false;
 }
 
 // Send via email
