@@ -600,10 +600,11 @@ Added proactive monitoring via clawdbot cron:
 **Status:** ✅ Verified worker running cleanly, no deadlock errors.
 **Note:** This doesn't block cron jobs (they're independent), but it prevented manual task execution.
 
-### 3. Hook Configuration Fixed
+### 3. Hook Configuration Fixed (then Removed)
 **Problem:** Hook loader error: "Handler 'default' from research-protocol-enforcement is not a function"
-**Solution:** Created `/home/clawd/clawd/hooks/research-protocol-enforcement.js` with proper exports (module.exports + module.exports.default).
-**Status:** ✅ Hook loads successfully, protocol enforcement active.
+**Original Fix:** Created hook with proper exports.
+**2026-03-07 Update:** Removed hook entirely - it was a redundant second layer of verification. The content pipeline already has verification (21m-sports-validator.js) at the source. No need for a second gate.
+**Status:** ✅ Removed permanently. Content verification happens in the pipeline, not at message send time.
 
 ### 4. Ollama Service Restored
 **Problem:** Ollama process was not running; model discovery failing intermittently.

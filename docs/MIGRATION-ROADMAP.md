@@ -205,6 +205,11 @@ gws sheets spreadsheets values append \
 - `sports_betting/notifiers/clawdbot_notifier.py` → TelegramNotifier
 - `sports_betting/orchestrator.py` - Uses TelegramNotifier
 - `task-manager/worker.js` - Telegram only
+- `~/.openclaw/hooks/research-protocol-enforcement/` - Removed (broken, redundant)
+
+### Post-Migration Fixes (2026-03-07 afternoon)
+- Gateway crashed due to broken hook - removed permanently
+- Podcast queue fix - added proper exit code + logging
 
 ### Verified Working
 ```bash
