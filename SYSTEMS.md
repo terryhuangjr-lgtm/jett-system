@@ -12,8 +12,8 @@ Last Updated: 2026-03-06
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
 │  ┌─────────────┐     ┌─────────────┐     ┌─────────────┐                  │
-│  │   Slack     │     │  Telegram   │     │  Dashboard  │                  │
-│  │  (Users)    │     │  (Users)    │     │  (:3000)    │                  │
+│  │  Telegram   │     │    Gmail    │     │  Dashboard  │                  │
+│  │  (Primary)  │     │   (GWS)     │     │  (:3000)    │                  │
 │  └──────┬──────┘     └──────┬──────┘     └──────┬──────┘                  │
 │         │                   │                   │                          │
 │         └───────────────────┼───────────────────┘                          │
@@ -22,8 +22,8 @@ Last Updated: 2026-03-06
 │                  │  Clawdbot Gateway   │                                   │
 │                  │   (Port 18789)      │                                   │
 │                  │  - Message handling │                                   │
-│                  │  - Cron scheduler    │                                   │
-│                  │  - Slack/Telegram    │                                   │
+│                  │  - Cron scheduler   │                                   │
+│                  │  - Telegram only    │                                   │
 │                  └──────────┬────────────┘                                   │
 │                             │                                                │
 │         ┌───────────────────┼───────────────────┐                           │
@@ -33,6 +33,11 @@ Last Updated: 2026-03-06
 │  │  (Server)   │    │ (Automation)│    │ (External)  │                    │
 │  │  :3000      │    │             │    │             │                    │
 │  └─────────────┘    └─────────────┘    └─────────────┘                    │
+│                                                                             │
+│  ┌─────────────┐    ┌─────────────┐                                        │
+│  │   GWS CLI   │    │ Notion API  │                                        │
+│  │ (Email/Cal) │    │ (Lists)     │                                        │
+│  └─────────────┘    └─────────────┘                                        │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
@@ -52,7 +57,7 @@ Last Updated: 2026-03-06
 | Health check | `*/10 * * * *` (clawdbot cron) + `0 */2 * * *` (crontab) |
 
 **Responsibilities:**
-- Message routing (Slack/Telegram → Jett)
+- Message routing (Telegram → Jett)
 - Cron job scheduling and execution
 - Agent session management
 - Health monitoring
@@ -212,26 +217,31 @@ Last Updated: 2026-03-06
 
 ## Message Delivery
 
-### Slack Channels
+### Primary Channel: Telegram
 
-| Channel | Purpose |
-|---------|---------|
-| #21msports | Bitcoin + sports tweets |
-| #podcastsummary | Podcast summaries |
-| #levelupcards | eBay scan results |
-| #huangfamily | Morning family brief |
-| U0ABTP704QK | Terry's DM (errors, sports betting) |
+| Target | Purpose |
+|--------|---------|
+| 5867308866 | Terry's DM (system alerts, failures, direct messages) |
 
 ### Command Pattern
 
 **ALWAYS use execFileSync with array args:**
 ```javascript
 execFileSync('/home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot', [
-  'message', 'send', '--channel', 'slack',
-  '--target', '#channel-name',
+  'message', 'send', '--channel', 'telegram',
+  '--target', '5867308866',
   '--message', message
 ], { timeout: 15000, stdio: 'pipe' });
 ```
+
+### Legacy: Slack (DEPRECATED)
+
+Slack is being phased out. Currently:
+- All cron job outputs → Email (Gmail)
+- System alerts → Telegram DM
+- Morning brief → Telegram DM
+
+See: `docs/MIGRATION-ROADMAP.md`
 
 ---
 
@@ -279,8 +289,34 @@ crontab -l                  # View watchdog cron
 | Failure | Handler |
 |---------|---------|
 | Gateway down | Crontab watchdog restarts it |
-| Task failure | `lib/notify-failure.js` → Slack DM to Terry |
+| Task failure | `lib/notify-failure.js` → Telegram DM to Terry |
 | Config corruption | Restore from `~/.openclaw/openclaw.json.daily-*.bak` |
+| GWS auth issues | `gws auth status` to check, `gws auth logout && gws auth login` to re-auth |
+
+---
+
+## Google Workspace (GWS)
+
+| Component | Account | Status |
+|-----------|---------|--------|
+| Gmail | jett.theassistant@gmail.com | ✅ Active |
+| Google Calendar | jett.theassistant@gmail.com | ✅ Active |
+| Google Drive | jett.theassistant@gmail.com | ✅ Active |
+| Google Sheets | jett.theassistant@gmail.com | ✅ Active |
+
+**CLI:** `gws` (installed via npm)
+
+**Commands:**
+```bash
+gws auth status                    # Check authentication
+gws gmail users messages list      # List emails
+gws gmail users messages send      # Send email
+gws calendar events list           # List calendar events
+gws drive files list               # List Drive files
+gws sheets spreadsheets list       # List spreadsheets
+```
+
+**Credentials:** `~/.config/gws/credentials.enc`
 
 ---
 
@@ -298,4 +334,5 @@ crontab -l                  # View watchdog cron
 | PM2 processes down | `pm2 resurrect` |
 | Task stuck | `sqlite3 tasks.db "UPDATE tasks SET status='pending'..."` |
 | Port 3000 down | `pm2 start task-manager/server.js --name task-manager-server` |
-| Test Slack | `clawdbot message send --channel slack --target "U0ABTP704QK" --message "test" --json` |
+| Test Telegram | `clawdbot message send --channel telegram --target "5867308866" --message "test" --json` |
+| Test GWS Email | `node lib/send-email.js --to "terryhuangjr@gmail.com" --subject "Test" --body "Message"` |

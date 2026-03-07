@@ -2,20 +2,16 @@
 
 ## Communication Tools
 
-### Slack (Primary)
+### Telegram (Primary)
 ```
-clawdbot message send --channel slack --target "#channel" --message "text"
-clawdbot message send --channel slack --target "U0ABTP704QK" --message "text"
+clawdbot message send --channel telegram --target "5867308866" --message "text"
 ```
-- Terry's user ID: U0ABTP704QK
-- Key channels: #21msports, #huangfamily, #levelupcards
-- Always quote channel targets to prevent # being parsed as a flag
-- Use temp file for messages with apostrophes: `clawdbot message send ... --message "$(cat /tmp/msg.txt)"`
+- Terry's chat ID: 5867308866
+- Used for: system alerts, failures, morning brief, direct messages
 
-### Telegram (Backup/Secondary)
-- Enabled and working: @JettAssistant_bot
-- Use as backup if Slack has issues
-- Allowed users: 5867308866 (Terry)
+### Slack (DEPRECATED - Being Removed)
+- All Slack posting disabled as of 2026-03-06
+- See: `docs/MIGRATION-ROADMAP.md`
 
 ## APIs and Data Sources
 
@@ -58,7 +54,26 @@ clawdbot message send --channel slack --target "U0ABTP704QK" --message "text"
 ### eBay Scanner
 - Config: `/home/clawd/clawd/ebay-scanner/`
 - Run: `node run-from-config.js [day]`
-- Results post to #levelupcards
+- Results: Email to terryhuangjr@gmail.com
+
+### Google Workspace (GWS)
+- Account: jett.theassistant@gmail.com
+- CLI: `gws` (npm package)
+- Credentials: `~/.config/gws/credentials.enc`
+
+**Commands:**
+```bash
+gws auth status                              # Check authentication
+gws gmail users messages list                # List emails
+gws gmail users messages send --json '...'  # Send email
+gws calendar events list --params '...'     # List calendar events
+gws drive files list                        # List Drive files
+```
+
+**Email Script:**
+```bash
+node lib/send-email.js --to "email" --subject "Subject" --body "Message"
+```
 
 ### ESPN
 - Sports data via orchestrator.py
@@ -83,7 +98,7 @@ spawn a subagent to [describe task]
 
 **Rules:**
 1. Give bounded task with clear success criteria
-2. Report back via Slack DM when done
+2. Report back via Telegram DM when done
 3. No destructive operations
 4. Read CLAUDE.md first
 5. Set timeout - don't run indefinitely

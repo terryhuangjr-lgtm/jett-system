@@ -43,16 +43,12 @@ function sendAlert(message) {
   }
   
   try {
-    // Slack
-    const slackCmd = `/home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot message send --channel slack --target "U0ABTP704QK" --message "${message.replace(/"/g, '\\"')}" --json`;
-    execSync(slackCmd, { timeout: 10000, stdio: 'ignore' });
-    
-    // Telegram
+    // Telegram only
     const telegramCmd = `/home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot message send --channel telegram --target "5867308866" --message "${message.replace(/"/g, '\\"')}" --json`;
     execSync(telegramCmd, { timeout: 10000, stdio: 'ignore' });
     
     lastAlertTime = now;
-    console.log('✅ Alert sent:', message);
+    console.log('✅ Alert sent to Telegram:', message);
   } catch (e) {
     console.error('Failed to send alert:', e.message);
   }

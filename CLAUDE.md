@@ -160,10 +160,10 @@ Changing the default model requires 4 steps. Skipping any will cause Jett to rep
 | #huangfamily | Morning family brief |
 | U0ABTP704QK | Terry's DM — errors, sports betting |
 
-**ALL Slack posting uses clawdbot — never raw Slack API, never bot tokens:**
+**ALL messaging uses clawdbot — Telegram primary (Slack deprecated):**
 ```bash
-clawdbot message send --channel slack --target "#channel-name" --message "text" --json
-clawdbot message send --channel slack --target "U0ABTP704QK" --message "text" --json
+# Telegram (primary)
+clawdbot message send --channel telegram --target "5867308866" --message "text" --json
 ```
 
 ---
@@ -264,7 +264,8 @@ Always push at end of session after Terry confirms.
 
 - Anthropic API key: ~/.claude.json (primaryApiKey) AND /home/clawd/clawd/.env
 - Notion token: hardcoded in /home/clawd/skills/notion-assistant/notion_client.py
-- Slack: handled by clawdbot internally
+- Slack: handled by clawdbot internally (DEPRECATED - migrating to Telegram)
+- GWS (Google Workspace): jett.theassistant@gmail.com - credentials at ~/.config/gws/
 - Other: /home/clawd/clawd/memory/credentials.md (gitignored)
 
 ---
@@ -297,9 +298,9 @@ clawdbot-gateway &
 pm2 list
 ```
 
-**Test Slack posting:**
+**Test Telegram messaging:**
 ```bash
-clawdbot message send --channel slack --target "U0ABTP704QK" --message "test" --json
+clawdbot message send --channel telegram --target "5867308866" --message "test" --json
 ```
 
 **PM2 daemon restarted (all processes down):**
@@ -664,4 +665,82 @@ If any fails again, refer to TROUBLESHOOTING section.
 - System Health Check still runs daily @ 9:30 AM via clawdbot cron
 
 **Result:** No more false hourly alerts. System stays quiet unless there's an actual problem.
+
+---
+
+## GOOGLE WORKSPACE MIGRATION - 2026-03-06
+
+**Overview:** Migrated from AgentMail + Notion Calendar + Slack to Google Workspace (Gmail + Google Calendar + Telegram).
+
+### What Changed
+
+| Component | Before | After |
+|----------|--------|-------|
+| Email | AgentMail (jett@agentmail.to) | Gmail (jett.theassistant@gmail.com) via gws |
+| Calendar | Notion Calendar DB | Google Calendar via gws |
+| Messaging | Slack (DM to #huangfamily) | Telegram (DM to 5867308866) |
+| System Alerts | Slack DM | Telegram DM |
+
+### Implementation Details
+
+**1. GWS CLI Installation & Auth**
+- Installed: `npm install -g @googleworkspace/cli`
+- Auth: `gws auth login -s drive,gmail,sheets,calendar`
+- Account: jett.theassistant@gmail.com
+- Credentials: `~/.config/gws/credentials.enc`
+
+**2. Email Migration**
+- Script: `lib/send-email.js` - rewritten to use gws gmail
+- Usage: `node lib/send-email.js --to "email" --subject "Subject" --body "Message"`
+- All cron jobs that send email now use this script
+
+**3. Calendar Migration**
+- Created: `skills/notion-assistant/gcal_client.py` - Google Calendar API via gws
+- Updated: `morning_brief.py` - now reads from Google Calendar instead of Notion
+- Still uses Notion for: shopping list, tasks, reminders
+
+**4. Messaging Migration**
+- Updated: `task-manager/health-monitor.js` - Telegram only
+- Updated: `lib/notify-failure.js` - Telegram only
+- Updated: `skills/notion-assistant/morning_brief.py` - Telegram only
+- Removed all Slack posting code
+
+### Commands Reference
+
+```bash
+# Test email
+node lib/send-email.js --to "test@example.com" --subject "Test" --body "Message"
+
+# Test Telegram
+clawdbot message send --channel telegram --target "5867308866" --message "test" --json
+
+# GWS Status
+gws auth status
+
+# List calendar events
+gws calendar events list --params '{"calendarId": "primary", "timeMin": "2026-03-06T00:00:00Z", "timeMax": "2026-03-06T23:59:59Z"}'
+```
+
+### Files Modified
+
+- `lib/send-email.js` - Email via GWS Gmail
+- `skills/notion-assistant/gcal_client.py` - NEW - Google Calendar client
+- `skills/notion-assistant/morning_brief.py` - Uses gcal_client.py
+- `task-manager/health-monitor.js` - Telegram only
+- `lib/notify-failure.js` - Telegram only
+
+### Rollback (if needed)
+
+- Email: Restore `lib/send-email.js.agentmail`
+- Calendar: Revert morning_brief.py to use notion_client.get_today_events()
+- Messaging: Add Slack back in health-monitor.js and notify-failure.js
+
+### Status
+
+- ✅ Phase 1: gws + authenticate
+- ✅ Phase 2: Email → Gmail
+- ✅ Phase 3: Calendar → Google
+- ✅ Phase 4: Messaging → Telegram
+- ⏳ Phase 5: Remove Slack (deferred to tomorrow)
+- ⏳ Phase 6: Lead gen to Sheets (future)
 

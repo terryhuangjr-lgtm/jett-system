@@ -171,7 +171,7 @@ cat ~/clawd/skills/21m-sports-generation/SKILL.md
 - Research contracts with X + web_search
 - Verify all data with 21m-sports-validator.js
 - Generate content
-- Deploy to Slack
+- Deploy via email (cron sends to terryhuangjr@gmail.com)
 
 **If the validator fails → STOP. Fix the issues. Do NOT proceed.**
 
@@ -197,7 +197,7 @@ When user shares YouTube URL with "summarize this podcast" or posts in #podcasts
 - Extract YouTube URL from message
 - Get video duration: `yt-dlp --get-duration [URL]`
 - Estimate time: ~0.5-0.75x video length
-- Reply: "Starting podcast summarization. This will take ~[X] minutes. I'll post to #podcastsummary when ready."
+- Reply: "Starting podcast summarization. This will take ~[X] minutes. I'll email you when ready."
 
 **STEP 2: Run asynchronously**
 ```bash
@@ -208,10 +208,10 @@ python3 /home/clawd/skills/podcast-summary/summarize_podcast.py [URL] > /tmp/pod
 - Watch for new files in `/home/clawd/data/podcasts/summaries/`
 - Or monitor process completion
 
-**STEP 4: Post to Slack**
+**STEP 4: Email summary**
 - Read newest summary file
 - Format with: Overview, Key Points, Best Clips, Takeaways
-- Post to #podcastsummary via ClawdBot bridge
+- Send to terryhuangjr@gmail.com via send-email.js
 
 **Error handling:**
 - If download fails: "Podcast download failed: [error]"
