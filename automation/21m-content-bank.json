@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "last_updated": "2026-03-06",
+  "last_updated": "2026-03-07",
   "entries": [
     {
       "id": 1,
@@ -928,7 +928,9 @@
       "btc_price_then": 0,
       "verified_fact": "In 2020, Jack Dorsey publicly endorsed Bitcoin and said it's the \"best\" kind of money",
       "source": "Research",
-      "used_dates": [],
+      "used_dates": [
+        "2026-03-07"
+      ],
       "cooldown_days": 60,
       "id": 63
     },
