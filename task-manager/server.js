@@ -63,6 +63,8 @@ class TaskServer {
       return this.serveFile(res, 'dashboard/style.css', 'text/css');
     } else if (pathname === '/app.js') {
       return this.serveFile(res, 'dashboard/app.js', 'application/javascript');
+    } else if (pathname === '/mission-control' || pathname === '/mission-control.html') {
+      return this.serveFile(res, 'dashboard/mission-control.html', 'text/html');
     }
 
     // API routes
@@ -421,6 +423,93 @@ class TaskServer {
     
     if (pathname === '/api/ebay-deploy' && req.method === 'POST') {
       return this.sendJSON(res, { message: 'Deploy triggered', success: true });
+    }
+
+    // Mission Control API endpoints
+    if (pathname === '/api/gateway-status' && req.method === 'GET') {
+      try {
+        const { execSync } = require('child_process');
+        const ps = execSync('ps aux | grep -E "openclaw-gateway|clawdbot gateway" | grep -v grep', { encoding: 'utf8' });
+        return this.sendJSON(res, { running: ps.includes('gateway'), timestamp: new Date().toISOString() });
+      } catch (e) {
+        return this.sendJSON(res, { running: false, error: e.message });
+      }
+    }
+
+    if (pathname === '/api/mission-stats' && req.method === 'GET') {
+      try {
+        const { execSync } = require('child_process');
+        const cronOutput = execSync('clawdbot cron list --json', { encoding: 'utf8' });
+        const jobs = JSON.parse(cronOutput).jobs || [];
+        
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        const todayMs = today.getTime();
+        
+        let runsToday = 0, successCount = 0;
+        jobs.forEach(job => {
+          if (job.state?.lastRunAtMs && job.state.lastRunAtMs >= todayMs) {
+            runsToday++;
+            if (job.state.lastStatus === 'ok') successCount++;
+          }
+        });
+        
+        let nextTask = '--:--';
+        const upcoming = jobs.filter(j => j.state?.nextRunAtMs && j.enabled)
+          .sort((a, b) => a.state.nextRunAtMs - b.state.nextRunAtMs);
+        if (upcoming.length > 0) {
+          nextTask = new Date(upcoming[0].state.nextRunAtMs).toLocaleTimeString('en-US', { timeZone: 'America/New_York', hour: '2-digit', minute: '2-digit' });
+        }
+        
+        return this.sendJSON(res, { today: runsToday, successRate: runsToday > 0 ? Math.round((successCount / runsToday) * 100) : 100, nextTask });
+      } catch (e) {
+        return this.sendJSON(res, { today: 0, successRate: 100, nextTask: '--:--' });
+      }
+    }
+
+    if (pathname === '/api/activity' && req.method === 'GET') {
+      try {
+        const { execSync } = require('child_process');
+        const jobs = JSON.parse(execSync('clawdbot cron list --json', { encoding: 'utf8' })).jobs || [];
+        const activity = jobs.filter(j => j.state?.lastRunAtMs).slice(0, 15).map(job => ({
+          name: job.name, status: job.state.lastStatus === 'ok' ? 'success' : 'error',
+          time: new Date(job.state.lastRunAtMs).toLocaleString('en-US', { timeZone: 'America/New_York' })
+        }));
+        return this.sendJSON(res, activity);
+      } catch (e) {
+        return this.sendJSON(res, []);
+      }
+    }
+
+    if (pathname === '/api/control/restart-gateway' && req.method === 'POST') {
+      try {
+        require('child_process').execSync('pkill -f "openclaw-gateway" || true; nohup /home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot gateway >> /tmp/gateway.log 2>&1 &', { encoding: 'utf8' });
+        return this.sendJSON(res, { success: true });
+      } catch (e) {
+        return this.sendJSON(res, { success: false, error: e.message }, 500);
+      }
+    }
+
+    if (pathname === '/api/control/restart-worker' && req.method === 'POST') {
+      try {
+        require('child_process').execSync('pm2 restart task-manager-worker', { encoding: 'utf8' });
+        return this.sendJSON(res, { success: true });
+      } catch (e) {
+        return this.sendJSON(res, { success: false, error: e.message }, 500);
+      }
+    }
+
+    if (pathname === '/api/run-task' && req.method === 'POST') {
+      const body = await this.readBody(req);
+      const { task } = body;
+      try {
+        const { execSync } = require('child_process');
+        if (task === 'morning-brief') execSync('python3 /home/clawd/skills/notion-assistant/morning_brief.py --post', { encoding: 'utf8', timeout: 60000 });
+        else if (task === 'ebay-scan') execSync('cd /home/clawd/clawd/ebay-scanner && node run-from-config.js', { encoding: 'utf8', timeout: 60000 });
+        return this.sendJSON(res, { success: true });
+      } catch (e) {
+        return this.sendJSON(res, { success: false, error: e.message }, 500);
+      }
     }
 
     // 404
