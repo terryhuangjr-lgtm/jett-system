@@ -10,6 +10,7 @@ These run automatically at OS level - no alerts needed unless they fail repeated
 
 | Job | Schedule | What It Does | If Fails |
 |-----|----------|--------------|----------|
+| **Self-Heal Watchdog** | `*/5 * * * *` | Checks Gateway, PM2, Ollama; fixes MTU; emails Terry on failure | Alert Terry |
 | Gateway Watchdog | `0 */2 * * *` (every 2h) | Checks gateway running, restarts if not | Alert Terry |
 | PM2 Resurrect | @reboot | Restarts PM2 processes on boot | Manual check |
 | Ollama | @reboot | Starts Ollama on boot | Alert Terry |
@@ -69,10 +70,12 @@ When receiving heartbeat polls, check these silently:
 
 | Issue | Fix Command |
 |-------|-------------|
+| Self-Heal Script | `/home/clawd/scripts/self-heal.sh` - runs every 5 min |
 | MTU wrong | `sudo ip link set dev eth0 mtu 1350` |
 | Gateway down | `nohup /home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot gateway >> /tmp/gateway.log 2>&1 &` |
 | Dashboard down | `pm2 restart task-manager-server` |
 | Level Up down | `cd /home/clawd/level_up_cards && python3 app.py &` |
+| Ollama down | `ollama serve >> /tmp/ollama.log 2>&1 &` |
 | Stale lock | `rm -f /tmp/clawd-*.lock` |
 
 ---

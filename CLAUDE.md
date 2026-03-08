@@ -579,6 +579,16 @@ Added proactive monitoring via clawdbot cron:
 - **Dashboard Health** (port 3000): Updated to check Level Up Cards + Podcast
 - **Ollama**: Now shows specific models (nomic-embed + minimax-m2.5)
 
+### 12. Self-Heal Watchdog Added (2026-03-08)
+Added independent watchdog script that runs every 5 minutes via system crontab:
+- **Script:** `/home/clawd/scripts/self-heal.sh`
+- **Checks:** Gateway, PM2 dashboard, Ollama
+- **Fixes:** MTU, restarts dead services
+- **Alerts:** Emails Terry via Gmail if services fail to restart
+- **Log:** `/tmp/self-heal.log`
+
+See `HEARTBEAT.md` for full monitoring documentation.
+
 **Status:** ✅ All health checks operational
 
 ---
