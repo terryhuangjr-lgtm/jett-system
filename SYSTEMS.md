@@ -312,9 +312,20 @@ pm2 restart task-manager-server
 ### Crontab
 ```
 crontab -l                  # View watchdog cron
-*/5 * * * *                 # Gateway health check
+*/5 * * * *                 # Self-heal watchdog (gateway, PM2, Ollama)
 @reboot                     # Auto-start on boot
 ```
+
+**Self-Heal Watchdog** (`/home/clawd/scripts/self-heal.sh`):
+- Runs every 5 minutes via crontab
+- Completely independent of clawdbot
+- Checks and restarts:
+  - Gateway (openclaw-gateway)
+  - PM2 dashboard (task-manager-server)
+  - Ollama (local LLM)
+- Fixes MTU on eth0
+- Emails Terry via Gmail if services fail to restart
+- Log: `/tmp/self-heal.log`
 
 ---
 
@@ -322,7 +333,9 @@ crontab -l                  # View watchdog cron
 
 | Failure | Handler |
 |---------|---------|
-| Gateway down | Crontab watchdog restarts it |
+| Gateway down | Self-heal watchdog restarts + emails Terry |
+| PM2 dashboard down | Self-heal watchdog restarts + emails Terry |
+| Ollama down | Self-heal watchdog restarts |
 | Task failure | `lib/notify-failure.js` → Telegram DM to Terry |
 | Config corruption | Restore from `~/.openclaw/openclaw.json.daily-*.bak` |
 | GWS auth issues | `gws auth status` to check, `gws auth logout && gws auth login` to re-auth |
