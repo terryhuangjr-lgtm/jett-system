@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "last_updated": "2026-03-07",
+  "last_updated": "2026-03-08",
   "entries": [
     {
       "id": 1,
@@ -29,7 +29,9 @@
       "btc_allocation": 125,
       "verified_fact": "Luka signed his $8.15M rookie deal in 2018 when BTC was $6,500. 10% allocation = 125 BTC.",
       "source": "Spotrac",
-      "used_dates": [],
+      "used_dates": [
+        "2026-03-08"
+      ],
       "cooldown_days": 90
     },
     {
@@ -768,7 +770,9 @@
       "btc_price_then": 65000,
       "verified_fact": "Bitcoin is secured by over 17,000 nodes globally. No single government, company, or person controls it. Every other asset you own has a counterparty that can freeze, confiscate, or inflate it.",
       "source": "Bitnodes.io",
-      "used_dates": [],
+      "used_dates": [
+        "2026-03-08"
+      ],
       "cooldown_days": 60
     },
     {
