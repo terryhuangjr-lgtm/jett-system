@@ -190,6 +190,40 @@ Last Updated: 2026-03-06
 
 ---
 
+### 6. Lead Generator (Level Up Digital)
+
+```
+┌──────────────────┐     ┌──────────────────┐     ┌──────────────────┐
+│ Cron Mon/Thu     │────▶│ lead-generator/  │────▶│ Google Sheets    │
+│ 6AM              │     │ lead_generator.py│     │ (Leads)         │
+└──────────────────┘     └──────────────────┘     └──────────────────┘
+```
+
+**Location:** `/home/clawd/clawd/lead-generator/`
+
+**What it does:**
+- Searches Google Places API for local service businesses in Nassau County
+- Filters: 5-150 reviews, 4.0+ rating, no/outdated website
+- Brave Search for social media (FB/IG) on qualified leads
+- Writes to Google Sheets (shared with Terry + Jett)
+
+**Cron Jobs:**
+- `Lead Generator Monday` - 6 AM Monday (Tier 1: pressure washing, painter, handyman)
+- `Lead Generator Thursday` - 6 AM Thursday (Tier 2: landscaper, lawn care, roofing)
+
+**Rotation:**
+- Towns: Cycles through 25 Nassau County towns (3 per run)
+- Industries: Tier 1 → Tier 2 → Tier 3 → repeat
+- State: `/home/clawd/.lead-gen-state.json`
+
+**Spreadsheet:** https://docs.google.com/spreadsheets/d/1Dl0VF4yASbUSXcuyS1km-Uo1fa6fZVfAYlRFl7h38gc
+
+**API Keys:**
+- Brave Search API: BSA42Y7KAuT2JbIsWjI1CUkm57PTxfi
+- Google Places API: AIzaSyAgmfVMDHDCbQdq06pCDiMCEeN-0lx-_d4
+
+---
+
 ### 5. Morning Family Brief
 
 ```

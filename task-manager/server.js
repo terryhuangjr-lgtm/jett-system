@@ -436,6 +436,96 @@ class TaskServer {
       }
     }
 
+    if (pathname === '/api/system-health' && req.method === 'GET') {
+      try {
+        const { execSync } = require('child_process');
+        
+        // Gateway
+        let gateway = 'Offline';
+        try {
+          const ps = execSync('ps aux | grep -E "openclaw-gateway|clawdbot gateway" | grep -v grep', { encoding: 'utf8' });
+          gateway = ps.includes('gateway') ? 'Online' : 'Offline';
+        } catch (e) { gateway = 'Offline'; }
+        
+        // Telegram - check if bot responded recently
+        let telegram = 'Unknown';
+        try {
+          const lastMsg = execSync('ls -t ~/.openclaw/telegram/ 2>/dev/null | head -1', { encoding: 'utf8' });
+          telegram = lastMsg ? 'Connected' : 'No messages';
+        } catch (e) { telegram = 'Disconnected'; }
+        
+        // Email (GWS)
+        let email = 'Unknown';
+        try {
+          const gwsStatus = execSync('gws auth status --json 2>/dev/null', { encoding: 'utf8' });
+          const parsed = JSON.parse(gwsStatus);
+          email = parsed.token_valid === true ? 'Connected' : 'Disconnected';
+        } catch (e) { email = 'Disconnected'; }
+        
+        // Cron jobs
+        let cronCount = 0;
+        try {
+          const cronJobs = JSON.parse(execSync('clawdbot cron list --json', { encoding: 'utf8' }));
+          cronCount = (cronJobs.jobs || []).filter(j => j.enabled).length;
+        } catch (e) {}
+        
+        return this.sendJSON(res, { 
+          gateway, telegram, email, cronCount,
+          timestamp: new Date().toISOString() 
+        });
+      } catch (e) {
+        return this.sendJSON(res, { error: e.message });
+      }
+    }
+
+    if (pathname === '/api/health-check' && req.method === 'POST') {
+      try {
+        const { execSync } = require('child_process');
+        
+        const results = [];
+        
+        // Gateway
+        try {
+          const ps = execSync('ps aux | grep -E "openclaw-gateway|clawdbot gateway" | grep -v grep', { encoding: 'utf8' });
+          results.push({ name: 'Gateway', status: ps.includes('gateway') ? 'healthy' : 'unhealthy', message: ps.includes('gateway') ? 'Running' : 'Not running' });
+        } catch (e) {
+          results.push({ name: 'Gateway', status: 'unhealthy', message: 'Not running' });
+        }
+        
+        // PM2
+        try {
+          const pm2List = execSync('pm2 jlist', { encoding: 'utf8' });
+          const apps = JSON.parse(pm2List);
+          const running = apps.filter(a => a.pm2_env?.status === 'online').length;
+          results.push({ name: 'PM2', status: 'healthy', message: `${running} processes online` });
+        } catch (e) {
+          results.push({ name: 'PM2', status: 'unhealthy', message: 'Error checking' });
+        }
+        
+        // GWS Auth
+        try {
+          const gws = execSync('gws auth status --json', { encoding: 'utf8' });
+          const parsed = JSON.parse(gws);
+          results.push({ name: 'GWS (Email)', status: parsed.token_valid === true ? 'healthy' : 'unhealthy', message: parsed.token_valid === true ? 'Authenticated as ' + (parsed.user || 'OK') : 'Token invalid' });
+        } catch (e) {
+          results.push({ name: 'GWS (Email)', status: 'unhealthy', message: 'Not configured' });
+        }
+        
+        // Cron
+        try {
+          const cron = JSON.parse(execSync('clawdbot cron list --json', { encoding: 'utf8' }));
+          const enabled = (cron.jobs || []).filter(j => j.enabled).length;
+          results.push({ name: 'Cron Jobs', status: 'healthy', message: `${enabled} active jobs` });
+        } catch (e) {
+          results.push({ name: 'Cron Jobs', status: 'unknown', message: 'Error checking' });
+        }
+        
+        return this.sendJSON(res, { success: true, results, timestamp: new Date().toISOString() });
+      } catch (e) {
+        return this.sendJSON(res, { success: false, error: e.message });
+      }
+    }
+
     if (pathname === '/api/mission-stats' && req.method === 'GET') {
       try {
         const { execSync } = require('child_process');
@@ -461,9 +551,13 @@ class TaskServer {
           nextTask = new Date(upcoming[0].state.nextRunAtMs).toLocaleTimeString('en-US', { timeZone: 'America/New_York', hour: '2-digit', minute: '2-digit' });
         }
         
-        return this.sendJSON(res, { today: runsToday, successRate: runsToday > 0 ? Math.round((successCount / runsToday) * 100) : 100, nextTask });
+        // Use process uptime (time since server started)
+        const uptimeMs = process.uptime() * 1000;
+        const uptimeDays = Math.floor(uptimeMs / (1000 * 60 * 60 * 24));
+        
+        return this.sendJSON(res, { today: runsToday, successRate: runsToday > 0 ? Math.round((successCount / runsToday) * 100) : 100, nextTask, uptime: uptimeDays + 'd' });
       } catch (e) {
-        return this.sendJSON(res, { today: 0, successRate: 100, nextTask: '--:--' });
+        return this.sendJSON(res, { today: 0, successRate: 100, nextTask: '--:--', uptime: '0d' });
       }
     }
 
@@ -496,6 +590,18 @@ class TaskServer {
         return this.sendJSON(res, { success: true });
       } catch (e) {
         return this.sendJSON(res, { success: false, error: e.message }, 500);
+      }
+    }
+
+    if (pathname === '/api/logs' && req.method === 'GET') {
+      const urlParams = new URL(req.url, 'http://localhost');
+      const lines = urlParams.searchParams.get('lines') || 50;
+      try {
+        const { execSync } = require('child_process');
+        const log = execSync(`tail -${lines} /tmp/openclaw/openclaw-2026-03-07.log 2>/dev/null | tail -${lines}`, { encoding: 'utf8' });
+        return this.sendJSON(res, { logs: log });
+      } catch (e) {
+        return this.sendJSON(res, { logs: 'No logs found', error: e.message });
       }
     }
 

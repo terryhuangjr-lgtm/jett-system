@@ -58,121 +58,18 @@ clawdbot message send --channel telegram --target "5867308866" --message "text"
 
 ### Google Workspace (GWS)
 - Account: jett.theassistant@gmail.com
-- CLI: `gws` (npm package)
-- Credentials: `~/.config/gws/credentials.enc`
+- CLI: `gws <service> <resource> <method>`
+- Services: sheets, drive, gmail, calendar
 
-**Commands:**
-```bash
-gws auth status                              # Check authentication
-gws gmail users messages list                # List emails
-gws gmail users messages send --json '...'  # Send email
-gws calendar events list --params '...'     # List calendar events
-gws drive files list                        # List Drive files
-```
+### Lead Generator
+- Script: `/home/clawd/clawd/lead-generator/lead_generator.py`
+- Run: `python3 lead_generator.py [tier] [num_towns]`
+- State: `/home/clawd/.lead-gen-state.json`
+- Spreadsheet: `1Dl0VF4yASbUSXcuyS1km-Uo1fa6fZVfAYlRFl7h38gc`
 
-**Email Script:**
-```bash
-node lib/send-email.js --to "email" --subject "Subject" --body "Message"
-```
-
-### ESPN
-- Sports data via orchestrator.py
-- Known issue: occasional timeouts - retry built in
-
-## Subagents
-
-**When to spawn:**
-- Multi-step research tasks
-- Parallel execution tasks
-- Long-running background jobs
-
-**When NOT to:**
-- Simple single-step tasks
-- Needs Terry confirmation first
-- Destructive operations
-
-**How to spawn:**
-```
-spawn a subagent to [describe task]
-```
-
-**Rules:**
-1. Give bounded task with clear success criteria
-2. Report back via Telegram DM when done
-3. No destructive operations
-4. Read CLAUDE.md first
-5. Set timeout - don't run indefinitely
-
-**Default model:** `xai/grok-4-1-fast`
-**Fallback:** `anthropic/claude-haiku-4-5` (if Grok unavailable)
-
-## System Tools
-
-### PM2 (Dashboard Only)
-```bash
-pm2 list                          # Check status
-pm2 restart task-manager-server   # Restart dashboard
-pm2 logs task-manager-server --lines 20
-```
-
-### Clawdbot Cron (Task Scheduling)
-```bash
-clawdbot cron list               # See all scheduled tasks
-clawdbot cron add --name "Name" --schedule "0 7 * * *" --command "command"
-clawdbot cron delete [ID]       # Remove task
-```
-
-### Gateway
-```bash
-# Check status
-pgrep -f 'openclaw-gateway'
-
-# Restart
-clawdbot gateway --force
-
-# Health
-curl -s localhost:18789/health
-```
-
-### Health Dashboard
-- URL: http://localhost:3000
-- API: http://localhost:3000/api/health
-
-### System Cron (Watchdog Only)
-```bash
-crontab -l  # Should only have gateway watchdog + Ollama startup
-```
-
-### Config Protection
-```bash
-# Before running openclaw commands that modify config:
-config-protector protect openclaw doctor --fix
-
-# Or manually backup:
-cp ~/.openclaw/openclaw.json ~/.openclaw/openclaw.json.bak
-```
-
-### Git
-- Remote: https://github.com/terryhuangjr-lgtm/jett-system.git
-- Pull before changes: `git pull origin master`
-- Commit format: `type: description` (fix/feat/docs/chore)
-
-## Network
-
-- **MTU fix:** WSL2 restart requires `sudo ip link set dev eth0 mtu 1350`
-- **Check:** `ip link show eth0 | grep mtu` (should be 1350)
-- Auto-fix via /etc/wsl.conf on boot
-
-## Memory Search
-
-Enabled March 2026 - semantic search across memory and sessions:
-- Provider: Ollama
-- Model: nomic-embed-text
-- Query: "what did we discuss about [topic]?"
-
-```bash
-openclaw memory status  # Check indexing
-```
+**API Keys:**
+- Brave Search: BSA42Y7KAuT2JbIsWjI1CUkm57PTxfi
+- Google Places: AIzaSyAgmfVMDHDCbQdq06pCDiMCEeN-0lx-_d4
 
 ---
 

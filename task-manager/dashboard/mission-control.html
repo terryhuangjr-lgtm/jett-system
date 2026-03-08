@@ -589,10 +589,152 @@
         gap: 16px;
       }
     }
+
+    /* Navigation */
+    .nav-bar {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .nav-link {
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .nav-link:hover {
+      background: var(--bg-tertiary);
+      color: var(--text-primary);
+    }
+
+    .nav-link.active {
+      background: var(--accent-primary);
+      color: white;
+      border-color: var(--accent-primary);
+    }
+
+    /* Modal */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      width: 90%;
+      max-width: 800px;
+      max-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      transform: scale(0.9);
+      transition: transform 0.3s ease;
+    }
+
+    .modal-overlay.active .modal {
+      transform: scale(1);
+    }
+
+    .modal-header {
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .modal-header h3 {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .modal-close {
+      background: none;
+      border: none;
+      color: var(--text-secondary);
+      font-size: 24px;
+      cursor: pointer;
+      padding: 0;
+      line-height: 1;
+    }
+
+    .modal-close:hover {
+      color: var(--text-primary);
+    }
+
+    .modal-body {
+      padding: 24px;
+      overflow-y: auto;
+      flex: 1;
+    }
+
+    .log-content {
+      background: var(--bg-primary);
+      border-radius: 8px;
+      padding: 16px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--text-secondary);
+      white-space: pre-wrap;
+      word-break: break-all;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+
+    .health-result {
+      padding: 12px 16px;
+      border-radius: 8px;
+      margin-bottom: 8px;
+      background: var(--bg-secondary);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .health-result.healthy { border-left: 3px solid var(--success); }
+    .health-result.unhealthy { border-left: 3px solid var(--danger); }
+    .health-result.warning { border-left: 3px solid var(--warning); }
+
+    .health-result-icon {
+      font-size: 16px;
+    }
   </style>
 </head>
 <body>
   <div class="container">
+    <!-- Navigation -->
+    <nav class="nav-bar">
+      <a href="http://localhost:3000" class="nav-link">📊 Dashboard</a>
+      <a href="http://localhost:3000/mission-control" class="nav-link active">🧠 Mission Control</a>
+      <a href="http://localhost:5000" class="nav-link" target="_blank">🎴 Level Up Cards</a>
+      <a href="http://localhost:5001" class="nav-link" target="_blank">🎙️ Podcast</a>
+    </nav>
+
     <header>
       <div class="logo-section">
         <div class="logo">🧠</div>
@@ -654,7 +796,7 @@
         </div>
       </div>
 
-      <div class="card health-card">
+      <div class="card health-card" onclick="viewCronJobs()" style="cursor: pointer;">
         <div class="card-header">
           <span class="card-title">Cron Jobs</span>
           <div class="card-icon crons">⏰</div>
@@ -763,6 +905,19 @@
 
   <div class="toast-container" id="toast-container"></div>
 
+  <!-- Modal -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="modal-title">Modal Title</h3>
+        <button class="modal-close" onclick="closeModal()">&times;</button>
+      </div>
+      <div class="modal-body" id="modal-body">
+        <!-- Content -->
+      </div>
+    </div>
+  </div>
+
   <script>
     // Clock
     function updateClock() {
@@ -803,56 +958,69 @@
       setTimeout(() => toast.remove(), 4000);
     }
 
-    // Update Status
-    function setStatus(elementId, indicatorId, status, label) {
-      const el = document.getElementById(elementId);
-      const indicator = document.getElementById(indicatorId);
-      
-      el.textContent = status;
-      
-      if (status === 'Online' || status === 'Connected' || status === 'Active') {
-        indicator.className = 'health-indicator healthy';
-      } else if (status === 'Warning') {
-        indicator.className = 'health-indicator warning';
-      } else {
-        indicator.className = 'health-indicator error';
+    // Health Cards
+    async function refreshHealth() {
+      const health = await apiCall('/api/system-health');
+      if (health) {
+        document.getElementById('gateway-status').textContent = health.gateway || 'Unknown';
+        document.getElementById('telegram-status').textContent = health.telegram || 'Unknown';
+        document.getElementById('email-status').textContent = health.email || 'Unknown';
+        document.getElementById('cron-status').textContent = (health.cronCount || 0) + ' Active';
+        
+        updateIndicator('gateway-indicator', health.gateway);
+        updateIndicator('telegram-indicator', health.telegram);
+        updateIndicator('email-indicator', health.email);
+        updateIndicator('cron-indicator', health.cronCount > 0 ? 'Active' : 'None');
       }
     }
 
-    // Refresh Data
-    async function refreshData() {
-      // Gateway status
-      const gateway = await apiCall('/api/gateway-status');
-      if (gateway) {
-        setStatus('gateway-status', 'gateway-indicator', 
-          gateway.running ? 'Online' : 'Offline', 'Gateway');
+    function updateIndicator(id, status) {
+      const el = document.getElementById(id);
+      if (status === 'Online' || status === 'Connected' || status === 'Active') {
+        el.className = 'health-indicator healthy';
+      } else if (status === 'Offline' || status === 'Disconnected') {
+        el.className = 'health-indicator error';
+      } else {
+        el.className = 'health-indicator warning';
       }
+    }
 
-      // Cron jobs
-      const crons = await apiCall('/api/cron-jobs');
-      if (crons) {
-        const active = crons.filter(c => c.status === 'ok' || c.status === 'running').length;
-        setStatus('cron-status', 'cron-indicator', 
-          active > 0 ? `${active} Active` : 'None', 'Cron Jobs');
-        document.getElementById('tasks-today').textContent = active;
-      }
-
-      // Stats
-      const stats = await apiCall('/api/stats');
+    // Stats
+    async function refreshStats() {
+      const stats = await apiCall('/api/mission-stats');
       if (stats) {
         document.getElementById('tasks-today').textContent = stats.today || 0;
         document.getElementById('success-rate').textContent = (stats.successRate || 0) + '%';
         document.getElementById('uptime').textContent = stats.uptime || '0d';
         document.getElementById('next-task').textContent = stats.nextTask || '--:--';
       }
+    }
 
-      // Activity
+    // Load Activity
+    async function loadActivity() {
       const activity = await apiCall('/api/activity');
-      if (activity && activity.length) {
+      if (activity && activity.length > 0) {
         renderActivity(activity);
+      } else {
+        document.getElementById('activity-list').innerHTML = `
+          <div class="activity-item">
+            <div class="activity-icon pending">⟳</div>
+            <div class="activity-content">
+              <div class="activity-title">No recent activity</div>
+              <div class="activity-time">Waiting for tasks to run</div>
+            </div>
+          </div>`;
       }
+    }
 
+    // Refresh all data
+    async function refreshData() {
       document.getElementById('last-refresh').textContent = new Date().toLocaleTimeString();
+      await Promise.all([
+        refreshHealth(),
+        refreshStats(),
+        loadActivity()
+      ]);
     }
 
     // Render Activity
@@ -900,15 +1068,101 @@
 
     async function checkHealth() {
       showToast('Running health check...', 'info');
-      const result = await apiCall('/api/health-check', { method: 'POST' });
-      if (result) {
-        showToast('Health check complete', 'success');
-        refreshData();
+      const btn = document.querySelector('button[onclick="checkHealth()"]');
+      btn.disabled = true;
+      btn.innerHTML = '<span class="loading"></span> Checking...';
+      
+      try {
+        const response = await fetch('/api/health-check', { method: 'POST' });
+        const result = await response.json();
+        
+        btn.disabled = false;
+        btn.textContent = 'Run Health Check';
+        
+        if (result.success && result.results) {
+          const html = result.results.map(r => `
+            <div class="health-result ${r.status}">
+              <span class="health-result-icon">${r.status === 'healthy' ? '✅' : r.status === 'unhealthy' ? '❌' : '⚠️'}</span>
+              <div>
+                <div style="font-weight: 600;">${r.name}</div>
+                <div style="font-size: 12px; color: var(--text-secondary);">${r.message}</div>
+              </div>
+            </div>
+          `).join('');
+          
+          openModal('Health Check Results', html);
+        } else {
+          showToast(result.error || 'Health check failed', 'error');
+        }
+      } catch (e) {
+        btn.disabled = false;
+        btn.textContent = 'Run Health Check';
+        showToast('Health check failed: ' + e.message, 'error');
       }
     }
 
     function viewLogs() {
-      window.open('/logs', '_blank');
+      openModal('System Logs', '<div class="loading" style="margin: 20px auto;"></div>');
+      
+      fetch('/api/logs?lines=100')
+        .then(res => res.json())
+        .then(data => {
+          const logContent = data.logs || data.error || 'No logs available';
+          document.getElementById('modal-body').innerHTML = `<div class="log-content">${logContent}</div>`;
+        })
+        .catch(err => {
+          document.getElementById('modal-body').innerHTML = `<div style="color: var(--danger);">Error loading logs: ${err.message}</div>`;
+        });
+    }
+
+    function openModal(title, content) {
+      document.getElementById('modal-title').textContent = title;
+      document.getElementById('modal-body').innerHTML = content;
+      document.getElementById('modal-overlay').classList.add('active');
+    }
+
+    function closeModal() {
+      document.getElementById('modal-overlay').classList.remove('active');
+    }
+
+    document.getElementById('modal-overlay').addEventListener('click', function(e) {
+      if (e.target === this) closeModal();
+    });
+
+    // View Cron Jobs
+    async function viewCronJobs() {
+      openModal('Cron Jobs', '<div class="loading" style="margin: 20px auto;"></div>');
+      
+      try {
+        const response = await fetch('/api/cron-jobs');
+        const jobs = await response.json();
+        
+        if (jobs && jobs.length > 0) {
+          const html = jobs.map(job => `
+            <div class="health-result">
+              <div style="flex: 1;">
+                <div style="font-weight: 600;">${job.name}</div>
+                <div style="font-size: 12px; color: var(--text-secondary);">${job.schedule || 'No schedule'}</div>
+                <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">
+                  ${job.last_run ? 'Last: ' + new Date(job.last_run).toLocaleString() : 'Never run'}
+                  ${job.next_run ? ' | Next: ' + new Date(job.next_run).toLocaleString() : ''}
+                </div>
+              </div>
+              <div style="text-align: right;">
+                <span class="status-badge ${job.enabled ? 'online' : 'offline'}" style="font-size: 11px; padding: 4px 8px;">
+                  ${job.enabled ? 'Enabled' : 'Disabled'}
+                </span>
+              </div>
+            </div>
+          `).join('');
+          
+          document.getElementById('modal-body').innerHTML = html;
+        } else {
+          document.getElementById('modal-body').innerHTML = '<div style="text-align: center; padding: 20px;">No cron jobs found</div>';
+        }
+      } catch (err) {
+        document.getElementById('modal-body').innerHTML = `<div style="color: var(--danger);">Error: ${err.message}</div>`;
+      }
     }
 
     async function runTask(task) {
