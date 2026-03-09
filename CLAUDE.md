@@ -332,13 +332,13 @@ Systemd is not available in WSL2 by default. Using crontab for auto-start instea
 
 ```bash
 # Current crontab (crontab -l):
-@reboot /home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot gateway >> /tmp/gateway.log 2>&1
+@reboot /home/clawd/scripts/start-gateway.sh
 @reboot sleep 30 && cd /home/clawd/clawd && pm2 resurrect >> /tmp/pm2.log 2>&1
 @reboot ollama serve
 @reboot cd /home/clawd/level_up_cards && python3 app.py >> /home/clawd/level_up_cards/logs/server.log 2>&1
 
 # Health check every 2 hours - restart gateway if down (NO --force, just let it restart naturally)
-0 */2 * * * pgrep -f 'openclaw-gateway' > /dev/null || /home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot gateway >> /tmp/gateway.log 2>&1
+0 */2 * * * pgrep -f 'openclaw-gateway' > /dev/null || /home/clawd/scripts/start-gateway.sh
 
 # Health check every 5 min - restart Level Up Cards if down
 */5 * * * * curl -s http://localhost:5000 > /dev/null || cd /home/clawd/level_up_cards && python3 app.py >> /home/clawd/level_up_cards/logs/server.log 2>&1

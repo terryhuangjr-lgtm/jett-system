@@ -577,7 +577,7 @@ class TaskServer {
 
     if (pathname === '/api/control/restart-gateway' && req.method === 'POST') {
       try {
-        require('child_process').execSync('pkill -f "openclaw-gateway" || true; nohup /home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot gateway >> /tmp/gateway.log 2>&1 &', { encoding: 'utf8' });
+        require('child_process').execSync('pkill -f "openclaw-gateway" || true; source /home/clawd/.nvm/nvm.sh && nvm use 22.22.0 && nohup clawdbot gateway >> /tmp/gateway.log 2>&1 &', { encoding: 'utf8' });
         return this.sendJSON(res, { success: true });
       } catch (e) {
         return this.sendJSON(res, { success: false, error: e.message }, 500);

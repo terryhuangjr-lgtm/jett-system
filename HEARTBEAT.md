@@ -72,7 +72,7 @@ When receiving heartbeat polls, check these silently:
 |-------|-------------|
 | Self-Heal Script | `/home/clawd/scripts/self-heal.sh` - runs every 5 min |
 | MTU wrong | `sudo ip link set dev eth0 mtu 1350` |
-| Gateway down | `nohup /home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot gateway >> /tmp/gateway.log 2>&1 &` |
+| Gateway down | `/home/clawd/scripts/start-gateway.sh` |
 | Dashboard down | `pm2 restart task-manager-server` |
 | Level Up down | `cd /home/clawd/level_up_cards && python3 app.py &` |
 | Ollama down | `ollama serve >> /tmp/ollama.log 2>&1 &` |
