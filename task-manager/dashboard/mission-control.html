@@ -221,18 +221,16 @@
     }
 
     .status-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: var(--radius-sm);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      box-shadow: 0 0 8px currentColor;
     }
 
-    .status-icon.online { background: var(--success-bg); }
-    .status-icon.offline { background: var(--danger-bg); }
-    .status-icon.warning { background: var(--warning-bg); }
+    .status-icon.online { background: #10b981; box-shadow: 0 0 12px #10b981; }
+    .status-icon.offline { background: #ef4444; box-shadow: 0 0 12px #ef4444; }
+    .status-icon.warning { background: #f59e0b; box-shadow: 0 0 12px #f59e0b; }
 
     .status-info h4 {
       font-size: 14px;
@@ -426,38 +424,52 @@
     <div class="tab-content active" id="tab-system">
       <div class="status-grid" id="status-grid">
         <div class="status-item">
-          <div class="status-icon online">✓</div>
+          <div class="status-icon online" id="light-gateway"></div>
           <div class="status-info">
             <h4>Gateway</h4>
-            <p>Checking...</p>
+            <p id="status-gateway">Checking...</p>
           </div>
         </div>
         <div class="status-item">
-          <div class="status-icon online">✓</div>
+          <div class="status-icon online" id="light-telegram"></div>
           <div class="status-info">
             <h4>Telegram</h4>
-            <p>Checking...</p>
+            <p id="status-telegram">Checking...</p>
           </div>
         </div>
         <div class="status-item">
-          <div class="status-icon online">✓</div>
+          <div class="status-icon online" id="light-email"></div>
           <div class="status-info">
             <h4>Email</h4>
-            <p>Checking...</p>
+            <p id="status-email">Checking...</p>
           </div>
         </div>
         <div class="status-item">
-          <div class="status-icon online">✓</div>
+          <div class="status-icon online" id="light-pm2"></div>
           <div class="status-info">
             <h4>PM2</h4>
-            <p>Checking...</p>
+            <p id="status-pm2">Checking...</p>
+          </div>
+        </div>
+        <div class="status-item">
+          <div class="status-icon online" id="light-crons"></div>
+          <div class="status-info">
+            <h4>Crons</h4>
+            <p id="status-crons">Checking...</p>
+          </div>
+        </div>
+        <div class="status-item">
+          <div class="status-icon online" id="light-research"></div>
+          <div class="status-info">
+            <h4>Research</h4>
+            <p id="status-research">Checking...</p>
           </div>
         </div>
       </div>
 
       <div class="card">
         <div class="card-header">
-          <span class="card-title">📊 System Health</span>
+          <span class="card-title">📊 System Health Details</span>
         </div>
         <div id="health-details">Loading...</div>
       </div>
@@ -520,9 +532,45 @@
         tasks = await res.json();
         renderTasks();
         renderSchedule();
+        updateStatusFromTasks();
       } catch (e) {
         console.error('Failed to load tasks:', e);
       }
+    }
+
+    // Update status lights based on tasks
+    function updateStatusFromTasks() {
+      const running = tasks.filter(t => t.status === 'running').length;
+      const idle = tasks.filter(t => t.status === 'idle').length;
+      const error = tasks.filter(t => t.status === 'error').length;
+      
+      document.getElementById('status-crons').textContent = `${running} running, ${idle} idle`;
+      document.getElementById('light-crons').className = 'status-icon ' + (error > 0 ? 'offline' : 'online');
+      
+      // Check research tasks
+      const researchTasks = tasks.filter(t => t.name.toLowerCase().includes('research') || t.name.toLowerCase().includes('finance'));
+      const researchRunning = researchTasks.filter(t => t.status === 'running').length;
+      document.getElementById('status-research').textContent = researchRunning > 0 ? 'Active' : 'Scheduled';
+      document.getElementById('light-research').className = 'status-icon online';
+    }
+
+    // Convert cron to readable time
+    function cronToReadable(cron) {
+      if (!cron) return 'Manual';
+      const match = cron.match(/cron\s+(\d+)\s+(\d+)\s+\S+\s+\S+\s+([\d,\-\*]+)/);
+      if (match) {
+        const hour = parseInt(match[2]);
+        const mins = match[1].padStart(2, '0');
+        const ampm = hour >= 12 ? 'PM' : 'AM';
+        const hour12 = hour % 12 || 12;
+        return `${hour12}:${mins} ${ampm}`;
+      }
+      // Daily
+      if (cron.includes('daily')) return 'Daily';
+      // Every X
+      const everyMatch = cron.match(/every\s+(\d+)\s*(\w+)/);
+      if (everyMatch) return `Every ${everyMatch[1]} ${everyMatch[2]}`;
+      return cron.replace('cron ', '');
     }
 
     // Render tasks
@@ -530,10 +578,10 @@
       const container = document.getElementById('tasks-list');
       container.innerHTML = tasks.map(task => `
         <div class="task-row">
-          <div class="task-status ${task.status === 'idle' ? 'idle' : ''}"></div>
+          <div class="task-status ${task.status === 'idle' ? 'idle' : task.status === 'error' ? 'error' : ''}"></div>
           <span class="task-name">${task.name}</span>
-          <span class="task-schedule">${task.schedule || 'Manual'}</span>
-          <span class="task-next">${task.next || '-'}</span>
+          <span class="task-schedule">${cronToReadable(task.schedule)}</span>
+          <span class="task-next">${task.next ? new Date(task.next).toLocaleString('en-US', {weekday:'short', hour:'numeric', minute:'2-digit'}) : '-'}</span>
         </div>
       `).join('');
     }
@@ -550,26 +598,49 @@
         if (!task.schedule) return;
         const s = task.schedule.toLowerCase();
         
-        // Parse cron
-        const match = s.match(/cron\s+\d+\s+\d+\s+\d+\s+\d+\s+([\d,]+)/);
+        // Match cron with days
+        const match = s.match(/cron\s+(\d+)\s+(\d+)\s+\S+\s+\S+\s+([\d,\-]+)/);
         if (match) {
-          const dayNums = match[1].split(',').map(d => parseInt(d));
-          dayNums.forEach(d => {
-            if (daySchedules[d]) daySchedules[d].push(task);
-          });
+          const dayPart = match[3];
+          if (dayPart === '*') {
+            days.forEach((_, i) => daySchedules[i].push(task));
+          } else if (dayPart.includes('-')) {
+            const [start, end] = dayPart.split('-').map(Number);
+            for (let d = start; d <= end; d++) daySchedules[d]?.push(task);
+          } else {
+            const dayNums = dayPart.split(',').map(d => parseInt(d));
+            dayNums.forEach(d => {
+              if (daySchedules[d]) daySchedules[d].push(task);
+            });
+          }
+        } else if (s.includes('daily')) {
+          days.forEach((_, i) => daySchedules[i].push(task));
         }
       });
 
-      const html = days.map((day, i) => `
+      const html = days.map((day, i) => {
+        const dayTasks = daySchedules[i] || [];
+        // Sort by time
+        dayTasks.sort((a, b) => {
+          const aMatch = (a.schedule || '').match(/cron\s+(\d+)\s+(\d+)/);
+          const bMatch = (b.schedule || '').match(/cron\s+(\d+)\s+(\d+)/);
+          const aTime = aMatch ? parseInt(aMatch[2])*60 + parseInt(aMatch[1]) : 0;
+          const bTime = bMatch ? parseInt(bMatch[2])*60 + parseInt(bMatch[1]) : 0;
+          return aTime - bTime;
+        });
+        
+        return `
         <div class="schedule-day ${i === today ? 'today' : ''}">
           <div class="day-name">${day}</div>
-          ${(daySchedules[i] || []).map(t => `
-            <div class="task-pill ${t.name.includes('email') ? 'email' : t.name.includes('Telegram') ? 'telegram' : 'web'}">
-              ${t.schedule?.match(/(\d+:\d+)/)?.[1] || ''} ${t.name}
-            </div>
-          `).join('')}
-        </div>
-      `).join('');
+          ${dayTasks.map(t => {
+            const timeMatch = (t.schedule || '').match(/cron\s+(\d+)\s+(\d+)/);
+            const time = timeMatch ? `${timeMatch[2]}:${timeMatch[1].padStart(2,'0')}` : '';
+            return `<div class="task-pill ${t.name.includes('email') ? 'email' : t.name.includes('Telegram') ? 'telegram' : 'web'}">
+              ${time} ${t.name}
+            </div>`;
+          }).join('')}
+        </div>`;
+      }).join('');
 
       document.getElementById('schedule-grid').innerHTML = html;
     }
@@ -580,28 +651,47 @@
         const res = await fetch(API_BASE + '/health');
         const health = await res.json();
         
-        const statusItems = document.querySelectorAll('.status-item');
-        const statusMap = {
-          'Gateway': health.checks?.find(c => c.name === 'Gateway')?.status || 'healthy',
-          'Telegram': health.checks?.find(c => c.name === 'Telegram')?.status || 'healthy',
-          'Email': health.checks?.find(c => c.name === 'Email')?.status || 'healthy',
-          'PM2': health.checks?.find(c => c.name === 'PM2')?.status || 'healthy'
-        };
+        // Update individual lights
+        const checks = health.checks || [];
+        const getStatus = (name) => checks.find(c => c.name.toLowerCase().includes(name.toLowerCase()))?.status || 'healthy';
+        
+        // Gateway
+        const gwStatus = getStatus('gateway');
+        document.getElementById('light-gateway').className = 'status-icon ' + (gwStatus === 'healthy' ? 'online' : gwStatus === 'warning' ? 'warning' : 'offline');
+        document.getElementById('status-gateway').textContent = gwStatus === 'healthy' ? 'Online' : gwStatus;
+        
+        // Telegram
+        const tgStatus = getStatus('telegram');
+        document.getElementById('light-telegram').className = 'status-icon ' + (tgStatus === 'healthy' ? 'online' : 'offline');
+        document.getElementById('status-telegram').textContent = tgStatus === 'healthy' ? 'Connected' : tgStatus;
+        
+        // Email
+        const emailStatus = getStatus('email');
+        document.getElementById('light-email').className = 'status-icon ' + (emailStatus === 'healthy' ? 'online' : 'offline');
+        document.getElementById('status-email').textContent = emailStatus === 'healthy' ? 'Ready' : emailStatus;
+        
+        // PM2
+        const pm2Status = getStatus('pm2');
+        document.getElementById('light-pm2').className = 'status-icon ' + (pm2Status === 'healthy' ? 'online' : 'offline');
+        document.getElementById('status-pm2').textContent = pm2Status === 'healthy' ? 'Running' : pm2Status;
 
-        statusItems.forEach((item, i) => {
-          const name = item.querySelector('h4').textContent;
-          const status = statusMap[name] || 'healthy';
-          const icon = item.querySelector('.status-icon');
-          
-          icon.className = 'status-icon ' + (status === 'healthy' ? 'online' : status === 'warning' ? 'warning' : 'offline');
-          icon.textContent = status === 'healthy' ? '✓' : status === 'warning' ? '!' : '✗';
-          item.querySelector('p').textContent = status === 'healthy' ? 'Online' : status === 'warning' ? 'Warning' : 'Offline';
-        });
-
+        // Health details
         document.getElementById('health-details').innerHTML = `
-          <div style="color: var(--text-secondary); font-size: 14px;">
-            All systems operational. Last checked: ${new Date().toLocaleTimeString()}
-          </div>
+          <table style="width:100%;font-size:13px">
+            <tr style="border-bottom:1px solid var(--border-subtle);text-align:left">
+              <th style="padding:8px;color:var(--text-secondary)">Component</th>
+              <th style="padding:8px;color:var(--text-secondary)">Status</th>
+              <th style="padding:8px;color:var(--text-secondary)">Details</th>
+            </tr>
+            ${checks.map(c => `
+              <tr style="border-bottom:1px solid var(--border-subtle)">
+                <td style="padding:8px;font-weight:500">${c.name}</td>
+                <td style="padding:8px;color:${c.status === 'healthy' ? 'var(--success)' : 'var(--danger)'}">${c.status}</td>
+                <td style="padding:8px;color:var(--text-muted)">${c.message || '-'}</td>
+              </tr>
+            `).join('')}
+          </table>
+          <p style="color:var(--text-muted);font-size:12px;margin-top:12px">Last checked: ${new Date().toLocaleTimeString()}</p>
         `;
       } catch (e) {
         document.getElementById('health-details').innerHTML = `
