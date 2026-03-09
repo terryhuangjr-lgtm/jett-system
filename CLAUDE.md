@@ -348,6 +348,9 @@ Systemd is not available in WSL2 by default. Using crontab for auto-start instea
 
 # Log rotation for gateway (truncate if over 50MB)
 0 0 * * * find /tmp/gateway.log -size +50M -exec truncate -s 20M {} \; 2>/dev/null || true
+
+# Jett Trending Research - Monday & Thursday at 3 AM (finds current trending topics)
+0 3 * * 1,4 cd /home/clawd/clawd/automation && node jett-trending-research.js >> /tmp/jett-trending.log 2>&1
 ```
 
 To enable systemd in WSL2 (alternative):
