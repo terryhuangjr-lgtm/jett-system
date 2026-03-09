@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "last_updated": "2026-03-08",
+  "last_updated": "2026-03-09",
   "entries": [
     {
       "id": 1,
@@ -633,7 +633,9 @@
       "btc_allocation": 3,
       "verified_fact": "Quinn Ewers left Ohio State early for NIL money estimated at $1.4M in 2021 when BTC was $47,000. 10% = 3 BTC worth $204K today.",
       "source": "On3 NIL",
-      "used_dates": [],
+      "used_dates": [
+        "2026-03-09"
+      ],
       "cooldown_days": 90
     },
     {
@@ -740,7 +742,9 @@
       "btc_price_then": 100,
       "verified_fact": "From 2013 to 2023, Bitcoin returned over 15,000%. The S&P 500 returned roughly 230% in the same period. Every financial advisor who said 'too risky' was technically right about volatility and completely wrong about outcomes.",
       "source": "CoinGecko historical data",
-      "used_dates": [],
+      "used_dates": [
+        "2026-03-09"
+      ],
       "cooldown_days": 60
     },
     {
