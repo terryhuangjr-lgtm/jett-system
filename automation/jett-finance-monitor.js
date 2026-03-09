@@ -264,8 +264,9 @@ async function sendToTelegram(message) {
 
   try {
     const TelegramChatID = '5867308866';
+    const BOT_TOKEN = getSecret('TELEGRAM_BOT_TOKEN');
     
-    const response = await fetch('https://api.telegram.org Bot' + getSecret('TELEGRAM_BOT_TOKEN') + '/sendMessage', {
+    const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
