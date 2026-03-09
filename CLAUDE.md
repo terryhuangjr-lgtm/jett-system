@@ -53,8 +53,9 @@ WHEN YOU ADD SCRIPT  → Add to SYSTEMS.md automation section
 WHEN YOU CHANGE PORT → Update SYSTEMS.md ports table
 WHEN YOU CHANGE MODEL → Update CLAUDE.md MODEL DISTRIBUTION
 WHEN YOU FIX A BUG    → Add entry to SYSTEMS.md troubleshooting
-WHEN YOU ADD CRON     → Update SYSTEMS.md cron table
+WHEN YOU ADD CRON     → Update SYSTEMS.md cron table + CLAUDE.md examples
 WHEN YOU ADD HEALTH CHECK → Update HEARTBEAT.md monitoring rules
+WHEN YOU ADD NEW SYSTEM → Update SYSTEMS.md + MEMORY.md daily schedule
 ```
 
 ### Golden Rule
