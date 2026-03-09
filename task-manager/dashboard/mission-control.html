@@ -348,6 +348,26 @@
       text-align: right;
     }
 
+    /* Control Buttons */
+    .control-btn {
+      padding: 10px 20px;
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      color: var(--text-primary);
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .control-btn:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--accent-primary);
+      transform: translateY(-1px);
+    }
+
     /* Embeds */
     .embed-container {
       width: 100%;
@@ -418,6 +438,9 @@
       <button class="tab" data-tab="levelup">
         <span class="tab-icon">🎴</span> Level Up
       </button>
+      <button class="tab" data-tab="podcast">
+        <span class="tab-icon">🎙️</span> Podcast
+      </button>
     </div>
 
     <!-- Tab Contents -->
@@ -469,6 +492,17 @@
 
       <div class="card">
         <div class="card-header">
+          <span class="card-title">🎛️ Quick Controls</span>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <button onclick="restartGateway()" class="control-btn">🔄 Restart Gateway</button>
+          <button onclick="runHealthCheck()" class="control-btn">🩺 Run Health Check</button>
+          <button onclick="refreshData()" class="control-btn">🔃 Refresh All</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
           <span class="card-title">📊 System Health Details</span>
         </div>
         <div id="health-details">Loading...</div>
@@ -485,13 +519,19 @@
 
     <div class="tab-content" id="tab-ebay">
       <div class="embed-container">
-        <iframe src="http://localhost:5000" id="ebay-frame"></iframe>
+        <iframe src="http://localhost:3000/ebay" id="ebay-frame"></iframe>
       </div>
     </div>
 
     <div class="tab-content" id="tab-levelup">
       <div class="embed-container">
-        <iframe src="http://localhost:5001" id="levelup-frame"></iframe>
+        <iframe src="http://localhost:5000" id="levelup-frame"></iframe>
+      </div>
+    </div>
+
+    <div class="tab-content" id="tab-podcast">
+      <div class="embed-container">
+        <iframe src="http://localhost:5001" id="podcast-frame"></iframe>
       </div>
     </div>
   </div>
@@ -540,16 +580,15 @@
 
     // Update status lights based on tasks
     function updateStatusFromTasks() {
-      const running = tasks.filter(t => t.status === 'running').length;
-      const idle = tasks.filter(t => t.status === 'idle').length;
+      const running = tasks.filter(t => t.status === 'running' || t.status === 'ok').length;
       const error = tasks.filter(t => t.status === 'error').length;
       
-      document.getElementById('status-crons').textContent = `${running} running, ${idle} idle`;
+      document.getElementById('status-crons').textContent = `${running} tasks, ${error} errors`;
       document.getElementById('light-crons').className = 'status-icon ' + (error > 0 ? 'offline' : 'online');
       
       // Check research tasks
       const researchTasks = tasks.filter(t => t.name.toLowerCase().includes('research') || t.name.toLowerCase().includes('finance'));
-      const researchRunning = researchTasks.filter(t => t.status === 'running').length;
+      const researchRunning = researchTasks.filter(t => t.status === 'ok' || t.status === 'running').length;
       document.getElementById('status-research').textContent = researchRunning > 0 ? 'Active' : 'Scheduled';
       document.getElementById('light-research').className = 'status-icon online';
     }
@@ -557,7 +596,15 @@
     // Convert cron to readable time
     function cronToReadable(cron) {
       if (!cron) return 'Manual';
-      const match = cron.match(/cron\s+(\d+)\s+(\d+)\s+\S+\s+\S+\s+([\d,\-\*]+)/);
+      
+      // Handle */5 * * * * format
+      const everyMatch = cron.match(/^\*\/(\d+)\s+\*\s+\*\s+\*\s+\*$/);
+      if (everyMatch) {
+        return `Every ${everyMatch[1]} min`;
+      }
+      
+      // Handle specific time: 0 6 * * 1-5 (cron 0 6 * * 1-5)
+      const match = cron.match(/cron\s+(\d+)\s+(\d+)/);
       if (match) {
         const hour = parseInt(match[2]);
         const mins = match[1].padStart(2, '0');
@@ -565,12 +612,23 @@
         const hour12 = hour % 12 || 12;
         return `${hour12}:${mins} ${ampm}`;
       }
+      
+      // Handle specific time without "cron" prefix: 0 6 * * 1-5
+      const directMatch = cron.match(/^(\d+)\s+(\d+)\s+\*\s+\*\s+([\d,\-]+)$/);
+      if (directMatch) {
+        const hour = parseInt(directMatch[2]);
+        const mins = directMatch[1].padStart(2, '0');
+        const ampm = hour >= 12 ? 'PM' : 'AM';
+        const hour12 = hour % 12 || 12;
+        return `${hour12}:${mins} ${ampm}`;
+      }
+      
       // Daily
       if (cron.includes('daily')) return 'Daily';
       // Every X
-      const everyMatch = cron.match(/every\s+(\d+)\s*(\w+)/);
-      if (everyMatch) return `Every ${everyMatch[1]} ${everyMatch[2]}`;
-      return cron.replace('cron ', '');
+      const everyXMatch = cron.match(/every\s+(\d+)\s*(\w+)/);
+      if (everyXMatch) return `Every ${everyXMatch[1]} ${everyXMatch[2]}`;
+      return cron;
     }
 
     // Render tasks
@@ -578,10 +636,10 @@
       const container = document.getElementById('tasks-list');
       container.innerHTML = tasks.map(task => `
         <div class="task-row">
-          <div class="task-status ${task.status === 'idle' ? 'idle' : task.status === 'error' ? 'error' : ''}"></div>
+          <div class="task-status ${task.status === 'error' ? 'error' : task.status === 'ok' ? '' : 'idle'}"></div>
           <span class="task-name">${task.name}</span>
           <span class="task-schedule">${cronToReadable(task.schedule)}</span>
-          <span class="task-next">${task.next ? new Date(task.next).toLocaleString('en-US', {weekday:'short', hour:'numeric', minute:'2-digit'}) : '-'}</span>
+          <span class="task-next">${task.next_run ? new Date(task.next_run).toLocaleString('en-US', {weekday:'short', hour:'numeric', minute:'2-digit'}) : '-'}</span>
         </div>
       `).join('');
     }
@@ -597,6 +655,12 @@
       tasks.forEach(task => {
         if (!task.schedule) return;
         const s = task.schedule.toLowerCase();
+        
+        // Handle */5 * * * * (every X minutes) - show on all days
+        if (s.startsWith('*/')) {
+          days.forEach((_, i) => daySchedules[i].push(task));
+          return;
+        }
         
         // Match cron with days
         const match = s.match(/cron\s+(\d+)\s+(\d+)\s+\S+\s+\S+\s+([\d,\-]+)/);
@@ -698,6 +762,37 @@
           <div style="color: var(--danger);">Error loading health: ${e.message}</div>
         `;
       }
+    }
+
+    // Control functions
+    async function restartGateway() {
+      if (!confirm('Restart Gateway?')) return;
+      try {
+        const res = await fetch(API_BASE + '/control/restart-gateway', { method: 'POST' });
+        const data = await res.json();
+        if (data.success) {
+          alert('Gateway restarting...');
+          setTimeout(loadHealth, 5000);
+        } else {
+          alert('Failed: ' + JSON.stringify(data));
+        }
+      } catch (e) {
+        alert('Error: ' + e.message);
+      }
+    }
+
+    async function runHealthCheck() {
+      const btn = event.target;
+      btn.textContent = 'Running...';
+      await loadHealth();
+      btn.textContent = '🩺 Run Health Check';
+      alert('Health check complete!');
+    }
+
+    function refreshData() {
+      loadTasks();
+      loadHealth();
+      alert('Data refreshed!');
     }
 
     // Load everything
