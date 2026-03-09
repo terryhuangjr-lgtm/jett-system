@@ -185,6 +185,30 @@ Last Updated: 2026-03-06
 
 ---
 
+### 4. Finance Monitor (Personal)
+
+```
+┌──────────────────┐     ┌──────────────────┐     ┌──────────────────┐
+│ Brave Search     │────▶│ jett-finance-    │────▶│   Telegram        │
+│ + Grok           │     │ monitor.js       │     │   (Personal)     │
+└──────────────────┘     └──────────────────┘     └──────────────────┘
+```
+
+**Schedule:** 3x daily (6 AM, 12 PM, 6 PM)
+
+**Focus Areas:**
+- Bitcoin & ETFs (IBIT, MicroStrategy, corporate treasuries)
+- AI & Tech (NVDA, earnings, chip news)
+- Energy (nuclear, solar, oil/gas)
+- Real Estate (REITs, mortgage rates)
+
+**Scripts:**
+- `automation/jett-finance-monitor.js` - Finance news monitor
+
+**Watchlist:** `memory/jett-finance-watchlist.json`
+
+---
+
 ### 3. Podcast Summary
 
 ```

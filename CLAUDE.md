@@ -351,6 +351,11 @@ Systemd is not available in WSL2 by default. Using crontab for auto-start instea
 
 # Jett Trending Research - Monday & Thursday at 3 AM (finds current trending topics)
 0 3 * * 1,4 cd /home/clawd/clawd/automation && node jett-trending-research.js >> /tmp/jett-trending.log 2>&1
+
+# Jett Finance Monitor - 3x daily (6AM, 12PM, 6PM)
+0 6 * * * cd /home/clawd/clawd/automation && node jett-finance-monitor.js >> /tmp/jett-finance.log 2>&1
+0 12 * * * cd /home/clawd/clawd/automation && node jett-finance-monitor.js >> /tmp/jett-finance.log 2>&1
+0 18 * * * cd /home/clawd/clawd/automation && node jett-finance-monitor.js >> /tmp/jett-finance.log 2>&1
 ```
 
 To enable systemd in WSL2 (alternative):
