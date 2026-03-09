@@ -72,7 +72,8 @@ Help with automation, find opportunities, handle tech/code, stay on top of sport
 | 9:00 AM | eBay Scan (rotation, includes deploy) | email |
 | 10:00 AM | Sports Betting Scout | Terry DM |
 | 4:00 PM | Sports Betting Pick | Terry DM |
-| 3:00 AM | BTC and Sports Research | (every 2 days) |
+| 3:00 AM | Trending Research (Mon/Thu) | Content Bank |
+| 3:00 AM | Deep Research (Tue/Fri) | Content Bank |
 
 ## Known Issues and Fixes Applied
 

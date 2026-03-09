@@ -143,7 +143,31 @@ Last Updated: 2026-03-06
 
 ---
 
-### 2. eBay Scanner
+### 2. Research System (Content Growth)
+
+```
+┌──────────────────┐     ┌──────────────────┐     ┌──────────────────┐
+│ Grok + Brave     │────▶│ jett-daily-     │────▶│ Content Bank     │
+│ Search           │     │ research.js     │     │ (SQLite DB)     │
+└──────────────────┘     └──────────────────┘     └──────────────────┘
+```
+
+**Research Types:**
+
+| Type | Schedule | Script | Description |
+|------|----------|--------|-------------|
+| **Trending** | Mon/Thu 3AM | `jett-trending-research.js` | Current topics via Grok + Brave Search |
+| **Deep** | Tue/Fri 3AM | `jett-daily-research.js` | Historic contracts via Spotrac |
+
+**Scripts:**
+- `automation/jett-trending-research.js` - Finds trending topics (Mon/Thu)
+- `automation/jett-daily-research.js` - Deep research (Tue/Fri)
+- `automation/jett-scraper.py` - Spotrac data fetcher
+- `automation/brave-search.js` - Web search for research
+
+---
+
+### 3. eBay Scanner
 
 ```
 ┌──────────────────┐     ┌──────────────────┐     ┌──────────────────┐
