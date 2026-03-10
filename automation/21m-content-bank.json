@@ -227,7 +227,9 @@
       "btc_price_then": 13,
       "verified_fact": "Allen Iverson earned $154M in his NBA career and was reportedly broke by 2012. BTC was $13 that year.",
       "source": "Multiple verified reports",
-      "used_dates": [],
+      "used_dates": [
+        "2026-03-10"
+      ],
       "cooldown_days": 90
     },
     {
@@ -563,7 +565,9 @@
       "btc_price_then": 45000,
       "verified_fact": "US inflation hit 9.1% in June 2022 — highest since 1981. A $1M contract signed in 2020 had $820K of real purchasing power by 2022. Inflation is a tax nobody voted for.",
       "source": "US Bureau of Labor Statistics",
-      "used_dates": [],
+      "used_dates": [
+        "2026-03-10"
+      ],
       "cooldown_days": 60
     },
     {
