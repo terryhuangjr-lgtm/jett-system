@@ -1071,9 +1071,54 @@
     async function runHealthCheck() {
       const btn = event.target;
       btn.textContent = 'Running...';
-      await loadHealth();
+      btn.disabled = true;
+      
+      try {
+        const res = await fetch(API_BASE + '/api/health-check', { method: 'POST' });
+        const data = await res.json();
+        
+        if (data.success && data.results) {
+          const results = data.results;
+          
+          let resultsHtml = `
+            <div style="margin-top:16px;padding:16px;background:var(--bg-card);border-radius:8px;border:1px solid var(--border-subtle)">
+              <h4 style="margin:0 0 12px 0;color:var(--text-primary)">Health Check Results</h4>
+              <table style="width:100%;font-size:13px;border-collapse:collapse">
+                <tr style="border-bottom:1px solid var(--border-subtle);text-align:left">
+                  <th style="padding:8px;color:var(--text-secondary)">Component</th>
+                  <th style="padding:8px;color:var(--text-secondary)">Status</th>
+                  <th style="padding:8px;color:var(--text-secondary)">Details</th>
+                </tr>
+          `;
+          
+          results.forEach(r => {
+            const statusColor = r.status === 'healthy' ? 'var(--success)' : r.status === 'warning' ? 'var(--warning)' : 'var(--danger)';
+            const statusIcon = r.status === 'healthy' ? '●' : r.status === 'warning' ? '◐' : '○';
+            resultsHtml += `
+              <tr style="border-bottom:1px solid var(--border-subtle)">
+                <td style="padding:8px;font-weight:500">${r.name}</td>
+                <td style="padding:8px;color:${statusColor}">${statusIcon} ${r.status}</td>
+                <td style="padding:8px;color:var(--text-muted)">${r.message || '-'}</td>
+              </tr>
+            `;
+          });
+          
+          resultsHtml += `
+              </table>
+              <p style="color:var(--text-muted);font-size:12px;margin-top:12px">Checked at: ${new Date(data.timestamp).toLocaleTimeString()}</p>
+            </div>
+          `;
+          
+          document.getElementById('health-details').innerHTML = resultsHtml;
+        } else {
+          alert('Health check failed: ' + (data.error || 'Unknown error'));
+        }
+      } catch (e) {
+        alert('Error running health check: ' + e.message);
+      }
+      
       btn.textContent = '🩺 Run Health Check';
-      alert('Health check complete!');
+      btn.disabled = false;
     }
 
     function refreshData() {

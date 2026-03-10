@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "last_updated": "2026-03-05T17:53:02.425Z",
+  "last_updated": "2026-03-10T14:55:53.863Z",
   "global_filters": {
     "graded_keywords": [
       "psa",
@@ -55,7 +55,7 @@
         "timestamp": "2026-03-02T14:00:47.240Z",
         "success": true
       },
-      "last_updated": "2026-03-03T16:43:53.090Z"
+      "last_updated": "2026-03-10T14:54:02.116Z"
     },
     "tuesday": {
       "name": "Griffey Jr Refractors",
@@ -79,12 +79,12 @@
         ]
       },
       "output_file": "/tmp/griffey-refractors-scan.json",
-      "last_run": "2026-03-03T14:00:23.425Z",
+      "last_run": "2026-03-10T13:00:31.321Z",
       "last_results": {
-        "timestamp": "2026-03-03T14:00:23.426Z",
+        "timestamp": "2026-03-10T13:00:31.322Z",
         "success": true
       },
-      "last_updated": "2026-03-03T16:44:31.409Z"
+      "last_updated": "2026-03-10T14:55:53.863Z"
     },
     "wednesday": {
       "name": "Kobe Bryant Refractors 1997-2004",
