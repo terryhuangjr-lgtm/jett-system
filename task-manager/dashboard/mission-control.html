@@ -75,34 +75,36 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 32px;
-      padding-bottom: 24px;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
       border-bottom: 1px solid var(--border-subtle);
     }
 
     .header-left {
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 12px;
     }
 
     .logo {
-      width: 44px;
-      height: 44px;
-      background: var(--accent-gradient);
-      border-radius: var(--radius-md);
+      width: 28px;
+      height: 28px;
+      background: var(--bg-tertiary);
+      border: 1px solid var(--accent-primary);
+      border-radius: var(--radius-sm);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 20px;
-      font-weight: 700;
-      box-shadow: 0 4px 20px var(--accent-glow);
+      font-size: 14px;
+      color: var(--accent-primary);
+      font-weight: 600;
     }
 
     .header h1 {
-      font-size: 24px;
-      font-weight: 600;
-      letter-spacing: -0.5px;
+      font-size: 16px;
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
     }
 
     .header-right {
@@ -113,9 +115,9 @@
 
     .clock {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 14px;
-      color: var(--text-secondary);
-      padding: 8px 16px;
+      font-size: 11px;
+      color: var(--text-muted);
+      padding: 4px 10px;
       background: var(--bg-card);
       border-radius: var(--radius-sm);
       border: 1px solid var(--border-subtle);
@@ -124,42 +126,51 @@
     /* Tabs */
     .tabs {
       display: flex;
-      gap: 4px;
+      gap: 2px;
       margin-bottom: 24px;
       background: var(--bg-card);
-      padding: 6px;
-      border-radius: var(--radius-lg);
+      padding: 4px;
+      border-radius: var(--radius-md);
       border: 1px solid var(--border-subtle);
     }
 
     .tab {
-      padding: 12px 24px;
+      padding: 8px 16px;
       border: none;
       background: transparent;
-      color: var(--text-secondary);
+      color: var(--text-muted);
       font-family: inherit;
-      font-size: 14px;
+      font-size: 11px;
       font-weight: 500;
       cursor: pointer;
-      border-radius: var(--radius-md);
+      border-radius: var(--radius-sm);
       transition: all 0.2s ease;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
     .tab:hover {
-      color: var(--text-primary);
+      color: var(--text-secondary);
       background: var(--bg-tertiary);
     }
 
     .tab.active {
-      background: var(--accent-gradient);
-      color: white;
-      box-shadow: 0 2px 12px var(--accent-glow);
+      background: var(--bg-tertiary);
+      color: var(--text-primary);
+      border: 1px solid var(--border-subtle);
     }
 
-    .tab-icon { font-size: 16px; }
+    .tab-icon { 
+      font-size: 6px; 
+      color: var(--accent-primary);
+    }
+    
+    .tab.active .tab-icon {
+      color: var(--accent-secondary);
+    }
 
     /* Tab Content */
     .tab-content {
@@ -206,13 +217,24 @@
 
     .status-item {
       background: var(--bg-tertiary);
-      border-radius: var(--radius-md);
-      padding: 16px;
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       border: 1px solid var(--border-subtle);
       transition: all 0.2s ease;
+    }
+
+    .status-item:hover {
+      border-color: var(--accent-primary);
+    }
+
+    .status-icon {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
     }
 
     .status-item:hover {
@@ -233,14 +255,16 @@
     .status-icon.warning { background: #f59e0b; box-shadow: 0 0 12px #f59e0b; }
 
     .status-info h4 {
-      font-size: 14px;
+      font-size: 11px;
       font-weight: 600;
-      margin-bottom: 2px;
+      margin-bottom: 1px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
     .status-info p {
-      font-size: 12px;
-      color: var(--text-secondary);
+      font-size: 10px;
+      color: var(--text-muted);
     }
 
     /* Schedule Grid */
@@ -288,9 +312,19 @@
       border: 1px solid var(--border-subtle);
     }
 
+    /* Color-coded pills by system */
     .task-pill.email { border-left: 2px solid #3b82f6; }
     .task-pill.telegram { border-left: 2px solid #10b981; }
     .task-pill.web { border-left: 2px solid #f59e0b; }
+    
+    /* System colors */
+    .task-pill.tm-21m { border-left: 3px solid #3b82f6; background: rgba(59, 130, 246, 0.1); }      /* Blue - 21M */
+    .task-pill.tm-podcast { border-left: 3px solid #a855f7; background: rgba(168, 85, 247, 0.1); }   /* Purple - Podcast */
+    .task-pill.tm-finance { border-left: 3px solid #10b981; background: rgba(16, 185, 129, 0.1); }   /* Green - Finance */
+    .task-pill.tm-ebay { border-left: 3px solid #f97316; background: rgba(249, 115, 22, 0.1); }      /* Orange - eBay */
+    .task-pill.tm-lead { border-left: 3px solid #eab308; background: rgba(234, 179, 8, 0.1); }       /* Yellow - Lead Gen */
+    .task-pill.tm-family { border-left: 3px solid #ec4899; background: rgba(236, 72, 153, 0.1); }    /* Pink - Family */
+    .task-pill.tm-system { border-left: 3px solid #6b7280; background: rgba(107, 114, 128, 0.1); }   /* Gray - System */
 
     /* Tasks List */
     .tasks-list {
@@ -350,29 +384,31 @@
 
     /* Control Buttons */
     .control-btn {
-      padding: 10px 20px;
+      padding: 6px 14px;
       background: var(--bg-tertiary);
       border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-md);
-      color: var(--text-primary);
+      border-radius: var(--radius-sm);
+      color: var(--text-secondary);
       font-family: inherit;
-      font-size: 13px;
+      font-size: 11px;
       font-weight: 500;
       cursor: pointer;
       transition: all 0.2s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
     .control-btn:hover {
       background: var(--bg-card-hover);
       border-color: var(--accent-primary);
-      transform: translateY(-1px);
+      color: var(--text-primary);
     }
 
     /* Embeds */
     .embed-container {
       width: 100%;
-      height: calc(100vh - 280px);
-      min-height: 500px;
+      height: calc(100vh - 200px);
+      min-height: 600px;
       border-radius: var(--radius-lg);
       overflow: hidden;
       border: 1px solid var(--border-subtle);
@@ -400,6 +436,47 @@
       opacity: 0.5;
     }
 
+    /* Next Up */
+    .next-up-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .next-up-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 12px 16px;
+      background: var(--bg-tertiary);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .next-up-time {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--text-secondary);
+      min-width: 120px;
+    }
+
+    .next-up-name {
+      flex: 1;
+      font-weight: 500;
+      font-size: 14px;
+    }
+
+    .next-up-status {
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: var(--radius-sm);
+      text-transform: uppercase;
+    }
+
+    .next-up-status.completed { background: var(--success-bg); color: var(--success); }
+    .next-up-status.running { background: var(--warning-bg); color: var(--warning); }
+    .next-up-status.error { background: var(--danger-bg); color: var(--danger); }
+
     /* Responsive */
     @media (max-width: 768px) {
       .tabs { overflow-x: auto; }
@@ -413,7 +490,7 @@
     <!-- Header -->
     <header class="header">
       <div class="header-left">
-        <div class="logo">🎯</div>
+        <div class="logo">◈</div>
         <h1>Mission Control</h1>
       </div>
       <div class="header-right">
@@ -424,22 +501,22 @@
     <!-- Tabs -->
     <div class="tabs">
       <button class="tab active" data-tab="system">
-        <span class="tab-icon">🚀</span> System
+        <span class="tab-icon">●</span> System
       </button>
       <button class="tab" data-tab="schedule">
-        <span class="tab-icon">📅</span> Schedule
+        <span class="tab-icon">●</span> Schedule
       </button>
       <button class="tab" data-tab="tasks">
-        <span class="tab-icon">📋</span> Tasks
+        <span class="tab-icon">●</span> Tasks
       </button>
       <button class="tab" data-tab="ebay">
-        <span class="tab-icon">📦</span> eBay
+        <span class="tab-icon">●</span> eBay
       </button>
       <button class="tab" data-tab="levelup">
-        <span class="tab-icon">🎴</span> Level Up
+        <span class="tab-icon">●</span> Level Up
       </button>
       <button class="tab" data-tab="podcast">
-        <span class="tab-icon">🎙️</span> Podcast
+        <span class="tab-icon">●</span> Podcast
       </button>
     </div>
 
@@ -492,18 +569,18 @@
 
       <div class="card">
         <div class="card-header">
-          <span class="card-title">🎛️ Quick Controls</span>
+          <span class="card-title">Quick Controls</span>
         </div>
-        <div style="display:flex;gap:12px;flex-wrap:wrap">
-          <button onclick="restartGateway()" class="control-btn">🔄 Restart Gateway</button>
-          <button onclick="runHealthCheck()" class="control-btn">🩺 Run Health Check</button>
-          <button onclick="refreshData()" class="control-btn">🔃 Refresh All</button>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <button onclick="restartGateway()" class="control-btn">Restart Gateway</button>
+          <button onclick="runHealthCheck()" class="control-btn">Health Check</button>
+          <button onclick="refreshData()" class="control-btn">Refresh</button>
         </div>
       </div>
 
       <div class="card">
         <div class="card-header">
-          <span class="card-title">📊 System Health Details</span>
+          <span class="card-title">System Health Details</span>
         </div>
         <div id="health-details">Loading...</div>
       </div>
@@ -511,6 +588,14 @@
 
     <div class="tab-content" id="tab-schedule">
       <div class="schedule-grid" id="schedule-grid"></div>
+      <div class="card" style="margin-top: 16px;">
+        <div class="card-header">
+          <span class="card-title">📌 Next Up</span>
+        </div>
+        <div id="next-up-list" class="next-up-list">
+          <p class="loading">Loading...</p>
+        </div>
+      </div>
     </div>
 
     <div class="tab-content" id="tab-tasks">
@@ -568,10 +653,13 @@
     // Load tasks
     async function loadTasks() {
       try {
-        const res = await fetch(API_BASE + '/tasks');
+        // Use cron-jobs endpoint for full details
+        const res = await fetch(API_BASE + '/cron-jobs');
         tasks = await res.json();
+        tasks = tasks.filter(t => t.enabled);
         renderTasks();
         renderSchedule();
+        renderNextUp();
         updateStatusFromTasks();
       } catch (e) {
         console.error('Failed to load tasks:', e);
@@ -639,7 +727,7 @@
           <div class="task-status ${task.status === 'error' ? 'error' : task.status === 'ok' ? '' : 'idle'}"></div>
           <span class="task-name">${task.name}</span>
           <span class="task-schedule">${cronToReadable(task.schedule)}</span>
-          <span class="task-next">${task.next_run ? new Date(task.next_run).toLocaleString('en-US', {weekday:'short', hour:'numeric', minute:'2-digit'}) : '-'}</span>
+          <span class="task-next">${task.next_run ? new Date(task.next_run).toLocaleString('en-US', {weekday:'short', hour:'numeric', minute:'2-digit', hour12:true}) : '-'}</span>
         </div>
       `).join('');
     }
@@ -662,10 +750,11 @@
           return;
         }
         
-        // Match cron with days
-        const match = s.match(/cron\s+(\d+)\s+(\d+)\s+\S+\s+\S+\s+([\d,\-]+)/);
+        // Match cron with days - handle "cron 0 7 * * *" format
+        const match = s.match(/cron\s+(\d+)\s+(\d+)\s+(\S+)\s+(\S+)\s+([\d,\-*]+)/);
         if (match) {
-          const dayPart = match[3];
+          const dayPart = match[5];
+          // * means every day
           if (dayPart === '*') {
             days.forEach((_, i) => daySchedules[i].push(task));
           } else if (dayPart.includes('-')) {
@@ -697,16 +786,64 @@
         <div class="schedule-day ${i === today ? 'today' : ''}">
           <div class="day-name">${day}</div>
           ${dayTasks.map(t => {
-            const timeMatch = (t.schedule || '').match(/cron\s+(\d+)\s+(\d+)/);
-            const time = timeMatch ? `${timeMatch[2]}:${timeMatch[1].padStart(2,'0')}` : '';
-            return `<div class="task-pill ${t.name.includes('email') ? 'email' : t.name.includes('Telegram') ? 'telegram' : 'web'}">
-              ${time} ${t.name}
+            // Use cronToReadable for time
+            const readableTime = cronToReadable(t.schedule || '');
+            // Color coding by system
+            let pillClass = 'web';
+            const name = t.name.toLowerCase();
+            if (name.includes('bitcoin') || name.includes('sports') || name.includes('21m') || name.includes('tweet')) {
+              pillClass = 'tm-21m';  // Blue for 21M
+            } else if (name.includes('podcast')) {
+              pillClass = 'tm-podcast';  // Purple for Podcast
+            } else if (name.includes('finance') || name.includes('trending')) {
+              pillClass = 'tm-finance';  // Green for Finance
+            } else if (name.includes('ebay') || name.includes('scan')) {
+              pillClass = 'tm-ebay';  // Orange for eBay
+            } else if (name.includes('lead') || name.includes('generator')) {
+              pillClass = 'tm-lead';  // Yellow for Lead Gen
+            } else if (name.includes('family')) {
+              pillClass = 'tm-family';  // Pink for Family
+            } else if (name.includes('reminder') || name.includes('gateway') || name.includes('pm2') || name.includes('ping')) {
+              pillClass = 'tm-system';  // Gray for system
+            }
+            return `<div class="task-pill ${pillClass}">
+              ${readableTime} ${t.name}
             </div>`;
           }).join('')}
         </div>`;
       }).join('');
 
       document.getElementById('schedule-grid').innerHTML = html;
+    }
+
+    // Render Next Up section
+    function renderNextUp() {
+      const container = document.getElementById('next-up-list');
+      
+      // Sort by next_run and take next 5
+      const upcoming = [...tasks]
+        .filter(t => t.next_run)
+        .sort((a, b) => new Date(a.next_run) - new Date(b.next_run))
+        .slice(0, 5);
+      
+      if (upcoming.length === 0) {
+        container.innerHTML = '<p class="empty">No upcoming tasks</p>';
+        return;
+      }
+      
+      container.innerHTML = upcoming.map(t => {
+        const nextDate = new Date(t.next_run);
+        const timeStr = nextDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+        const dateStr = nextDate.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+        
+        return `
+          <div class="next-up-item">
+            <div class="next-up-time">${dateStr} ${timeStr}</div>
+            <div class="next-up-name">${t.name}</div>
+            <div class="next-up-status ${t.status}">${t.status}</div>
+          </div>
+        `;
+      }).join('');
     }
 
     // Load health

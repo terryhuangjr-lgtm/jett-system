@@ -1,0 +1,13 @@
+{
+  "tickers": [],
+  "keywords": [],
+  "areas": [
+    "Bitcoin & ETFs",
+    "AI & Tech",
+    "Energy",
+    "Real Estate"
+  ],
+  "created": "2026-03-09T20:42:35.682Z",
+  "updated": "2026-03-09T20:42:35.682Z",
+  "note": "Edit this file to add tickers or keywords to track. Run jett-finance-monitor.js --add-ticker=TICKER to add via CLI."
+}

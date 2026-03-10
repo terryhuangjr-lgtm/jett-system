@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "last_updated": "2026-03-09",
+  "last_updated": "2026-03-10",
   "entries": [
     {
       "id": 1,
@@ -1023,6 +1023,20 @@
       "used_dates": [],
       "cooldown_days": 60,
       "id": 68
+    },
+    {
+      "category": "historic_contract",
+      "athlete": "Patrick Mahomes",
+      "sport": "NFL",
+      "year": 2020,
+      "contract_value": 450000000,
+      "btc_price_then": 10000,
+      "btc_allocation": 2250,
+      "verified_fact": "Patrick Mahomes signed a $450 million contract extension in 2020",
+      "source": "Research",
+      "used_dates": [],
+      "cooldown_days": 90,
+      "id": 69
     }
   ]
 }
