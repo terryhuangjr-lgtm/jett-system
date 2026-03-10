@@ -647,8 +647,158 @@
         document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
         tab.classList.add('active');
         document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
+        // Inject CSS into iframes for consistent dark theme
+        if (tab.dataset.tab === 'ebay') injectIframeStyles('ebay-frame');
+        if (tab.dataset.tab === 'levelup') injectIframeStyles('levelup-frame');
+        if (tab.dataset.tab === 'podcast') injectIframeStyles('podcast-frame');
       });
     });
+
+    // Inject CSS into iframes for consistent dark theme
+    function injectIframeStyles(iframeId) {
+      const iframe = document.getElementById(iframeId);
+      if (!iframe) return;
+      const tryInject = () => {
+        try {
+          const doc = iframe.contentDocument || iframe.contentWindow.document;
+          if (doc && doc.body) {
+            applyDarkStyles(doc);
+          }
+        } catch(e) { console.log('iframe error:', e.message); }
+      };
+      if (iframe.contentDocument && iframe.contentDocument.body) {
+        tryInject();
+      } else {
+        iframe.addEventListener('load', tryInject);
+      }
+      setTimeout(tryInject, 1000);
+    }
+
+    function applyDarkStyles(doc) {
+      if (doc.getElementById('mc-injected')) {
+        // Re-apply body styles
+        doc.body.style.cssText = 'background: #0a0a0f !important; color: #fff !important;';
+        return;
+      }
+      const style = doc.createElement('style');
+      style.id = 'mc-injected';
+      style.textContent = `
+        html, body { 
+          background: #0a0a0f !important; 
+          color: #fff !important; 
+          font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+          font-size: 12px !important;
+        }
+        * { 
+          background: transparent !important; 
+          border-color: #2a2a3a !important; 
+          color: #fff !important; 
+        }
+        body { background: #0a0a0f !important; }
+        .container, .container-fluid { 
+          background: transparent !important; 
+          max-width: 100% !important;
+          padding: 12px !important;
+        }
+        .navbar {
+          background: #16161f !important;
+          border: 1px solid #2a2a3a !important;
+          border-radius: 8px !important;
+          padding: 8px 16px !important;
+          margin-bottom: 16px !important;
+        }
+        .navbar-brand {
+          font-size: 14px !important;
+          font-weight: 500 !important;
+          letter-spacing: 1px !important;
+          text-transform: uppercase !important;
+        }
+        .ebay-dashboard, .ebay-header, .scans-grid, .scan-card, .card, .dashboard, .header, .main-nav, .health-status, .running-tasks-grid, .task-card { 
+          background: #16161f !important; 
+          border: 1px solid #2a2a3a !important; 
+          border-radius: 8px !important;
+        }
+        h1, h2, h3, h4, h5, h6 { 
+          color: #fff !important; 
+          font-weight: 500 !important; 
+          font-size: 14px !important;
+        }
+        h1 { 
+          font-size: 14px !important; 
+          text-transform: uppercase !important; 
+          letter-spacing: 1px !important; 
+        }
+        .nav-link, a { 
+          color: #9898a8 !important; 
+          text-decoration: none !important; 
+          font-size: 11px !important;
+          padding: 6px 10px !important;
+        }
+        .nav-link:hover, a:hover { 
+          color: #fff !important; 
+          background: #1e1e2a !important;
+        }
+        .btn, .btn-primary, .btn-secondary, button, .refresh-btn { 
+          background: #2a2a3a !important; 
+          border: 1px solid #3a3a4a !important; 
+          color: #fff !important; 
+          font-size: 11px !important; 
+          padding: 6px 12px !important; 
+          border-radius: 6px !important;
+        }
+        .btn:hover { background: #3a3a4a !important; }
+        input, select, textarea { 
+          background: #16161f !important; 
+          border: 1px solid #2a2a3a !important; 
+          color: #fff !important; 
+          font-size: 12px !important; 
+          padding: 8px !important; 
+          border-radius: 6px !important;
+        }
+        table, .table, thead, tbody, tr, th, td { 
+          background: transparent !important; 
+          border-color: #2a2a3a !important; 
+          color: #ccc !important; 
+          font-size: 11px !important;
+          padding: 8px !important;
+        }
+        .table-striped > tbody > tr:nth-child(odd) { background: #16161f !important; }
+        .card {
+          background: #16161f !important;
+          border: 1px solid #2a2a3a !important;
+          border-radius: 8px !important;
+        }
+        .text-muted, .text-secondary, .subtitle, .scan-day, p, small { 
+          color: #9898a8 !important; 
+          font-size: 11px !important; 
+        }
+        .toggle-switch { background: #2a2a3a !important; }
+        .status-enabled { color: #10b981 !important; }
+        .status-disabled { color: #ef4444 !important; }
+        .toggle-slider { background: #fff !important; }
+        /* Bootstrap overrides */
+        .form-control { background: #16161f !important; border-color: #2a2a3a !important; color: #fff !important; }
+        .form-select { background: #16161f !important; border-color: #2a2a3a !important; color: #fff !important; }
+        .modal-content { background: #16161f !important; border: 1px solid #2a2a3a !important; }
+        .dropdown-menu { background: #16161f !important; border: 1px solid #2a2a3a !important; }
+        .dropdown-item { color: #fff !important; }
+        .dropdown-item:hover { background: #2a2a3a !important; }
+        /* Override Bootstrap background */
+        .bg-dark { background: #0a0a0f !important; }
+      `;
+      doc.head.appendChild(style);
+      // Also apply to body
+      doc.body.style.cssText = 'background: #0a0a0f !important; color: #fff !important;';
+      // Keep styles applied on DOM changes
+      const observer = new MutationObserver(() => {
+        doc.body.style.cssText = 'background: #0a0a0f !important; color: #fff !important;';
+      });
+      observer.observe(doc.body, { childList: true, subtree: true });
+      // Also re-apply periodically
+      setInterval(() => {
+        doc.body.style.cssText = 'background: #0a0a0f !important; color: #fff !important;';
+      }, 2000);
+    }
 
     // Load tasks
     async function loadTasks() {

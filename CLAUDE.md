@@ -190,6 +190,27 @@ clawdbot message send --channel telegram --target "5867308866" --message "text" 
 
 ---
 
+## DASHBOARD AESTHETIC (Mission Control)
+
+**Unified dark theme across all dashboards:**
+- Background: `#0a0a0f`
+- Card background: `#16161f`
+- Border: `#2a2a3a`
+- Accent: `#6366f1` (purple)
+- Font: Inter (via Google Fonts)
+- Tab sizing: 11-14px (small, compact)
+
+**Files updated:**
+- `task-manager/dashboard/mission-control.html` - Main hub with CSS injection for embedded tabs
+- `level_up_cards/templates/base.html` - Level Up Cards styling
+- `podcast-summary/templates/style.css` + `static/style.css` - Podcast styling
+
+**Tabs in Mission Control:**
+- System, Schedule, Tasks (native)
+- eBay, Level Up, Podcast (embedded via iframe with dark theme injection)
+
+---
+
 ## DEPRECATED — DO NOT USE
 
 - automation/21m-claude-generator.js (replaced by v2)
