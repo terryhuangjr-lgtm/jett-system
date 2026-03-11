@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "last_updated": "2026-03-10T14:55:53.863Z",
+  "last_updated": "2026-03-11T17:36:04.108Z",
   "global_filters": {
     "graded_keywords": [
       "psa",
@@ -12,7 +12,10 @@
       "cgs",
       "hga",
       "fan",
-      "lot"
+      "lot",
+      "pack",
+      "hobby",
+      "retail"
     ],
     "exclude_item_types": [
       "psa",
@@ -105,9 +108,9 @@
         ]
       },
       "output_file": "/tmp/kobe-refractors-scan.json",
-      "last_run": "2026-02-19T15:35:30.595Z",
+      "last_run": "2026-03-11T13:00:20.929Z",
       "last_results": {
-        "timestamp": "2026-02-19T15:35:30.595Z",
+        "timestamp": "2026-03-11T13:00:20.929Z",
         "success": true
       },
       "last_updated": "2026-03-03T16:45:13.230Z"

@@ -54,7 +54,9 @@ class TaskServer {
 
     // Serve dashboard files
     if (pathname === '/' || pathname === '/index.html') {
-      return this.serveFile(res, 'dashboard/index.html', 'text/html');
+      // Redirect root to Mission Control
+      res.writeHead(302, { 'Location': '/mission-control' });
+      return res.end();
     } else if (pathname === '/health.html') {
       return this.serveFile(res, 'dashboard/health.html', 'text/html');
     } else if (pathname === '/ebay') {
@@ -67,6 +69,86 @@ class TaskServer {
       return this.serveFile(res, 'dashboard/mission-control.html', 'text/html');
     }
 
+    // Proxy routes for iframes
+    if (pathname.startsWith('/proxy/levelup')) {
+      return this.proxyRequest(res, pathname.replace('/proxy/levelup', '/'), 5000);
+    }
+    if (pathname.startsWith('/proxy/podcast')) {
+      return this.proxyRequest(res, pathname.replace('/proxy/podcast', '/'), 5001);
+    }
+
+    // Direct routes for external services (for remote access)
+    if (pathname === '/levelup' || pathname === '/levelup/') {
+      return this.proxyRequest(res, '/', 5000);
+    }
+    if (pathname === '/podcast' || pathname === '/podcast/') {
+      return this.proxyRequest(res, '/', 5001);
+    }
+
+    // Podcast API proxy
+    if (pathname.startsWith('/podcast-api/')) {
+      const apiPath = '/api' + pathname.replace('/podcast-api', '');
+      // Get request body for POST/PUT/DELETE
+      const method = req.method;
+      let body = null;
+      if (method === 'POST' || method === 'PUT' || method === 'DELETE') {
+        body = await new Promise((resolve) => {
+          let data = '';
+          req.on('data', chunk => data += chunk);
+          req.on('end', () => resolve(data));
+        });
+      }
+      return this.proxyRequest(res, apiPath, 5001, method, body);
+    }
+
+    // Podcast proxy - handle all routes including static files
+    if (pathname.startsWith('/podcast') || pathname.startsWith('/style.css') || pathname.startsWith('/static/')) {
+      const podcastPath = pathname.replace(/^\/podcast/, '') || '/';
+      return this.proxyRequest(res, podcastPath, 5001, req.method);
+    }
+
+    // Level Up Cards proxy - catch-all for all routes on port 5000
+    // Routes without /levelup prefix that need to go to Level Up
+    console.log('PATHNAME:', pathname);
+    const levelUpRoutes = [
+      '/customers', '/orders', '/invoices', '/transactions',
+      '/grading-submissions', '/marketplace', '/listings',
+      '/pending-shipments', '/recent-orders', '/top-customers',
+      '/financial-dashboard', '/portfolio', '/alerts',
+      '/customer-insights', '/inventory-insights', '/saved-searches',
+      '/insights', '/image-stats', '/marketplace-accounts', '/analytics'
+    ];
+    const isLevelUpRoute = levelUpRoutes.some(r => pathname.startsWith(r)) ||
+      pathname.startsWith('/card/') ||
+      pathname.startsWith('/cards/') ||
+      pathname.startsWith('/images/') ||
+      pathname.startsWith('/gallery') ||
+      pathname === '/inventory' ||
+      pathname === '/add' ||
+      pathname === '/reports' ||
+      pathname === '/export' ||
+      pathname === '/seed' ||
+      pathname === '/clear';
+    
+    if (pathname === '/levelup' || pathname === '/levelup/') {
+      return this.proxyRequest(res, '/', 5000);
+    }
+    if (isLevelUpRoute || pathname.startsWith('/uploads/') || pathname.startsWith('/thumbnails/')) {
+      console.log('PROXYING to Level Up:', pathname);
+      // Read body for POST/PUT requests
+      const contentType = req.headers['content-type'] || null;
+      const body = (req.method === 'POST' || req.method === 'PUT' || req.method === 'DELETE') ? await this.readBody(req) : null;
+      return this.proxyRequest(res, pathname, 5000, req.method, body, contentType);
+    }
+
+    // Routes with /levelup prefix
+    if (pathname.startsWith('/levelup')) {
+      const levelupPath = pathname.replace(/^\/levelup/, '') || '/';
+      const contentType = req.headers['content-type'] || null;
+      const body = (req.method === 'POST' || req.method === 'PUT' || req.method === 'DELETE') ? await this.readBody(req) : null;
+      return this.proxyRequest(res, levelupPath, 5000, req.method, body, contentType);
+    }
+
     // API routes
     if (pathname.startsWith('/api')) {
       return this.handleAPI(req, res, pathname, url);
@@ -75,6 +157,52 @@ class TaskServer {
     // 404
     res.writeHead(404);
     res.end('Not Found');
+  }
+
+  async proxyRequest(res, targetUrl, port, method = 'GET', requestBody = null, contentType = null) {
+    return new Promise((resolve) => {
+      try {
+        const http = require('http');
+        const urlObj = new URL(targetUrl, `http://localhost:${port}`);
+        console.log('PROXY target:', targetUrl, 'port:', port, 'path:', urlObj.pathname + urlObj.search);
+        
+        const headers = {
+          'User-Agent': 'TaskServer-Proxy/1.0'
+        };
+        
+        // Only set Content-Type if we have a body or it's explicitly provided
+        if (requestBody) {
+          headers['Content-Type'] = contentType || 'application/json';
+        }
+        
+        const options = {
+          hostname: 'localhost',
+          port: port,
+          path: urlObj.pathname + urlObj.search,
+          method: method,
+          headers: headers
+        };
+        
+        const proxyReq = http.request(options, (proxyRes) => {
+          res.writeHead(proxyRes.statusCode, proxyRes.headers);
+          proxyRes.on('data', chunk => res.write(chunk));
+          proxyRes.on('end', () => res.end());
+        });
+        
+        proxyReq.on('error', (error) => {
+          res.writeHead(502);
+          res.end('Proxy error: ' + error.message);
+        });
+        
+        if (requestBody) {
+          proxyReq.write(requestBody);
+        }
+        proxyReq.end();
+      } catch (error) {
+        res.writeHead(500);
+        res.end('Proxy error: ' + error.message);
+      }
+    });
   }
 
   async handleAPI(req, res, pathname, url) {
@@ -109,7 +237,7 @@ class TaskServer {
 
     // POST /api/tasks
     if (pathname === '/api/tasks' && req.method === 'POST') {
-      const body = await this.readBody(req);
+      const body = await this.readBodyJSON(req);
       const task = await db.createTask(body);
       return this.sendJSON(res, task, 201);
     }
@@ -117,7 +245,7 @@ class TaskServer {
     // PUT /api/tasks/:id
     if (pathname.match(/^\/api\/tasks\/\d+$/) && req.method === 'PUT') {
       const id = parseInt(pathname.split('/')[3]);
-      const body = await this.readBody(req);
+      const body = await this.readBodyJSON(req);
       await db.updateTask(id, body);
       return this.sendJSON(res, { success: true });
     }
@@ -370,7 +498,7 @@ class TaskServer {
     
     if (pathname === '/api/ebay-scans/global-rules' && req.method === 'PUT') {
       try {
-        const data = await this.readBody(req);
+        const data = await this.readBodyJSON(req);
         const content = await fs.readFile(EBAY_CONFIG_FILE, 'utf-8');
         const config = JSON.parse(content);
         
@@ -408,7 +536,7 @@ class TaskServer {
     if (ebayScanMatch && req.method === 'PUT') {
       const day = ebayScanMatch[1];
       try {
-        const data = await this.readBody(req);
+        const data = await this.readBodyJSON(req);
         const content = await fs.readFile(EBAY_CONFIG_FILE, 'utf-8');
         const config = JSON.parse(content);
         if (!config.scans) config.scans = {};
@@ -606,7 +734,7 @@ class TaskServer {
     }
 
     if (pathname === '/api/run-task' && req.method === 'POST') {
-      const body = await this.readBody(req);
+      const body = await this.readBodyJSON(req);
       const { task } = body;
       try {
         const { execSync } = require('child_process');
@@ -641,6 +769,17 @@ class TaskServer {
   }
 
   async readBody(req) {
+    return new Promise((resolve, reject) => {
+      let body = '';
+      req.on('data', chunk => body += chunk);
+      req.on('end', () => {
+        resolve(body);
+      });
+      req.on('error', reject);
+    });
+  }
+
+  async readBodyJSON(req) {
     return new Promise((resolve, reject) => {
       let body = '';
       req.on('data', chunk => body += chunk);
