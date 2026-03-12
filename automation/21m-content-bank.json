@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "last_updated": "2026-03-11",
+  "last_updated": "2026-03-12",
   "entries": [
     {
       "id": 1,
@@ -425,7 +425,9 @@
       "btc_price_then": 55000,
       "verified_fact": "NFL TV rights deals (CBS, Fox, NBC, ESPN, Amazon): $113B over 11 years (2021). BTC was $55,000.",
       "source": "Sports Business Journal",
-      "used_dates": [],
+      "used_dates": [
+        "2026-03-12"
+      ],
       "cooldown_days": 90
     },
     {
@@ -583,7 +585,9 @@
       "btc_price_then": 52000,
       "verified_fact": "El Salvador became the first country to adopt Bitcoin as legal tender in September 2021. President Bukele bought 2,381 BTC for the national treasury.",
       "source": "El Salvador government",
-      "used_dates": [],
+      "used_dates": [
+        "2026-03-12"
+      ],
       "cooldown_days": 60
     },
     {
