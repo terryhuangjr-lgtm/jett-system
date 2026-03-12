@@ -468,9 +468,33 @@ This research finds trending topics in Bitcoin & Sports and adds them to the con
   }
 }
 
+// Email helper
+function sendEmail(subject, body) {
+  try {
+    execSync(`node ${EMAIL_SCRIPT} --to "terryhuangjr@gmail.com" --subject "${subject}" --body "${body.replace(/"/g, '\\"')}"`, { timeout: 30000 });
+    console.log('   📧 Email sent');
+    return true;
+  } catch (e) {
+    console.log('   ⚠ Email send failed:', e.message);
+    return false;
+  }
+}
+
 // Run
 main().catch(error => {
   console.error('❌ Fatal error:', error.message);
   logResearch([], 0, 'error');
+  
+  const errorEmail = `JETT Trending Research - ERROR
+
+Date: ${new Date().toLocaleDateString()}
+
+The trending research script encountered an error:
+
+Error: ${error.message}
+
+Please check the system.`;
+  
+  sendEmail("JETT Trending Research - ERROR", errorEmail);
   process.exit(1);
 });

@@ -1091,4 +1091,32 @@ async function main() {
   }
 }
 
-main().catch(console.error);
+const EMAIL_SCRIPT = path.join(__dirname, '..', 'lib', 'send-email.js');
+
+function sendEmail(subject, body) {
+  try {
+    execSync(`node ${EMAIL_SCRIPT} --to "terryhuangjr@gmail.com" --subject "${subject}" --body "${body.replace(/"/g, '\\"')}"`, { timeout: 30000 });
+    console.log('   📧 Email sent');
+    return true;
+  } catch (e) {
+    console.log('   ⚠ Email send failed:', e.message);
+    return false;
+  }
+}
+
+main().catch(error => {
+  console.error('❌ Fatal error:', error.message);
+  
+  const errorEmail = `JETT Daily Research - ERROR
+
+Date: ${new Date().toLocaleDateString()}
+
+The daily research script encountered an error:
+
+Error: ${error.message}
+
+Please check the system.`;
+  
+  sendEmail("JETT Daily Research - ERROR", errorEmail);
+  process.exit(1);
+});
