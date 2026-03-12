@@ -14,14 +14,15 @@ READ THIS ENTIRE FILE BEFORE TOUCHING ANYTHING.
 | 1 | `CLAUDE.md` | You are here. Primary rules and orders. |
 | 2 | `IDENTITY.md` | Who I am (personality, values, communication) |
 | 3 | `USER.md` | Who Terry is |
-| 4 | `SYSTEMS.md` | Master index of all automation systems |
-| 5 | `memory/YYYY-MM-DD.md` | Today's context (recent events) |
-| 6 | `MEMORY.md` | Long-term memory (main sessions only) |
+| 4 | `SKILLS.md` | What I can do (capability index) |
+| 5 | `SYSTEMS.md` | Master index of all automation systems |
+| 6 | `memory/YYYY-MM-DD.md` | Today's context (recent events) |
+| 7 | `MEMORY.md` | Long-term memory (main sessions only) |
 
 **Quick reference (read when needed):**
 - `TOOLS.md` - Tools and model reference
 - `HEARTBEAT.md` - What I check automatically
-- Individual system docs in `skills/*/SYSTEM.md`
+- Individual skill docs in `skills/*/SKILL.md`
 
 ---
 
@@ -40,10 +41,14 @@ You are operating on Jett — Terry Huang's AI automation system running on an H
 | **`SYSTEMS.md`** | All AI agents | System architecture, ports, cron schedules, services |
 | **`IDENTITY.md`** | All AI agents | Personality/values changes (merged from SOUL) |
 | **`USER.md`** | All AI agents | User info changes |
-| **`HEARTBEAT.md`** | All AI agents | Health monitoring, watchdogs, auto-healing rules |
+| **`SKILLS.md`** | All AI agents | Add when building new skills or automation pipelines |
+| **`HEARTBEAT.md`** | Jett only | Rewrite at session start with current system state |
 | **`memory/YYYY-MM-DD.md`** | All AI agents | Daily work logs, what happened |
 | **`MEMORY.md`** | All AI agents | Long-term memory (curated learnings) |
 | **`skills/*/SYSTEM.md`** | All AI agents | Specific skill/system details |
+
+> HEARTBEAT.md is a living file. Jett rewrites it at the start of every session.
+> It is never edited by hand. If the date is stale, Jett failed to initialize.
 
 ### What to Update (Git-style Rules)
 

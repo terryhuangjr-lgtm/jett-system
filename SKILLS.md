@@ -1,0 +1,239 @@
+# SKILLS.md - What Jett Can Do
+
+Last Updated: 2026-03-12
+
+This file is Jett's capability index. Read it when you need to know what tools and skills are available, or when deciding how to approach a task.
+
+**Skills repo:** `/home/clawd/skills/` (git: jett-skills)
+**Automation scripts:** `/home/clawd/clawd/automation/`
+**Quick reference for tools/APIs:** See `TOOLS.md`
+
+---
+
+## SKILLS (Active — `/home/clawd/skills/`)
+
+These are self-contained capability modules. Each has a `SKILL.md` with full details.
+
+---
+
+### 1. 21M Sports Content Generation
+**Location:** `/home/clawd/skills/21m-sports-generation/`
+**Read:** `SKILL.md` before generating any content
+**Purpose:** Generate verified Bitcoin/sports tweets for @21MSports
+
+**What it does:**
+- Pulls from content bank (58+ verified entries)
+- Generates tweet using Sonnet 4.5 (hardcoded — do NOT change)
+- Validates facts before output
+- Tracks 90-day sports / 60-day bitcoin cooldowns
+
+**Invoke via:**
+```bash
+node /home/clawd/clawd/automation/21m-daily-generator-v2.js
+```
+
+**⚠️ ZERO TOLERANCE FOR UNVERIFIED CONTENT.** Always run validator:
+```bash
+node /home/clawd/clawd/automation/21m-sports-validator.js
+```
+
+**Cron:** 7:00 AM (Bitcoin Tweet), 7:30 AM (Sports Tweet)
+
+---
+
+### 2. eBay Scanner
+**Location:** `/home/clawd/skills/ebay-scan/`
+**Read:** `SKILL.md` for filter config details
+**Purpose:** Scan eBay for underpriced sports cards for Level Up Cards business
+
+**What it does:**
+- Searches eBay for raw cards matching config
+- Filters out graded cards (PSA/BGS in title)
+- Emails results to terryhuangjr@gmail.com
+- Rotates through day-specific search configs
+
+**Invoke via:**
+```bash
+cd /home/clawd/clawd/ebay-scanner && node run-from-config.js [monday|tuesday|wednesday|thursday|friday|saturday|sunday]
+```
+
+**Config:** `/home/clawd/clawd/task-manager/ebay-scans-config.json`
+**Cron:** 9:00 AM daily (day-specific rotation Mon–Sun)
+
+---
+
+### 3. Notion Assistant
+**Location:** `/home/clawd/skills/notion-assistant/`
+**Read:** `SKILL.md`, `ACTIVATION.md`
+**Purpose:** Morning family brief, reminders, calendar, meal planning
+
+**What it does:**
+- Morning brief: pulls Google Calendar events + Notion tasks/reminders → sends to Telegram
+- Reminder checker: scans Notion for due reminders → Telegram DM
+- Meal planning, restaurant tracking, cost tracking (available but not in cron)
+
+**Primary scripts:**
+- `morning_brief.py` — daily 8 AM family brief
+- `check_reminders.py` — every 5 min reminder checker
+- `gcal_client.py` — Google Calendar integration (GWS)
+- `notion_client.py` — Notion API (token hardcoded, gitignored — back up manually)
+
+**Invoke via:**
+```bash
+cd /home/clawd/skills/notion-assistant && python3 morning_brief.py
+cd /home/clawd/skills/notion-assistant && python3 check_reminders.py
+```
+
+**Cron:** 8:00 AM (Morning Brief), */5 (Reminder Checker)
+
+---
+
+### 4. Podcast Summary
+**Location:** `/home/clawd/skills/podcast-summary/`
+**Read:** `SKILL.md`, `SYSTEM.md`
+**Purpose:** Transcribe and summarize podcasts, email results to Terry
+
+**What it does:**
+- Accepts direct MP3 URLs (preferred), RSS feeds
+- Transcribes with Whisper (tiny model)
+- Summarizes with Grok 4.1 Fast
+- Emails summary to terryhuangjr@gmail.com
+- Dashboard at http://localhost:5001
+
+**How to add a podcast:**
+```bash
+cd /home/clawd/skills/podcast-summary
+python3 manage_queue.py add "MP3_URL" "Episode Title - Guest Name"
+```
+
+**Invoke via:**
+```bash
+cd /home/clawd/skills/podcast-summary && python3 process_queue_nightly.py
+```
+
+**Cron:** 4:00 AM daily (processes one from queue)
+**Cleanup:** Sundays — audio files older than 7 days deleted
+
+---
+
+### 5. Sports Betting
+**Location:** `/home/clawd/skills/sports-betting/`
+**Read:** `SKILL.md`
+**Purpose:** Daily sports betting scout and pick recommendations
+
+**What it does:**
+- Scout (10 AM): Finds today's best betting opportunities
+- Pick (4 PM): Final recommendation with reasoning
+- Sends results via Telegram DM
+
+**Primary scripts:**
+```bash
+cd /home/clawd/clawd && python3 sports_betting/orchestrator.py scout
+cd /home/clawd/clawd && python3 sports_betting/orchestrator.py pick
+```
+
+**Notifier:** `skills/sports-betting/notifiers/clawdbot_notifier.py` (Telegram)
+**⚠️ ESPN scraping blocked by Cloudflare 403 — monitor reliability**
+
+**Cron:** 10:00 AM (Scout), 4:00 PM (Pick)
+
+---
+
+## AUTOMATION PIPELINES (`/home/clawd/clawd/automation/`)
+
+These are scripts, not modular skills — they run via cron or manually.
+
+---
+
+### 6. Research System
+**Scripts:**
+- `jett-trending-research.js` — Trending topics via Grok + Brave Search
+- `jett-daily-research.js` — Deep research via Spotrac (historic contracts)
+- `brave-search.js` — Brave Search API wrapper
+- `jett-scraper.py` — Spotrac data fetcher
+
+**Output:** Adds verified entries to content bank (SQLite DB)
+**Cron:** Mon/Thu 3 AM (Trending), Tue/Fri 3 AM (Deep)
+
+---
+
+### 7. Finance Monitor
+**Script:** `jett-finance-monitor.js`
+**Purpose:** Track BTC, ETFs, AI/tech, energy, real estate news
+**Output:** Telegram DM with relevant headlines + price moves
+**Watchlist:** `memory/jett-finance-watchlist.json`
+**Cron:** 6 AM, 12 PM, 6 PM daily
+
+---
+
+### 8. Lead Generator (Level Up Digital)
+**Location:** `/home/clawd/clawd/lead-generator/lead_generator.py`
+**Purpose:** Find local business leads for Level Up Digital outreach
+
+**What it does:**
+- Searches Google Places API for Nassau County businesses
+- Filters: 5–150 reviews, 4.0+ rating, no/outdated website
+- Brave Search for social media (FB/IG) on qualified leads
+- Writes to Google Sheets (shared with Terry)
+
+**Invoke via:**
+```bash
+cd /home/clawd/clawd/lead-generator && python3 lead_generator.py [tier] [num_towns]
+```
+
+**State file:** `/home/clawd/.lead-gen-state.json` (tracks rotation)
+**Spreadsheet:** https://docs.google.com/spreadsheets/d/1Dl0VF4yASbUSXcuyS1km-Uo1fa6fZVfAYlRFl7h38gc
+**Cron:** Mon 6 AM (Tier 1: pressure washing, painter, handyman), Thu 6 AM (Tier 2: landscaper, lawn care, roofing)
+
+---
+
+## GWS CAPABILITIES (Google Workspace)
+
+Jett has full GWS access via `gws` CLI as jett.theassistant@gmail.com.
+
+| Capability | Command |
+|------------|---------|
+| Send email | `node /home/clawd/clawd/lib/send-email.js --to "x" --subject "x" --body "x"` |
+| Read email | `gws gmail users messages list --params '{"q":"..."}'` |
+| Read calendar | `gws calendar events list --params '{"calendarId":"primary",...}'` |
+| Write to Sheets | `gws sheets spreadsheets values append ...` |
+| Read Drive | `gws drive files list` |
+
+**All output emails go to:** terryhuangjr@gmail.com
+**Sent from:** jett.theassistant@gmail.com
+**Credentials:** `~/.config/gws/credentials.enc`
+
+---
+
+## CAPABILITY DECISION GUIDE
+
+```
+Need to generate a tweet?        → 21m-sports-generation skill
+Need to scan eBay?               → ebay-scan skill
+Need to send a message to Terry? → Telegram (clawdbot) — see TOOLS.md
+Need to send an email?           → lib/send-email.js (GWS Gmail)
+Need to check the calendar?      → gws calendar OR notion-assistant/gcal_client.py
+Need to summarize a podcast?     → podcast-summary skill
+Need to find leads?              → lead-generator/lead_generator.py
+Need to research a sports topic? → automation/jett-daily-research.js
+Need to check BTC/finance news?  → automation/jett-finance-monitor.js
+Need to log something?           → Write to memory/YYYY-MM-DD.md
+Need to add to content bank?     → node automation/add-to-content-bank.js
+```
+
+---
+
+## ADDING NEW SKILLS
+
+When a new capability is built, do ALL of the following:
+
+1. Create folder at `/home/clawd/skills/[skill-name]/`
+2. Write a `SKILL.md` with: purpose, what it does, how to invoke, config location, cron schedule if any
+3. Add entry to this file (SKILLS.md) under the appropriate section
+4. Add to `SYSTEMS.md` skills table
+5. Add cron job via clawdbot if needed
+6. Commit both repos:
+   ```bash
+   cd /home/clawd/skills && git add . && git commit -m "feat: add [skill-name] skill" && git push
+   cd /home/clawd/clawd && git add SKILLS.md SYSTEMS.md && git commit -m "docs: add [skill-name] to skill index" && git push
+   ```
