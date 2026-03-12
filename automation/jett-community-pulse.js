@@ -14,6 +14,7 @@
  */
 
 const https = require('https');
+const zlib = require('zlib');
 const fs = require('fs');
 const path = require('path');
 const { execFileSync } = require('child_process');
@@ -45,14 +46,40 @@ function loadXaiKey() {
 }
 
 // ─── HELPERS ───────────────────────────────────────────────────────────────
+function decompress(data, encoding) {
+  if (encoding === 'gzip') {
+    return zlib.gunzipSync(data);
+  } else if (encoding === 'deflate') {
+    return zlib.inflateSync(data);
+  } else if (encoding === 'br') {
+    return zlib.brotliDecompressSync(data);
+  }
+  return data;
+}
+
 function httpsGet(url, headers) {
   return new Promise((resolve, reject) => {
     const req = https.get(url, { headers }, (res) => {
-      let data = '';
-      res.on('data', chunk => data += chunk);
+      const encoding = res.headers['content-encoding'];
+      let data = Buffer.alloc(0);
+      
+      res.on('data', chunk => {
+        data = Buffer.concat([data, chunk]);
+      });
+      
       res.on('end', () => {
-        try { resolve(JSON.parse(data)); }
-        catch (e) { reject(new Error(`JSON parse failed: ${data.slice(0, 200)}`)); }
+        try {
+          // Decompress if needed
+          if (encoding && ['gzip', 'deflate', 'br'].includes(encoding)) {
+            data = decompress(data, encoding);
+          }
+          const text = data.toString('utf8');
+          resolve(JSON.parse(text));
+        } catch (e) {
+          const text = data.toString('utf8').slice(0, 500);
+          console.error('JSON parse failed, raw response:', text);
+          reject(new Error(`JSON parse failed: ${text}`));
+        }
       });
     });
     req.on('error', reject);
@@ -71,11 +98,26 @@ function httpsPost(url, headers, body) {
       headers: { ...headers, 'Content-Length': Buffer.byteLength(bodyStr) }
     };
     const req = https.request(options, (res) => {
-      let data = '';
-      res.on('data', chunk => data += chunk);
+      const encoding = res.headers['content-encoding'];
+      let data = Buffer.alloc(0);
+      
+      res.on('data', chunk => {
+        data = Buffer.concat([data, chunk]);
+      });
+      
       res.on('end', () => {
-        try { resolve(JSON.parse(data)); }
-        catch (e) { reject(new Error(`JSON parse failed: ${data.slice(0, 200)}`)); }
+        try {
+          // Decompress if needed
+          if (encoding && ['gzip', 'deflate', 'br'].includes(encoding)) {
+            data = decompress(data, encoding);
+          }
+          const text = data.toString('utf8');
+          resolve(JSON.parse(text));
+        } catch (e) {
+          const text = data.toString('utf8').slice(0, 500);
+          console.error('JSON parse failed, raw response:', text);
+          reject(new Error(`JSON parse failed: ${text}`));
+        }
       });
     });
     req.on('error', reject);
@@ -111,31 +153,51 @@ function saveReport(topic, content) {
   }
 }
 
+function optimizeQuery(query) {
+  // Split long queries, take first 4-5 meaningful words
+  const words = query.split(/\s+/).filter(w => w.length > 2);
+  if (words.length > 5) {
+    return words.slice(0, 5).join(' ');
+  }
+  return query;
+}
+
 // ─── BRAVE SEARCH ──────────────────────────────────────────────────────────
 async function braveSearch(query, freshness = 'pm') {
+  // Optimize long queries
+  const optimizedQuery = optimizeQuery(query);
+  if (optimizedQuery !== query) {
+    console.log(`  Query optimized: "${query}" → "${optimizedQuery}"`);
+  }
+  
   // freshness: pd=past day, pw=past week, pm=past month
   const params = new URLSearchParams({
-    q: query,
+    q: optimizedQuery,
     count: '8',
     freshness,
     text_decorations: '0',
     search_lang: 'en'
   });
   const url = `${BRAVE_SEARCH_URL}?${params}`;
-  const result = await httpsGet(url, {
-    'Accept': 'application/json',
-    'Accept-Encoding': 'gzip',
-    'X-Subscription-Token': BRAVE_API_KEY
-  });
   
-  if (!result.web || !result.web.results) return [];
-  
-  return result.web.results.slice(0, 8).map(r => ({
-    title: r.title || '',
-    url: r.url || '',
-    description: r.description || '',
-    age: r.age || ''
-  }));
+  try {
+    const result = await httpsGet(url, {
+      'Accept': 'application/json',
+      'X-Subscription-Token': BRAVE_API_KEY
+    });
+    
+    if (!result.web || !result.web.results) return [];
+    
+    return result.web.results.slice(0, 8).map(r => ({
+      title: r.title || '',
+      url: r.url || '',
+      description: r.description || '',
+      age: r.age || ''
+    }));
+  } catch (e) {
+    console.error(`  Brave search failed for "${optimizedQuery}":`, e.message);
+    return [];
+  }
 }
 
 // ─── GROK SYNTHESIS ────────────────────────────────────────────────────────
@@ -221,19 +283,34 @@ async function main() {
   console.log(`\n🔍 Pulse: "${topic}"`);
   console.log('Searching Reddit...');
 
-  // Two Brave searches: Reddit + X
+  // Two Brave searches: Reddit + X (graceful fail per source)
   const [redditResults, xResults] = await Promise.all([
-    braveSearch(`"${topic}" site:reddit.com`, 'pm').catch(e => {
-      console.error('Reddit search failed:', e.message);
-      return [];
-    }),
-    braveSearch(`"${topic}" site:x.com OR site:twitter.com`, 'pm').catch(e => {
-      console.error('X search failed:', e.message);
-      return [];
-    })
+    braveSearch(`site:reddit.com ${topic}`, 'pm'),
+    braveSearch(`site:x.com OR site:twitter.com ${topic}`, 'pm')
   ]);
 
   console.log(`Found: ${redditResults.length} Reddit + ${xResults.length} X results`);
+  
+  // Check if we got any results
+  if (redditResults.length === 0 && xResults.length === 0) {
+    const noResultsMsg = `🔍 PULSE: ${topic.toUpperCase()}
+${new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+
+⚠️ No recent Reddit or X results found for this topic.
+
+💡 TERRY'S ANGLE:
+Try a different query or check back later. Common issues:
+- Topic too niche for Reddit/X discussion
+- Try fewer words (e.g., "NIL football" instead of "NIL deals college football")
+- Broader terms tend to yield more results`;
+
+    console.log('\n' + noResultsMsg);
+    saveReport(topic, `# Community Pulse: ${topic}\n\n${noResultsMsg}`);
+    sendTelegram(noResultsMsg);
+    console.log('\n✅ Sent to Telegram');
+    return;
+  }
+
   console.log('Synthesizing with Grok...');
 
   const summary = await synthesize(topic, redditResults, xResults);
