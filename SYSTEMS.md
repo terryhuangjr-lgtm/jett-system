@@ -1,6 +1,6 @@
 # Jett System Architecture
 
-Last Updated: 2026-03-06
+Last Updated: 2026-03-11
 
 ---
 
@@ -95,6 +95,42 @@ Last Updated: 2026-03-06
 | Models | nomic-embed-text (embeddings), minimax-m2.5:cloud |
 
 **Note:** Ollama runs for memory search embeddings + minimax. All other tasks use Grok/Haiku.
+
+---
+
+### 4. Remote Access (Cloudflare Tunnel)
+
+| Attribute | Value |
+|-----------|-------|
+| Domain | jettmissioncontrol.com |
+| Tunnel | Cloudflare (via `cloudflared`) |
+| Public Port | 3000 → jettmissioncontrol.com |
+
+**How it works:**
+- Task Manager Dashboard (port 3000) is exposed via Cloudflare tunnel
+- All Level Up Cards and Podcast routes are proxied through port 3000
+- Access remotely at: https://jettmissioncontrol.com
+
+**Proxied Routes (via task-manager-server):**
+
+| Path | Destination | Description |
+|------|-------------|-------------|
+| `/` | Dashboard UI | Main mission control |
+| `/levelup/*` | Port 5000 | Level Up Cards app |
+| `/inventory` | Port 5000 | Level Up inventory |
+| `/customers` | Port 5000 | Level Up customers |
+| `/orders` | Port 5000 | Level Up orders |
+| `/invoices` | Port 5000 | Level Up invoices |
+| `/marketplace` | Port 5000 | Level Up marketplace |
+| `/analytics` | Port 5000 | Level Up analytics |
+| `/card/*` | Port 5000 | Card detail pages |
+| `/podcast` | Port 5001 | Podcast summarizer |
+
+**Local ports:**
+| Port | Service |
+|------|---------|
+| 5000 | Level Up Cards (Python/Flask) |
+| 5001 | Podcast Summarizer (Python/Flask) |
 
 ---
 

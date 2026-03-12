@@ -23,6 +23,8 @@ const https = require('https');
 const { execSync } = require('child_process');
 const db = require('./db-bridge.js');
 
+const EMAIL_SCRIPT = path.join(__dirname, '..', 'lib', 'send-email.js');
+
 const MEMORY_DIR = path.join(require('os').homedir(), 'clawd', 'memory');
 const RESEARCH_LOG = path.join(MEMORY_DIR, 'daily-research-log.json');
 
@@ -439,6 +441,31 @@ async function main() {
   console.log(`   Relevant: ${relevantTopics.length}`);
   console.log(`   Added to DB: ${added}`);
   console.log('');
+
+  // Send email with results
+  const researchDetails = researchResults.map(r => 
+    `• ${r.topic}\n  Content: ${r.content.substring(0, 200)}...\n  Sources: ${r.sources}`
+  ).join('\n\n');
+
+  const emailBody = `JETT Trending Research Complete
+================================
+
+Date: ${new Date().toLocaleDateString()}
+Topics found: ${rawTopics.length}
+Relevant topics: ${relevantTopics.length}
+Added to content bank: ${added}
+
+${researchDetails || 'No new content added this run.'}
+
+---
+This research finds trending topics in Bitcoin & Sports and adds them to the content bank for tweet generation.`;
+
+  try {
+    execSync(`node ${EMAIL_SCRIPT} --to "terryhuangjr@gmail.com" --subject "JETT Trending Research: ${added} entries added" --body "${emailBody.replace(/"/g, '\\"')}"`, { timeout: 30000 });
+    console.log('   📧 Email sent with results');
+  } catch (e) {
+    console.log('   ⚠ Email send failed:', e.message);
+  }
 }
 
 // Run
