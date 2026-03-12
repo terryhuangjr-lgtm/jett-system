@@ -201,6 +201,14 @@ Last Updated: 2026-03-11
 - `automation/jett-scraper.py` - Spotrac data fetcher
 - `automation/brave-search.js` - Web search for research
 
+**On-Demand:**
+- `automation/jett-community-pulse.js` - Community intelligence on any topic (Reddit + X)
+
+**Usage:**
+```bash
+node automation/jett-community-pulse.js "NIL deals college football"
+```
+
 ---
 
 ### 3. eBay Scanner

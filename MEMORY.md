@@ -87,6 +87,9 @@ Help with automation, find opportunities, handle tech/code, stay on top of sport
 | 4:00 PM | Sports Betting Pick | Telegram DM |
 | 6:00 PM | Finance Monitor | Telegram DM |
 
+**On-Demand (manual trigger):**
+- Community Pulse | `node automation/jett-community-pulse.js "topic"` | Telegram DM + ~/pulse-reports/
+
 ## Known Issues and Fixes Applied
 
 - **MTU fix:** WSL2 needs `sudo ip link set dev eth0 mtu 1350` — runs on startup via self-heal.sh
