@@ -187,6 +187,29 @@ cd /home/clawd/clawd/lead-generator && python3 lead_generator.py [tier] [num_tow
 
 ---
 
+### 9. Community Pulse
+**Script:** `jett-community-pulse.js`
+**Purpose:** On-demand community intelligence - Reddit + X search with Grok synthesis
+
+**What it does:**
+- Searches Reddit and X/Twitter via Brave Search
+- Synthesizes results into a pulse report with Grok
+- Sends to Terry via Telegram DM
+- Saves .md report to `~/pulse-reports/`
+
+**Invoke via:**
+```bash
+cd /home/clawd/clawd/automation && node jett-community-pulse.js "NIL deals college football"
+```
+
+**Examples:**
+- `node jett-community-pulse.js "PSA 10 sports card market"`
+- `node jett-community-pulse.js "AI automation real estate agents"`
+
+**Manual use only** - not on cron
+
+---
+
 ## GWS CAPABILITIES (Google Workspace)
 
 Jett has full GWS access via `gws` CLI as jett.theassistant@gmail.com.
