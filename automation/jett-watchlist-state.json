@@ -1,21 +1,22 @@
 {
   "cooldowns": {
     "OPEN_alert": 1773396072266,
-    "ONDS_alert": 1773396077730
+    "ONDS_alert": 1773396077730,
+    "CIFR_alert": 1773416736863
   },
   "seenNews": {},
   "lastPrices": {
-    "IREN": 41.37,
-    "CIFR": 13.71,
-    "WULF": 14.67,
-    "MSTR": 137.34,
-    "IBIT": 39.95,
-    "TSLA": 395.01,
-    "OPEN": 4.84,
-    "ASST": 8.83,
-    "ONDS": 10.33,
-    "RDW": 9.48,
-    "RR": 2.34,
-    "BTC-USD": 72036.83
+    "IREN": 41.67,
+    "CIFR": 14.37,
+    "WULF": 14.865,
+    "MSTR": 139.12,
+    "IBIT": 40.295,
+    "TSLA": 392.864,
+    "OPEN": 4.825,
+    "ASST": 9.27,
+    "ONDS": 10.065,
+    "RDW": 9.375,
+    "RR": 2.285,
+    "BTC-USD": 70943.71
   }
 }
