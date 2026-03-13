@@ -316,7 +316,21 @@ node automation/jett-community-pulse.js "NIL deals college football"
 
 ---
 
-### 5. Morning Family Brief
+### 5. Jett Watchlist Monitor
+
+```
+┌──────────────────┐     ┌──────────────────┐     ┌──────────────────┐
+│ Cron every 15min │────▶│ jett-watchlist-  │────▶│ Telegram Alerts  │
+│ 6AM-8PM M-F      │     │ monitor.js       │     │ (Tiered)         │
+└──────────────────┘     └──────────────────┘     └──────────────────┘
+```
+
+**Scripts:**
+- `automation/jett-watchlist-monitor.js` — Watchlist polling engine, fetches Yahoo Finance price/volume data + NewsAPI headlines for all tickers, fires tiered Telegram alerts (🟡 Watch, 🔴 Alert, 🚨 Urgent) on threshold crossings
+- `automation/jett-watchlist-config.yaml` — Watchlist config: tickers, alert thresholds, cooldowns, global news keywords. Edit this file to add/remove tickers.
+- `automation/jett-watchlist-state.json` — Auto-created at runtime, tracks cooldowns and seen news to prevent duplicate alerts
+
+### 6. Morning Family Brief
 
 ```
 ┌──────────────────┐     ┌──────────────────┐     ┌──────────────────┐
