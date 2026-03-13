@@ -341,7 +341,7 @@ HTML_TEMPLATE = '''
         
         function deleteTicker(ticker) {
             if (!confirm('Delete ' + ticker + '?')) return;
-            fetch('/api/ticker/' + ticker, { method: 'DELETE' })
+            fetch('./api/ticker/' + ticker, { method: 'DELETE' })
                 .then(r => r.json())
                 .then(d => {
                     if (d.success) { showToast('Ticker deleted'); location.reload(); }
@@ -366,7 +366,7 @@ HTML_TEMPLATE = '''
                 },
                 cooldown_minutes: parseInt(document.getElementById('cooldown_minutes').value) || 90
             };
-            fetch('/api/ticker' + (editTicker ? '/' + editTicker : ''), {
+            fetch('./api/ticker' + (editTicker ? '/' + editTicker : ''), {
                 method: editTicker ? 'PUT' : 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data)

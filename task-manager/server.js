@@ -76,6 +76,9 @@ class TaskServer {
     if (pathname.startsWith('/proxy/podcast')) {
       return this.proxyRequest(res, pathname.replace('/proxy/podcast', '/'), 5001);
     }
+    if (pathname.startsWith('/proxy/watchlist')) {
+      return this.proxyRequest(res, pathname.replace('/proxy/watchlist', '/'), 5002);
+    }
 
     // Direct routes for external services (for remote access)
     if (pathname === '/levelup' || pathname === '/levelup/') {
@@ -83,6 +86,46 @@ class TaskServer {
     }
     if (pathname === '/podcast' || pathname === '/podcast/') {
       return this.proxyRequest(res, '/', 5001);
+    }
+    if (pathname === '/watchlist' || pathname === '/watchlist/') {
+      return this.proxyRequest(res, '/', 5002);
+    }
+
+    // Watchlist API proxy
+    if (pathname.startsWith('/watchlist-api/')) {
+      const apiPath = '/api' + pathname.replace('/watchlist-api', '');
+      const method = req.method;
+      let body = null;
+      if (method === 'POST' || method === 'PUT' || method === 'DELETE') {
+        body = await new Promise((resolve) => {
+          let data = '';
+          req.on('data', chunk => data += chunk);
+          req.on('end', () => resolve(data));
+        });
+      }
+      return this.proxyRequest(res, apiPath, 5002, method, body);
+    }
+
+    // Also handle /api/ticker when accessed through /watchlist
+    if (pathname === '/api/ticker' || pathname.startsWith('/api/ticker/')) {
+      const tickerPath = pathname.replace('/api', '');
+      const method = req.method;
+      let body = null;
+      if (method === 'POST' || method === 'PUT' || method === 'DELETE') {
+        body = await new Promise((resolve) => {
+          let data = '';
+          req.on('data', chunk => data += chunk);
+          req.on('end', () => resolve(data));
+        });
+      }
+      // Check if it's a watchlist request (has proper headers or from same origin)
+      return this.proxyRequest(res, tickerPath, 5002, method, body);
+    }
+
+    // Watchlist proxy - handle all routes
+    if (pathname.startsWith('/watchlist') || pathname.startsWith('/static') && pathname.includes('watchlist')) {
+      const watchlistPath = pathname.replace(/^\/watchlist/, '') || '/';
+      return this.proxyRequest(res, watchlistPath, 5002, req.method);
     }
 
     // Podcast API proxy
