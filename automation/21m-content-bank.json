@@ -61,7 +61,9 @@
       "btc_allocation": 64,
       "verified_fact": "Josh Allen signed his $5.1M rookie deal in 2018 when BTC was $8,000. 10% allocation = 64 BTC.",
       "source": "Spotrac",
-      "used_dates": [],
+      "used_dates": [
+        "2026-03-13"
+      ],
       "cooldown_days": 90
     },
     {
