@@ -1032,7 +1032,9 @@
       "btc_price_then": 0,
       "verified_fact": "In 2008, Zimbabwe's monthly inflation rate peaked at 79,600,000,000% in November",
       "source": "Research",
-      "used_dates": [],
+      "used_dates": [
+        "2026-03-13"
+      ],
       "cooldown_days": 60,
       "id": 68
     },
