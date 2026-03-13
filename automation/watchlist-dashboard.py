@@ -458,7 +458,8 @@ def update_ticker(old_ticker):
                 if alerts.get(key):
                     ticker_data['alerts'][key] = alerts[key]
             
-            tickers.append(ticker_data)
+            # Replace the existing ticker (not append!)
+            tickers[i] = ticker_data
             config['watchlist'] = tickers
             
             if save_config(config):
