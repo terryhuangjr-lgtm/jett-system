@@ -190,6 +190,8 @@ clawdbot message send --channel telegram --target "5867308866" --message "text" 
 | skills/notion-assistant/morning_brief.py | Family brief |
 | skills/notion-assistant/notion_client.py | Notion API client |
 | ebay-scanner/run-from-config.js | eBay scanner |
+| automation/watchlist-dashboard.py | Watchlist dashboard (port 5002) |
+| automation/jett-watchlist-monitor.js | Watchlist price/news monitor |
 
 **Note:** notion-assistant lives at /home/clawd/skills/notion-assistant/ NOT /home/clawd/clawd/skills/
 
@@ -363,12 +365,16 @@ Systemd is not available in WSL2 by default. Using crontab for auto-start instea
 @reboot sleep 30 && cd /home/clawd/clawd && pm2 resurrect >> /tmp/pm2.log 2>&1
 @reboot ollama serve
 @reboot cd /home/clawd/level_up_cards && python3 app.py >> /home/clawd/level_up_cards/logs/server.log 2>&1
+@reboot cd /home/clawd/clawd/automation && python3 watchlist-dashboard.py >> /home/clawd/clawd/automation/logs/watchlist-dashboard.log 2>&1
 
 # Health check every 2 hours - restart gateway if down (NO --force, just let it restart naturally)
 0 */2 * * * pgrep -f 'openclaw-gateway' > /dev/null || /home/clawd/scripts/start-gateway.sh
 
 # Health check every 5 min - restart Level Up Cards if down
 */5 * * * * curl -s http://localhost:5000 > /dev/null || cd /home/clawd/level_up_cards && python3 app.py >> /home/clawd/level_up_cards/logs/server.log 2>&1
+
+# Health check every 5 min - restart Watchlist dashboard if down
+*/5 * * * * curl -s http://localhost:5002 > /dev/null || cd /home/clawd/clawd/automation && python3 watchlist-dashboard.py >> /home/clawd/clawd/automation/logs/watchlist-dashboard.log 2>&1
 
 # Daily config backup (1am)
 0 1 * * * cp ~/.openclaw/openclaw.json ~/.openclaw/openclaw.json.daily-$(date +\%Y\%m\%d).bak

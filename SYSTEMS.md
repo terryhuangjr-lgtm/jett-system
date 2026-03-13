@@ -125,12 +125,14 @@ Last Updated: 2026-03-11
 | `/analytics` | Port 5000 | Level Up analytics |
 | `/card/*` | Port 5000 | Card detail pages |
 | `/podcast` | Port 5001 | Podcast summarizer |
+| `/watchlist` | Port 5002 | Watchlist dashboard |
 
 **Local ports:**
 | Port | Service |
 |------|---------|
 | 5000 | Level Up Cards (Python/Flask) |
 | 5001 | Podcast Summarizer (Python/Flask) |
+| 5002 | Watchlist Dashboard (Python/Flask) |
 
 ---
 
@@ -329,6 +331,8 @@ node automation/jett-community-pulse.js "NIL deals college football"
 - `automation/jett-watchlist-monitor.js` — Watchlist polling engine, fetches Yahoo Finance price/volume data + NewsAPI headlines for all tickers, fires tiered Telegram alerts (🟡 Watch, 🔴 Alert, 🚨 Urgent) on threshold crossings
 - `automation/jett-watchlist-config.yaml` — Watchlist config: tickers, alert thresholds, cooldowns, global news keywords. Edit this file to add/remove tickers.
 - `automation/jett-watchlist-state.json` — Auto-created at runtime, tracks cooldowns and seen news to prevent duplicate alerts
+- `automation/watchlist-dashboard.py` — Flask web dashboard (port 5002) for managing tickers. Access via Mission Control > Watchlist tab or directly at `/watchlist`
+- **Dashboard:** http://localhost:5002 (local) or http://jettmissioncontrol.com/watchlist (tunnel)
 
 ### 6. Morning Family Brief
 
@@ -429,6 +433,7 @@ crontab -l                  # View watchdog cron
   - Gateway (openclaw-gateway)
   - PM2 dashboard (task-manager-server)
   - Ollama (local LLM)
+  - Watchlist Dashboard (port 5002)
 - Fixes MTU on eth0
 - Emails Terry via Gmail if services fail to restart
 - Log: `/tmp/self-heal.log`
