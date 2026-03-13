@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "last_updated": "2026-03-12",
+  "last_updated": "2026-03-13",
   "entries": [
     {
       "id": 1,
@@ -1049,6 +1049,20 @@
       "used_dates": [],
       "cooldown_days": 90,
       "id": 69
+    },
+    {
+      "category": "bitcoin_education",
+      "athlete": null,
+      "deal": "Elon Musk Bitcoin Tesla purchase 2021",
+      "sport": "Bitcoin",
+      "year": 2021,
+      "contract_value": null,
+      "btc_price_then": 0,
+      "verified_fact": "In 2021, Tesla purchased $1.5 billion worth of Bitcoin",
+      "source": "Research",
+      "used_dates": [],
+      "cooldown_days": 60,
+      "id": 70
     }
   ]
 }

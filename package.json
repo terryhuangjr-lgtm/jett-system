@@ -3,6 +3,7 @@
     "axios": "^1.13.4",
     "cheerio": "^1.2.0",
     "ebay-node-api": "^2.9.0",
+    "js-yaml": "^4.1.1",
     "pdf-parse": "^2.4.5",
     "pdf2json": "^4.0.2",
     "puppeteer": "^22.15.0",
