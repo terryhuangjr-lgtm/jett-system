@@ -1,0 +1,196 @@
+# Jett Watchlist Config
+# Edit this file to add/remove tickers or adjust thresholds
+# price_drop_pct    - alert if drops this % in one polling cycle (15 min)
+# price_gain_pct    - alert if gains this % in one polling cycle (15 min)
+# daily_drop_pct    - alert if down this % vs yesterday's close
+# daily_gain_pct    - alert if up this % vs yesterday's close
+# volume_spike_x    - alert if volume is this multiple of 30-day avg
+# cooldown_minutes  - minimum minutes between alerts for this ticker
+
+settings:
+  poll_interval_minutes: 15
+  default_cooldown_minutes: 120
+  news_lookback_hours: 2          # only surface news newer than this
+  market_open: "09:30"
+  market_close: "20:00"           # includes after-hours
+  timezone: "America/New_York"
+
+# Global news keywords - scanned across ALL tickers every cycle
+global_keywords:
+  - "Federal Reserve"
+  - "Fed rate"
+  - "interest rates"
+  - "SEC investigation"
+  - "SEC charges"
+  - "Bitcoin ETF"
+  - "crypto regulation"
+  - "inflation"
+  - "recession"
+  - "earnings beat"
+  - "earnings miss"
+  - "bankruptcy"
+  - "acquisition"
+  - "merger"
+  - "halted"
+
+watchlist:
+  # ── Bitcoin Miners ──────────────────────────────────────
+  - ticker: IREN
+    name: Iris Energy
+    type: stock
+    sector: bitcoin_miner
+    alerts:
+      price_drop_pct: 5
+      price_gain_pct: 7
+      daily_drop_pct: 8
+      daily_gain_pct: 10
+      volume_spike_x: 2.5
+    cooldown_minutes: 90
+
+  - ticker: CIFR
+    name: Cipher Mining
+    type: stock
+    sector: bitcoin_miner
+    alerts:
+      price_drop_pct: 5
+      price_gain_pct: 7
+      daily_drop_pct: 8
+      daily_gain_pct: 10
+      volume_spike_x: 2.5
+    cooldown_minutes: 90
+
+  - ticker: WULF
+    name: TeraWulf
+    type: stock
+    sector: bitcoin_miner
+    alerts:
+      price_drop_pct: 5
+      price_gain_pct: 7
+      daily_drop_pct: 8
+      daily_gain_pct: 10
+      volume_spike_x: 2.5
+    cooldown_minutes: 90
+
+  - ticker: STRC
+    name: Stronghold Digital Mining
+    type: stock
+    sector: bitcoin_miner
+    alerts:
+      price_drop_pct: 5
+      price_gain_pct: 8
+      daily_drop_pct: 10
+      daily_gain_pct: 12
+      volume_spike_x: 3.0
+    cooldown_minutes: 90
+
+  # ── Bitcoin Proxy / ETF ──────────────────────────────────
+  - ticker: MSTR
+    name: MicroStrategy
+    type: stock
+    sector: bitcoin_proxy
+    alerts:
+      price_drop_pct: 4
+      price_gain_pct: 6
+      daily_drop_pct: 7
+      daily_gain_pct: 9
+      volume_spike_x: 2.5
+    cooldown_minutes: 120
+
+  - ticker: IBIT
+    name: iShares Bitcoin ETF
+    type: stock
+    sector: bitcoin_etf
+    alerts:
+      price_drop_pct: 3
+      price_gain_pct: 4
+      daily_drop_pct: 6
+      daily_gain_pct: 7
+      volume_spike_x: 2.0
+    cooldown_minutes: 120
+
+  # ── Tech / High Profile ──────────────────────────────────
+  - ticker: TSLA
+    name: Tesla
+    type: stock
+    sector: tech
+    alerts:
+      price_drop_pct: 3
+      price_gain_pct: 4
+      daily_drop_pct: 6
+      daily_gain_pct: 8
+      volume_spike_x: 2.0
+    cooldown_minutes: 120
+
+  - ticker: OPEN
+    name: Opendoor Technologies
+    type: stock
+    sector: real_estate_tech
+    alerts:
+      price_drop_pct: 5
+      price_gain_pct: 7
+      daily_drop_pct: 10
+      daily_gain_pct: 12
+      volume_spike_x: 2.5
+    cooldown_minutes: 90
+
+  # ── Small / Speculative ──────────────────────────────────
+  - ticker: ASST
+    name: Asset Entities
+    type: stock
+    sector: speculative
+    alerts:
+      price_drop_pct: 6
+      price_gain_pct: 10
+      daily_drop_pct: 12
+      daily_gain_pct: 15
+      volume_spike_x: 3.0
+    cooldown_minutes: 60
+
+  - ticker: ONDS
+    name: Ondas Holdings
+    type: stock
+    sector: speculative
+    alerts:
+      price_drop_pct: 6
+      price_gain_pct: 10
+      daily_drop_pct: 12
+      daily_gain_pct: 15
+      volume_spike_x: 3.0
+    cooldown_minutes: 60
+
+  - ticker: RDW
+    name: Redwire Corporation
+    type: stock
+    sector: space_tech
+    alerts:
+      price_drop_pct: 5
+      price_gain_pct: 8
+      daily_drop_pct: 10
+      daily_gain_pct: 12
+      volume_spike_x: 2.5
+    cooldown_minutes: 90
+
+  - ticker: RR
+    name: Rolls-Royce Holdings
+    type: stock
+    sector: aerospace
+    alerts:
+      price_drop_pct: 3
+      price_gain_pct: 4
+      daily_drop_pct: 6
+      daily_gain_pct: 8
+      volume_spike_x: 2.0
+    cooldown_minutes: 120
+
+  # ── Crypto ───────────────────────────────────────────────
+  - ticker: BTC-USD
+    name: Bitcoin
+    type: crypto
+    sector: crypto
+    alerts:
+      price_drop_pct: 3
+      price_gain_pct: 4
+      daily_drop_pct: 6
+      daily_gain_pct: 8
+      volume_spike_x: 2.5
+    cooldown_minutes: 60
