@@ -458,6 +458,30 @@ def run_session(town_indices=None, industries=None, tier="1"):
     if SPREADSHEET_ID != "YOUR_GOOGLE_SHEET_ID_HERE":
         print(f"\n📊 https://docs.google.com/spreadsheets/d/{SPREADSHEET_ID}\n")
 
+    # ─── EMAIL NOTIFICATION ───────────────────────────────────────────────────
+    send_email_notification(total, session_log)
+
+
+def send_email_notification(leads_found, session_log):
+    """Send email notification with results."""
+    import subprocess
+    
+    email_script = "/home/clawd/clawd/lib/send-email.js"
+    subject = f"Lead Generator: {leads_found} new leads"
+    body = f"Lead Generator task completed - {leads_found} new entries"
+    
+    try:
+        result = subprocess.run(
+            ["node", email_script, "--to", "terryhuangjr@gmail.com", "--subject", subject, "--body", body],
+            capture_output=True, text=True, timeout=30
+        )
+        if result.returncode == 0:
+            print("   📧 Email notification sent")
+        else:
+            print(f"   ⚠️  Email failed: {result.stderr}")
+    except Exception as e:
+        print(f"   ⚠️  Email error: {e}")
+
 
 # ─── STATE TRACKING ───────────────────────────────────────────────────────────
 
