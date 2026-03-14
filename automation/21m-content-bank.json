@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "last_updated": "2026-03-13",
+  "last_updated": "2026-03-14",
   "entries": [
     {
       "id": 1,
@@ -137,7 +137,9 @@
       "btc_allocation": 15,
       "verified_fact": "Arch Manning's estimated $3M NIL deal in 2022 when BTC was $20,000. 10% allocation = 15 BTC.",
       "source": "On3 NIL valuations",
-      "used_dates": [],
+      "used_dates": [
+        "2026-03-14"
+      ],
       "cooldown_days": 90
     },
     {
@@ -930,7 +932,9 @@
       "btc_price_then": 0,
       "verified_fact": "In 2016, Venezuela's inflation rate reached 180%",
       "source": "Research",
-      "used_dates": [],
+      "used_dates": [
+        "2026-03-14"
+      ],
       "cooldown_days": 60,
       "id": 61
     },

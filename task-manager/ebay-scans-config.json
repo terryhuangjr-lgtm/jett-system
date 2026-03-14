@@ -201,9 +201,9 @@
         ]
       },
       "output_file": "/tmp/mj-base-scan.json",
-      "last_run": "2026-03-07T14:00:17.471Z",
+      "last_run": "2026-03-14T13:00:24.825Z",
       "last_results": {
-        "timestamp": "2026-03-07T14:00:17.471Z",
+        "timestamp": "2026-03-14T13:00:24.826Z",
         "success": true
       },
       "last_updated": "2026-03-03T16:56:29.209Z"

@@ -1,1 +1,1 @@
-{"lastChecks":{"system":$(date +%s),"email":null,"weather":null,"git":$(date +%s)},"lastHeartbeat":"$(date -Iseconds)"}
+{"lastChecks":{"system":1710401100,"email":1710401100,"weather":null,"git":1710401100},"lastHeartbeat":"2026-03-14T06:05"}
