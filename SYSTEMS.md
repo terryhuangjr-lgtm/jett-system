@@ -1,6 +1,6 @@
 # Jett System Architecture
 
-Last Updated: 2026-03-11
+Last Updated: 2026-03-13
 
 ---
 
@@ -35,8 +35,8 @@ Last Updated: 2026-03-11
 │  └─────────────┘    └─────────────┘    └─────────────┘                    │
 │                                                                             │
 │  ┌─────────────┐    ┌─────────────┐                                        │
-│  │   GWS CLI   │    │ Notion API  │                                        │
-│  │ (Email/Cal) │    │ (Lists)     │                                        │
+│  │   GWS CLI    │    │ Notion API  │                                        │
+│  │(Email/Cal)   │    │(Lists only) │                                        │
 │  └─────────────┘    └─────────────┘                                        │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
@@ -353,7 +353,7 @@ node automation/jett-community-pulse.js "NIL deals college football"
 |-------|----------|---------|
 | 21m-sports-generation | /home/clawd/skills/21m-sports-generation/ | Sports content validation |
 | ebay-scan | /home/clawd/skills/ebay-scan/ | eBay scanning |
-| notion-assistant | /home/clawd/skills/notion-assistant/ | Notion API, family brief |
+| notion-assistant | /home/clawd/skills/notion-assistant/ | Google Calendar, Notion (lists/tasks/reminders) |
 | podcast-summary | /home/clawd/skills/podcast-summary/ | Podcast transcription/summary |
 | sports-betting | /home/clawd/skills/sports-betting/ | Sports betting picks |
 
