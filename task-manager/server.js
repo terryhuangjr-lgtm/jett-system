@@ -844,22 +844,33 @@ class TaskServer {
         return this.sendJSON(res, { error: e.message });
       }
     }
+    if (pathname === '/api/ebay/config' && req.method === 'PUT') {
+      try {
+        const configPath = path.join(__dirname, 'ebay-scans-config.json');
+        const body = await this.readBody(req);
+        await fs.writeFile(configPath, body);
+        return this.sendJSON(res, { ok: true });
+      } catch (e) {
+        return this.sendJSON(res, { ok: false, error: e.message });
+      }
+    }
 
     // ── CRONS proxy ────────────────────────────────────────────────
     if (pathname === '/api/crons' && req.method === 'GET') {
       try {
         const { execSync } = require('child_process');
-        const output = execSync('/home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot cron list', { encoding: 'utf8', timeout: 10000 });
-        return this.sendJSON(res, { raw: output });
+        // Use clawdbot since system crontab is empty
+        const output = execSync('/home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot cron list --json', { encoding: 'utf8', timeout: 10000 });
+        return this.sendJSON(res, { raw: output, source: 'clawdbot' });
       } catch (e) {
-        return this.sendJSON(res, { error: e.message, raw: '' });
+        return this.sendJSON(res, { raw: '', source: 'error', error: e.message });
       }
     }
 
     // ── OPENCLAW MEMORY (bonus) ───────────────────────────────────
     if (pathname === '/api/jett/memory' && req.method === 'GET') {
       try {
-        const memDir = path.join(process.env.HOME, 'clawd/clawd/memory');
+        const memDir = '/home/clawd/clawd/memory';
         const files = (await fs.readdir(memDir))
           .filter(f => f.endsWith('.md'))
           .sort()

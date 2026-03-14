@@ -326,20 +326,15 @@
 
     <div class="tab-panel" id="tab-ebay">
       <div class="section-header">
-        <span class="section-title">eBay Scanner</span>
-        <div class="btn-row">
-          <button class="btn primary" onclick="triggerEbayScan()">
-            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-            Run Scan
-          </button>
-          <button class="btn" onclick="loadEbayResults()">
-            <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg>
-            Refresh
-          </button>
-        </div>
+        <span class="section-title">eBay Scanner — Weekly Config</span>
+        <button class="btn" onclick="loadEbayConfig()">
+          <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg>
+          Refresh
+        </button>
       </div>
-      <div class="card">
-        <div id="ebayResults"><div class="loading">Loading results...</div></div>
+      <div id="ebayConfigGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px"></div>
+      <div style="margin-top:14px;display:flex;justify-content:flex-end">
+        <button class="btn primary" onclick="saveEbayConfig()">Save Changes</button>
       </div>
     </div>
 
@@ -422,7 +417,7 @@ function loadTab(tab) {
   const loaders = {
     system: runHealthCheck,
     schedule: loadSchedule,
-    ebay: loadEbayResults,
+    ebay: loadEbayConfig,
     levelup: loadInventory,
     podcast: loadPodcastQueue,
     watchlist: loadWatchlist,
@@ -491,10 +486,15 @@ async function loadCosts() {
   try {
     const data = await apiFetch('/api/jett/costs');
     if (data.error || !data.raw) {
-      document.getElementById('costTracker').innerHTML = '<div class="loading">No cost data</div>';
+      document.getElementById('costTracker').innerHTML = '<div class="loading">No cost data yet — will populate after agent runs</div>';
       return;
     }
-    const lines = data.raw.trim().split('\n').filter(Boolean);
+    const raw = typeof data.raw === 'string' ? data.raw : JSON.stringify(data.raw);
+    const lines = raw.trim().split('\n').filter(Boolean);
+    if (!lines.length) {
+      document.getElementById('costTracker').innerHTML = '<div class="loading">No cost data yet</div>';
+      return;
+    }
     const maxCost = Math.max(...lines.map(l => parseFloat(l.split('|')[1]) || 0));
     document.getElementById('costTracker').innerHTML = lines.map(line => {
       const parts = line.split('|');
@@ -508,7 +508,7 @@ async function loadCosts() {
       </div>`;
     }).join('');
   } catch(e) {
-    document.getElementById('costTracker').innerHTML = `<div class="error-msg">${e.message}</div>`;
+    document.getElementById('costTracker').innerHTML = '<div class="loading">No cost data yet</div>';
   }
 }
 
@@ -519,8 +519,56 @@ async function loadSchedule() {
     const today = new Date().getDay();
     document.getElementById('scheduleDate').textContent = new Date().toLocaleDateString('en-US', { weekday:'long', month:'long', day:'numeric' });
     
-    const lines = (data.raw || '').split('\n').filter(l => l && !l.startsWith('#'));
-    const events = lines.map(parseCronLine).filter(Boolean);
+    let events = [];
+    
+    // Handle JSON format from clawdbot
+    if (data.source === 'clawdbot' && data.raw) {
+      try {
+        const parsed = JSON.parse(data.raw);
+        if (parsed.jobs) {
+          events = parsed.jobs.map(job => {
+            const name = job.name || 'Unknown';
+            const schedule = job.schedule?.expr || '';
+            const colors = ['blue','green','purple','amber'];
+            const color = colors[Math.abs((name.charCodeAt(0) + name.length)) % colors.length];
+            
+            // Parse schedule like "cron 0 9 * * 1" or "cron */5 * * * *"
+            const parts = schedule.replace('cron ', '').trim().split(/\s+/);
+            const [min, hour, dom, month, dow] = parts;
+            
+            let days = [0,1,2,3,4,5,6];
+            if (dow && dow !== '*' && dow !== '*/1') {
+              days = dow.split(',').flatMap(d => {
+                if (d.includes('-')) {
+                  const [s,e] = d.split('-').map(Number);
+                  return Array.from({length: e-s+1}, (_,i) => s+i);
+                }
+                return [parseInt(d)];
+              }).filter(d => !isNaN(d));
+            }
+            
+            let timeStr = '';
+            if (!hour || hour === '*' || hour.startsWith('*/')) {
+              timeStr = hour && hour.includes('/') ? `every ${hour.split('/')[1]}h` : 'hourly';
+            } else {
+              const h = parseInt(hour);
+              const m = parseInt(min) || 0;
+              const ampm = h < 12 ? 'AM' : 'PM';
+              const h12 = h % 12 || 12;
+              timeStr = `${h12}:${m.toString().padStart(2,'0')} ${ampm}`;
+            }
+            
+            return { name, time: timeStr, days, color, nextRun: job.state?.nextRunAtMs };
+          });
+        }
+      } catch(e) {
+        console.error('Failed to parse clawdbot JSON:', e);
+      }
+    } else {
+      // Handle text format
+      const lines = (data.raw || '').split('\n').filter(l => l && !l.startsWith('#'));
+      events = lines.map(parseCronLine).filter(Boolean);
+    }
     
     document.getElementById('calendarGrid').innerHTML = days.map((day, i) => {
       const dayEvents = events.filter(e => e.days.includes(i));
@@ -546,21 +594,48 @@ async function loadSchedule() {
 }
 
 function parseCronLine(line) {
-  const parts = line.trim().split(/\s+/);
+  const trimmed = line.trim();
+  if (!trimmed || trimmed.startsWith('#')) return null;
+  
+  // Handle @reboot
+  if (trimmed.startsWith('@reboot')) {
+    const cmd = trimmed.replace('@reboot', '').trim();
+    return { name: extractJobName(cmd), time: 'reboot', days: [0,1,2,3,4,5,6], color: 'purple', nextRun: null, cmd };
+  }
+  
+  const parts = trimmed.split(/\s+/);
   if (parts.length < 6) return null;
+  
   const [min, hour, dom, month, dow] = parts;
   const cmd = parts.slice(5).join(' ');
   const name = extractJobName(cmd);
   const colors = ['blue','green','purple','amber'];
-  const color = colors[Math.abs(name.charCodeAt(0)) % colors.length];
+  const color = colors[Math.abs((name.charCodeAt(0) + name.length)) % colors.length];
   
+  // Parse which days
   let days = [0,1,2,3,4,5,6];
   if (dow !== '*' && dow !== '*/1') {
-    days = dow.split(',').map(d => parseInt(d)).filter(d => !isNaN(d));
+    days = dow.split(',').flatMap(d => {
+      if (d.includes('-')) {
+        const [s,e] = d.split('-').map(Number);
+        return Array.from({length: e-s+1}, (_,i) => s+i);
+      }
+      return [parseInt(d)];
+    }).filter(d => !isNaN(d));
   }
   
-  const timeStr = hour === '*' ? `*:${min.padStart(2,'0')}` : `${hour}:${min.padStart(2,'0')}`;
-
+  // Format time
+  let timeStr = '';
+  if (hour === '*' || hour.startsWith('*/')) {
+    timeStr = `every ${hour.includes('/') ? hour.split('/')[1] : 1}h`;
+  } else {
+    const h = parseInt(hour);
+    const m = parseInt(min) || 0;
+    const ampm = h < 12 ? 'AM' : 'PM';
+    const h12 = h % 12 || 12;
+    timeStr = `${h12}:${m.toString().padStart(2,'0')} ${ampm}`;
+  }
+  
   return { name, time: timeStr, days, color, cmd };
 }
 
@@ -680,7 +755,7 @@ async function loadWatchlist() {
   try {
     const data = await apiFetch('/api/watchlist/tickers');
     const tickers = data.tickers || [];
-    document.getElementById('watchlistUpdated').textContent = 'Updated ' + new Date().toLocaleTimeString();
+    document.getElementById('watchlistUpdated').textContent = 'Config only — prices update at market open';
     
     if (!tickers.length) {
       document.getElementById('tickerGrid').innerHTML = '<div class="loading" style="grid-column:1/-1">No tickers configured</div>';
@@ -713,6 +788,69 @@ async function loadMemory() {
   } catch(e) {
     document.getElementById('memoryCards').innerHTML = `<div class="error-msg">${e.message}</div>`;
   }
+}
+
+let ebayConfigData = {};
+
+async function loadEbayConfig() {
+  try {
+    const data = await apiFetch('/api/ebay/config');
+    ebayConfigData = data;
+    const days = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];
+    const scans = data.scans || {};
+    
+    document.getElementById('ebayConfigGrid').innerHTML = days.map(day => {
+      const scan = scans[day] || {};
+      const idx = days.indexOf(day);
+      return `
+        <div class="card">
+          <div class="card-label" style="text-transform:capitalize">${day}</div>
+          <div style="margin-bottom:8px">
+            <div style="font-size:10px;color:var(--text-muted);font-family:'DM Mono',monospace;margin-bottom:4px">SEARCH TERMS</div>
+            <input class="podcast-input" id="ebay-terms-${day}" 
+              value="${(scan.search_terms || []).join(', ')}" 
+              placeholder="Search terms...">
+          </div>
+          <div>
+            <div style="font-size:10px;color:var(--text-muted);font-family:'DM Mono',monospace;margin-bottom:4px">NAME</div>
+            <input class="podcast-input" id="ebay-name-${day}" 
+              value="${scan.name || ''}" 
+              placeholder="Scan name...">
+          </div>
+        </div>
+      `;
+    }).join('');
+  } catch(e) {
+    document.getElementById('ebayConfigGrid').innerHTML = `<div class="error-msg">${e.message}</div>`;
+  }
+}
+
+async function saveEbayConfig() {
+  const days = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];
+  const newScans = {};
+  
+  days.forEach(day => {
+    const terms = document.getElementById(`ebay-terms-${day}`)?.value || '';
+    const name = document.getElementById(`ebay-name-${day}`)?.value || '';
+    newScans[day] = {
+      ...ebayConfigData.scans?.[day],
+      name: name,
+      search_terms: terms.split(',').map(t => t.trim()).filter(Boolean),
+      enabled: ebayConfigData.scans?.[day]?.enabled ?? true
+    };
+  });
+  
+  ebayConfigData.scans = newScans;
+  ebayConfigData.last_updated = new Date().toISOString();
+  
+  try {
+    await fetch('/api/ebay/config', {
+      method: 'PUT',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify(ebayConfigData)
+    });
+    alert('Config saved');
+  } catch(e) { alert(e.message); }
 }
 
 setInterval(runHealthCheck, 30000);
