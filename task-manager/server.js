@@ -789,6 +789,104 @@ class TaskServer {
       }
     }
 
+    // ── LEVEL UP CARDS proxy ───────────────────────────────────────
+    if (pathname === '/api/levelup/inventory' && req.method === 'GET') {
+      return this.proxyRequest(res, '/inventory', 5000);
+    }
+    if (pathname === '/api/levelup/stats' && req.method === 'GET') {
+      return this.proxyRequest(res, '/', 5000);
+    }
+
+    // ── PODCAST proxy ──────────────────────────────────────────────
+    if (pathname === '/api/podcast/queue' && req.method === 'GET') {
+      return this.proxyRequest(res, '/api/queue', 5001);
+    }
+    if (pathname === '/api/podcast/add' && req.method === 'POST') {
+      const body = await this.readBody(req);
+      return this.proxyRequest(res, '/api/queue/add', 5001, 'POST', body, 'application/json');
+    }
+
+    // ── WATCHLIST proxy ────────────────────────────────────────────
+    if (pathname === '/api/watchlist/tickers' && req.method === 'GET') {
+      return this.proxyRequest(res, '/api/ticker', 5002);
+    }
+
+    // ── EBAY proxy ─────────────────────────────────────────────────
+    if (pathname === '/api/ebay/results' && req.method === 'GET') {
+      try {
+        const configPath = path.join(__dirname, 'ebay-scans-config.json');
+        const config = JSON.parse(await fs.readFile(configPath, 'utf-8'));
+        const dayNames = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+        const today = dayNames[new Date().getDay()];
+        const results = config.scans[today]?.results || [];
+        return this.sendJSON(res, { results });
+      } catch (e) {
+        return this.sendJSON(res, { error: e.message, results: [] });
+      }
+    }
+    if (pathname === '/api/ebay/scan' && req.method === 'POST') {
+      try {
+        const { execSync } = require('child_process');
+        execSync('cd /home/clawd/clawd/ebay-scanner && node run-from-config.js', { encoding: 'utf8', timeout: 120000 });
+        return this.sendJSON(res, { ok: true });
+      } catch (e) {
+        return this.sendJSON(res, { ok: false, error: e.message });
+      }
+    }
+
+    // ── EBAY CONFIG proxy ──────────────────────────────────────────
+    if (pathname === '/api/ebay/config' && req.method === 'GET') {
+      try {
+        const configPath = path.join(__dirname, 'ebay-scans-config.json');
+        const config = JSON.parse(await fs.readFile(configPath, 'utf-8'));
+        return this.sendJSON(res, config);
+      } catch (e) {
+        return this.sendJSON(res, { error: e.message });
+      }
+    }
+
+    // ── CRONS proxy ────────────────────────────────────────────────
+    if (pathname === '/api/crons' && req.method === 'GET') {
+      try {
+        const { execSync } = require('child_process');
+        const output = execSync('/home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot cron list', { encoding: 'utf8', timeout: 10000 });
+        return this.sendJSON(res, { raw: output });
+      } catch (e) {
+        return this.sendJSON(res, { error: e.message, raw: '' });
+      }
+    }
+
+    // ── OPENCLAW MEMORY (bonus) ───────────────────────────────────
+    if (pathname === '/api/jett/memory' && req.method === 'GET') {
+      try {
+        const memDir = path.join(process.env.HOME, 'clawd/clawd/memory');
+        const files = (await fs.readdir(memDir))
+          .filter(f => f.endsWith('.md'))
+          .sort()
+          .reverse()
+          .slice(0, 7);
+        const memories = await Promise.all(files.map(async f => ({
+          date: f.replace('.md', ''),
+          content: (await fs.readFile(path.join(memDir, f), 'utf-8')).slice(0, 500)
+        })));
+        return this.sendJSON(res, { memories });
+      } catch (e) {
+        return this.sendJSON(res, { error: e.message, memories: [] });
+      }
+    }
+
+    // ── OPENCLAW TOKEN COST (bonus) ────────────────────────────────
+    if (pathname === '/api/jett/costs' && req.method === 'GET') {
+      try {
+        const dbPath = path.join(process.env.HOME, '.openclaw/sessions.db');
+        const { execSync } = require('child_process');
+        const result = execSync('sqlite3', [dbPath, 'SELECT name, SUM(cost) as total_cost, COUNT(*) as runs FROM sessions GROUP BY name ORDER BY total_cost DESC LIMIT 10;'], { encoding: 'utf8' });
+        return this.sendJSON(res, { raw: result });
+      } catch (e) {
+        return this.sendJSON(res, { error: e.message });
+      }
+    }
+
     // 404
     res.writeHead(404);
     res.end(JSON.stringify({ error: 'Not Found' }));

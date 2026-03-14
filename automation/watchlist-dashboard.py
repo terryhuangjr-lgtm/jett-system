@@ -478,6 +478,12 @@ def delete_ticker(ticker):
         return jsonify({'success': True})
     return jsonify({'success': False, 'error': 'Failed to save'})
 
+@app.route('/api/ticker', methods=['GET'])
+def get_tickers():
+    """Get all tickers - for Mission Control"""
+    config = load_config()
+    return jsonify({'tickers': config.get('watchlist', [])})
+
 if __name__ == '__main__':
     import json
     logger.info(f"Starting Watchlist Dashboard on port {PORT}")

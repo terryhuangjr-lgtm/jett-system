@@ -1,1192 +1,724 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mission Control</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg-primary: #0a0a0f;
-      --bg-secondary: #111118;
-      --bg-tertiary: #1a1a24;
-      --bg-card: #16161f;
-      --bg-card-hover: #1e1e2a;
-      --border-color: #2a2a3a;
-      --border-subtle: #1f1f2e;
-      --text-primary: #ffffff;
-      --text-secondary: #9898a8;
-      --text-muted: #5a5a6e;
-      --accent-primary: #6366f1;
-      --accent-secondary: #818cf8;
-      --accent-gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-      --accent-glow: rgba(99, 102, 241, 0.25);
-      --success: #10b981;
-      --success-bg: rgba(16, 185, 129, 0.12);
-      --warning: #f59e0b;
-      --warning-bg: rgba(245, 158, 11, 0.12);
-      --danger: #ef4444;
-      --danger-bg: rgba(239, 68, 68, 0.12);
-      --info: #3b82f6;
-      --info-bg: rgba(59, 130, 246, 0.12);
-      --shadow-sm: 0 2px 8px rgba(0,0,0,0.3);
-      --shadow-md: 0 4px 16px rgba(0,0,0,0.4);
-      --shadow-lg: 0 8px 32px rgba(0,0,0,0.5);
-      --radius-sm: 8px;
-      --radius-md: 12px;
-      --radius-lg: 16px;
-      --radius-xl: 24px;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mission Control</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg-base:      #09090b;
+    --bg-surface:   #111115;
+    --bg-elevated:  #1c1c22;
+    --bg-hover:     #222228;
+    --border:       rgba(255,255,255,0.07);
+    --border-mid:   rgba(255,255,255,0.12);
+    --text-primary: #ededf0;
+    --text-secondary: #8b8b9a;
+    --text-muted:   #44444f;
+    --accent:       #3b82f6;
+    --accent-dim:   rgba(59,130,246,0.15);
+    --green:        #22c55e;
+    --green-dim:    rgba(34,197,94,0.12);
+    --amber:        #f59e0b;
+    --amber-dim:    rgba(245,158,11,0.12);
+    --red:          #ef4444;
+    --red-dim:      rgba(239,68,68,0.12);
+    --purple:       #a855f7;
+    --radius:       6px;
+    --nav-width:    52px;
+    --topbar-h:     44px;
+  }
 
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: var(--bg-primary);
-      color: var(--text-primary);
-      min-height: 100vh;
-      line-height: 1.5;
-      -webkit-font-smoothing: antialiased;
-    }
+  html, body { height: 100%; background: var(--bg-base); color: var(--text-primary); font-family: 'Inter', sans-serif; font-size: 13px; line-height: 1.5; overflow: hidden; }
 
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background: 
-        radial-gradient(ellipse at 15% 15%, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
-        radial-gradient(ellipse at 85% 85%, rgba(139, 92, 246, 0.06) 0%, transparent 50%);
-      pointer-events: none;
-      z-index: 0;
-    }
+  .app { display: grid; grid-template-columns: var(--nav-width) 1fr; grid-template-rows: var(--topbar-h) 1fr; height: 100vh; }
 
-    .app {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 24px;
-      position: relative;
-      z-index: 1;
-    }
+  .topbar {
+    grid-column: 1 / -1;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 16px 0 0;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg-base);
+  }
+  .topbar-left { display: flex; align-items: center; width: var(--nav-width); justify-content: center; }
+  .topbar-logo { width: 20px; height: 20px; background: var(--accent); border-radius: 4px; display: flex; align-items: center; justify-content: center; }
+  .topbar-logo svg { width: 12px; height: 12px; fill: white; }
+  .topbar-title { font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; color: var(--text-secondary); text-transform: uppercase; margin-left: 12px; }
+  .topbar-right { display: flex; align-items: center; gap: 16px; }
+  .topbar-clock { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--text-muted); }
+  .gateway-pill {
+    display: flex; align-items: center; gap: 6px;
+    padding: 3px 10px; border-radius: 20px;
+    border: 1px solid var(--border);
+    font-size: 11px; color: var(--text-secondary);
+    font-family: 'DM Mono', monospace;
+  }
+  .gateway-pill .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
 
-    /* Header */
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-      padding-bottom: 16px;
-      border-bottom: 1px solid var(--border-subtle);
-    }
+  .nav {
+    grid-row: 2;
+    display: flex; flex-direction: column; align-items: center;
+    padding: 12px 0; gap: 2px;
+    border-right: 1px solid var(--border);
+    background: var(--bg-base);
+  }
+  .nav-item {
+    width: 36px; height: 36px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: var(--radius); cursor: pointer;
+    color: var(--text-muted); transition: all 0.15s;
+    position: relative;
+  }
+  .nav-item:hover { background: var(--bg-elevated); color: var(--text-secondary); }
+  .nav-item.active { background: var(--accent-dim); color: var(--accent); }
+  .nav-item svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+  .nav-item .tooltip {
+    position: absolute; left: calc(100% + 10px); top: 50%; transform: translateY(-50%);
+    background: var(--bg-elevated); border: 1px solid var(--border-mid);
+    padding: 4px 8px; border-radius: 4px;
+    font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--text-secondary); white-space: nowrap;
+    opacity: 0; pointer-events: none; transition: opacity 0.15s; z-index: 100;
+  }
+  .nav-item:hover .tooltip { opacity: 1; }
+  .nav-divider { width: 20px; height: 1px; background: var(--border); margin: 6px 0; }
 
-    .header-left {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
+  .content { grid-row: 2; overflow-y: auto; padding: 24px; }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
 
-    .logo {
-      width: 28px;
-      height: 28px;
-      background: var(--bg-tertiary);
-      border: 1px solid var(--accent-primary);
-      border-radius: var(--radius-sm);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-      color: var(--accent-primary);
-      font-weight: 600;
-    }
+  .card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px;
+  }
+  .card + .card { margin-top: 12px; }
+  .card-label {
+    font-family: 'DM Mono', monospace; font-size: 10px;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text-muted); margin-bottom: 8px;
+  }
 
-    .header h1 {
-      font-size: 16px;
-      font-weight: 500;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
+  .status-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; margin-bottom: 12px; }
+  .status-card {
+    background: var(--bg-surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 12px 14px;
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .status-card-top { display: flex; align-items: center; justify-content: space-between; }
+  .status-card-name { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); }
+  .status-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+  .status-dot.green { background: var(--green); animation: pulse 2s infinite; }
+  .status-dot.amber { background: var(--amber); }
+  .status-dot.red { background: var(--red); }
+  .status-card-val { font-size: 12px; color: var(--text-secondary); }
 
-    .header-right {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
+  .health-table { width: 100%; border-collapse: collapse; }
+  .health-table th {
+    font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--text-muted);
+    text-align: left; padding: 6px 12px; border-bottom: 1px solid var(--border);
+  }
+  .health-table td { padding: 9px 12px; border-bottom: 1px solid var(--border); color: var(--text-secondary); font-size: 12px; }
+  .health-table tr:last-child td { border-bottom: none; }
+  .health-table td:first-child { color: var(--text-primary); font-weight: 500; }
+  .badge { display: inline-flex; align-items: center; gap: 5px; padding: 2px 8px; border-radius: 4px; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.06em; }
+  .badge.green { background: var(--green-dim); color: var(--green); }
+  .badge.amber { background: var(--amber-dim); color: var(--amber); }
+  .badge.red { background: var(--red-dim); color: var(--red); }
 
-    .clock {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
-      color: var(--text-muted);
-      padding: 4px 10px;
-      background: var(--bg-card);
-      border-radius: var(--radius-sm);
-      border: 1px solid var(--border-subtle);
-    }
+  .btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 6px 12px; border-radius: var(--radius);
+    font-size: 12px; font-weight: 500; cursor: pointer;
+    border: 1px solid var(--border-mid); background: transparent;
+    color: var(--text-secondary); transition: all 0.15s; font-family: 'Inter', sans-serif;
+  }
+  .btn:hover { background: var(--bg-elevated); color: var(--text-primary); }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: white; }
+  .btn.primary:hover { opacity: 0.88; }
+  .btn.danger { border-color: rgba(239,68,68,0.3); color: var(--red); }
+  .btn.danger:hover { background: var(--red-dim); }
+  .btn svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .btn-row { display: flex; gap: 8px; flex-wrap: wrap; }
 
-    /* Tabs */
-    .tabs {
-      display: flex;
-      gap: 2px;
-      margin-bottom: 24px;
-      background: var(--bg-card);
-      padding: 4px;
-      border-radius: var(--radius-md);
-      border: 1px solid var(--border-subtle);
-    }
+  .section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+  .section-title { font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-secondary); }
 
-    .tab {
-      padding: 8px 16px;
-      border: none;
-      background: transparent;
-      color: var(--text-muted);
-      font-family: inherit;
-      font-size: 11px;
-      font-weight: 500;
-      cursor: pointer;
-      border-radius: var(--radius-sm);
-      transition: all 0.2s ease;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
+  .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; }
+  .cal-day { background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 10px; min-height: 200px; }
+  .cal-day.today { border-color: var(--accent); }
+  .cal-day-name { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; }
+  .cal-event { padding: 3px 6px; border-radius: 3px; font-size: 11px; margin-bottom: 3px; color: var(--text-primary); border-left: 2px solid; }
+  .cal-event.blue { background: rgba(59,130,246,0.1); border-color: var(--accent); }
+  .cal-event.green { background: rgba(34,197,94,0.1); border-color: var(--green); }
+  .cal-event.purple { background: rgba(168,85,247,0.1); border-color: var(--purple); }
+  .cal-event.amber { background: rgba(245,158,11,0.1); border-color: var(--amber); }
 
-    .tab:hover {
-      color: var(--text-secondary);
-      background: var(--bg-tertiary);
-    }
+  .next-up-list { display: flex; flex-direction: column; gap: 1px; }
+  .next-up-item {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 9px 12px; border-bottom: 1px solid var(--border);
+  }
+  .next-up-item:last-child { border-bottom: none; }
+  .next-up-name { color: var(--text-primary); font-size: 12px; font-weight: 500; }
+  .next-up-meta { display: flex; align-items: center; gap: 16px; }
+  .next-up-time { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--text-muted); }
 
-    .tab.active {
-      background: var(--bg-tertiary);
-      color: var(--text-primary);
-      border: 1px solid var(--border-subtle);
-    }
+  .ticker-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; }
+  .ticker-card { background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px; }
+  .ticker-symbol { font-family: 'DM Mono', monospace; font-size: 12px; font-weight: 500; color: var(--text-primary); margin-bottom: 6px; }
+  .ticker-price { font-family: 'JetBrains Mono', monospace; font-size: 20px; font-weight: 500; color: var(--text-primary); margin-bottom: 4px; }
+  .ticker-change { font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+  .ticker-change.up { color: var(--green); }
+  .ticker-change.down { color: var(--red); }
 
-    .tab-icon { 
-      font-size: 6px; 
-      color: var(--accent-primary);
-    }
-    
-    .tab.active .tab-icon {
-      color: var(--accent-secondary);
-    }
+  .data-table { width: 100%; border-collapse: collapse; }
+  .data-table th { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); text-align: left; padding: 7px 12px; border-bottom: 1px solid var(--border); }
+  .data-table td { padding: 9px 12px; border-bottom: 1px solid var(--border); color: var(--text-secondary); font-size: 12px; }
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table tr:hover td { background: var(--bg-elevated); }
+  .data-table td:first-child { color: var(--text-primary); }
+  .mono { font-family: 'JetBrains Mono', monospace; }
 
-    /* Tab Content */
-    .tab-content {
-      display: none;
-      animation: fadeIn 0.3s ease;
-    }
+  .podcast-input-row { display: flex; gap: 8px; margin-bottom: 14px; }
+  .podcast-input {
+    flex: 1; background: var(--bg-elevated); border: 1px solid var(--border-mid);
+    border-radius: var(--radius); padding: 7px 12px;
+    font-size: 12px; color: var(--text-primary); font-family: 'Inter', sans-serif;
+    outline: none;
+  }
+  .podcast-input:focus { border-color: var(--accent); }
+  .podcast-input::placeholder { color: var(--text-muted); }
+  .podcast-queue-item { display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); }
+  .podcast-queue-item:last-child { border-bottom: none; }
+  .podcast-queue-title { font-size: 12px; color: var(--text-primary); font-weight: 500; margin-bottom: 3px; }
+  .podcast-queue-meta { font-size: 11px; color: var(--text-muted); font-family: 'DM Mono', monospace; }
 
-    .tab-content.active { display: block; }
+  .log-output {
+    background: var(--bg-base); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 12px;
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    color: var(--text-secondary); line-height: 1.6;
+    max-height: 300px; overflow-y: auto;
+    white-space: pre-wrap; word-break: break-all;
+  }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(8px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+  .cost-bar { display: flex; align-items: center; gap: 10px; padding: 7px 0; border-bottom: 1px solid var(--border); }
+  .cost-bar:last-child { border-bottom: none; }
+  .cost-name { flex: 1; font-size: 12px; color: var(--text-primary); }
+  .cost-track { flex: 2; height: 3px; background: var(--bg-elevated); border-radius: 2px; overflow: hidden; }
+  .cost-fill { height: 100%; background: var(--accent); border-radius: 2px; transition: width 0.5s; }
+  .cost-val { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--text-muted); width: 60px; text-align: right; }
 
-    /* Cards */
-    .card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-lg);
-      padding: 24px;
-      margin-bottom: 16px;
-    }
+  .loading { color: var(--text-muted); font-size: 12px; font-family: 'DM Mono', monospace; padding: 24px; text-align: center; }
+  .error-msg { color: var(--red); font-size: 11px; font-family: 'DM Mono', monospace; padding: 8px; }
 
-    .card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 16px;
-    }
-
-    .card-title {
-      font-size: 16px;
-      font-weight: 600;
-      color: var(--text-primary);
-    }
-
-    /* Status Grid */
-    .status-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 12px;
-      margin-bottom: 24px;
-    }
-
-    .status-item {
-      background: var(--bg-tertiary);
-      border-radius: var(--radius-sm);
-      padding: 10px 14px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      border: 1px solid var(--border-subtle);
-      transition: all 0.2s ease;
-    }
-
-    .status-item:hover {
-      border-color: var(--accent-primary);
-    }
-
-    .status-icon {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-
-    .status-item:hover {
-      border-color: var(--accent-primary);
-      transform: translateY(-2px);
-    }
-
-    .status-icon {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      flex-shrink: 0;
-      box-shadow: 0 0 8px currentColor;
-    }
-
-    .status-icon.online { background: #10b981; box-shadow: 0 0 12px #10b981; }
-    .status-icon.offline { background: #ef4444; box-shadow: 0 0 12px #ef4444; }
-    .status-icon.warning { background: #f59e0b; box-shadow: 0 0 12px #f59e0b; }
-
-    .status-info h4 {
-      font-size: 11px;
-      font-weight: 600;
-      margin-bottom: 1px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    .status-info p {
-      font-size: 10px;
-      color: var(--text-muted);
-    }
-
-    /* Schedule Grid */
-    .schedule-grid {
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      gap: 8px;
-    }
-
-    .schedule-day {
-      background: var(--bg-tertiary);
-      border-radius: var(--radius-md);
-      padding: 12px;
-      min-height: 120px;
-      border: 1px solid var(--border-subtle);
-    }
-
-    .schedule-day.today {
-      border-color: var(--accent-primary);
-      background: rgba(99, 102, 241, 0.08);
-    }
-
-    .day-name {
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--text-secondary);
-      margin-bottom: 8px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    .schedule-day.today .day-name {
-      color: var(--accent-secondary);
-    }
-
-    .task-pill {
-      font-size: 11px;
-      padding: 4px 8px;
-      background: var(--bg-card);
-      border-radius: var(--radius-sm);
-      margin-bottom: 4px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      border: 1px solid var(--border-subtle);
-    }
-
-    /* Color-coded pills by system */
-    .task-pill.email { border-left: 2px solid #3b82f6; }
-    .task-pill.telegram { border-left: 2px solid #10b981; }
-    .task-pill.web { border-left: 2px solid #f59e0b; }
-    
-    /* System colors */
-    .task-pill.tm-21m { border-left: 3px solid #3b82f6; background: rgba(59, 130, 246, 0.1); }      /* Blue - 21M */
-    .task-pill.tm-podcast { border-left: 3px solid #a855f7; background: rgba(168, 85, 247, 0.1); }   /* Purple - Podcast */
-    .task-pill.tm-finance { border-left: 3px solid #10b981; background: rgba(16, 185, 129, 0.1); }   /* Green - Finance */
-    .task-pill.tm-ebay { border-left: 3px solid #f97316; background: rgba(249, 115, 22, 0.1); }      /* Orange - eBay */
-    .task-pill.tm-lead { border-left: 3px solid #eab308; background: rgba(234, 179, 8, 0.1); }       /* Yellow - Lead Gen */
-    .task-pill.tm-family { border-left: 3px solid #ec4899; background: rgba(236, 72, 153, 0.1); }    /* Pink - Family */
-    .task-pill.tm-system { border-left: 3px solid #6b7280; background: rgba(107, 114, 128, 0.1); }   /* Gray - System */
-
-    /* Tasks List */
-    .tasks-list {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .task-row {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 14px 16px;
-      background: var(--bg-tertiary);
-      border-radius: var(--radius-md);
-      border: 1px solid var(--border-subtle);
-      transition: all 0.2s ease;
-    }
-
-    .task-row:hover {
-      background: var(--bg-card-hover);
-      border-color: var(--accent-primary);
-    }
-
-    .task-status {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--success);
-      flex-shrink: 0;
-    }
-
-    .task-status.idle { background: var(--text-muted); }
-    .task-status.error { background: var(--danger); }
-
-    .task-name {
-      flex: 1;
-      font-weight: 500;
-      font-size: 14px;
-    }
-
-    .task-schedule {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 12px;
-      color: var(--text-secondary);
-      background: var(--bg-card);
-      padding: 4px 10px;
-      border-radius: var(--radius-sm);
-    }
-
-    .task-next {
-      font-size: 12px;
-      color: var(--text-muted);
-      min-width: 100px;
-      text-align: right;
-    }
-
-    /* Control Buttons */
-    .control-btn {
-      padding: 6px 14px;
-      background: var(--bg-tertiary);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-sm);
-      color: var(--text-secondary);
-      font-family: inherit;
-      font-size: 11px;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    .control-btn:hover {
-      background: var(--bg-card-hover);
-      border-color: var(--accent-primary);
-      color: var(--text-primary);
-    }
-
-    /* Embeds */
-    .embed-container {
-      width: 100%;
-      min-height: 400px;
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      border: 1px solid var(--border-subtle);
-      background: var(--bg-tertiary);
-    }
-
-    .tab-content:not(.active) .embed-container {
-      display: none;
-    }
-
-    .embed-container iframe {
-      width: 100%;
-      height: 600px;
-      border: none;
-    }
-
-    .external-link {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100%;
-      text-align: center;
-      padding: 40px;
-    }
-
-    .dashboard-link {
-      display: inline-block;
-      padding: 20px 40px;
-      font-size: 24px;
-      font-weight: 600;
-      color: #fff;
-      background: linear-gradient(135deg, #6366f1, #8b5cf6);
-      border-radius: var(--radius-lg);
-      text-decoration: none;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .dashboard-link:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
-    }
-
-    .external-link p {
-      margin-top: 16px;
-      color: var(--text-muted);
-    }
-
-    .embed-placeholder {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100%;
-      color: var(--text-secondary);
-    }
-
-    .embed-placeholder .icon {
-      font-size: 48px;
-      margin-bottom: 16px;
-      opacity: 0.5;
-    }
-
-    /* Next Up */
-    .next-up-list {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .next-up-item {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      padding: 12px 16px;
-      background: var(--bg-tertiary);
-      border-radius: var(--radius-md);
-      border: 1px solid var(--border-subtle);
-    }
-
-    .next-up-time {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 12px;
-      color: var(--text-secondary);
-      min-width: 120px;
-    }
-
-    .next-up-name {
-      flex: 1;
-      font-weight: 500;
-      font-size: 14px;
-    }
-
-    .next-up-status {
-      font-size: 11px;
-      padding: 2px 8px;
-      border-radius: var(--radius-sm);
-      text-transform: uppercase;
-    }
-
-    .next-up-status.completed { background: var(--success-bg); color: var(--success); }
-    .next-up-status.running { background: var(--warning-bg); color: var(--warning); }
-    .next-up-status.error { background: var(--danger-bg); color: var(--danger); }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .tabs { overflow-x: auto; }
-      .schedule-grid { grid-template-columns: 1fr; }
-      .status-grid { grid-template-columns: 1fr 1fr; }
-    }
-  </style>
+  ::-webkit-scrollbar { width: 4px; height: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--bg-elevated); border-radius: 2px; }
+</style>
 </head>
 <body>
-  <div class="app">
-    <!-- Header -->
-    <header class="header">
-      <div class="header-left">
-        <div class="logo">◈</div>
-        <h1>Mission Control</h1>
-      </div>
-      <div class="header-right">
-        <div class="clock" id="clock">--:--:--</div>
-      </div>
-    </header>
+<div class="app">
 
-    <!-- Tabs -->
-    <div class="tabs">
-      <button class="tab active" data-tab="system">
-        <span class="tab-icon">●</span> System
-      </button>
-      <button class="tab" data-tab="schedule">
-        <span class="tab-icon">●</span> Schedule
-      </button>
-      <button class="tab" data-tab="tasks">
-        <span class="tab-icon">●</span> Tasks
-      </button>
-      <button class="tab" data-tab="ebay">
-        <span class="tab-icon">●</span> eBay
-      </button>
-      <button class="tab" data-tab="levelup">
-        <span class="tab-icon">●</span> Level Up
-      </button>
-      <button class="tab" data-tab="podcast">
-        <span class="tab-icon">●</span> Podcast
-      </button>
-      <button class="tab" data-tab="watchlist">
-        <span class="tab-icon">●</span> Watchlist
-      </button>
+  <header class="topbar">
+    <div class="topbar-left">
+      <div class="topbar-logo">
+        <svg viewBox="0 0 12 12"><path d="M6 1l1.5 3h3l-2.5 2 1 3L6 7.5 3 9l1-3L1.5 4h3z"/></svg>
+      </div>
     </div>
+    <span class="topbar-title">Mission Control</span>
+    <div class="topbar-right">
+      <div class="gateway-pill">
+        <span class="dot" id="gatewayDot"></span>
+        <span id="gatewayLabel">gateway</span>
+      </div>
+      <span class="topbar-clock" id="clock"></span>
+    </div>
+  </header>
 
-    <!-- Tab Contents -->
-    <div class="tab-content active" id="tab-system">
-      <div class="status-grid" id="status-grid">
-        <div class="status-item">
-          <div class="status-icon online" id="light-gateway"></div>
-          <div class="status-info">
-            <h4>Gateway</h4>
-            <p id="status-gateway">Checking...</p>
-          </div>
+  <nav class="nav">
+    <div class="nav-item active" data-tab="system">
+      <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+      <span class="tooltip">System</span>
+    </div>
+    <div class="nav-item" data-tab="schedule">
+      <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+      <span class="tooltip">Schedule</span>
+    </div>
+    <div class="nav-divider"></div>
+    <div class="nav-item" data-tab="ebay">
+      <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <span class="tooltip">eBay</span>
+    </div>
+    <div class="nav-item" data-tab="levelup">
+      <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+      <span class="tooltip">Level Up</span>
+    </div>
+    <div class="nav-item" data-tab="podcast">
+      <svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2M12 19v4M8 23h8"/></svg>
+      <span class="tooltip">Podcast</span>
+    </div>
+    <div class="nav-item" data-tab="watchlist">
+      <svg viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+      <span class="tooltip">Watchlist</span>
+    </div>
+    <div class="nav-divider"></div>
+    <div class="nav-item" data-tab="memory">
+      <svg viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg>
+      <span class="tooltip">Jett Memory</span>
+    </div>
+  </nav>
+
+  <main class="content">
+
+    <div class="tab-panel active" id="tab-system">
+      <div class="section-header">
+        <span class="section-title">System Health</span>
+        <div class="btn-row">
+          <button class="btn" onclick="runHealthCheck()">
+            <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg>
+            Refresh
+          </button>
         </div>
-        <div class="status-item">
-          <div class="status-icon online" id="light-telegram"></div>
-          <div class="status-info">
-            <h4>Telegram</h4>
-            <p id="status-telegram">Checking...</p>
-          </div>
-        </div>
-        <div class="status-item">
-          <div class="status-icon online" id="light-email"></div>
-          <div class="status-info">
-            <h4>Email</h4>
-            <p id="status-email">Checking...</p>
-          </div>
-        </div>
-        <div class="status-item">
-          <div class="status-icon online" id="light-pm2"></div>
-          <div class="status-info">
-            <h4>PM2</h4>
-            <p id="status-pm2">Checking...</p>
-          </div>
-        </div>
-        <div class="status-item">
-          <div class="status-icon online" id="light-crons"></div>
-          <div class="status-info">
-            <h4>Crons</h4>
-            <p id="status-crons">Checking...</p>
-          </div>
-        </div>
-        <div class="status-item">
-          <div class="status-icon online" id="light-research"></div>
-          <div class="status-info">
-            <h4>Research</h4>
-            <p id="status-research">Checking...</p>
-          </div>
-        </div>
+      </div>
+
+      <div class="status-grid" id="statusGrid">
+        <div class="loading">Loading...</div>
       </div>
 
       <div class="card">
-        <div class="card-header">
-          <span class="card-title">Quick Controls</span>
-        </div>
-        <div style="display:flex;gap:8px;flex-wrap:wrap">
-          <button onclick="restartGateway()" class="control-btn">Restart Gateway</button>
-          <button onclick="runHealthCheck()" class="control-btn">Health Check</button>
-          <button onclick="refreshData()" class="control-btn">Refresh</button>
-        </div>
+        <div class="card-label">Component Details</div>
+        <table class="health-table" id="healthTable">
+          <thead><tr><th>Component</th><th>Status</th><th>Details</th></tr></thead>
+          <tbody><tr><td colspan="3"><div class="loading">Loading...</div></td></tr></tbody>
+        </table>
       </div>
 
+      <div class="card" style="margin-top:12px">
+        <div class="card-label">Token Cost (Last 7d)</div>
+        <div id="costTracker"><div class="loading">Loading...</div></div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="tab-schedule">
+      <div class="section-header">
+        <span class="section-title">Weekly Schedule</span>
+        <span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--text-muted)" id="scheduleDate"></span>
+      </div>
+      <div class="calendar-grid" id="calendarGrid">
+        <div class="loading" style="grid-column:1/-1">Loading schedule...</div>
+      </div>
+      <div class="card" style="margin-top:12px">
+        <div class="card-label">Next Up</div>
+        <div class="next-up-list" id="nextUpList">
+          <div class="loading">Loading...</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="tab-ebay">
+      <div class="section-header">
+        <span class="section-title">eBay Scanner</span>
+        <div class="btn-row">
+          <button class="btn primary" onclick="triggerEbayScan()">
+            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            Run Scan
+          </button>
+          <button class="btn" onclick="loadEbayResults()">
+            <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg>
+            Refresh
+          </button>
+        </div>
+      </div>
       <div class="card">
-        <div class="card-header">
-          <span class="card-title">System Health Details</span>
-        </div>
-        <div id="health-details">Loading...</div>
+        <div id="ebayResults"><div class="loading">Loading results...</div></div>
       </div>
     </div>
 
-    <div class="tab-content" id="tab-schedule">
-      <div class="schedule-grid" id="schedule-grid"></div>
-      <div class="card" style="margin-top: 16px;">
-        <div class="card-header">
-          <span class="card-title">📌 Next Up</span>
-        </div>
-        <div id="next-up-list" class="next-up-list">
-          <p class="loading">Loading...</p>
-        </div>
+    <div class="tab-panel" id="tab-levelup">
+      <div class="section-header">
+        <span class="section-title">Level Up Cards — Inventory</span>
+        <button class="btn" onclick="loadInventory()">
+          <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg>
+          Refresh
+        </button>
+      </div>
+      <div class="status-grid" id="inventoryStats">
+        <div class="loading" style="grid-column:1/-1">Loading...</div>
+      </div>
+      <div class="card">
+        <div id="inventoryTable"><div class="loading">Loading inventory...</div></div>
       </div>
     </div>
 
-    <div class="tab-content" id="tab-tasks">
-      <div class="tasks-list" id="tasks-list"></div>
-    </div>
-
-    <div class="tab-content" id="tab-ebay">
-      <div class="embed-container">
-        <div class="external-link">
-          <a href="/ebay" target="_self" class="dashboard-link">eBay Scanner</a>
-          <p>Click to access the eBay Scanner dashboard</p>
+    <div class="tab-panel" id="tab-podcast">
+      <div class="section-header">
+        <span class="section-title">Podcast Summarizer</span>
+      </div>
+      <div class="card" style="margin-bottom:12px">
+        <div class="card-label">Add to Queue</div>
+        <div class="podcast-input-row">
+          <input class="podcast-input" id="podcastUrl" placeholder="Paste YouTube or podcast URL..." type="text">
+          <button class="btn primary" onclick="addPodcast()">Add</button>
         </div>
+      </div>
+      <div class="card">
+        <div class="card-label">Queue</div>
+        <div id="podcastQueue"><div class="loading">Loading queue...</div></div>
       </div>
     </div>
 
-    <div class="tab-content" id="tab-levelup">
-      <div class="embed-container">
-        <div class="external-link">
-          <a href="/levelup" target="_self" class="dashboard-link">Level Up Cards</a>
-          <p>Click to access the Level Up Cards dashboard</p>
+    <div class="tab-panel" id="tab-watchlist">
+      <div class="section-header">
+        <span class="section-title">Watchlist</span>
+        <div style="display:flex;align-items:center;gap:10px">
+          <span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--text-muted)" id="watchlistUpdated"></span>
+          <button class="btn" onclick="loadWatchlist()">
+            <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg>
+            Refresh
+          </button>
         </div>
+      </div>
+      <div class="ticker-grid" id="tickerGrid">
+        <div class="loading" style="grid-column:1/-1">Loading tickers...</div>
       </div>
     </div>
 
-    <div class="tab-content" id="tab-podcast">
-      <div class="embed-container">
-        <div class="external-link">
-          <a href="/podcast" target="_self" class="dashboard-link">Podcast Summarizer</a>
-          <p>Click to access the Podcast dashboard</p>
-        </div>
+    <div class="tab-panel" id="tab-memory">
+      <div class="section-header">
+        <span class="section-title">Jett Memory</span>
+        <button class="btn" onclick="loadMemory()">
+          <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg>
+          Refresh
+        </button>
       </div>
+      <div id="memoryCards"><div class="loading">Loading memory...</div></div>
     </div>
 
-    <div class="tab-content" id="tab-watchlist">
-      <div class="embed-container">
-        <div class="external-link">
-          <a href="/watchlist" target="_self" class="dashboard-link">Watchlist Dashboard</a>
-          <p>Click to access the Watchlist dashboard</p>
+  </main>
+</div>
+
+<script>
+document.querySelectorAll('.nav-item[data-tab]').forEach(item => {
+  item.addEventListener('click', () => {
+    const tab = item.dataset.tab;
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    item.classList.add('active');
+    document.getElementById('tab-' + tab).classList.add('active');
+    loadTab(tab);
+  });
+});
+
+function loadTab(tab) {
+  const loaders = {
+    system: runHealthCheck,
+    schedule: loadSchedule,
+    ebay: loadEbayResults,
+    levelup: loadInventory,
+    podcast: loadPodcastQueue,
+    watchlist: loadWatchlist,
+    memory: loadMemory
+  };
+  if (loaders[tab]) loaders[tab]();
+}
+
+function updateClock() {
+  const now = new Date();
+  document.getElementById('clock').textContent =
+    now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
+}
+setInterval(updateClock, 1000);
+updateClock();
+
+async function apiFetch(path) {
+  const res = await fetch(path);
+  if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
+  return res.json();
+}
+
+function statusDotClass(val) {
+  if (!val || val === 'offline' || val === 'error') return 'red';
+  if (val === 'warning' || val === 'degraded') return 'amber';
+  return 'green';
+}
+
+async function runHealthCheck() {
+  try {
+    const data = await apiFetch('/api/health');
+    
+    const isOnline = data.status === 'healthy';
+    document.getElementById('gatewayDot').style.background = isOnline ? 'var(--green)' : 'var(--red)';
+    document.getElementById('gatewayLabel').textContent = isOnline ? 'online' : 'offline';
+
+    const components = data.checks || [];
+
+    document.getElementById('statusGrid').innerHTML = components.map(c => `
+      <div class="status-card">
+        <div class="status-card-top">
+          <span class="status-card-name">${c.name}</span>
+          <span class="status-dot ${statusDotClass(c.status)}"></span>
+        </div>
+        <span class="status-card-val">${c.message || c.status}</span>
+      </div>
+    `).join('');
+
+    const tbody = document.querySelector('#healthTable tbody');
+    tbody.innerHTML = components.map(c => `
+      <tr>
+        <td>${c.name}</td>
+        <td><span class="badge ${statusDotClass(c.status)}">${c.status}</span></td>
+        <td>${c.message || '—'}</td>
+      </tr>
+    `).join('');
+
+    loadCosts();
+
+  } catch(e) {
+    document.getElementById('statusGrid').innerHTML = `<div class="error-msg">${e.message}</div>`;
+  }
+}
+
+async function loadCosts() {
+  try {
+    const data = await apiFetch('/api/jett/costs');
+    if (data.error || !data.raw) {
+      document.getElementById('costTracker').innerHTML = '<div class="loading">No cost data</div>';
+      return;
+    }
+    const lines = data.raw.trim().split('\n').filter(Boolean);
+    const maxCost = Math.max(...lines.map(l => parseFloat(l.split('|')[1]) || 0));
+    document.getElementById('costTracker').innerHTML = lines.map(line => {
+      const parts = line.split('|');
+      const name = parts[0]?.trim();
+      const cost = parseFloat(parts[1]) || 0;
+      const pct = maxCost > 0 ? (cost / maxCost * 100) : 0;
+      return `<div class="cost-bar">
+        <span class="cost-name">${name}</span>
+        <div class="cost-track"><div class="cost-fill" style="width:${pct}%"></div></div>
+        <span class="cost-val">$${cost.toFixed(4)}</span>
+      </div>`;
+    }).join('');
+  } catch(e) {
+    document.getElementById('costTracker').innerHTML = `<div class="error-msg">${e.message}</div>`;
+  }
+}
+
+async function loadSchedule() {
+  try {
+    const data = await apiFetch('/api/crons');
+    const days = ['SUN','MON','TUE','WED','THU','FRI','SAT'];
+    const today = new Date().getDay();
+    document.getElementById('scheduleDate').textContent = new Date().toLocaleDateString('en-US', { weekday:'long', month:'long', day:'numeric' });
+    
+    const lines = (data.raw || '').split('\n').filter(l => l && !l.startsWith('#'));
+    const events = lines.map(parseCronLine).filter(Boolean);
+    
+    document.getElementById('calendarGrid').innerHTML = days.map((day, i) => {
+      const dayEvents = events.filter(e => e.days.includes(i));
+      const isToday = i === today;
+      return `<div class="cal-day${isToday ? ' today' : ''}">
+        <div class="cal-day-name">${day}</div>
+        ${dayEvents.map(e => `<div class="cal-event ${e.color}">${e.time} ${e.name}</div>`).join('')}
+      </div>`;
+    }).join('');
+
+    const upcoming = events.slice(0, 8);
+    document.getElementById('nextUpList').innerHTML = upcoming.map(e => `
+      <div class="next-up-item">
+        <span class="next-up-name">${e.name}</span>
+        <div class="next-up-meta">
+          <span class="badge green">scheduled</span>
         </div>
       </div>
-    </div>
-  </div>
+    `).join('') || '<div class="loading">No upcoming tasks</div>';
+  } catch(e) {
+    document.getElementById('calendarGrid').innerHTML = `<div class="error-msg" style="grid-column:1/-1">${e.message}</div>`;
+  }
+}
 
-  <script>
-    const API_BASE = '/api';
-    let tasks = [];
+function parseCronLine(line) {
+  const parts = line.trim().split(/\s+/);
+  if (parts.length < 6) return null;
+  const [min, hour, dom, month, dow] = parts;
+  const cmd = parts.slice(5).join(' ');
+  const name = extractJobName(cmd);
+  const colors = ['blue','green','purple','amber'];
+  const color = colors[Math.abs(name.charCodeAt(0)) % colors.length];
+  
+  let days = [0,1,2,3,4,5,6];
+  if (dow !== '*' && dow !== '*/1') {
+    days = dow.split(',').map(d => parseInt(d)).filter(d => !isNaN(d));
+  }
+  
+  const timeStr = hour === '*' ? `*:${min.padStart(2,'0')}` : `${hour}:${min.padStart(2,'0')}`;
 
-    // Clock
-    function updateClock() {
-      const now = new Date();
-      const options = { 
-        timeZone: 'America/New_York',
-        hour: '2-digit', 
-        minute: '2-digit', 
-        second: '2-digit',
-        hour12: false 
-      };
-      document.getElementById('clock').textContent = now.toLocaleTimeString('en-US', options);
+  return { name, time: timeStr, days, color, cmd };
+}
+
+function extractJobName(cmd) {
+  const map = {
+    'bitcoin': 'Bitcoin Tweet', 'sports': 'Sports Tweet', 'morning': 'Morning Brief',
+    'podcast': 'Podcast Queue', 'ebay': 'eBay Scan', 'backup': 'Backup',
+    'log': 'Log Rotate', 'finance': 'Finance Monitor', 'lead': 'Lead Generator',
+    'research': 'Research', 'betting': 'Sports Betting', 'watchlist': 'Watchlist',
+    'summary': 'Weekly Summary', 'reminder': 'Reminder Checker', 'gateway': 'Gateway Ping',
+    'self-heal': 'Self Heal', 'health': 'Health Check', 'performance': 'Performance Check'
+  };
+  const lower = cmd.toLowerCase();
+  for (const [key, val] of Object.entries(map)) {
+    if (lower.includes(key)) return val;
+  }
+  const match = cmd.match(/(\w+)\.js|(\w+)\.py/);
+  return match ? (match[1] || match[2]) : cmd.slice(0,30);
+}
+
+async function loadEbayResults() {
+  try {
+    const data = await apiFetch('/api/ebay/results');
+    const results = data.results || [];
+    if (!results.length) {
+      document.getElementById('ebayResults').innerHTML = '<div class="loading">No results yet — run a scan first</div>';
+      return;
     }
-    setInterval(updateClock, 1000);
-    updateClock();
+    document.getElementById('ebayResults').innerHTML = `
+      <table class="data-table">
+        <thead><tr><th>Item</th><th>Price</th><th>Condition</th><th>Action</th></tr></thead>
+        <tbody>${results.map(r => `
+          <tr>
+            <td>${r.title || r.item || '—'}</td>
+            <td class="mono">${r.price ? '$'+r.price : '—'}</td>
+            <td>${r.condition || '—'}</td>
+            <td><a href="${r.url || '#'}" target="_blank" style="color:var(--accent);text-decoration:none;font-size:11px">View ↗</a></td>
+          </tr>
+        `).join('')}</tbody>
+      </table>`;
+  } catch(e) {
+    document.getElementById('ebayResults').innerHTML = `<div class="error-msg">${e.message}</div>`;
+  }
+}
 
-    // Tab switching
-    document.querySelectorAll('.tab').forEach(tab => {
-      tab.addEventListener('click', () => {
-        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-        tab.classList.add('active');
-        document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
-        // Inject CSS into iframes for consistent dark theme
-        if (tab.dataset.tab === 'ebay') injectIframeStyles('ebay-frame');
-        if (tab.dataset.tab === 'levelup') injectIframeStyles('levelup-frame');
-        if (tab.dataset.tab === 'podcast') injectIframeStyles('podcast-frame');
-      });
-    });
+async function triggerEbayScan() {
+  document.getElementById('ebayResults').innerHTML = '<div class="loading">Running scan...</div>';
+  try {
+    const data = await fetch('/api/ebay/scan', { method:'POST' }).then(r => r.json());
+    if (data.ok) loadEbayResults();
+    else document.getElementById('ebayResults').innerHTML = `<div class="error-msg">${data.error}</div>`;
+  } catch(e) {
+    document.getElementById('ebayResults').innerHTML = `<div class="error-msg">${e.message}</div>`;
+  }
+}
 
-    // Inject CSS into iframes for consistent dark theme
-    function injectIframeStyles(iframeId) {
-      const iframe = document.getElementById(iframeId);
-      if (!iframe) return;
-      const tryInject = () => {
-        try {
-          const doc = iframe.contentDocument || iframe.contentWindow.document;
-          if (doc && doc.body) {
-            applyDarkStyles(doc);
-          }
-        } catch(e) { console.log('iframe error:', e.message); }
-      };
-      if (iframe.contentDocument && iframe.contentDocument.body) {
-        tryInject();
-      } else {
-        iframe.addEventListener('load', tryInject);
-      }
-      setTimeout(tryInject, 1000);
-    }
+async function loadInventory() {
+  try {
+    const data = await apiFetch('/api/levelup/inventory');
+    const items = data.items || [];
+    const total = items.length;
+    const totalVal = items.reduce((s, i) => s + (parseFloat(i.current_market_value || 0)), 0);
 
-    function applyDarkStyles(doc) {
-      if (doc.getElementById('mc-injected')) {
-        // Re-apply body styles
-        doc.body.style.cssText = 'background: #0a0a0f !important; color: #fff !important;';
-        return;
-      }
-      const style = doc.createElement('style');
-      style.id = 'mc-injected';
-      style.textContent = `
-        html, body { 
-          background: #0a0a0f !important; 
-          color: #fff !important; 
-          font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
-          font-size: 12px !important;
-        }
-        * { 
-          background: transparent !important; 
-          border-color: #2a2a3a !important; 
-          color: #fff !important; 
-        }
-        body { background: #0a0a0f !important; }
-        .container, .container-fluid { 
-          background: transparent !important; 
-          max-width: 100% !important;
-          padding: 12px !important;
-        }
-        .navbar {
-          background: #16161f !important;
-          border: 1px solid #2a2a3a !important;
-          border-radius: 8px !important;
-          padding: 8px 16px !important;
-          margin-bottom: 16px !important;
-        }
-        .navbar-brand {
-          font-size: 14px !important;
-          font-weight: 500 !important;
-          letter-spacing: 1px !important;
-          text-transform: uppercase !important;
-        }
-        .ebay-dashboard, .ebay-header, .scans-grid, .scan-card, .card, .dashboard, .header, .main-nav, .health-status, .running-tasks-grid, .task-card { 
-          background: #16161f !important; 
-          border: 1px solid #2a2a3a !important; 
-          border-radius: 8px !important;
-        }
-        h1, h2, h3, h4, h5, h6 { 
-          color: #fff !important; 
-          font-weight: 500 !important; 
-          font-size: 14px !important;
-        }
-        h1 { 
-          font-size: 14px !important; 
-          text-transform: uppercase !important; 
-          letter-spacing: 1px !important; 
-        }
-        .nav-link, a { 
-          color: #9898a8 !important; 
-          text-decoration: none !important; 
-          font-size: 11px !important;
-          padding: 6px 10px !important;
-        }
-        .nav-link:hover, a:hover { 
-          color: #fff !important; 
-          background: #1e1e2a !important;
-        }
-        .btn, .btn-primary, .btn-secondary, button, .refresh-btn { 
-          background: #2a2a3a !important; 
-          border: 1px solid #3a3a4a !important; 
-          color: #fff !important; 
-          font-size: 11px !important; 
-          padding: 6px 12px !important; 
-          border-radius: 6px !important;
-        }
-        .btn:hover { background: #3a3a4a !important; }
-        input, select, textarea { 
-          background: #16161f !important; 
-          border: 1px solid #2a2a3a !important; 
-          color: #fff !important; 
-          font-size: 12px !important; 
-          padding: 8px !important; 
-          border-radius: 6px !important;
-        }
-        table, .table, thead, tbody, tr, th, td { 
-          background: transparent !important; 
-          border-color: #2a2a3a !important; 
-          color: #ccc !important; 
-          font-size: 11px !important;
-          padding: 8px !important;
-        }
-        .table-striped > tbody > tr:nth-child(odd) { background: #16161f !important; }
-        .card {
-          background: #16161f !important;
-          border: 1px solid #2a2a3a !important;
-          border-radius: 8px !important;
-        }
-        .text-muted, .text-secondary, .subtitle, .scan-day, p, small { 
-          color: #9898a8 !important; 
-          font-size: 11px !important; 
-        }
-        .toggle-switch { background: #2a2a3a !important; }
-        .status-enabled { color: #10b981 !important; }
-        .status-disabled { color: #ef4444 !important; }
-        .toggle-slider { background: #fff !important; }
-        /* Bootstrap overrides */
-        .form-control { background: #16161f !important; border-color: #2a2a3a !important; color: #fff !important; }
-        .form-select { background: #16161f !important; border-color: #2a2a3a !important; color: #fff !important; }
-        .modal-content { background: #16161f !important; border: 1px solid #2a2a3a !important; }
-        .dropdown-menu { background: #16161f !important; border: 1px solid #2a2a3a !important; }
-        .dropdown-item { color: #fff !important; }
-        .dropdown-item:hover { background: #2a2a3a !important; }
-        /* Override Bootstrap background */
-        .bg-dark { background: #0a0a0f !important; }
-      `;
-      doc.head.appendChild(style);
-      // Also apply to body
-      doc.body.style.cssText = 'background: #0a0a0f !important; color: #fff !important;';
-      // Keep styles applied on DOM changes
-      const observer = new MutationObserver(() => {
-        doc.body.style.cssText = 'background: #0a0a0f !important; color: #fff !important;';
-      });
-      observer.observe(doc.body, { childList: true, subtree: true });
-      // Also re-apply periodically
-      setInterval(() => {
-        doc.body.style.cssText = 'background: #0a0a0f !important; color: #fff !important;';
-      }, 2000);
-    }
+    document.getElementById('inventoryStats').innerHTML = `
+      <div class="status-card"><div class="status-card-top"><span class="status-card-name">Total Cards</span></div><span class="status-card-val mono">${total}</span></div>
+      <div class="status-card"><div class="status-card-top"><span class="status-card-name">Est. Value</span></div><span class="status-card-val mono">$${totalVal.toFixed(2)}</span></div>
+    `;
 
-    // Load tasks
-    async function loadTasks() {
-      try {
-        // Use cron-jobs endpoint for full details
-        const res = await fetch(API_BASE + '/cron-jobs');
-        tasks = await res.json();
-        tasks = tasks.filter(t => t.enabled);
-        renderTasks();
-        renderSchedule();
-        renderNextUp();
-        updateStatusFromTasks();
-      } catch (e) {
-        console.error('Failed to load tasks:', e);
-      }
-    }
+    document.getElementById('inventoryTable').innerHTML = items.length ? `
+      <table class="data-table">
+        <thead><tr><th>Player</th><th>Year</th><th>Brand</th><th>Grade</th><th>Value</th></tr></thead>
+        <tbody>${items.map(i => `
+          <tr>
+            <td>${i.player_name || '—'}</td>
+            <td class="mono">${i.year || '—'}</td>
+            <td>${i.brand || '—'}</td>
+            <td>${i.grade || '—'}</td>
+            <td class="mono">$${parseFloat(i.current_market_value || 0).toFixed(2)}</td>
+          </tr>
+        `).join('')}</tbody>
+      </table>` : '<div class="loading">No inventory data</div>';
+  } catch(e) {
+    document.getElementById('inventoryTable').innerHTML = `<div class="error-msg">${e.message}</div>`;
+  }
+}
 
-    // Update status lights based on tasks
-    function updateStatusFromTasks() {
-      const running = tasks.filter(t => t.status === 'running' || t.status === 'ok').length;
-      const error = tasks.filter(t => t.status === 'error').length;
-      
-      document.getElementById('status-crons').textContent = `${running} tasks, ${error} errors`;
-      document.getElementById('light-crons').className = 'status-icon ' + (error > 0 ? 'offline' : 'online');
-      
-      // Check research tasks
-      const researchTasks = tasks.filter(t => t.name.toLowerCase().includes('research') || t.name.toLowerCase().includes('finance'));
-      const researchRunning = researchTasks.filter(t => t.status === 'ok' || t.status === 'running').length;
-      document.getElementById('status-research').textContent = researchRunning > 0 ? 'Active' : 'Scheduled';
-      document.getElementById('light-research').className = 'status-icon online';
-    }
-
-    // Convert cron to readable time
-    function cronToReadable(cron) {
-      if (!cron) return 'Manual';
-      
-      // Handle */5 * * * * format
-      const everyMatch = cron.match(/^\*\/(\d+)\s+\*\s+\*\s+\*\s+\*$/);
-      if (everyMatch) {
-        return `Every ${everyMatch[1]} min`;
-      }
-      
-      // Handle specific time: 0 6 * * 1-5 (cron 0 6 * * 1-5)
-      const match = cron.match(/cron\s+(\d+)\s+(\d+)/);
-      if (match) {
-        const hour = parseInt(match[2]);
-        const mins = match[1].padStart(2, '0');
-        const ampm = hour >= 12 ? 'PM' : 'AM';
-        const hour12 = hour % 12 || 12;
-        return `${hour12}:${mins} ${ampm}`;
-      }
-      
-      // Handle specific time without "cron" prefix: 0 6 * * 1-5
-      const directMatch = cron.match(/^(\d+)\s+(\d+)\s+\*\s+\*\s+([\d,\-]+)$/);
-      if (directMatch) {
-        const hour = parseInt(directMatch[2]);
-        const mins = directMatch[1].padStart(2, '0');
-        const ampm = hour >= 12 ? 'PM' : 'AM';
-        const hour12 = hour % 12 || 12;
-        return `${hour12}:${mins} ${ampm}`;
-      }
-      
-      // Daily
-      if (cron.includes('daily')) return 'Daily';
-      // Every X
-      const everyXMatch = cron.match(/every\s+(\d+)\s*(\w+)/);
-      if (everyXMatch) return `Every ${everyXMatch[1]} ${everyXMatch[2]}`;
-      return cron;
-    }
-
-    // Render tasks
-    function renderTasks() {
-      const container = document.getElementById('tasks-list');
-      container.innerHTML = tasks.map(task => `
-        <div class="task-row">
-          <div class="task-status ${task.status === 'error' ? 'error' : task.status === 'ok' ? '' : 'idle'}"></div>
-          <span class="task-name">${task.name}</span>
-          <span class="task-schedule">${cronToReadable(task.schedule)}</span>
-          <span class="task-next">${task.next_run ? new Date(task.next_run).toLocaleString('en-US', {weekday:'short', hour:'numeric', minute:'2-digit', hour12:true}) : '-'}</span>
-        </div>
-      `).join('');
-    }
-
-    // Render schedule
-    function renderSchedule() {
-      const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-      const today = new Date().getDay();
-      
-      const daySchedules = {};
-      days.forEach((day, i) => daySchedules[i] = []);
-
-      tasks.forEach(task => {
-        if (!task.schedule) return;
-        const s = task.schedule.toLowerCase();
-        
-        // Handle */5 * * * * (every X minutes) - show on all days
-        if (s.startsWith('*/')) {
-          days.forEach((_, i) => daySchedules[i].push(task));
-          return;
-        }
-        
-        // Match cron with days - handle "cron 0 7 * * *" format
-        const match = s.match(/cron\s+(\d+)\s+(\d+)\s+(\S+)\s+(\S+)\s+([\d,\-*]+)/);
-        if (match) {
-          const dayPart = match[5];
-          // * means every day
-          if (dayPart === '*') {
-            days.forEach((_, i) => daySchedules[i].push(task));
-          } else if (dayPart.includes('-')) {
-            const [start, end] = dayPart.split('-').map(Number);
-            for (let d = start; d <= end; d++) daySchedules[d]?.push(task);
-          } else {
-            const dayNums = dayPart.split(',').map(d => parseInt(d));
-            dayNums.forEach(d => {
-              if (daySchedules[d]) daySchedules[d].push(task);
-            });
-          }
-        } else if (s.includes('daily')) {
-          days.forEach((_, i) => daySchedules[i].push(task));
-        }
-      });
-
-      const html = days.map((day, i) => {
-        const dayTasks = daySchedules[i] || [];
-        // Sort by time
-        dayTasks.sort((a, b) => {
-          const aMatch = (a.schedule || '').match(/cron\s+(\d+)\s+(\d+)/);
-          const bMatch = (b.schedule || '').match(/cron\s+(\d+)\s+(\d+)/);
-          const aTime = aMatch ? parseInt(aMatch[2])*60 + parseInt(aMatch[1]) : 0;
-          const bTime = bMatch ? parseInt(bMatch[2])*60 + parseInt(bMatch[1]) : 0;
-          return aTime - bTime;
-        });
-        
-        return `
-        <div class="schedule-day ${i === today ? 'today' : ''}">
-          <div class="day-name">${day}</div>
-          ${dayTasks.map(t => {
-            // Use cronToReadable for time
-            const readableTime = cronToReadable(t.schedule || '');
-            // Color coding by system
-            let pillClass = 'web';
-            const name = t.name.toLowerCase();
-            if (name.includes('bitcoin') || name.includes('sports') || name.includes('21m') || name.includes('tweet') || name.includes('research') || name.includes('trending')) {
-              pillClass = 'tm-21m';  // Blue for 21M
-            } else if (name.includes('podcast')) {
-              pillClass = 'tm-podcast';  // Purple for Podcast
-            } else if (name.includes('finance') || name.includes('trending')) {
-              pillClass = 'tm-finance';  // Green for Finance
-            } else if (name.includes('ebay') || name.includes('scan')) {
-              pillClass = 'tm-ebay';  // Orange for eBay
-            } else if (name.includes('lead') || name.includes('generator')) {
-              pillClass = 'tm-lead';  // Yellow for Lead Gen
-            } else if (name.includes('family')) {
-              pillClass = 'tm-family';  // Pink for Family
-            } else if (name.includes('reminder') || name.includes('gateway') || name.includes('pm2') || name.includes('ping')) {
-              pillClass = 'tm-system';  // Gray for system
-            }
-            return `<div class="task-pill ${pillClass}">
-              ${readableTime} ${t.name}
-            </div>`;
-          }).join('')}
-        </div>`;
-      }).join('');
-
-      document.getElementById('schedule-grid').innerHTML = html;
-    }
-
-    // Render Next Up section
-    function renderNextUp() {
-      const container = document.getElementById('next-up-list');
-      
-      // Sort by next_run and take next 5
-      const upcoming = [...tasks]
-        .filter(t => t.next_run)
-        .sort((a, b) => new Date(a.next_run) - new Date(b.next_run))
-        .slice(0, 5);
-      
-      if (upcoming.length === 0) {
-        container.innerHTML = '<p class="empty">No upcoming tasks</p>';
-        return;
-      }
-      
-      container.innerHTML = upcoming.map(t => {
-        const nextDate = new Date(t.next_run);
-        const timeStr = nextDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
-        const dateStr = nextDate.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
-        
-        return `
-          <div class="next-up-item">
-            <div class="next-up-time">${dateStr} ${timeStr}</div>
-            <div class="next-up-name">${t.name}</div>
-            <div class="next-up-status ${t.status}">${t.status}</div>
+async function loadPodcastQueue() {
+  try {
+    const data = await apiFetch('/api/podcast/queue');
+    const queue = data.queue || [];
+    document.getElementById('podcastQueue').innerHTML = queue.length ?
+      queue.map(p => `
+        <div class="podcast-queue-item">
+          <div>
+            <div class="podcast-queue-title">${p.title || p.url || '—'}</div>
+            <div class="podcast-queue-meta">queued</div>
           </div>
-        `;
-      }).join('');
+          <span class="badge green">queued</span>
+        </div>
+      `).join('') : '<div class="loading">Queue is empty</div>';
+  } catch(e) {
+    document.getElementById('podcastQueue').innerHTML = `<div class="error-msg">${e.message}</div>`;
+  }
+}
+
+async function addPodcast() {
+  const url = document.getElementById('podcastUrl').value.trim();
+  if (!url) return;
+  try {
+    await fetch('/api/podcast/add', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ url }) });
+    document.getElementById('podcastUrl').value = '';
+    loadPodcastQueue();
+  } catch(e) { alert(e.message); }
+}
+
+async function loadWatchlist() {
+  try {
+    const data = await apiFetch('/api/watchlist/tickers');
+    const tickers = data.tickers || [];
+    document.getElementById('watchlistUpdated').textContent = 'Updated ' + new Date().toLocaleTimeString();
+    
+    if (!tickers.length) {
+      document.getElementById('tickerGrid').innerHTML = '<div class="loading" style="grid-column:1/-1">No tickers configured</div>';
+      return;
     }
+    
+    document.getElementById('tickerGrid').innerHTML = tickers.map(t => `
+      <div class="ticker-card">
+        <div class="ticker-symbol">${t.ticker}</div>
+        <div class="ticker-price mono">${t.name}</div>
+        <div class="ticker-change">${t.sector || 'stock'}</div>
+      </div>
+    `).join('');
+  } catch(e) {
+    document.getElementById('tickerGrid').innerHTML = `<div class="error-msg" style="grid-column:1/-1">${e.message}</div>`;
+  }
+}
 
-    // Load health
-    async function loadHealth() {
-      try {
-        const res = await fetch(API_BASE + '/health');
-        const health = await res.json();
-        
-        // Update individual lights
-        const checks = health.checks || [];
-        const getStatus = (name) => checks.find(c => c.name.toLowerCase().includes(name.toLowerCase()))?.status || 'healthy';
-        
-        // Gateway
-        const gwStatus = getStatus('gateway');
-        document.getElementById('light-gateway').className = 'status-icon ' + (gwStatus === 'healthy' ? 'online' : gwStatus === 'warning' ? 'warning' : 'offline');
-        document.getElementById('status-gateway').textContent = gwStatus === 'healthy' ? 'Online' : gwStatus;
-        
-        // Telegram
-        const tgStatus = getStatus('telegram');
-        document.getElementById('light-telegram').className = 'status-icon ' + (tgStatus === 'healthy' ? 'online' : 'offline');
-        document.getElementById('status-telegram').textContent = tgStatus === 'healthy' ? 'Connected' : tgStatus;
-        
-        // Email
-        const emailStatus = getStatus('email');
-        document.getElementById('light-email').className = 'status-icon ' + (emailStatus === 'healthy' ? 'online' : 'offline');
-        document.getElementById('status-email').textContent = emailStatus === 'healthy' ? 'Ready' : emailStatus;
-        
-        // PM2
-        const pm2Status = getStatus('pm2');
-        document.getElementById('light-pm2').className = 'status-icon ' + (pm2Status === 'healthy' ? 'online' : 'offline');
-        document.getElementById('status-pm2').textContent = pm2Status === 'healthy' ? 'Running' : pm2Status;
+async function loadMemory() {
+  try {
+    const data = await apiFetch('/api/jett/memory');
+    const memories = data.memories || [];
+    document.getElementById('memoryCards').innerHTML = memories.length ?
+      memories.map(m => `
+        <div class="card" style="margin-bottom:10px">
+          <div class="card-label">${m.date}</div>
+          <div class="log-output" style="max-height:150px">${m.content}</div>
+        </div>
+      `).join('') : '<div class="loading">No memory files found</div>';
+  } catch(e) {
+    document.getElementById('memoryCards').innerHTML = `<div class="error-msg">${e.message}</div>`;
+  }
+}
 
-        // Health details
-        document.getElementById('health-details').innerHTML = `
-          <table style="width:100%;font-size:13px">
-            <tr style="border-bottom:1px solid var(--border-subtle);text-align:left">
-              <th style="padding:8px;color:var(--text-secondary)">Component</th>
-              <th style="padding:8px;color:var(--text-secondary)">Status</th>
-              <th style="padding:8px;color:var(--text-secondary)">Details</th>
-            </tr>
-            ${checks.map(c => `
-              <tr style="border-bottom:1px solid var(--border-subtle)">
-                <td style="padding:8px;font-weight:500">${c.name}</td>
-                <td style="padding:8px;color:${c.status === 'healthy' ? 'var(--success)' : 'var(--danger)'}">${c.status}</td>
-                <td style="padding:8px;color:var(--text-muted)">${c.message || '-'}</td>
-              </tr>
-            `).join('')}
-          </table>
-          <p style="color:var(--text-muted);font-size:12px;margin-top:12px">Last checked: ${new Date().toLocaleTimeString()}</p>
-        `;
-      } catch (e) {
-        document.getElementById('health-details').innerHTML = `
-          <div style="color: var(--danger);">Error loading health: ${e.message}</div>
-        `;
-      }
-    }
+setInterval(runHealthCheck, 30000);
+setInterval(loadWatchlist, 60000);
 
-    // Control functions
-    async function restartGateway() {
-      if (!confirm('Restart Gateway?')) return;
-      try {
-        const res = await fetch(API_BASE + '/control/restart-gateway', { method: 'POST' });
-        const data = await res.json();
-        if (data.success) {
-          alert('Gateway restarting...');
-          setTimeout(loadHealth, 5000);
-        } else {
-          alert('Failed: ' + JSON.stringify(data));
-        }
-      } catch (e) {
-        alert('Error: ' + e.message);
-      }
-    }
-
-    async function runHealthCheck() {
-      const btn = event.target;
-      btn.textContent = 'Running...';
-      btn.disabled = true;
-      
-      try {
-        const res = await fetch(API_BASE + '/health-check', { method: 'POST' });
-        const data = await res.json();
-        
-        if (data.success && data.results) {
-          const results = data.results;
-          
-          let resultsHtml = `
-            <div style="margin-top:16px;padding:16px;background:var(--bg-card);border-radius:8px;border:1px solid var(--border-subtle)">
-              <h4 style="margin:0 0 12px 0;color:var(--text-primary)">Health Check Results</h4>
-              <table style="width:100%;font-size:13px;border-collapse:collapse">
-                <tr style="border-bottom:1px solid var(--border-subtle);text-align:left">
-                  <th style="padding:8px;color:var(--text-secondary)">Component</th>
-                  <th style="padding:8px;color:var(--text-secondary)">Status</th>
-                  <th style="padding:8px;color:var(--text-secondary)">Details</th>
-                </tr>
-          `;
-          
-          results.forEach(r => {
-            const statusColor = r.status === 'healthy' ? 'var(--success)' : r.status === 'warning' ? 'var(--warning)' : 'var(--danger)';
-            const statusIcon = r.status === 'healthy' ? '●' : r.status === 'warning' ? '◐' : '○';
-            resultsHtml += `
-              <tr style="border-bottom:1px solid var(--border-subtle)">
-                <td style="padding:8px;font-weight:500">${r.name}</td>
-                <td style="padding:8px;color:${statusColor}">${statusIcon} ${r.status}</td>
-                <td style="padding:8px;color:var(--text-muted)">${r.message || '-'}</td>
-              </tr>
-            `;
-          });
-          
-          resultsHtml += `
-              </table>
-              <p style="color:var(--text-muted);font-size:12px;margin-top:12px">Checked at: ${new Date(data.timestamp).toLocaleTimeString()}</p>
-            </div>
-          `;
-          
-          document.getElementById('health-details').innerHTML = resultsHtml;
-        } else {
-          alert('Health check failed: ' + (data.error || 'Unknown error'));
-        }
-      } catch (e) {
-        alert('Error running health check: ' + e.message);
-      }
-      
-      btn.textContent = '🩺 Run Health Check';
-      btn.disabled = false;
-    }
-
-    function refreshData() {
-      loadTasks();
-      loadHealth();
-      alert('Data refreshed!');
-    }
-
-    // Load everything
-    loadTasks();
-    loadHealth();
-    setInterval(loadHealth, 30000);
-  </script>
+runHealthCheck();
+</script>
 </body>
 </html>
