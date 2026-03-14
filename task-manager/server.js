@@ -791,10 +791,10 @@ class TaskServer {
 
     // ── LEVEL UP CARDS proxy ───────────────────────────────────────
     if (pathname === '/api/levelup/inventory' && req.method === 'GET') {
-      return this.proxyRequest(res, '/inventory', 5000);
+      return this.proxyRequest(res, '/api/inventory', 5000);
     }
     if (pathname === '/api/levelup/stats' && req.method === 'GET') {
-      return this.proxyRequest(res, '/', 5000);
+      return this.proxyRequest(res, '/api/stats', 5000);
     }
 
     // ── PODCAST proxy ──────────────────────────────────────────────
