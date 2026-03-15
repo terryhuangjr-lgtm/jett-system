@@ -781,7 +781,7 @@ class TaskServer {
       const { task } = body;
       try {
         const { execSync } = require('child_process');
-        if (task === 'morning-brief') execSync('python3 /home/clawd/skills/notion-assistant/morning_brief.py --post', { encoding: 'utf8', timeout: 60000 });
+        if (task === 'morning-brief') execSync('python3 /home/clawd/skills/morning-brief/morning_brief.py --post', { encoding: 'utf8', timeout: 60000 });
         else if (task === 'ebay-scan') execSync('cd /home/clawd/clawd/ebay-scanner && node run-from-config.js', { encoding: 'utf8', timeout: 60000 });
         return this.sendJSON(res, { success: true });
       } catch (e) {
