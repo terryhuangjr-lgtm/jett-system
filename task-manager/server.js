@@ -805,6 +805,50 @@ class TaskServer {
       const body = await this.readBody(req);
       return this.proxyRequest(res, '/api/queue/add', 5001, 'POST', body, 'application/json');
     }
+    if (pathname.startsWith('/api/podcast/queue/') && req.method === 'DELETE') {
+      const position = pathname.split('/').pop();
+      return this.proxyRequest(res, `/api/queue/remove/${position}`, 5001, 'DELETE');
+    }
+    if (pathname === '/api/podcast/reorder' && req.method === 'POST') {
+      const body = await this.readBody(req);
+      return this.proxyRequest(res, '/api/queue/reorder', 5001, 'POST', body, 'application/json');
+    }
+    if (pathname === '/api/podcast/process' && req.method === 'POST') {
+      return this.proxyRequest(res, '/api/process/now', 5001, 'POST');
+    }
+
+    // ── SERVICE restart ─────────────────────────────────────────────
+    if (pathname === '/api/service/restart' && req.method === 'POST') {
+      return this.sendJSON(res, { ok: false, error: 'Use /api/service/restart/:name' });
+    }
+    if (pathname.startsWith('/api/service/restart/') && req.method === 'POST') {
+      const { execFileSync } = require('child_process');
+      const allowed = ['watchlist-dashboard', 'podcast-summary', 'levelup-cards'];
+      const name = pathname.split('/').pop();
+      if (!allowed.includes(name)) {
+        return this.sendJSON(res, { ok: false, error: 'Service not allowed' });
+      }
+      try {
+        execFileSync('sudo', ['systemctl', 'restart', name]);
+        return this.sendJSON(res, { ok: true, service: name });
+      } catch(e) {
+        return this.sendJSON(res, { ok: false, error: e.message });
+      }
+    }
+
+    // ── GATEWAY restart ───────────────────────────────────────────
+    if (pathname === '/api/gateway/restart' && req.method === 'POST') {
+      const { execFileSync } = require('child_process');
+      try {
+        execFileSync('pkill', ['-f', 'openclaw-gateway']);
+        setTimeout(() => {
+          execFileSync('nohup', ['/home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot', 'gateway', '>', '/tmp/gateway.log', '2>&1', '&']);
+        }, 1000);
+        return this.sendJSON(res, { ok: true });
+      } catch(e) {
+        return this.sendJSON(res, { ok: false, error: e.message });
+      }
+    }
 
     // ── WATCHLIST proxy ────────────────────────────────────────────
     if (pathname === '/api/watchlist/tickers' && req.method === 'GET') {

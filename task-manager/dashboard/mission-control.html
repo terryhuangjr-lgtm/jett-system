@@ -284,8 +284,41 @@
         <span class="section-title">System Health</span>
         <div class="btn-row">
           <button class="btn" onclick="runHealthCheck()">
-            <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg>
+            <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/>
+              <path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg>
             Refresh
+          </button>
+          <button class="btn" onclick="restartGateway()">
+            <svg viewBox="0 0 24 24">
+              <path d="M18.36 6.64a9 9 0 11-12.73 0"/>
+              <line x1="12" y1="2" x2="12" y2="12"/>
+            </svg>
+            Restart Gateway
+          </button>
+          <button class="btn" onclick="restartService('watchlist-dashboard')" 
+            title="Restart Watchlist">
+            <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/>
+              <path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg>
+            Watchlist
+          </button>
+          <button class="btn" onclick="restartService('podcast-summary')"
+            title="Restart Podcast">
+            <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/>
+              <path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg>
+            Podcast
+          </button>
+          <button class="btn" onclick="restartService('levelup-cards')"
+            title="Restart Level Up Cards">
+            <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/>
+              <path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg>
+            Level Up
+          </button>
+          <button class="btn danger" onclick="restartAllServices()">
+            <svg viewBox="0 0 24 24">
+              <path d="M18.36 6.64a9 9 0 11-12.73 0"/>
+              <line x1="12" y1="2" x2="12" y2="12"/>
+            </svg>
+            Restart All
           </button>
         </div>
       </div>
@@ -388,6 +421,11 @@
     <div class="tab-panel" id="tab-podcast">
       <div class="section-header">
         <span class="section-title">Podcast Summarizer</span>
+        <button class="btn" onclick="processPodcastNow()" 
+          style="color:var(--green);border-color:rgba(34,197,94,0.3)">
+          <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          Process Now
+        </button>
       </div>
       <div class="card" style="margin-bottom:12px">
         <div class="card-label">Add to Queue</div>
@@ -556,6 +594,45 @@ async function runHealthCheck() {
   } catch(e) {
     document.getElementById('statusGrid').innerHTML = `<div class="error-msg">${e.message}</div>`;
   }
+}
+
+async function restartGateway() {
+  if (!confirm('Restart OpenClaw gateway?')) return;
+  try {
+    const data = await fetch('/api/gateway/restart', {method:'POST'}).then(r=>r.json());
+    if (data.ok) {
+      document.getElementById('gatewayLabel').textContent = 'restarting...';
+      document.getElementById('gatewayDot').style.background = 'var(--amber)';
+      setTimeout(runHealthCheck, 5000);
+    } else {
+      alert('Restart failed: ' + data.error);
+    }
+  } catch(e) { alert(e.message); }
+}
+
+async function restartService(name) {
+  if (!confirm(`Restart ${name}?`)) return;
+  try {
+    const data = await fetch(`/api/service/restart/${name}`, {method:'POST'}).then(r=>r.json());
+    if (data.ok) {
+      setTimeout(runHealthCheck, 3000);
+    } else {
+      alert('Restart failed: ' + data.error);
+    }
+  } catch(e) { alert(e.message); }
+}
+
+async function restartAllServices() {
+  if (!confirm('Restart ALL services? This will briefly interrupt everything.')) return;
+  const services = ['watchlist-dashboard', 'podcast-summary', 'levelup-cards'];
+  for (const s of services) {
+    await fetch(`/api/service/restart/${s}`, {method:'POST'});
+    await new Promise(r => setTimeout(r, 500));
+  }
+  await fetch('/api/gateway/restart', {method:'POST'});
+  document.getElementById('gatewayLabel').textContent = 'restarting...';
+  document.getElementById('gatewayDot').style.background = 'var(--amber)';
+  setTimeout(runHealthCheck, 8000);
 }
 
 async function loadCosts() {
@@ -854,20 +931,114 @@ async function loadInventory() {
 async function loadPodcastQueue() {
   try {
     const data = await apiFetch('/api/podcast/queue');
-    const queue = data.queue || [];
+    const queue = data.queue || data || [];
+    
     document.getElementById('podcastQueue').innerHTML = queue.length ?
-      queue.map(p => `
-        <div class="podcast-queue-item">
-          <div>
-            <div class="podcast-queue-title">${p.title || p.url || '—'}</div>
-            <div class="podcast-queue-meta">queued</div>
+      queue.map((p, i) => `
+        <div class="podcast-queue-item" id="podcast-item-${i}" 
+          draggable="true"
+          ondragstart="dragStart(event, ${i})"
+          ondragover="dragOver(event)"
+          ondrop="dragDrop(event, ${i})"
+          ondragleave="dragLeave(event)"
+          style="cursor:grab">
+          <div style="display:flex;align-items:center;gap:10px;flex:1;min-width:0">
+            <span style="color:var(--text-muted);font-family:'DM Mono',monospace;
+              font-size:11px;min-width:16px">${i+1}</span>
+            <div style="flex:1;min-width:0">
+              <div class="podcast-queue-title" style="overflow:hidden;
+                text-overflow:ellipsis;white-space:nowrap">
+                ${p.title || p.url || '—'}
+              </div>
+              <div class="podcast-queue-meta" style="overflow:hidden;
+                text-overflow:ellipsis;white-space:nowrap;max-width:400px">
+                ${p.title ? p.url : ''}
+              </div>
+            </div>
           </div>
-          <span class="badge green">queued</span>
+          <div style="display:flex;align-items:center;gap:8px;flex-shrink:0">
+            <span class="badge ${p.status==='done'?'green':p.status==='error'?'red':'amber'}">
+              ${p.status||'queued'}
+            </span>
+            <button onclick="deletePodcast(${i})"
+              style="background:none;border:none;color:var(--text-muted);
+              cursor:pointer;font-size:16px;line-height:1;padding:2px 4px;
+              border-radius:4px;transition:all 0.15s"
+              onmouseover="this.style.color='var(--red)';this.style.background='var(--red-dim)'"
+              onmouseout="this.style.color='var(--text-muted)';this.style.background='none'"
+              title="Remove from queue">×</button>
+          </div>
         </div>
-      `).join('') : '<div class="loading">Queue is empty</div>';
+      `).join('') : 
+      '<div class="loading">Queue is empty</div>';
   } catch(e) {
-    document.getElementById('podcastQueue').innerHTML = `<div class="error-msg">${e.message}</div>`;
+    document.getElementById('podcastQueue').innerHTML = 
+      `<div class="error-msg">${e.message}</div>`;
   }
+}
+
+async function deletePodcast(position) {
+  if (!confirm('Remove this podcast from the queue?')) return;
+  try {
+    await fetch(`/api/podcast/queue/${position}`, { method: 'DELETE' });
+    loadPodcastQueue();
+  } catch(e) { alert(e.message); }
+}
+
+async function processPodcastNow() {
+  const btn = document.querySelector('[onclick="processPodcastNow()"]');
+  btn.textContent = 'Processing...';
+  btn.disabled = true;
+  try {
+    await fetch('/api/podcast/process', { method: 'POST' });
+    setTimeout(() => {
+      btn.innerHTML = '<svg viewBox="0 0 24 24" width="13" height="13" stroke="currentColor" fill="none" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg> Process Now';
+      btn.disabled = false;
+      loadPodcastQueue();
+    }, 2000);
+  } catch(e) {
+    btn.textContent = 'Process Now';
+    btn.disabled = false;
+    alert(e.message);
+  }
+}
+
+// Drag and drop reordering
+let dragSrcIndex = null;
+
+function dragStart(event, index) {
+  dragSrcIndex = index;
+  event.dataTransfer.effectAllowed = 'move';
+  event.currentTarget.style.opacity = '0.4';
+}
+
+function dragOver(event) {
+  event.preventDefault();
+  event.dataTransfer.dropEffect = 'move';
+  event.currentTarget.style.borderColor = 'var(--accent)';
+  return false;
+}
+
+function dragLeave(event) {
+  event.currentTarget.style.borderColor = 'var(--border)';
+}
+
+async function dragDrop(event, targetIndex) {
+  event.preventDefault();
+  event.currentTarget.style.borderColor = 'var(--border)';
+  event.currentTarget.style.opacity = '1';
+  
+  if (dragSrcIndex === null || dragSrcIndex === targetIndex) return;
+  
+  try {
+    await fetch('/api/podcast/reorder', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ from: dragSrcIndex, to: targetIndex })
+    });
+    dragSrcIndex = null;
+    loadPodcastQueue();
+  } catch(e) { alert(e.message); }
 }
 
 async function addPodcast() {
