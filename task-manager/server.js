@@ -868,12 +868,16 @@ class TaskServer {
     // ── CRONS proxy ────────────────────────────────────────────────
     if (pathname === '/api/crons' && req.method === 'GET') {
       try {
-        const { execSync } = require('child_process');
-        // Use clawdbot since system crontab is empty
-        const output = execSync('/home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot cron list --json', { encoding: 'utf8', timeout: 10000 });
-        return this.sendJSON(res, { raw: output, source: 'clawdbot' });
-      } catch (e) {
-        return this.sendJSON(res, { raw: '', source: 'error', error: e.message });
+        const { execFileSync } = require('child_process');
+        const result = execFileSync(
+          '/home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot',
+          ['cron', 'list', '--json'],
+          { timeout: 10000 }
+        ).toString();
+        const data = JSON.parse(result);
+        return this.sendJSON(res, { jobs: data.jobs || [], source: 'clawdbot' });
+      } catch(e) {
+        return this.sendJSON(res, { jobs: [], source: 'error', error: e.message });
       }
     }
 

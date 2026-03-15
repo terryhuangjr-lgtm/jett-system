@@ -327,7 +327,8 @@
     <div class="tab-panel" id="tab-ebay">
       <div class="section-header">
         <span class="section-title">eBay Scanner — Weekly Config</span>
-        <button class="btn" onclick="saveEbayConfig()">
+        <button class="btn primary" onclick="saveEbayConfig()" 
+          style="background:var(--accent);color:white;border-color:var(--accent);padding:6px 16px">
           <svg viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
           Save Changes
         </button>
@@ -367,6 +368,10 @@
           <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg>
           Refresh
         </button>
+        <a href="http://localhost:5000" target="_blank" class="btn primary" 
+          style="text-decoration:none">
+          Open Full App ↗
+        </a>
       </div>
       <div class="status-grid" id="inventoryStats">
         <div class="loading" style="grid-column:1/-1">Loading...</div>
@@ -483,9 +488,9 @@ async function runHealthCheck() {
   try {
     const data = await apiFetch('/api/health');
     
-    const isOnline = data.status === 'healthy';
-    document.getElementById('gatewayDot').style.background = isOnline ? 'var(--green)' : 'var(--red)';
-    document.getElementById('gatewayLabel').textContent = isOnline ? 'online' : 'offline';
+    const gatewayOk = data.checks?.find(c => c.name === 'Gateway')?.status === 'healthy';
+    document.getElementById('gatewayDot').style.background = gatewayOk ? 'var(--green)' : 'var(--red)';
+    document.getElementById('gatewayLabel').textContent = gatewayOk ? 'online' : 'offline';
 
     const components = data.checks || [];
 
@@ -548,87 +553,90 @@ async function loadCosts() {
 async function loadSchedule() {
   try {
     const data = await apiFetch('/api/crons');
+    const jobs = data.jobs || [];
     const days = ['SUN','MON','TUE','WED','THU','FRI','SAT'];
     const today = new Date().getDay();
-    document.getElementById('scheduleDate').textContent = new Date().toLocaleDateString('en-US', { weekday:'long', month:'long', day:'numeric' });
-    
-    let events = [];
-    
-    // Handle JSON format from clawdbot (data.jobs is the array)
-    if (data.source === 'clawdbot' && data.jobs) {
-      try {
-        const jobs = data.jobs;
-        events = jobs.map(job => {
-          const name = job.name || 'Unknown';
-          const schedule = job.schedule?.expr || '';
-          const colors = ['blue','green','purple','amber'];
-          const color = colors[Math.abs((name.charCodeAt(0) + name.length)) % colors.length];
-          
-          // Parse schedule like "cron 0 9 * * 1" or "cron */5 * * * *"
-          const parts = schedule.replace('cron ', '').trim().split(/\s+/);
-          const [min, hour, dom, month, dow] = parts;
-          
-          let days = [0,1,2,3,4,5,6];
-          if (dow && dow !== '*' && dow !== '*/1') {
-            days = dow.split(',').flatMap(d => {
-              if (d.includes('-')) {
-                const [s,e] = d.split('-').map(Number);
-                return Array.from({length: e-s+1}, (_,i) => s+i);
-              }
-              return [parseInt(d)];
-            }).filter(d => !isNaN(d));
-          }
-          
-          let timeStr = '';
-          let sortMinutes = -1;
-          if (!hour || hour === '*' || hour.startsWith('*/')) {
-            timeStr = hour && hour.includes('/') ? `every ${hour.split('/')[1]}h` : 'hourly';
-            sortMinutes = -1;
-          } else {
-            const h = parseInt(hour);
-            const m = parseInt(min) || 0;
-            const ampm = h < 12 ? 'AM' : 'PM';
-            const h12 = h % 12 || 12;
-            timeStr = `${h12}:${m.toString().padStart(2,'0')} ${ampm}`;
-            sortMinutes = h * 60 + m;
-          }
-          
-          return { name, time: timeStr, days, color, sortMinutes, nextRun: job.state?.nextRunAtMs };
-        });
-      } catch(e) {
-        console.error('Failed to parse clawdbot JSON:', e);
-      }
-    } else {
-      // Handle text format
-      const lines = (data.raw || '').split('\n').filter(l => l && !l.startsWith('#'));
-      events = lines.map(parseCronLine).filter(Boolean);
+    document.getElementById('scheduleDate').textContent = new Date().toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'});
+
+    // Map jobs to days based on cron expression
+    function getJobDays(expr) {
+      if (!expr) return [0,1,2,3,4,5,6];
+      const parts = expr.split(' ');
+      if (parts.length < 5) return [0,1,2,3,4,5,6];
+      const dow = parts[4];
+      if (dow === '*' || dow === '*/1') return [0,1,2,3,4,5,6];
+      return dow.split(',').flatMap(d => {
+        if (d.includes('-')) {
+          const [s,e] = d.split('-').map(Number);
+          return Array.from({length:e-s+1},(_,i)=>s+i);
+        }
+        return [parseInt(d)].filter(n=>!isNaN(n));
+      });
     }
-    
-    // Sort events by time
-    events.sort((a, b) => {
-      if (a.sortMinutes === undefined || a.sortMinutes === null) return 1;
-      if (b.sortMinutes === undefined || b.sortMinutes === null) return -1;
-      return a.sortMinutes - b.sortMinutes;
-    });
-    
-    document.getElementById('calendarGrid').innerHTML = days.map((day, i) => {
-      const dayEvents = events.filter(e => e.days.includes(i));
-      const isToday = i === today;
-      return `<div class="cal-day${isToday ? ' today' : ''}">
+
+    function getJobTime(expr) {
+      if (!expr) return '';
+      const parts = expr.split(' ');
+      if (parts.length < 5) return '';
+      const min = parts[0], hour = parts[1];
+      if (hour === '*' || hour.startsWith('*/')) return `every ${hour.includes('/')?hour.split('/')[1]:1}h`;
+      const h = parseInt(hour), m = parseInt(min)||0;
+      return `${h%12||12}:${m.toString().padStart(2,'0')} ${h<12?'AM':'PM'}`;
+    }
+
+    function getJobColor(name) {
+      const n = (name||'').toLowerCase();
+      if (n.includes('bitcoin')||n.includes('btc')||n.includes('finance')) return 'blue';
+      if (n.includes('morning')||n.includes('brief')||n.includes('backup')||n.includes('log')) return 'green';
+      if (n.includes('ebay')||n.includes('research')||n.includes('lead')) return 'amber';
+      return 'purple';
+    }
+
+    function getSortMinutes(expr) {
+      if (!expr) return 9999;
+      const parts = expr.split(' ');
+      if (parts.length < 2) return 9999;
+      const hour = parts[1], min = parts[0];
+      if (hour === '*' || hour.startsWith('*/')) return -1;
+      return parseInt(hour)*60 + (parseInt(min)||0);
+    }
+
+    // Build day columns
+    document.getElementById('calendarGrid').innerHTML = days.map((day,i) => {
+      const dayJobs = jobs
+        .filter(j => getJobDays(j.schedule?.expr).includes(i))
+        .sort((a,b) => getSortMinutes(a.schedule?.expr) - getSortMinutes(b.schedule?.expr));
+      return `<div class="cal-day${i===today?' today':''}">
         <div class="cal-day-name">${day}</div>
-        ${dayEvents.map(e => `<div class="cal-event ${e.color}">${e.time} ${e.name}</div>`).join('')}
+        ${dayJobs.map(j => `
+          <div class="cal-event ${getJobColor(j.name)}">
+            ${getJobTime(j.schedule?.expr)} ${j.name}
+          </div>
+        `).join('')}
       </div>`;
     }).join('');
 
-    const upcoming = events.slice(0, 8);
-    document.getElementById('nextUpList').innerHTML = upcoming.map(e => `
-      <div class="next-up-item">
-        <span class="next-up-name">${e.name}</span>
-        <div class="next-up-meta">
-          <span class="badge green">scheduled</span>
-        </div>
-      </div>
-    `).join('') || '<div class="loading">No upcoming tasks</div>';
+    // Next up — jobs with nextRunAtMs, sorted
+    const now = Date.now();
+    const upcoming = jobs
+      .filter(j => j.state?.nextRunAtMs)
+      .sort((a,b) => a.state.nextRunAtMs - b.state.nextRunAtMs)
+      .slice(0,8);
+
+    document.getElementById('nextUpList').innerHTML = upcoming.length ?
+      upcoming.map(j => {
+        const next = new Date(j.state.nextRunAtMs);
+        const lastStatus = j.state?.lastRunStatus || 'pending';
+        return `<div class="next-up-item">
+          <span class="next-up-name">${j.name}</span>
+          <div class="next-up-meta">
+            <span class="next-up-time mono">${next.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'})} ${next.toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'})}</span>
+            <span class="badge ${lastStatus==='ok'?'green':lastStatus==='error'?'red':'amber'}">${lastStatus}</span>
+          </div>
+        </div>`;
+      }).join('') :
+      '<div class="loading">No upcoming jobs</div>';
+
   } catch(e) {
     document.getElementById('calendarGrid').innerHTML = `<div class="error-msg" style="grid-column:1/-1">${e.message}</div>`;
   }
@@ -904,8 +912,6 @@ async function loadMemory() {
 }
 
 let ebayConfigData = {};
-
-let ebayConfigData = {};
 const DAY_ORDER = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];
 
 async function loadEbayConfig() {
@@ -1014,7 +1020,11 @@ async function saveEbayConfig() {
     const data = await res.json();
     if (data.ok) {
       ebayConfigData = updated;
-      alert('Config saved successfully');
+      const btn = document.querySelector('[onclick="saveEbayConfig()"]');
+      const orig = btn.textContent;
+      btn.textContent = 'Saved ✓';
+      btn.style.background = 'var(--green)';
+      setTimeout(() => { btn.textContent = orig; btn.style.background = ''; }, 2000);
     } else {
       alert('Save failed: ' + data.error);
     }
