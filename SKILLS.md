@@ -116,29 +116,6 @@ cd /home/clawd/skills/podcast-summary && python3 process_queue_nightly.py
 
 ---
 
-### 5. Sports Betting
-**Location:** `/home/clawd/skills/sports-betting/`
-**Read:** `SKILL.md`
-**Purpose:** Daily sports betting scout and pick recommendations
-
-**What it does:**
-- Scout (10 AM): Finds today's best betting opportunities
-- Pick (4 PM): Final recommendation with reasoning
-- Sends results via Telegram DM
-
-**Primary scripts:**
-```bash
-cd /home/clawd/clawd && python3 sports_betting/orchestrator.py scout
-cd /home/clawd/clawd && python3 sports_betting/orchestrator.py pick
-```
-
-**Notifier:** `skills/sports-betting/notifiers/clawdbot_notifier.py` (Telegram)
-**⚠️ ESPN scraping blocked by Cloudflare 403 — monitor reliability**
-
-**Cron:** 10:00 AM (Scout), 4:00 PM (Pick)
-
----
-
 ## AUTOMATION PIPELINES (`/home/clawd/clawd/automation/`)
 
 These are scripts, not modular skills — they run via cron or manually.

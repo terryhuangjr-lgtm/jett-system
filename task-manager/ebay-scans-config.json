@@ -224,9 +224,9 @@
         ]
       },
       "output_file": "/tmp/cam-ward-scan.json",
-      "last_run": "2026-03-08T13:00:10.233Z",
+      "last_run": "2026-03-15T13:00:15.535Z",
       "last_results": {
-        "timestamp": "2026-03-08T13:00:10.233Z",
+        "timestamp": "2026-03-15T13:00:15.536Z",
         "success": true
       },
       "last_updated": "2026-03-03T16:57:50.467Z"

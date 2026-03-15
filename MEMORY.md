@@ -55,7 +55,6 @@ Help with automation, find opportunities, handle tech/code, stay on top of sport
 - `/home/clawd/clawd/automation/deploy-ebay-scans.js` - eBay deployment
 - `/home/clawd/skills/notion-assistant/morning_brief.py` - Family brief (NOT in automation/)
 - `/home/clawd/clawd/task-manager/server.js` - Dashboard (port 3000)
-- `/home/clawd/clawd/sports_betting/orchestrator.py` - Sports betting
 - `/home/clawd/clawd/lib/notify-failure.js` - Failure notifications → Telegram
 - `/home/clawd/clawd/lib/send-email.js` - Send email via GWS Gmail
 - `/home/clawd/.openclaw/openclaw.json` - OpenClaw config

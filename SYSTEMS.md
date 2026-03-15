@@ -268,22 +268,6 @@ node automation/jett-community-pulse.js "NIL deals college football"
 
 ---
 
-### 4. Sports Betting
-
-```
-┌──────────────────┐     ┌──────────────────┐     ┌──────────────────┐
-│ Orchestrator     │────▶│ Scout (9AM)      │────▶│   Slack DM       │
-│ sports_betting/  │     │ Pick (4PM)       │     │   (Terry)        │
-│ orchestrator.py  │     │                  │     │                  │
-└──────────────────┘     └──────────────────┘     └──────────────────┘
-```
-
-**Scripts:**
-- `sports_betting/orchestrator.py` - Main runner
-- `skills/sports-betting/notifiers/clawdbot_notifier.py` - Slack alerts
-
----
-
 ### 6. Lead Generator (Level Up Digital)
 
 ```
@@ -355,7 +339,6 @@ node automation/jett-community-pulse.js "NIL deals college football"
 | ebay-scan | /home/clawd/skills/ebay-scan/ | eBay scanning |
 | notion-assistant | /home/clawd/skills/notion-assistant/ | Google Calendar, Notion (lists/tasks/reminders) |
 | podcast-summary | /home/clawd/skills/podcast-summary/ | Podcast transcription/summary |
-| sports-betting | /home/clawd/skills/sports-betting/ | Sports betting picks |
 
 ---
 

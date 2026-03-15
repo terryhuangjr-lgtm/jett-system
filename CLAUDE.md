@@ -185,8 +185,6 @@ clawdbot message send --channel telegram --target "5867308866" --message "text" 
 | task-manager/server.js | Dashboard (port 3000) |
 | task-manager/worker.js | Task scheduler |
 | skills/podcast-summary/app.py | Podcast processor |
-| sports_betting/orchestrator.py | Sports betting |
-| sports_betting/notifiers/clawdbot_notifier.py | Sports betting Telegram |
 | skills/notion-assistant/morning_brief.py | Family brief |
 | skills/notion-assistant/notion_client.py | Notion API client |
 | ebay-scanner/run-from-config.js | eBay scanner |
@@ -222,8 +220,6 @@ clawdbot message send --channel telegram --target "5867308866" --message "text" 
 
 - automation/21m-claude-generator.js (replaced by v2)
 - automation/deploy-21m-tweet.js (tasks 61/68 disabled)
-- sports_betting/notifiers/slack_notifier_bot.py (broken token)
-- sports_betting/notifiers/slack_notifier.py (empty webhook)
 
 ---
 

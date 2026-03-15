@@ -557,13 +557,6 @@ select option {
   border: 1px solid rgba(10, 132, 255, 0.3);
 }
 
-.day-task.sports-betting,
-.task-card.sports-betting,
-.next-task.sports-betting {
-  background: rgba(90, 200, 250, 0.2);
-  border: 1px solid rgba(90, 200, 250, 0.3);
-}
-
 .day-task.family,
 .task-card.family,
 .next-task.family {

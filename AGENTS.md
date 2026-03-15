@@ -32,7 +32,6 @@ Don't ask permission. Just do it.
 - `/home/clawd/clawd/21M-SYSTEM-FINAL.md` — 21M content pipeline
 - `/home/clawd/skills/podcast-summary/SYSTEM.md` — Podcast system
 - `/home/clawd/clawd/ebay-scanner/SYSTEM.md` — eBay scanner
-- `/home/clawd/clawd/sports_betting/SYSTEM.md` — Sports betting
 - `/home/clawd/clawd/task-manager/SYSTEM.md` — Task scheduler
 
 **Rules:**
