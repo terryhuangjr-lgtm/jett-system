@@ -62,29 +62,26 @@ cd /home/clawd/clawd/ebay-scanner && node run-from-config.js [monday|tuesday|wed
 
 ---
 
-### 3. Notion Assistant
-**Location:** `/home/clawd/skills/notion-assistant/`
-**Read:** `SKILL.md`, `ACTIVATION.md`
-**Purpose:** Morning family brief, reminders, calendar, meal planning
+### 3. Morning Brief
+**Location:** `/home/clawd/skills/morning-brief/`
+**Purpose:** Daily family brief using Google Calendar only (Notion removed)
 
 **What it does:**
-- Morning brief: pulls Google Calendar events + Notion tasks/reminders → sends to Telegram
-- Reminder checker: scans Notion for due reminders → Telegram DM
-- Meal planning, restaurant tracking, cost tracking (available but not in cron)
+- Morning brief: pulls Google Calendar events → sends to Telegram
+- Removed: Notion shopping list, tasks, reminders (March 2025)
 
 **Primary scripts:**
 - `morning_brief.py` — daily 8 AM family brief
-- `check_reminders.py` — every 5 min reminder checker
 - `gcal_client.py` — Google Calendar integration (GWS)
-- `notion_client.py` — Notion API (token hardcoded, gitignored — back up manually)
 
 **Invoke via:**
 ```bash
-cd /home/clawd/skills/notion-assistant && python3 morning_brief.py
-cd /home/clawd/skills/notion-assistant && python3 check_reminders.py
+python3 /home/clawd/skills/morning-brief/morning_brief.py
+python3 /home/clawd/skills/morning-brief/morning_brief.py --post  # posts to Telegram
+python3 /home/clawd/skills/morning-brief/morning_brief.py --dry-run  # prints without posting
 ```
 
-**Cron:** 8:00 AM (Morning Brief), */5 (Reminder Checker)
+**Cron:** 8:00 AM (Morning Brief) — via clawdbot
 
 ---
 

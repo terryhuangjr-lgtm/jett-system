@@ -98,10 +98,18 @@ Action:
 
 **Detailed Architecture:** See `SYSTEMS.md` for complete system diagram and documentation.
 pm2 list                     # Check dashboard server status
-crontab -l                  # View watchdog cron
+crontab -l                  # View system cron (all jobs)
 ```
 
-**Notes:** Migrated from PM2 task-manager worker to clawdbot cron. Added failure notifications.
+**Notes:** 
+- Some jobs migrated from clawdbot cron to system crontab (zero token cost):
+  - Gateway Ping (`*/10 * * * *`)
+  - PM2 Monitor (`*/15 * * * *`)
+  - Performance Check (`0 */6 * * *`)
+  - Watchlist Monitor (`*/15 6-20 * * 1-5`) — deterministic, only alerts when threshold breaches
+- Morning Brief stays in clawdbot (low frequency)
+- Other automation stays in clawdbot cron (agent turns required)
+
 pm2 list                    # check status
 pm2 logs --lines 50         # recent logs
 ```
@@ -185,13 +193,10 @@ clawdbot message send --channel telegram --target "5867308866" --message "text" 
 | task-manager/server.js | Dashboard (port 3000) |
 | task-manager/worker.js | Task scheduler |
 | skills/podcast-summary/app.py | Podcast processor |
-| skills/notion-assistant/morning_brief.py | Family brief |
-| skills/notion-assistant/notion_client.py | Notion API client |
+| skills/morning-brief/morning_brief.py | Family brief (Google Calendar only) |
 | ebay-scanner/run-from-config.js | eBay scanner |
 | automation/watchlist-dashboard.py | Watchlist dashboard (port 5002) |
-| automation/jett-watchlist-monitor.js | Watchlist price/news monitor |
-
-**Note:** notion-assistant lives at /home/clawd/skills/notion-assistant/ NOT /home/clawd/clawd/skills/
+| automation/jett-watchlist-check.js | Watchlist price checker (deterministic, zero token cost) |
 
 ---
 
@@ -287,7 +292,6 @@ Always push at end of session after Terry confirms.
 ## CREDENTIALS LOCATIONS
 
 - Anthropic API key: ~/.claude.json (primaryApiKey) AND /home/clawd/clawd/.env
-- Notion token: hardcoded in /home/clawd/skills/notion-assistant/notion_client.py
 - Slack: handled by clawdbot internally (DEPRECATED - migrating to Telegram)
 - GWS (Google Workspace): jett.theassistant@gmail.com - credentials at ~/.config/gws/
 - Other: /home/clawd/clawd/memory/credentials.md (gitignored)

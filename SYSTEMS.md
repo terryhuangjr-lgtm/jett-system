@@ -312,22 +312,23 @@ node automation/jett-community-pulse.js "NIL deals college football"
 ```
 
 **Scripts:**
-- `automation/jett-watchlist-monitor.js` — Watchlist polling engine, fetches Yahoo Finance price/volume data + NewsAPI headlines for all tickers, fires tiered Telegram alerts (🟡 Watch, 🔴 Alert, 🚨 Urgent) on threshold crossings
-- `automation/jett-watchlist-config.yaml` — Watchlist config: tickers, alert thresholds, cooldowns, global news keywords. Edit this file to add/remove tickers.
-- `automation/jett-watchlist-state.json` — Auto-created at runtime, tracks cooldowns and seen news to prevent duplicate alerts
+- `automation/jett-watchlist-check.js` — Deterministic price checker. Runs via crontab every 15 min (6AM-8PM M-F). Fetches live Yahoo Finance prices, compares to previous close, fires Telegram alert ONLY when thresholds breach. Zero token cost unless alert fires.
 - `automation/watchlist-dashboard.py` — Flask web dashboard (port 5002) for managing tickers. Access via Mission Control > Watchlist tab or directly at `/watchlist`
 - **Dashboard:** http://localhost:5002 (local) or http://jettmissioncontrol.com/watchlist (tunnel)
+- **Cron:** System crontab (not clawdbot) — `*/15 6-20 * * 1-5`
 
 ### 6. Morning Family Brief
 
 ```
 ┌──────────────────┐     ┌──────────────────┐     ┌──────────────────┐
-│ Cron 8AM         │────▶│ notion-assistant/│────▶│   Slack          │
-│                  │     │ morning_brief.py  │     │   #huangfamily   │
+│ Cron 8AM         │────▶│ morning-brief/   │────▶│   Telegram       │
+│                  │     │ morning_brief.py │     │   #huangfamily   │
 └──────────────────┘     └──────────────────┘     └──────────────────┘
 ```
 
-**Skill:** `/home/clawd/skills/notion-assistant/`
+**Location:** `/home/clawd/skills/morning-brief/`
+
+**Note:** Removed Notion dependency (shopping list + tasks). Now uses Google Calendar only.
 
 ---
 
@@ -337,7 +338,7 @@ node automation/jett-community-pulse.js "NIL deals college football"
 |-------|----------|---------|
 | 21m-sports-generation | /home/clawd/skills/21m-sports-generation/ | Sports content validation |
 | ebay-scan | /home/clawd/skills/ebay-scan/ | eBay scanning |
-| notion-assistant | /home/clawd/skills/notion-assistant/ | Google Calendar, Notion (lists/tasks/reminders) |
+| morning-brief | /home/clawd/skills/morning-brief/ | Family brief (Google Calendar only) |
 | podcast-summary | /home/clawd/skills/podcast-summary/ | Podcast transcription/summary |
 
 ---

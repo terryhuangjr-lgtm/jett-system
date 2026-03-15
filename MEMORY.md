@@ -53,7 +53,7 @@ Help with automation, find opportunities, handle tech/code, stay on top of sport
 - `/home/clawd/clawd/automation/21m-daily-generator-v2.js` - Tweet generator (uses Sonnet)
 - `/home/clawd/clawd/automation/21m-content-bank.json` - 58+ verified entries
 - `/home/clawd/clawd/automation/deploy-ebay-scans.js` - eBay deployment
-- `/home/clawd/skills/notion-assistant/morning_brief.py` - Family brief (NOT in automation/)
+- `/home/clawd/skills/morning-brief/morning_brief.py` - Family brief (Google Calendar only)
 - `/home/clawd/clawd/task-manager/server.js` - Dashboard (port 3000)
 - `/home/clawd/clawd/lib/notify-failure.js` - Failure notifications → Telegram
 - `/home/clawd/clawd/lib/send-email.js` - Send email via GWS Gmail
