@@ -818,6 +818,11 @@ class TaskServer {
       const symbol = pathname.split('/').pop();
       return this.proxyRequest(res, `/api/ticker/${symbol}`, 5002, 'DELETE');
     }
+    if (pathname.startsWith('/api/watchlist/ticker/') && req.method === 'PUT') {
+      const symbol = pathname.split('/').pop();
+      const body = await this.readBody(req);
+      return this.proxyRequest(res, `/api/ticker/${symbol}`, 5002, 'PUT', body, 'application/json');
+    }
 
     // ── EBAY proxy ─────────────────────────────────────────────────
     if (pathname === '/api/ebay/results' && req.method === 'GET') {

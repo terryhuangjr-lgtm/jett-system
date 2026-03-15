@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "last_updated": "2026-03-14",
+  "last_updated": "2026-03-15",
   "entries": [
     {
       "id": 1,
@@ -263,7 +263,9 @@
       "btc_price_then": 0,
       "verified_fact": "Scottie Pippen earned $120M in his NBA career and was reported nearly broke by 2008. Bitcoin launched in January 2009.",
       "source": "Sports Illustrated, ESPN",
-      "used_dates": [],
+      "used_dates": [
+        "2026-03-15"
+      ],
       "cooldown_days": 90
     },
     {
@@ -1068,7 +1070,9 @@
       "btc_price_then": 0,
       "verified_fact": "In 2021, Tesla purchased $1.5 billion worth of Bitcoin",
       "source": "Research",
-      "used_dates": [],
+      "used_dates": [
+        "2026-03-15"
+      ],
       "cooldown_days": 60,
       "id": 70
     }

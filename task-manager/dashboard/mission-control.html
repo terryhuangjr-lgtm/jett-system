@@ -327,38 +327,42 @@
     <div class="tab-panel" id="tab-ebay">
       <div class="section-header">
         <span class="section-title">eBay Scanner — Weekly Config</span>
-        <button class="btn primary" onclick="saveEbayConfig()" 
-          style="background:var(--accent);color:white;border-color:var(--accent);padding:6px 16px">
-          <svg viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
-          Save Changes
-        </button>
+        <button class="btn primary" id="ebayGlobalSaveBtn" onclick="saveEbayConfig()" 
+          style="display:none">Save Changes</button>
       </div>
 
-      <!-- Global Filters -->
-      <div class="card" style="margin-bottom:12px">
-        <div class="card-label">Global Filters</div>
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px">
-          <div>
-            <div style="font-size:10px;color:var(--text-muted);font-family:'DM Mono',monospace;margin-bottom:4px">MIN SELLER FEEDBACK %</div>
-            <input class="podcast-input" id="gf-feedback" type="number" min="0" max="100" placeholder="98">
-          </div>
-          <div>
-            <div style="font-size:10px;color:var(--text-muted);font-family:'DM Mono',monospace;margin-bottom:4px">MAX LISTING AGE (DAYS)</div>
-            <input class="podcast-input" id="gf-age" type="number" min="1" placeholder="25">
-          </div>
-          <div style="display:flex;align-items:center;gap:8px;padding-top:16px">
-            <input type="checkbox" id="gf-raw" style="width:14px;height:14px;accent-color:var(--accent)">
-            <label for="gf-raw" style="font-size:12px;color:var(--text-secondary)">Require raw cards only</label>
-          </div>
+      <!-- Global Filters Summary -->
+      <div class="card" style="margin-bottom:12px" id="ebayGlobalCard">
+        <div style="display:flex;align-items:center;justify-content:space-between">
+          <div class="card-label">Global Filters</div>
+          <button class="btn" onclick="openGlobalModal()" style="font-size:11px;padding:4px 10px">Edit</button>
         </div>
-        <div style="margin-top:12px">
-          <div style="font-size:10px;color:var(--text-muted);font-family:'DM Mono',monospace;margin-bottom:4px">EXCLUDED KEYWORDS (comma-separated)</div>
-          <input class="podcast-input" id="gf-keywords" placeholder="psa, bgs, sgc, lot, pack...">
-        </div>
+        <div id="ebayGlobalSummary" style="font-size:11px;color:var(--text-secondary);margin-top:6px">Loading...</div>
       </div>
 
-      <!-- Daily Scans -->
-      <div id="ebayDayCards" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px"></div>
+      <!-- Day Cards Grid -->
+      <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:8px" id="ebayDayCards"></div>
+
+      <!-- Modal Overlay -->
+      <div id="ebayModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);
+        z-index:1000;align-items:center;justify-content:center">
+        <div style="background:var(--bg-surface);border:1px solid var(--border-mid);border-radius:8px;
+          padding:24px;width:500px;max-height:80vh;overflow-y:auto;position:relative">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
+            <span id="modalTitle" style="font-family:'DM Mono',monospace;font-size:13px;
+              font-weight:500;color:var(--text-primary)"></span>
+            <button onclick="closeEbayModal()" 
+              style="background:none;border:none;color:var(--text-muted);cursor:pointer;
+              font-size:20px;line-height:1;padding:0">×</button>
+          </div>
+          <div id="modalContent"></div>
+          <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:20px;
+            padding-top:16px;border-top:1px solid var(--border)">
+            <button class="btn" onclick="closeEbayModal()">Cancel</button>
+            <button class="btn primary" onclick="saveModalData()">Save</button>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="tab-panel" id="tab-levelup">
@@ -387,9 +391,14 @@
       </div>
       <div class="card" style="margin-bottom:12px">
         <div class="card-label">Add to Queue</div>
-        <div class="podcast-input-row">
-          <input class="podcast-input" id="podcastUrl" placeholder="Paste YouTube or podcast URL..." type="text">
-          <button class="btn primary" onclick="addPodcast()">Add</button>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-top:6px">
+          <input class="podcast-input" id="podcastTitle" 
+            placeholder="Episode title (e.g. Pomp Podcast - Shezan Maredia)" type="text">
+          <div style="display:flex;gap:8px">
+            <input class="podcast-input" id="podcastUrl" 
+              placeholder="Paste YouTube or podcast URL..." type="text" style="flex:1">
+            <button class="btn primary" onclick="addPodcast()">Add</button>
+          </div>
         </div>
       </div>
       <div class="card">
@@ -402,9 +411,11 @@
       <div class="section-header">
         <span class="section-title">Watchlist</span>
         <div style="display:flex;align-items:center;gap:10px">
-          <span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--text-muted)" id="watchlistUpdated"></span>
+          <span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--text-muted)" 
+            id="watchlistUpdated"></span>
           <button class="btn" onclick="loadWatchlist()">
-            <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg>
+            <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/>
+              <path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg>
             Refresh
           </button>
         </div>
@@ -413,16 +424,43 @@
       <!-- Add ticker -->
       <div class="card" style="margin-bottom:12px">
         <div class="card-label">Add Ticker</div>
-        <div style="display:flex;gap:8px;margin-top:6px">
-          <input class="podcast-input" id="newTickerSymbol" placeholder="Symbol (e.g. MSTR)" style="max-width:140px;text-transform:uppercase">
-          <input class="podcast-input" id="newTickerName" placeholder="Name (e.g. MicroStrategy)">
-          <input class="podcast-input" id="newTickerCategory" placeholder="Category (e.g. bitcoin_proxy)" style="max-width:180px">
+        <div style="display:flex;gap:8px;margin-top:6px;flex-wrap:wrap">
+          <input class="podcast-input" id="newTickerSymbol" 
+            placeholder="Symbol (e.g. MSTR)" 
+            style="max-width:120px;text-transform:uppercase">
+          <input class="podcast-input" id="newTickerName" 
+            placeholder="Company name">
+          <input class="podcast-input" id="newTickerCategory" 
+            placeholder="Category (e.g. bitcoin_proxy)" 
+            style="max-width:200px">
           <button class="btn primary" onclick="addTicker()">Add</button>
         </div>
       </div>
 
       <!-- Ticker grid -->
       <div class="ticker-grid" id="tickerGrid"></div>
+
+      <!-- Watchlist Modal -->
+      <div id="watchlistModal" style="display:none;position:fixed;inset:0;
+        background:rgba(0,0,0,0.7);z-index:1000;align-items:center;justify-content:center">
+        <div style="background:var(--bg-surface);border:1px solid var(--border-mid);
+          border-radius:8px;padding:24px;width:460px;position:relative">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
+            <span id="watchlistModalTitle" style="font-family:'DM Mono',monospace;
+              font-size:13px;font-weight:500;color:var(--text-primary)"></span>
+            <button onclick="closeWatchlistModal()"
+              style="background:none;border:none;color:var(--text-muted);
+              cursor:pointer;font-size:20px;line-height:1;padding:0">×</button>
+          </div>
+          <div id="watchlistModalContent"></div>
+          <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:20px;
+            padding-top:16px;border-top:1px solid var(--border)">
+            <button class="btn danger" id="watchlistDeleteBtn" onclick="deleteCurrentTicker()">Remove</button>
+            <button class="btn" onclick="closeWatchlistModal()">Cancel</button>
+            <button class="btn primary" onclick="saveTickerModal()">Save</button>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="tab-panel" id="tab-memory">
@@ -834,39 +872,186 @@ async function loadPodcastQueue() {
 
 async function addPodcast() {
   const url = document.getElementById('podcastUrl').value.trim();
+  const title = document.getElementById('podcastTitle').value.trim();
   if (!url) return;
   try {
-    await fetch('/api/podcast/add', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ url }) });
+    await fetch('/api/podcast/add', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({ url, title: title || url })
+    });
     document.getElementById('podcastUrl').value = '';
+    document.getElementById('podcastTitle').value = '';
     loadPodcastQueue();
   } catch(e) { alert(e.message); }
 }
 
+let watchlistData = [];
+let currentTickerSymbol = null;
+
 async function loadWatchlist() {
   try {
     const data = await apiFetch('/api/watchlist/tickers');
-    document.getElementById('watchlistUpdated').textContent = 'Updated ' + new Date().toLocaleTimeString();
-    const tickers = data.tickers || data || [];
+    watchlistData = data.tickers || data || [];
+    document.getElementById('watchlistUpdated').textContent =
+      'Updated ' + new Date().toLocaleTimeString();
 
-    document.getElementById('tickerGrid').innerHTML = tickers.length ?
-      tickers.map(t => `
-        <div class="ticker-card" style="position:relative">
-          <button onclick="removeTicker('${t.symbol || t.ticker}')"
-            style="position:absolute;top:8px;right:8px;background:none;border:none;
-            color:var(--text-muted);cursor:pointer;font-size:14px;line-height:1;padding:2px"
-            title="Remove">×</button>
-          <div class="ticker-symbol">${t.symbol || t.ticker || '—'}</div>
-          <div style="font-size:11px;color:var(--text-muted);margin-bottom:6px;font-family:'Inter',sans-serif">${t.name || t.company_name || ''}</div>
-          <div style="font-size:10px;color:var(--text-muted);font-family:'DM Mono',monospace;margin-bottom:8px">${t.category || t.type || ''}</div>
-          <div style="font-size:10px;color:var(--text-muted);font-family:'DM Mono',monospace;border-top:1px solid var(--border);padding-top:8px;margin-top:4px">
-            Prices update at market open
+    document.getElementById('tickerGrid').innerHTML = watchlistData.length ?
+      watchlistData.map(t => `
+        <div class="ticker-card" onclick="openTickerModal('${t.ticker||t.symbol}')"
+          style="cursor:pointer;transition:all 0.15s"
+          onmouseover="this.style.borderColor='var(--accent)'"
+          onmouseout="this.style.borderColor='var(--border)'">
+          <div class="ticker-symbol">${t.ticker||t.symbol||'—'}</div>
+          <div style="font-size:11px;color:var(--text-muted);margin-bottom:6px;
+            overflow:hidden;text-overflow:ellipsis;white-space:nowrap">
+            ${t.name||t.company_name||''}
           </div>
+          <div style="font-size:10px;color:var(--text-muted);font-family:'DM Mono',monospace;
+            margin-bottom:8px">${t.sector||t.category||t.type||''}</div>
+          <div style="border-top:1px solid var(--border);padding-top:8px;margin-top:4px;
+            display:grid;grid-template-columns:1fr 1fr;gap:4px">
+            <div style="font-size:10px;color:var(--text-muted)">
+              ▲ <span style="color:var(--green)">${t.alerts?.daily_gain_pct||5}%</span>
+            </div>
+            <div style="font-size:10px;color:var(--text-muted)">
+              ▼ <span style="color:var(--red)">${t.alerts?.daily_drop_pct||5}%</span>
+            </div>
+          </div>
+          <div style="font-size:10px;color:var(--accent);margin-top:6px">Edit →</div>
         </div>
       `).join('') :
       '<div class="loading" style="grid-column:1/-1">No tickers — add one above</div>';
   } catch(e) {
-    document.getElementById('tickerGrid').innerHTML = `<div class="error-msg" style="grid-column:1/-1">${e.message}</div>`;
+    document.getElementById('tickerGrid').innerHTML =
+      `<div class="error-msg" style="grid-column:1/-1">${e.message}</div>`;
   }
+}
+
+function openTickerModal(symbol) {
+  const t = watchlistData.find(x => (x.ticker||x.symbol) === symbol);
+  if (!t) return;
+  currentTickerSymbol = symbol;
+
+  document.getElementById('watchlistModalTitle').textContent = symbol + ' — ' + (t.name||'');
+  document.getElementById('watchlistModalContent').innerHTML = `
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <div>
+          <div class="card-label" style="margin-bottom:4px">Symbol</div>
+          <input class="podcast-input" id="wl-symbol" value="${t.ticker||t.symbol||''}"
+            style="text-transform:uppercase">
+        </div>
+        <div>
+          <div class="card-label" style="margin-bottom:4px">Type</div>
+          <input class="podcast-input" id="wl-type" value="${t.type||'stock'}">
+        </div>
+      </div>
+      <div>
+        <div class="card-label" style="margin-bottom:4px">Company Name</div>
+        <input class="podcast-input" id="wl-name" value="${t.name||''}">
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <div>
+          <div class="card-label" style="margin-bottom:4px">Sector / Category</div>
+          <input class="podcast-input" id="wl-sector" value="${t.sector||t.category||''}">
+        </div>
+        <div>
+          <div class="card-label" style="margin-bottom:4px">Cooldown (minutes)</div>
+          <input class="podcast-input" id="wl-cooldown" type="number" 
+            value="${t.cooldown_minutes||90}">
+        </div>
+      </div>
+      <div style="background:var(--bg-elevated);border-radius:var(--radius);padding:12px">
+        <div class="card-label" style="margin-bottom:10px">Alert Thresholds</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <div>
+            <div style="font-size:10px;color:var(--green);font-family:'DM Mono',monospace;
+              margin-bottom:4px">DAILY GAIN % ALERT</div>
+            <input class="podcast-input" id="wl-gain" type="number" step="0.5"
+              value="${t.alerts?.daily_gain_pct||5}">
+          </div>
+          <div>
+            <div style="font-size:10px;color:var(--red);font-family:'DM Mono',monospace;
+              margin-bottom:4px">DAILY DROP % ALERT</div>
+            <input class="podcast-input" id="wl-drop" type="number" step="0.5"
+              value="${t.alerts?.daily_drop_pct||5}">
+          </div>
+          <div>
+            <div style="font-size:10px;color:var(--green);font-family:'DM Mono',monospace;
+              margin-bottom:4px">PRICE GAIN % ALERT</div>
+            <input class="podcast-input" id="wl-pgain" type="number" step="0.5"
+              value="${t.alerts?.price_gain_pct||5}">
+          </div>
+          <div>
+            <div style="font-size:10px;color:var(--red);font-family:'DM Mono',monospace;
+              margin-bottom:4px">PRICE DROP % ALERT</div>
+            <input class="podcast-input" id="wl-pdrop" type="number" step="0.5"
+              value="${t.alerts?.price_drop_pct||5}">
+          </div>
+          <div>
+            <div style="font-size:10px;color:var(--amber);font-family:'DM Mono',monospace;
+              margin-bottom:4px">VOLUME SPIKE (×)</div>
+            <input class="podcast-input" id="wl-volume" type="number" step="0.5"
+              value="${t.alerts?.volume_spike_x||2}">
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+  document.getElementById('watchlistModal').style.display = 'flex';
+}
+
+function closeWatchlistModal() {
+  document.getElementById('watchlistModal').style.display = 'none';
+  currentTickerSymbol = null;
+}
+
+document.getElementById('watchlistModal').addEventListener('click', function(e) {
+  if (e.target === this) closeWatchlistModal();
+});
+
+async function saveTickerModal() {
+  if (!currentTickerSymbol) return;
+  const updated = {
+    ticker: document.getElementById('wl-symbol').value.trim().toUpperCase(),
+    name: document.getElementById('wl-name').value.trim(),
+    type: document.getElementById('wl-type').value.trim(),
+    sector: document.getElementById('wl-sector').value.trim(),
+    cooldown_minutes: parseInt(document.getElementById('wl-cooldown').value)||90,
+    alerts: {
+      daily_gain_pct: parseFloat(document.getElementById('wl-gain').value)||5,
+      daily_drop_pct: parseFloat(document.getElementById('wl-drop').value)||5,
+      price_gain_pct: parseFloat(document.getElementById('wl-pgain').value)||5,
+      price_drop_pct: parseFloat(document.getElementById('wl-pdrop').value)||5,
+      volume_spike_x: parseFloat(document.getElementById('wl-volume').value)||2
+    }
+  };
+
+  try {
+    // Delete old symbol if renamed
+    if (currentTickerSymbol !== updated.ticker) {
+      await fetch(`/api/watchlist/ticker/${currentTickerSymbol}`, {method:'DELETE'});
+    }
+    // Update via PUT
+    const res = await fetch(`/api/watchlist/ticker/${currentTickerSymbol}`, {
+      method: 'PUT',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify(updated)
+    });
+    closeWatchlistModal();
+    loadWatchlist();
+  } catch(e) { alert(e.message); }
+}
+
+async function deleteCurrentTicker() {
+  if (!currentTickerSymbol) return;
+  if (!confirm(`Remove ${currentTickerSymbol} from watchlist?`)) return;
+  try {
+    await fetch(`/api/watchlist/ticker/${currentTickerSymbol}`, {method:'DELETE'});
+    closeWatchlistModal();
+    loadWatchlist();
+  } catch(e) { alert(e.message); }
 }
 
 async function addTicker() {
@@ -878,19 +1063,15 @@ async function addTicker() {
     await fetch('/api/watchlist/ticker', {
       method: 'POST',
       headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({ ticker: symbol, name: name, sector: category })
+      body: JSON.stringify({ ticker: symbol, name, sector: category, type: 'stock',
+        cooldown_minutes: 90,
+        alerts: { daily_gain_pct:5, daily_drop_pct:5,
+          price_gain_pct:5, price_drop_pct:5, volume_spike_x:2 }
+      })
     });
     document.getElementById('newTickerSymbol').value = '';
     document.getElementById('newTickerName').value = '';
     document.getElementById('newTickerCategory').value = '';
-    loadWatchlist();
-  } catch(e) { alert(e.message); }
-}
-
-async function removeTicker(symbol) {
-  if (!confirm(`Remove ${symbol} from watchlist?`)) return;
-  try {
-    await fetch(`/api/watchlist/ticker/${symbol}`, { method: 'DELETE' });
     loadWatchlist();
   } catch(e) { alert(e.message); }
 }
@@ -912,106 +1093,189 @@ async function loadMemory() {
 }
 
 let ebayConfigData = {};
+let currentModalDay = null;
+let currentModalType = null;
 const DAY_ORDER = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];
+const DAY_LABELS = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
 
 async function loadEbayConfig() {
   try {
     const data = await apiFetch('/api/ebay/config');
     ebayConfigData = data;
 
-    // Populate global filters
+    // Global summary
     const gf = data.global_filters?.quality_rules || {};
-    document.getElementById('gf-feedback').value = gf.seller_feedback_min || 98;
-    document.getElementById('gf-age').value = gf.listing_age_max_days || 25;
-    document.getElementById('gf-raw').checked = gf.require_raw_cards !== false;
-    document.getElementById('gf-keywords').value = (data.global_filters?.graded_keywords || []).join(', ');
+    document.getElementById('ebayGlobalSummary').innerHTML =
+      `Seller feedback ≥${gf.seller_feedback_min||98}% · Max listing age ${gf.listing_age_max_days||25}d · ${gf.require_raw_cards?'Raw cards only':'Graded allowed'}`;
 
-    // Render day cards in order
-    document.getElementById('ebayDayCards').innerHTML = DAY_ORDER.map(day => {
-      const scan = data.scans?.[day];
-      if (!scan) return '';
-      const lastRun = scan.last_run ? new Date(scan.last_run).toLocaleDateString('en-US',{month:'short',day:'numeric'}) : 'Never';
+    // Day cards - compact
+    document.getElementById('ebayDayCards').innerHTML = DAY_ORDER.map((day, i) => {
+      const scan = data.scans?.[day] || {};
+      const isToday = i === new Date().getDay();
+      const lastRun = scan.last_run
+        ? new Date(scan.last_run).toLocaleDateString('en-US',{month:'short',day:'numeric'})
+        : 'Never';
       return `
-        <div class="card">
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
-            <span style="font-family:'DM Mono',monospace;font-size:11px;font-weight:500;color:var(--text-primary);text-transform:uppercase">${day}</span>
-            <div style="display:flex;align-items:center;gap:8px">
-              <span style="font-size:10px;color:var(--text-muted)">Last: ${lastRun}</span>
-              <label style="display:flex;align-items:center;gap:4px;cursor:pointer">
-                <input type="checkbox" id="enabled-${day}" ${scan.enabled ? 'checked' : ''} 
-                  style="width:12px;height:12px;accent-color:var(--accent)">
-                <span style="font-size:10px;color:var(--text-muted)">on</span>
-              </label>
-            </div>
+        <div onclick="openDayModal('${day}')" style="
+          background:var(--bg-surface);border:1px solid ${isToday?'var(--accent)':'var(--border)'};
+          border-radius:var(--radius);padding:12px;cursor:pointer;transition:all 0.15s;
+          min-height:120px"
+          onmouseover="this.style.background='var(--bg-elevated)'"
+          onmouseout="this.style.background='var(--bg-surface)'">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+            <span style="font-family:'DM Mono',monospace;font-size:10px;font-weight:500;
+              text-transform:uppercase;color:${isToday?'var(--accent)':'var(--text-secondary)'}">
+              ${DAY_LABELS[i]}
+            </span>
+            <span style="width:7px;height:7px;border-radius:50%;background:${scan.enabled!==false?'var(--green)':'var(--text-muted)'};display:block"></span>
           </div>
-          <div style="margin-bottom:8px">
-            <div class="card-label" style="margin-bottom:3px">Scan Name</div>
-            <input class="podcast-input" id="name-${day}" value="${scan.name || ''}" placeholder="Scan name">
+          <div style="font-size:11px;color:var(--text-primary);font-weight:500;margin-bottom:4px;
+            overflow:hidden;text-overflow:ellipsis;white-space:nowrap">
+            ${scan.name || 'Not configured'}
           </div>
-          <div style="margin-bottom:8px">
-            <div class="card-label" style="margin-bottom:3px">Search Terms (one per line)</div>
-            <textarea class="podcast-input" id="terms-${day}" rows="3"
-              style="resize:vertical;line-height:1.5"
-              placeholder="Search term 1&#10;Search term 2">${(scan.search_terms || []).join('\n')}</textarea>
+          <div style="font-size:10px;color:var(--text-muted);margin-bottom:6px">
+            ${scan.filters?.minPrice?'$'+scan.filters.minPrice:''} 
+            ${scan.filters?.maxPrice?' – $'+scan.filters.maxPrice:''}
           </div>
-          <div style="margin-bottom:8px">
-            <div class="card-label" style="margin-bottom:3px">Exclude Words (comma-separated)</div>
-            <input class="podcast-input" id="exclude-${day}" 
-              value="${(scan.filters?.exclude_words || []).join(', ')}"
-              placeholder="mystery, prizm, lot...">
+          <div style="font-size:10px;color:var(--text-muted);font-family:'DM Mono',monospace">
+            Last: ${lastRun}
           </div>
-          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px">
-            <div>
-              <div class="card-label" style="margin-bottom:3px">Min $</div>
-              <input class="podcast-input" id="min-${day}" type="number" 
-                value="${scan.filters?.minPrice || ''}" placeholder="0">
-            </div>
-            <div>
-              <div class="card-label" style="margin-bottom:3px">Max $</div>
-              <input class="podcast-input" id="max-${day}" type="number"
-                value="${scan.filters?.maxPrice || ''}" placeholder="any">
-            </div>
-            <div>
-              <div class="card-label" style="margin-bottom:3px">Top N</div>
-              <input class="podcast-input" id="topn-${day}" type="number"
-                value="${scan.filters?.topN || 20}" placeholder="20">
-            </div>
-          </div>
+          <div style="font-size:10px;color:var(--accent);margin-top:8px">Edit →</div>
         </div>
       `;
     }).join('');
+
+    document.getElementById('ebayGlobalSaveBtn').style.display = 'none';
   } catch(e) {
     document.getElementById('ebayDayCards').innerHTML = `<div class="error-msg">${e.message}</div>`;
   }
 }
 
-async function saveEbayConfig() {
-  try {
-    // Build updated config from form inputs
-    const updated = JSON.parse(JSON.stringify(ebayConfigData));
+function openDayModal(day) {
+  currentModalDay = day;
+  currentModalType = 'day';
+  const scan = ebayConfigData.scans?.[day] || {};
+  const i = DAY_ORDER.indexOf(day);
 
-    // Global filters
+  document.getElementById('modalTitle').textContent = DAY_LABELS[i] + ' — ' + (scan.name || 'Scan Config');
+  document.getElementById('modalContent').innerHTML = `
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div>
+        <div class="card-label" style="margin-bottom:4px">Scan Name</div>
+        <input class="podcast-input" id="modal-name" value="${scan.name||''}" placeholder="Scan name">
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <input type="checkbox" id="modal-enabled" ${scan.enabled!==false?'checked':''} 
+          style="width:14px;height:14px;accent-color:var(--accent)">
+        <label for="modal-enabled" style="font-size:12px;color:var(--text-secondary)">Enabled</label>
+      </div>
+      <div>
+        <div class="card-label" style="margin-bottom:4px">Search Terms (one per line)</div>
+        <textarea class="podcast-input" id="modal-terms" rows="4" 
+          style="resize:vertical">${(scan.search_terms||[]).join('\n')}</textarea>
+      </div>
+      <div>
+        <div class="card-label" style="margin-bottom:4px">Exclude Words (comma-separated)</div>
+        <input class="podcast-input" id="modal-exclude" 
+          value="${(scan.filters?.exclude_words||[]).join(', ')}"
+          placeholder="mystery, lot, reprint...">
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px">
+        <div>
+          <div class="card-label" style="margin-bottom:4px">Min Price $</div>
+          <input class="podcast-input" id="modal-min" type="number" 
+            value="${scan.filters?.minPrice||''}" placeholder="0">
+        </div>
+        <div>
+          <div class="card-label" style="margin-bottom:4px">Max Price $</div>
+          <input class="podcast-input" id="modal-max" type="number"
+            value="${scan.filters?.maxPrice||''}" placeholder="any">
+        </div>
+        <div>
+          <div class="card-label" style="margin-bottom:4px">Top N Results</div>
+          <input class="podcast-input" id="modal-topn" type="number"
+            value="${scan.filters?.topN||20}" placeholder="20">
+        </div>
+      </div>
+    </div>
+  `;
+  document.getElementById('ebayModal').style.display = 'flex';
+}
+
+function openGlobalModal() {
+  currentModalType = 'global';
+  currentModalDay = null;
+  const gf = ebayConfigData.global_filters || {};
+  const qr = gf.quality_rules || {};
+
+  document.getElementById('modalTitle').textContent = 'Global Filters';
+  document.getElementById('modalContent').innerHTML = `
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <div>
+          <div class="card-label" style="margin-bottom:4px">Min Seller Feedback %</div>
+          <input class="podcast-input" id="modal-feedback" type="number" 
+            value="${qr.seller_feedback_min||98}">
+        </div>
+        <div>
+          <div class="card-label" style="margin-bottom:4px">Max Listing Age (days)</div>
+          <input class="podcast-input" id="modal-age" type="number"
+            value="${qr.listing_age_max_days||25}">
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <input type="checkbox" id="modal-raw" ${qr.require_raw_cards!==false?'checked':''}
+          style="width:14px;height:14px;accent-color:var(--accent)">
+        <label for="modal-raw" style="font-size:12px;color:var(--text-secondary)">Require raw cards only</label>
+      </div>
+      <div>
+        <div class="card-label" style="margin-bottom:4px">Excluded Keywords (comma-separated)</div>
+        <input class="podcast-input" id="modal-keywords"
+          value="${(gf.graded_keywords||[]).join(', ')}">
+      </div>
+    </div>
+  `;
+  document.getElementById('ebayModal').style.display = 'flex';
+}
+
+function closeEbayModal() {
+  document.getElementById('ebayModal').style.display = 'none';
+  currentModalDay = null;
+  currentModalType = null;
+}
+
+document.getElementById('ebayModal').addEventListener('click', function(e) {
+  if (e.target === this) closeEbayModal();
+});
+
+async function saveModalData() {
+  const updated = JSON.parse(JSON.stringify(ebayConfigData));
+
+  if (currentModalType === 'day' && currentModalDay) {
+    const day = currentModalDay;
+    if (!updated.scans[day]) updated.scans[day] = {};
+    updated.scans[day].name = document.getElementById('modal-name').value;
+    updated.scans[day].enabled = document.getElementById('modal-enabled').checked;
+    updated.scans[day].search_terms = document.getElementById('modal-terms').value
+      .split('\n').map(s=>s.trim()).filter(Boolean);
+    if (!updated.scans[day].filters) updated.scans[day].filters = {};
+    updated.scans[day].filters.exclude_words = document.getElementById('modal-exclude').value
+      .split(',').map(s=>s.trim()).filter(Boolean);
+    updated.scans[day].filters.minPrice = parseInt(document.getElementById('modal-min').value)||0;
+    updated.scans[day].filters.maxPrice = parseInt(document.getElementById('modal-max').value)||null;
+    updated.scans[day].filters.topN = parseInt(document.getElementById('modal-topn').value)||20;
+    updated.scans[day].last_updated = new Date().toISOString();
+  } else if (currentModalType === 'global') {
     if (!updated.global_filters) updated.global_filters = {};
     if (!updated.global_filters.quality_rules) updated.global_filters.quality_rules = {};
-    updated.global_filters.quality_rules.seller_feedback_min = parseInt(document.getElementById('gf-feedback').value) || 98;
-    updated.global_filters.quality_rules.listing_age_max_days = parseInt(document.getElementById('gf-age').value) || 25;
-    updated.global_filters.quality_rules.require_raw_cards = document.getElementById('gf-raw').checked;
-    updated.global_filters.graded_keywords = document.getElementById('gf-keywords').value.split(',').map(s=>s.trim()).filter(Boolean);
+    updated.global_filters.quality_rules.seller_feedback_min = parseInt(document.getElementById('modal-feedback').value)||98;
+    updated.global_filters.quality_rules.listing_age_max_days = parseInt(document.getElementById('modal-age').value)||25;
+    updated.global_filters.quality_rules.require_raw_cards = document.getElementById('modal-raw').checked;
+    updated.global_filters.graded_keywords = document.getElementById('modal-keywords').value
+      .split(',').map(s=>s.trim()).filter(Boolean);
+  }
 
-    // Day scans
-    DAY_ORDER.forEach(day => {
-      if (!updated.scans?.[day]) return;
-      updated.scans[day].name = document.getElementById(`name-${day}`)?.value || '';
-      updated.scans[day].enabled = document.getElementById(`enabled-${day}`)?.checked || false;
-      updated.scans[day].search_terms = document.getElementById(`terms-${day}`)?.value.split('\n').map(s=>s.trim()).filter(Boolean) || [];
-      if (!updated.scans[day].filters) updated.scans[day].filters = {};
-      updated.scans[day].filters.exclude_words = document.getElementById(`exclude-${day}`)?.value.split(',').map(s=>s.trim()).filter(Boolean) || [];
-      updated.scans[day].filters.minPrice = parseInt(document.getElementById(`min-${day}`)?.value) || 0;
-      updated.scans[day].filters.maxPrice = parseInt(document.getElementById(`max-${day}`)?.value) || null;
-      updated.scans[day].filters.topN = parseInt(document.getElementById(`topn-${day}`)?.value) || 20;
-      updated.scans[day].last_updated = new Date().toISOString();
-    });
-
+  try {
     const res = await fetch('/api/ebay/config', {
       method: 'POST',
       headers: {'Content-Type':'application/json'},
@@ -1020,16 +1284,15 @@ async function saveEbayConfig() {
     const data = await res.json();
     if (data.ok) {
       ebayConfigData = updated;
-      const btn = document.querySelector('[onclick="saveEbayConfig()"]');
-      const orig = btn.textContent;
-      btn.textContent = 'Saved ✓';
-      btn.style.background = 'var(--green)';
-      setTimeout(() => { btn.textContent = orig; btn.style.background = ''; }, 2000);
+      closeEbayModal();
+      loadEbayConfig();
     } else {
       alert('Save failed: ' + data.error);
     }
   } catch(e) { alert('Error: ' + e.message); }
 }
+
+async function saveEbayConfig() {}
 
 setInterval(runHealthCheck, 30000);
 setInterval(loadWatchlist, 60000);
