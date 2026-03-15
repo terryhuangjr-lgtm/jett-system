@@ -810,6 +810,14 @@ class TaskServer {
     if (pathname === '/api/watchlist/tickers' && req.method === 'GET') {
       return this.proxyRequest(res, '/api/ticker', 5002);
     }
+    if (pathname === '/api/watchlist/ticker' && req.method === 'POST') {
+      const body = await this.readBody(req);
+      return this.proxyRequest(res, '/api/ticker', 5002, 'POST', body, 'application/json');
+    }
+    if (pathname.startsWith('/api/watchlist/ticker/') && req.method === 'DELETE') {
+      const symbol = pathname.split('/').pop();
+      return this.proxyRequest(res, `/api/ticker/${symbol}`, 5002, 'DELETE');
+    }
 
     // ── EBAY proxy ─────────────────────────────────────────────────
     if (pathname === '/api/ebay/results' && req.method === 'GET') {
@@ -835,20 +843,22 @@ class TaskServer {
     }
 
     // ── EBAY CONFIG proxy ──────────────────────────────────────────
+    const EBAY_CONFIG_PATH = '/home/clawd/clawd/task-manager/ebay-scans-config.json';
+    
     if (pathname === '/api/ebay/config' && req.method === 'GET') {
       try {
-        const configPath = path.join(__dirname, 'ebay-scans-config.json');
-        const config = JSON.parse(await fs.readFile(configPath, 'utf-8'));
+        const config = JSON.parse(await fs.readFile(EBAY_CONFIG_PATH, 'utf-8'));
         return this.sendJSON(res, config);
       } catch (e) {
         return this.sendJSON(res, { error: e.message });
       }
     }
-    if (pathname === '/api/ebay/config' && req.method === 'PUT') {
+    if (pathname === '/api/ebay/config' && req.method === 'POST') {
       try {
-        const configPath = path.join(__dirname, 'ebay-scans-config.json');
         const body = await this.readBody(req);
-        await fs.writeFile(configPath, body);
+        const current = JSON.parse(await fs.readFile(EBAY_CONFIG_PATH, 'utf-8'));
+        const updated = { ...current, ...JSON.parse(body), last_updated: new Date().toISOString() };
+        await fs.writeFile(EBAY_CONFIG_PATH, JSON.stringify(updated, null, 2));
         return this.sendJSON(res, { ok: true });
       } catch (e) {
         return this.sendJSON(res, { ok: false, error: e.message });
@@ -889,12 +899,20 @@ class TaskServer {
     // ── OPENCLAW TOKEN COST (bonus) ────────────────────────────────
     if (pathname === '/api/jett/costs' && req.method === 'GET') {
       try {
+        const { execFileSync } = require('child_process');
+        const fsSync = require('fs');
         const dbPath = path.join(process.env.HOME, '.openclaw/sessions.db');
-        const { execSync } = require('child_process');
-        const result = execSync('sqlite3', [dbPath, 'SELECT name, SUM(cost) as total_cost, COUNT(*) as runs FROM sessions GROUP BY name ORDER BY total_cost DESC LIMIT 10;'], { encoding: 'utf8' });
-        return this.sendJSON(res, { raw: result });
-      } catch (e) {
-        return this.sendJSON(res, { error: e.message });
+        if (!fsSync.existsSync(dbPath)) {
+          return this.sendJSON(res, { empty: true });
+        }
+        const result = execFileSync('sqlite3', [
+          dbPath,
+          'SELECT name, ROUND(SUM(cost),6) as total_cost, COUNT(*) as runs FROM sessions GROUP BY name ORDER BY total_cost DESC LIMIT 10;'
+        ]);
+        const raw = Buffer.isBuffer(result) ? result.toString('utf8') : String(result);
+        return this.sendJSON(res, { raw: raw.trim() });
+      } catch(e) {
+        return this.sendJSON(res, { empty: true, message: e.message });
       }
     }
 

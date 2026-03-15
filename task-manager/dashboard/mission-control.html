@@ -327,15 +327,37 @@
     <div class="tab-panel" id="tab-ebay">
       <div class="section-header">
         <span class="section-title">eBay Scanner — Weekly Config</span>
-        <button class="btn" onclick="loadEbayConfig()">
-          <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg>
-          Refresh
+        <button class="btn" onclick="saveEbayConfig()">
+          <svg viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+          Save Changes
         </button>
       </div>
-      <div id="ebayConfigGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px"></div>
-      <div style="margin-top:14px;display:flex;justify-content:flex-end">
-        <button class="btn primary" onclick="saveEbayConfig()">Save Changes</button>
+
+      <!-- Global Filters -->
+      <div class="card" style="margin-bottom:12px">
+        <div class="card-label">Global Filters</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px">
+          <div>
+            <div style="font-size:10px;color:var(--text-muted);font-family:'DM Mono',monospace;margin-bottom:4px">MIN SELLER FEEDBACK %</div>
+            <input class="podcast-input" id="gf-feedback" type="number" min="0" max="100" placeholder="98">
+          </div>
+          <div>
+            <div style="font-size:10px;color:var(--text-muted);font-family:'DM Mono',monospace;margin-bottom:4px">MAX LISTING AGE (DAYS)</div>
+            <input class="podcast-input" id="gf-age" type="number" min="1" placeholder="25">
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;padding-top:16px">
+            <input type="checkbox" id="gf-raw" style="width:14px;height:14px;accent-color:var(--accent)">
+            <label for="gf-raw" style="font-size:12px;color:var(--text-secondary)">Require raw cards only</label>
+          </div>
+        </div>
+        <div style="margin-top:12px">
+          <div style="font-size:10px;color:var(--text-muted);font-family:'DM Mono',monospace;margin-bottom:4px">EXCLUDED KEYWORDS (comma-separated)</div>
+          <input class="podcast-input" id="gf-keywords" placeholder="psa, bgs, sgc, lot, pack...">
+        </div>
       </div>
+
+      <!-- Daily Scans -->
+      <div id="ebayDayCards" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px"></div>
     </div>
 
     <div class="tab-panel" id="tab-levelup">
@@ -382,9 +404,20 @@
           </button>
         </div>
       </div>
-      <div class="ticker-grid" id="tickerGrid">
-        <div class="loading" style="grid-column:1/-1">Loading tickers...</div>
+
+      <!-- Add ticker -->
+      <div class="card" style="margin-bottom:12px">
+        <div class="card-label">Add Ticker</div>
+        <div style="display:flex;gap:8px;margin-top:6px">
+          <input class="podcast-input" id="newTickerSymbol" placeholder="Symbol (e.g. MSTR)" style="max-width:140px;text-transform:uppercase">
+          <input class="podcast-input" id="newTickerName" placeholder="Name (e.g. MicroStrategy)">
+          <input class="podcast-input" id="newTickerCategory" placeholder="Category (e.g. bitcoin_proxy)" style="max-width:180px">
+          <button class="btn primary" onclick="addTicker()">Add</button>
+        </div>
       </div>
+
+      <!-- Ticker grid -->
+      <div class="ticker-grid" id="tickerGrid"></div>
     </div>
 
     <div class="tab-panel" id="tab-memory">
@@ -548,17 +581,20 @@ async function loadSchedule() {
             }
             
             let timeStr = '';
+            let sortMinutes = -1;
             if (!hour || hour === '*' || hour.startsWith('*/')) {
               timeStr = hour && hour.includes('/') ? `every ${hour.split('/')[1]}h` : 'hourly';
+              sortMinutes = -1;
             } else {
               const h = parseInt(hour);
               const m = parseInt(min) || 0;
               const ampm = h < 12 ? 'AM' : 'PM';
               const h12 = h % 12 || 12;
               timeStr = `${h12}:${m.toString().padStart(2,'0')} ${ampm}`;
+              sortMinutes = h * 60 + m;
             }
             
-            return { name, time: timeStr, days, color, nextRun: job.state?.nextRunAtMs };
+            return { name, time: timeStr, days, color, sortMinutes, nextRun: job.state?.nextRunAtMs };
           });
         }
       } catch(e) {
@@ -569,6 +605,13 @@ async function loadSchedule() {
       const lines = (data.raw || '').split('\n').filter(l => l && !l.startsWith('#'));
       events = lines.map(parseCronLine).filter(Boolean);
     }
+    
+    // Sort events by time
+    events.sort((a, b) => {
+      if (a.sortMinutes === undefined || a.sortMinutes === null) return 1;
+      if (b.sortMinutes === undefined || b.sortMinutes === null) return -1;
+      return a.sortMinutes - b.sortMinutes;
+    });
     
     document.getElementById('calendarGrid').innerHTML = days.map((day, i) => {
       const dayEvents = events.filter(e => e.days.includes(i));
@@ -624,19 +667,22 @@ function parseCronLine(line) {
     }).filter(d => !isNaN(d));
   }
   
-  // Format time
+  // Format time and sort value
   let timeStr = '';
+  let sortMinutes = -1;
   if (hour === '*' || hour.startsWith('*/')) {
     timeStr = `every ${hour.includes('/') ? hour.split('/')[1] : 1}h`;
+    sortMinutes = -1; // Put these at the end
   } else {
     const h = parseInt(hour);
     const m = parseInt(min) || 0;
     const ampm = h < 12 ? 'AM' : 'PM';
     const h12 = h % 12 || 12;
     timeStr = `${h12}:${m.toString().padStart(2,'0')} ${ampm}`;
+    sortMinutes = h * 60 + m;
   }
   
-  return { name, time: timeStr, days, color, cmd };
+  return { name, time: timeStr, days, color, sortMinutes, cmd };
 }
 
 function extractJobName(cmd) {
@@ -694,29 +740,68 @@ async function triggerEbayScan() {
 
 async function loadInventory() {
   try {
-    const data = await apiFetch('/api/levelup/inventory');
-    const items = data.items || [];
-    const total = items.length;
-    const totalVal = items.reduce((s, i) => s + (parseFloat(i.current_market_value || 0)), 0);
+    // Load both stats and inventory in parallel
+    const [stats, inv] = await Promise.all([
+      apiFetch('/api/levelup/stats'),
+      apiFetch('/api/levelup/inventory')
+    ]);
 
+    // Stats cards
     document.getElementById('inventoryStats').innerHTML = `
-      <div class="status-card"><div class="status-card-top"><span class="status-card-name">Total Cards</span></div><span class="status-card-val mono">${total}</span></div>
-      <div class="status-card"><div class="status-card-top"><span class="status-card-name">Est. Value</span></div><span class="status-card-val mono">$${totalVal.toFixed(2)}</span></div>
+      <div class="status-card">
+        <div class="status-card-top"><span class="status-card-name">Total Cards</span></div>
+        <span class="status-card-val mono">${stats.total_cards || 0}</span>
+      </div>
+      <div class="status-card">
+        <div class="status-card-top"><span class="status-card-name">Total Value</span></div>
+        <span class="status-card-val mono">$${(stats.total_value || 0).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}</span>
+      </div>
+      <div class="status-card">
+        <div class="status-card-top"><span class="status-card-name">Invested</span></div>
+        <span class="status-card-val mono">$${(stats.total_invested || 0).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}</span>
+      </div>
+      <div class="status-card">
+        <div class="status-card-top"><span class="status-card-name">Unrealized Gain</span></div>
+        <span class="status-card-val mono" style="color:${(stats.unrealized_gain||0)>=0?'var(--green)':'var(--red)'}">
+          $${(stats.unrealized_gain || 0).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}
+          (${(stats.unrealized_pct || 0).toFixed(1)}%)
+        </span>
+      </div>
     `;
 
+    // Inventory table
+    const items = inv.items || [];
     document.getElementById('inventoryTable').innerHTML = items.length ? `
       <table class="data-table">
-        <thead><tr><th>Player</th><th>Year</th><th>Brand</th><th>Grade</th><th>Value</th></tr></thead>
-        <tbody>${items.map(i => `
+        <thead>
           <tr>
-            <td>${i.player_name || '—'}</td>
-            <td class="mono">${i.year || '—'}</td>
-            <td>${i.brand || '—'}</td>
-            <td>${i.grade || '—'}</td>
-            <td class="mono">$${parseFloat(i.current_market_value || 0).toFixed(2)}</td>
+            <th>Player</th>
+            <th>Year</th>
+            <th>Brand / Set</th>
+            <th>Grade</th>
+            <th>Purchased</th>
+            <th>Market Value</th>
+            <th>Status</th>
           </tr>
-        `).join('')}</tbody>
-      </table>` : '<div class="loading">No inventory data</div>';
+        </thead>
+        <tbody>
+          ${items.map(c => `
+            <tr>
+              <td>${c.player_name || '—'}</td>
+              <td class="mono">${c.year || '—'}</td>
+              <td>${[c.brand, c.set_name, c.parallel_variant].filter(Boolean).join(' · ') || '—'}</td>
+              <td class="mono">${c.grading_company ? c.grading_company + ' ' + c.grade : c.grade || '—'}</td>
+              <td class="mono">$${(c.purchase_price || 0).toFixed(2)}</td>
+              <td class="mono" style="color:${(c.current_market_value||0)>=(c.purchase_price||0)?'var(--green)':'var(--red)'}">
+                $${(c.current_market_value || 0).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}
+              </td>
+              <td><span class="badge green">${c.status || 'inventory'}</span></td>
+            </tr>
+          `).join('')}
+        </tbody>
+      </table>
+    ` : '<div class="loading">No inventory items</div>';
+
   } catch(e) {
     document.getElementById('inventoryTable').innerHTML = `<div class="error-msg">${e.message}</div>`;
   }
@@ -754,24 +839,54 @@ async function addPodcast() {
 async function loadWatchlist() {
   try {
     const data = await apiFetch('/api/watchlist/tickers');
-    const tickers = data.tickers || [];
-    document.getElementById('watchlistUpdated').textContent = 'Config only — prices update at market open';
-    
-    if (!tickers.length) {
-      document.getElementById('tickerGrid').innerHTML = '<div class="loading" style="grid-column:1/-1">No tickers configured</div>';
-      return;
-    }
-    
-    document.getElementById('tickerGrid').innerHTML = tickers.map(t => `
-      <div class="ticker-card">
-        <div class="ticker-symbol">${t.ticker}</div>
-        <div class="ticker-price mono">${t.name}</div>
-        <div class="ticker-change">${t.sector || 'stock'}</div>
-      </div>
-    `).join('');
+    document.getElementById('watchlistUpdated').textContent = 'Updated ' + new Date().toLocaleTimeString();
+    const tickers = data.tickers || data || [];
+
+    document.getElementById('tickerGrid').innerHTML = tickers.length ?
+      tickers.map(t => `
+        <div class="ticker-card" style="position:relative">
+          <button onclick="removeTicker('${t.symbol || t.ticker}')"
+            style="position:absolute;top:8px;right:8px;background:none;border:none;
+            color:var(--text-muted);cursor:pointer;font-size:14px;line-height:1;padding:2px"
+            title="Remove">×</button>
+          <div class="ticker-symbol">${t.symbol || t.ticker || '—'}</div>
+          <div style="font-size:11px;color:var(--text-muted);margin-bottom:6px;font-family:'Inter',sans-serif">${t.name || t.company_name || ''}</div>
+          <div style="font-size:10px;color:var(--text-muted);font-family:'DM Mono',monospace;margin-bottom:8px">${t.category || t.type || ''}</div>
+          <div style="font-size:10px;color:var(--text-muted);font-family:'DM Mono',monospace;border-top:1px solid var(--border);padding-top:8px;margin-top:4px">
+            Prices update at market open
+          </div>
+        </div>
+      `).join('') :
+      '<div class="loading" style="grid-column:1/-1">No tickers — add one above</div>';
   } catch(e) {
     document.getElementById('tickerGrid').innerHTML = `<div class="error-msg" style="grid-column:1/-1">${e.message}</div>`;
   }
+}
+
+async function addTicker() {
+  const symbol = document.getElementById('newTickerSymbol').value.trim().toUpperCase();
+  const name = document.getElementById('newTickerName').value.trim();
+  const category = document.getElementById('newTickerCategory').value.trim();
+  if (!symbol) return;
+  try {
+    await fetch('/api/watchlist/ticker', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({ ticker: symbol, name: name, sector: category })
+    });
+    document.getElementById('newTickerSymbol').value = '';
+    document.getElementById('newTickerName').value = '';
+    document.getElementById('newTickerCategory').value = '';
+    loadWatchlist();
+  } catch(e) { alert(e.message); }
+}
+
+async function removeTicker(symbol) {
+  if (!confirm(`Remove ${symbol} from watchlist?`)) return;
+  try {
+    await fetch(`/api/watchlist/ticker/${symbol}`, { method: 'DELETE' });
+    loadWatchlist();
+  } catch(e) { alert(e.message); }
 }
 
 async function loadMemory() {
@@ -792,65 +907,120 @@ async function loadMemory() {
 
 let ebayConfigData = {};
 
+let ebayConfigData = {};
+const DAY_ORDER = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];
+
 async function loadEbayConfig() {
   try {
     const data = await apiFetch('/api/ebay/config');
     ebayConfigData = data;
-    const days = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];
-    const scans = data.scans || {};
-    
-    document.getElementById('ebayConfigGrid').innerHTML = days.map(day => {
-      const scan = scans[day] || {};
-      const idx = days.indexOf(day);
+
+    // Populate global filters
+    const gf = data.global_filters?.quality_rules || {};
+    document.getElementById('gf-feedback').value = gf.seller_feedback_min || 98;
+    document.getElementById('gf-age').value = gf.listing_age_max_days || 25;
+    document.getElementById('gf-raw').checked = gf.require_raw_cards !== false;
+    document.getElementById('gf-keywords').value = (data.global_filters?.graded_keywords || []).join(', ');
+
+    // Render day cards in order
+    document.getElementById('ebayDayCards').innerHTML = DAY_ORDER.map(day => {
+      const scan = data.scans?.[day];
+      if (!scan) return '';
+      const lastRun = scan.last_run ? new Date(scan.last_run).toLocaleDateString('en-US',{month:'short',day:'numeric'}) : 'Never';
       return `
         <div class="card">
-          <div class="card-label" style="text-transform:capitalize">${day}</div>
-          <div style="margin-bottom:8px">
-            <div style="font-size:10px;color:var(--text-muted);font-family:'DM Mono',monospace;margin-bottom:4px">SEARCH TERMS</div>
-            <input class="podcast-input" id="ebay-terms-${day}" 
-              value="${(scan.search_terms || []).join(', ')}" 
-              placeholder="Search terms...">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+            <span style="font-family:'DM Mono',monospace;font-size:11px;font-weight:500;color:var(--text-primary);text-transform:uppercase">${day}</span>
+            <div style="display:flex;align-items:center;gap:8px">
+              <span style="font-size:10px;color:var(--text-muted)">Last: ${lastRun}</span>
+              <label style="display:flex;align-items:center;gap:4px;cursor:pointer">
+                <input type="checkbox" id="enabled-${day}" ${scan.enabled ? 'checked' : ''} 
+                  style="width:12px;height:12px;accent-color:var(--accent)">
+                <span style="font-size:10px;color:var(--text-muted)">on</span>
+              </label>
+            </div>
           </div>
-          <div>
-            <div style="font-size:10px;color:var(--text-muted);font-family:'DM Mono',monospace;margin-bottom:4px">NAME</div>
-            <input class="podcast-input" id="ebay-name-${day}" 
-              value="${scan.name || ''}" 
-              placeholder="Scan name...">
+          <div style="margin-bottom:8px">
+            <div class="card-label" style="margin-bottom:3px">Scan Name</div>
+            <input class="podcast-input" id="name-${day}" value="${scan.name || ''}" placeholder="Scan name">
+          </div>
+          <div style="margin-bottom:8px">
+            <div class="card-label" style="margin-bottom:3px">Search Terms (one per line)</div>
+            <textarea class="podcast-input" id="terms-${day}" rows="3"
+              style="resize:vertical;line-height:1.5"
+              placeholder="Search term 1&#10;Search term 2">${(scan.search_terms || []).join('\n')}</textarea>
+          </div>
+          <div style="margin-bottom:8px">
+            <div class="card-label" style="margin-bottom:3px">Exclude Words (comma-separated)</div>
+            <input class="podcast-input" id="exclude-${day}" 
+              value="${(scan.filters?.exclude_words || []).join(', ')}"
+              placeholder="mystery, prizm, lot...">
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px">
+            <div>
+              <div class="card-label" style="margin-bottom:3px">Min $</div>
+              <input class="podcast-input" id="min-${day}" type="number" 
+                value="${scan.filters?.minPrice || ''}" placeholder="0">
+            </div>
+            <div>
+              <div class="card-label" style="margin-bottom:3px">Max $</div>
+              <input class="podcast-input" id="max-${day}" type="number"
+                value="${scan.filters?.maxPrice || ''}" placeholder="any">
+            </div>
+            <div>
+              <div class="card-label" style="margin-bottom:3px">Top N</div>
+              <input class="podcast-input" id="topn-${day}" type="number"
+                value="${scan.filters?.topN || 20}" placeholder="20">
+            </div>
           </div>
         </div>
       `;
     }).join('');
   } catch(e) {
-    document.getElementById('ebayConfigGrid').innerHTML = `<div class="error-msg">${e.message}</div>`;
+    document.getElementById('ebayDayCards').innerHTML = `<div class="error-msg">${e.message}</div>`;
   }
 }
 
 async function saveEbayConfig() {
-  const days = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];
-  const newScans = {};
-  
-  days.forEach(day => {
-    const terms = document.getElementById(`ebay-terms-${day}`)?.value || '';
-    const name = document.getElementById(`ebay-name-${day}`)?.value || '';
-    newScans[day] = {
-      ...ebayConfigData.scans?.[day],
-      name: name,
-      search_terms: terms.split(',').map(t => t.trim()).filter(Boolean),
-      enabled: ebayConfigData.scans?.[day]?.enabled ?? true
-    };
-  });
-  
-  ebayConfigData.scans = newScans;
-  ebayConfigData.last_updated = new Date().toISOString();
-  
   try {
-    await fetch('/api/ebay/config', {
-      method: 'PUT',
-      headers: {'Content-Type':'application/json'},
-      body: JSON.stringify(ebayConfigData)
+    // Build updated config from form inputs
+    const updated = JSON.parse(JSON.stringify(ebayConfigData));
+
+    // Global filters
+    if (!updated.global_filters) updated.global_filters = {};
+    if (!updated.global_filters.quality_rules) updated.global_filters.quality_rules = {};
+    updated.global_filters.quality_rules.seller_feedback_min = parseInt(document.getElementById('gf-feedback').value) || 98;
+    updated.global_filters.quality_rules.listing_age_max_days = parseInt(document.getElementById('gf-age').value) || 25;
+    updated.global_filters.quality_rules.require_raw_cards = document.getElementById('gf-raw').checked;
+    updated.global_filters.graded_keywords = document.getElementById('gf-keywords').value.split(',').map(s=>s.trim()).filter(Boolean);
+
+    // Day scans
+    DAY_ORDER.forEach(day => {
+      if (!updated.scans?.[day]) return;
+      updated.scans[day].name = document.getElementById(`name-${day}`)?.value || '';
+      updated.scans[day].enabled = document.getElementById(`enabled-${day}`)?.checked || false;
+      updated.scans[day].search_terms = document.getElementById(`terms-${day}`)?.value.split('\n').map(s=>s.trim()).filter(Boolean) || [];
+      if (!updated.scans[day].filters) updated.scans[day].filters = {};
+      updated.scans[day].filters.exclude_words = document.getElementById(`exclude-${day}`)?.value.split(',').map(s=>s.trim()).filter(Boolean) || [];
+      updated.scans[day].filters.minPrice = parseInt(document.getElementById(`min-${day}`)?.value) || 0;
+      updated.scans[day].filters.maxPrice = parseInt(document.getElementById(`max-${day}`)?.value) || null;
+      updated.scans[day].filters.topN = parseInt(document.getElementById(`topn-${day}`)?.value) || 20;
+      updated.scans[day].last_updated = new Date().toISOString();
     });
-    alert('Config saved');
-  } catch(e) { alert(e.message); }
+
+    const res = await fetch('/api/ebay/config', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify(updated)
+    });
+    const data = await res.json();
+    if (data.ok) {
+      ebayConfigData = updated;
+      alert('Config saved successfully');
+    } else {
+      alert('Save failed: ' + data.error);
+    }
+  } catch(e) { alert('Error: ' + e.message); }
 }
 
 setInterval(runHealthCheck, 30000);
