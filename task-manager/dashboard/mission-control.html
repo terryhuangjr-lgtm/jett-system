@@ -980,7 +980,7 @@ async function loadPodcastQueue() {
 async function deletePodcast(position) {
   if (!confirm('Remove this podcast from the queue?')) return;
   try {
-    await fetch(`/api/podcast/queue/${position}`, { method: 'DELETE' });
+    await fetch(`/api/podcast/queue/${position + 1}`, { method: 'DELETE' });
     loadPodcastQueue();
   } catch(e) { alert(e.message); }
 }
