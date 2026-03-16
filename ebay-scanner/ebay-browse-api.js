@@ -117,17 +117,22 @@ class EbayBrowseAPI {
         filters.push(`categoryIds:${categoryId}`);
       }
 
-      if (minPrice !== undefined && minPrice !== null || maxPrice !== undefined && maxPrice !== null) {
+      if (minPrice !== undefined && minPrice !== null || 
+          maxPrice !== undefined && maxPrice !== null) {
         let priceFilter;
-        if ((minPrice !== undefined && minPrice !== null) && (maxPrice !== undefined && maxPrice !== null)) {
-          priceFilter = `[${minPrice}..${maxPrice}]`;
+        if ((minPrice !== undefined && minPrice !== null) && 
+            (maxPrice !== undefined && maxPrice !== null)) {
+          priceFilter = `price:[${minPrice}..${maxPrice}],priceCurrency:USD`;
         } else if (minPrice !== undefined && minPrice !== null) {
-          priceFilter = `[${minPrice}..]`;  // No upper limit
+          priceFilter = `price:[${minPrice}..],priceCurrency:USD`;
         } else {
-          priceFilter = `[..${maxPrice}]`;  // No lower limit
+          priceFilter = `price:[..${maxPrice}],priceCurrency:USD`;
         }
-        filters.push(`price:${priceFilter}`);
+        filters.push(priceFilter);
       }
+
+      // Always filter to Buy It Now only - no auctions
+      filters.push('buyingOptions:{FIXED_PRICE}');
 
       if (condition) {
         // Browse API conditions: NEW, USED_EXCELLENT, USED_VERY_GOOD, etc.
