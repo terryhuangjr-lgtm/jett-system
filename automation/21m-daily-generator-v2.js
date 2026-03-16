@@ -37,7 +37,7 @@ const CONTENT_TYPE = typeIdx !== -1 ? process.argv[typeIdx + 1] : 'sports';
 
 // Category mappings
 const SPORTS_CATEGORIES = ['rookie_contract', 'nil_contract', 'broke_athlete', 'historic_contract', 'sports_business'];
-const BITCOIN_CATEGORIES = ['bitcoin_education'];
+const BITCOIN_CATEGORIES = ['bitcoin_education', 'bitcoin_trending'];
 
 function loadContentBank() {
   const raw = fs.readFileSync(CONTENT_BANK_PATH, 'utf8');
@@ -52,7 +52,7 @@ function getCooldownDate(entry) {
   if (!entry.used_dates || entry.used_dates.length === 0) return null;
   const lastUsed = entry.used_dates[entry.used_dates.length - 1];
   const lastDate = new Date(lastUsed);
-  const cooldown = entry.cooldown_days || 90;
+  const cooldown = entry.cooldown_days || 30;
   const nextAvailable = new Date(lastDate);
   nextAvailable.setDate(nextAvailable.getDate() + cooldown);
   return nextAvailable;

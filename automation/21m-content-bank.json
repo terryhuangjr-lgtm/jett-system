@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "last_updated": "2026-03-15",
+  "last_updated": "2026-03-16",
   "entries": [
     {
       "id": 1,
@@ -107,7 +107,9 @@
       "btc_allocation": 15,
       "verified_fact": "Jayden Daniels signed his $9.7M rookie deal in 2024 when BTC was $65,000. 10% allocation = 15 BTC.",
       "source": "Spotrac",
-      "used_dates": [],
+      "used_dates": [
+        "2026-03-16"
+      ],
       "cooldown_days": 90
     },
     {
@@ -495,9 +497,6 @@
       "btc_price_then": 0,
       "verified_fact": "Bitcoin's supply is mathematically capped at 21 million coins forever. No CEO, government, or Fed can change it. The last coin will be mined around 2140.",
       "source": "Bitcoin whitepaper",
-      "used_dates": [
-        "2026-03-03"
-      ],
       "cooldown_days": 60
     },
     {
@@ -511,9 +510,6 @@
       "btc_price_then": 0.004,
       "verified_fact": "In 2010, Laszlo Hanyecz paid 10,000 BTC for two pizzas worth $41. Those 10,000 BTC are worth $680M today.",
       "source": "Bitcoin history",
-      "used_dates": [
-        "2026-03-11"
-      ],
       "cooldown_days": 60
     },
     {
@@ -527,9 +523,6 @@
       "btc_price_then": null,
       "verified_fact": "The US dollar has lost 97% of its purchasing power since the Federal Reserve was created in 1913. Bitcoin has a fixed supply that cannot be inflated.",
       "source": "Federal Reserve historical data",
-      "used_dates": [
-        "2026-03-03"
-      ],
       "cooldown_days": 60
     },
     {
@@ -543,9 +536,6 @@
       "btc_price_then": 65000,
       "verified_fact": "Bitcoin's 4th halving occurred in April 2024. Block reward dropped from 6.25 to 3.125 BTC. New supply cut in half by code, not committee.",
       "source": "Bitcoin protocol",
-      "used_dates": [
-        "2026-02-28"
-      ],
       "cooldown_days": 60
     },
     {
@@ -559,9 +549,6 @@
       "btc_price_then": 10000,
       "verified_fact": "Gold has been mined for 5,000 years and humans keep finding more. Bitcoin's supply is provably fixed at 21M. One is hard money. One just feels like it.",
       "source": "The Bitcoin Standard - Saifedean Ammous",
-      "used_dates": [
-        "2026-03-05"
-      ],
       "cooldown_days": 60
     },
     {
@@ -575,9 +562,6 @@
       "btc_price_then": 45000,
       "verified_fact": "US inflation hit 9.1% in June 2022 — highest since 1981. A $1M contract signed in 2020 had $820K of real purchasing power by 2022. Inflation is a tax nobody voted for.",
       "source": "US Bureau of Labor Statistics",
-      "used_dates": [
-        "2026-03-10"
-      ],
       "cooldown_days": 60
     },
     {
@@ -591,9 +575,6 @@
       "btc_price_then": 52000,
       "verified_fact": "El Salvador became the first country to adopt Bitcoin as legal tender in September 2021. President Bukele bought 2,381 BTC for the national treasury.",
       "source": "El Salvador government",
-      "used_dates": [
-        "2026-03-12"
-      ],
       "cooldown_days": 60
     },
     {
@@ -758,9 +739,6 @@
       "btc_price_then": 100,
       "verified_fact": "From 2013 to 2023, Bitcoin returned over 15,000%. The S&P 500 returned roughly 230% in the same period. Every financial advisor who said 'too risky' was technically right about volatility and completely wrong about outcomes.",
       "source": "CoinGecko historical data",
-      "used_dates": [
-        "2026-03-09"
-      ],
       "cooldown_days": 60
     },
     {
@@ -774,9 +752,6 @@
       "btc_price_then": 0,
       "verified_fact": "The average lifespan of a fiat currency is 27 years. The US dollar has survived longer by continuously losing value. Bitcoin has a fixed supply that cannot be inflated.",
       "source": "Broken Money - Lyn Alden",
-      "used_dates": [
-        "2026-03-05"
-      ],
       "cooldown_days": 60
     },
     {
@@ -790,9 +765,6 @@
       "btc_price_then": 65000,
       "verified_fact": "Bitcoin is secured by over 17,000 nodes globally. No single government, company, or person controls it. Every other asset you own has a counterparty that can freeze, confiscate, or inflate it.",
       "source": "Bitnodes.io",
-      "used_dates": [
-        "2026-03-08"
-      ],
       "cooldown_days": 60
     },
     {
@@ -806,9 +778,6 @@
       "btc_price_then": null,
       "verified_fact": "In 1971 Nixon ended the dollar's gold convertibility. Since then the dollar has lost 85% of its value. Every currency in the world became backed by nothing but government promises that same day.",
       "source": "Federal Reserve historical data",
-      "used_dates": [
-        "2026-03-05"
-      ],
       "cooldown_days": 60
     },
     {
@@ -822,9 +791,6 @@
       "btc_price_then": 27000,
       "verified_fact": "Bitcoin uses roughly 0.5% of global energy consumption. The traditional banking system uses an estimated 263 TWh per year. Bitcoin uses about 127 TWh. The incumbent uses more energy and inflates your savings.",
       "source": "Cambridge Centre for Alternative Finance",
-      "used_dates": [
-        "2026-03-05"
-      ],
       "cooldown_days": 60
     },
     {
@@ -838,9 +804,6 @@
       "btc_price_then": 0,
       "verified_fact": "Satoshi Nakamoto mined approximately 1.1 million BTC in Bitcoin's early days and never moved them. At today's prices that's $74B sitting untouched. The creator of the hardest money ever invented never sold.",
       "source": "Bitcoin research - Sergio Demian Lerner",
-      "used_dates": [
-        "2026-03-01"
-      ],
       "cooldown_days": 60
     },
     {
@@ -854,9 +817,6 @@
       "btc_price_then": 65000,
       "verified_fact": "BlackRock's Bitcoin ETF (IBIT) accumulated $17B in assets in its first 50 days — the fastest ETF launch in history. The world's largest asset manager chose Bitcoin over every other asset class for its first crypto product.",
       "source": "Bloomberg ETF data",
-      "used_dates": [
-        "2026-03-05"
-      ],
       "cooldown_days": 60
     },
     {
@@ -870,9 +830,6 @@
       "btc_price_then": 40000,
       "verified_fact": "The US government holds approximately 200,000 BTC seized from criminals — worth $13.5B. The government that calls Bitcoin risky is one of its largest holders.",
       "source": "US DOJ public records",
-      "used_dates": [
-        "2026-03-02"
-      ],
       "cooldown_days": 60
     },
     {
@@ -886,9 +843,6 @@
       "btc_price_then": 65000,
       "verified_fact": "There are only about 88,000 Bitcoin wallets holding 1 BTC or more. There are 22 million millionaires in the US alone. The math on scarcity hasn't fully hit yet.",
       "source": "Glassnode on-chain data",
-      "used_dates": [
-        "2026-03-04"
-      ],
       "cooldown_days": 60
     },
     {
@@ -902,9 +856,6 @@
       "btc_price_then": 7000,
       "verified_fact": "Bitcoin crashed 50% in March 2020 with stocks during COVID panic. By December it hit all-time highs while the economy struggled. Short-term it trades like risk. Long-term it trades like hard money.",
       "source": "CoinGecko / S&P historical",
-      "used_dates": [
-        "2026-03-05"
-      ],
       "cooldown_days": 60
     },
     {
@@ -934,9 +885,6 @@
       "btc_price_then": 0,
       "verified_fact": "In 2016, Venezuela's inflation rate reached 180%",
       "source": "Research",
-      "used_dates": [
-        "2026-03-14"
-      ],
       "cooldown_days": 60,
       "id": 61
     },
@@ -964,9 +912,6 @@
       "btc_price_then": 0,
       "verified_fact": "In 2020, Jack Dorsey publicly endorsed Bitcoin and said it's the \"best\" kind of money",
       "source": "Research",
-      "used_dates": [
-        "2026-03-07"
-      ],
       "cooldown_days": 60,
       "id": 63
     },
@@ -996,9 +941,6 @@
       "btc_price_then": 0,
       "verified_fact": "In 2008, Satoshi Nakamoto created the Bitcoin whitepaper",
       "source": "Research",
-      "used_dates": [
-        "2026-03-06"
-      ],
       "cooldown_days": 60,
       "id": 65
     },
@@ -1026,7 +968,9 @@
       "btc_allocation": 0,
       "verified_fact": "Tom Brady signed a $3.3M rookie contract in 2000",
       "source": "Research",
-      "used_dates": [],
+      "used_dates": [
+        "2026-03-16"
+      ],
       "cooldown_days": 90,
       "id": 67
     },
@@ -1040,9 +984,6 @@
       "btc_price_then": 0,
       "verified_fact": "In 2008, Zimbabwe's monthly inflation rate peaked at 79,600,000,000% in November",
       "source": "Research",
-      "used_dates": [
-        "2026-03-13"
-      ],
       "cooldown_days": 60,
       "id": 68
     },
@@ -1070,9 +1011,6 @@
       "btc_price_then": 0,
       "verified_fact": "In 2021, Tesla purchased $1.5 billion worth of Bitcoin",
       "source": "Research",
-      "used_dates": [
-        "2026-03-15"
-      ],
       "cooldown_days": 60,
       "id": 70
     }
