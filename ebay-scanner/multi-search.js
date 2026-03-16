@@ -323,6 +323,9 @@ if (require.main === module) {
         i++;
       } else if (flagName === 'no-raw-filter') {
         config.rawOnly = false;
+      } else if (flagName === 'exclude' && nextArg) {
+        config.excludeKeywords = nextArg;
+        i++;
       } else if (flagName === 'vision') {
         config.useVision = true;
       } else if (flagName === 'vision-top') {

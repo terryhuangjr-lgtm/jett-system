@@ -49,6 +49,7 @@ async function runScan(day) {
 
   console.log(`Scan: ${scan.name}`);
   console.log(`Terms: ${scan.search_terms.join(', ')}`);
+  console.log(`Exclude: ${(scan.filters.exclude_words || []).join(', ') || 'none'}`);
   console.log(`Filters: min=$${scan.filters.minPrice || 'any'}, max=$${scan.filters.maxPrice || 'any'}, topN=${scan.filters.topN}`);
   console.log(`Vision: ${scan.useVision ? 'enabled' : 'disabled'}`);
   console.log('');
@@ -59,10 +60,12 @@ async function runScan(day) {
   const maxPrice = scan.filters.maxPrice || '';
   const topN = scan.filters.topN || 20;
   const outputFile = scan.output_file;
+  const excludeWords = scan.filters.exclude_words || [];
 
   const args = ['multi-search.js', terms, '--topN', String(topN), '--output', outputFile];
   if (minPrice) args.push('--minPrice', minPrice);
   if (maxPrice) args.push('--maxPrice', maxPrice);
+  if (excludeWords.length > 0) args.push('--exclude', excludeWords.join(','));
   if (scan.useVision) args.push('--vision');
 
   console.log(`Executing: node ${args.join(' ')}\n`);

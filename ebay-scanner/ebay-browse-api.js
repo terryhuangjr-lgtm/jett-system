@@ -93,13 +93,19 @@ class EbayBrowseAPI {
       // eBay Browse API supports -(keyword) syntax in the q parameter
       // NOTE: Multi-word exclusions like "fan made" don't work - they act as OR
       const defaultExcludes = [
-        'psa', 'bgs', 'cgc', 'sgc', 'bccg', 'ksa', 'ags',
-        'lot', 'lots', 'set', 'sets', 'bundle', 'collection',
-        'box', 'pack', 'sealed', 'case', 'break',
-        'reprint', 'reproduction', 'custom', 'graded', 'slab', 'slabbed'
+        'psa', 'bgs', 'cgc', 'sgc', 'graded', 'slab'
       ];
-      const allExcludes = [...new Set([...defaultExcludes, ...excludeKeywords])];
-      const negativeStr = allExcludes.map(k => `-${k}`).join(' ');
+      
+      // Handle both string and array for excludeKeywords
+      let excludeArr = excludeKeywords;
+      if (typeof excludeKeywords === 'string') {
+        excludeArr = excludeKeywords ? excludeKeywords.split(',').map(k => k.trim()).filter(Boolean) : [];
+      }
+      
+      // Only send core exclusions to eBay API (URL length limit)
+      // Custom exclusions from config are handled by raw-card-filter.js post-processing
+      const apiExcludes = defaultExcludes.slice(0, 8); // Limit to 8 for URL safety
+      const negativeStr = apiExcludes.map(k => `-${k}`).join(' ');
       query = `${keywords} ${negativeStr}`;
 
       console.log('Search query sent to eBay:', query);
