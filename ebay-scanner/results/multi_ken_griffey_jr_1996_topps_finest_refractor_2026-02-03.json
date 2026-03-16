@@ -1,0 +1,2565 @@
+{
+  "timestamp": "2026-02-03T14:20:33.296Z",
+  "searchQuery": "ken griffey jr 1996 topps finest refractor",
+  "parsed": {
+    "original": "ken griffey jr 1996 topps finest refractor",
+    "isComplex": false,
+    "baseQuery": "ken griffey jr 1996 topps finest refractor",
+    "yearRange": null,
+    "detectedTypes": [
+      "refractor"
+    ],
+    "searches": [
+      "ken griffey jr 1996 topps finest refractor"
+    ],
+    "searchCount": 1,
+    "explanation": "Single search (no splitting needed)"
+  },
+  "searchResults": [
+    {
+      "query": "ken griffey jr 1996 topps finest refractor",
+      "count": 62
+    }
+  ],
+  "config": {
+    "keywords": "ken griffey jr 1996 topps finest refractor",
+    "minScoreToShow": 7,
+    "topN": 3,
+    "minPrice": 0,
+    "maxPrice": null,
+    "rawOnly": true
+  },
+  "scanDuration": "0.8s",
+  "summary": {
+    "totalFound": 62,
+    "uniqueItems": 62,
+    "rawCardsOnly": true,
+    "afterRawFilter": 35,
+    "totalScored": 35,
+    "showingResults": 19
+  },
+  "allResults": [
+    {
+      "itemId": "v1|277660559859|0",
+      "title": "1996 Topps 5 Star Finest Mystery Ken Griffey Jr REFRACTOR Insert #M25",
+      "currentPrice": 40,
+      "shippingCost": 0,
+      "totalPrice": 40,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/KQwAAeSwN~BpbwOE/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/277660559859?_skw=ken+griffey+jr+1996+topps+finest+refractor&hash=item40a5dbe9f3:g:KQwAAeSwN~BpbwOE",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "keg2202",
+      "sellerFeedbackScore": 2190,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.8,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 2190,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (2190 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: ken griffey jr",
+              "refractor match",
+              "Exact year: 1996",
+              "topps match"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Player match: ken griffey jr, refractor match, Exact year: 1996, topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|157651153945|0",
+      "title": "REFRACTOR 1996 Topps Mystery Finest Ken Griffey Jr #M16",
+      "currentPrice": 86.09,
+      "shippingCost": 5.95,
+      "totalPrice": 92.04,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/tIcAAeSw7WZpfqrJ/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/157651153945?_skw=ken+griffey+jr+1996+topps+finest+refractor&hash=item24b4bdb419:g:tIcAAeSw7WZpfqrJ",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "stgrifcolsinc92",
+      "sellerFeedbackScore": 1362,
+      "sellerPositivePercent": "99.9",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.8,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "99.9",
+            "salesCount": 1362,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "99.9% (1362 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: ken griffey jr",
+              "refractor match",
+              "Exact year: 1996",
+              "topps match"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Player match: ken griffey jr, refractor match, Exact year: 1996, topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|317552215170|0",
+      "title": "1996 FINEST KEN GRIFFEY JR. REFRACTOR SP RARE INSERT L@@K",
+      "currentPrice": 249.99,
+      "shippingCost": 7.99,
+      "totalPrice": 257.98,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/-TUAAeSweztpG53~/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/317552215170?_skw=ken+griffey+jr+1996+topps+finest+refractor&hash=item49ef964482:g:-TUAAeSweztpG53~",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "dandaman333",
+      "sellerFeedbackScore": 13401,
+      "sellerPositivePercent": "99.7",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.8,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "99.7",
+            "salesCount": 13401,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "99.7% (13401 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: ken griffey jr",
+              "refractor match",
+              "Exact year: 1996"
+            ],
+            "mismatches": [
+              "Not topps"
+            ],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Player match: ken griffey jr, refractor match, Exact year: 1996"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|166470792956|0",
+      "title": "1996 Topps Mystery Finest Ken Griffey Jr 5 Star Finest Refractor #M25 NM",
+      "currentPrice": 60,
+      "shippingCost": 5,
+      "totalPrice": 65,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/86QAAeSwRHZnyTCw/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/166470792956?_skw=ken+griffey+jr+1996+topps+finest+refractor&hash=item26c26eb6fc:g:86QAAeSwRHZnyTCw",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "sattyfamilycards",
+      "sellerFeedbackScore": 5180,
+      "sellerPositivePercent": "99.8",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.8,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "99.8",
+            "salesCount": 5180,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "99.8% (5180 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: ken griffey jr",
+              "refractor match",
+              "Exact year: 1996",
+              "topps match"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Player match: ken griffey jr, refractor match, Exact year: 1996, topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|314406432752|0",
+      "title": "✨1996 TOPPS FINEST STERLING⚾️✨KEN GRIFFEY JR🔥w/COATING #24 (THEME S 6) SP MINT",
+      "currentPrice": 29.99,
+      "shippingCost": 4.99,
+      "totalPrice": 34.98,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/Wh4AAOSwMzZj8Exd/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/314406432752?_skw=ken+griffey+jr+1996+topps+finest+refractor&hash=item4934156ff0:g:Wh4AAOSwMzZj8Exd",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "stockupsportscards",
+      "sellerFeedbackScore": 1556,
+      "sellerPositivePercent": "99.6",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.8,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "99.6",
+            "salesCount": 1556,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "99.6% (1556 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 6,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos",
+              "Mint condition claimed"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "reason": "✅ Has photos, Mint condition claimed"
+          },
+          "searchRelevance": {
+            "points": 9,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: ken griffey jr",
+              "Exact year: 1996",
+              "topps match"
+            ],
+            "mismatches": [
+              "Missing: refractor"
+            ],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [],
+            "reason": "✅ Player match: ken griffey jr, Exact year: 1996, topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|354588403807|0",
+      "title": "KEN GRIFFEY JR. 1996 Topps Finest GOLD INTIMIDATORS RARE REFRACTOR PARALLEL !",
+      "currentPrice": 1499.99,
+      "shippingCost": 4,
+      "totalPrice": 1503.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/X2MAAOSwY6tj7Uhp/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/354588403807?_skw=ken+griffey+jr+1996+topps+finest+refractor&hash=item528f1da85f:g:X2MAAOSwY6tj7Uhp",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "sportscards4sale2u",
+      "sellerFeedbackScore": 16075,
+      "sellerPositivePercent": "99.8",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.8,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "99.8",
+            "salesCount": 16075,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "99.8% (16075 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: ken griffey jr",
+              "refractor match",
+              "Exact year: 1996",
+              "topps match"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Player match: ken griffey jr, refractor match, Exact year: 1996, topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|236434236687|0",
+      "title": "1996 Topps Mystery Finest Refractor #M25 Ken Griffey Jr. HOF Seattle Mariners",
+      "currentPrice": 70,
+      "shippingCost": 3.95,
+      "totalPrice": 73.95,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/e5QAAeSwvthpCUZC/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/236434236687?_skw=ken+griffey+jr+1996+topps+finest+refractor&hash=item370c94250f:g:e5QAAeSwvthpCUZC",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "ondecksports93",
+      "sellerFeedbackScore": 3199,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.8,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 3199,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (3199 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: ken griffey jr",
+              "refractor match",
+              "Exact year: 1996",
+              "topps match"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Player match: ken griffey jr, refractor match, Exact year: 1996, topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|167915030544|0",
+      "title": "Ken Griffey Jr 1996 Topps Mystery Finest Refractor 5-Star Finest #M26 Mariners",
+      "currentPrice": 85,
+      "shippingCost": 5,
+      "totalPrice": 90,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/QesAAeSw-GBpEBtL/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/167915030544?_skw=ken+griffey+jr+1996+topps+finest+refractor&hash=item2718840810:g:QesAAeSw-GBpEBtL",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "sattyfamilycards",
+      "sellerFeedbackScore": 5180,
+      "sellerPositivePercent": "99.8",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.8,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "99.8",
+            "salesCount": 5180,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "99.8% (5180 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: ken griffey jr",
+              "refractor match",
+              "Exact year: 1996",
+              "topps match"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Player match: ken griffey jr, refractor match, Exact year: 1996, topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|403017381486|0",
+      "title": "Ken Griffey Jr Topps Mystery Finest Refractor   # M25 Mariners",
+      "currentPrice": 49.99,
+      "shippingCost": 5.99,
+      "totalPrice": 55.98,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/VIoAAOSwLTVg~DKL/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/403017381486?_skw=ken+griffey+jr+1996+topps+finest+refractor&hash=item5dd5b5366e:g:VIoAAOSwLTVg~DKL",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "kennyph35",
+      "sellerFeedbackScore": 10163,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.8,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 10163,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (10163 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: ken griffey jr",
+              "refractor match",
+              "topps match"
+            ],
+            "mismatches": [
+              "Year not specified in title"
+            ],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Player match: ken griffey jr, refractor match, topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|257312140465|0",
+      "title": "1996 Topps Mystery Finest Refractor Ken Griffey Jr #M25 HOF 3sm",
+      "currentPrice": 86.79,
+      "shippingCost": 4.99,
+      "totalPrice": 91.78,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/wVEAAeSwel1paiYc/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/257312140465?_skw=ken+griffey+jr+1996+topps+finest+refractor&hash=item3be8ffacb1:g:wVEAAeSwel1paiYc",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "comc_consignment",
+      "sellerFeedbackScore": 1301880,
+      "sellerPositivePercent": "99.6",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.8,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "99.6",
+            "salesCount": 1301880,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "99.6% (1301880 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: ken griffey jr",
+              "refractor match",
+              "Exact year: 1996",
+              "topps match"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Player match: ken griffey jr, refractor match, Exact year: 1996, topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|305656044210|0",
+      "title": "1996 Topps Finest Baseball REFRACTOR Complete ORIGINAL 359 Set Griffey Jeter Cal",
+      "currentPrice": 6299,
+      "shippingCost": 29.99,
+      "totalPrice": 6328.99,
+      "condition": "Used",
+      "imageUrl": "https://i.ebayimg.com/images/g/kOAAAOSw8SRlND-a/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/305656044210?_skw=ken+griffey+jr+1996+topps+finest+refractor&hash=item472a851ab2:g:kOAAAOSw8SRlND-a",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "banker992",
+      "sellerFeedbackScore": 6464,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Sets",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.8,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 6464,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (6464 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Last name match: griffey",
+              "refractor match",
+              "Exact year: 1996",
+              "topps match"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Last name match: griffey, refractor match, Exact year: 1996, topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|315176481272|0",
+      "title": "✨1996 TOPPS FINEST STERLING ⚾️ REFRACTOR W/COATING ✨KEN GRIFFEY JR. #24 SP NM",
+      "currentPrice": 349.99,
+      "shippingCost": 0,
+      "totalPrice": 349.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/JJIAAeSwT7xoh-2y/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/315176481272?_skw=ken+griffey+jr+1996+topps+finest+refractor&hash=item4961fb71f8:g:JJIAAeSwT7xoh-2y",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "stockupsportscards",
+      "sellerFeedbackScore": 1556,
+      "sellerPositivePercent": "99.6",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.8,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "99.6",
+            "salesCount": 1556,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "99.6% (1556 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: ken griffey jr",
+              "refractor match",
+              "Exact year: 1996",
+              "topps match"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Player match: ken griffey jr, refractor match, Exact year: 1996, topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|136300010822|0",
+      "title": "1996 Topps  Mystery Finest Baseball Refractor  Set - 26 Cards w/ Griffey x2",
+      "currentPrice": 350,
+      "shippingCost": 0,
+      "totalPrice": 350,
+      "condition": "New",
+      "imageUrl": "https://i.ebayimg.com/images/g/w64AAeSwA49omTkr/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/136300010822?_skw=ken+griffey+jr+1996+topps+finest+refractor&hash=item1fbc1d1d46:g:w64AAeSwA49omTkr",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "tooly22",
+      "sellerFeedbackScore": 10020,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Sets",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.8,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 10020,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (10020 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Last name match: griffey",
+              "refractor match",
+              "Exact year: 1996",
+              "topps match"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Last name match: griffey, refractor match, Exact year: 1996, topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|196844541291|0",
+      "title": "1996 Topps Mystery Finest MLB Baseball M22 M23 M24 M25 Ken Griffey Jr. Unpeeled",
+      "currentPrice": 29.99,
+      "shippingCost": 0,
+      "totalPrice": 29.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/hEcAAOSwNapnQ2ng/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/196844541291?_skw=ken+griffey+jr+1996+topps+finest+refractor&hash=item2dd4d9556b:g:hEcAAOSwNapnQ2ng",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "rocketsportscardscollectibles",
+      "sellerFeedbackScore": 1432,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.5,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 1432,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (1432 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 9,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: ken griffey jr",
+              "Exact year: 1996",
+              "topps match"
+            ],
+            "mismatches": [
+              "Missing: refractor"
+            ],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [],
+            "reason": "✅ Player match: ken griffey jr, Exact year: 1996, topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|326846388434|0",
+      "title": "1996 Topps Finest Ken Griffey Jr. #24 RARE BRONZE REFRACTOR with Coating MINT",
+      "currentPrice": 258.97,
+      "shippingCost": 5.99,
+      "totalPrice": 264.96,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/-vkAAeSw5FNpB42U/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/326846388434?_skw=ken+griffey+jr+1996+topps+finest+refractor&hash=item4c199018d2:g:-vkAAeSw5FNpB42U",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "5talentsports",
+      "sellerFeedbackScore": 617,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.3,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 7.5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 617,
+            "tier": "Established seller",
+            "trust": "✅ Good",
+            "reason": "100.0% (617 sales) - Established seller"
+          },
+          "listingQuality": {
+            "points": 6,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos",
+              "Mint condition claimed"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "reason": "✅ Has photos, Mint condition claimed"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: ken griffey jr",
+              "refractor match",
+              "Exact year: 1996",
+              "topps match"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Player match: ken griffey jr, refractor match, Exact year: 1996, topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|227192761355|0",
+      "title": "1993 Topps Finest KEN GRIFFEY JR FINEST ALL-STRS” 1ST CHROME #110 SP⚾️🔥🔥A6",
+      "currentPrice": 99.99,
+      "shippingCost": 6.99,
+      "totalPrice": 106.98,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/mqsAAeSwgTFpekD2/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/227192761355?_skw=ken+griffey+jr+1996+topps+finest+refractor&hash=item34e5be6c0b:g:mqsAAeSwgTFpekD2",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "n**59",
+      "sellerFeedbackScore": 2574,
+      "sellerPositivePercent": "99.7",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "99.7",
+            "salesCount": 2574,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "99.7% (2574 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 7,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: ken griffey jr",
+              "Same era: 1993 (±5 of 1996)",
+              "topps match"
+            ],
+            "mismatches": [
+              "Missing: refractor"
+            ],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [],
+            "reason": "✅ Player match: ken griffey jr, Same era: 1993 (±5 of 1996), topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": []
+      }
+    },
+    {
+      "itemId": "v1|285181697501|0",
+      "title": "1996 Topps Mystery Finest Refractor Ken Griffey Jr #M25 HOF",
+      "currentPrice": 100,
+      "shippingCost": 4,
+      "totalPrice": 104,
+      "condition": "Used",
+      "imageUrl": "https://i.ebayimg.com/images/g/HxUAAOSwMWVkDfjc/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/285181697501?_skw=ken+griffey+jr+1996+topps+finest+refractor&hash=item4266275ddd:g:HxUAAOSwMWVkDfjc",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "kingofkings55",
+      "sellerFeedbackScore": 575,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 7.5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 575,
+            "tier": "Established seller",
+            "trust": "✅ Good",
+            "reason": "100.0% (575 sales) - Established seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: ken griffey jr",
+              "refractor match",
+              "Exact year: 1996",
+              "topps match"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Player match: ken griffey jr, refractor match, Exact year: 1996, topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|177821377468|0",
+      "title": "1993 Topps Finest KEN GRIFFEY JR FINEST ALL-STRS” 1ST CHROME #110 SP",
+      "currentPrice": 75,
+      "shippingCost": 6.95,
+      "totalPrice": 81.95,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/0oMAAeSwnM1pfKT2/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/177821377468?_skw=ken+griffey+jr+1996+topps+finest+refractor&hash=item2966fae3bc:g:0oMAAeSwnM1pfKT2",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "j_lcollectibles",
+      "sellerFeedbackScore": 4004,
+      "sellerPositivePercent": "99.9",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "99.9",
+            "salesCount": 4004,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "99.9% (4004 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 7,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: ken griffey jr",
+              "Same era: 1993 (±5 of 1996)",
+              "topps match"
+            ],
+            "mismatches": [
+              "Missing: refractor"
+            ],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [],
+            "reason": "✅ Player match: ken griffey jr, Same era: 1993 (±5 of 1996), topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": []
+      }
+    },
+    {
+      "itemId": "v1|117012122603|0",
+      "title": "1993 Topps Finest KEN GRIFFEY JR 1ST FINEST CHROME “BASEBALL’S FINEST STARS” 110",
+      "currentPrice": 69.99,
+      "shippingCost": 0,
+      "totalPrice": 69.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/X5gAAeSwUaRpfujU/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/117012122603?_skw=ken+griffey+jr+1996+topps+finest+refractor&hash=item1b3e774beb:g:X5gAAeSwUaRpfujU",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "tlsports",
+      "sellerFeedbackScore": 6167,
+      "sellerPositivePercent": "99.5",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "99.5",
+            "salesCount": 6167,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "99.5% (6167 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 7,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: ken griffey jr",
+              "Same era: 1993 (±5 of 1996)",
+              "topps match"
+            ],
+            "mismatches": [
+              "Missing: refractor"
+            ],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [],
+            "reason": "✅ Player match: ken griffey jr, Same era: 1993 (±5 of 1996), topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": []
+      }
+    },
+    {
+      "itemId": "v1|335919516911|0",
+      "title": "1996 Topps Finest Refractor MICKEY MANTLE #10 Chrome Comm. 1960 Topps #350 MINT",
+      "currentPrice": 9.75,
+      "shippingCost": 2.49,
+      "totalPrice": 12.24,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/UQsAAOSwKcJoAoFx/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/335919516911?_skw=ken+griffey+jr+1996+topps+finest+refractor&hash=item4e365d0cef:g:UQsAAOSwKcJoAoFx",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "jsnicestuff",
+      "sellerFeedbackScore": 1730,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6.8,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 1730,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (1730 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 6,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos",
+              "Mint condition claimed"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "reason": "✅ Has photos, Mint condition claimed"
+          },
+          "searchRelevance": {
+            "points": 5,
+            "maxPoints": 10,
+            "matches": [
+              "refractor match",
+              "Exact year: 1996",
+              "topps match"
+            ],
+            "mismatches": [
+              "WRONG PLAYER - searched for: ken griffey jr"
+            ],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ refractor match, Exact year: 1996, topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": []
+      }
+    },
+    {
+      "itemId": "v1|146931924330|0",
+      "title": "1996 Upper Deck SP Special FX HOLOVIEW RED DIE CUT Ken Griffey Jr",
+      "currentPrice": 55,
+      "shippingCost": 0,
+      "totalPrice": 55,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/rEsAAeSwW8BpBOoE/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/146931924330?_skw=ken+griffey+jr+1996+topps+finest+refractor&hash=item2235d33d6a:g:rEsAAeSwW8BpBOoE",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "reservoir_card_lab",
+      "sellerFeedbackScore": 7917,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6.8,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 7917,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (7917 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 6,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: ken griffey jr",
+              "Exact year: 1996"
+            ],
+            "mismatches": [
+              "Missing: refractor",
+              "Not topps"
+            ],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [],
+            "reason": "✅ Player match: ken griffey jr, Exact year: 1996"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": []
+      }
+    },
+    {
+      "itemId": "v1|126819733006|0",
+      "title": "1996 Topps Mystery Finest Ken Griffey Jr. Refractor Mariners #M25 PSA Mint 9",
+      "currentPrice": 149,
+      "shippingCost": 0,
+      "totalPrice": 149,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/ljIAAOSwjFVnVUbt/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/126819733006?_skw=ken+griffey+jr+1996+topps+finest+refractor&hash=item1d870b8e0e:g:ljIAAOSwjFVnVUbt",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "mkinler3",
+      "sellerFeedbackScore": 129,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6.6,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 129,
+            "tier": "Decent seller",
+            "trust": "OK",
+            "reason": "100.0% (129 sales) - Decent seller"
+          },
+          "listingQuality": {
+            "points": 6,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos",
+              "Mint condition claimed"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "reason": "✅ Has photos, Mint condition claimed"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: ken griffey jr",
+              "refractor match",
+              "Exact year: 1996",
+              "topps match"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Player match: ken griffey jr, refractor match, Exact year: 1996, topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|156480598208|0",
+      "title": "1996 Topps Mystery Finest Chrome Refractor FRANK THOMAS #M21 WHITE SOX HOF",
+      "currentPrice": 12,
+      "shippingCost": 0,
+      "totalPrice": 12,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/4ugAAOSwVYZnHsOn/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/156480598208?_skw=ken+griffey+jr+1996+topps+finest+refractor&hash=item246ef870c0:g:4ugAAOSwVYZnHsOn",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "gattor12",
+      "sellerFeedbackScore": 1415,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6.5,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 1415,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (1415 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 5,
+            "maxPoints": 10,
+            "matches": [
+              "refractor match",
+              "Exact year: 1996",
+              "topps match"
+            ],
+            "mismatches": [
+              "WRONG PLAYER - searched for: ken griffey jr"
+            ],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ refractor match, Exact year: 1996, topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": []
+      }
+    },
+    {
+      "itemId": "v1|117015979152|0",
+      "title": "1996 Topps Mystery Finest Ken Griffey Jr #M16 Refractor Rare Insert ",
+      "currentPrice": 100,
+      "shippingCost": 0,
+      "totalPrice": 100,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/7IoAAeSwXXxpTvpT/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/117015979152?_skw=ken+griffey+jr+1996+topps+finest+refractor&hash=item1b3eb22490:g:7IoAAeSwXXxpTvpT",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "sealed_booster_breakers",
+      "sellerFeedbackScore": 123,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6.3,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 123,
+            "tier": "Decent seller",
+            "trust": "OK",
+            "reason": "100.0% (123 sales) - Decent seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: ken griffey jr",
+              "refractor match",
+              "Exact year: 1996",
+              "topps match"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Player match: ken griffey jr, refractor match, Exact year: 1996, topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|267319385945|0",
+      "title": "1996 Topps Mystery Finest Ken Griffey Jr 5 Star Finest Refractor #M25",
+      "currentPrice": 70,
+      "shippingCost": 0,
+      "totalPrice": 70,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/mxQAAeSwbpJobs1n/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/267319385945?_skw=ken+griffey+jr+1996+topps+finest+refractor&hash=item3e3d7a1f59:g:mxQAAeSwbpJobs1n",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "premiertom777",
+      "sellerFeedbackScore": 261,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6.3,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 261,
+            "tier": "Decent seller",
+            "trust": "OK",
+            "reason": "100.0% (261 sales) - Decent seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: ken griffey jr",
+              "refractor match",
+              "Exact year: 1996",
+              "topps match"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Player match: ken griffey jr, refractor match, Exact year: 1996, topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|203994159683|504434165013",
+      "title": "MLB Single Trading Cards Ken Griffey Jr. Seattle Mariners",
+      "currentPrice": 34.99,
+      "shippingCost": 1,
+      "totalPrice": 35.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/PwcAAOSwyvFipnRk/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/203994159683?_skw=ken+griffey+jr+1996+topps+finest+refractor&hash=item2f7effda43:g:PwcAAOSwyvFipnRk",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "bigdab",
+      "sellerFeedbackScore": 5966,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6.3,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 5966,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (5966 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 4,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: ken griffey jr"
+            ],
+            "mismatches": [
+              "Missing: refractor",
+              "Year not specified in title",
+              "Not topps"
+            ],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [],
+            "reason": "✅ Player match: ken griffey jr"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "⚠️ May not match your search - check details"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|235644193583|0",
+      "title": "RARE 1996 Topps FINEST Baseball Checklist REFRACTOR w/peel #359 Ken Griffey Jr",
+      "currentPrice": 5.99,
+      "shippingCost": 0,
+      "totalPrice": 5.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/fgEAAOSwiY1mN3m~/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/235644193583?_skw=ken+griffey+jr+1996+topps+finest+refractor&hash=item36dd7d0b2f:g:fgEAAOSwiY1mN3m~",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "figs_collectibles",
+      "sellerFeedbackScore": 131,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6.3,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 131,
+            "tier": "Decent seller",
+            "trust": "OK",
+            "reason": "100.0% (131 sales) - Decent seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: ken griffey jr",
+              "refractor match",
+              "Exact year: 1996",
+              "topps match"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Player match: ken griffey jr, refractor match, Exact year: 1996, topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|366163353910|0",
+      "title": "Ken Griffey, Junior, five star finest Tops, 1996 refractor card M25",
+      "currentPrice": 100,
+      "shippingCost": 0,
+      "totalPrice": 100,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/ulEAAOSw8RdlanA7/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/366163353910?_skw=ken+griffey+jr+1996+topps+finest+refractor&hash=item5541096136:g:ulEAAOSw8RdlanA7",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "joskil3196",
+      "sellerFeedbackScore": 102,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": "2026-02-07T00:18:38.000Z",
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 102,
+            "tier": "Decent seller",
+            "trust": "OK",
+            "reason": "100.0% (102 sales) - Decent seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 9,
+            "maxPoints": 10,
+            "matches": [
+              "Last name match: griffey",
+              "refractor match",
+              "Exact year: 1996"
+            ],
+            "mismatches": [
+              "Not topps"
+            ],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Last name match: griffey, refractor match, Exact year: 1996"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": 4,
+            "tier": "Listed this week",
+            "reason": "Listed this week"
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|203543757666|503941532720",
+      "title": "MLB Single Refractor - Prizm Cards - Gold Minted And More - Base And Inserts",
+      "currentPrice": 49.99,
+      "shippingCost": 1,
+      "totalPrice": 50.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/CggAAOSw7DhhBV-O/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/203543757666?_skw=ken+griffey+jr+1996+topps+finest+refractor&hash=item2f64274362:g:CggAAOSw7DhhBV-O",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "bigdab",
+      "sellerFeedbackScore": 5966,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 5.6,
+        "rating": "~ MAYBE",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 5966,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (5966 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 6,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos",
+              "Mint condition claimed"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "reason": "✅ Has photos, Mint condition claimed"
+          },
+          "searchRelevance": {
+            "points": 0,
+            "maxPoints": 10,
+            "matches": [
+              "refractor match"
+            ],
+            "mismatches": [
+              "WRONG PLAYER - searched for: ken griffey jr",
+              "Year not specified in title",
+              "Not topps"
+            ],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ refractor match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "⚠️ May not match your search - check details"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|317659966270|0",
+      "title": "1996 Topps - Mystery Finest Ken Griffey Jr #M25 Refractor",
+      "currentPrice": 40,
+      "shippingCost": 0,
+      "totalPrice": 40,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/RtkAAeSwOjZpP5QO/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/317659966270?_skw=ken+griffey+jr+1996+topps+finest+refractor&hash=item49f6026b3e:g:RtkAAeSwOjZpP5QO&amdata=enc%3AAQALAAABADZq0hFgvSYlgrFkWCFZ3z0yygNXM8frBtUAj3U02XSRgYuMdhmgf9qUJt7ZB9VZ%2Bj9a08y8f4j2flbv65u1dIrj%2FBwMZTJ%2BDmTsjn8xIIYFiDcyDKD6wzt30jBU0nVr97lzSZhN4D1cqb5D%2FYRi87b7oMEkeELPNLFGWZ8ucQzB9V%2BdQhtnOSEwgxlSvO20N4w6shZF7WhlseZjdOwpyxPHXiLh7Nd%2B2Jg2ShSvhMDsc0dqcPUenlxD9Z8ov1v0f%2FdBufy6C8VRcPrIanBBkEcE9Pb1%2FnbWmlWT9%2BCEvabagDVwSdk7CYZtfYEw2Dbw3X3lLvyg0giYGudS5Atw69o%3D",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "gsc467",
+      "sellerFeedbackScore": 35,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 5.5,
+        "rating": "~ MAYBE",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 2.5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 35,
+            "tier": "New/low feedback seller",
+            "trust": "⚠️ New seller",
+            "reason": "100.0% (35 sales) - New/low feedback seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: ken griffey jr",
+              "refractor match",
+              "Exact year: 1996",
+              "topps match"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Player match: ken griffey jr, refractor match, Exact year: 1996, topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|277622996726|0",
+      "title": "1996 Topps Finest - Ken Griffey Jr #24 ",
+      "currentPrice": 11,
+      "shippingCost": 0,
+      "totalPrice": 11,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/iysAAeSwqxVpV~z9/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/277622996726?_skw=ken+griffey+jr+1996+topps+finest+refractor&hash=item40a39ebef6:g:iysAAeSwqxVpV~z9",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "mseger88",
+      "sellerFeedbackScore": 101,
+      "sellerPositivePercent": "91.7",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 5.3,
+        "rating": "~ MAYBE",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 2.5,
+            "maxPoints": 10,
+            "feedback": "91.7",
+            "salesCount": 101,
+            "tier": "New/low feedback seller",
+            "trust": "⚠️ New seller",
+            "reason": "91.7% (101 sales) - New/low feedback seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 9,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: ken griffey jr",
+              "Exact year: 1996",
+              "topps match"
+            ],
+            "mismatches": [
+              "Missing: refractor"
+            ],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [],
+            "reason": "✅ Player match: ken griffey jr, Exact year: 1996, topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|227082633803|0",
+      "title": "2023 Topps Finest Flashbacks Hobby Box  - New, Factory Sealed, Fast Shipping",
+      "currentPrice": 198.88,
+      "shippingCost": 0,
+      "totalPrice": 198.88,
+      "condition": "New/Factory Sealed",
+      "imageUrl": "https://i.ebayimg.com/images/g/ThsAAeSwWw5ovfUQ/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/227082633803?_skw=ken+griffey+jr+1996+topps+finest+refractor&hash=item34df2e024b:g:ThsAAeSwWw5ovfUQ&amdata=enc%3AAQALAAABEDZq0hFgvSYlgrFkWCFZ3z3zF30PHSMtpm91RLkMQu5FuwvtXagB9ab0XuGhYCEwnXVUq9wnRqyyj%2F9pUZIRnbu%2BU6wp7AOJRK9Wnk%2Bx5x2g4iYxNx7gitkLqeNsgbMtmE01aWnETE%2B2pPNcLZEYzCHVEuBnDBSqNPLPvjexALuMv%2BEd6OzKPQ90%2BZhON7qVslROAALpLU%2BDiiVQPH%2F8wWAklsrwuENVsjdg44duQWhZ5Vm6TfBEOx1l60FuIkHmeTvmnZv8lxckmRkJPIaj62h6S8JH1GqwSfIhVnYI2HrRE222m5S7%2B1Y5Yl7LGcMR1rQcsvgukB1wgQv6e60Iy0X09OI5nNWzucNi%2FFUI3TXH",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "the-end-zone",
+      "sellerFeedbackScore": 9265,
+      "sellerPositivePercent": "99.8",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Sealed Trading Card Boxes",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 5.3,
+        "rating": "~ MAYBE",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "99.8",
+            "salesCount": 9265,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "99.8% (9265 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 0,
+            "maxPoints": 10,
+            "matches": [
+              "topps match"
+            ],
+            "mismatches": [
+              "WRONG PLAYER - searched for: ken griffey jr",
+              "Missing: refractor",
+              "Wrong year: 2023 vs 1996"
+            ],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [],
+            "reason": "✅ topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "⚠️ May not match your search - check details"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|168072893839|0",
+      "title": "1996 Topps Finest Sterling Bronze Ken Griffey Jr #24 w/o Coating HOF",
+      "currentPrice": 10.5,
+      "shippingCost": 0,
+      "totalPrice": 10.5,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/91gAAeSwTyBpYqZT/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/168072893839?_skw=ken+griffey+jr+1996+topps+finest+refractor&hash=item2721ecd58f:g:91gAAeSwTyBpYqZT",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "jacam68",
+      "sellerFeedbackScore": 96,
+      "sellerPositivePercent": "98.8",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 5.3,
+        "rating": "~ MAYBE",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 2.5,
+            "maxPoints": 10,
+            "feedback": "98.8",
+            "salesCount": 96,
+            "tier": "New/low feedback seller",
+            "trust": "⚠️ New seller",
+            "reason": "98.8% (96 sales) - New/low feedback seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 9,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: ken griffey jr",
+              "Exact year: 1996",
+              "topps match"
+            ],
+            "mismatches": [
+              "Missing: refractor"
+            ],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [],
+            "reason": "✅ Player match: ken griffey jr, Exact year: 1996, topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|276599355803|2560026582100",
+      "title": "Topps Finest Baseball Stars & RC - U-Pick - Complete Your Set",
+      "currentPrice": 3.25,
+      "shippingCost": 0,
+      "totalPrice": 3.25,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/I30AAOSwsXNmwM~U/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/276599355803?_skw=ken+griffey+jr+1996+topps+finest+refractor&hash=item40669b399b:g:I30AAOSwsXNmwM~U",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "pkn.investments",
+      "sellerFeedbackScore": 3587,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 5.3,
+        "rating": "~ MAYBE",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 3587,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (3587 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 0,
+            "maxPoints": 10,
+            "matches": [
+              "topps match"
+            ],
+            "mismatches": [
+              "WRONG PLAYER - searched for: ken griffey jr",
+              "Missing: refractor",
+              "Year not specified in title"
+            ],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [],
+            "reason": "✅ topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "⚠️ May not match your search - check details"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|196049516932|0",
+      "title": "2023 Topps Finest Flashbacks Baseball MLB - Factory Sealed Hobby Box",
+      "currentPrice": 399.99,
+      "shippingCost": 10.99,
+      "totalPrice": 410.98,
+      "condition": "New/Factory Sealed",
+      "imageUrl": "https://i.ebayimg.com/images/g/yMwAAOSw5tplOSic/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/196049516932?_skw=ken+griffey+jr+1996+topps+finest+refractor&hash=item2da5763984:g:yMwAAOSw5tplOSic",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "$guru$",
+      "sellerFeedbackScore": 51135,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Sealed Trading Card Boxes",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 5.3,
+        "rating": "~ MAYBE",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 51135,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (51135 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 0,
+            "maxPoints": 10,
+            "matches": [
+              "topps match"
+            ],
+            "mismatches": [
+              "WRONG PLAYER - searched for: ken griffey jr",
+              "Missing: refractor",
+              "Wrong year: 2023 vs 1996"
+            ],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [],
+            "reason": "✅ topps match"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "⚠️ May not match your search - check details"
+        ]
+      }
+    }
+  ]
+}

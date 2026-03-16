@@ -1,0 +1,236 @@
+{
+  "timestamp": "2026-02-02T23:01:40.086Z",
+  "searchQuery": "2003 dwyane wade refractor numbered auto",
+  "config": {
+    "keywords": "2003 dwyane wade refractor numbered auto",
+    "categoryId": "212",
+    "minPrice": 10,
+    "maxPrice": 500,
+    "rawOnly": true,
+    "minScoreToShow": 6,
+    "topN": 30
+  },
+  "scanDuration": "0.8s",
+  "summary": {
+    "totalFound": 7,
+    "rawCardsOnly": true,
+    "afterRawFilter": 5,
+    "totalScored": 5,
+    "showingResults": 5
+  },
+  "allResults": [
+    {
+      "itemId": "v1|405614118798|0",
+      "title": "BOWMAN U ROOKIE Chrome Refractior AUTO Chance Westry AUBURN UNIVERSITY",
+      "currentPrice": 2.91,
+      "shippingCost": 1.29,
+      "totalPrice": 4.2,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/5i4AAOSwTflnyfA5/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/405614118798?_skw=2003+dwyane+wade+refractor+numbered+auto&hash=item5e707c478e:g:5i4AAOSwTflnyfA5",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "scrapbookingbooklady",
+      "sellerFeedbackScore": 63910,
+      "sellerPositivePercent": "99.5",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "score": 9.1,
+      "scoreBreakdown": {
+        "seller": {
+          "score": 10,
+          "notes": [
+            "99.5%+ feedback",
+            "63910 sales (TRUSTED)"
+          ]
+        },
+        "listing": {
+          "score": 7,
+          "signals": [
+            "Has photos",
+            "Premium parallel"
+          ]
+        },
+        "price": {
+          "score": 10,
+          "note": "Under $25 - LOW RISK",
+          "price": 4.2
+        }
+      },
+      "rating": "🔥🔥🔥 EXCEPTIONAL"
+    },
+    {
+      "itemId": "v1|166751083344|0",
+      "title": "BOWMAN U ROOKIE Chrome Refractior AUTO Chance Westry AUBURN UNIVERSITY",
+      "currentPrice": 4.99,
+      "shippingCost": 0,
+      "totalPrice": 4.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/myAAAOSw7ExmOrsN/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/166751083344?_skw=2003+dwyane+wade+refractor+numbered+auto&hash=item26d3239b50:g:myAAAOSw7ExmOrsN",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "burc.garr",
+      "sellerFeedbackScore": 689,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "score": 8.6,
+      "scoreBreakdown": {
+        "seller": {
+          "score": 9,
+          "notes": [
+            "99.5%+ feedback",
+            "689 sales (established)"
+          ]
+        },
+        "listing": {
+          "score": 7,
+          "signals": [
+            "Has photos",
+            "Premium parallel"
+          ]
+        },
+        "price": {
+          "score": 10,
+          "note": "Under $25 - LOW RISK",
+          "price": 4.99
+        }
+      },
+      "rating": "🔥🔥 GREAT"
+    },
+    {
+      "itemId": "v1|134689123069|0",
+      "title": "DWYANE WADE 2003-04 Topps Finest #158 Rookie Auto /999",
+      "currentPrice": 249.99,
+      "shippingCost": 0,
+      "totalPrice": 249.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/ObYAAOSwHmxk2bvQ/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/134689123069?_skw=2003+dwyane+wade+refractor+numbered+auto&hash=item1f5c18eafd:g:ObYAAOSwHmxk2bvQ",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "ajericson2012",
+      "sellerFeedbackScore": 4698,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "score": 7.6,
+      "scoreBreakdown": {
+        "seller": {
+          "score": 10,
+          "notes": [
+            "99.5%+ feedback",
+            "4698 sales (TRUSTED)"
+          ]
+        },
+        "listing": {
+          "score": 6,
+          "signals": [
+            "Has photos"
+          ]
+        },
+        "price": {
+          "score": 4,
+          "note": "$100-250 - Higher risk",
+          "price": 249.99
+        }
+      },
+      "rating": "🔥 SOLID"
+    },
+    {
+      "itemId": "v1|187563475007|0",
+      "title": "DWYANE WADE 2003-04 Topps Finest #158 Rookie Auto /999 Miami Heat",
+      "currentPrice": 250,
+      "shippingCost": 9.99,
+      "totalPrice": 259.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/zxYAAeSwJPtoxDuk/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/187563475007?_skw=2003+dwyane+wade+refractor+numbered+auto&hash=item2baba7803f:g:zxYAAeSwJPtoxDuk",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "livia216",
+      "sellerFeedbackScore": 12975,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "score": 7.2,
+      "scoreBreakdown": {
+        "seller": {
+          "score": 10,
+          "notes": [
+            "99.5%+ feedback",
+            "12975 sales (TRUSTED)"
+          ]
+        },
+        "listing": {
+          "score": 6,
+          "signals": [
+            "Has photos"
+          ]
+        },
+        "price": {
+          "score": 2,
+          "note": "$250+ - High risk",
+          "price": 259.99
+        }
+      },
+      "rating": "🔥 SOLID"
+    },
+    {
+      "itemId": "v1|388652927882|0",
+      "title": "2003-04 Topps Finest DWYANE WADE #158 Auto Jersey Rookie Refractor RPA #76/250🔥",
+      "currentPrice": 1000,
+      "shippingCost": 23,
+      "totalPrice": 1023,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/DIkAAOSw~Rtn70c7/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/388652927882?_skw=2003+dwyane+wade+refractor+numbered+auto&hash=item5a7d850b8a:g:DIkAAOSw~Rtn70c7",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "chosencard23",
+      "sellerFeedbackScore": 125,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "score": 6.5,
+      "scoreBreakdown": {
+        "seller": {
+          "score": 8,
+          "notes": [
+            "99.5%+ feedback",
+            "125 sales"
+          ]
+        },
+        "listing": {
+          "score": 7,
+          "signals": [
+            "Has photos",
+            "Premium parallel"
+          ]
+        },
+        "price": {
+          "score": 2,
+          "note": "$250+ - High risk",
+          "price": 1023
+        }
+      },
+      "rating": "✓ DECENT"
+    }
+  ]
+}

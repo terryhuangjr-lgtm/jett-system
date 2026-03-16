@@ -1,0 +1,124 @@
+{
+  "timestamp": "2026-02-06T01:42:15.712Z",
+  "searchQuery": "2025 cam ward auto, numbered, gold, kaboom",
+  "parsed": {
+    "original": "2025 cam ward auto, numbered, gold, kaboom",
+    "isComplex": true,
+    "baseQuery": "2025 cam ward gold kaboom",
+    "yearRange": null,
+    "detectedTypes": [
+      "auto",
+      "numbered"
+    ],
+    "searches": [
+      "2025 cam ward gold kaboom auto",
+      "2025 cam ward gold kaboom numbered"
+    ],
+    "searchCount": 2,
+    "explanation": "Split into 2 searches: 2 card types (auto, numbered)"
+  },
+  "searchResults": [
+    {
+      "query": "2025 cam ward gold kaboom auto",
+      "count": 0
+    },
+    {
+      "query": "2025 cam ward gold kaboom numbered",
+      "count": 1
+    }
+  ],
+  "config": {
+    "keywords": "2025 cam ward auto, numbered, gold, kaboom",
+    "minScoreToShow": 7,
+    "topN": 20,
+    "minPrice": 0,
+    "maxPrice": null,
+    "rawOnly": true
+  },
+  "scanDuration": "1.3s",
+  "summary": {
+    "totalFound": 1,
+    "uniqueItems": 1,
+    "rawCardsOnly": true,
+    "afterRawFilter": 1,
+    "totalScored": 1,
+    "showingResults": 0
+  },
+  "allResults": [
+    {
+      "itemId": "v1|397561626347|0",
+      "title": "2025 Panini Absolute Kaboom #31 Cam Ward RC Gold Horizontal Kaboom /10",
+      "currentPrice": 15000,
+      "shippingCost": 0,
+      "totalPrice": 15000,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/NBsAAeSw9ehpgCiW/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/397561626347?_skw=2025+cam+ward+gold+kaboom+numbered&hash=item5c9084feeb:g:NBsAAeSw9ehpgCiW",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "ryth_71",
+      "sellerFeedbackScore": 248,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6.1,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 248,
+            "tier": "Decent seller",
+            "trust": "OK",
+            "reason": "100.0% (248 sales) - Decent seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 9.5,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: cam ward",
+              "serial match",
+              "Exact year: 2025",
+              "Premium brand"
+            ],
+            "mismatches": [
+              "Missing: auto"
+            ],
+            "requestedTypes": [
+              "auto",
+              "serial"
+            ],
+            "foundTypes": [
+              "serial"
+            ],
+            "reason": "✅ Player match: cam ward, serial match, Exact year: 2025, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    }
+  ]
+}

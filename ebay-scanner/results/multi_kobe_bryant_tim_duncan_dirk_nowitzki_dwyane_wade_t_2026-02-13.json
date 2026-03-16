@@ -1,0 +1,43 @@
+{
+  "timestamp": "2026-02-13T14:00:20.245Z",
+  "searchQuery": "kobe bryant tim duncan dirk nowitzki dwyane wade topps refractor",
+  "parsed": {
+    "original": "kobe bryant tim duncan dirk nowitzki dwyane wade topps refractor",
+    "isComplex": false,
+    "baseQuery": "kobe bryant tim duncan dirk nowitzki dwyane wade topps refractor",
+    "players": null,
+    "yearRange": null,
+    "detectedTypes": [
+      "refractor"
+    ],
+    "searches": [
+      "kobe bryant tim duncan dirk nowitzki dwyane wade topps refractor"
+    ],
+    "searchCount": 1,
+    "explanation": "Single search (no splitting needed)"
+  },
+  "searchResults": [
+    {
+      "query": "kobe bryant tim duncan dirk nowitzki dwyane wade topps refractor",
+      "count": 2
+    }
+  ],
+  "config": {
+    "keywords": "kobe bryant tim duncan dirk nowitzki dwyane wade topps refractor",
+    "minScoreToShow": 7,
+    "topN": 20,
+    "minPrice": 0,
+    "maxPrice": null,
+    "rawOnly": true
+  },
+  "scanDuration": "0.7s",
+  "summary": {
+    "totalFound": 2,
+    "uniqueItems": 2,
+    "rawCardsOnly": true,
+    "afterRawFilter": 0,
+    "totalScored": 0,
+    "showingResults": 0
+  },
+  "allResults": []
+}

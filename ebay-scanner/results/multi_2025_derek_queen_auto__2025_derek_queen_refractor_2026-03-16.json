@@ -1,0 +1,2052 @@
+{
+  "timestamp": "2026-03-16T22:42:05.514Z",
+  "searchQuery": "2025 Derek Queen Auto, 2025 Derek Queen Refractor",
+  "parsed": {
+    "original": "2025 Derek Queen Auto, 2025 Derek Queen Refractor",
+    "isComplex": true,
+    "baseQuery": "2025 2025",
+    "players": [
+      "derek queen",
+      "derek queen"
+    ],
+    "yearRange": null,
+    "detectedTypes": [
+      "auto",
+      "refractor"
+    ],
+    "searches": [
+      "derek queen 2025 2025 auto",
+      "derek queen 2025 2025 refractor",
+      "derek queen 2025 2025 auto",
+      "derek queen 2025 2025 refractor"
+    ],
+    "searchCount": 4,
+    "explanation": "Split into 4 searches: 2 players (derek queen, derek queen) × 2 card types (auto, refractor)"
+  },
+  "searchResults": [
+    {
+      "query": "derek queen 2025 2025 auto",
+      "count": 5
+    },
+    {
+      "query": "derek queen 2025 2025 refractor",
+      "count": 23
+    },
+    {
+      "query": "derek queen 2025 2025 auto",
+      "count": 5
+    },
+    {
+      "query": "derek queen 2025 2025 refractor",
+      "count": 23
+    }
+  ],
+  "config": {
+    "keywords": "2025 Derek Queen Auto, 2025 Derek Queen Refractor",
+    "minScoreToShow": 7,
+    "topN": 20,
+    "minPrice": 0,
+    "maxPrice": null,
+    "rawOnly": true,
+    "useVision": false,
+    "visionTopN": 30
+  },
+  "scanDuration": "2.2s",
+  "summary": {
+    "totalFound": 56,
+    "uniqueItems": 28,
+    "rawCardsOnly": true,
+    "afterRawFilter": 26,
+    "totalScored": 26,
+    "showingResults": 19,
+    "visionScanned": false
+  },
+  "allResults": [
+    {
+      "itemId": "v1|327050129747|0",
+      "title": "2025-26 Topps Chrome Derek Queen RC Auto #TCAR-DQ New Orleans Pelicans",
+      "currentPrice": 58.99,
+      "shippingCost": 0,
+      "totalPrice": 58.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/00sAAeSwnoZpb64W/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/327050129747?_skw=derek+queen+2025+2025+auto+-psa+-bgs+-cgc+-sgc+-bccg+-ksa+-ags+-lot+-lots+-set+-sets+-bundle+-collection+-box+-pack+-sealed+-case+-break+-reprint+-reproduction+-custom+-graded+-slab+-slabbed&hash=item4c25b4f153:g:00sAAeSwnoZpb64W",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "vistacards",
+      "sellerFeedbackScore": 2001,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": "2026-03-23T01:18:46.000Z",
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 8.6,
+        "rating": "⚡ GREAT DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 2001,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (2001 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 9.5,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: derek queen",
+              "auto match",
+              "Exact year: 2025",
+              "Premium brand"
+            ],
+            "mismatches": [
+              "Missing: refractor"
+            ],
+            "requestedTypes": [
+              "refractor",
+              "auto"
+            ],
+            "foundTypes": [
+              "auto"
+            ],
+            "reason": "✅ Player match: derek queen, auto match, Exact year: 2025, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 10,
+            "maxPoints": 10,
+            "ageInDays": 1,
+            "tier": "Listed <24 hours - FRESH",
+            "reason": "Listed <24 hours - FRESH"
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|327007918640|0",
+      "title": "2025-26 TOPPS CHROME Derek Queen “Go time” REFRACTOR /275 MINT RC",
+      "currentPrice": 24.95,
+      "shippingCost": 6.99,
+      "totalPrice": 31.94,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/bf4AAeSwP9hpli~F/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/327007918640?_skw=derek+queen+2025+2025+refractor+-psa+-bgs+-cgc+-sgc+-bccg+-ksa+-ags+-lot+-lots+-set+-sets+-bundle+-collection+-box+-pack+-sealed+-case+-break+-reprint+-reproduction+-custom+-graded+-slab+-slabbed&hash=item4c2330da30:g:bf4AAeSwP9hpli~F",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "jr18430sportscards",
+      "sellerFeedbackScore": 1182,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 8.3,
+        "rating": "⚡ GREAT DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 1182,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (1182 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 6,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos",
+              "Mint condition claimed"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos, Mint condition claimed"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: derek queen",
+              "refractor match",
+              "Exact year: 2025",
+              "Premium brand"
+            ],
+            "mismatches": [
+              "Missing: auto"
+            ],
+            "requestedTypes": [
+              "refractor",
+              "auto"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Player match: derek queen, refractor match, Exact year: 2025, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|117080258442|0",
+      "title": "Derek Queen 2025-26 Topps Chrome Red White & Blue Refractor RC #263",
+      "currentPrice": 7.99,
+      "shippingCost": 0,
+      "totalPrice": 7.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/grsAAeSwo2xpsGbw/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/117080258442?_skw=derek+queen+2025+2025+refractor+-psa+-bgs+-cgc+-sgc+-bccg+-ksa+-ags+-lot+-lots+-set+-sets+-bundle+-collection+-box+-pack+-sealed+-case+-break+-reprint+-reproduction+-custom+-graded+-slab+-slabbed&hash=item1b4286f78a:g:grsAAeSwo2xpsGbw",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "$cards",
+      "sellerFeedbackScore": 11205,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 8,
+        "rating": "⚡ GREAT DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 11205,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (11205 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: derek queen",
+              "refractor match",
+              "Exact year: 2025",
+              "Premium brand"
+            ],
+            "mismatches": [
+              "Missing: auto"
+            ],
+            "requestedTypes": [
+              "refractor",
+              "auto"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Player match: derek queen, refractor match, Exact year: 2025, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|177931179741|0",
+      "title": "2025-26 Topps Chrome Derek Queen #263 Silver Refractor - New Orleans Pelicans",
+      "currentPrice": 15,
+      "shippingCost": 0,
+      "totalPrice": 15,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/9SIAAeSwnCdpq993/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/177931179741?_skw=derek+queen+2025+2025+refractor+-psa+-bgs+-cgc+-sgc+-bccg+-ksa+-ags+-lot+-lots+-set+-sets+-bundle+-collection+-box+-pack+-sealed+-case+-break+-reprint+-reproduction+-custom+-graded+-slab+-slabbed&hash=item296d8656dd:g:9SIAAeSwnCdpq993",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "tappansportscards",
+      "sellerFeedbackScore": 1570,
+      "sellerPositivePercent": "99.9",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 8,
+        "rating": "⚡ GREAT DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "99.9",
+            "salesCount": 1570,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "99.9% (1570 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: derek queen",
+              "refractor match",
+              "Exact year: 2025",
+              "Premium brand"
+            ],
+            "mismatches": [
+              "Missing: auto"
+            ],
+            "requestedTypes": [
+              "refractor",
+              "auto"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Player match: derek queen, refractor match, Exact year: 2025, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|157633006868|0",
+      "title": "2025-26 Topps Chrome Derek Queen Rookie Silver Refractor New Orleans RC #263",
+      "currentPrice": 19.99,
+      "shippingCost": 0,
+      "totalPrice": 19.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/YOMAAeSw-3lpc-gU/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/157633006868?_skw=derek+queen+2025+2025+refractor+-psa+-bgs+-cgc+-sgc+-bccg+-ksa+-ags+-lot+-lots+-set+-sets+-bundle+-collection+-box+-pack+-sealed+-case+-break+-reprint+-reproduction+-custom+-graded+-slab+-slabbed&hash=item24b3a8cd14:g:YOMAAeSw-3lpc-gU",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "misterbeecollectibles",
+      "sellerFeedbackScore": 1423,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 8,
+        "rating": "⚡ GREAT DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 1423,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (1423 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: derek queen",
+              "refractor match",
+              "Exact year: 2025",
+              "Premium brand"
+            ],
+            "mismatches": [
+              "Missing: auto"
+            ],
+            "requestedTypes": [
+              "refractor",
+              "auto"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Player match: derek queen, refractor match, Exact year: 2025, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|157675750998|0",
+      "title": "2025-26 Topps Chrome Basketball Derek Queen RC Hyper Prism Refractor #263",
+      "currentPrice": 12.95,
+      "shippingCost": 2.5,
+      "totalPrice": 15.45,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/ns8AAeSw4hlpVL11/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/157675750998?_skw=derek+queen+2025+2025+refractor+-psa+-bgs+-cgc+-sgc+-bccg+-ksa+-ags+-lot+-lots+-set+-sets+-bundle+-collection+-box+-pack+-sealed+-case+-break+-reprint+-reproduction+-custom+-graded+-slab+-slabbed&hash=item24b6350656:g:ns8AAeSw4hlpVL11",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "metro-retrovintage",
+      "sellerFeedbackScore": 1132,
+      "sellerPositivePercent": "99.8",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 8,
+        "rating": "⚡ GREAT DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "99.8",
+            "salesCount": 1132,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "99.8% (1132 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: derek queen",
+              "refractor match",
+              "Exact year: 2025",
+              "Premium brand"
+            ],
+            "mismatches": [
+              "Missing: auto"
+            ],
+            "requestedTypes": [
+              "refractor",
+              "auto"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Player match: derek queen, refractor match, Exact year: 2025, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|177817305830|0",
+      "title": "2025-26 Topps Chrome Skylight Refractor #263 Derek Queen RC Rookie PELICANS",
+      "currentPrice": 24.99,
+      "shippingCost": 5.5,
+      "totalPrice": 30.49,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/2OEAAeSwkp9per00/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/177817305830?_skw=derek+queen+2025+2025+refractor+-psa+-bgs+-cgc+-sgc+-bccg+-ksa+-ags+-lot+-lots+-set+-sets+-bundle+-collection+-box+-pack+-sealed+-case+-break+-reprint+-reproduction+-custom+-graded+-slab+-slabbed&hash=item2966bcc2e6:g:2OEAAeSwkp9per00",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "play-ball!!",
+      "sellerFeedbackScore": 68366,
+      "sellerPositivePercent": "99.9",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 8,
+        "rating": "⚡ GREAT DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "99.9",
+            "salesCount": 68366,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "99.9% (68366 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: derek queen",
+              "refractor match",
+              "Exact year: 2025",
+              "Premium brand"
+            ],
+            "mismatches": [
+              "Missing: auto"
+            ],
+            "requestedTypes": [
+              "refractor",
+              "auto"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Player match: derek queen, refractor match, Exact year: 2025, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|168100250585|0",
+      "title": "2025-26 Topps Chrome #263 Derek Queen Refractor (RC)",
+      "currentPrice": 29.99,
+      "shippingCost": 5.5,
+      "totalPrice": 35.49,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/~GAAAeSw1yhpcSoa/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/168100250585?_skw=derek+queen+2025+2025+refractor+-psa+-bgs+-cgc+-sgc+-bccg+-ksa+-ags+-lot+-lots+-set+-sets+-bundle+-collection+-box+-pack+-sealed+-case+-break+-reprint+-reproduction+-custom+-graded+-slab+-slabbed&hash=item27238e43d9:g:~GAAAeSw1yhpcSoa",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "cardcollector6311",
+      "sellerFeedbackScore": 7495,
+      "sellerPositivePercent": "99.7",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 8,
+        "rating": "⚡ GREAT DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "99.7",
+            "salesCount": 7495,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "99.7% (7495 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: derek queen",
+              "refractor match",
+              "Exact year: 2025",
+              "Premium brand"
+            ],
+            "mismatches": [
+              "Missing: auto"
+            ],
+            "requestedTypes": [
+              "refractor",
+              "auto"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Player match: derek queen, refractor match, Exact year: 2025, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|177803312453|0",
+      "title": "2025-26 Topps Chrome Derek Queen Rookie Auto SP 3rd Top Rookie RC",
+      "currentPrice": 110,
+      "shippingCost": 0,
+      "totalPrice": 110,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/Z1MAAeSwalhpdGYc/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/177803312453?_skw=derek+queen+2025+2025+auto+-psa+-bgs+-cgc+-sgc+-bccg+-ksa+-ags+-lot+-lots+-set+-sets+-bundle+-collection+-box+-pack+-sealed+-case+-break+-reprint+-reproduction+-custom+-graded+-slab+-slabbed&hash=item2965e73d45:g:Z1MAAeSwalhpdGYc&amdata=enc%3AAQALAAABoACCtXRWQnOEpyOqnQQ8KGZQRsy2x6v0HG%2FoL%2Fb0HPk47O5Gg%2BnrBg4H%2ByqdPIJkQkavdqLXhbjLJdjxK3wzdJB4tZHV4KVOnN9BybX2PBKQlsXYB8VBnvTPn7Logn8DelXvndaYG%2FWFBolieIRGuYq9pwBvyMkYvWEUIHJaAyyXEAzfYzSFke14xEZTFKva2FLeiDLb%2BvBPJE%2FLZ00qFAvDNR11CkqZRyjLuzLDqdXdxjk6lQ%2FxFhZ74CUIKmN5Rzvu0R3kD1PCHR7NBLomKn%2FH08xeGtC8C%2BUr2Nurz0nz%2FzWEL0VXmcnEfR961U6i3LkHVqVG5RFDGeiWTzVvrQ60ArMBj7M9iUon5eRPNX%2FGZLs5GlWethocXrjTgavO1l7EDsh82WrsxfcjFbcjWyQNhJQdvbEkrzpsnPI8NriIXhhrfyiGCT4DHPsLduGIc%2BeC8ovzw7rO%2FaSNHB4GkEWREoQuWTMCI%2B0%2Fy6cUYHt2iQxouT7ZjOIXFmduHwZjse%2Frdrm6qkOSs4fA6RIhO9SFbNbi7N5pZlJukjvMQxMT",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "gemfirerips",
+      "sellerFeedbackScore": 2123,
+      "sellerPositivePercent": "99.9",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.8,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "99.9",
+            "salesCount": 2123,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "99.9% (2123 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 9.5,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: derek queen",
+              "auto match",
+              "Exact year: 2025",
+              "Premium brand"
+            ],
+            "mismatches": [
+              "Missing: refractor"
+            ],
+            "requestedTypes": [
+              "refractor",
+              "auto"
+            ],
+            "foundTypes": [
+              "auto"
+            ],
+            "reason": "✅ Player match: derek queen, auto match, Exact year: 2025, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|277692808964|0",
+      "title": "Derek Queen 2025-26 Topps Chrome Red White & Blue Refractor RC #263",
+      "currentPrice": 14.99,
+      "shippingCost": 0,
+      "totalPrice": 14.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/EFMAAeSwxxRpf-j-/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/277692808964?_skw=derek+queen+2025+2025+refractor+-psa+-bgs+-cgc+-sgc+-bccg+-ksa+-ags+-lot+-lots+-set+-sets+-bundle+-collection+-box+-pack+-sealed+-case+-break+-reprint+-reproduction+-custom+-graded+-slab+-slabbed&hash=item40a7c7ff04:g:EFMAAeSwxxRpf-j-",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "cardnostalgia",
+      "sellerFeedbackScore": 786,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.5,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 7.5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 786,
+            "tier": "Established seller",
+            "trust": "✅ Good",
+            "reason": "100.0% (786 sales) - Established seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: derek queen",
+              "refractor match",
+              "Exact year: 2025",
+              "Premium brand"
+            ],
+            "mismatches": [
+              "Missing: auto"
+            ],
+            "requestedTypes": [
+              "refractor",
+              "auto"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Player match: derek queen, refractor match, Exact year: 2025, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|227152187574|0",
+      "title": "2025-2026 Topps Chrome Basketball Derek Queen Refractor Rookie Pelicans RC 🏀",
+      "currentPrice": 27.5,
+      "shippingCost": 0,
+      "totalPrice": 27.5,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/rs8AAeSwUXtpUzVg/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/227152187574?_skw=derek+queen+2025+2025+refractor+-psa+-bgs+-cgc+-sgc+-bccg+-ksa+-ags+-lot+-lots+-set+-sets+-bundle+-collection+-box+-pack+-sealed+-case+-break+-reprint+-reproduction+-custom+-graded+-slab+-slabbed&hash=item34e35350b6:g:rs8AAeSwUXtpUzVg",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "scottiepip",
+      "sellerFeedbackScore": 798,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.5,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 7.5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 798,
+            "tier": "Established seller",
+            "trust": "✅ Good",
+            "reason": "100.0% (798 sales) - Established seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: derek queen",
+              "refractor match",
+              "Exact year: 2025",
+              "Premium brand"
+            ],
+            "mismatches": [
+              "Missing: auto"
+            ],
+            "requestedTypes": [
+              "refractor",
+              "auto"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Player match: derek queen, refractor match, Exact year: 2025, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|168080881443|0",
+      "title": "Derek Queen 2025-26 Topps Chrome Basketball Border Refractor Rookie Card # 263",
+      "currentPrice": 50,
+      "shippingCost": 0,
+      "totalPrice": 50,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/ui4AAeSwxEBpZwml/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/168080881443?_skw=derek+queen+2025+2025+refractor+-psa+-bgs+-cgc+-sgc+-bccg+-ksa+-ags+-lot+-lots+-set+-sets+-bundle+-collection+-box+-pack+-sealed+-case+-break+-reprint+-reproduction+-custom+-graded+-slab+-slabbed&hash=item272266b723:g:ui4AAeSwxEBpZwml",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "shar21971",
+      "sellerFeedbackScore": 713,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.5,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 7.5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 713,
+            "tier": "Established seller",
+            "trust": "✅ Good",
+            "reason": "100.0% (713 sales) - Established seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: derek queen",
+              "refractor match",
+              "Exact year: 2025",
+              "Premium brand"
+            ],
+            "mismatches": [
+              "Missing: auto"
+            ],
+            "requestedTypes": [
+              "refractor",
+              "auto"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Player match: derek queen, refractor match, Exact year: 2025, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|326950560457|0",
+      "title": "2025-26 Topps Chrome Derek Queen #263 Ray Wave Refractor New Orleans Pelicans",
+      "currentPrice": 9.89,
+      "shippingCost": 0,
+      "totalPrice": 9.89,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/2y0AAeSwPPBpYw18/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/326950560457?_skw=derek+queen+2025+2025+refractor+-psa+-bgs+-cgc+-sgc+-bccg+-ksa+-ags+-lot+-lots+-set+-sets+-bundle+-collection+-box+-pack+-sealed+-case+-break+-reprint+-reproduction+-custom+-graded+-slab+-slabbed&hash=item4c1fc5a2c9:g:2y0AAeSwPPBpYw18",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "kevinx65",
+      "sellerFeedbackScore": 282,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 282,
+            "tier": "Decent seller",
+            "trust": "OK",
+            "reason": "100.0% (282 sales) - Decent seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: derek queen",
+              "refractor match",
+              "Exact year: 2025",
+              "Premium brand"
+            ],
+            "mismatches": [
+              "Missing: auto"
+            ],
+            "requestedTypes": [
+              "refractor",
+              "auto"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Player match: derek queen, refractor match, Exact year: 2025, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|277742279540|0",
+      "title": "Derek Queen 2025-26 Topps Chrome Red White & Blue Refractor RC #263",
+      "currentPrice": 8,
+      "shippingCost": 0,
+      "totalPrice": 8,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/poUAAeSwfX1pkCFl/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/277742279540?_skw=derek+queen+2025+2025+refractor+-psa+-bgs+-cgc+-sgc+-bccg+-ksa+-ags+-lot+-lots+-set+-sets+-bundle+-collection+-box+-pack+-sealed+-case+-break+-reprint+-reproduction+-custom+-graded+-slab+-slabbed&hash=item40aabadb74:g:poUAAeSwfX1pkCFl",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "fender_picker",
+      "sellerFeedbackScore": 247,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 247,
+            "tier": "Decent seller",
+            "trust": "OK",
+            "reason": "100.0% (247 sales) - Decent seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: derek queen",
+              "refractor match",
+              "Exact year: 2025",
+              "Premium brand"
+            ],
+            "mismatches": [
+              "Missing: auto"
+            ],
+            "requestedTypes": [
+              "refractor",
+              "auto"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Player match: derek queen, refractor match, Exact year: 2025, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|227254791145|0",
+      "title": "2025-26 Topps Chrome Derek Queen Prism Refractor RC - Pelicans Rookie - No. 263",
+      "currentPrice": 15.99,
+      "shippingCost": 0,
+      "totalPrice": 15.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/njIAAeSwGmhptFPv/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/227254791145?_skw=derek+queen+2025+2025+refractor+-psa+-bgs+-cgc+-sgc+-bccg+-ksa+-ags+-lot+-lots+-set+-sets+-bundle+-collection+-box+-pack+-sealed+-case+-break+-reprint+-reproduction+-custom+-graded+-slab+-slabbed&hash=item34e970ebe9:g:njIAAeSwGmhptFPv",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "jrs710",
+      "sellerFeedbackScore": 350,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 350,
+            "tier": "Decent seller",
+            "trust": "OK",
+            "reason": "100.0% (350 sales) - Decent seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: derek queen",
+              "refractor match",
+              "Exact year: 2025",
+              "Premium brand"
+            ],
+            "mismatches": [
+              "Missing: auto"
+            ],
+            "requestedTypes": [
+              "refractor",
+              "auto"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Player match: derek queen, refractor match, Exact year: 2025, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|406549250641|0",
+      "title": "2025-26 Topps Chrome Derek Queen Prism Refractor RC - Pelicans Rookie - No. 263",
+      "currentPrice": 19.99,
+      "shippingCost": 1.5,
+      "totalPrice": 21.49,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/O1QAAeSwx99pWAYz/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/406549250641?_skw=derek+queen+2025+2025+refractor+-psa+-bgs+-cgc+-sgc+-bccg+-ksa+-ags+-lot+-lots+-set+-sets+-bundle+-collection+-box+-pack+-sealed+-case+-break+-reprint+-reproduction+-custom+-graded+-slab+-slabbed&hash=item5ea8394251:g:O1QAAeSwx99pWAYz",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "the_collector_cle",
+      "sellerFeedbackScore": 294,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 294,
+            "tier": "Decent seller",
+            "trust": "OK",
+            "reason": "100.0% (294 sales) - Decent seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: derek queen",
+              "refractor match",
+              "Exact year: 2025",
+              "Premium brand"
+            ],
+            "mismatches": [
+              "Missing: auto"
+            ],
+            "requestedTypes": [
+              "refractor",
+              "auto"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Player match: derek queen, refractor match, Exact year: 2025, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|317950925760|0",
+      "title": "Derek Queen 2025 Topps Chrome #263 Rookie Basketball Refractor (RC)",
+      "currentPrice": 19.99,
+      "shippingCost": 0,
+      "totalPrice": 19.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/0K8AAeSwDzZpp3~H/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/317950925760?_skw=derek+queen+2025+2025+refractor+-psa+-bgs+-cgc+-sgc+-bccg+-ksa+-ags+-lot+-lots+-set+-sets+-bundle+-collection+-box+-pack+-sealed+-case+-break+-reprint+-reproduction+-custom+-graded+-slab+-slabbed&hash=item4a075a1bc0:g:0K8AAeSwDzZpp3~H",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "getcards",
+      "sellerFeedbackScore": 486,
+      "sellerPositivePercent": "99.8",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "feedback": "99.8",
+            "salesCount": 486,
+            "tier": "Decent seller",
+            "trust": "OK",
+            "reason": "99.8% (486 sales) - Decent seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: derek queen",
+              "refractor match",
+              "Exact year: 2025",
+              "Premium brand"
+            ],
+            "mismatches": [
+              "Missing: auto"
+            ],
+            "requestedTypes": [
+              "refractor",
+              "auto"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Player match: derek queen, refractor match, Exact year: 2025, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|406557730451|0",
+      "title": "2025-26 Topps Chrome Derek Queen Basketball Refractor",
+      "currentPrice": 30,
+      "shippingCost": 0,
+      "totalPrice": 30,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/l2sAAeSwbz1pWv7D/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/406557730451?_skw=derek+queen+2025+2025+refractor+-psa+-bgs+-cgc+-sgc+-bccg+-ksa+-ags+-lot+-lots+-set+-sets+-bundle+-collection+-box+-pack+-sealed+-case+-break+-reprint+-reproduction+-custom+-graded+-slab+-slabbed&hash=item5ea8baa693:g:l2sAAeSwbz1pWv7D",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "crag_16",
+      "sellerFeedbackScore": 116,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 116,
+            "tier": "Decent seller",
+            "trust": "OK",
+            "reason": "100.0% (116 sales) - Decent seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: derek queen",
+              "refractor match",
+              "Exact year: 2025",
+              "Premium brand"
+            ],
+            "mismatches": [
+              "Missing: auto"
+            ],
+            "requestedTypes": [
+              "refractor",
+              "auto"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Player match: derek queen, refractor match, Exact year: 2025, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|205936178504|0",
+      "title": "2025 Topp’s Chrome Basketball Derek Queen GO TIME Rookie REFRACTOR",
+      "currentPrice": 20,
+      "shippingCost": 0,
+      "totalPrice": 20,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/dFAAAeSw4QFpR1X2/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/205936178504?_skw=derek+queen+2025+2025+refractor+-psa+-bgs+-cgc+-sgc+-bccg+-ksa+-ags+-lot+-lots+-set+-sets+-bundle+-collection+-box+-pack+-sealed+-case+-break+-reprint+-reproduction+-custom+-graded+-slab+-slabbed&hash=item2ff2c0b548:g:dFAAAeSw4QFpR1X2",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "bigdieselsports",
+      "sellerFeedbackScore": 380,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 380,
+            "tier": "Decent seller",
+            "trust": "OK",
+            "reason": "100.0% (380 sales) - Decent seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: derek queen",
+              "refractor match",
+              "Exact year: 2025"
+            ],
+            "mismatches": [
+              "Missing: auto"
+            ],
+            "requestedTypes": [
+              "refractor",
+              "auto"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Player match: derek queen, refractor match, Exact year: 2025"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|317998406092|0",
+      "title": "2025-2026 Derek Queen Pelicans Topps Finest Rookie 'First' Refractor /150",
+      "currentPrice": 30,
+      "shippingCost": 0,
+      "totalPrice": 30,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/os4AAeSwciBptCOd/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/317998406092?_skw=derek+queen+2025+2025+refractor+-psa+-bgs+-cgc+-sgc+-bccg+-ksa+-ags+-lot+-lots+-set+-sets+-bundle+-collection+-box+-pack+-sealed+-case+-break+-reprint+-reproduction+-custom+-graded+-slab+-slabbed&hash=item4a0a2e99cc:g:os4AAeSwciBptCOd",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "pryce_trading_co",
+      "sellerFeedbackScore": 86,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6.5,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 2.5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 86,
+            "tier": "New/low feedback seller",
+            "trust": "⚠️ New seller",
+            "reason": "100.0% (86 sales) - New/low feedback seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: derek queen",
+              "refractor match",
+              "Exact year: 2025",
+              "Premium brand"
+            ],
+            "mismatches": [
+              "Missing: auto"
+            ],
+            "requestedTypes": [
+              "refractor",
+              "auto"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Player match: derek queen, refractor match, Exact year: 2025, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|406719652226|0",
+      "title": "Derek Queen 2025-26 Topps Chrome Basketball Border Refractor Rookie Card # 263",
+      "currentPrice": 9.99,
+      "shippingCost": 0,
+      "totalPrice": 9.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/JQAAAeSwzqJpni16/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/406719652226?_skw=derek+queen+2025+2025+refractor+-psa+-bgs+-cgc+-sgc+-bccg+-ksa+-ags+-lot+-lots+-set+-sets+-bundle+-collection+-box+-pack+-sealed+-case+-break+-reprint+-reproduction+-custom+-graded+-slab+-slabbed&hash=item5eb2616182:g:JQAAAeSwzqJpni16",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "ev_899541",
+      "sellerFeedbackScore": 6,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6.5,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 2.5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 6,
+            "tier": "New/low feedback seller",
+            "trust": "⚠️ New seller",
+            "reason": "100.0% (6 sales) - New/low feedback seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: derek queen",
+              "refractor match",
+              "Exact year: 2025",
+              "Premium brand"
+            ],
+            "mismatches": [
+              "Missing: auto"
+            ],
+            "requestedTypes": [
+              "refractor",
+              "auto"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Player match: derek queen, refractor match, Exact year: 2025, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|376868724659|0",
+      "title": "2025-26 Topps Chrome Basketball Derek Queen Rookie Yellow Refractor /299  #263",
+      "currentPrice": 75,
+      "shippingCost": 0,
+      "totalPrice": 75,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/FP0AAeSwTyFpaZh9/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/376868724659?_skw=derek+queen+2025+2025+refractor+-psa+-bgs+-cgc+-sgc+-bccg+-ksa+-ags+-lot+-lots+-set+-sets+-bundle+-collection+-box+-pack+-sealed+-case+-break+-reprint+-reproduction+-custom+-graded+-slab+-slabbed&hash=item57bf205fb3:g:FP0AAeSwTyFpaZh9",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "mazum3919",
+      "sellerFeedbackScore": 40,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6.5,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 2.5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 40,
+            "tier": "New/low feedback seller",
+            "trust": "⚠️ New seller",
+            "reason": "100.0% (40 sales) - New/low feedback seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: derek queen",
+              "refractor match",
+              "Exact year: 2025",
+              "Premium brand"
+            ],
+            "mismatches": [
+              "Missing: auto"
+            ],
+            "requestedTypes": [
+              "refractor",
+              "auto"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Player match: derek queen, refractor match, Exact year: 2025, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|406756675807|0",
+      "title": "3 CARDS - 2025-26 Topps Chrome Derek Queen (RC) Refractor, Raywave, Prism #263",
+      "currentPrice": 27.99,
+      "shippingCost": 0,
+      "totalPrice": 27.99,
+      "condition": "Used",
+      "imageUrl": "https://i.ebayimg.com/images/g/QrAAAeSwX1ZpsaEr/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/406756675807?_skw=derek+queen+2025+2025+refractor+-psa+-bgs+-cgc+-sgc+-bccg+-ksa+-ags+-lot+-lots+-set+-sets+-bundle+-collection+-box+-pack+-sealed+-case+-break+-reprint+-reproduction+-custom+-graded+-slab+-slabbed&hash=item5eb49650df:g:QrAAAeSwX1ZpsaEr",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "ev_899541",
+      "sellerFeedbackScore": 6,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Lots",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6.5,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 2.5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 6,
+            "tier": "New/low feedback seller",
+            "trust": "⚠️ New seller",
+            "reason": "100.0% (6 sales) - New/low feedback seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: derek queen",
+              "refractor match",
+              "Exact year: 2025",
+              "Premium brand"
+            ],
+            "mismatches": [
+              "Missing: auto"
+            ],
+            "requestedTypes": [
+              "refractor",
+              "auto"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Player match: derek queen, refractor match, Exact year: 2025, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|389484543827|0",
+      "title": "2025-26 Topps Chrome #263 Derek Queen Refractor Rookie New Orleans Pelicans",
+      "currentPrice": 18,
+      "shippingCost": 0,
+      "totalPrice": 18,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/DCkAAeSwCglpZI3m/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/389484543827?_skw=derek+queen+2025+2025+refractor+-psa+-bgs+-cgc+-sgc+-bccg+-ksa+-ags+-lot+-lots+-set+-sets+-bundle+-collection+-box+-pack+-sealed+-case+-break+-reprint+-reproduction+-custom+-graded+-slab+-slabbed&hash=item5aaf167f53:g:DCkAAeSwCglpZI3m",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "chtur-93",
+      "sellerFeedbackScore": 57,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6.5,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 2.5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 57,
+            "tier": "New/low feedback seller",
+            "trust": "⚠️ New seller",
+            "reason": "100.0% (57 sales) - New/low feedback seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: derek queen",
+              "refractor match",
+              "Exact year: 2025",
+              "Premium brand"
+            ],
+            "mismatches": [
+              "Missing: auto"
+            ],
+            "requestedTypes": [
+              "refractor",
+              "auto"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Player match: derek queen, refractor match, Exact year: 2025, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|188157953421|0",
+      "title": "2025-26 Topps Chrome Derek Queen Rookie Auto SP",
+      "currentPrice": 95,
+      "shippingCost": 5,
+      "totalPrice": 100,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/6m0AAeSwW3RptMHX/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/188157953421?_skw=derek+queen+2025+2025+auto+-psa+-bgs+-cgc+-sgc+-bccg+-ksa+-ags+-lot+-lots+-set+-sets+-bundle+-collection+-box+-pack+-sealed+-case+-break+-reprint+-reproduction+-custom+-graded+-slab+-slabbed&hash=item2bcf16858d:g:6m0AAeSwW3RptMHX",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "the_cactus_vault",
+      "sellerFeedbackScore": 84,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6.3,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 2.5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 84,
+            "tier": "New/low feedback seller",
+            "trust": "⚠️ New seller",
+            "reason": "100.0% (84 sales) - New/low feedback seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 9.5,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: derek queen",
+              "auto match",
+              "Exact year: 2025",
+              "Premium brand"
+            ],
+            "mismatches": [
+              "Missing: refractor"
+            ],
+            "requestedTypes": [
+              "refractor",
+              "auto"
+            ],
+            "foundTypes": [
+              "auto"
+            ],
+            "reason": "✅ Player match: derek queen, auto match, Exact year: 2025, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|168060369443|0",
+      "title": "2025-26 Topps Chrome Derek Queen Rookie Auto Sp!",
+      "currentPrice": 119,
+      "shippingCost": 0,
+      "totalPrice": 119,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/2moAAeSwadlpSJ00/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/168060369443?_skw=derek+queen+2025+2025+auto+-psa+-bgs+-cgc+-sgc+-bccg+-ksa+-ags+-lot+-lots+-set+-sets+-bundle+-collection+-box+-pack+-sealed+-case+-break+-reprint+-reproduction+-custom+-graded+-slab+-slabbed&hash=item27212dba23:g:2moAAeSwadlpSJ00&amdata=enc%3AAQALAAABoACCtXRWQnOEpyOqnQQ8KGaHDaSYEngPRFocbI%2FvJIGfGwrftIR4o0OBR8qTzGmyc9iGhe9%2BXfDbaaX8Jcl%2FENat6xYfFyfW%2BfdTtLzTVFnujspWFU9itKgxFrFZenNkyM5ocUxNsj9RWvMkmgQILw8sLbxqbzR1f6OY8x2uTqPDzU3wUfsdD1SH2BEMsrlSzkBCz%2FV%2BIaojJj4TTad3xYVJnzXD7ZAqDQAF4z5JvjRn%2Fni2mbtQ%2F0MHEo9W9fJNg7f6MuFxIApO%2Fsb2dajlh40avTeeHESWWqbHddxPJMZdP4NNuPlvnuToUM0fS7TrTjGkv9vg2JGM5ruBuAGRPv3hYMaVskqRRmYOKoIaEPNiQNDwHteygL9milVrfeBGSjRltjwFPWnz%2FoURZCKECu9%2FZPP0inJJ6uNNC06q6ewArgSRaddKAnPpcEB%2BnZB9AQqQdakgFzaQW88xjYhY%2B%2Fod2UzA%2Bxtyn7kcGWTObjvYtP2LmGLAFbc5KMoL%2BT4t13uOimA7g9ghRv9kY9C6VSAG6Ebw%2FYvvSE8B%2Fm7oupbx",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "sportsfan1997",
+      "sellerFeedbackScore": 49,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6.3,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 2.5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 49,
+            "tier": "New/low feedback seller",
+            "trust": "⚠️ New seller",
+            "reason": "100.0% (49 sales) - New/low feedback seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 9.5,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: derek queen",
+              "auto match",
+              "Exact year: 2025",
+              "Premium brand"
+            ],
+            "mismatches": [
+              "Missing: refractor"
+            ],
+            "requestedTypes": [
+              "refractor",
+              "auto"
+            ],
+            "foundTypes": [
+              "auto"
+            ],
+            "reason": "✅ Player match: derek queen, auto match, Exact year: 2025, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    }
+  ]
+}
