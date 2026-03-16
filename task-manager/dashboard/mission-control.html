@@ -1307,6 +1307,7 @@ async function loadEbayConfig() {
           <div style="font-size:10px;color:var(--text-muted);margin-bottom:6px">
             ${scan.filters?.minPrice?'$'+scan.filters.minPrice:''} 
             ${scan.filters?.maxPrice?' – $'+scan.filters.maxPrice:''}
+            ${scan.useVision ? '<div style="font-size:10px;color:var(--accent)">👁️ Vision on</div>' : ''}
           </div>
           <div style="font-size:10px;color:var(--text-muted);font-family:'DM Mono',monospace">
             Last: ${lastRun}
@@ -1367,6 +1368,13 @@ function openDayModal(day) {
           <input class="podcast-input" id="modal-topn" type="number"
             value="${scan.filters?.topN||20}" placeholder="20">
         </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;margin-top:8px;padding-top:8px;border-top:1px solid var(--border)">
+        <input type="checkbox" id="modal-vision" ${scan.useVision ? 'checked' : ''}
+          style="width:14px;height:14px;accent-color:var(--accent)">
+        <label for="modal-vision" style="font-size:12px;color:var(--text-secondary)">
+          Enable vision scanning (Claude Haiku — ~$0.02/scan)
+        </label>
       </div>
     </div>
   `;
@@ -1435,6 +1443,7 @@ async function saveModalData() {
     updated.scans[day].filters.minPrice = parseInt(document.getElementById('modal-min').value)||0;
     updated.scans[day].filters.maxPrice = parseInt(document.getElementById('modal-max').value)||null;
     updated.scans[day].filters.topN = parseInt(document.getElementById('modal-topn').value)||20;
+    updated.scans[day].useVision = document.getElementById('modal-vision')?.checked || false;
     updated.scans[day].last_updated = new Date().toISOString();
   } else if (currentModalType === 'global') {
     if (!updated.global_filters) updated.global_filters = {};
