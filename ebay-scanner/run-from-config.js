@@ -85,7 +85,7 @@ function sendResultsEmail(outputFile, day, scanName) {
     const emailScript = path.join(__dirname, '..', 'lib', 'send-email.js');
     const { execSync } = require('child_process');
     
-    execSync(`node ${emailScript} --to "terryhuangjr@gmail.com" --subject "${subject}" --body "${html.replace(/"/g, '\\"')}"`, {
+    execSync(`node ${emailScript} --to "terryhuangjr@gmail.com" --subject "${subject}" --body "${html.replace(/"/g, '\\"')}" --html`, {
       timeout: 30000
     });
     
