@@ -72,7 +72,6 @@ const BTC_CATEGORIES = [
   ]},
   { category: 'bitcoin_adoption', topics: [
     'MicroStrategy Bitcoin treasury 2024',
-    'Tesla Bitcoin purchase and sale 2021',
     'El Salvador Bitcoin adoption 2021',
     'BlackRock Bitcoin ETF approval 2024',
     'Major company Bitcoin treasury holdings',
@@ -234,12 +233,33 @@ async function getLastResearchedTopic() {
 }
 
 async function saveResearchLog(topic, category, count) {
-  const log = {
-    last_run: new Date().toISOString(),
-    last_topic: topic,
-    last_category: category,
+  let log = { history: [] };
+  
+  // Load existing log
+  if (fs.existsSync(RESEARCH_LOG)) {
+    try {
+      log = JSON.parse(fs.readFileSync(RESEARCH_LOG, 'utf8'));
+      if (!log.history) log.history = [];
+    } catch (e) { log = { history: [] }; }
+  }
+  
+  // Add new entry to history
+  log.history.push({
+    timestamp: new Date().toISOString(),
+    topic: topic,
+    category: category,
     items_added: count
-  };
+  });
+  
+  // Keep last 200 entries
+  log.history = log.history.slice(-200);
+  
+  // Update last_run
+  log.last_run = new Date().toISOString();
+  log.last_topic = topic;
+  log.last_category = category;
+  log.items_added = count;
+  
   fs.writeFileSync(RESEARCH_LOG, JSON.stringify(log, null, 2));
 }
 
@@ -485,28 +505,30 @@ function loadContentBank() {
   }
 }
 
-// Get recently researched topics from log
+// Get recently researched topics from log (last 90 days)
 function getRecentlyResearchedTopics() {
   try {
     if (fs.existsSync(RESEARCH_LOG)) {
       const log = JSON.parse(fs.readFileSync(RESEARCH_LOG, 'utf8'));
-      const weekAgo = Date.now() - (7 * 24 * 60 * 60 * 1000);
+      const ninetyDaysAgo = Date.now() - (90 * 24 * 60 * 60 * 1000);
       const recent = [];
       
-      // Check last_run vs current time
-      if (log.last_run) {
-        const runTime = new Date(log.last_run).getTime();
-        if (runTime > weekAgo) {
-          recent.push(log.last_topic);
+      // Check history array (new format)
+      if (log.history) {
+        for (const entry of log.history) {
+          const runTime = new Date(entry.timestamp || entry.last_run || entry.date).getTime();
+          if (runTime > ninetyDaysAgo) {
+            recent.push(entry.topic);
+          }
         }
       }
       
-      // Also check history array if exists
-      if (log.history) {
-        for (const entry of log.history) {
-          const runTime = new Date(entry.timestamp || entry.last_run).getTime();
-          if (runTime > weekAgo) {
-            recent.push(entry.topic);
+      // Also check last_run for backwards compatibility
+      if (log.last_run) {
+        const runTime = new Date(log.last_run).getTime();
+        if (runTime > ninetyDaysAgo && log.last_topic) {
+          if (!recent.includes(log.last_topic)) {
+            recent.push(log.last_topic);
           }
         }
       }
