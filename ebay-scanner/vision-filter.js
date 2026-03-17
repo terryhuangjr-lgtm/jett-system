@@ -136,44 +136,70 @@ If image is too small, dark, or obscured to assess properly, return overall:6 sk
    * Analyze multiple items and filter/score them
    * Only scans top N items by deal score to control costs
    */
-  async filterItems(items, topN = 30) {
+  async filterItems(items, topN = 200) {
     const toScan = items.slice(0, topN);
-    console.log(`\n👁️  Vision scanning ${toScan.length} listings with Claude Haiku...`);
-    
+    console.log(`\n👁️  Vision scanning ${toScan.length} listings with Claude Haiku (parallel)...`);
+
+    const BATCH_SIZE = 8; // 8 concurrent API calls
     const results = [];
     let skipped = 0;
     let passed = 0;
-    let cost = 0;
+    let totalCost = 0;
+    let processed = 0;
 
-    for (let i = 0; i < toScan.length; i++) {
-      const item = toScan[i];
-      process.stdout.write(`  [${i+1}/${toScan.length}] Scanning: ${item.title.substring(0,40)}...`);
+    // Process in batches of BATCH_SIZE
+    for (let i = 0; i < toScan.length; i += BATCH_SIZE) {
+      const batch = toScan.slice(i, i + BATCH_SIZE);
+      const batchNum = Math.floor(i / BATCH_SIZE) + 1;
+      const totalBatches = Math.ceil(toScan.length / BATCH_SIZE);
       
-      const vision = await this.analyzeCardImage(item.imageUrl, item.title);
-      cost += 0.002;
-      
-      if (vision.skip) {
-        skipped++;
-        process.stdout.write(` ❌ SKIP (${vision.reason})\n`);
-      } else {
-        passed++;
-        process.stdout.write(` ✅ PASS (score: ${vision.score}/10)\n`);
-        results.push({
-          ...item,
-          visionScore: vision.score,
-          visionCorners: vision.corners,
-          visionCentering: vision.centering,
-          visionSurface: vision.surface,
-          visionIssues: vision.issues,
-          visionReason: vision.reason
-        });
+      process.stdout.write(`  Batch ${batchNum}/${totalBatches} (${batch.length} cards)...`);
+
+      // Fire all batch requests simultaneously
+      const batchResults = await Promise.all(
+        batch.map(async (item) => {
+          const vision = await this.analyzeCardImage(item.imageUrl, item.title);
+          totalCost += 0.002;
+          processed++;
+          return { item, vision };
+        })
+      );
+
+      // Process batch results
+      let batchPassed = 0;
+      let batchSkipped = 0;
+      for (const { item, vision } of batchResults) {
+        if (vision.skip) {
+          skipped++;
+          batchSkipped++;
+        } else {
+          passed++;
+          batchPassed++;
+          results.push({
+            ...item,
+            visionScore: vision.score,
+            visionCorners: vision.corners,
+            visionCentering: vision.centering,
+            visionSurface: vision.surface,
+            visionIssues: vision.issues,
+            visionReason: vision.reason,
+            visionConfidence: vision.confidence
+          });
+        }
       }
 
-      await new Promise(r => setTimeout(r, 200));
+      process.stdout.write(` ✅ ${batchPassed} passed, ❌ ${batchSkipped} skipped\n`);
+
+      // Small delay between batches to avoid rate limiting
+      if (i + BATCH_SIZE < toScan.length) {
+        await new Promise(r => setTimeout(r, 300));
+      }
     }
 
-    console.log(`\n👁️  Vision results: ${passed} passed, ${skipped} skipped`);
-    console.log(`💰 Estimated vision cost: ~$${(cost/100).toFixed(4)}`);
+    const estimatedCost = (totalCost / 100).toFixed(4);
+    console.log(`\n👁️  Vision complete: ${passed} passed, ${skipped} skipped`);
+    console.log(`💰 Estimated cost: ~$${estimatedCost}`);
+    console.log(`⚡ Scanned ${processed} cards in parallel batches of ${BATCH_SIZE}`);
 
     return results.sort((a, b) => (b.visionScore || 0) - (a.visionScore || 0));
   }

@@ -28,7 +28,7 @@ async function multiSearch(searchConfig) {
     minScoreToShow = 7.0,
     topN = 20,
     useVision = false,
-    visionTopN = 30,
+    visionTopN = 200,
     listingType = 'fixed_price',
     cardType = 'raw'
   } = searchConfig || {};
@@ -295,7 +295,7 @@ if (require.main === module) {
     maxPrice: null,
     rawOnly: true,
     useVision: false,
-    visionTopN: 30
+    visionTopN: 200
   };
 
   const queryParts = [];
@@ -332,7 +332,7 @@ if (require.main === module) {
       } else if (flagName === 'vision') {
         config.useVision = true;
       } else if (flagName === 'vision-top') {
-        config.visionTopN = parseInt(nextArg) || 30;
+        config.visionTopN = parseInt(nextArg) || 200;
         i++;
       } else if (flagName === 'listing-type' && nextArg) {
         config.listingType = nextArg;
