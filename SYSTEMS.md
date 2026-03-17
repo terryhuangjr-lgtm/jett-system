@@ -1,6 +1,6 @@
 # Jett System Architecture
 
-Last Updated: 2026-03-13
+Last Updated: 2026-03-17
 
 ---
 
@@ -142,23 +142,23 @@ Last Updated: 2026-03-13
 
 **Command:** `clawdbot cron list`
 
-| Task ID | Name | Schedule | Status |
-|---------|------|----------|--------|
-| e9b801b1 | Gateway Ping | */10 * * * * | idle |
-| 99986221 | PM2 Monitor | */15 * * * * | idle |
-| 2e634eff | Reminder Checker | */5 * * * * | ok |
-| c5087e50 | Performance Check | 0 */6 * * * | ok |
-| 5b2e8a15 | Bitcoin Tweet | 0 7 * * * | ok |
-| 8caf62e2 | Sports Tweet | 30 7 * * * | ok |
-| de3f5203 | Morning Family Brief | 0 8 * * * | ok |
-| 7da794a0 | Podcast Queue Nightly | 0 4 * * * | ok |
-| 34f4d211 | eBay Scan Monday | 0 9 * * 1 | ok |
-| cb846aad | eBay Scan Tuesday | 0 9 * * 2 | ok |
-| cf2665e4 | eBay Scan Wednesday | 0 9 * * 3 | idle |
-| ccedb5e5 | eBay Scan Thursday | 0 9 * * 4 | idle |
-| 07ceb4b8 | eBay Scan Friday | 0 9 * * 5 | ok |
-| 9b58aa01 | eBay Scan Saturday | 0 9 * * 6 | idle |
-| 6e1b794f | eBay Scan Sunday | 0 9 * * 0 | idle |
+| Task ID | Name | Schedule | Command |
+|---------|------|----------|---------|
+| e9b801b1 | Gateway Ping | */10 * * * * | - |
+| 99986221 | PM2 Monitor | */15 * * * * | - |
+| 2e634eff | Reminder Checker | */5 * * * * | - |
+| c5087e50 | Performance Check | 0 */6 * * * | - |
+| 5b2e8a15 | Bitcoin Tweet | 0 7 * * * | node 21m-daily-generator-v2.js --type bitcoin --email |
+| 8caf62e2 | Sports Tweet | 30 7 * * * | node 21m-daily-generator-v2.js --type sports --email |
+| de3f5203 | Morning Family Brief | 0 8 * * * | python3 morning_brief.py --post |
+| 7da794a0 | Podcast Queue Nightly | 0 4 * * * | python3 process_queue_nightly.py |
+| 34f4d211 | eBay Scan Monday | 0 9 * * 1 | node run-from-config.js monday |
+| cb846aad | eBay Scan Tuesday | 0 9 * * 2 | node run-from-config.js tuesday |
+| cf2665e4 | eBay Scan Wednesday | 0 9 * * 3 | node run-from-config.js wednesday |
+| ccedb5e5 | eBay Scan Thursday | 0 9 * * 4 | node run-from-config.js thursday |
+| 07ceb4b8 | eBay Scan Friday | 0 9 * * 5 | node run-from-config.js friday |
+| 9b58aa01 | eBay Scan Saturday | 0 9 * * 6 | node run-from-config.js saturday |
+| 6e1b794f | eBay Scan Sunday | 0 9 * * 0 | node run-from-config.js sunday |
 
 ---
 
@@ -217,17 +217,43 @@ node automation/jett-community-pulse.js "NIL deals college football"
 
 ```
 ┌──────────────────┐     ┌──────────────────┐     ┌──────────────────┐
-│ task-manager/   │────▶│ ebay-scanner/    │────▶│   Slack          │
-│ ebay-scans-     │     │ run-from-config  │     │   #levelupcards  │
-│ config.json     │     │                  │     │                  │
+│ task-manager/   │────▶│ ebay-scanner/    │────▶│   Email          │
+│ ebay-scans-     │     │ run-from-config  │     │   terryhuangjr   │
+│ config.json     │     │ (with vision)    │     │   @gmail.com     │
 └──────────────────┘     └──────────────────┘     └──────────────────┘
+       │                         │
+       │                   ┌─────▼─────┐
+       │                   │ Vision     │
+       │                   │ Filter     │
+       │                   │ (Haiku)    │
+       │                   └───────────┘
+       │
+       ▼
+┌──────────────────┐
+│ Mission Control  │
+│ (:3000/ebay)    │
+│ - Run Scan Now  │
+│ - Global Toggles│
+└──────────────────┘
 ```
 
 **Scripts:**
-- `ebay-scanner/run-from-config.js` - Runs scans from config
-- `automation/deploy-ebay-scans.js` - Posts results to Slack
+- `ebay-scanner/run-from-config.js` - Runs scans from config, sends HTML email
+- `ebay-scanner/vision-filter.js` - Claude Haiku vision for card condition analysis
+- `automation/deploy-ebay-scans.js` - Legacy (Slack deprecated)
 
 **Config:** `task-manager/ebay-scans-config.json`
+
+**Features:**
+- Vision scanning for card condition (using Claude Haiku)
+- Global filters: listing_type (BIN/Auction/Both), card_type (Raw/Graded/Both)
+- Run Scan Now button in Mission Control dashboard
+- Results stored in `ebay-scanner/results/` (gitignored)
+
+**Cron (deterministic - no LLM):**
+```bash
+cd /home/clawd/clawd/ebay-scanner && node run-from-config.js [day]
+```
 
 ---
 

@@ -1,5 +1,5 @@
 # CLAUDE.md - Jett System Standing Orders
-Last Updated: 2026-03-06
+Last Updated: 2026-03-17
 
 READ THIS ENTIRE FILE BEFORE TOUCHING ANYTHING.
 
@@ -188,13 +188,14 @@ clawdbot message send --channel telegram --target "5867308866" --message "text" 
 | automation/21m-daily-generator-v2.js | 21M tweet generation + posting |
 | automation/21m-content-bank.json | Verified content (58 entries) |
 | automation/deploy-podcast-summary.js | Podcast deploy |
-| automation/deploy-ebay-scans.js | eBay deploy |
+| automation/deploy-ebay-scans.js | eBay deploy (legacy - email via run-from-config) |
 | automation/add-to-content-bank.js | CLI tool to add new content entries |
 | task-manager/server.js | Dashboard (port 3000) |
 | task-manager/worker.js | Task scheduler |
+| ebay-scanner/run-from-config.js | eBay scanner (sends email) |
+| ebay-scanner/vision-filter.js | Claude Haiku vision for card condition |
 | skills/podcast-summary/app.py | Podcast processor |
 | skills/morning-brief/morning_brief.py | Family brief (Google Calendar only) |
-| ebay-scanner/run-from-config.js | eBay scanner |
 | automation/watchlist-dashboard.py | Watchlist dashboard (port 5002) |
 | automation/jett-watchlist-check.js | Watchlist price checker (deterministic, zero token cost) |
 
@@ -677,7 +678,7 @@ See `HEARTBEAT.md` for full monitoring documentation.
 
 ---
 
-## EBAY SCANNER FIXES - 2026-03-03
+## EBAY SCANNER FIXES - 2026-03-17
 
 ### 1. Raw Card Filter Bug Fixed
 **Problem:** Cards with "PSA 10" in title were slipping through because filter checked condition field first.
@@ -693,6 +694,41 @@ See `HEARTBEAT.md` for full monitoring documentation.
 **Problem:** Redundant buttons and messy display.
 **Solution:** Removed duplicate "Global Rules" button, simplified "Filter Rules" card with green border.
 **Status:** ✅ Cleaner UI.
+
+### 4. Vision Filter Added (Claude Haiku)
+**Problem:** Needed to analyze card images for condition (centering, corners, surface).
+**Solution:** Created `ebay-scanner/vision-filter.js` using Claude Haiku vision.
+**Usage:** `node run-from-config.js [day] --vision`
+**Status:** ✅ Working - analyzes card images and scores condition.
+
+### 5. Run Scan Now Button
+**Problem:** No way to trigger scans on-demand from dashboard.
+**Solution:** Added "Run Scan Now" button to Mission Control eBay tab.
+**API:** `POST /api/ebay/scan/:day`
+**Status:** ✅ Working - triggers scan immediately and emails results.
+
+### 6. Global Toggles Added
+**Problem:** Needed to filter by listing type and card type globally.
+**Solution:** Added toggles to Mission Control:
+- **listing_type**: BIN, Auction, Both
+- **card_type**: Raw, Graded, Both
+**Status:** ✅ Working - saved to config and applied to all scans.
+
+### 7. Email Direct from Scanner
+**Problem:** Double emails (run-from-config.js + deploy-ebay-scans.js both sending).
+**Solution:** Removed `deploy-ebay-scans.js --email` from cron commands. `run-from-config.js` now sends HTML email directly.
+**Status:** ✅ Single email per scan.
+
+### 8. GitIgnore Results
+**Problem:** Large JSON result files bloating repo (2.3M lines).
+**Solution:** Added `ebay-scanner/results/` to `.gitignore`.
+**Status:** ✅ Results no longer committed.
+
+### 9. Deterministic Cron Commands
+**Problem:** eBay crons were using agentTurn (LLM) instead of systemEvent.
+**Solution:** Verified all 7 eBay cron jobs use `systemEvent` with deterministic node commands.
+**Commands:** `cd /home/clawd/clawd/ebay-scanner && node run-from-config.js [day]`
+**Status:** ✅ Zero LLM token burn on eBay scans.
 
 ---
 
