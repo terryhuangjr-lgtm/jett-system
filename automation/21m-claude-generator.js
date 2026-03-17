@@ -197,7 +197,7 @@ CRITICAL ANGLES TO CHOOSE FROM (pick the BEST one for each tweet):
    - "1 BTC = 1 BTC. But $1 in 2010 = $68,000 today in Bitcoin terms."
 
 3. **For Young Athletes/NIL Kids**: 
-   - "College athletes getting $1M+ NIL deals. Put 10% in Bitcoin and don't touch it for 10 years."
+   - "College athletes getting $1M+ NIL deals. What if they'd put a portion of their signing bonus in Bitcoin instead of keeping it all in cash?"
    - "NIL money is life-changing. But so is not losing half to taxes and inflation. Here's the play."
 
 4. **Small Investment, Big Returns**:
