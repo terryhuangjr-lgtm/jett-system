@@ -28,7 +28,9 @@ async function multiSearch(searchConfig) {
     minScoreToShow = 7.0,
     topN = 20,
     useVision = false,
-    visionTopN = 30
+    visionTopN = 30,
+    listingType = 'fixed_price',
+    cardType = 'raw'
   } = searchConfig || {};
 
   try {
@@ -60,6 +62,7 @@ async function multiSearch(searchConfig) {
         minPrice,
         maxPrice,
         excludeKeywords,
+        listingType,
         sortOrder: 'PricePlusShippingLowest',
         limit: 200
       });
@@ -83,8 +86,8 @@ async function multiSearch(searchConfig) {
     // Filter to raw cards only
     let filteredItems = uniqueItems;
     if (rawOnly) {
-      filteredItems = rawFilter.filterRawOnly(uniqueItems);
-      console.log(`After raw filter: ${filteredItems.length} raw cards`);
+      filteredItems = rawFilter.filterRawOnly(uniqueItems, cardType);
+      console.log(`After raw filter: ${filteredItems.length} cards (cardType: ${cardType})`);
     }
 
     console.log(`\nScoring ${filteredItems.length} listings...`);
@@ -330,6 +333,12 @@ if (require.main === module) {
         config.useVision = true;
       } else if (flagName === 'vision-top') {
         config.visionTopN = parseInt(nextArg) || 30;
+        i++;
+      } else if (flagName === 'listing-type' && nextArg) {
+        config.listingType = nextArg;
+        i++;
+      } else if (flagName === 'card-type' && nextArg) {
+        config.cardType = nextArg;
         i++;
       }
     } else {

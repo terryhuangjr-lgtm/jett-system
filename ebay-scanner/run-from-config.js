@@ -52,6 +52,11 @@ async function runScan(day) {
   console.log(`Exclude: ${(scan.filters.exclude_words || []).join(', ') || 'none'}`);
   console.log(`Filters: min=$${scan.filters.minPrice || 'any'}, max=$${scan.filters.maxPrice || 'any'}, topN=${scan.filters.topN}`);
   console.log(`Vision: ${scan.useVision ? 'enabled' : 'disabled'}`);
+  
+  // Global filters
+  const listingType = config.global_filters?.listing_type || 'fixed_price';
+  const cardType = config.global_filters?.card_type || 'raw';
+  console.log(`Listing type: ${listingType} | Card type: ${cardType}`);
   console.log('');
 
   // Build command
@@ -67,6 +72,8 @@ async function runScan(day) {
   if (maxPrice) args.push('--maxPrice', maxPrice);
   if (excludeWords.length > 0) args.push('--exclude', excludeWords.join(','));
   if (scan.useVision) args.push('--vision');
+  args.push('--listing-type', listingType);
+  args.push('--card-type', cardType);
 
   console.log(`Executing: node ${args.join(' ')}\n`);
 

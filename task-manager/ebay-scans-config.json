@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "last_updated": "2026-03-11T17:36:04.108Z",
+  "last_updated": "2026-03-16T23:15:00.323Z",
   "global_filters": {
     "graded_keywords": [
       "psa",
@@ -15,7 +15,8 @@
       "lot",
       "pack",
       "hobby",
-      "retail"
+      "retail",
+      "jumbo"
     ],
     "exclude_item_types": [
       "psa",
@@ -33,32 +34,37 @@
       "seller_feedback_min": 98,
       "listing_age_max_days": 25,
       "require_raw_cards": true
-    }
+    },
+    "listing_type": "fixed_price",
+    "card_type": "raw"
   },
   "scans": {
     "monday": {
       "name": "MJ Topps Finest 1993-1999",
       "enabled": true,
       "search_terms": [
-        "topps finest michael jordan 1993-1999"
+        "topps finest michael jordan 1994-1999"
       ],
       "filters": {
-        "topN": 20,
+        "topN": 25,
         "minPrice": 10,
         "maxPrice": 150,
         "exclude_words": [
           "mystery",
           "refractor",
-          "prizm"
+          "prizm",
+          "jumbo",
+          "custom"
         ]
       },
       "output_file": "/tmp/mj-finest-scan.json",
-      "last_run": "2026-03-16T13:00:15.594Z",
+      "last_run": "2026-03-17T00:23:09.532Z",
       "last_results": {
-        "timestamp": "2026-03-16T13:00:15.594Z",
+        "timestamp": "2026-03-17T00:23:09.533Z",
         "success": true
       },
-      "last_updated": "2026-03-10T14:54:02.116Z"
+      "last_updated": "2026-03-16T23:14:57.886Z",
+      "useVision": true
     },
     "tuesday": {
       "name": "Griffey Jr Refractors",
@@ -87,7 +93,8 @@
         "timestamp": "2026-03-10T13:00:31.322Z",
         "success": true
       },
-      "last_updated": "2026-03-10T14:55:53.863Z"
+      "last_updated": "2026-03-16T23:02:12.724Z",
+      "useVision": true
     },
     "wednesday": {
       "name": "Kobe Bryant Refractors 1997-2004",
@@ -105,7 +112,9 @@
           "yugioh",
           "jumbo",
           "custom"
-        ]
+        ],
+        "minPrice": 0,
+        "maxPrice": null
       },
       "output_file": "/tmp/kobe-refractors-scan.json",
       "last_run": "2026-03-11T13:00:20.929Z",
@@ -113,7 +122,8 @@
         "timestamp": "2026-03-11T13:00:20.929Z",
         "success": true
       },
-      "last_updated": "2026-03-03T16:45:13.230Z"
+      "last_updated": "2026-03-16T23:05:35.298Z",
+      "useVision": true
     },
     "thursday": {
       "name": "MJ Upper Deck 96-00",
@@ -141,7 +151,8 @@
         "timestamp": "2026-03-12T13:00:16.091Z",
         "success": true
       },
-      "last_updated": "2026-03-05T17:53:02.425Z"
+      "last_updated": "2026-03-16T23:05:38.896Z",
+      "useVision": true
     },
     "friday": {
       "name": "Multi: hakeem/charles barkley/Dirk/Iverson",
@@ -165,7 +176,8 @@
           "holo",
           "prizm",
           "mystery"
-        ]
+        ],
+        "minPrice": 0
       },
       "output_file": "/tmp/topps-refractors-multi-scan.json",
       "last_run": "2026-03-13T13:00:14.542Z",
@@ -173,7 +185,8 @@
         "timestamp": "2026-03-13T13:00:14.543Z",
         "success": true
       },
-      "last_updated": "2026-03-03T16:56:55.391Z"
+      "last_updated": "2026-03-16T23:05:42.717Z",
+      "useVision": true
     },
     "saturday": {
       "name": "1991 Fleer Pro-Visions",
@@ -197,7 +210,8 @@
           "custom",
           "psa",
           "bgs",
-          "HGA"
+          "HGA",
+          "ultra"
         ]
       },
       "output_file": "/tmp/mj-base-scan.json",
@@ -206,7 +220,8 @@
         "timestamp": "2026-03-14T13:00:24.826Z",
         "success": true
       },
-      "last_updated": "2026-03-03T16:56:29.209Z"
+      "last_updated": "2026-03-16T23:12:49.133Z",
+      "useVision": true
     },
     "sunday": {
       "name": "2025 Derek Queen (Typo)",
@@ -224,9 +239,9 @@
         ]
       },
       "output_file": "/tmp/cam-ward-scan.json",
-      "last_run": "2026-03-15T13:00:15.535Z",
+      "last_run": "2026-03-16T22:55:33.786Z",
       "last_results": {
-        "timestamp": "2026-03-15T13:00:15.536Z",
+        "timestamp": "2026-03-16T22:55:33.786Z",
         "success": true
       },
       "last_updated": "2026-03-03T16:57:50.467Z"

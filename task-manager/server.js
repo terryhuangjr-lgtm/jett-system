@@ -891,6 +891,25 @@ class TaskServer {
       }
     }
 
+    // Scan specific day: POST /api/ebay/scan/:day
+    if (pathname.startsWith('/api/ebay/scan/') && req.method === 'POST') {
+      const day = pathname.split('/').pop().toLowerCase();
+      const validDays = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];
+      if (!validDays.includes(day)) {
+        return this.sendJSON(res, { ok: false, error: 'Invalid day' });
+      }
+      try {
+        const { execSync } = require('child_process');
+        const output = execSync(`node /home/clawd/clawd/ebay-scanner/run-from-config.js ${day}`, { 
+          encoding: 'utf8', 
+          timeout: 300000 
+        });
+        return this.sendJSON(res, { ok: true, output: output.slice(-1000) });
+      } catch (e) {
+        return this.sendJSON(res, { ok: false, error: e.message, output: e.stdout?.slice(-500) });
+      }
+    }
+
     // ── EBAY CONFIG proxy ──────────────────────────────────────────
     const EBAY_CONFIG_PATH = '/home/clawd/clawd/task-manager/ebay-scans-config.json';
     

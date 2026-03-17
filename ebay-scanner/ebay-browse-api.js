@@ -83,7 +83,8 @@ class EbayBrowseAPI {
         maxPrice,
         excludeKeywords = [],
         condition,
-        limit = 200
+        limit = 200,
+        listingType = 'fixed_price'
       } = params;
 
       // Build query
@@ -131,8 +132,13 @@ class EbayBrowseAPI {
         filters.push(priceFilter);
       }
 
-      // Always filter to Buy It Now only - no auctions
-      filters.push('buyingOptions:{FIXED_PRICE}');
+      // Listing type filter
+      if (listingType === 'fixed_price') {
+        filters.push('buyingOptions:{FIXED_PRICE}');
+      } else if (listingType === 'auction') {
+        filters.push('buyingOptions:{AUCTION}');
+      }
+      // If 'both' - no filter needed
 
       if (condition) {
         // Browse API conditions: NEW, USED_EXCELLENT, USED_VERY_GOOD, etc.

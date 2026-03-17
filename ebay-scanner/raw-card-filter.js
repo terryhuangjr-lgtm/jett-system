@@ -139,8 +139,14 @@ class RawCardFilter {
   /**
    * Filter an array of items to raw cards only that pass quality rules
    */
-  filterRawOnly(items) {
-    return items.filter(item => this.isRawCard(item) && this.passesQualityRules(item));
+  filterRawOnly(items, cardType = 'raw') {
+    if (cardType === 'both') {
+      return items.filter(item => this.passesQualityRules(item));
+    } else if (cardType === 'graded') {
+      return items.filter(item => !this.isRawCard(item) && this.passesQualityRules(item));
+    } else {
+      return items.filter(item => this.isRawCard(item) && this.passesQualityRules(item));
+    }
   }
 
   /**
