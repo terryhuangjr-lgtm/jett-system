@@ -76,3 +76,4 @@ ebay-scanner/results/
 # Raw data files
 ebay-raw.json
 slack-queue/*.json
+memory/
