@@ -29,6 +29,73 @@ function getDayFromArgs() {
   return dayNames[today];
 }
 
+function sendResultsEmail(outputFile, day, scanName) {
+  try {
+    if (!fs.existsSync(outputFile)) {
+      console.log('No results file to email');
+      return;
+    }
+
+    const data = JSON.parse(fs.readFileSync(outputFile, 'utf8'));
+    const results = data.allResults || data.results || [];
+    const topResults = results.slice(0, 20);
+
+    if (topResults.length === 0) {
+      console.log('No results to email');
+      return;
+    }
+
+    const dayLabel = day.charAt(0).toUpperCase() + day.slice(1);
+    const subject = `[${dayLabel}] Scan - ${scanName || 'eBay Results'}`;
+
+    let html = `<html><body style="font-family: Arial, sans-serif; font-size: 14px; color: #333;">`;
+    html += `<h2 style="color: #1a73e8;">${subject}</h2>`;
+    html += `<p>Found ${results.length} total results, showing top ${topResults.length}:</p>`;
+    html += `<table style="width: 100%; border-collapse: collapse; font-size: 12px;">`;
+    html += `<tr style="background: #f5f5f5;">
+      <th style="padding: 8px; text-align: left; border-bottom: 1px solid #ddd;">#</th>
+      <th style="padding: 8px; text-align: left; border-bottom: 1px solid #ddd;">Title</th>
+      <th style="padding: 8px; text-align: right; border-bottom: 1px solid #ddd;">Price</th>
+      <th style="padding: 8px; text-align: center; border-bottom: 1px solid #ddd;">Score</th>
+      <th style="padding: 8px; text-align: left; border-bottom: 1px solid #ddd;">Seller</th>
+    </tr>`;
+
+    topResults.forEach((item, i) => {
+      const score = item.dealScore?.score || 'N/A';
+      const scoreColor = score >= 8 ? '#22c55e' : score >= 7 ? '#f59e0b' : '#ef4444';
+      const title = (item.title || '').substring(0, 50) + ((item.title || '').length > 50 ? '...' : '');
+      const price = item.totalPrice ? `$${item.totalPrice.toFixed(2)}` : 'N/A';
+      const seller = item.sellerUsername || 'N/A';
+      
+      html += `<tr style="${i % 2 === 0 ? 'background: #fff;' : 'background: #fafafa;'}">
+        <td style="padding: 6px 8px; border-bottom: 1px solid #eee;">${i + 1}</td>
+        <td style="padding: 6px 8px; border-bottom: 1px solid #eee;">
+          <a href="${item.viewItemURL || '#'}" style="color: #1a73e8; text-decoration: none;">${title}</a>
+        </td>
+        <td style="padding: 6px 8px; border-bottom: 1px solid #eee; text-align: right; font-weight: bold;">${price}</td>
+        <td style="padding: 6px 8px; border-bottom: 1px solid #eee; text-align: center; color: ${scoreColor}; font-weight: bold;">${score}</td>
+        <td style="padding: 6px 8px; border-bottom: 1px solid #eee;">${seller}</td>
+      </tr>`;
+    });
+
+    html += `</table>`;
+    html += `<p style="margin-top: 20px; font-size: 11px; color: #666;">Sent from Jett eBay Scanner</p>`;
+    html += `</body></html>`;
+
+    const emailScript = path.join(__dirname, '..', 'lib', 'send-email.js');
+    const { execSync } = require('child_process');
+    
+    execSync(`node ${emailScript} --to "terryhuangjr@gmail.com" --subject "${subject}" --body "${html.replace(/"/g, '\\"')}"`, {
+      timeout: 30000
+    });
+    
+    console.log(`📧 Email sent to terryhuangjr@gmail.com`);
+    
+  } catch (e) {
+    console.log(`Email failed: ${e.message}`);
+  }
+}
+
 async function runScan(day) {
   console.log(`\n🔍 Running eBay scan for: ${day.toUpperCase()}\n`);
 
@@ -94,6 +161,9 @@ async function runScan(day) {
 
     console.log(`\n✅ ${day} scan complete!`);
     console.log(`Results saved to: ${outputFile}`);
+
+    // Send email with results
+    sendResultsEmail(outputFile, day, scan.name);
 
   } catch (error) {
     console.error(`\n❌ ${day} scan failed: ${error.message}`);
