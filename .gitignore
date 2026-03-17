@@ -70,6 +70,9 @@ slack-files/
 # Stealth browser sessions
 lib/stealth-browser/sessions/
 
+# eBay scanner results (large JSON files)
+ebay-scanner/results/
+
 # Raw data files
 ebay-raw.json
 slack-queue/*.json
