@@ -16,6 +16,7 @@ const https = require('https');
 
 const LOG_FILE = '/tmp/jett-watchlist.log';
 const PRICE_FILE = '/tmp/jett-watchlist-prices.json';
+const ALERT_COOLDOWN_FILE = '/tmp/jett-watchlist-alerts.json';
 const CLAWDBOT_BIN = '/home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot';
 const TELEGRAM_TARGET = '5867308866';
 const WATCHLIST_PORT = 5002;
@@ -129,6 +130,26 @@ function savePrices(prices) {
   fs.writeFileSync(PRICE_FILE, JSON.stringify(prices, null, 2));
 }
 
+function loadAlertCooldowns() {
+  try {
+    if (fs.existsSync(ALERT_COOLDOWN_FILE)) {
+      return JSON.parse(fs.readFileSync(ALERT_COOLDOWN_FILE, 'utf8'));
+    }
+  } catch(e) {}
+  return {};
+}
+
+function saveAlertCooldowns(cooldowns) {
+  fs.writeFileSync(ALERT_COOLDOWN_FILE, JSON.stringify(cooldowns, null, 2));
+}
+
+function isAlertOnCooldown(symbol, cooldownMinutes, alertCooldowns) {
+  const last = alertCooldowns[symbol];
+  if (!last) return false;
+  const minsSince = (Date.now() - last) / 60000;
+  return minsSince < cooldownMinutes;
+}
+
 async function sendTelegram(message) {
   const args = [
     'message', 'send',
@@ -167,13 +188,14 @@ async function main() {
   }
   
   const previousPrices = loadPrices();
+  const alertCooldowns = loadAlertCooldowns();
   const currentPrices = {};
   let alertsTriggered = 0;
   
   for (const ticker of tickers) {
     const symbol = ticker.ticker;
     const alerts = ticker.alerts || {};
-    const cooldown = ticker.cooldown_minutes || 90;
+    const cooldownMins = ticker.cooldown_minutes || 90;
     
     const priceData = await getCurrentPrice(symbol);
     
@@ -182,46 +204,49 @@ async function main() {
       continue;
     }
     
+    // Always save current price (no cooldown on price checking)
     currentPrices[symbol] = {
       price: priceData.price,
       prevClose: priceData.prevClose,
       timestamp: Date.now()
     };
     
-    const prev = previousPrices[symbol];
-    if (prev && prev.timestamp) {
-      const minsSinceLast = (Date.now() - prev.timestamp) / 60000;
-      if (minsSinceLast < cooldown) {
-        log(`${symbol}: In cooldown (${Math.round(minsSinceLast)}/${cooldown}m), skipping`);
-        continue;
-      }
-    }
-    
+    // Check daily change vs thresholds
     const changePct = priceData.change;
-    
-    const breach = 
+    const breach =
       changePct >= (alerts.daily_gain_pct || 5) ||
       changePct <= -(alerts.daily_drop_pct || 5);
-    
-    log(`${symbol}: ${priceData.price} (${changePct >= 0 ? '+' : ''}${changePct.toFixed(2)}%) vs ${alerts.daily_gain_pct || 5}%/${alerts.daily_drop_pct || 5}% thresholds`);
-    
+
+    log(`${symbol}: $${priceData.price} (${changePct >= 0 ? '+' : ''}${changePct.toFixed(2)}%) threshold: ±${alerts.daily_gain_pct || 5}%`);
+
     if (breach) {
+      // Check alert cooldown ONLY when breach detected
+      if (isAlertOnCooldown(symbol, cooldownMins, alertCooldowns)) {
+        const minsSince = Math.round((Date.now() - alertCooldowns[symbol]) / 60000);
+        log(`${symbol}: Breach detected but alert on cooldown (${minsSince}/${cooldownMins}m)`);
+        continue;
+      }
+
+      // Fire alert
       alertsTriggered++;
+      alertCooldowns[symbol] = Date.now();
+      
       const direction = changePct > 0 ? '📈' : '📉';
       const pctStr = changePct >= 0 ? `+${changePct.toFixed(1)}%` : `${changePct.toFixed(1)}%`;
-      
       const msg = `${direction} *Watchlist Alert*\n\n` +
         `*${symbol}* (${ticker.name || ticker.sector || ''})\n` +
         `Current: $${priceData.price}\n` +
-        `Change: ${pctStr} (vs ${priceData.prevClose})\n` +
-        `Threshold: ${alerts.daily_gain_pct || 5}% / ${alerts.daily_drop_pct || 5}%`;
-      
-      log(`ALERT: ${symbol} breached threshold at ${changePct.toFixed(2)}%`);
+        `Change: ${pctStr} today\n` +
+        `Threshold: ±${alerts.daily_gain_pct || 5}%`;
+
       await sendTelegram(msg);
+      log(`${symbol}: ALERT SENT - ${pctStr}`);
     }
   }
   
+  // Save prices and alert cooldowns after loop
   savePrices(currentPrices);
+  saveAlertCooldowns(alertCooldowns);
   
   if (alertsTriggered === 0) {
     log(`No alerts triggered for ${tickers.length} tickers (zero token cost)`);
