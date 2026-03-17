@@ -1,14 +1,15 @@
 {
   "version": "1.0",
-  "last_updated": "2026-03-16T23:15:00.323Z",
+  "last_updated": "2026-03-17T02:16:15.593Z",
   "global_filters": {
     "graded_keywords": [
       "psa",
       "bgs",
       "sgc",
       "leaf",
-      "replica",
+      "pack",
       "custom",
+      "replica",
       "cgs",
       "hga",
       "fan",
@@ -40,7 +41,7 @@
   },
   "scans": {
     "monday": {
-      "name": "MJ Topps Finest 1993-1999",
+      "name": "MJ Topps Finest 1994-1999",
       "enabled": true,
       "search_terms": [
         "topps finest michael jordan 1994-1999"
@@ -63,7 +64,7 @@
         "timestamp": "2026-03-17T00:23:09.533Z",
         "success": true
       },
-      "last_updated": "2026-03-16T23:14:57.886Z",
+      "last_updated": "2026-03-17T01:30:54.623Z",
       "useVision": true
     },
     "tuesday": {
@@ -80,20 +81,19 @@
         "minPrice": 20,
         "maxPrice": 500,
         "exclude_words": [
-          "pokemon",
-          "magic",
-          "yugioh",
-          "jumbo",
-          "mystery"
+          "mystery",
+          "custom",
+          "pack",
+          "jumbo"
         ]
       },
       "output_file": "/tmp/griffey-refractors-scan.json",
-      "last_run": "2026-03-10T13:00:31.321Z",
+      "last_run": "2026-03-17T02:05:12.817Z",
       "last_results": {
-        "timestamp": "2026-03-10T13:00:31.322Z",
+        "timestamp": "2026-03-17T02:05:12.817Z",
         "success": true
       },
-      "last_updated": "2026-03-16T23:02:12.724Z",
+      "last_updated": "2026-03-17T02:16:15.565Z",
       "useVision": true
     },
     "wednesday": {
@@ -180,12 +180,12 @@
         "minPrice": 0
       },
       "output_file": "/tmp/topps-refractors-multi-scan.json",
-      "last_run": "2026-03-13T13:00:14.542Z",
+      "last_run": "2026-03-17T01:41:09.876Z",
       "last_results": {
-        "timestamp": "2026-03-13T13:00:14.543Z",
+        "timestamp": "2026-03-17T01:41:09.876Z",
         "success": true
       },
-      "last_updated": "2026-03-16T23:05:42.717Z",
+      "last_updated": "2026-03-17T01:31:22.476Z",
       "useVision": true
     },
     "saturday": {
