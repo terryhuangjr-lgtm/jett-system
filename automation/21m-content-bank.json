@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "last_updated": "2026-03-16",
+  "last_updated": "2026-03-17",
   "entries": [
     {
       "id": 1,
@@ -203,7 +203,11 @@
       "btc_allocation": 7,
       "verified_fact": "Quinn Ewers earned $1.4M in NIL in his first year (2022) when BTC was $20,000. 10% allocation = 7 BTC.",
       "source": "On3 NIL valuations",
-      "used_dates": [],
+      "used_dates": [
+        "2026-02-27",
+        "2026-03-17",
+        "2026-03-09"
+      ],
       "cooldown_days": 90
     },
     {
@@ -620,22 +624,6 @@
       "cooldown_days": 90
     },
     {
-      "id": 43,
-      "category": "nil_contract",
-      "athlete": "Quinn Ewers",
-      "sport": "NCAA Football",
-      "year": 2021,
-      "contract_value": 1400000,
-      "btc_price_then": 47000,
-      "btc_allocation": 3,
-      "verified_fact": "Quinn Ewers left Ohio State early for NIL money estimated at $1.4M in 2021 when BTC was $47,000. 10% = 3 BTC worth $204K today.",
-      "source": "On3 NIL",
-      "used_dates": [
-        "2026-03-09"
-      ],
-      "cooldown_days": 90
-    },
-    {
       "id": 44,
       "category": "broke_athlete",
       "athlete": "Derrick Coleman",
@@ -649,20 +637,6 @@
       "used_dates": [
         "2026-03-05"
       ],
-      "cooldown_days": 90
-    },
-    {
-      "id": 45,
-      "category": "historic_contract",
-      "athlete": "Kevin Durant",
-      "sport": "NBA",
-      "year": 2016,
-      "contract_value": 54300000,
-      "btc_price_then": 600,
-      "btc_allocation": 905,
-      "verified_fact": "Kevin Durant signed a 2-year $54.3M deal with Golden State in 2016 when BTC was $600. 10% = 905 BTC worth $61M today. His contract paid out. His Bitcoin would have paid out more.",
-      "source": "Spotrac",
-      "used_dates": [],
       "cooldown_days": 90
     },
     {
@@ -988,20 +962,6 @@
       "id": 68
     },
     {
-      "category": "historic_contract",
-      "athlete": "Patrick Mahomes",
-      "sport": "NFL",
-      "year": 2020,
-      "contract_value": 450000000,
-      "btc_price_then": 10000,
-      "btc_allocation": 2250,
-      "verified_fact": "Patrick Mahomes signed a $450 million contract extension in 2020",
-      "source": "Research",
-      "used_dates": [],
-      "cooldown_days": 90,
-      "id": 69
-    },
-    {
       "category": "bitcoin_education",
       "athlete": null,
       "deal": "Elon Musk Bitcoin Tesla purchase 2021",
@@ -1100,20 +1060,6 @@
     },
     {
       "category": "bitcoin_education",
-      "athlete": "Mike Tyson",
-      "deal": "Career Earnings vs Bankruptcy",
-      "sport": "Boxing",
-      "year": 1995,
-      "contract_value": null,
-      "btc_price_then": 0,
-      "verified_fact": "Mike Tyson earned over $400M in his career and filed for bankruptcy in 2003. Not because he didn't earn enough — because every dollar he held slowly drained through inflation, bad deals, and counterparties. Bitcoin has no managers, no promoters, no one skimming the top.",
-      "source": "Sports earnings reporting",
-      "angle": "broke_athlete_bitcoin_fix",
-      "cooldown_days": 30,
-      "id": 77
-    },
-    {
-      "category": "bitcoin_education",
       "athlete": null,
       "deal": "Athlete Career Length vs Bitcoin",
       "sport": "Multiple",
@@ -1153,6 +1099,20 @@
       "angle": "franchise_vs_bitcoin",
       "cooldown_days": 30,
       "id": 80
+    },
+    {
+      "category": "bitcoin_education",
+      "athlete": null,
+      "deal": "Tesla Bitcoin purchase and sale 2021",
+      "sport": "Bitcoin",
+      "year": 2021,
+      "contract_value": null,
+      "btc_price_then": 0,
+      "verified_fact": "In 2021, Tesla purchased Bitcoin for $1.50 billion",
+      "source": "Research",
+      "used_dates": [],
+      "cooldown_days": 60,
+      "id": 81
     }
   ]
 }
