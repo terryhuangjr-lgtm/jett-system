@@ -130,22 +130,27 @@ clawdbot cron list
 ---
 
 ## MODEL CHANGE PROCEDURE — FOLLOW EXACTLY
+Changing the default model requires these steps. Skipping any can cause problems.
 
-Changing the default model requires 4 steps. Skipping any will cause Jett to report the wrong model or use the wrong one.
+0. **Backup first (NEW SAFETY STEP)**  
+   config-protector backup
 
-1. **Edit `~/.openclaw/openclaw.json`** — update `agents.defaults.model.primary` and each agent entry in `agents.list` (slack + telegram)
-2. **Archive all poisoned sessions** — old sessions cache the previous model in snapshots; if not cleared, Jett will report the old model even after config change:
+1. **Edit `~/.openclaw/openclaw.json`**  
+   Update `agents.defaults.model.primary` and every agent entry in `agents.list` (Telegram, etc.)
+
+2. **Archive all poisoned sessions** (so old model isn't remembered)  
    ```bash
    TS=$(date +%Y-%m-%dT%H-%M-%S)
-   for f in /home/clawd/.openclaw/agents/slack/sessions/*.jsonl; do mv "$f" "${f}.deleted.${TS}"; done
    for f in /home/clawd/.openclaw/agents/telegram/sessions/*.jsonl; do mv "$f" "${f}.deleted.${TS}"; done
    ```
-4. **Restart gateway:**
+
+3. **Restart gateway:**
    ```bash
    pkill -f 'openclaw-gateway'; sleep 2
    nohup /home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot gateway >> /tmp/gateway.log 2>&1 &
    ```
-5. **Verify:** Ask Jett "what model are you?" in a **new** Slack/Telegram message. Should match the new model.
+
+4. **Verify:** Ask Jett "what model are you?" in a **new** Telegram message. Should match the new model.
 
 ---
 
