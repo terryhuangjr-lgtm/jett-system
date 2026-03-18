@@ -361,49 +361,25 @@ config-protector protect openclaw doctor --fix
 
 ---
 
-**WSL2 Auto-Start Configuration:**
+## WSL2 Auto-Start Configuration (Updated March 2026 - Using Systemd)
 
-Systemd is not available in WSL2 by default. Using crontab for auto-start instead:
+Systemd is enabled (`systemd=true` in /etc/wsl.conf).
 
+Services managed via systemd --user:
+- openclaw-gateway.service
+- pm2.service
+- level-up-cards.service
+- watchlist-dashboard.service
+- openclaw-patch.service (runs patch on boot)
+
+Check status with:
 ```bash
-# Current crontab (crontab -l):
-@reboot /home/clawd/scripts/start-gateway.sh
-@reboot sleep 30 && cd /home/clawd/clawd && pm2 resurrect >> /tmp/pm2.log 2>&1
-@reboot ollama serve
-@reboot cd /home/clawd/level_up_cards && python3 app.py >> /home/clawd/level_up_cards/logs/server.log 2>&1
-@reboot cd /home/clawd/clawd/automation && python3 watchlist-dashboard.py >> /home/clawd/clawd/automation/logs/watchlist-dashboard.log 2>&1
-
-# Health check every 2 hours - restart gateway if down (NO --force, just let it restart naturally)
-0 */2 * * * pgrep -f 'openclaw-gateway' > /dev/null || /home/clawd/scripts/start-gateway.sh
-
-# Health check every 5 min - restart Level Up Cards if down
-*/5 * * * * curl -s http://localhost:5000 > /dev/null || cd /home/clawd/level_up_cards && python3 app.py >> /home/clawd/level_up_cards/logs/server.log 2>&1
-
-# Health check every 5 min - restart Watchlist dashboard if down
-*/5 * * * * curl -s http://localhost:5002 > /dev/null || cd /home/clawd/clawd/automation && python3 watchlist-dashboard.py >> /home/clawd/clawd/automation/logs/watchlist-dashboard.log 2>&1
-
-# Daily config backup (1am)
-0 1 * * * cp ~/.openclaw/openclaw.json ~/.openclaw/openclaw.json.daily-$(date +\%Y\%m\%d).bak
-
-# Log rotation for gateway (truncate if over 50MB)
-0 0 * * * find /tmp/gateway.log -size +50M -exec truncate -s 20M {} \; 2>/dev/null || true
-
-# Jett Trending Research - Monday & Thursday at 3 AM (finds current trending topics)
-0 3 * * 1,4 cd /home/clawd/clawd/automation && node jett-trending-research.js >> /tmp/jett-trending.log 2>&1
-
-# Jett Finance Monitor - 3x daily (6AM, 12PM, 6PM)
-0 6 * * * cd /home/clawd/clawd/automation && node jett-finance-monitor.js >> /tmp/jett-finance.log 2>&1
-0 12 * * * cd /home/clawd/clawd/automation && node jett-finance-monitor.js >> /tmp/jett-finance.log 2>&1
-0 18 * * * cd /home/clawd/clawd/automation && node jett-finance-monitor.js >> /tmp/jett-finance.log 2>&1
+systemctl --user status <service-name>
 ```
 
-To enable systemd in WSL2 (alternative):
-```bash
-# Add to /etc/wsl.conf:
-[boot]
-systemd=true
-# Then run: wsl --shutdown (from PowerShell)
-```
+Old crontab @reboot lines have been removed. Only health checks and scheduled jobs remain in crontab.
+
+---
 
 **Subagent Configuration:**
 - Default subagent model: xai/grok-4-1-fast
