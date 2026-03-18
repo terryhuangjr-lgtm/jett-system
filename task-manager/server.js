@@ -192,6 +192,14 @@ class TaskServer {
       return this.proxyRequest(res, levelupPath, 5000, req.method, body, contentType);
     }
 
+    // /cards shortcut for Level Up (mobile-friendly)
+    if (pathname.startsWith('/cards')) {
+      const levelupPath = pathname.replace(/^\/cards/, '') || '/';
+      const contentType = req.headers['content-type'] || null;
+      const body = (req.method === 'POST' || req.method === 'PUT' || req.method === 'DELETE') ? await this.readBody(req) : null;
+      return this.proxyRequest(res, levelupPath, 5000, req.method, body, contentType);
+    }
+
     // API routes
     if (pathname.startsWith('/api')) {
       return this.handleAPI(req, res, pathname, url);

@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "last_updated": "2026-03-17T02:16:15.593Z",
+  "last_updated": "2026-03-18T02:18:11.375Z",
   "global_filters": {
     "graded_keywords": [
       "psa",
@@ -100,9 +100,8 @@
       "name": "Kobe Bryant Refractors 1997-2004",
       "enabled": true,
       "search_terms": [
-        "kobe bryant topps chrome",
-        "topps finest",
-        "1997-2004 refractor"
+        "kobe bryant topps chrome refractor 1997-2004",
+        "kobe bryant topps finest refractor 1997-2004"
       ],
       "filters": {
         "topN": 20,
@@ -113,7 +112,7 @@
           "jumbo",
           "custom"
         ],
-        "minPrice": 0,
+        "minPrice": 40,
         "maxPrice": null
       },
       "output_file": "/tmp/kobe-refractors-scan.json",
@@ -122,7 +121,7 @@
         "timestamp": "2026-03-11T13:00:20.929Z",
         "success": true
       },
-      "last_updated": "2026-03-16T23:05:35.298Z",
+      "last_updated": "2026-03-18T02:13:06.591Z",
       "useVision": true
     },
     "thursday": {
@@ -158,26 +157,25 @@
       "name": "Multi: hakeem/charles barkley/Dirk/Iverson",
       "enabled": true,
       "search_terms": [
-        "hakeem olojuwon",
-        "charles barkley",
-        "dirk nowitzki",
-        "allen iverson",
-        "topps refractor",
+        "hakeem olojuwon topps refractor",
+        "1994-1999",
+        "charles barkley topps refractor",
+        "1994-1999",
+        "dirk nowitzki topps refractor",
+        "1994-1999",
+        "allen iverson topps refractor",
         "1994-1999"
       ],
       "filters": {
         "topN": 20,
-        "maxPrice": 500,
+        "maxPrice": 600,
         "exclude_words": [
-          "pokemon",
-          "magic",
-          "yugioh",
           "jumbo",
           "holo",
           "prizm",
           "mystery"
         ],
-        "minPrice": 0
+        "minPrice": 15
       },
       "output_file": "/tmp/topps-refractors-multi-scan.json",
       "last_run": "2026-03-17T01:41:09.876Z",
@@ -185,23 +183,19 @@
         "timestamp": "2026-03-17T01:41:09.876Z",
         "success": true
       },
-      "last_updated": "2026-03-17T01:31:22.476Z",
+      "last_updated": "2026-03-18T02:15:24.150Z",
       "useVision": true
     },
     "saturday": {
-      "name": "1991 Fleer Pro-Visions",
+      "name": "Gold Refractors",
       "enabled": true,
       "search_terms": [
-        "1991 Fleer Bo Jackson",
-        "Mark McGwire",
-        "Don Mattingly",
-        "Roger Clemens",
-        "Barry Larkin"
+        "gold refractor 1996-2003"
       ],
       "filters": {
         "topN": 20,
-        "minPrice": 2,
-        "maxPrice": 30,
+        "minPrice": 25,
+        "maxPrice": null,
         "exclude_words": [
           "pokemon",
           "magic",
@@ -220,15 +214,15 @@
         "timestamp": "2026-03-14T13:00:24.826Z",
         "success": true
       },
-      "last_updated": "2026-03-16T23:12:49.133Z",
+      "last_updated": "2026-03-18T02:16:37.218Z",
       "useVision": true
     },
     "sunday": {
-      "name": "2025 Derek Queen (Typo)",
+      "name": "Barry Sanders",
       "enabled": true,
       "search_terms": [
-        "2025 Derek Queen Auto",
-        "2025 Derek Queen Refractor"
+        "1994 Skybox Barry Sanders",
+        "1994-1998 Finest Barry Sanders"
       ],
       "filters": {
         "topN": 20,
@@ -236,7 +230,9 @@
           "bowman",
           "draft picks",
           "leaf"
-        ]
+        ],
+        "minPrice": 0,
+        "maxPrice": null
       },
       "output_file": "/tmp/cam-ward-scan.json",
       "last_run": "2026-03-16T22:55:33.786Z",
@@ -244,7 +240,8 @@
         "timestamp": "2026-03-16T22:55:33.786Z",
         "success": true
       },
-      "last_updated": "2026-03-03T16:57:50.467Z"
+      "last_updated": "2026-03-18T02:18:11.377Z",
+      "useVision": true
     }
   },
   "deploy": {
