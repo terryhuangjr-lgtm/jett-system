@@ -173,6 +173,15 @@ class TaskServer {
       pathname === '/seed' ||
       pathname === '/clear';
     
+    // Handle /cards shortcut - convert to /uploads for Level Up
+    if (pathname.startsWith('/cards/uploads/')) {
+      const levelupPath = pathname.replace('/cards', '');
+      console.log('PROXYING /cards to Level Up:', levelupPath);
+      const contentType = req.headers['content-type'] || null;
+      const body = (req.method === 'POST' || req.method === 'PUT' || req.method === 'DELETE') ? await this.readBody(req) : null;
+      return this.proxyRequest(res, levelupPath, 5000, req.method, body, contentType);
+    }
+     
     if (pathname === '/levelup' || pathname === '/levelup/') {
       return this.proxyRequest(res, '/', 5000);
     }
@@ -194,7 +203,12 @@ class TaskServer {
 
     // /cards shortcut for Level Up (mobile-friendly)
     if (pathname.startsWith('/cards')) {
-      const levelupPath = pathname.replace(/^\/cards/, '') || '/';
+      // Remove /cards prefix and add /uploads
+      let levelupPath = pathname.replace(/^\/cards/, '');
+      // If just /cards, redirect to /
+      if (levelupPath === '/cards' || levelupPath === '') {
+        levelupPath = '/';
+      }
       const contentType = req.headers['content-type'] || null;
       const body = (req.method === 'POST' || req.method === 'PUT' || req.method === 'DELETE') ? await this.readBody(req) : null;
       return this.proxyRequest(res, levelupPath, 5000, req.method, body, contentType);
