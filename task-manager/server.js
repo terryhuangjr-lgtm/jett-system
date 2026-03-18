@@ -239,7 +239,9 @@ class TaskServer {
         // Pass through original headers for multipart uploads
         if (requestBody) {
           headers['Content-Type'] = contentType || 'application/json';
-          headers['Content-Length'] = Buffer.byteLength(requestBody);
+          headers['Content-Length'] = Buffer.isBuffer(requestBody)
+            ? requestBody.length
+            : Buffer.byteLength(requestBody);
         }
         
         // Copy relevant headers from original request if provided
@@ -1060,10 +1062,10 @@ class TaskServer {
 
   async readBody(req) {
     return new Promise((resolve, reject) => {
-      let body = '';
-      req.on('data', chunk => body += chunk);
+      const chunks = [];
+      req.on('data', chunk => chunks.push(chunk));
       req.on('end', () => {
-        resolve(body);
+        resolve(Buffer.concat(chunks));
       });
       req.on('error', reject);
     });
