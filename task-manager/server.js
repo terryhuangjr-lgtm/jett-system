@@ -179,7 +179,7 @@ class TaskServer {
       console.log('PROXYING /cards to Level Up:', levelupPath);
       const contentType = req.headers['content-type'] || null;
       const body = (req.method === 'POST' || req.method === 'PUT' || req.method === 'DELETE') ? await this.readBody(req) : null;
-      return this.proxyRequest(res, levelupPath, 5000, req.method, body, contentType);
+      return this.proxyRequest(res, levelupPath, 5000, req.method, body, contentType, req);
     }
      
     if (pathname === '/levelup' || pathname === '/levelup/') {
@@ -198,7 +198,7 @@ class TaskServer {
       const levelupPath = pathname.replace(/^\/levelup/, '') || '/';
       const contentType = req.headers['content-type'] || null;
       const body = (req.method === 'POST' || req.method === 'PUT' || req.method === 'DELETE') ? await this.readBody(req) : null;
-      return this.proxyRequest(res, levelupPath, 5000, req.method, body, contentType);
+      return this.proxyRequest(res, levelupPath, 5000, req.method, body, contentType, req);
     }
 
     // /cards shortcut for Level Up (mobile-friendly)
@@ -211,7 +211,7 @@ class TaskServer {
       }
       const contentType = req.headers['content-type'] || null;
       const body = (req.method === 'POST' || req.method === 'PUT' || req.method === 'DELETE') ? await this.readBody(req) : null;
-      return this.proxyRequest(res, levelupPath, 5000, req.method, body, contentType);
+      return this.proxyRequest(res, levelupPath, 5000, req.method, body, contentType, req);
     }
 
     // API routes
@@ -224,7 +224,7 @@ class TaskServer {
     res.end('Not Found');
   }
 
-  async proxyRequest(res, targetUrl, port, method = 'GET', requestBody = null, contentType = null) {
+  async proxyRequest(res, targetUrl, port, method = 'GET', requestBody = null, contentType = null, originalReq = null) {
     return new Promise((resolve) => {
       try {
         const http = require('http');
@@ -232,12 +232,21 @@ class TaskServer {
         console.log('PROXY target:', targetUrl, 'port:', port, 'path:', urlObj.pathname + urlObj.search);
         
         const headers = {
-          'User-Agent': 'TaskServer-Proxy/1.0'
+          'User-Agent': 'TaskServer-Proxy/1.0',
+          'Host': `localhost:${port}`
         };
         
-        // Only set Content-Type if we have a body or it's explicitly provided
+        // Pass through original headers for multipart uploads
         if (requestBody) {
           headers['Content-Type'] = contentType || 'application/json';
+          headers['Content-Length'] = Buffer.byteLength(requestBody);
+        }
+        
+        // Copy relevant headers from original request if provided
+        if (originalReq && originalReq.headers) {
+          if (originalReq.headers['cookie']) headers['Cookie'] = originalReq.headers['cookie'];
+          if (originalReq.headers['authorization']) headers['Authorization'] = originalReq.headers['authorization'];
+          if (originalReq.headers['accept']) headers['Accept'] = originalReq.headers['accept'];
         }
         
         const options = {
@@ -259,9 +268,11 @@ class TaskServer {
           res.end('Proxy error: ' + error.message);
         });
         
+        // Write body - works for both string and binary
         if (requestBody) {
           proxyReq.write(requestBody);
         }
+        proxyReq.end();
         proxyReq.end();
       } catch (error) {
         res.writeHead(500);
