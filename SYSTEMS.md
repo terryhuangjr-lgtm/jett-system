@@ -53,7 +53,7 @@ Last Updated: 2026-03-17
 | Process | `openclaw-gateway` |
 | Port | 18789 (WS), 18791 (canvas), 18792 (browser) |
 | PID | 680 |
-| Auto-start | Via crontab @reboot |
+| Auto-start | Via systemd (clawdbot-gateway.service) |
 | Health check | `*/10 * * * *` (clawdbot cron) + `0 */2 * * *` (crontab) |
 
 **Responsibilities:**
@@ -91,7 +91,7 @@ Last Updated: 2026-03-17
 | Attribute | Value |
 |-----------|-------|
 | Process | `ollama serve` |
-| Auto-start | Via crontab @reboot |
+| Auto-start | Via systemd (clawdbot-gateway.service) |
 | Models | nomic-embed-text (embeddings), minimax-m2.5:cloud |
 
 **Note:** Ollama runs for memory search embeddings + minimax. All other tasks use Grok/Haiku.
@@ -433,7 +433,7 @@ pm2 restart task-manager-server
 ```
 crontab -l                  # View watchdog cron
 */5 * * * *                 # Self-heal watchdog (gateway, PM2, Ollama)
-@reboot                     # Auto-start on boot
+# @reboot removed - now via systemd
 ```
 
 **Self-Heal Watchdog** (`/home/clawd/scripts/self-heal.sh`):

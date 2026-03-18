@@ -92,7 +92,7 @@ Help with automation, find opportunities, handle tech/code, stay on top of sport
 ## Known Issues and Fixes Applied
 
 - **MTU fix:** WSL2 needs `sudo ip link set dev eth0 mtu 1350` — runs on startup via self-heal.sh
-- **Gateway:** Managed via crontab (not systemd) with watchdog every 2 hours + self-heal every 5 min
+- **Gateway:** Managed via systemd (clawdbot-gateway.service) with openclaw-patch.service on boot
 - **Health monitor disabled:** `channelHealthCheckMinutes: 0` in openclaw.json + library patched directly
 - **Kilo processes:** NEVER kill kilo/bun/minimax processes without Terry confirming — see CLAUDE.md
 - **execFileSync pattern:** Always use array args for clawdbot calls, never string interpolation
