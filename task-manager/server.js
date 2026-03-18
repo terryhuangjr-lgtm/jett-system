@@ -258,7 +258,22 @@ class TaskServer {
         };
         
         const proxyReq = http.request(options, (proxyRes) => {
-          res.writeHead(proxyRes.statusCode, proxyRes.headers);
+          // Rewrite Location headers to remove localhost references
+          const headers = { ...proxyRes.headers };
+          if (headers.location && headers.location.includes('localhost:5000')) {
+            headers.location = headers.location.replace('http://localhost:5000', '');
+            console.log('Rewrote Location header:', headers.location);
+          }
+          if (headers.location && headers.location.includes('localhost:3000')) {
+            headers.location = headers.location.replace('http://localhost:3000', '');
+          }
+          if (headers.location && headers.location.includes('localhost:5001')) {
+            headers.location = headers.location.replace('http://localhost:5001', '');
+          }
+          if (headers.location && headers.location.includes('localhost:5002')) {
+            headers.location = headers.location.replace('http://localhost:5002', '');
+          }
+          res.writeHead(proxyRes.statusCode, headers);
           proxyRes.on('data', chunk => res.write(chunk));
           proxyRes.on('end', () => res.end());
         });
