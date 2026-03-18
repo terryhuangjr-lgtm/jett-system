@@ -361,23 +361,22 @@ config-protector protect openclaw doctor --fix
 
 ---
 
-## WSL2 Auto-Start Configuration (Updated March 2026 - Using Systemd)
+## WSL2 Auto-Start Configuration (Updated March 2026 - Simplified Systemd)
 
-Systemd is enabled (`systemd=true` in /etc/wsl.conf).
+Systemd is enabled.
 
-Services managed via systemd --user:
-- openclaw-gateway.service
-- pm2.service
-- level-up-cards.service
-- watchlist-dashboard.service
-- openclaw-patch.service (runs patch on boot)
+Active services:
+- clawdbot-gateway.service     (main AI gateway)
+- pm2.service                  (task-manager dashboard)
+- openclaw-patch.service       (safety patch on boot)
 
-Check status with:
+Check status anytime with:
 ```bash
-systemctl --user status <service-name>
+systemctl --user status clawdbot-gateway.service
+systemctl --user status pm2.service
 ```
 
-Old crontab @reboot lines have been removed. Only health checks and scheduled jobs remain in crontab.
+Level-up-cards and watchlist-dashboard are started via their own startup scripts (kept simple).
 
 ---
 
