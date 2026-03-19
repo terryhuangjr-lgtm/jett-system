@@ -717,6 +717,16 @@ See `HEARTBEAT.md` for full monitoring documentation.
 **Solution:** Increased `listing_age_max_days` to 60 in `task-manager/ebay-scans-config.json` and default in `raw-card-filter.js`.
 **Status:** ✅ Now scans 60 days of listings to catch more overlooked raw cards.
 
+### 11. Lowered Seller Feedback Threshold
+**Date:** 2026-03-19
+**Problem:** 98% minimum was too strict, filtering out legitimate sellers.
+**Solution:** Lowered `seller_feedback_min` to 97% in config and raw-card-filter.js.
+**Status:** ✅ Now includes more sellers with 97-98% feedback.
+
+### Next Step: Boost Title Accuracy Weighting
+- Increase player/year/brand match weighting in scoring algorithm
+- Better differentiate perfect matches from near-misses
+
 ---
 
 ## WHAT TO MONITOR

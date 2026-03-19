@@ -34,7 +34,7 @@ class RawCardFilter {
       'damaged', 'poor condition'
     ];
     this.qualityRules = {
-      sellerFeedbackMin: 98,
+      sellerFeedbackMin: 97,
       listingAgeMaxDays: 60,
       requireImages: true,
       requireRawCards: true
