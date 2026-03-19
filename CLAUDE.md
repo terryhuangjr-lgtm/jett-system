@@ -89,8 +89,9 @@ Action:
 | **grok-4-1-fast** | DEFAULT for everything | Slack/Telegram, automation, research, subagents |
 | **claude-haiku-4-5** | BACKUP if Grok down | Fallback when Grok unavailable |
 | **claude-sonnet-4-5** | Content generation | 21M sports tweet generation ONLY |
+| **kimi-k2.5:cloud** | Research / free cloud option | To be added |
 
-**Ollama:** Only minimax-m2.5:cloud remains (memory search embeddings). llama3.1:8b removed.
+**Ollama:** Currently unused. Can add nomic-embed-text if memory search is needed.
 
 ---
 
