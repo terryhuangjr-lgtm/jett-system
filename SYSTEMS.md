@@ -307,7 +307,7 @@ cd /home/clawd/clawd/ebay-scanner && node run-from-config.js [day]
 
 **What it does:**
 - Searches Google Places API for local service businesses in Nassau County
-- Filters: 5-150 reviews, 4.0+ rating, no/outdated website
+- Filters: 5-500 reviews, 4.0+ rating, no/outdated website
 - Brave Search for social media (FB/IG) on qualified leads
 - Writes to Google Sheets (shared with Terry + Jett)
 
