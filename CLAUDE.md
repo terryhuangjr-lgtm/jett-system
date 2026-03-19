@@ -86,12 +86,12 @@ Action:
 
 | Model | Purpose | When Used |
 |-------|---------|-----------|
-| **grok-4-1-fast** | DEFAULT for everything | Slack/Telegram, automation, research, subagents |
+| **grok-4-1-fast** | DEFAULT for everything | Slack/Telegram, automation, research |
 | **claude-haiku-4-5** | BACKUP if Grok down | Fallback when Grok unavailable |
 | **claude-sonnet-4-5** | Content generation | 21M sports tweet generation ONLY |
-| **kimi-k2.5:cloud** | Research / free cloud option | To be added |
+| **kimi-k2.5:cloud** | Subagent / free cloud | Subagents via "spawn" command |
 
-**Ollama:** Currently unused. Can add nomic-embed-text if memory search is needed.
+**Ollama:** kimi-k2.5:cloud installed (free cloud model). Main model for subagents.
 
 ---
 
@@ -382,8 +382,8 @@ Level-up-cards and watchlist-dashboard are started via their own startup scripts
 ---
 
 **Subagent Configuration:**
-- Default subagent model: xai/grok-4-1-fast
-- Fallback: anthropic/claude-haiku-4-5 (if Grok unavailable)
+- Default subagent model: ollama/kimi-k2.5:cloud (free, reasoning)
+- Fallback: xai/grok-4-1-fast (if Kimi unavailable)
 - Config location: `~/.openclaw/openclaw.json` → `agents.defaults.subagents`
 
 **To spawn a subagent for coding tasks:**
