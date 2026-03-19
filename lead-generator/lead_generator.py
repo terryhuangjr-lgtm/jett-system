@@ -33,7 +33,7 @@ WORKSHEET_NAME          = "Leads"
 # ─── LEAD FILTER CRITERIA ─────────────────────────────────────────────────────
 
 MIN_REVIEWS             = 5
-MAX_REVIEWS             = 150
+MAX_REVIEWS             = 500
 MIN_RATING              = 4.0
 SEARCH_RADIUS_METERS    = 8000   # ~5 mile radius per town center
 OUTDATED_CUTOFF_YEAR    = 2022
