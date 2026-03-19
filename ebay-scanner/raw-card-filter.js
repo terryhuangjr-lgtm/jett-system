@@ -35,7 +35,7 @@ class RawCardFilter {
     ];
     this.qualityRules = {
       sellerFeedbackMin: 98,
-      listingAgeMaxDays: 7,
+      listingAgeMaxDays: 60,
       requireImages: true,
       requireRawCards: true
     };

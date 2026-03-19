@@ -711,6 +711,12 @@ See `HEARTBEAT.md` for full monitoring documentation.
 **Commands:** `cd /home/clawd/clawd/ebay-scanner && node run-from-config.js [day]`
 **Status:** ✅ Zero LLM token burn on eBay scans.
 
+### 10. Listing Freshness Expanded to 60 Days
+**Date:** 2026-03-19
+**Problem:** Default listing age was 7-25 days, missing older overlooked auctions.
+**Solution:** Increased `listing_age_max_days` to 60 in `task-manager/ebay-scans-config.json` and default in `raw-card-filter.js`.
+**Status:** ✅ Now scans 60 days of listings to catch more overlooked raw cards.
+
 ---
 
 ## WHAT TO MONITOR

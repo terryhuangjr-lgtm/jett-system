@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "last_updated": "2026-03-18T02:18:11.375Z",
+  "last_updated": "2026-03-19T20:39:38.634Z",
   "global_filters": {
     "graded_keywords": [
       "psa",
@@ -33,7 +33,7 @@
     ],
     "quality_rules": {
       "seller_feedback_min": 98,
-      "listing_age_max_days": 25,
+      "listing_age_max_days": 60,
       "require_raw_cards": true
     },
     "listing_type": "fixed_price",
@@ -59,41 +59,40 @@
         ]
       },
       "output_file": "/tmp/mj-finest-scan.json",
-      "last_run": "2026-03-17T00:23:09.532Z",
+      "last_run": "2026-03-19T23:20:03.696Z",
       "last_results": {
-        "timestamp": "2026-03-17T00:23:09.533Z",
+        "timestamp": "2026-03-19T23:20:03.697Z",
         "success": true
       },
       "last_updated": "2026-03-17T01:30:54.623Z",
       "useVision": true
     },
     "tuesday": {
-      "name": "Griffey Jr Refractors",
+      "name": "Ronald Acuna",
       "enabled": true,
       "search_terms": [
-        "ken griffey jr",
-        "topps chrome",
-        "topps finest",
-        "1994-1999 refractor"
+        "Ronald Acuna Gold Refractors",
+        "Ronald Acuna Auto"
       ],
       "filters": {
         "topN": 20,
         "minPrice": 20,
-        "maxPrice": 500,
+        "maxPrice": 2000,
         "exclude_words": [
           "mystery",
           "custom",
           "pack",
-          "jumbo"
+          "jumbo",
+          "replica"
         ]
       },
       "output_file": "/tmp/griffey-refractors-scan.json",
-      "last_run": "2026-03-17T13:01:19.418Z",
+      "last_run": "2026-03-19T20:41:03.447Z",
       "last_results": {
-        "timestamp": "2026-03-17T13:01:19.418Z",
+        "timestamp": "2026-03-19T20:41:03.447Z",
         "success": true
       },
-      "last_updated": "2026-03-17T02:16:15.565Z",
+      "last_updated": "2026-03-19T20:39:38.630Z",
       "useVision": true
     },
     "wednesday": {
@@ -116,9 +115,9 @@
         "maxPrice": null
       },
       "output_file": "/tmp/kobe-refractors-scan.json",
-      "last_run": "2026-03-11T13:00:20.929Z",
+      "last_run": "2026-03-18T13:00:23.035Z",
       "last_results": {
-        "timestamp": "2026-03-11T13:00:20.929Z",
+        "timestamp": "2026-03-18T13:00:23.035Z",
         "success": true
       },
       "last_updated": "2026-03-18T02:13:06.591Z",
@@ -128,7 +127,7 @@
       "name": "MJ Upper Deck 96-00",
       "enabled": true,
       "search_terms": [
-        "upper deck michael jordan 1996-2000"
+        "upper deck michael jordan 1994-1999"
       ],
       "filters": {
         "topN": 20,
@@ -145,12 +144,12 @@
         ]
       },
       "output_file": "/tmp/mj-upperdeck-scan.json",
-      "last_run": "2026-03-12T13:00:16.090Z",
+      "last_run": "2026-03-19T13:52:43.671Z",
       "last_results": {
-        "timestamp": "2026-03-12T13:00:16.091Z",
+        "timestamp": "2026-03-19T13:52:43.672Z",
         "success": true
       },
-      "last_updated": "2026-03-16T23:05:38.896Z",
+      "last_updated": "2026-03-19T13:51:15.890Z",
       "useVision": true
     },
     "friday": {
@@ -222,7 +221,7 @@
       "enabled": true,
       "search_terms": [
         "1994 Skybox Barry Sanders",
-        "1994-1998 Finest Barry Sanders"
+        "1994-1999 Barry Sanders Finest"
       ],
       "filters": {
         "topN": 20,
@@ -235,12 +234,12 @@
         "maxPrice": null
       },
       "output_file": "/tmp/cam-ward-scan.json",
-      "last_run": "2026-03-16T22:55:33.786Z",
+      "last_run": "2026-03-19T18:15:04.108Z",
       "last_results": {
-        "timestamp": "2026-03-16T22:55:33.786Z",
+        "timestamp": "2026-03-19T18:15:04.109Z",
         "success": true
       },
-      "last_updated": "2026-03-18T02:18:11.377Z",
+      "last_updated": "2026-03-19T20:37:24.143Z",
       "useVision": true
     }
   },
