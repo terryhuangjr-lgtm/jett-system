@@ -87,9 +87,18 @@ class EbayAPIClient {
 
       // Add listing type filter
       if (listingType.length > 0) {
+        // Normalize listing type values (eBay API expects camelCase: FixedPrice, Auction)
+        const normalizedTypes = Array.isArray(listingType) 
+          ? listingType.map(t => {
+              if (t === 'fixed_price') return 'FixedPrice';
+              if (t === 'auction') return 'Auction';
+              return t;
+            })
+          : (listingType === 'fixed_price' ? 'FixedPrice' : listingType);
+        
         params.itemFilter.push({
           name: 'ListingType',
-          value: listingType
+          value: normalizedTypes
         });
       }
 
