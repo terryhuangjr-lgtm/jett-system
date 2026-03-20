@@ -85,9 +85,11 @@ async function multiSearch(searchConfig) {
 
     // Filter to raw cards only
     let filteredItems = uniqueItems;
+    let softRejectItems = [];
     if (rawOnly) {
       filteredItems = rawFilter.filterRawOnly(uniqueItems, cardType);
-      console.log(`After raw filter: ${filteredItems.length} cards (cardType: ${cardType})`);
+      softRejectItems = rawFilter.getSoftRejects(uniqueItems);
+      console.log(`After raw filter: ${filteredItems.length} raw + ${softRejectItems.length} soft-reject (cardType: ${cardType})`);
     }
 
     console.log(`\nScoring ${filteredItems.length} listings...`);
@@ -115,12 +117,53 @@ async function multiSearch(searchConfig) {
     // Filter by minimum score
     const displayItems = scoredItems.filter(item => item.dealScore.score >= minScoreToShow);
 
+    // === VISION OVERRIDE FOR SOFT REJECTS ===
+    let visionOverrideItems = [];
+    if (rawOnly && softRejectItems.length > 0 && useVision) {
+      console.log(`\n👁️  Vision override: scanning ${softRejectItems.length} soft-reject items...`);
+      
+      // Score soft rejects first
+      const softScored = [];
+      for (const item of softRejectItems) {
+        try {
+          const score = scorer.score(item, { foundComps: false });
+          softScored.push({ ...item, dealScore: score });
+        } catch (e) {
+          // skip
+        }
+      }
+      
+      // Run vision on soft rejects
+      if (softScored.length > 0) {
+        const visionFilter = new VisionFilter();
+        const visioned = await visionFilter.filterItems(softScored, softScored.length);
+        
+        // Keep only if vision score >= 7.5 and confidence not low
+        for (const v of visioned) {
+          if (v.visionScore >= 7.5 && v.visionConfidence !== 'low') {
+            v.visionOverride = true;
+            visionOverrideItems.push(v);
+            console.log(`   ✅ Vision OVERRIDE KEEP: ${v.title?.substring(0, 40)}... (vision: ${v.visionScore})`);
+          } else {
+            console.log(`   ❌ Vision OVERRIDE REJECT: ${v.title?.substring(0, 40)}... (vision: ${v.visionScore})`);
+          }
+        }
+      }
+      console.log(`   Vision override saved ${visionOverrideItems.length} items`);
+    }
+
     // Vision scanning (optional - costs ~$0.02 per 30 items)
     let finalItems = displayItems;
     if (useVision && displayItems.length > 0) {
       const visionFilter = new VisionFilter();
       finalItems = await visionFilter.filterItems(displayItems, visionTopN);
       console.log(`After vision filter: ${finalItems.length} listings`);
+    }
+    
+    // Add vision override items to final results
+    if (visionOverrideItems.length > 0) {
+      finalItems = [...finalItems, ...visionOverrideItems];
+      console.log(`After vision override: ${finalItems.length} total listings`);
     }
 
     console.log(`Scored ${scoredItems.length} listings`);

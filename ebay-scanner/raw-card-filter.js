@@ -77,32 +77,42 @@ class RawCardFilter {
 
   /**
    * Check if a card is raw (not graded) and not an excluded item type
+   * Returns: { isRaw: boolean | 'maybe', hard: boolean, reason: string }
    */
   isRawCard(item) {
     const title = (item.title || '').toLowerCase();
     const condition = (item.condition || '').toLowerCase();
 
-    // ALWAYS check title for graded keywords first - this is the most important filter
-    for (const keyword of this.gradedKeywords) {
-      if (title.includes(keyword)) {
-        return false;
+    // Hard rejects - no vision chance
+    if (condition.toLowerCase() === 'graded') {
+      return { isRaw: false, hard: true, reason: 'Condition = Graded' };
+    }
+    
+    // Hard graded keywords - no vision chance
+    const hardGraded = ['psa', 'bgs', 'cgc', 'sgc', 'slab', 'slabbed', 'psa 10', 'bgs 9.5', 'csg'];
+    for (const kw of hardGraded) {
+      if (title.includes(kw)) {
+        return { isRaw: false, hard: true, reason: `Hard graded keyword: ${kw}` };
       }
     }
 
-    // Check for excluded keywords (packs, boxes, etc.)
+    // Check for excluded keywords (packs, boxes, etc.) - hard reject
     for (const keyword of this.excludeKeywords) {
       if (title.includes(keyword)) {
-        return false;
+        return { isRaw: false, hard: true, reason: `Excluded keyword: ${keyword}` };
       }
     }
 
-    // Check condition field - "Graded" means not raw
-    if (condition.toLowerCase() === 'graded') {
-      return false;
+    // Soft rejects - give vision a chance
+    const softGraded = ['graded', 'authenticated', 'certified', 'professional grade'];
+    for (const kw of softGraded) {
+      if (title.includes(kw)) {
+        return { isRaw: 'maybe', hard: false, reason: `Soft graded keyword: ${kw}` };
+      }
     }
 
-    // If title passed all checks and condition is ungraded (or not specified), it's raw
-    return true;
+    // If title passed all checks, it's raw
+    return { isRaw: true, hard: false, reason: 'Passed text filter' };
   }
 
   /**
@@ -138,15 +148,45 @@ class RawCardFilter {
 
   /**
    * Filter an array of items to raw cards only that pass quality rules
+   * Also returns soft-reject items for vision override
    */
   filterRawOnly(items, cardType = 'raw') {
+    // First filter by quality rules
+    const qualityPassed = items.filter(item => this.passesQualityRules(item));
+    
     if (cardType === 'both') {
-      return items.filter(item => this.passesQualityRules(item));
-    } else if (cardType === 'graded') {
-      return items.filter(item => !this.isRawCard(item) && this.passesQualityRules(item));
-    } else {
-      return items.filter(item => this.isRawCard(item) && this.passesQualityRules(item));
+      return qualityPassed;
     }
+    
+    // Separate into raw, soft-reject, and graded
+    const raw = [];
+    const softReject = [];
+    const graded = [];
+    
+    for (const item of qualityPassed) {
+      const result = this.isRawCard(item);
+      if (result.isRaw === true) {
+        raw.push(item);
+      } else if (result.isRaw === 'maybe') {
+        softReject.push(item);
+      } else {
+        graded.push(item);
+      }
+    }
+    
+    if (cardType === 'graded') {
+      return graded;
+    }
+    
+    // Default: raw only (but we'll handle soft rejects separately via getSoftRejects)
+    return raw;
+  }
+  
+  /**
+   * Get soft-reject items that could pass with vision override
+   */
+  getSoftRejects(items) {
+    return items.filter(item => this.isRawCard(item).isRaw === 'maybe');
   }
 
   /**

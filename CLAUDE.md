@@ -732,10 +732,19 @@ See `HEARTBEAT.md` for full monitoring documentation.
 **Solution:** 
 - Increased searchRelevance weight to 45% (from 40%)
 - Decreased listingFreshness to 10% (from 15%)
-- Added perfect-match bonus (+5 pts) for player + year + brand/set all match
+- Added perfect-match bonus (+5 pts) for player + year + brand/set
 - Stronger wrong-year penalty (-2 no year, -4 wrong year)
 **File:** `ebay-scanner/deal-scorer-v2.js`
 **Status:** ✅ Deployed
+
+### 13. Vision Override for Soft Rejects (Mar 2026)
+**Problem:** Cards with "graded" in title (but not PSA/BGS) were being filtered out
+**Solution:**
+- Added soft-reject detection in raw-card-filter.js (keywords: "graded", "authenticated", "certified")
+- Modified multi-search.js to run vision on soft-rejects
+- If vision score >= 7.5 and confidence not low, override and keep as raw
+**Files:** `raw-card-filter.js`, `multi-search.js`
+**Status:** ✅ Deployed (currently 0 soft-rejects because eBay search already filters "graded")
 
 ---
 
