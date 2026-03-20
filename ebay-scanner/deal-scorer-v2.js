@@ -2,11 +2,13 @@
  * Deal Scorer V2 - Comprehensive scoring system
  * Assigns 1-10 score based on multiple factors
  * 
- * UPDATED: Feb 6, 2026
- * - Search Relevance: 40% (HIGHEST PRIORITY)
+ * UPDATED: Mar 20, 2026
+ * - Search Relevance: 45% (INCREASED - HYBRID TWEAK)
  * - Listing Quality: 25% (NM-MT+ ONLY - AUTO-REJECT below)
  * - Seller Quality: 20%
- * - Listing Freshness: 15%
+ * - Listing Freshness: 10% (DECREASED)
+ * - Added perfect-match bonus for player + year + brand
+ * - Stronger wrong-year penalty
  */
 
 class DealScorerV2 {
@@ -15,8 +17,8 @@ class DealScorerV2 {
     this.weights = {
       sellerQuality: 0.20,      // 20% - Trust matters
       listingQuality: 0.25,     // 25% - Photos/condition (NM-MT+ ONLY)
-      searchRelevance: 0.40,    // 40% - Does it match what you want? (HIGHEST PRIORITY)
-      listingFreshness: 0.15    // 15% - Age matters
+      searchRelevance: 0.45,    // 45% - Does it match what you want? (INCREASED)
+      listingFreshness: 0.10    // 10% - Age matters (DECREASED)
     };
   }
 
@@ -475,6 +477,57 @@ class DealScorerV2 {
     }
 
     points += Math.min(3, brandPoints);
+
+    // === HYBRID TWEAK: Perfect Match Bonus ===
+    // Extract expected values from search for bonus calculation
+    const expectedYear = searchYears.length > 0 ? parseInt(searchYears[0]) : null;
+    
+    // Get first player name from searchPlayers if available
+    let expectedPlayer = '';
+    if (searchPlayers && searchPlayers.length > 0) {
+      expectedPlayer = searchPlayers[0].fullName || searchPlayers[0].lastName || '';
+    }
+    
+    // Check for expected brand in search
+    const brandKeywords = ['topps', 'finest', 'chrome', 'bowman', 'panini', 'prizm', 'optic', 'upper deck', 'fleer'];
+    let expectedBrand = '';
+    for (const brand of brandKeywords) {
+      if (search.includes(brand)) {
+        expectedBrand = brand;
+        break;
+      }
+    }
+    
+    // Perfect match bonus: player + year + brand all match
+    let perfectMatchBonus = 0;
+    if (expectedPlayer && expectedYear && expectedBrand) {
+      const titleLower = title.toLowerCase();
+      const playerMatch = expectedPlayer.toLowerCase().split(' ').every(part => titleLower.includes(part));
+      const yearMatch = title.match(new RegExp(expectedYear + '|' + expectedYear.toString().slice(-2)));
+      const brandMatch = titleLower.includes(expectedBrand.toLowerCase());
+      
+      if (playerMatch && yearMatch && brandMatch) {
+        perfectMatchBonus = 5;
+        matches.push('⭐ PERFECT MATCH: Player + Year + Brand');
+      }
+    }
+    
+    // Stronger wrong-year penalty
+    if (expectedYear) {
+      const titleHasYear = title.match(/\d{4}/);
+      if (!titleHasYear) {
+        points -= 2;  // no year at all in title
+        mismatches.push('Missing year in title');
+      } else {
+        const titleYear = parseInt(titleHasYear[0]);
+        if (Math.abs(titleYear - expectedYear) > 5) {
+          points -= 4;  // wrong year (more than 5 years off)
+          mismatches.push(`Wrong year: ${titleYear} vs ${expectedYear}`);
+        }
+      }
+    }
+    
+    points += perfectMatchBonus;
 
     // Clamp to 0-10
     points = Math.max(0, Math.min(10, points));

@@ -727,6 +727,16 @@ See `HEARTBEAT.md` for full monitoring documentation.
 - Increase player/year/brand match weighting in scoring algorithm
 - Better differentiate perfect matches from near-misses
 
+### 12. Hybrid Scoring Tweak (Mar 2026)
+**Problem:** Exact player+year+brand matches weren't ranking high enough
+**Solution:** 
+- Increased searchRelevance weight to 45% (from 40%)
+- Decreased listingFreshness to 10% (from 15%)
+- Added perfect-match bonus (+5 pts) for player + year + brand/set all match
+- Stronger wrong-year penalty (-2 no year, -4 wrong year)
+**File:** `ebay-scanner/deal-scorer-v2.js`
+**Status:** ✅ Deployed
+
 ---
 
 ## WHAT TO MONITOR
