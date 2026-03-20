@@ -273,21 +273,25 @@ function generateReport(keywords, items, topN, duration, stats) {
     const breakdown = score.breakdown;
     const cleanRating = score.rating.replace(/[🔥⚡💰✓~⚠️❌]/g, '').trim();
 
+    // Show more title (up to 80 chars), use currentPrice for actual price
+    const title = item.title ? item.title.substring(0, 80) + (item.title.length > 80 ? '...' : '') : 'N/A';
+    const price = item.currentPrice || item.totalPrice || 'N/A';
+
     lines.push(`\n${i + 1}. [${score.score}/10 - ${cleanRating}]`);
-    lines.push(`   ${item.title}`);
-    lines.push(`   Price: $${item.totalPrice}`);
+    lines.push(`   ${title}`);
+    lines.push(`   Price: $${price}`);
 
     lines.push(`\n   SCORE BREAKDOWN:`);
 
     if (breakdown.sellerQuality) {
       const sq = breakdown.sellerQuality;
       const cleanTrust = sq.trust.replace(/[✅⚠️❌]/g, '').trim();
-      lines.push(`   - Seller (30%): ${sq.points}/${sq.maxPoints} pts | ${sq.feedback}% feedback, ${sq.salesCount} sales (${cleanTrust})`);
+      lines.push(`   - Seller (20%): ${sq.points}/${sq.maxPoints} pts | ${sq.feedback}% feedback, ${sq.salesCount} sales (${cleanTrust})`);
     }
 
     if (breakdown.listingQuality) {
       const lq = breakdown.listingQuality;
-      lines.push(`   - Listing (30%): ${lq.points}/${lq.maxPoints} pts`);
+      lines.push(`   - Listing (20%): ${lq.points}/${lq.maxPoints} pts`);
       if (lq.signals.length > 0) {
         lines.push(`     Positive: ${lq.signals.join(', ')}`);
       }
@@ -298,7 +302,7 @@ function generateReport(keywords, items, topN, duration, stats) {
 
     if (breakdown.searchRelevance) {
       const sr = breakdown.searchRelevance;
-      lines.push(`   - Relevance (25%): ${sr.points}/${sr.maxPoints} pts`);
+      lines.push(`   - Relevance (40%): ${sr.points}/${sr.maxPoints} pts`);
       if (sr.matches && sr.matches.length > 0) {
         lines.push(`     Matches: ${sr.matches.join(', ')}`);
       }
@@ -309,7 +313,12 @@ function generateReport(keywords, items, topN, duration, stats) {
 
     if (breakdown.listingFreshness) {
       const lf = breakdown.listingFreshness;
-      lines.push(`   - Freshness (15%): ${lf.points}/${lf.maxPoints} pts | ${lf.ageInDays !== null ? lf.ageInDays + ' days old' : 'Unknown age'}`);
+      lines.push(`   - Freshness (10%): ${lf.points}/${lf.maxPoints} pts | ${lf.ageInDays !== null ? lf.ageInDays + ' days old' : 'Unknown age'}`);
+    }
+    
+    // Add vision score if available
+    if (item.visionScore) {
+      lines.push(`   - Vision (10%): ${item.visionScore}/10 pts`);
     }
 
     if (score.flags && score.flags.length > 0) {
