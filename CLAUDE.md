@@ -398,7 +398,7 @@ spawn a subagent to [describe task]
 
 **How it works:**
 - Subagents run in parallel with reduced context
-- Uses Grok 4.1-fast by default, falls back to Haiku if unavailable
+- Uses Kimi K2.5:cloud (free via Ollama) by default, falls back to Grok if unavailable
 - Results return to main conversation when complete
 
 ---

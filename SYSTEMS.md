@@ -262,7 +262,7 @@ cd /home/clawd/clawd/ebay-scanner && node run-from-config.js [day]
 ```
 ┌──────────────────┐     ┌──────────────────┐     ┌──────────────────┐
 │ Brave Search     │────▶│ jett-finance-    │────▶│   Telegram        │
-│ + Grok           │     │ monitor.js       │     │   (Personal)     │
+│ + Kimi K2.5     │     │ monitor.js       │     │   (Personal)     │
 └──────────────────┘     └──────────────────┘     └──────────────────┘
 ```
 

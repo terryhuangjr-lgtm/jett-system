@@ -137,6 +137,7 @@ These are scripts, not modular skills — they run via cron or manually.
 **Output:** Telegram DM with relevant headlines + price moves
 **Watchlist:** `memory/jett-finance-watchlist.json`
 **Cron:** 6 AM, 12 PM, 6 PM daily
+**Model:** Kimi K2.5 (free via Ollama) - falls back to Grok on failure
 
 ---
 
