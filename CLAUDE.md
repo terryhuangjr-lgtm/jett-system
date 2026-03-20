@@ -746,6 +746,15 @@ See `HEARTBEAT.md` for full monitoring documentation.
 **Files:** `raw-card-filter.js`, `multi-search.js`
 **Status:** ✅ Deployed (currently 0 soft-rejects because eBay search already filters "graded")
 
+### 14. Tighten Search Query & Excludes (Mar 2026)
+**Problem:** Too many junk items (mystery, pack, lot) in results
+**Solution:**
+- Added comprehensive exclude words to config: mystery, pack, packs, lot, lots, box, sealed, break, bundle, hobby, retail, reprint, blaster, fat pack, mega box
+- Modified ebay-browse-api.js to include custom excludes in eBay query URL (not just post-filter)
+- Excludes now applied at query level for better filtering
+**Files:** `task-manager/ebay-scans-config.json`, `ebay-browse-api.js`
+**Results:** Junk items: 12 → 0
+
 ---
 
 ## WHAT TO MONITOR

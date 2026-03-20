@@ -103,9 +103,13 @@ class EbayBrowseAPI {
         excludeArr = excludeKeywords ? excludeKeywords.split(',').map(k => k.trim()).filter(Boolean) : [];
       }
       
-      // Only send core exclusions to eBay API (URL length limit)
-      // Custom exclusions from config are handled by raw-card-filter.js post-processing
-      const apiExcludes = defaultExcludes.slice(0, 8); // Limit to 8 for URL safety
+      // Combine default excludes with custom excludes for query (eBay API handles filtering)
+      // Filter out multi-word phrases for URL safety, use only single words
+      const customSingleExcludes = (Array.isArray(excludeArr) ? excludeArr : [])
+        .filter(k => !k.includes(' ') && k.length < 20)
+        .slice(0, 15);  // Allow more excludes now
+      const allExcludes = [...new Set([...defaultExcludes, ...customSingleExcludes])];
+      const apiExcludes = allExcludes.slice(0, 20); // Limit to 20 for URL safety
       const negativeStr = apiExcludes.map(k => `-${k}`).join(' ');
       query = `${keywords} ${negativeStr}`;
 
@@ -134,9 +138,9 @@ class EbayBrowseAPI {
 
       // Listing type filter
       if (listingType === 'fixed_price') {
-        filters.push('buyingOptions:{FIXED_PRICE}');
+        filters.push('buyingOptions:FIXED_PRICE');
       } else if (listingType === 'auction') {
-        filters.push('buyingOptions:{AUCTION}');
+        filters.push('buyingOptions:AUCTION');
       }
       // If 'both' - no filter needed
 

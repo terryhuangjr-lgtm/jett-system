@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "last_updated": "2026-03-19T20:39:38.634Z",
+  "last_updated": "2026-03-20T00:28:15.701Z",
   "global_filters": {
     "graded_keywords": [
       "psa",
@@ -29,11 +29,26 @@
       "cgs",
       "hga",
       "fan",
-      "lot"
+      "lot",
+      "pack",
+      "packs",
+      "box",
+      "boxes",
+      "sealed",
+      "break",
+      "bundle",
+      "hobby",
+      "retail",
+      "jumbo",
+      "reprint",
+      "reproduction",
+      "blaster",
+      "fat pack",
+      "mega box"
     ],
     "quality_rules": {
-      "seller_feedback_min": 97,
-      "listing_age_max_days": 60,
+      "seller_feedback_min": 98,
+      "listing_age_max_days": 25,
       "require_raw_cards": true
     },
     "listing_type": "fixed_price",
@@ -55,13 +70,27 @@
           "refractor",
           "prizm",
           "jumbo",
-          "custom"
+          "custom",
+          "pack",
+          "packs",
+          "lot",
+          "lots",
+          "box",
+          "sealed",
+          "break",
+          "bundle",
+          "hobby",
+          "retail",
+          "reprint",
+          "blaster",
+          "fat pack",
+          "mega box"
         ]
       },
       "output_file": "/tmp/mj-finest-scan.json",
-      "last_run": "2026-03-19T23:52:29.059Z",
+      "last_run": "2026-03-20T13:13:31.983Z",
       "last_results": {
-        "timestamp": "2026-03-19T23:52:29.059Z",
+        "timestamp": "2026-03-20T13:13:31.983Z",
         "success": true
       },
       "last_updated": "2026-03-17T01:30:54.623Z",
@@ -71,8 +100,8 @@
       "name": "Ronald Acuna",
       "enabled": true,
       "search_terms": [
-        "Ronald Acuna Gold Refractors",
-        "Ronald Acuna Auto"
+        "Ronald Acuna Gold Refractors 2019-2021",
+        "Ronald Acuna Auto 2019-2021"
       ],
       "filters": {
         "topN": 20,
@@ -87,12 +116,12 @@
         ]
       },
       "output_file": "/tmp/griffey-refractors-scan.json",
-      "last_run": "2026-03-19T20:41:03.447Z",
+      "last_run": "2026-03-17T13:01:19.418Z",
       "last_results": {
-        "timestamp": "2026-03-19T20:41:03.447Z",
+        "timestamp": "2026-03-17T13:01:19.418Z",
         "success": true
       },
-      "last_updated": "2026-03-19T20:39:38.630Z",
+      "last_updated": "2026-03-20T00:27:25.712Z",
       "useVision": true
     },
     "wednesday": {
@@ -177,9 +206,9 @@
         "minPrice": 15
       },
       "output_file": "/tmp/topps-refractors-multi-scan.json",
-      "last_run": "2026-03-17T01:41:09.876Z",
+      "last_run": "2026-03-20T13:01:28.878Z",
       "last_results": {
-        "timestamp": "2026-03-17T01:41:09.876Z",
+        "timestamp": "2026-03-20T13:01:28.878Z",
         "success": true
       },
       "last_updated": "2026-03-18T02:15:24.150Z",
