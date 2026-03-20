@@ -478,7 +478,7 @@ class DealScorerV2 {
 
     points += Math.min(3, brandPoints);
 
-    // === HYBRID TWEAK: Perfect Match Bonus ===
+    // === HYBRID TWEAK: Enhanced Perfect Match Bonus ===
     // Extract expected values from search for bonus calculation
     const expectedYear = searchYears.length > 0 ? parseInt(searchYears[0]) : null;
     
@@ -507,8 +507,18 @@ class DealScorerV2 {
       const brandMatch = titleLower.includes(expectedBrand.toLowerCase());
       
       if (playerMatch && yearMatch && brandMatch) {
-        perfectMatchBonus = 5;
+        perfectMatchBonus = 6;  // increased from 5
         matches.push('⭐ PERFECT MATCH: Player + Year + Brand');
+      }
+    }
+    
+    // Extra set-specific bonus (Finest, Prizm, Optic, Select, Chrome, etc.)
+    const premiumSets = ['finest', 'prizm', 'optic', 'select', 'chrome', 'update'];
+    for (const set of premiumSets) {
+      if (title.toLowerCase().includes(set)) {
+        perfectMatchBonus += 2;
+        matches.push(`Premium set: ${set}`);
+        break;
       }
     }
     

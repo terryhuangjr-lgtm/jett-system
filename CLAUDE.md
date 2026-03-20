@@ -755,6 +755,14 @@ See `HEARTBEAT.md` for full monitoring documentation.
 **Files:** `task-manager/ebay-scans-config.json`, `ebay-browse-api.js`
 **Results:** Junk items: 12 → 0
 
+### 15. Further Title Accuracy Boost (Mar 2026)
+**Problem:** Exact player+year+brand matches needed more weight
+**Solution:**
+- Increased perfect-match bonus: 5 → 6 points
+- Added premium set bonus: +2 for Finest, Prizm, Optic, Select, Chrome, Update
+- Results now show "Premium set: finest" in relevance matches
+**File:** `deal-scorer-v2.js`
+
 ---
 
 ## WHAT TO MONITOR
