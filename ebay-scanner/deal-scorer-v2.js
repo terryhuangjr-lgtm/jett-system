@@ -3,12 +3,13 @@
  * Assigns 1-10 score based on multiple factors
  * 
  * UPDATED: Mar 20, 2026
- * - Search Relevance: 45% (INCREASED - HYBRID TWEAK)
- * - Listing Quality: 25% (NM-MT+ ONLY - AUTO-REJECT below)
+ * - Search Relevance: 40%
+ * - Listing Quality: 20%
  * - Seller Quality: 20%
- * - Listing Freshness: 10% (DECREASED)
+ * - Listing Freshness: 10%
+ * - Vision Score: 10% (NEW - image condition matters)
  * - Added perfect-match bonus for player + year + brand
- * - Stronger wrong-year penalty
+ * - Premium set bonus
  */
 
 class DealScorerV2 {
@@ -16,9 +17,10 @@ class DealScorerV2 {
     this.searchKeywords = searchKeywords.toLowerCase();
     this.weights = {
       sellerQuality: 0.20,      // 20% - Trust matters
-      listingQuality: 0.25,     // 25% - Photos/condition (NM-MT+ ONLY)
-      searchRelevance: 0.45,    // 45% - Does it match what you want? (INCREASED)
-      listingFreshness: 0.10    // 10% - Age matters (DECREASED)
+      listingQuality: 0.20,     // 20% - Photos/condition
+      searchRelevance: 0.40,   // 40% - Does it match what you want?
+      listingFreshness: 0.10,   // 10% - Age matters
+      visionScore: 0.10         // 10% - Image condition (NEW)
     };
   }
 
@@ -51,12 +53,16 @@ class DealScorerV2 {
     const relevanceScore = this.scoreSearchRelevance(item);
     const freshnessScore = this.scoreListingFreshness(item);
 
+    // Get vision score from item (if available from vision filter)
+    const visionScore = item.visionScore || null;
+
     // Calculate weighted total
     const totalScore = (
       ((sellerScore.points || 0) * this.weights.sellerQuality) +
       ((qualityScore.points || 0) * this.weights.listingQuality) +
       ((relevanceScore.points || 0) * this.weights.searchRelevance) +
-      ((freshnessScore.points || 0) * this.weights.listingFreshness)
+      ((freshnessScore.points || 0) * this.weights.listingFreshness) +
+      ((visionScore || 0) * this.weights.visionScore)
     );
 
     // Normalize to 1-10 scale
@@ -69,7 +75,8 @@ class DealScorerV2 {
         sellerQuality: sellerScore,
         listingQuality: qualityScore,
         searchRelevance: relevanceScore,
-        listingFreshness: freshnessScore
+        listingFreshness: freshnessScore,
+        visionScore: { points: visionScore || 0, maxPoints: 10 }
       },
       flags: this.getFlags(item, null, {
         sellerScore,

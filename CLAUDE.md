@@ -763,6 +763,14 @@ See `HEARTBEAT.md` for full monitoring documentation.
 - Results now show "Premium set: finest" in relevance matches
 **File:** `deal-scorer-v2.js`
 
+### 16. Vision Score Weighting (Mar 2026)
+**Problem:** Image condition wasn't directly impacting final ranking
+**Solution:**
+- Added 10% weight for visionScore in deal scorer
+- Weights now: Seller 20%, Quality 20%, Relevance 40%, Freshness 10%, Vision 10%
+- Cards with better vision scores (corners, centering, surface) now rank higher
+**File:** `deal-scorer-v2.js`
+
 ---
 
 ## WHAT TO MONITOR
