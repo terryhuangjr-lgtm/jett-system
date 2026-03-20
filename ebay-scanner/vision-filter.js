@@ -95,14 +95,13 @@ class VisionFilter {
 SCORING RULES:
 - corners: Score what you can actually see. 10=perfect sharp corners, 1=badly rounded/worn
 - centering: Score left/right and top/bottom ratio. 10=60/40 or better, 1=severely off-center
-- surface: ONLY score if surface issues are clearly visible (scratches, print lines, creases). 
-  If you cannot clearly assess surface from this angle/lighting, score 7 as neutral default.
-- overall: Weight corners 40%, centering 40%, surface 20% since edges/back are not visible
+- surface: IGNORE - do not score surface. Always return 7 as neutral default.
+- overall: Weight corners 50%, centering 50%. Surface is NOT factored in.
 - skip: Set true ONLY if corners are clearly worn/rounded OR centering is worse than 70/30 
   OR there are obvious creases/writing visible. Do NOT skip for lighting or glare issues.
 - confidence: "high" if card is clearly visible, "medium" if partial, "low" if too small/dark
 
-Be strict on what you CAN see. Be neutral on what you CANNOT see.
+Be strict on corners and centering. Ignore surface entirely.
 If image is too small, dark, or obscured to assess properly, return overall:6 skip:false confidence:low`
             }
           ]
@@ -116,11 +115,27 @@ If image is too small, dark, or obscured to assess properly, return overall:6 sk
       }
 
       const result = JSON.parse(jsonMatch[0]);
+      
+      // Calculate overall score based ONLY on corners and centering (50/50)
+      // Surface is ignored per user's request
+      let cornersScore = result.corners || 5;
+      let centeringScore = result.centering || 5;
+      
+      // Apply stricter penalties for bad corners/centering
+      if (cornersScore < 6) {
+        cornersScore = cornersScore * 0.7; // Heavy penalty for bad corners
+      }
+      if (centeringScore < 6) {
+        centeringScore = centeringScore * 0.7; // Heavy penalty for bad centering
+      }
+      
+      const overallScore = Math.round((cornersScore + centeringScore) / 2);
+      
       return {
-        score: result.overall || 5,
+        score: overallScore,
         corners: result.corners || 5,
         centering: result.centering || 5,
-        surface: result.surface || 5,
+        surface: 7, // Ignored - always neutral
         skip: result.skip || false,
         issues: result.issues || [],
         reason: result.issues?.join(', ') || 'Passed vision check'

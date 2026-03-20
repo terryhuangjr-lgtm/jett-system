@@ -771,6 +771,15 @@ See `HEARTBEAT.md` for full monitoring documentation.
 - Cards with better vision scores (corners, centering, surface) now rank higher
 **File:** `deal-scorer-v2.js`
 
+### 17. Vision Focus - Corners & Centering Only (Mar 2026)
+**Problem:** Surface is impossible to assess reliably from card images
+**Solution:**
+- Removed surface from vision scoring entirely
+- Vision now ONLY scores corners (50%) and centering (50%)
+- Added heavy penalty for bad corners/centering (< 6 = 30% off)
+- 27 cards passed vision vs 53 before (much stricter)
+**File:** `vision-filter.js`
+
 ---
 
 ## WHAT TO MONITOR
