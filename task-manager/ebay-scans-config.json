@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "last_updated": "2026-03-20T00:28:15.701Z",
+  "last_updated": "2026-03-20T13:19:57.176Z",
   "global_filters": {
     "graded_keywords": [
       "psa",
@@ -29,22 +29,7 @@
       "cgs",
       "hga",
       "fan",
-      "lot",
-      "pack",
-      "packs",
-      "box",
-      "boxes",
-      "sealed",
-      "break",
-      "bundle",
-      "hobby",
-      "retail",
-      "jumbo",
-      "reprint",
-      "reproduction",
-      "blaster",
-      "fat pack",
-      "mega box"
+      "lot"
     ],
     "quality_rules": {
       "seller_feedback_min": 98,
@@ -70,27 +55,13 @@
           "refractor",
           "prizm",
           "jumbo",
-          "custom",
-          "pack",
-          "packs",
-          "lot",
-          "lots",
-          "box",
-          "sealed",
-          "break",
-          "bundle",
-          "hobby",
-          "retail",
-          "reprint",
-          "blaster",
-          "fat pack",
-          "mega box"
+          "custom"
         ]
       },
       "output_file": "/tmp/mj-finest-scan.json",
-      "last_run": "2026-03-20T13:13:31.983Z",
+      "last_run": "2026-03-17T00:23:09.532Z",
       "last_results": {
-        "timestamp": "2026-03-20T13:13:31.983Z",
+        "timestamp": "2026-03-17T00:23:09.533Z",
         "success": true
       },
       "last_updated": "2026-03-17T01:30:54.623Z",
@@ -109,6 +80,7 @@
         "maxPrice": 2000,
         "exclude_words": [
           "mystery",
+          "mojo",
           "custom",
           "pack",
           "jumbo",
@@ -121,7 +93,7 @@
         "timestamp": "2026-03-17T13:01:19.418Z",
         "success": true
       },
-      "last_updated": "2026-03-20T00:27:25.712Z",
+      "last_updated": "2026-03-20T13:19:57.170Z",
       "useVision": true
     },
     "wednesday": {
@@ -206,9 +178,9 @@
         "minPrice": 15
       },
       "output_file": "/tmp/topps-refractors-multi-scan.json",
-      "last_run": "2026-03-20T13:01:28.878Z",
+      "last_run": "2026-03-17T01:41:09.876Z",
       "last_results": {
-        "timestamp": "2026-03-20T13:01:28.878Z",
+        "timestamp": "2026-03-17T01:41:09.876Z",
         "success": true
       },
       "last_updated": "2026-03-18T02:15:24.150Z",
