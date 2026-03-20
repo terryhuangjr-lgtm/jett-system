@@ -57,15 +57,14 @@ function sendResultsEmail(outputFile, day, scanName) {
       <th style="padding: 8px; text-align: left; border-bottom: 1px solid #ddd;">Title</th>
       <th style="padding: 8px; text-align: right; border-bottom: 1px solid #ddd;">Price</th>
       <th style="padding: 8px; text-align: center; border-bottom: 1px solid #ddd;">Score</th>
-      <th style="padding: 8px; text-align: left; border-bottom: 1px solid #ddd;">Seller</th>
     </tr>`;
 
     topResults.forEach((item, i) => {
       const score = item.dealScore?.score || 'N/A';
       const scoreColor = score >= 8 ? '#22c55e' : score >= 7 ? '#f59e0b' : '#ef4444';
-      const title = (item.title || '').substring(0, 50) + ((item.title || '').length > 50 ? '...' : '');
-      const price = item.totalPrice ? `$${item.totalPrice.toFixed(2)}` : 'N/A';
-      const seller = item.sellerUsername || 'N/A';
+      // Show more title (80 chars), use currentPrice for actual price
+      const title = (item.title || '').substring(0, 80) + ((item.title || '').length > 80 ? '...' : '');
+      const price = item.currentPrice ? `$${item.currentPrice.toFixed(2)}` : (item.totalPrice ? `$${item.totalPrice.toFixed(2)}` : 'N/A');
       
       html += `<tr style="${i % 2 === 0 ? 'background: #fff;' : 'background: #fafafa;'}">
         <td style="padding: 6px 8px; border-bottom: 1px solid #eee;">${i + 1}</td>
@@ -74,7 +73,6 @@ function sendResultsEmail(outputFile, day, scanName) {
         </td>
         <td style="padding: 6px 8px; border-bottom: 1px solid #eee; text-align: right; font-weight: bold;">${price}</td>
         <td style="padding: 6px 8px; border-bottom: 1px solid #eee; text-align: center; color: ${scoreColor}; font-weight: bold;">${score}</td>
-        <td style="padding: 6px 8px; border-bottom: 1px solid #eee;">${seller}</td>
       </tr>`;
     });
 
