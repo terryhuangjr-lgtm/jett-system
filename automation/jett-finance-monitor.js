@@ -72,10 +72,12 @@ function getSecret(name) {
 }
 
 /**
- * Load xAI API key
+ * Load xAI API key and Ollama settings
  */
 let XAI_API_KEY = '';
 let XAI_MODEL = 'grok-4-1-fast';
+let USE_KIMI = true;  // Use Kimi (free via Ollama) by default
+let OLLAMA_API_KEY = 'ollama-local';
 
 try {
   const config = JSON.parse(fs.readFileSync(path.join(process.env.HOME, '.openclaw', 'openclaw.json'), 'utf8'));
@@ -209,6 +211,35 @@ Create a well-organized Telegram message with:
 
 Keep the total message under 1500 characters.`;
 
+  // Try Kimi via Ollama first (free)
+  if (USE_KIMI) {
+    try {
+      const response = await fetch('http://localhost:11434/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${OLLAMA_API_KEY}`
+        },
+        body: JSON.stringify({
+          model: 'kimi-k2.5:cloud',
+          messages: [{ role: 'user', content: prompt }],
+          stream: false
+        })
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        if (data.choices?.[0]?.message?.content) {
+          console.log('   ✓ Used Kimi K2.5 (free)');
+          return data.choices[0].message.content;
+        }
+      }
+    } catch (e) {
+      console.log(`   ⚠️ Kimi failed: ${e.message}`);
+    }
+  }
+
+  // Fallback to Grok if Kimi fails
   try {
     const response = await fetch('https://api.x.ai/v1/chat/completions', {
       method: 'POST',
@@ -224,6 +255,7 @@ Keep the total message under 1500 characters.`;
     });
 
     const data = await response.json();
+    console.log('   ✓ Used Grok (fallback)');
     return data.choices?.[0]?.message?.content || formatFallback(results);
     
   } catch (e) {
