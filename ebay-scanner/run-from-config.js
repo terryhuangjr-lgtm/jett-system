@@ -64,7 +64,8 @@ function sendResultsEmail(outputFile, day, scanName) {
       const scoreColor = score >= 8 ? '#22c55e' : score >= 7 ? '#f59e0b' : '#ef4444';
       // Show more title (80 chars), use currentPrice for actual price
       const title = (item.title || '').substring(0, 80) + ((item.title || '').length > 80 ? '...' : '');
-      const price = item.currentPrice ? `$${item.currentPrice.toFixed(2)}` : (item.totalPrice ? `$${item.totalPrice.toFixed(2)}` : 'N/A');
+      // Simple price - just use currentPrice directly, format nicely
+      const price = item.currentPrice !== undefined ? '$' + Number(item.currentPrice).toFixed(2) : (item.totalPrice ? '$' + Number(item.totalPrice).toFixed(2) : 'N/A');
       
       html += `<tr style="${i % 2 === 0 ? 'background: #fff;' : 'background: #fafafa;'}">
         <td style="padding: 6px 8px; border-bottom: 1px solid #eee;">${i + 1}</td>
