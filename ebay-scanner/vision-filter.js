@@ -129,10 +129,19 @@ If image is too small, dark, or obscured to assess properly, return overall:6 sk
         centeringScore = centeringScore * 0.7; // Heavy penalty for bad centering
       }
       
-      const overallScore = Math.round((cornersScore + centeringScore) / 2);
-      
+      const rawScore = (cornersScore + centeringScore) / 2;
+
+      // Apply confidence multiplier
+      const confidenceMultiplier = 
+        result.confidence === 'high' ? 1.0 :
+        result.confidence === 'medium' ? 0.85 :
+        0.7;
+
+      const overallScore = Math.round(rawScore * confidenceMultiplier);
+
       return {
         score: overallScore,
+        confidence: result.confidence || 'medium',
         corners: result.corners || 5,
         centering: result.centering || 5,
         surface: 7, // Ignored - always neutral

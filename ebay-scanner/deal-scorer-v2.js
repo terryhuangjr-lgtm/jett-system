@@ -17,10 +17,10 @@ class DealScorerV2 {
     this.searchKeywords = searchKeywords.toLowerCase();
     this.weights = {
       sellerQuality: 0.20,      // 20% - Trust matters
-      listingQuality: 0.20,     // 20% - Photos/condition
+      listingQuality: 0.15,     // 15% - Photos/condition (reduced)
       searchRelevance: 0.40,   // 40% - Does it match what you want?
-      listingFreshness: 0.10,   // 10% - Age matters
-      visionScore: 0.10         // 10% - Image condition (NEW)
+      listingFreshness: 0.15,  // 15% - Age matters (increased)
+      visionScore: 0.10        // 10% - Image condition (NEW)
     };
   }
 
@@ -52,6 +52,22 @@ class DealScorerV2 {
     
     const relevanceScore = this.scoreSearchRelevance(item);
     const freshnessScore = this.scoreListingFreshness(item);
+
+    // Auto-reject if relevance is too low - wrong card at any quality = skip
+    if (relevanceScore.points < 4) {
+      return {
+        score: 0,
+        rating: '❌ REJECTED - LOW RELEVANCE',
+        breakdown: {
+          sellerQuality: sellerScore,
+          listingQuality: qualityScore,
+          searchRelevance: relevanceScore,
+          listingFreshness: freshnessScore
+        },
+        flags: ['❌ Relevance too low - likely wrong card'],
+        disqualified: true
+      };
+    }
 
     // Get vision score from item (if available from vision filter)
     const visionScore = item.visionScore || null;
@@ -185,39 +201,32 @@ class DealScorerV2 {
     // If we got here, card passes NM-MT+ filter - continue scoring
     // ═══════════════════════════════════════════════════════════════
 
-    // Photo count (estimate from image presence)
+    // Base points for having photos
     const hasImage = !!item.imageUrl;
     if (hasImage) {
-      points += 5;
+      points += 4;
       signals.push('Has photos');
     } else {
       redFlags.push('No photos');
     }
 
-    // Positive signals (only score if NM-MT+)
-    if (title.includes('pack fresh') || title.includes('investment')) {
-      points += 2.5;
-      signals.push('Investment grade');
-    }
+    // Premium condition signals
+    const premiumSignals = [
+      { keywords: ['pack fresh', 'pack-fresh'], points: 2.5, label: 'Pack fresh' },
+      { keywords: ['investment', 'investment grade'], points: 2, label: 'Investment grade' },
+      { keywords: ['gem mint', 'gem-mint'], points: 2, label: 'Gem mint claimed' },
+      { keywords: ['psa 10', 'bgs 10', 'pristine'], points: 2, label: 'Perfect grade' },
+      { keywords: ['mint', 'sharp corners'], points: 1, label: 'Mint condition' },
+      { keywords: ['nm-mt', 'near mint', 'nm mt'], points: 1, label: 'NM-MT condition' },
+      { keywords: ['centered', 'well centered'], points: 1, label: 'Well centered' },
+      { keywords: ['no creases', 'no wear', 'clean'], points: 0.5, label: 'Clean condition' }
+    ];
 
-    if (title.includes('mint') || title.includes('gem')) {
-      points += 1;
-      signals.push('Mint condition claimed');
-    }
-
-    if (title.includes('nm') || title.includes('near mint') || title.includes('nm-mt')) {
-      points += 1;
-      signals.push('NM-MT condition');
-    }
-
-    if (title.includes('psa 7') || title.includes('psa 8') || title.includes('psa 9') || title.includes('psa 10')) {
-      points += 2;
-      signals.push('High grade (PSA 7+)');
-    }
-
-    if (title.includes('bgs 7') || title.includes('bgs 8') || title.includes('bgs 9')) {
-      points += 2;
-      signals.push('High grade (BGS 7+)');
+    for (const signal of premiumSignals) {
+      if (signal.keywords.some(k => title.includes(k))) {
+        points += signal.points;
+        signals.push(signal.label);
+      }
     }
 
     // Clamp to 0-10
@@ -595,11 +604,17 @@ class DealScorerV2 {
     if (ageInDays < 1) {
       points = 10;
       tier = 'Listed <24 hours - FRESH';
+    } else if (ageInDays <= 3) {
+      points = 8;
+      tier = 'Listed 1-3 days';
     } else if (ageInDays <= 7) {
-      points = 5;
+      points = 6;
       tier = 'Listed this week';
+    } else if (ageInDays <= 14) {
+      points = 4;
+      tier = 'Listed 2 weeks ago';
     } else if (ageInDays <= 30) {
-      points = 2.5;
+      points = 2;
       tier = 'Listed this month';
     } else {
       points = 0;
