@@ -1278,11 +1278,11 @@ async function loadEbayConfig() {
     const gf = data.global_filters?.quality_rules || {};
     const gl = data.global_filters || {};
     const lt = gl.listing_type || 'fixed_price';
-    const ct = gl.card_type || 'raw';
+    const ct = data.cardMode || 'raw';
     const ltLabel = {fixed_price:'BIN only', auction:'Auctions', both:'BIN+Auction'}[lt];
-    const ctLabel = {raw:'Raw', graded:'Graded', both:'Raw+Graded'}[ct];
+    const ctLabel = {raw:'Raw', graded:'Graded'}[ct];
     document.getElementById('ebayGlobalSummary').innerHTML =
-      `${ltLabel} · ${ctLabel} · Seller ≥${gf.seller_feedback_min||98}% · ${gf.listing_age_max_days||25}d max · ${gf.require_raw_cards?'Raw':'All'}`;
+      `${ltLabel} · ${ctLabel} · Seller ≥${gf.seller_feedback_min||98}% · ${gf.listing_age_max_days||25}d max`;
 
     // Day cards - compact
     document.getElementById('ebayDayCards').innerHTML = DAY_ORDER.map((day, i) => {
@@ -1495,18 +1495,13 @@ function openGlobalModal() {
           <div style="display:flex;flex-direction:column;gap:6px">
             <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:12px;color:var(--text-secondary)">
               <input type="radio" name="cardType" value="raw" id="ct-raw" style="accent-color:var(--accent)"
-                ${(gf.card_type||'raw')==='raw'?'checked':''}>
+                ${(gf.cardMode||'raw')==='raw'?'checked':''}>
               Raw only
             </label>
             <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:12px;color:var(--text-secondary)">
               <input type="radio" name="cardType" value="graded" id="ct-graded" style="accent-color:var(--accent)"
-                ${gf.card_type==='graded'?'checked':''}>
+                ${gf.cardMode==='graded'?'checked':''}>
               Graded only
-            </label>
-            <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:12px;color:var(--text-secondary)">
-              <input type="radio" name="cardType" value="both" id="ct-both" style="accent-color:var(--accent)"
-                ${gf.card_type==='both'?'checked':''}>
-              Both
             </label>
           </div>
         </div>
@@ -1549,13 +1544,10 @@ async function saveModalData() {
     if (!updated.global_filters.quality_rules) updated.global_filters.quality_rules = {};
     updated.global_filters.quality_rules.seller_feedback_min = parseInt(document.getElementById('modal-feedback').value)||98;
     updated.global_filters.quality_rules.listing_age_max_days = parseInt(document.getElementById('modal-age').value)||25;
-    updated.global_filters.quality_rules.require_raw_cards = document.getElementById('modal-raw').checked;
-    updated.global_filters.graded_keywords = document.getElementById('modal-keywords').value
-      .split(',').map(s=>s.trim()).filter(Boolean);
+    updated.cardMode = 
+      document.querySelector('input[name="cardType"]:checked')?.value || 'raw';
     updated.global_filters.listing_type = 
       document.querySelector('input[name="listingType"]:checked')?.value || 'fixed_price';
-    updated.global_filters.card_type = 
-      document.querySelector('input[name="cardType"]:checked')?.value || 'raw';
   }
 
   try {
