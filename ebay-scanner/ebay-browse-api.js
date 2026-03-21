@@ -84,7 +84,8 @@ class EbayBrowseAPI {
         excludeKeywords = [],
         condition,
         limit = 200,
-        listingType = 'fixed_price'
+        listingType = 'fixed_price',
+        cardType = 'raw'
       } = params;
 
       // Build query
@@ -93,9 +94,10 @@ class EbayBrowseAPI {
       // Build negative keywords for eBay native filtering
       // eBay Browse API supports -(keyword) syntax in the q parameter
       // NOTE: Multi-word exclusions like "fan made" don't work - they act as OR
-      const defaultExcludes = [
+      // Only exclude graded keywords when looking for RAW cards
+      const defaultExcludes = (cardType === 'raw' || !cardType) ? [
         'psa', 'bgs', 'cgc', 'sgc', 'graded', 'slab'
-      ];
+      ] : [];
       
       // Handle both string and array for excludeKeywords
       let excludeArr = excludeKeywords;

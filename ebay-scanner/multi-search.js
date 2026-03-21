@@ -63,6 +63,7 @@ async function multiSearch(searchConfig) {
         maxPrice,
         excludeKeywords,
         listingType,
+        cardType,
         sortOrder: 'PricePlusShippingLowest',
         limit: 200
       });
