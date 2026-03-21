@@ -14,8 +14,8 @@ class DealScorerGraded {
     this.weights = {
       sellerQuality: 0.25,      // 25% - Trust matters more for slabs
       searchRelevance: 0.40,   // 40% - Does it match what you want?
-      gradeMatch: 0.20,         // 20% - Grade accuracy (PSA 10 vs 9)
-      listingFreshness: 0.15   // 15% - Age matters
+      gradeMatch: 0.25,         // 25% - Grade accuracy (PSA 10 vs 9)
+      listingFreshness: 0.10   // 10% - Age matters (many slabs don't have dates)
       // NO vision weight - not applicable for graded
     };
   }
@@ -191,10 +191,19 @@ class DealScorerGraded {
 
     // Player name matching
     const playerPatterns = [
+      // Basketball
       'michael jordan', 'mike jordan', 'jordan',
       'kobe bryant', 'kobe',
       'lebron james', 'lebron',
-      'michael', 'mike'
+      // Baseball
+      'ronald acuna', 'acuna',
+      'mike trout', 'trout',
+      'shohei ohtani', 'ohtani',
+      'aaron judge', 'judge',
+      'mookie betts', 'betts',
+      'juan soto', 'soto',
+      'freddie freeman', 'freeman',
+      'manny machado', 'machado'
     ];
 
     for (const player of playerPatterns) {
