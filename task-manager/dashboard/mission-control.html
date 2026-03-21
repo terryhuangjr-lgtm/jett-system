@@ -368,7 +368,7 @@
       <div class="card" style="margin-bottom:12px" id="ebayGlobalCard">
         <div style="display:flex;align-items:center;justify-content:space-between">
           <div class="card-label">Global Filters</div>
-          <button class="btn" onclick="openGlobalModal()" style="font-size:11px;padding:4px 10px">Edit</button>
+          <button class="btn" id="editGlobalBtn" style="font-size:11px;padding:4px 10px">Edit</button>
         </div>
         <div id="ebayGlobalSummary" style="font-size:11px;color:var(--text-secondary);margin-top:6px">Loading...</div>
       </div>
@@ -1269,6 +1269,11 @@ let currentModalType = null;
 const DAY_ORDER = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];
 const DAY_LABELS = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
 
+// Attach global edit button listener
+document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById('editGlobalBtn')?.addEventListener('click', openGlobalModal);
+});
+
 async function loadEbayConfig() {
   try {
     const data = await apiFetch('/api/ebay/config');
@@ -1439,6 +1444,7 @@ function openDayModal(day) {
 }
 
 function openGlobalModal() {
+  console.log('Opening global modal...');
   currentModalType = 'global';
   currentModalDay = null;
   const gf = ebayConfigData.global_filters || {};
