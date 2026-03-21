@@ -41,11 +41,10 @@
         ]
       },
       "output_file": "/tmp/mj-finest-scan.json",
-      "last_run": "2026-03-21T18:45:39.919Z",
+      "last_run": "2026-03-21T18:50:23.955Z",
       "last_results": {
-        "timestamp": "2026-03-21T18:45:39.919Z",
-        "success": false,
-        "error": "Command failed: node multi-search.js topps finest michael jordan 1994-1999 --topN 25 --output /tmp/mj-finest-scan.json --minPrice 10 --maxPrice 150 --exclude mystery,refractor,prizm,jumbo,custom --vision --listing-type both --card-mode raw"
+        "timestamp": "2026-03-21T18:50:23.956Z",
+        "success": true
       },
       "last_updated": "2026-03-17T01:30:54.623Z",
       "useVision": true

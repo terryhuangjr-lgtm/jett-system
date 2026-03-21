@@ -1,6 +1,182 @@
 {
   "runs": [
     {
+      "time": "2026-03-21T11:43:17.974Z",
+      "success": true,
+      "areas": [
+        {
+          "area": "Bitcoin & ETFs",
+          "count": 5
+        },
+        {
+          "area": "AI & Tech",
+          "count": 0
+        },
+        {
+          "area": "Energy",
+          "count": 0
+        },
+        {
+          "area": "Real Estate",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "time": "2026-03-20T22:01:19.956Z",
+      "success": true,
+      "areas": [
+        {
+          "area": "Bitcoin & ETFs",
+          "count": 5
+        },
+        {
+          "area": "AI & Tech",
+          "count": 0
+        },
+        {
+          "area": "Energy",
+          "count": 0
+        },
+        {
+          "area": "Real Estate",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "time": "2026-03-20T16:00:48.691Z",
+      "success": true,
+      "areas": [
+        {
+          "area": "Bitcoin & ETFs",
+          "count": 5
+        },
+        {
+          "area": "AI & Tech",
+          "count": 0
+        },
+        {
+          "area": "Energy",
+          "count": 0
+        },
+        {
+          "area": "Real Estate",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "time": "2026-03-20T12:38:11.674Z",
+      "success": true,
+      "areas": [
+        {
+          "area": "Bitcoin & ETFs",
+          "count": 5
+        },
+        {
+          "area": "AI & Tech",
+          "count": 0
+        },
+        {
+          "area": "Energy",
+          "count": 0
+        },
+        {
+          "area": "Real Estate",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "time": "2026-03-20T12:22:43.998Z",
+      "success": true,
+      "areas": [
+        {
+          "area": "Bitcoin & ETFs",
+          "count": 5
+        },
+        {
+          "area": "AI & Tech",
+          "count": 0
+        },
+        {
+          "area": "Energy",
+          "count": 0
+        },
+        {
+          "area": "Real Estate",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "time": "2026-03-19T14:38:33.954Z",
+      "success": true,
+      "areas": [
+        {
+          "area": "Bitcoin & ETFs",
+          "count": 5
+        },
+        {
+          "area": "AI & Tech",
+          "count": 0
+        },
+        {
+          "area": "Energy",
+          "count": 0
+        },
+        {
+          "area": "Real Estate",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "time": "2026-03-18T19:27:16.936Z",
+      "success": true,
+      "areas": [
+        {
+          "area": "Bitcoin & ETFs",
+          "count": 5
+        },
+        {
+          "area": "AI & Tech",
+          "count": 0
+        },
+        {
+          "area": "Energy",
+          "count": 0
+        },
+        {
+          "area": "Real Estate",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "time": "2026-03-18T12:02:53.173Z",
+      "success": true,
+      "areas": [
+        {
+          "area": "Bitcoin & ETFs",
+          "count": 5
+        },
+        {
+          "area": "AI & Tech",
+          "count": 0
+        },
+        {
+          "area": "Energy",
+          "count": 0
+        },
+        {
+          "area": "Real Estate",
+          "count": 5
+        }
+      ]
+    },
+    {
       "time": "2026-03-18T02:57:59.426Z",
       "success": true,
       "areas": [

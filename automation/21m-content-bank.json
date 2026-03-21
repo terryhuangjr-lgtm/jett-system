@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "last_updated": "2026-03-17",
+  "last_updated": "2026-03-20",
   "entries": [
     {
       "id": 1,
@@ -285,7 +285,9 @@
       "btc_price_then": 500,
       "verified_fact": "Vince Young earned $30M in his NFL career and was broke by 2014. BTC was ~$500 that year.",
       "source": "ESPN, Sports Illustrated",
-      "used_dates": [],
+      "used_dates": [
+        "2026-03-19"
+      ],
       "cooldown_days": 90
     },
     {
@@ -1056,7 +1058,10 @@
       "source": "NIL history reporting",
       "angle": "nil_sound_money",
       "cooldown_days": 30,
-      "id": 76
+      "id": 76,
+      "used_dates": [
+        "2026-03-18"
+      ]
     },
     {
       "category": "bitcoin_education",
@@ -1113,6 +1118,187 @@
       "used_dates": [],
       "cooldown_days": 60,
       "id": 81
+    },
+    {
+      "id": 82,
+      "category": "historic_contract",
+      "athlete": "Saquon Barkley",
+      "sport": "NFL",
+      "year": 2025,
+      "contract_value": 41200000,
+      "contract_years": 2,
+      "btc_price_then": 70434,
+      "btc_allocation": 58,
+      "verified_fact": "Saquon Barkley signed a 2-year $41.2M extension in March 2025, making him the NFL's first $20M+ per year running back. At current BTC price ($70,434), 10% allocation = 58 BTC.",
+      "sources": [
+        "https://www.nytimes.com/athletic/6175152/2025/03/04/saquon-barkley-contract-extension-eagles-nfl-news/",
+        "https://theeagleswire.usatoday.com/story/sports/nfl/eagles/2025/03/07/philadelphia-eagles-news-saquon-barkley-contract-extension-details/81996509007/",
+        "https://www.spotrac.com/nfl/player/_/id/14777/saquon-barkley"
+      ],
+      "used_dates": [],
+      "cooldown_days": 90
+    },
+    {
+      "id": 83,
+      "category": "historic_contract",
+      "athlete": "Josh Allen",
+      "sport": "NFL",
+      "year": 2025,
+      "contract_value": 330000000,
+      "contract_years": 6,
+      "btc_price_then": 70434,
+      "btc_allocation": 468,
+      "verified_fact": "Josh Allen signed a 6-year $330M extension in March 2025 with $250M guaranteed — an NFL record for guaranteed money at signing. At BTC $70,434, 10% allocation = 468 BTC.",
+      "sources": [
+        "https://www.nfl.com/news/bills-reigning-mvp-josh-allen-agree-to-six-year-deal-worth-330-million",
+        "https://www.spotrac.com/nfl/player/_/id/25102/josh-allen"
+      ],
+      "used_dates": [],
+      "cooldown_days": 90
+    },
+    {
+      "id": 84,
+      "category": "historic_contract",
+      "athlete": "Ja'Marr Chase",
+      "sport": "NFL",
+      "year": 2025,
+      "contract_value": 161000000,
+      "contract_years": 4,
+      "btc_price_then": 70434,
+      "btc_allocation": 229,
+      "verified_fact": "Ja'Marr Chase signed a 4-year $161M extension in March 2025, making him the highest-paid non-quarterback in NFL history with $112M guaranteed. 10% BTC allocation = 229 BTC.",
+      "sources": [
+        "https://www.nfl.com/news/bengals-agree-to-terms-with-wrs-ja-marr-chase-tee-higgins-on-four-year-contract-extensions",
+        "https://www.spotrac.com/nfl/player/_/id/72384/jamarr-chase"
+      ],
+      "used_dates": [],
+      "cooldown_days": 90
+    },
+    {
+      "id": 85,
+      "category": "historic_contract",
+      "athlete": "Tee Higgins",
+      "sport": "NFL",
+      "year": 2025,
+      "contract_value": 115000000,
+      "contract_years": 4,
+      "btc_price_then": 70434,
+      "btc_allocation": 163,
+      "verified_fact": "Tee Higgins signed a 4-year $115M extension with the Bengals in March 2025, keeping the Chase-Higgins duo together through 2028. 10% BTC allocation = 163 BTC.",
+      "sources": [
+        "https://www.usatoday.com/story/sports/nfl/bengals/2025/03/16/tee-higgins-extension-cincinnati-bengals/82418916007/",
+        "https://www.bengals.com/news/bengals-resign-tee-higgins-2025-roster-update"
+      ],
+      "used_dates": [],
+      "cooldown_days": 90
+    },
+    {
+      "id": 86,
+      "category": "bitcoin_education",
+      "athlete": null,
+      "deal": "BTC March 2025 High Contract Purchasing Power",
+      "sport": "Bitcoin",
+      "year": 2025,
+      "contract_value": null,
+      "btc_price_then": 73079,
+      "btc_allocation": null,
+      "verified_fact": "Bitcoin hit $73,079 on March 13, 2025. At that price, Saquon Barkley's $41.2M extension would buy 564 BTC. Josh Allen's $330M would buy 4,516 BTC. Same contracts, same work, different purchasing power.",
+      "sources": [
+        "https://api.coingecko.com/api/v3/coins/bitcoin/market_chart",
+        "https://www.spotrac.com/nfl/player/_/id/14777/saquon-barkley",
+        "https://www.spotrac.com/nfl/player/_/id/25102/josh-allen"
+      ],
+      "used_dates": [],
+      "cooldown_days": 60
+    },
+    {
+      "id": 87,
+      "category": "bitcoin_education",
+      "athlete": null,
+      "deal": "RB Market Reset vs BTC Appreciation",
+      "sport": "Bitcoin",
+      "year": 2025,
+      "contract_value": null,
+      "btc_price_then": 70434,
+      "btc_allocation": null,
+      "verified_fact": "Saquon Barkley reset the RB market at $20.6M/year. The previous high was Christian McCaffrey at $19M. Meanwhile, Bitcoin has gained 168% since the last RB market reset in 2023. Scarce assets appreciate. Labor gets squeezed.",
+      "sources": [
+        "https://theeagleswire.usatoday.com/story/sports/nfl/eagles/2025/03/07/philadelphia-eagles-news-saquon-barkley-contract-extension-details/81996509007/",
+        "https://api.coingecko.com/api/v3/simple/price"
+      ],
+      "used_dates": [],
+      "cooldown_days": 60
+    },
+    {
+      "id": 88,
+      "category": "bitcoin_education",
+      "athlete": null,
+      "deal": "Guaranteed Money vs Guaranteed Scarcity",
+      "sport": "Bitcoin",
+      "year": 2025,
+      "contract_value": null,
+      "btc_price_then": 70434,
+      "btc_allocation": null,
+      "verified_fact": "Josh Allen got $250M guaranteed — an NFL record. But over 6 years, inflation will eat 15-20% of that purchasing power. Bitcoin's 21M supply is guaranteed by math, not lawyers. One guarantee is written in code. The other in paper.",
+      "sources": [
+        "https://www.nfl.com/news/bills-reigning-mvp-josh-allen-agree-to-six-year-deal-worth-330-million",
+        "https://www.spotrac.com/nfl/player/_/id/25102/josh-allen",
+        "https://api.coingecko.com/api/v3/simple/price"
+      ],
+      "used_dates": [],
+      "cooldown_days": 60
+    },
+    {
+      "id": 89,
+      "category": "bitcoin_education",
+      "athlete": null,
+      "deal": "Non-QB Market vs Bitcoin Wallet Scarcity",
+      "sport": "Bitcoin",
+      "year": 2025,
+      "contract_value": null,
+      "btc_price_then": 70434,
+      "btc_allocation": null,
+      "verified_fact": "Ja'Marr Chase is now the highest-paid non-QB at $40.25M/year. There are only 88,000 Bitcoin wallets holding 1+ BTC. There are likely more pro athletes earning $10M+/year than there are whole bitcoins available for them.",
+      "sources": [
+        "https://www.spotrac.com/nfl/player/_/id/72384/jamarr-chase",
+        "https://api.coingecko.com/api/v3/simple/price"
+      ],
+      "used_dates": [
+        "2026-03-20"
+      ],
+      "cooldown_days": 60
+    },
+    {
+      "id": 90,
+      "category": "bitcoin_education",
+      "athlete": null,
+      "deal": "Contract Windows vs Halving Cycles",
+      "sport": "Bitcoin",
+      "year": 2025,
+      "contract_value": null,
+      "btc_price_then": 70434,
+      "btc_allocation": null,
+      "verified_fact": "Both Ja'Marr Chase and Tee Higgins signed 4-year deals. Bitcoin's halving cycle is also 4 years. By the time their contracts expire in 2028, BTC will have had another supply shock. The 2028 halving price is anyone's guess. The scarcity is not.",
+      "sources": [
+        "https://www.spotrac.com/nfl/player/_/id/72384/jamarr-chase",
+        "https://www.usatoday.com/story/sports/nfl/bengals/2025/03/16/tee-higgins-extension-cincinnati-bengals/82418916007/"
+      ],
+      "used_dates": [],
+      "cooldown_days": 60
+    },
+    {
+      "category": "bitcoin_education",
+      "athlete": null,
+      "deal": "Gold standard US ended 1971",
+      "sport": "Bitcoin",
+      "year": 1971,
+      "contract_value": null,
+      "btc_price_then": 0,
+      "verified_fact": "In 1971, President Nixon suspended US dollar convertibility to gold at $35 per ounce on August 15",
+      "source": "Research",
+      "used_dates": [],
+      "cooldown_days": 60,
+      "id": 91
     }
   ]
 }

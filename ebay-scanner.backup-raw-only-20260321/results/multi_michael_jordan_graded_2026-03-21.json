@@ -1,0 +1,45 @@
+{
+  "timestamp": "2026-03-21T16:10:09.042Z",
+  "searchQuery": "michael jordan graded",
+  "parsed": {
+    "original": "michael jordan graded",
+    "isComplex": false,
+    "baseQuery": "michael jordan graded",
+    "players": null,
+    "yearRange": null,
+    "detectedTypes": [],
+    "searches": [
+      "michael jordan graded"
+    ],
+    "searchCount": 1,
+    "explanation": "Single search (no splitting needed)"
+  },
+  "searchResults": [
+    {
+      "query": "michael jordan graded",
+      "count": 0
+    }
+  ],
+  "config": {
+    "keywords": "michael jordan graded",
+    "minScoreToShow": 7,
+    "topN": 20,
+    "minPrice": 0,
+    "maxPrice": null,
+    "rawOnly": true,
+    "useVision": false,
+    "visionTopN": 200,
+    "cardType": "graded"
+  },
+  "scanDuration": "0.6s",
+  "summary": {
+    "totalFound": 0,
+    "uniqueItems": 0,
+    "rawCardsOnly": true,
+    "afterRawFilter": 0,
+    "totalScored": 0,
+    "showingResults": 0,
+    "visionScanned": false
+  },
+  "allResults": []
+}

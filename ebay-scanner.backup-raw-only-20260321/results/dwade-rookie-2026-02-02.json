@@ -1,0 +1,2105 @@
+{
+  "timestamp": "2026-02-02T21:23:07.576Z",
+  "scanDuration": "1.26s",
+  "summary": {
+    "totalFound": 200,
+    "afterFiltering": 100,
+    "afterScamCheck": 100,
+    "afterPhotoCheck": 99,
+    "analyzed": 25,
+    "top10": 10
+  },
+  "top10Deals": [
+    {
+      "itemId": "v1|287093640717|0",
+      "title": "2003-04 Topps Rookie Matrix - #115 Dwyane Wade Mini Miami Heat RC C",
+      "currentPrice": 3.49,
+      "shippingCost": 0,
+      "totalPrice": 3.49,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/p2cAAOSwGQ9nLJdi/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/287093640717?_skw=dwyane+wade+2003&hash=item42d81d4e0d:g:p2cAAOSwGQ9nLJdi",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "discdeals1011",
+      "sellerFeedbackScore": 13978,
+      "sellerPositivePercent": "99.9",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "dealScore": {
+        "score": 8.5,
+        "rating": "🔥🔥 HOT",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "👍 Experienced seller (1000+ transactions) (+1 point)",
+          "📦 Free shipping (+0.5 points)"
+        ],
+        "recommendation": "Strong buy - excellent opportunity with multiple positive factors"
+      }
+    },
+    {
+      "itemId": "v1|287093623830|0",
+      "title": "2003-04 Topps Rookie Matrix - #115 Dwyane Wade Mini Miami Heat RC A",
+      "currentPrice": 3.49,
+      "shippingCost": 0,
+      "totalPrice": 3.49,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/cY4AAOSw6nhnLJa5/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/287093623830?_skw=dwyane+wade+2003&hash=item42d81d0c16:g:cY4AAOSw6nhnLJa5",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "discdeals1011",
+      "sellerFeedbackScore": 13978,
+      "sellerPositivePercent": "99.9",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "dealScore": {
+        "score": 8.5,
+        "rating": "🔥🔥 HOT",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "👍 Experienced seller (1000+ transactions) (+1 point)",
+          "📦 Free shipping (+0.5 points)"
+        ],
+        "recommendation": "Strong buy - excellent opportunity with multiple positive factors"
+      }
+    },
+    {
+      "itemId": "v1|286865468702|0",
+      "title": "2003-04 Upper Deck MVP - Rookie Dwyane Wade #205 (RC)",
+      "currentPrice": 5.49,
+      "shippingCost": 0,
+      "totalPrice": 5.49,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/CPoAAeSw-3lofveq/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/286865468702?_skw=dwyane+wade+2003&hash=item42ca83ad1e:g:CPoAAeSw-3lofveq",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "collectorarium",
+      "sellerFeedbackScore": 1830,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "dealScore": {
+        "score": 8.5,
+        "rating": "🔥🔥 HOT",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "👍 Experienced seller (1000+ transactions) (+1 point)",
+          "📦 Free shipping (+0.5 points)"
+        ],
+        "recommendation": "Strong buy - excellent opportunity with multiple positive factors"
+      }
+    },
+    {
+      "itemId": "v1|257332519261|0",
+      "title": "2003-04 Upper Deck MVP # 205 Dwyane Wade Rookie Miami Heat",
+      "currentPrice": 7,
+      "shippingCost": 0,
+      "totalPrice": 7,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/eR8AAeSwlv9peUar/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/257332519261?_skw=dwyane+wade+2003&hash=item3bea36a15d:g:eR8AAeSwlv9peUar",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "bwillyguy1945",
+      "sellerFeedbackScore": 4283,
+      "sellerPositivePercent": "99.7",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "dealScore": {
+        "score": 8.5,
+        "rating": "🔥🔥 HOT",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "👍 Experienced seller (1000+ transactions) (+1 point)",
+          "📦 Free shipping (+0.5 points)"
+        ],
+        "recommendation": "Strong buy - excellent opportunity with multiple positive factors"
+      }
+    },
+    {
+      "itemId": "v1|389501200024|0",
+      "title": "2003-04 Topps #225 Dwyane Wade RC Rookie MIAMI HEAT -- EX",
+      "currentPrice": 8.98,
+      "shippingCost": 0,
+      "totalPrice": 8.98,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/wSEAAeSwv7FpQ1r6/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/389501200024?_skw=dwyane+wade+2003&hash=item5ab014a698:g:wSEAAeSwv7FpQ1r6",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "the_ardvark",
+      "sellerFeedbackScore": 1765,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "dealScore": {
+        "score": 8.5,
+        "rating": "🔥🔥 HOT",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "👍 Experienced seller (1000+ transactions) (+1 point)",
+          "📦 Free shipping (+0.5 points)"
+        ],
+        "recommendation": "Strong buy - excellent opportunity with multiple positive factors"
+      }
+    },
+    {
+      "itemId": "v1|358027504126|0",
+      "title": "2003-04 Fleer Platinum Dwyane Wade Big Signs RC Rookie Miami Heat",
+      "currentPrice": 4,
+      "shippingCost": 0,
+      "totalPrice": 4,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/5dMAAeSwNhtpQyY7/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/358027504126?_skw=dwyane+wade+2003&hash=item535c1a29fe:g:5dMAAeSwNhtpQyY7",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "damon_turbitt",
+      "sellerFeedbackScore": 545,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "dealScore": {
+        "score": 8,
+        "rating": "🔥🔥 HOT",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "👍 Established seller (500+ transactions) (+0.5 points)",
+          "📦 Free shipping (+0.5 points)"
+        ],
+        "recommendation": "Strong buy - excellent opportunity with multiple positive factors"
+      }
+    },
+    {
+      "itemId": "v1|188010129139|0",
+      "title": "2003-04 Upper Deck Rookie Exclusives - Star Rookie Dwyane Wade #5 (RC)",
+      "currentPrice": 4.99,
+      "shippingCost": 0,
+      "totalPrice": 4.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/OPIAAeSwdwxpfTqp/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/188010129139?_skw=dwyane+wade+2003&hash=item2bc646e6f3:g:OPIAAeSwdwxpfTqp",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "susm-3612",
+      "sellerFeedbackScore": 777,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "dealScore": {
+        "score": 8,
+        "rating": "🔥🔥 HOT",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "👍 Established seller (500+ transactions) (+0.5 points)",
+          "📦 Free shipping (+0.5 points)"
+        ],
+        "recommendation": "Strong buy - excellent opportunity with multiple positive factors"
+      }
+    },
+    {
+      "itemId": "v1|117002901923|0",
+      "title": "2003-04 Upper Deck Victory Rookie Orientation Dwyane Wade Rookie Miami Heat #105",
+      "currentPrice": 3.5,
+      "shippingCost": 1.55,
+      "totalPrice": 5.05,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/YHgAAeSwVWFpd9GN/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/117002901923?_skw=dwyane+wade+2003&hash=item1b3dea99a3:g:YHgAAeSwVWFpd9GN",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "absolutesportscardsllc",
+      "sellerFeedbackScore": 30849,
+      "sellerPositivePercent": "99.9",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "dealScore": {
+        "score": 8,
+        "rating": "🔥🔥 HOT",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "👍 Experienced seller (1000+ transactions) (+1 point)"
+        ],
+        "recommendation": "Strong buy - excellent opportunity with multiple positive factors"
+      }
+    },
+    {
+      "itemId": "v1|117001198724|0",
+      "title": "2003-04 Upper Deck Rookie Exclusives - Star Rookie Dwyane Wade #5 (RC)",
+      "currentPrice": 3.99,
+      "shippingCost": 1.49,
+      "totalPrice": 5.48,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/5KcAAeSwH35pdpkF/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/117001198724?_skw=dwyane+wade+2003&hash=item1b3dd09c84:g:5KcAAeSwH35pdpkF",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "bstaylor197311",
+      "sellerFeedbackScore": 2689,
+      "sellerPositivePercent": "99.6",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "dealScore": {
+        "score": 8,
+        "rating": "🔥🔥 HOT",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "👍 Experienced seller (1000+ transactions) (+1 point)"
+        ],
+        "recommendation": "Strong buy - excellent opportunity with multiple positive factors"
+      }
+    },
+    {
+      "itemId": "v1|267558477977|0",
+      "title": "2003-04 Fleer Authentix Dwyane Wade Rookie RC Ticket Studs Insert Card",
+      "currentPrice": 3.99,
+      "shippingCost": 2.99,
+      "totalPrice": 6.98,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/aloAAeSwumNpeCrx/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/267558477977?_skw=dwyane+wade+2003&hash=item3e4bba6099:g:aloAAeSwumNpeCrx",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "joejoe315",
+      "sellerFeedbackScore": 2882,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "dealScore": {
+        "score": 8,
+        "rating": "🔥🔥 HOT",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "👍 Experienced seller (1000+ transactions) (+1 point)"
+        ],
+        "recommendation": "Strong buy - excellent opportunity with multiple positive factors"
+      }
+    }
+  ],
+  "allDeals": [
+    {
+      "itemId": "v1|287093640717|0",
+      "title": "2003-04 Topps Rookie Matrix - #115 Dwyane Wade Mini Miami Heat RC C",
+      "currentPrice": 3.49,
+      "shippingCost": 0,
+      "totalPrice": 3.49,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/p2cAAOSwGQ9nLJdi/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/287093640717?_skw=dwyane+wade+2003&hash=item42d81d4e0d:g:p2cAAOSwGQ9nLJdi",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "discdeals1011",
+      "sellerFeedbackScore": 13978,
+      "sellerPositivePercent": "99.9",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "dealScore": {
+        "score": 8.5,
+        "rating": "🔥🔥 HOT",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "👍 Experienced seller (1000+ transactions) (+1 point)",
+          "📦 Free shipping (+0.5 points)"
+        ],
+        "recommendation": "Strong buy - excellent opportunity with multiple positive factors"
+      }
+    },
+    {
+      "itemId": "v1|287093623830|0",
+      "title": "2003-04 Topps Rookie Matrix - #115 Dwyane Wade Mini Miami Heat RC A",
+      "currentPrice": 3.49,
+      "shippingCost": 0,
+      "totalPrice": 3.49,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/cY4AAOSw6nhnLJa5/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/287093623830?_skw=dwyane+wade+2003&hash=item42d81d0c16:g:cY4AAOSw6nhnLJa5",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "discdeals1011",
+      "sellerFeedbackScore": 13978,
+      "sellerPositivePercent": "99.9",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "dealScore": {
+        "score": 8.5,
+        "rating": "🔥🔥 HOT",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "👍 Experienced seller (1000+ transactions) (+1 point)",
+          "📦 Free shipping (+0.5 points)"
+        ],
+        "recommendation": "Strong buy - excellent opportunity with multiple positive factors"
+      }
+    },
+    {
+      "itemId": "v1|286865468702|0",
+      "title": "2003-04 Upper Deck MVP - Rookie Dwyane Wade #205 (RC)",
+      "currentPrice": 5.49,
+      "shippingCost": 0,
+      "totalPrice": 5.49,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/CPoAAeSw-3lofveq/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/286865468702?_skw=dwyane+wade+2003&hash=item42ca83ad1e:g:CPoAAeSw-3lofveq",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "collectorarium",
+      "sellerFeedbackScore": 1830,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "dealScore": {
+        "score": 8.5,
+        "rating": "🔥🔥 HOT",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "👍 Experienced seller (1000+ transactions) (+1 point)",
+          "📦 Free shipping (+0.5 points)"
+        ],
+        "recommendation": "Strong buy - excellent opportunity with multiple positive factors"
+      }
+    },
+    {
+      "itemId": "v1|257332519261|0",
+      "title": "2003-04 Upper Deck MVP # 205 Dwyane Wade Rookie Miami Heat",
+      "currentPrice": 7,
+      "shippingCost": 0,
+      "totalPrice": 7,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/eR8AAeSwlv9peUar/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/257332519261?_skw=dwyane+wade+2003&hash=item3bea36a15d:g:eR8AAeSwlv9peUar",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "bwillyguy1945",
+      "sellerFeedbackScore": 4283,
+      "sellerPositivePercent": "99.7",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "dealScore": {
+        "score": 8.5,
+        "rating": "🔥🔥 HOT",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "👍 Experienced seller (1000+ transactions) (+1 point)",
+          "📦 Free shipping (+0.5 points)"
+        ],
+        "recommendation": "Strong buy - excellent opportunity with multiple positive factors"
+      }
+    },
+    {
+      "itemId": "v1|389501200024|0",
+      "title": "2003-04 Topps #225 Dwyane Wade RC Rookie MIAMI HEAT -- EX",
+      "currentPrice": 8.98,
+      "shippingCost": 0,
+      "totalPrice": 8.98,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/wSEAAeSwv7FpQ1r6/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/389501200024?_skw=dwyane+wade+2003&hash=item5ab014a698:g:wSEAAeSwv7FpQ1r6",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "the_ardvark",
+      "sellerFeedbackScore": 1765,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "dealScore": {
+        "score": 8.5,
+        "rating": "🔥🔥 HOT",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "👍 Experienced seller (1000+ transactions) (+1 point)",
+          "📦 Free shipping (+0.5 points)"
+        ],
+        "recommendation": "Strong buy - excellent opportunity with multiple positive factors"
+      }
+    },
+    {
+      "itemId": "v1|358027504126|0",
+      "title": "2003-04 Fleer Platinum Dwyane Wade Big Signs RC Rookie Miami Heat",
+      "currentPrice": 4,
+      "shippingCost": 0,
+      "totalPrice": 4,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/5dMAAeSwNhtpQyY7/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/358027504126?_skw=dwyane+wade+2003&hash=item535c1a29fe:g:5dMAAeSwNhtpQyY7",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "damon_turbitt",
+      "sellerFeedbackScore": 545,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "dealScore": {
+        "score": 8,
+        "rating": "🔥🔥 HOT",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "👍 Established seller (500+ transactions) (+0.5 points)",
+          "📦 Free shipping (+0.5 points)"
+        ],
+        "recommendation": "Strong buy - excellent opportunity with multiple positive factors"
+      }
+    },
+    {
+      "itemId": "v1|188010129139|0",
+      "title": "2003-04 Upper Deck Rookie Exclusives - Star Rookie Dwyane Wade #5 (RC)",
+      "currentPrice": 4.99,
+      "shippingCost": 0,
+      "totalPrice": 4.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/OPIAAeSwdwxpfTqp/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/188010129139?_skw=dwyane+wade+2003&hash=item2bc646e6f3:g:OPIAAeSwdwxpfTqp",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "susm-3612",
+      "sellerFeedbackScore": 777,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "dealScore": {
+        "score": 8,
+        "rating": "🔥🔥 HOT",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "👍 Established seller (500+ transactions) (+0.5 points)",
+          "📦 Free shipping (+0.5 points)"
+        ],
+        "recommendation": "Strong buy - excellent opportunity with multiple positive factors"
+      }
+    },
+    {
+      "itemId": "v1|117002901923|0",
+      "title": "2003-04 Upper Deck Victory Rookie Orientation Dwyane Wade Rookie Miami Heat #105",
+      "currentPrice": 3.5,
+      "shippingCost": 1.55,
+      "totalPrice": 5.05,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/YHgAAeSwVWFpd9GN/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/117002901923?_skw=dwyane+wade+2003&hash=item1b3dea99a3:g:YHgAAeSwVWFpd9GN",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "absolutesportscardsllc",
+      "sellerFeedbackScore": 30849,
+      "sellerPositivePercent": "99.9",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "dealScore": {
+        "score": 8,
+        "rating": "🔥🔥 HOT",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "👍 Experienced seller (1000+ transactions) (+1 point)"
+        ],
+        "recommendation": "Strong buy - excellent opportunity with multiple positive factors"
+      }
+    },
+    {
+      "itemId": "v1|117001198724|0",
+      "title": "2003-04 Upper Deck Rookie Exclusives - Star Rookie Dwyane Wade #5 (RC)",
+      "currentPrice": 3.99,
+      "shippingCost": 1.49,
+      "totalPrice": 5.48,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/5KcAAeSwH35pdpkF/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/117001198724?_skw=dwyane+wade+2003&hash=item1b3dd09c84:g:5KcAAeSwH35pdpkF",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "bstaylor197311",
+      "sellerFeedbackScore": 2689,
+      "sellerPositivePercent": "99.6",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "dealScore": {
+        "score": 8,
+        "rating": "🔥🔥 HOT",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "👍 Experienced seller (1000+ transactions) (+1 point)"
+        ],
+        "recommendation": "Strong buy - excellent opportunity with multiple positive factors"
+      }
+    },
+    {
+      "itemId": "v1|267558477977|0",
+      "title": "2003-04 Fleer Authentix Dwyane Wade Rookie RC Ticket Studs Insert Card",
+      "currentPrice": 3.99,
+      "shippingCost": 2.99,
+      "totalPrice": 6.98,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/aloAAeSwumNpeCrx/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/267558477977?_skw=dwyane+wade+2003&hash=item3e4bba6099:g:aloAAeSwumNpeCrx",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "joejoe315",
+      "sellerFeedbackScore": 2882,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "dealScore": {
+        "score": 8,
+        "rating": "🔥🔥 HOT",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "👍 Experienced seller (1000+ transactions) (+1 point)"
+        ],
+        "recommendation": "Strong buy - excellent opportunity with multiple positive factors"
+      }
+    },
+    {
+      "itemId": "v1|147128328993|0",
+      "title": "2003-04 Upper Deck Star Rookie Dwyane Wade Rookie #305",
+      "currentPrice": 5.99,
+      "shippingCost": 0.99,
+      "totalPrice": 6.98,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/~jIAAeSwO01pfivW/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/147128328993?_skw=dwyane+wade+2003&hash=item2241882321:g:~jIAAeSwO01pfivW",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "mricenine",
+      "sellerFeedbackScore": 1709,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "dealScore": {
+        "score": 8,
+        "rating": "🔥🔥 HOT",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "👍 Experienced seller (1000+ transactions) (+1 point)"
+        ],
+        "recommendation": "Strong buy - excellent opportunity with multiple positive factors"
+      }
+    },
+    {
+      "itemId": "v1|197997323491|0",
+      "title": "2003-04 Upper Deck #305 Dwyane Wade Rookie RC",
+      "currentPrice": 6,
+      "shippingCost": 1.75,
+      "totalPrice": 7.75,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/bkgAAeSwRJZpWCAC/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/197997323491?_skw=dwyane+wade+2003&hash=item2e198f64e3:g:bkgAAeSwRJZpWCAC",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "dugout2",
+      "sellerFeedbackScore": 17448,
+      "sellerPositivePercent": "99.5",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "dealScore": {
+        "score": 8,
+        "rating": "🔥🔥 HOT",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "👍 Experienced seller (1000+ transactions) (+1 point)"
+        ],
+        "recommendation": "Strong buy - excellent opportunity with multiple positive factors"
+      }
+    },
+    {
+      "itemId": "v1|257294490234|0",
+      "title": "2003-04 Upper Deck MVP Rookie Dwyane Wade #205 Rookie RC HOF 12g7",
+      "currentPrice": 4.84,
+      "shippingCost": 2.99,
+      "totalPrice": 7.83,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/G1IAAeSwN4RpW9zn/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/257294490234?_skw=dwyane+wade+2003&hash=item3be7f25a7a:g:G1IAAeSwN4RpW9zn",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "comc_consignment",
+      "sellerFeedbackScore": 1300539,
+      "sellerPositivePercent": "99.6",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "dealScore": {
+        "score": 8,
+        "rating": "🔥🔥 HOT",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "👍 Experienced seller (1000+ transactions) (+1 point)"
+        ],
+        "recommendation": "Strong buy - excellent opportunity with multiple positive factors"
+      }
+    },
+    {
+      "itemId": "v1|198020047969|0",
+      "title": "Dwyane Wade - 2003-04 Upper Deck Rookie Exclusives - Star Rookie #5 (RC) - NM",
+      "currentPrice": 7.99,
+      "shippingCost": 0,
+      "totalPrice": 7.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/ticAAeSwfKJpYVvL/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/198020047969?_skw=dwyane+wade+2003&hash=item2e1aea2461:g:ticAAeSwfKJpYVvL",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "omazsportscards",
+      "sellerFeedbackScore": 796,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "good",
+          "issues": [
+            "✓ Near Mint condition",
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "dealScore": {
+        "score": 8,
+        "rating": "🔥🔥 HOT",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "👍 Established seller (500+ transactions) (+0.5 points)",
+          "📦 Free shipping (+0.5 points)"
+        ],
+        "recommendation": "Strong buy - excellent opportunity with multiple positive factors"
+      }
+    },
+    {
+      "itemId": "v1|257222201100|0",
+      "title": "2003-04 Topps #225 Draft Pick Dwyane Wade RC (MIAMI HEAT) ICONIC HOF ROOKIE [A]",
+      "currentPrice": 8,
+      "shippingCost": 0,
+      "totalPrice": 8,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/sT8AAeSwzBhpH~S5/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/257222201100?_skw=dwyane+wade+2003&hash=item3be3a34f0c:g:sT8AAeSwzBhpH~S5",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "hcnyc0525",
+      "sellerFeedbackScore": 682,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "dealScore": {
+        "score": 8,
+        "rating": "🔥🔥 HOT",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "👍 Established seller (500+ transactions) (+0.5 points)",
+          "📦 Free shipping (+0.5 points)"
+        ],
+        "recommendation": "Strong buy - excellent opportunity with multiple positive factors"
+      }
+    },
+    {
+      "itemId": "v1|136987029235|0",
+      "title": "2003-04 Upper Deck Rookie Exclusives #5 Dwyane Wade RC",
+      "currentPrice": 6.95,
+      "shippingCost": 1.6,
+      "totalPrice": 8.55,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/UlMAAeSwKGxpd~rB/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/136987029235?_skw=dwyane+wade+2003&hash=item1fe5102ef3:g:UlMAAeSwKGxpd~rB",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "great.sports.cards",
+      "sellerFeedbackScore": 11848,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "dealScore": {
+        "score": 8,
+        "rating": "🔥🔥 HOT",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "👍 Experienced seller (1000+ transactions) (+1 point)"
+        ],
+        "recommendation": "Strong buy - excellent opportunity with multiple positive factors"
+      }
+    },
+    {
+      "itemId": "v1|267491341993|0",
+      "title": "2003-04 Topps Bazooka - Dwyane Wade #280 (RC)",
+      "currentPrice": 8,
+      "shippingCost": 0,
+      "totalPrice": 8,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/gPgAAeSwMVxpJnst/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/267491341993?_skw=dwyane+wade+2003&hash=item3e47b9f6a9:g:gPgAAeSwMVxpJnst",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "scottc4114",
+      "sellerFeedbackScore": 989,
+      "sellerPositivePercent": "99.8",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "dealScore": {
+        "score": 7.5,
+        "rating": "🔥 VERY GOOD",
+        "breakdown": [
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "👍 Established seller (500+ transactions) (+0.5 points)",
+          "📦 Free shipping (+0.5 points)"
+        ],
+        "recommendation": "Very good opportunity - worth serious consideration"
+      }
+    },
+    {
+      "itemId": "v1|366143688260|0",
+      "title": "2003-04 Upper Deck Victory - Rookie Orientation Dwyane Wade #105 (RC)",
+      "currentPrice": 2.99,
+      "shippingCost": 0,
+      "totalPrice": 2.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/l7gAAeSwdUJpcq4L/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/366143688260?_skw=dwyane+wade+2003&hash=item553fdd4e44:g:l7gAAeSwdUJpcq4L",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "baseballlife1977",
+      "sellerFeedbackScore": 296,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "📦 Free shipping (+0.5 points)",
+          "⚠️ New/unproven seller (-1 point)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|297991003233|0",
+      "title": "2003-04 Victory Dwayne Wade Rookie Orientation RC #105 Miami Heat JX2705",
+      "currentPrice": 3.5,
+      "shippingCost": 0,
+      "totalPrice": 3.5,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/seoAAeSwq~ppf8Ha/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/297991003233?_skw=dwyane+wade+2003&hash=item4561a5dc61:g:seoAAeSwq~ppf8Ha",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "conols_47",
+      "sellerFeedbackScore": 59,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "📦 Free shipping (+0.5 points)",
+          "⚠️ New/unproven seller (-1 point)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|157644126425|0",
+      "title": "2003-04 Upper Deck MVP - Rookie Dwyane Wade #205 (RC)",
+      "currentPrice": 5,
+      "shippingCost": 0,
+      "totalPrice": 5,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/p9gAAeSwqxhpenDM/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/157644126425?_skw=dwyane+wade+2003&hash=item24b45278d9:g:p9gAAeSwqxhpenDM",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "b5cards",
+      "sellerFeedbackScore": 23,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "📦 Free shipping (+0.5 points)",
+          "⚠️ New/unproven seller (-1 point)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|336414813884|0",
+      "title": "Upper Deck Dwyane Wade Miami Heat #3 2003-04 Rookie RC NBA Trading Card 96",
+      "currentPrice": 5.99,
+      "shippingCost": 0,
+      "totalPrice": 5.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/wg8AAeSweW9pfhRz/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/336414813884?_skw=dwyane+wade+2003&hash=item4e53e2aebc:g:wg8AAeSweW9pfhRz",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "redemptionathletics",
+      "sellerFeedbackScore": 201,
+      "sellerPositivePercent": "99.5",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "📦 Free shipping (+0.5 points)",
+          "⚠️ New/unproven seller (-1 point)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|137000124997|0",
+      "title": "Dwyane Wade 2003-04 Upper Deck - Star Rookie #305 (RC)",
+      "currentPrice": 6,
+      "shippingCost": 0,
+      "totalPrice": 6,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/McgAAeSw66JpfU5b/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/137000124997?_skw=dwyane+wade+2003&hash=item1fe5d80245:g:McgAAeSw66JpfU5b",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "kamskardz",
+      "sellerFeedbackScore": 21,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "📦 Free shipping (+0.5 points)",
+          "⚠️ New/unproven seller (-1 point)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|227186690439|0",
+      "title": "2003-04 Upper Deck MVP - Rookie Dwyane Wade #205 (RC)",
+      "currentPrice": 8,
+      "shippingCost": 0,
+      "totalPrice": 8,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/kagAAeSwdUJpc~yU/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/227186690439?_skw=dwyane+wade+2003&hash=item34e561c987:g:kagAAeSwdUJpc~yU",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "jacmcdo-0",
+      "sellerFeedbackScore": 48,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "📦 Free shipping (+0.5 points)",
+          "⚠️ New/unproven seller (-1 point)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|358176552786|0",
+      "title": "2003-04 Topps Dwyane Wade Rookie Card RC #225 Miami Heat NBA HOF ",
+      "currentPrice": 8.99,
+      "shippingCost": 0,
+      "totalPrice": 8.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/1VQAAeSwNn9pfklz/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/358176552786?_skw=dwyane+wade+2003&hash=item5364fc7752:g:1VQAAeSwNn9pfklz",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "stecor9642",
+      "sellerFeedbackScore": 115,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "📦 Free shipping (+0.5 points)",
+          "⚠️ New/unproven seller (-1 point)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|267564328626|0",
+      "title": "2003-04 Bazooka - Dwyane Wade #280 (RC)",
+      "currentPrice": 7,
+      "shippingCost": 0,
+      "totalPrice": 7,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/sP0AAeSwUOJpf890/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/267564328626?_skw=dwyane+wade+2003&hash=item3e4c13a6b2:g:sP0AAeSwUOJpf890",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "craigweathers2011",
+      "sellerFeedbackScore": 292,
+      "sellerPositivePercent": "99.3",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "dealScore": {
+        "score": 5.5,
+        "rating": "💰 DECENT",
+        "breakdown": [
+          "💵 Low entry price (+0.5 points)",
+          "✅ Good seller (99%+) (+0.5 points)",
+          "📦 Free shipping (+0.5 points)",
+          "⚠️ New/unproven seller (-1 point)"
+        ],
+        "recommendation": "Decent opportunity - consider if it fits your strategy"
+      }
+    }
+  ]
+}

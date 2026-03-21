@@ -1,0 +1,296 @@
+/**
+ * Title/Description Analyzer
+ * Detects red flags and good signals in listing text
+ *
+ * RED FLAGS = Damage, hidden issues, seller desperation
+ * GOOD SIGNALS = Quality, care, investment-grade
+ */
+
+class TitleAnalyzer {
+  constructor() {
+    // RED FLAG KEYWORDS - Suggest damage or hidden issues
+    this.redFlags = {
+      // As-is / No guarantees
+      asIs: ['as-is', 'as is', 'asis', 'sold as shown', 'see photos', 'see pics'],
+
+      // Seller wants to avoid liability
+      noReturns: ['no returns', 'final sale', 'no refunds', 'all sales final'],
+
+      // Ungraded = can hide flaws
+      hiddenFlaws: ['raw', 'ungraded', 'obo', 'or best offer', 'make offer', 'open to offers'],
+
+      // Condition disclaimers
+      conditionIssues: [
+        'slight wear', 'minor wear', 'light wear',
+        'edge wear', 'corner wear', 'surface wear',
+        'minor damage', 'slight damage',
+        'may have', 'might have', 'could have',
+        'not perfect', 'not mint',
+        'see condition', 'please review photos'
+      ],
+
+      // Vague or evasive language
+      vague: [
+        'untested', 'as found', 'estate sale',
+        'unknown condition', 'condition unknown',
+        'vintage condition', 'age appropriate',
+        'typical wear', 'normal wear'
+      ],
+
+      // Damage keywords
+      damage: [
+        'crease', 'creased', 'bent', 'corner damage',
+        'scratch', 'scratched', 'scuff', 'scuffed',
+        'stain', 'stained', 'mark', 'marked',
+        'tear', 'torn', 'rip', 'ripped',
+        'fade', 'faded', 'discolor', 'yellowing'
+      ]
+    };
+
+    // GOOD SIGNALS - Indicate quality and care
+    this.goodSignals = {
+      // Fresh from pack
+      packFresh: [
+        'pack fresh', 'pack pulled', 'straight to sleeve',
+        'never played', 'pack to sleeve', 'freshly pulled'
+      ],
+
+      // Investment quality
+      investment: [
+        'investment grade', 'gem mint', 'pristine',
+        'flawless', 'perfect centering', 'perfect corners',
+        'gradeable', 'psa ready', 'bgs ready'
+      ],
+
+      // Professional handling
+      professional: [
+        'professionally sleeved', 'top loader', 'penny sleeve',
+        'smoke free', 'pet free', 'climate controlled',
+        'stored safely', 'never handled'
+      ],
+
+      // Grading mentioned (more trustworthy)
+      graded: [
+        'psa 10', 'psa 9', 'bgs 9.5', 'bgs 10',
+        'cgc', 'sgc', 'graded', 'gem mt'
+      ]
+    };
+
+    // Weight for each category
+    this.weights = {
+      asIs: -2,
+      noReturns: -2,
+      hiddenFlaws: -1.5,
+      conditionIssues: -1,
+      vague: -1,
+      damage: -3,
+
+      packFresh: +2,
+      investment: +2,
+      professional: +1,
+      graded: +1.5
+    };
+  }
+
+  /**
+   * Analyze title and description for red flags and good signals
+   * @param {String} title - Listing title
+   * @param {String} description - Listing description
+   * @returns {Object} - Analysis result
+   */
+  analyze(title, description = '') {
+    const text = `${title} ${description}`.toLowerCase();
+
+    let score = 0;
+    const flags = [];
+    const signals = [];
+
+    // Check RED FLAGS
+    for (const [category, keywords] of Object.entries(this.redFlags)) {
+      for (const keyword of keywords) {
+        if (text.includes(keyword)) {
+          score += this.weights[category];
+          flags.push({
+            category: category,
+            keyword: keyword,
+            impact: this.weights[category]
+          });
+          break; // Only count each category once
+        }
+      }
+    }
+
+    // Check GOOD SIGNALS
+    for (const [category, keywords] of Object.entries(this.goodSignals)) {
+      for (const keyword of keywords) {
+        if (text.includes(keyword)) {
+          score += this.weights[category];
+          signals.push({
+            category: category,
+            keyword: keyword,
+            impact: this.weights[category]
+          });
+          break; // Only count each category once
+        }
+      }
+    }
+
+    // Determine verdict
+    const verdict = this.getVerdict(score, flags, signals);
+
+    return {
+      score: Math.round(score * 10) / 10,
+      flags: flags,
+      signals: signals,
+      verdict: verdict,
+      passed: verdict.passed,
+      reason: verdict.reason
+    };
+  }
+
+  /**
+   * Get verdict based on score
+   * @param {Number} score - Overall score
+   * @param {Array} flags - Red flags found
+   * @param {Array} signals - Good signals found
+   * @returns {Object} - Verdict
+   */
+  getVerdict(score, flags, signals) {
+    // CRITICAL RED FLAGS = Auto-reject
+    const criticalFlags = flags.filter(f =>
+      f.category === 'damage' || f.category === 'asIs'
+    );
+
+    if (criticalFlags.length > 0) {
+      return {
+        passed: false,
+        reason: `CRITICAL: ${criticalFlags.map(f => f.keyword).join(', ')}`,
+        level: 'critical'
+      };
+    }
+
+    // Multiple red flags = Reject
+    if (flags.length >= 3) {
+      return {
+        passed: false,
+        reason: `${flags.length} red flags detected`,
+        level: 'high'
+      };
+    }
+
+    // Score-based decision
+    if (score <= -3) {
+      return {
+        passed: false,
+        reason: `Poor quality signals (score: ${score})`,
+        level: 'high'
+      };
+    }
+
+    if (score < -1) {
+      return {
+        passed: false,
+        reason: `Concerning language (score: ${score})`,
+        level: 'medium'
+      };
+    }
+
+    // Some red flags but offset by good signals
+    if (flags.length > 0 && signals.length === 0) {
+      return {
+        passed: false,
+        reason: `Red flags without compensating quality signals`,
+        level: 'medium'
+      };
+    }
+
+    // Good quality signals
+    if (score > 2) {
+      return {
+        passed: true,
+        reason: `Strong quality signals (score: ${score})`,
+        level: 'excellent'
+      };
+    }
+
+    if (score > 0) {
+      return {
+        passed: true,
+        reason: `Positive quality indicators (score: ${score})`,
+        level: 'good'
+      };
+    }
+
+    // Neutral - no strong signals either way
+    return {
+      passed: true,
+      reason: 'Neutral - no significant red flags',
+      level: 'neutral'
+    };
+  }
+
+  /**
+   * Filter items based on title analysis
+   * @param {Array} items - Items to filter
+   * @returns {Array} - Filtered items with analysis
+   */
+  filterItems(items) {
+    return items.map(item => {
+      const analysis = this.analyze(
+        item.title || '',
+        item.description || item.subtitle || ''
+      );
+
+      return {
+        ...item,
+        titleAnalysis: analysis
+      };
+    }).filter(item => item.titleAnalysis.passed);
+  }
+
+  /**
+   * Get statistics on title analysis results
+   * @param {Array} items - Items to analyze
+   * @returns {Object} - Statistics
+   */
+  getStats(items) {
+    const results = items.map(item =>
+      this.analyze(item.title || '', item.description || '')
+    );
+
+    const stats = {
+      total: items.length,
+      passed: results.filter(r => r.passed).length,
+      rejected: results.filter(r => !r.passed).length,
+
+      redFlags: {
+        total: results.reduce((sum, r) => sum + r.flags.length, 0),
+        byCategory: {}
+      },
+
+      goodSignals: {
+        total: results.reduce((sum, r) => sum + r.signals.length, 0),
+        byCategory: {}
+      },
+
+      averageScore: results.reduce((sum, r) => sum + r.score, 0) / results.length
+    };
+
+    // Count flags by category
+    results.forEach(r => {
+      r.flags.forEach(flag => {
+        stats.redFlags.byCategory[flag.category] =
+          (stats.redFlags.byCategory[flag.category] || 0) + 1;
+      });
+
+      r.signals.forEach(signal => {
+        stats.goodSignals.byCategory[signal.category] =
+          (stats.goodSignals.byCategory[signal.category] || 0) + 1;
+      });
+    });
+
+    return stats;
+  }
+}
+
+module.exports = TitleAnalyzer;

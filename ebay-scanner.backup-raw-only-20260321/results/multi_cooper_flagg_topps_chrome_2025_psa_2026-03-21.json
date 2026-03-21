@@ -1,0 +1,49 @@
+{
+  "timestamp": "2026-03-21T16:02:49.156Z",
+  "searchQuery": "Cooper Flagg Topps Chrome 2025 PSA",
+  "parsed": {
+    "original": "Cooper Flagg Topps Chrome 2025 PSA",
+    "isComplex": false,
+    "baseQuery": "cooper flagg topps chrome 2025 psa",
+    "players": null,
+    "yearRange": null,
+    "detectedTypes": [
+      "chrome"
+    ],
+    "searches": [
+      "cooper flagg topps chrome 2025 psa"
+    ],
+    "searchCount": 1,
+    "explanation": "Single search (no splitting needed)"
+  },
+  "searchResults": [
+    {
+      "query": "cooper flagg topps chrome 2025 psa",
+      "count": 0
+    }
+  ],
+  "config": {
+    "keywords": "Cooper Flagg Topps Chrome 2025 PSA",
+    "minScoreToShow": 7,
+    "topN": 20,
+    "minPrice": 10,
+    "maxPrice": 2000,
+    "rawOnly": true,
+    "useVision": true,
+    "visionTopN": 200,
+    "excludeKeywords": "jumbo,holo,prizm,mystery",
+    "listingType": "fixed_price",
+    "cardType": "graded"
+  },
+  "scanDuration": "0.7s",
+  "summary": {
+    "totalFound": 0,
+    "uniqueItems": 0,
+    "rawCardsOnly": true,
+    "afterRawFilter": 0,
+    "totalScored": 0,
+    "showingResults": 0,
+    "visionScanned": true
+  },
+  "allResults": []
+}

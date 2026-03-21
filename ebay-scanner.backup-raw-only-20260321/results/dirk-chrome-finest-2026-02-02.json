@@ -1,0 +1,1736 @@
+{
+  "timestamp": "2026-02-02T17:42:03.342Z",
+  "scanDuration": "7.65s",
+  "summary": {
+    "totalFound": 200,
+    "afterFiltering": 12,
+    "afterScamCheck": 12,
+    "afterPhotoCheck": 12,
+    "analyzed": 12,
+    "top10": 10
+  },
+  "top10Deals": [
+    {
+      "itemId": "v1|257000080902|0",
+      "title": "2005-06 Topps Chrome Dirk Nowitzki Refractors Black 72 Dallas Mavericks #/399",
+      "currentPrice": 96.41,
+      "shippingCost": 0,
+      "totalPrice": 96.41,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/ZnoAAeSwN0ZoZaLa/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/257000080902?_skw=dirk+nowitzki+topps+refractor&hash=item3bd6660606:g:ZnoAAeSwN0ZoZaLa",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "grailst",
+      "sellerFeedbackScore": 1702,
+      "sellerPositivePercent": "99.9",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 4,
+          "avgPrice": 3915.05,
+          "recentSales": [
+            {
+              "price": 403.99,
+              "title": "JAY Z 2005-06 TOPPS CHROME BASKETBALL #217 \"REFRACTOR\" ROOKIE CARD 31/999 PSA 9",
+              "url": "https://www.ebay.com/itm/115512204962?_skw=2005-06+topps+chrome+refractor+PSA+9&hash=item1ae5105ea2:g:dfYAAOSwMc9jEQjW"
+            },
+            {
+              "price": 152.75,
+              "title": "2005 BOWMAN CHROME DREW BREES RED REFRACTOR PSA 9",
+              "url": "https://www.ebay.com/itm/143723696622?_skw=2005-06+topps+chrome+refractor+PSA+9&hash=item21769991ee:g:2NUAAOSwy~NfVWnI"
+            },
+            {
+              "price": 14999.99,
+              "title": "2005-06 Topps Chrome Relics GOLD Refractor Chris Paul RC # 3/9 BGS PRISTINE 10",
+              "url": "https://www.ebay.com/itm/314147308142?_skw=2005-06+topps+chrome+refractor+PSA+9&hash=item4924a3826e:g:NhcAAOSwLr9jIff4"
+            },
+            {
+              "price": 103.48,
+              "title": "Daniel Ewing 2005-06 UD Exquisite Collection Jersey Auto ROOKIE BGS 9.5 GEM MINT",
+              "url": "https://www.ebay.com/itm/353872663012?_skw=2005-06+topps+chrome+refractor+PSA+9&hash=item52647451e4:g:dv4AAOSwYIJh7cyc"
+            }
+          ]
+        },
+        "foundComps": true
+      },
+      "profitAnalysis": {
+        "insufficientData": false,
+        "totalCost": 116.41,
+        "rawPrice": 96.41,
+        "gradingCost": 20,
+        "psa10Scenario": {
+          "avgCompPrice": 0,
+          "profit": 0,
+          "multiplier": 0
+        },
+        "psa9Scenario": {
+          "avgCompPrice": 3915.05,
+          "profit": 3798.64,
+          "multiplier": 33.6
+        },
+        "expectedValue": 1519.46,
+        "roi": 1305.3,
+        "recommendation": "🔥 EXCEPTIONAL - Strong buy candidate"
+      },
+      "dealScore": {
+        "score": 10,
+        "rating": "🔥🔥🔥 EXCEPTIONAL",
+        "breakdown": [
+          "🔥 EV > $300 (+3 points)",
+          "📈 ROI > 200% (+1.5 points)",
+          "🎯 Numbered /399 (+0.5 points)",
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "👍 Experienced seller (1000+ transactions) (+1 point)",
+          "📦 Free shipping (+0.5 points)"
+        ],
+        "recommendation": "Strong buy - excellent opportunity with multiple positive factors"
+      }
+    },
+    {
+      "itemId": "v1|157405443093|0",
+      "title": "2007-08 Topps Chrome Dirk Nowitzki #41 White Refractor #/99 Dallas Mavericks",
+      "currentPrice": 175,
+      "shippingCost": 0,
+      "totalPrice": 175,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/BZsAAeSwE-lo9pDU/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/157405443093?_skw=dirk+nowitzki+topps+refractor&hash=item24a6187415:g:BZsAAeSwE-lo9pDU&amdata=enc%3AAQALAAABADZq0hFgvSYlgrFkWCFZ3z3qnN5v4m100wSceZioATllUBEEmMNptGCv0EVArDd%2FOYCUqNYY5Y0IiIOt%2BWeNlc9eTEuVu7wEkL2rSvcHpqzjFuoVFL5rtShNy7TYCU5JKu0eOBcbWWBAF4rRV7PfGiRLofdIvfCfgrokbGv%2BMTWdJHN3lAa1maXCPOmL6bmriQhAGVDvOFnbaGxa5zVE23d1wgj3XGVeN24IUsoQhpqSO2H9OEcBSQufwOP0VepAhDcovBnTNLEQ7GGVNuvY%2BzVzb2%2F1sTTYrlXdpsaOih8uPgjaWNU2G1HGeofQz36MXCTKu7mOf%2F7cStCW%2BbOq6QE%3D",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "rivervalleycollectibles",
+      "sellerFeedbackScore": 12406,
+      "sellerPositivePercent": "99.9",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 8.5,
+        "rating": "🔥🔥 HOT",
+        "breakdown": [
+          "🎯 Numbered /99 (+1 point)",
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "👍 Experienced seller (1000+ transactions) (+1 point)",
+          "📦 Free shipping (+0.5 points)"
+        ],
+        "recommendation": "Strong buy - excellent opportunity with multiple positive factors"
+      }
+    },
+    {
+      "itemId": "v1|236601235328|0",
+      "title": "2007-08 Topps Finest - Dirk Nowitzki #4 Refractor (Z)",
+      "currentPrice": 9.99,
+      "shippingCost": 0,
+      "totalPrice": 9.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/DRUAAeSwreJpdsOT/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/236601235328?_skw=dirk+nowitzki+topps+refractor&hash=item3716885780:g:DRUAAeSwreJpdsOT",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "pstoffel",
+      "sellerFeedbackScore": 2554,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 8,
+        "rating": "🔥🔥 HOT",
+        "breakdown": [
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "👍 Experienced seller (1000+ transactions) (+1 point)",
+          "📦 Free shipping (+0.5 points)"
+        ],
+        "recommendation": "Strong buy - excellent opportunity with multiple positive factors"
+      }
+    },
+    {
+      "itemId": "v1|326748351099|0",
+      "title": "2006-07 Topps Finest BLUE REFRACTOR #12 Dirk Nowitzki - Dallas Mavericks #9/299",
+      "currentPrice": 39.99,
+      "shippingCost": 0,
+      "totalPrice": 39.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/AXgAAeSwi15or559/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/326748351099?_skw=dirk+nowitzki+topps+refractor&hash=item4c13b82a7b:g:AXgAAeSwi15or559",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "qcbfun",
+      "sellerFeedbackScore": 21562,
+      "sellerPositivePercent": "99.9",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 8,
+        "rating": "🔥🔥 HOT",
+        "breakdown": [
+          "🎯 Numbered /299 (+0.5 points)",
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "👍 Experienced seller (1000+ transactions) (+1 point)",
+          "📦 Free shipping (+0.5 points)"
+        ],
+        "recommendation": "Strong buy - excellent opportunity with multiple positive factors"
+      }
+    },
+    {
+      "itemId": "v1|326752191162|0",
+      "title": "2005-06 Topps Finest Basketball REFRACTOR #28 Dirk Nowitzki Mavericks #18/349",
+      "currentPrice": 49.99,
+      "shippingCost": 0,
+      "totalPrice": 49.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/UfcAAeSwdIhos3-9/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/326752191162?_skw=dirk+nowitzki+topps+refractor&hash=item4c13f2c2ba:g:UfcAAeSwdIhos3-9",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "qcbfun",
+      "sellerFeedbackScore": 21562,
+      "sellerPositivePercent": "99.9",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 8,
+        "rating": "🔥🔥 HOT",
+        "breakdown": [
+          "🎯 Numbered /349 (+0.5 points)",
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "👍 Experienced seller (1000+ transactions) (+1 point)",
+          "📦 Free shipping (+0.5 points)"
+        ],
+        "recommendation": "Strong buy - excellent opportunity with multiple positive factors"
+      }
+    },
+    {
+      "itemId": "v1|297991728602|0",
+      "title": "2008 Topps Chrome DIRK NOWITZKI REFRACTOR #41 HOLO SSP HOF DALLAS MAVERICKS",
+      "currentPrice": 89.95,
+      "shippingCost": 0,
+      "totalPrice": 89.95,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/sV8AAeSwqixpgAt5/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/297991728602?_skw=dirk+nowitzki+topps+refractor&hash=item4561b0edda:g:sV8AAeSwqixpgAt5&amdata=enc%3AAQALAAABADZq0hFgvSYlgrFkWCFZ3z2%2BSIJvLu3Oh7DjO%2Bs34iQX7Ix1hEK8c4VD2Uvgx6zu%2Bz4C0e68Ta1p3XGipJD8ebsrhJDtgx%2Fa5JzdZ75QKq8Xvg9ovNOPrR7umvhiFHLe9daxVWoI%2BRqLEA88VbLMV2P%2BSHbnOiF%2B1VHY3kyRo1JBpwpqY%2B0z8ZT9ZDNKziEmyOS%2BmpgOKbllIJUgTtkIfTxFjWSYW35snhmjyAMk0vM%2B0q5c1mjV7wpAwY7sd48gQ5yNRShkB9vCRneLmiLl2%2FXCQzEgm5Ow%2BVrU6tSHymHopwJVOphS9xX%2F3TAHch6UkrN%2FK8fAL2qg1b1DenZa2n8%3D",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "tru.vintage",
+      "sellerFeedbackScore": 3480,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 7.5,
+        "rating": "🔥 VERY GOOD",
+        "breakdown": [
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "👍 Experienced seller (1000+ transactions) (+1 point)",
+          "📦 Free shipping (+0.5 points)"
+        ],
+        "recommendation": "Very good opportunity - worth serious consideration"
+      }
+    },
+    {
+      "itemId": "v1|133766802112|0",
+      "title": "DIRK NOWITZKI 2008 TOPPS CHROME WHITE REFRACTOR #59/99 SSP RARE!",
+      "currentPrice": 185,
+      "shippingCost": 5.5,
+      "totalPrice": 190.5,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/I54AAOSwvIBgpuA-/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/133766802112?_skw=dirk+nowitzki+topps+refractor&hash=item1f251f6ac0:g:I54AAOSwvIBgpuA-",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "lindy3801",
+      "sellerFeedbackScore": 742,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 7.5,
+        "rating": "🔥 VERY GOOD",
+        "breakdown": [
+          "🎯 Numbered /99 (+1 point)",
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "👍 Established seller (500+ transactions) (+0.5 points)"
+        ],
+        "recommendation": "Very good opportunity - worth serious consideration"
+      }
+    },
+    {
+      "itemId": "v1|397188441687|0",
+      "title": "( /25 ) Dirk Nowitzki 2004-05 Topps Finest #106 Blue X-factor JSY Refractor SSP",
+      "currentPrice": 250,
+      "shippingCost": 25,
+      "totalPrice": 275,
+      "condition": "Graded",
+      "imageUrl": "https://i.ebayimg.com/images/g/0T4AAOSwry9oHpLy/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/397188441687?_skw=dirk+nowitzki+topps+refractor&hash=item5c7a46a657:g:0T4AAOSwry9oHpLy",
+      "location": "",
+      "country": "JP",
+      "sellerUsername": "freshd90",
+      "sellerFeedbackScore": 1131,
+      "sellerPositivePercent": "99.7",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 7.5,
+        "rating": "🔥 VERY GOOD",
+        "breakdown": [
+          "🎯 Numbered /25 (+1.5 points)",
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "👍 Experienced seller (1000+ transactions) (+1 point)",
+          "⚠️ High shipping cost ($25) (-1 point)"
+        ],
+        "recommendation": "Very good opportunity - worth serious consideration"
+      }
+    },
+    {
+      "itemId": "v1|366136885608|0",
+      "title": "2006-07 Topps Finest BLUE REFRACTOR #12 Dirk Nowitzki /299",
+      "currentPrice": 54.99,
+      "shippingCost": 0,
+      "totalPrice": 54.99,
+      "condition": "Graded",
+      "imageUrl": "https://i.ebayimg.com/images/g/M38AAeSwAZFpbvz2/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/366136885608?_skw=dirk+nowitzki+topps+refractor&hash=item553f758168:g:M38AAeSwAZFpbvz2",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "getitlike123",
+      "sellerFeedbackScore": 258,
+      "sellerPositivePercent": "99.6",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "🎯 Numbered /299 (+0.5 points)",
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "📦 Free shipping (+0.5 points)",
+          "⚠️ New/unproven seller (-1 point)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|336372698218|0",
+      "title": "2007-08 Topps Chrome Dirk Nowitzki #41 1957-58 Variations Refractor /999 - Mavs",
+      "currentPrice": 44.99,
+      "shippingCost": 0,
+      "totalPrice": 44.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/EOAAAeSw4NBpWKlO/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/336372698218?_skw=dirk+nowitzki+topps+refractor&hash=item4e51600c6a:g:EOAAAeSw4NBpWKlO",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "sascards86",
+      "sellerFeedbackScore": 254,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 5.5,
+        "rating": "💰 DECENT",
+        "breakdown": [
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "📦 Free shipping (+0.5 points)",
+          "⚠️ New/unproven seller (-1 point)"
+        ],
+        "recommendation": "Decent opportunity - consider if it fits your strategy"
+      }
+    }
+  ],
+  "allDeals": [
+    {
+      "itemId": "v1|257000080902|0",
+      "title": "2005-06 Topps Chrome Dirk Nowitzki Refractors Black 72 Dallas Mavericks #/399",
+      "currentPrice": 96.41,
+      "shippingCost": 0,
+      "totalPrice": 96.41,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/ZnoAAeSwN0ZoZaLa/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/257000080902?_skw=dirk+nowitzki+topps+refractor&hash=item3bd6660606:g:ZnoAAeSwN0ZoZaLa",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "grailst",
+      "sellerFeedbackScore": 1702,
+      "sellerPositivePercent": "99.9",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 4,
+          "avgPrice": 3915.05,
+          "recentSales": [
+            {
+              "price": 403.99,
+              "title": "JAY Z 2005-06 TOPPS CHROME BASKETBALL #217 \"REFRACTOR\" ROOKIE CARD 31/999 PSA 9",
+              "url": "https://www.ebay.com/itm/115512204962?_skw=2005-06+topps+chrome+refractor+PSA+9&hash=item1ae5105ea2:g:dfYAAOSwMc9jEQjW"
+            },
+            {
+              "price": 152.75,
+              "title": "2005 BOWMAN CHROME DREW BREES RED REFRACTOR PSA 9",
+              "url": "https://www.ebay.com/itm/143723696622?_skw=2005-06+topps+chrome+refractor+PSA+9&hash=item21769991ee:g:2NUAAOSwy~NfVWnI"
+            },
+            {
+              "price": 14999.99,
+              "title": "2005-06 Topps Chrome Relics GOLD Refractor Chris Paul RC # 3/9 BGS PRISTINE 10",
+              "url": "https://www.ebay.com/itm/314147308142?_skw=2005-06+topps+chrome+refractor+PSA+9&hash=item4924a3826e:g:NhcAAOSwLr9jIff4"
+            },
+            {
+              "price": 103.48,
+              "title": "Daniel Ewing 2005-06 UD Exquisite Collection Jersey Auto ROOKIE BGS 9.5 GEM MINT",
+              "url": "https://www.ebay.com/itm/353872663012?_skw=2005-06+topps+chrome+refractor+PSA+9&hash=item52647451e4:g:dv4AAOSwYIJh7cyc"
+            }
+          ]
+        },
+        "foundComps": true
+      },
+      "profitAnalysis": {
+        "insufficientData": false,
+        "totalCost": 116.41,
+        "rawPrice": 96.41,
+        "gradingCost": 20,
+        "psa10Scenario": {
+          "avgCompPrice": 0,
+          "profit": 0,
+          "multiplier": 0
+        },
+        "psa9Scenario": {
+          "avgCompPrice": 3915.05,
+          "profit": 3798.64,
+          "multiplier": 33.6
+        },
+        "expectedValue": 1519.46,
+        "roi": 1305.3,
+        "recommendation": "🔥 EXCEPTIONAL - Strong buy candidate"
+      },
+      "dealScore": {
+        "score": 10,
+        "rating": "🔥🔥🔥 EXCEPTIONAL",
+        "breakdown": [
+          "🔥 EV > $300 (+3 points)",
+          "📈 ROI > 200% (+1.5 points)",
+          "🎯 Numbered /399 (+0.5 points)",
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "👍 Experienced seller (1000+ transactions) (+1 point)",
+          "📦 Free shipping (+0.5 points)"
+        ],
+        "recommendation": "Strong buy - excellent opportunity with multiple positive factors"
+      }
+    },
+    {
+      "itemId": "v1|157405443093|0",
+      "title": "2007-08 Topps Chrome Dirk Nowitzki #41 White Refractor #/99 Dallas Mavericks",
+      "currentPrice": 175,
+      "shippingCost": 0,
+      "totalPrice": 175,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/BZsAAeSwE-lo9pDU/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/157405443093?_skw=dirk+nowitzki+topps+refractor&hash=item24a6187415:g:BZsAAeSwE-lo9pDU&amdata=enc%3AAQALAAABADZq0hFgvSYlgrFkWCFZ3z3qnN5v4m100wSceZioATllUBEEmMNptGCv0EVArDd%2FOYCUqNYY5Y0IiIOt%2BWeNlc9eTEuVu7wEkL2rSvcHpqzjFuoVFL5rtShNy7TYCU5JKu0eOBcbWWBAF4rRV7PfGiRLofdIvfCfgrokbGv%2BMTWdJHN3lAa1maXCPOmL6bmriQhAGVDvOFnbaGxa5zVE23d1wgj3XGVeN24IUsoQhpqSO2H9OEcBSQufwOP0VepAhDcovBnTNLEQ7GGVNuvY%2BzVzb2%2F1sTTYrlXdpsaOih8uPgjaWNU2G1HGeofQz36MXCTKu7mOf%2F7cStCW%2BbOq6QE%3D",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "rivervalleycollectibles",
+      "sellerFeedbackScore": 12406,
+      "sellerPositivePercent": "99.9",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 8.5,
+        "rating": "🔥🔥 HOT",
+        "breakdown": [
+          "🎯 Numbered /99 (+1 point)",
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "👍 Experienced seller (1000+ transactions) (+1 point)",
+          "📦 Free shipping (+0.5 points)"
+        ],
+        "recommendation": "Strong buy - excellent opportunity with multiple positive factors"
+      }
+    },
+    {
+      "itemId": "v1|236601235328|0",
+      "title": "2007-08 Topps Finest - Dirk Nowitzki #4 Refractor (Z)",
+      "currentPrice": 9.99,
+      "shippingCost": 0,
+      "totalPrice": 9.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/DRUAAeSwreJpdsOT/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/236601235328?_skw=dirk+nowitzki+topps+refractor&hash=item3716885780:g:DRUAAeSwreJpdsOT",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "pstoffel",
+      "sellerFeedbackScore": 2554,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 8,
+        "rating": "🔥🔥 HOT",
+        "breakdown": [
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "👍 Experienced seller (1000+ transactions) (+1 point)",
+          "📦 Free shipping (+0.5 points)"
+        ],
+        "recommendation": "Strong buy - excellent opportunity with multiple positive factors"
+      }
+    },
+    {
+      "itemId": "v1|326748351099|0",
+      "title": "2006-07 Topps Finest BLUE REFRACTOR #12 Dirk Nowitzki - Dallas Mavericks #9/299",
+      "currentPrice": 39.99,
+      "shippingCost": 0,
+      "totalPrice": 39.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/AXgAAeSwi15or559/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/326748351099?_skw=dirk+nowitzki+topps+refractor&hash=item4c13b82a7b:g:AXgAAeSwi15or559",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "qcbfun",
+      "sellerFeedbackScore": 21562,
+      "sellerPositivePercent": "99.9",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 8,
+        "rating": "🔥🔥 HOT",
+        "breakdown": [
+          "🎯 Numbered /299 (+0.5 points)",
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "👍 Experienced seller (1000+ transactions) (+1 point)",
+          "📦 Free shipping (+0.5 points)"
+        ],
+        "recommendation": "Strong buy - excellent opportunity with multiple positive factors"
+      }
+    },
+    {
+      "itemId": "v1|326752191162|0",
+      "title": "2005-06 Topps Finest Basketball REFRACTOR #28 Dirk Nowitzki Mavericks #18/349",
+      "currentPrice": 49.99,
+      "shippingCost": 0,
+      "totalPrice": 49.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/UfcAAeSwdIhos3-9/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/326752191162?_skw=dirk+nowitzki+topps+refractor&hash=item4c13f2c2ba:g:UfcAAeSwdIhos3-9",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "qcbfun",
+      "sellerFeedbackScore": 21562,
+      "sellerPositivePercent": "99.9",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 8,
+        "rating": "🔥🔥 HOT",
+        "breakdown": [
+          "🎯 Numbered /349 (+0.5 points)",
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "👍 Experienced seller (1000+ transactions) (+1 point)",
+          "📦 Free shipping (+0.5 points)"
+        ],
+        "recommendation": "Strong buy - excellent opportunity with multiple positive factors"
+      }
+    },
+    {
+      "itemId": "v1|297991728602|0",
+      "title": "2008 Topps Chrome DIRK NOWITZKI REFRACTOR #41 HOLO SSP HOF DALLAS MAVERICKS",
+      "currentPrice": 89.95,
+      "shippingCost": 0,
+      "totalPrice": 89.95,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/sV8AAeSwqixpgAt5/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/297991728602?_skw=dirk+nowitzki+topps+refractor&hash=item4561b0edda:g:sV8AAeSwqixpgAt5&amdata=enc%3AAQALAAABADZq0hFgvSYlgrFkWCFZ3z2%2BSIJvLu3Oh7DjO%2Bs34iQX7Ix1hEK8c4VD2Uvgx6zu%2Bz4C0e68Ta1p3XGipJD8ebsrhJDtgx%2Fa5JzdZ75QKq8Xvg9ovNOPrR7umvhiFHLe9daxVWoI%2BRqLEA88VbLMV2P%2BSHbnOiF%2B1VHY3kyRo1JBpwpqY%2B0z8ZT9ZDNKziEmyOS%2BmpgOKbllIJUgTtkIfTxFjWSYW35snhmjyAMk0vM%2B0q5c1mjV7wpAwY7sd48gQ5yNRShkB9vCRneLmiLl2%2FXCQzEgm5Ow%2BVrU6tSHymHopwJVOphS9xX%2F3TAHch6UkrN%2FK8fAL2qg1b1DenZa2n8%3D",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "tru.vintage",
+      "sellerFeedbackScore": 3480,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 7.5,
+        "rating": "🔥 VERY GOOD",
+        "breakdown": [
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "👍 Experienced seller (1000+ transactions) (+1 point)",
+          "📦 Free shipping (+0.5 points)"
+        ],
+        "recommendation": "Very good opportunity - worth serious consideration"
+      }
+    },
+    {
+      "itemId": "v1|133766802112|0",
+      "title": "DIRK NOWITZKI 2008 TOPPS CHROME WHITE REFRACTOR #59/99 SSP RARE!",
+      "currentPrice": 185,
+      "shippingCost": 5.5,
+      "totalPrice": 190.5,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/I54AAOSwvIBgpuA-/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/133766802112?_skw=dirk+nowitzki+topps+refractor&hash=item1f251f6ac0:g:I54AAOSwvIBgpuA-",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "lindy3801",
+      "sellerFeedbackScore": 742,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 7.5,
+        "rating": "🔥 VERY GOOD",
+        "breakdown": [
+          "🎯 Numbered /99 (+1 point)",
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "👍 Established seller (500+ transactions) (+0.5 points)"
+        ],
+        "recommendation": "Very good opportunity - worth serious consideration"
+      }
+    },
+    {
+      "itemId": "v1|397188441687|0",
+      "title": "( /25 ) Dirk Nowitzki 2004-05 Topps Finest #106 Blue X-factor JSY Refractor SSP",
+      "currentPrice": 250,
+      "shippingCost": 25,
+      "totalPrice": 275,
+      "condition": "Graded",
+      "imageUrl": "https://i.ebayimg.com/images/g/0T4AAOSwry9oHpLy/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/397188441687?_skw=dirk+nowitzki+topps+refractor&hash=item5c7a46a657:g:0T4AAOSwry9oHpLy",
+      "location": "",
+      "country": "JP",
+      "sellerUsername": "freshd90",
+      "sellerFeedbackScore": 1131,
+      "sellerPositivePercent": "99.7",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 7.5,
+        "rating": "🔥 VERY GOOD",
+        "breakdown": [
+          "🎯 Numbered /25 (+1.5 points)",
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "👍 Experienced seller (1000+ transactions) (+1 point)",
+          "⚠️ High shipping cost ($25) (-1 point)"
+        ],
+        "recommendation": "Very good opportunity - worth serious consideration"
+      }
+    },
+    {
+      "itemId": "v1|366136885608|0",
+      "title": "2006-07 Topps Finest BLUE REFRACTOR #12 Dirk Nowitzki /299",
+      "currentPrice": 54.99,
+      "shippingCost": 0,
+      "totalPrice": 54.99,
+      "condition": "Graded",
+      "imageUrl": "https://i.ebayimg.com/images/g/M38AAeSwAZFpbvz2/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/366136885608?_skw=dirk+nowitzki+topps+refractor&hash=item553f758168:g:M38AAeSwAZFpbvz2",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "getitlike123",
+      "sellerFeedbackScore": 258,
+      "sellerPositivePercent": "99.6",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "🎯 Numbered /299 (+0.5 points)",
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "📦 Free shipping (+0.5 points)",
+          "⚠️ New/unproven seller (-1 point)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|336372698218|0",
+      "title": "2007-08 Topps Chrome Dirk Nowitzki #41 1957-58 Variations Refractor /999 - Mavs",
+      "currentPrice": 44.99,
+      "shippingCost": 0,
+      "totalPrice": 44.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/EOAAAeSw4NBpWKlO/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/336372698218?_skw=dirk+nowitzki+topps+refractor&hash=item4e51600c6a:g:EOAAAeSw4NBpWKlO",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "sascards86",
+      "sellerFeedbackScore": 254,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 5.5,
+        "rating": "💰 DECENT",
+        "breakdown": [
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "📦 Free shipping (+0.5 points)",
+          "⚠️ New/unproven seller (-1 point)"
+        ],
+        "recommendation": "Decent opportunity - consider if it fits your strategy"
+      }
+    },
+    {
+      "itemId": "v1|376879185407|0",
+      "title": "2007-08 Topps Chrome - Dirk Nowitzki #41 1957-58 Variations Refractor 681/999",
+      "currentPrice": 45,
+      "shippingCost": 0,
+      "totalPrice": 45,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/nZEAAeSwLmtpbs0Q/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/376879185407?_skw=dirk+nowitzki+topps+refractor&hash=item57bfbffdff:g:nZEAAeSwLmtpbs0Q",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "all_the_random_things",
+      "sellerFeedbackScore": 111,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 5.5,
+        "rating": "💰 DECENT",
+        "breakdown": [
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "📦 Free shipping (+0.5 points)",
+          "⚠️ New/unproven seller (-1 point)"
+        ],
+        "recommendation": "Decent opportunity - consider if it fits your strategy"
+      }
+    },
+    {
+      "itemId": "v1|317779922819|0",
+      "title": "2007-08 Topps Chrome - Dirk Nowitzki #41 Refractor /999",
+      "currentPrice": 95,
+      "shippingCost": 0,
+      "totalPrice": 95,
+      "condition": "Graded",
+      "imageUrl": "https://i.ebayimg.com/images/g/b0wAAeSwCmlpONYB/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/317779922819?_skw=dirk+nowitzki+topps+refractor&hash=item49fd28cf83:g:b0wAAeSwCmlpONYB",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "bearded_legends_sports",
+      "sellerFeedbackScore": 140,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 5.5,
+        "rating": "💰 DECENT",
+        "breakdown": [
+          "✅ Excellent seller (99.5%+) (+1 point)",
+          "📦 Free shipping (+0.5 points)",
+          "⚠️ New/unproven seller (-1 point)"
+        ],
+        "recommendation": "Decent opportunity - consider if it fits your strategy"
+      }
+    }
+  ]
+}

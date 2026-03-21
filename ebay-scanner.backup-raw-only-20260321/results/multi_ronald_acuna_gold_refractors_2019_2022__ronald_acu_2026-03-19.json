@@ -1,0 +1,256 @@
+{
+  "timestamp": "2026-03-19T20:37:45.368Z",
+  "searchQuery": "Ronald Acuna Gold Refractors 2019-2022, Ronald Acuna Auto 2018, Ronald Acuna Auto 2019-2022",
+  "parsed": {
+    "original": "Ronald Acuna Gold Refractors 2019-2022, Ronald Acuna Auto 2018, Ronald Acuna Auto 2019-2022",
+    "isComplex": true,
+    "baseQuery": "2018 -",
+    "players": [
+      "ronald acuna gold",
+      "ronald acuna",
+      "ronald acuna"
+    ],
+    "yearRange": {
+      "start": 2019,
+      "end": 2022,
+      "years": [
+        2019,
+        2020,
+        2021,
+        2022
+      ]
+    },
+    "detectedTypes": [
+      "refractor",
+      "auto"
+    ],
+    "searches": [
+      "2019 ronald acuna gold 2018 - refractor",
+      "2019 ronald acuna gold 2018 - auto",
+      "2020 ronald acuna gold 2018 - refractor",
+      "2020 ronald acuna gold 2018 - auto",
+      "2021 ronald acuna gold 2018 - refractor",
+      "2021 ronald acuna gold 2018 - auto",
+      "2022 ronald acuna gold 2018 - refractor",
+      "2022 ronald acuna gold 2018 - auto",
+      "2019 ronald acuna 2018 - refractor",
+      "2019 ronald acuna 2018 - auto",
+      "2020 ronald acuna 2018 - refractor",
+      "2020 ronald acuna 2018 - auto",
+      "2021 ronald acuna 2018 - refractor",
+      "2021 ronald acuna 2018 - auto",
+      "2022 ronald acuna 2018 - refractor",
+      "2022 ronald acuna 2018 - auto",
+      "2019 ronald acuna 2018 - refractor",
+      "2019 ronald acuna 2018 - auto",
+      "2020 ronald acuna 2018 - refractor",
+      "2020 ronald acuna 2018 - auto",
+      "2021 ronald acuna 2018 - refractor",
+      "2021 ronald acuna 2018 - auto",
+      "2022 ronald acuna 2018 - refractor",
+      "2022 ronald acuna 2018 - auto"
+    ],
+    "searchCount": 24,
+    "explanation": "Split into 24 searches: 3 players (ronald acuna gold, ronald acuna, ronald acuna) × 4 years (2019-2022) × 2 card types (refractor, auto)"
+  },
+  "searchResults": [
+    {
+      "query": "2019 ronald acuna gold 2018 - refractor",
+      "count": 0
+    },
+    {
+      "query": "2019 ronald acuna gold 2018 - auto",
+      "count": 0
+    },
+    {
+      "query": "2020 ronald acuna gold 2018 - refractor",
+      "count": 0
+    },
+    {
+      "query": "2020 ronald acuna gold 2018 - auto",
+      "count": 0
+    },
+    {
+      "query": "2021 ronald acuna gold 2018 - refractor",
+      "count": 0
+    },
+    {
+      "query": "2021 ronald acuna gold 2018 - auto",
+      "count": 0
+    },
+    {
+      "query": "2022 ronald acuna gold 2018 - refractor",
+      "count": 0
+    },
+    {
+      "query": "2022 ronald acuna gold 2018 - auto",
+      "count": 0
+    },
+    {
+      "query": "2019 ronald acuna 2018 - refractor",
+      "count": 0
+    },
+    {
+      "query": "2019 ronald acuna 2018 - auto",
+      "count": 0
+    },
+    {
+      "query": "2020 ronald acuna 2018 - refractor",
+      "count": 0
+    },
+    {
+      "query": "2020 ronald acuna 2018 - auto",
+      "count": 0
+    },
+    {
+      "query": "2021 ronald acuna 2018 - refractor",
+      "count": 0
+    },
+    {
+      "query": "2021 ronald acuna 2018 - auto",
+      "count": 0
+    },
+    {
+      "query": "2022 ronald acuna 2018 - refractor",
+      "count": 1
+    },
+    {
+      "query": "2022 ronald acuna 2018 - auto",
+      "count": 0
+    },
+    {
+      "query": "2019 ronald acuna 2018 - refractor",
+      "count": 0
+    },
+    {
+      "query": "2019 ronald acuna 2018 - auto",
+      "count": 0
+    },
+    {
+      "query": "2020 ronald acuna 2018 - refractor",
+      "count": 0
+    },
+    {
+      "query": "2020 ronald acuna 2018 - auto",
+      "count": 0
+    },
+    {
+      "query": "2021 ronald acuna 2018 - refractor",
+      "count": 0
+    },
+    {
+      "query": "2021 ronald acuna 2018 - auto",
+      "count": 0
+    },
+    {
+      "query": "2022 ronald acuna 2018 - refractor",
+      "count": 1
+    },
+    {
+      "query": "2022 ronald acuna 2018 - auto",
+      "count": 0
+    }
+  ],
+  "config": {
+    "keywords": "Ronald Acuna Gold Refractors 2019-2022, Ronald Acuna Auto 2018, Ronald Acuna Auto 2019-2022",
+    "minScoreToShow": 7,
+    "topN": 20,
+    "minPrice": 20,
+    "maxPrice": 2000,
+    "rawOnly": true,
+    "useVision": true,
+    "visionTopN": 200,
+    "excludeKeywords": "mystery,custom,pack,jumbo,replica",
+    "listingType": "fixed_price",
+    "cardType": "raw"
+  },
+  "scanDuration": "12.0s",
+  "summary": {
+    "totalFound": 2,
+    "uniqueItems": 1,
+    "rawCardsOnly": true,
+    "afterRawFilter": 1,
+    "totalScored": 1,
+    "showingResults": 1,
+    "visionScanned": true
+  },
+  "allResults": [
+    {
+      "itemId": "v1|305443403796|604363094079",
+      "title": "RONALD ACUNA JR 2018-2024 Cards ⚾ U PICK 🔥 Topps RC Parallel Mojo Refractor ASG",
+      "currentPrice": 29.13,
+      "shippingCost": 0,
+      "totalPrice": 29.13,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/BYkAAOSwCeRl7ex3/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/305443403796?_skw=2022+ronald+acuna+2018+-+refractor+-psa+-bgs+-cgc+-sgc+-graded+-slab&hash=item471dd87814:g:BYkAAOSwCeRl7ex3",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "monkeymike911",
+      "sellerFeedbackScore": 1521,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 8,
+        "rating": "⚡ GREAT DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 1521,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (1521 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: ronald acuna",
+              "refractor match",
+              "Close year: 2018 (±2 of 2019)",
+              "Premium brand"
+            ],
+            "mismatches": [
+              "Missing: auto"
+            ],
+            "requestedTypes": [
+              "refractor",
+              "auto"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Player match: ronald acuna, refractor match, Close year: 2018 (±2 of 2019), Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    }
+  ]
+}

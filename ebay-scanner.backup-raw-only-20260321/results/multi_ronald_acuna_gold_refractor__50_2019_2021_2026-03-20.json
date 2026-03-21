@@ -1,0 +1,2920 @@
+{
+  "timestamp": "2026-03-20T18:35:16.268Z",
+  "searchQuery": "Ronald Acuna Gold Refractor /50 2019-2021",
+  "parsed": {
+    "original": "Ronald Acuna Gold Refractor /50 2019-2021",
+    "isComplex": true,
+    "baseQuery": "ronald acuna gold /50",
+    "players": null,
+    "yearRange": {
+      "start": 2019,
+      "end": 2021,
+      "years": [
+        2019,
+        2020,
+        2021
+      ]
+    },
+    "detectedTypes": [
+      "refractor"
+    ],
+    "searches": [
+      "2019 ronald acuna gold /50 refractor",
+      "2020 ronald acuna gold /50 refractor",
+      "2021 ronald acuna gold /50 refractor"
+    ],
+    "searchCount": 3,
+    "explanation": "Split into 3 searches: 3 years (2019-2021)"
+  },
+  "searchResults": [
+    {
+      "query": "2019 ronald acuna gold /50 refractor",
+      "count": 6
+    },
+    {
+      "query": "2020 ronald acuna gold /50 refractor",
+      "count": 17
+    },
+    {
+      "query": "2021 ronald acuna gold /50 refractor",
+      "count": 19
+    }
+  ],
+  "config": {
+    "keywords": "Ronald Acuna Gold Refractor /50 2019-2021",
+    "minScoreToShow": 7,
+    "topN": 20,
+    "minPrice": 20,
+    "maxPrice": 2000,
+    "rawOnly": true,
+    "useVision": true,
+    "visionTopN": 200,
+    "excludeKeywords": "mystery,mojo,custom,pack,jumbo,replica",
+    "listingType": "fixed_price",
+    "cardType": "raw"
+  },
+  "scanDuration": "12.2s",
+  "summary": {
+    "totalFound": 42,
+    "uniqueItems": 42,
+    "rawCardsOnly": true,
+    "afterRawFilter": 35,
+    "totalScored": 35,
+    "showingResults": 25,
+    "visionScanned": true
+  },
+  "allResults": [
+    {
+      "itemId": "v1|164375166197|0",
+      "title": "Ronald Acuna Jr 2019 Gypsy Queen Topps Chrome Gold Refractor 7/50 BRAVES",
+      "currentPrice": 70,
+      "shippingCost": 5,
+      "totalPrice": 75,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/AhsAAOSwWttfV~Mn/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/164375166197?_skw=2019+ronald+acuna+gold+%2F50+refractor+-psa+-bgs+-cgc+-sgc+-graded+-slab+-mystery+-mojo+-custom+-pack+-jumbo+-replica&hash=item264585fcf5:g:AhsAAOSwWttfV~Mn",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "rambomj23",
+      "sellerFeedbackScore": 25043,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.5,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 25043,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (25043 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: ronald acuna",
+              "refractor match",
+              "serial match",
+              "Exact year: 2019",
+              "Premium brand",
+              "Premium set: chrome"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor",
+              "serial"
+            ],
+            "foundTypes": [
+              "refractor",
+              "serial"
+            ],
+            "reason": "✅ Player match: ronald acuna, refractor match, serial match, Exact year: 2019, Premium brand, Premium set: chrome"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|257111425258|0",
+      "title": "2019 Gypsy Queen Chrome Gold Refractor #150 Ronald Acuna Jr 31/50",
+      "currentPrice": 40,
+      "shippingCost": 0,
+      "totalPrice": 40,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/thcAAeSw6VdoywRI/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/257111425258?_skw=2019+ronald+acuna+gold+%2F50+refractor+-psa+-bgs+-cgc+-sgc+-graded+-slab+-mystery+-mojo+-custom+-pack+-jumbo+-replica&hash=item3bdd0900ea:g:thcAAeSw6VdoywRI",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "elephantbro511",
+      "sellerFeedbackScore": 5958,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.5,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 5958,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (5958 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: ronald acuna",
+              "refractor match",
+              "serial match",
+              "Exact year: 2019",
+              "Premium set: chrome"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor",
+              "serial"
+            ],
+            "foundTypes": [
+              "refractor",
+              "serial"
+            ],
+            "reason": "✅ Player match: ronald acuna, refractor match, serial match, Exact year: 2019, Premium set: chrome"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|388816279988|0",
+      "title": "RONALD ACUNA JR. 2019 Bowman's Best Power Producers PP-RAJ Gold Refractor #44/50",
+      "currentPrice": 49.99,
+      "shippingCost": 6.5,
+      "totalPrice": 56.49,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/oZoAAeSwc9Jol5rn/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/388816279988?_skw=2019+ronald+acuna+gold+%2F50+refractor+-psa+-bgs+-cgc+-sgc+-graded+-slab+-mystery+-mojo+-custom+-pack+-jumbo+-replica&hash=item5a874199b4:g:oZoAAeSwc9Jol5rn",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "hotrookies82",
+      "sellerFeedbackScore": 22173,
+      "sellerPositivePercent": "99.9",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.5,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "99.9",
+            "salesCount": 22173,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "99.9% (22173 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: ronald acuna",
+              "refractor match",
+              "serial match",
+              "Exact year: 2019",
+              "Premium brand"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor",
+              "serial"
+            ],
+            "foundTypes": [
+              "refractor",
+              "serial"
+            ],
+            "reason": "✅ Player match: ronald acuna, refractor match, serial match, Exact year: 2019, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|227026581001|0",
+      "title": "2020 Bowman Chrome Ronald Acuna Jr Gold Refractor /50 Braves",
+      "currentPrice": 59.95,
+      "shippingCost": 5,
+      "totalPrice": 64.95,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/GRUAAeSwM2No77eQ/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/227026581001?_skw=2020+ronald+acuna+gold+%2F50+refractor+-psa+-bgs+-cgc+-sgc+-graded+-slab+-mystery+-mojo+-custom+-pack+-jumbo+-replica&hash=item34dbd6b609:g:GRUAAeSwM2No77eQ",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "chads-cards",
+      "sellerFeedbackScore": 17561,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.5,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 17561,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (17561 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: ronald acuna",
+              "refractor match",
+              "serial match",
+              "Close year: 2020 (±2 of 2019)",
+              "Premium brand",
+              "Premium set: chrome"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor",
+              "serial"
+            ],
+            "foundTypes": [
+              "refractor",
+              "serial"
+            ],
+            "reason": "✅ Player match: ronald acuna, refractor match, serial match, Close year: 2020 (±2 of 2019), Premium brand, Premium set: chrome"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|386189186220|0",
+      "title": "2020 Bowman's Best Power Producers Gold Refractor Ronald Acuna Jr. /50 Braves",
+      "currentPrice": 37.8,
+      "shippingCost": 0,
+      "totalPrice": 37.8,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/VMcAAOSwqY9jMjy-/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/386189186220?_skw=2020+ronald+acuna+gold+%2F50+refractor+-psa+-bgs+-cgc+-sgc+-graded+-slab+-mystery+-mojo+-custom+-pack+-jumbo+-replica&hash=item59eaab54ac:g:VMcAAOSwqY9jMjy-",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "mjarmuz20",
+      "sellerFeedbackScore": 29199,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.5,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 29199,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (29199 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: ronald acuna",
+              "refractor match",
+              "serial match",
+              "Close year: 2020 (±2 of 2019)",
+              "Premium brand"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor",
+              "serial"
+            ],
+            "foundTypes": [
+              "refractor",
+              "serial"
+            ],
+            "reason": "✅ Player match: ronald acuna, refractor match, serial match, Close year: 2020 (±2 of 2019), Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|146525970457|0",
+      "title": "RONALD ACUNA JR. 2020 TOPPS CHROME BEN BALLER EDITION 1985 GOLD REFRACTOR /50",
+      "currentPrice": 119.99,
+      "shippingCost": 5,
+      "totalPrice": 124.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/1OEAAOSwa59oAWJw/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/146525970457?_skw=2020+ronald+acuna+gold+%2F50+refractor+-psa+-bgs+-cgc+-sgc+-graded+-slab+-mystery+-mojo+-custom+-pack+-jumbo+-replica&hash=item221da0e019:g:1OEAAOSwa59oAWJw",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "oldhwyantiques",
+      "sellerFeedbackScore": 4443,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.5,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 4443,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (4443 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: ronald acuna",
+              "refractor match",
+              "serial match",
+              "Close year: 2020 (±2 of 2019)",
+              "Premium brand",
+              "Premium set: chrome"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor",
+              "serial"
+            ],
+            "foundTypes": [
+              "refractor",
+              "serial"
+            ],
+            "reason": "✅ Player match: ronald acuna, refractor match, serial match, Close year: 2020 (±2 of 2019), Premium brand, Premium set: chrome"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|236659880057|0",
+      "title": "2020 Bowman's Best Franchise Favorites Gold Refractor 36/50 Ronald Acuna Jr 0e5c",
+      "currentPrice": 23.48,
+      "shippingCost": 4.99,
+      "totalPrice": 28.47,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/y7wAAeSwXMVpoqZ0/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/236659880057?_skw=2020+ronald+acuna+gold+%2F50+refractor+-psa+-bgs+-cgc+-sgc+-graded+-slab+-mystery+-mojo+-custom+-pack+-jumbo+-replica&hash=item371a073079:g:y7wAAeSwXMVpoqZ0",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "comc_consignment",
+      "sellerFeedbackScore": 1361771,
+      "sellerPositivePercent": "99.6",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.5,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "99.6",
+            "salesCount": 1361771,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "99.6% (1361771 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: ronald acuna",
+              "refractor match",
+              "serial match",
+              "Close year: 2020 (±2 of 2019)",
+              "Premium brand"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor",
+              "serial"
+            ],
+            "foundTypes": [
+              "refractor",
+              "serial"
+            ],
+            "reason": "✅ Player match: ronald acuna, refractor match, serial match, Close year: 2020 (±2 of 2019), Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|257383826736|0",
+      "title": "2020 Topps Allen & Ginter Chrome Gold Refractor 14/50 Ronald Acuna Jr #88 4l8",
+      "currentPrice": 46.24,
+      "shippingCost": 4.99,
+      "totalPrice": 51.23,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/HLEAAeSwPllpouXh/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/257383826736?_skw=2020+ronald+acuna+gold+%2F50+refractor+-psa+-bgs+-cgc+-sgc+-graded+-slab+-mystery+-mojo+-custom+-pack+-jumbo+-replica&hash=item3bed458530:g:HLEAAeSwPllpouXh",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "comc_consignment",
+      "sellerFeedbackScore": 1361771,
+      "sellerPositivePercent": "99.6",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.5,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "99.6",
+            "salesCount": 1361771,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "99.6% (1361771 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: ronald acuna",
+              "refractor match",
+              "serial match",
+              "Close year: 2020 (±2 of 2019)",
+              "Premium brand",
+              "Premium set: chrome"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor",
+              "serial"
+            ],
+            "foundTypes": [
+              "refractor",
+              "serial"
+            ],
+            "reason": "✅ Player match: ronald acuna, refractor match, serial match, Close year: 2020 (±2 of 2019), Premium brand, Premium set: chrome"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|254975004965|0",
+      "title": "2020 Topps Allen And Ginter Chrome Gold Refractor #88 Ronald Acuna Jr. #19/50",
+      "currentPrice": 149.99,
+      "shippingCost": 4.79,
+      "totalPrice": 154.78,
+      "condition": "Unspecified",
+      "imageUrl": "https://i.ebayimg.com/images/g/xQUAAOSwUORgmjPM/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/254975004965?_skw=2020+ronald+acuna+gold+%2F50+refractor+-psa+-bgs+-cgc+-sgc+-graded+-slab+-mystery+-mojo+-custom+-pack+-jumbo+-replica&hash=item3b5db1d125:g:xQUAAOSwUORgmjPM",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "camscards6",
+      "sellerFeedbackScore": 4239,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.5,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 4239,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (4239 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: ronald acuna",
+              "refractor match",
+              "serial match",
+              "Close year: 2020 (±2 of 2019)",
+              "Premium brand",
+              "Premium set: chrome"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor",
+              "serial"
+            ],
+            "foundTypes": [
+              "refractor",
+              "serial"
+            ],
+            "reason": "✅ Player match: ronald acuna, refractor match, serial match, Close year: 2020 (±2 of 2019), Premium brand, Premium set: chrome"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|167818091727|0",
+      "title": "2020 Bowman's Best Power Producers Gold Refractor Ronald Acuna Jr. 42/50 Braves",
+      "currentPrice": 40,
+      "shippingCost": 0,
+      "totalPrice": 40,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/SVsAAeSw6l5o1uqC/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/167818091727?_skw=2020+ronald+acuna+gold+%2F50+refractor+-psa+-bgs+-cgc+-sgc+-graded+-slab+-mystery+-mojo+-custom+-pack+-jumbo+-replica&hash=item2712bcdccf:g:SVsAAeSw6l5o1uqC",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "n1mor28ao",
+      "sellerFeedbackScore": 5534,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.5,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 5534,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (5534 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: ronald acuna",
+              "refractor match",
+              "serial match",
+              "Close year: 2020 (±2 of 2019)",
+              "Premium brand"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor",
+              "serial"
+            ],
+            "foundTypes": [
+              "refractor",
+              "serial"
+            ],
+            "reason": "✅ Player match: ronald acuna, refractor match, serial match, Close year: 2020 (±2 of 2019), Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|325831784745|0",
+      "title": "2020 Bowman's Best Ronald Acuna Jr. #53 Gold Refractor SP serial /50",
+      "currentPrice": 89.99,
+      "shippingCost": 4,
+      "totalPrice": 93.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/bNAAAOSwrTxkoGDv/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/325831784745?_skw=2020+ronald+acuna+gold+%2F50+refractor+-psa+-bgs+-cgc+-sgc+-graded+-slab+-mystery+-mojo+-custom+-pack+-jumbo+-replica&hash=item4bdd167929:g:bNAAAOSwrTxkoGDv",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "tomeratiger",
+      "sellerFeedbackScore": 16315,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.5,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 16315,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (16315 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: ronald acuna",
+              "refractor match",
+              "serial match",
+              "Close year: 2020 (±2 of 2019)",
+              "Premium brand"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor",
+              "serial"
+            ],
+            "foundTypes": [
+              "refractor",
+              "serial"
+            ],
+            "reason": "✅ Player match: ronald acuna, refractor match, serial match, Close year: 2020 (±2 of 2019), Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|236658946244|0",
+      "title": "2020 Topps Stadium Club Chrome Gold Refractor 10/50 Ronald Acuna Jr #116 0rd2",
+      "currentPrice": 170.05,
+      "shippingCost": 4.99,
+      "totalPrice": 175.04,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/YH0AAeSwTz5poeSc/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/236658946244?_skw=2020+ronald+acuna+gold+%2F50+refractor+-psa+-bgs+-cgc+-sgc+-graded+-slab+-mystery+-mojo+-custom+-pack+-jumbo+-replica&hash=item3719f8f0c4:g:YH0AAeSwTz5poeSc",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "comc_consignment",
+      "sellerFeedbackScore": 1361771,
+      "sellerPositivePercent": "99.6",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.5,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "99.6",
+            "salesCount": 1361771,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "99.6% (1361771 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: ronald acuna",
+              "refractor match",
+              "serial match",
+              "Close year: 2020 (±2 of 2019)",
+              "Premium brand",
+              "Premium set: chrome"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor",
+              "serial"
+            ],
+            "foundTypes": [
+              "refractor",
+              "serial"
+            ],
+            "reason": "✅ Player match: ronald acuna, refractor match, serial match, Close year: 2020 (±2 of 2019), Premium brand, Premium set: chrome"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|383791081699|0",
+      "title": "RONALD ACUNA JR. 2020 TOPPS CHROME BEN BALLER EDITION 1985 GOLD REFRACTOR /50",
+      "currentPrice": 225,
+      "shippingCost": 0,
+      "totalPrice": 225,
+      "condition": "Used",
+      "imageUrl": "https://i.ebayimg.com/images/g/2PAAAOSwaxJfn6ot/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/383791081699?_skw=2020+ronald+acuna+gold+%2F50+refractor+-psa+-bgs+-cgc+-sgc+-graded+-slab+-mystery+-mojo+-custom+-pack+-jumbo+-replica&hash=item595bbb28e3:g:2PAAAOSwaxJfn6ot",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "randi319",
+      "sellerFeedbackScore": 8908,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.5,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 8908,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (8908 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: ronald acuna",
+              "refractor match",
+              "serial match",
+              "Close year: 2020 (±2 of 2019)",
+              "Premium brand",
+              "Premium set: chrome"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor",
+              "serial"
+            ],
+            "foundTypes": [
+              "refractor",
+              "serial"
+            ],
+            "reason": "✅ Player match: ronald acuna, refractor match, serial match, Close year: 2020 (±2 of 2019), Premium brand, Premium set: chrome"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|293758652502|0",
+      "title": "2020 Topps Chrome Ben Baller RONALD ACUNA JR. 1985 Retro GOLD Refractor 43/50",
+      "currentPrice": 299.99,
+      "shippingCost": 3.49,
+      "totalPrice": 303.48,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/yxcAAOSw-wJfcqMY/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/293758652502?_skw=2020+ronald+acuna+gold+%2F50+refractor+-psa+-bgs+-cgc+-sgc+-graded+-slab+-mystery+-mojo+-custom+-pack+-jumbo+-replica&hash=item4465615056:g:yxcAAOSw-wJfcqMY",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "wesellcorp",
+      "sellerFeedbackScore": 12976,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.5,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 12976,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (12976 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: ronald acuna",
+              "refractor match",
+              "serial match",
+              "Close year: 2020 (±2 of 2019)",
+              "Premium brand",
+              "Premium set: chrome"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor",
+              "serial"
+            ],
+            "foundTypes": [
+              "refractor",
+              "serial"
+            ],
+            "reason": "✅ Player match: ronald acuna, refractor match, serial match, Close year: 2020 (±2 of 2019), Premium brand, Premium set: chrome"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|365539521671|0",
+      "title": "2021 Stadium Club Chrome Ronald Acuna Jr Gold Refractor /50 ",
+      "currentPrice": 95,
+      "shippingCost": 0,
+      "totalPrice": 95,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/q54AAeSw8idn~tlf/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/365539521671?_skw=2021+ronald+acuna+gold+%2F50+refractor+-psa+-bgs+-cgc+-sgc+-graded+-slab+-mystery+-mojo+-custom+-pack+-jumbo+-replica&hash=item551bda7487:g:q54AAeSw8idn~tlf&amdata=enc%3AAQALAAABUACCtXRWQnOEpyOqnQQ8KGbNznFpjE%2Fe%2B%2FjgZnm4wSWHhUIqo%2B3Z3w4oz%2BwfsSyDd4V5ZjBUgOb%2FCkV4npqQhc1RD23DQhtO3J3oRdGNx8A4jrrEn3%2FGzKQryId9iLSg3qr8mcmYkvBCATnGts3jXLbP6DPVQZNZrz7T90%2BNoLgHzK%2BSBpywd%2F9FBorkSgd1g9FbkICrHFhRwMMV92PRosJC%2F0QsRrGV1sTfGOUUAMnDEbdXoSdQ7wxvcK83AN0uJT56GhRO75tq%2FBBQr77cZaZCGV5jg2lV0t9iXamGGYIuxXPGoBv0CXrvMVwLznJqYt0mJa4s8MTELoq9JxD3%2B5NoVN%2FfEcZjPKFa9STuTA%2Bh5%2Frrf2RqkF2VbGkUbdYVtg%2BIhhxCPVrRdyaIAcyiWKFiGsyZMo5y%2FRPUERwQImMaQ7kXtofFCPGAEC36fQLEaA%3D%3D",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "manma-8986",
+      "sellerFeedbackScore": 2142,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.5,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 2142,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (2142 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: ronald acuna",
+              "refractor match",
+              "serial match",
+              "Close year: 2021 (±2 of 2019)",
+              "Premium brand",
+              "Premium set: chrome"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor",
+              "serial"
+            ],
+            "foundTypes": [
+              "refractor",
+              "serial"
+            ],
+            "reason": "✅ Player match: ronald acuna, refractor match, serial match, Close year: 2021 (±2 of 2019), Premium brand, Premium set: chrome"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|388646756869|0",
+      "title": "Ronald Acuna Jr 2021 Topps Chrome Image Variation SP Gold Refractor /50 - Braves",
+      "currentPrice": 132,
+      "shippingCost": 0,
+      "totalPrice": 132,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/gf0AAeSwmGNoYUu2/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/388646756869?_skw=2021+ronald+acuna+gold+%2F50+refractor+-psa+-bgs+-cgc+-sgc+-graded+-slab+-mystery+-mojo+-custom+-pack+-jumbo+-replica&hash=item5a7d26e205:g:gf0AAeSwmGNoYUu2&amdata=enc%3AAQALAAABUACCtXRWQnOEpyOqnQQ8KGa450Lxt4XLGaJS6YSB6Dd8jF91%2Bilh7g4VQgrRuei%2Bm%2BdWUS3Yf%2BxvDY7xigVfBOZMLRn9QG8tV7R%2FC%2FMatnePRwsls99rnltVicnYzm2txXBgQgt0oU7olFsshR%2FYcMXtH5FTC8I22o5%2BrAc3LEqZEmBIdRLzmiNggLajhNX5yPcaXmQJNFU08xBfFi8TqAUk%2BhQq9KfDYGNt6FvfYkWRksgR3g7QlyobTG0pJVC84Z%2Flc85cMy25e2wn7LR04gQpnuGhosLbh19VNEk%2F98CPpcOZMp%2FGB1CAdT%2B97H5cowv6vYKl7hG6EqCqSLg1i0fHSX4CIdUrlqoydZYO0cCrC7xk2QWFgEMFFADOHGJnXYm2ZH9EBJFKWTfoQUrJ02PQdxb3CZSw62%2FvqZ%2Bs93kfdbUEnLMZgS%2Fr2gbdKzLotA%3D%3D",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "fannypackz",
+      "sellerFeedbackScore": 1051,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.5,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 1051,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (1051 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: ronald acuna",
+              "refractor match",
+              "serial match",
+              "Close year: 2021 (±2 of 2019)",
+              "Premium brand",
+              "Premium set: chrome"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor",
+              "serial"
+            ],
+            "foundTypes": [
+              "refractor",
+              "serial"
+            ],
+            "reason": "✅ Player match: ronald acuna, refractor match, serial match, Close year: 2021 (±2 of 2019), Premium brand, Premium set: chrome"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|306825813341|0",
+      "title": "2021 Bowman Sterling Recollections Ronald Acuna Jr. Gold Refractor /50 Acuña",
+      "currentPrice": 35.99,
+      "shippingCost": 5.25,
+      "totalPrice": 41.24,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/oHgAAeSwFo5pa5po/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/306825813341?_skw=2021+ronald+acuna+gold+%2F50+refractor+-psa+-bgs+-cgc+-sgc+-graded+-slab+-mystery+-mojo+-custom+-pack+-jumbo+-replica&hash=item47703e5d5d:g:oHgAAeSwFo5pa5po",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "devilsbballfan",
+      "sellerFeedbackScore": 5059,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.5,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 5059,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (5059 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: ronald acuna",
+              "refractor match",
+              "serial match",
+              "Close year: 2021 (±2 of 2019)",
+              "Premium brand"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor",
+              "serial"
+            ],
+            "foundTypes": [
+              "refractor",
+              "serial"
+            ],
+            "reason": "✅ Player match: ronald acuna, refractor match, serial match, Close year: 2021 (±2 of 2019), Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|156266579179|0",
+      "title": "2021 Topps Chrome Ronald Acuna Jr GOLD WAVE Refractor /50 Atlanta Braves MLB",
+      "currentPrice": 69.99,
+      "shippingCost": 5.29,
+      "totalPrice": 75.28,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/jhYAAOSwJAtlQBiI/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/156266579179?_skw=2021+ronald+acuna+gold+%2F50+refractor+-psa+-bgs+-cgc+-sgc+-graded+-slab+-mystery+-mojo+-custom+-pack+-jumbo+-replica&hash=item246236c4eb:g:jhYAAOSwJAtlQBiI",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "woodcards",
+      "sellerFeedbackScore": 1330,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.5,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 1330,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (1330 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: ronald acuna",
+              "refractor match",
+              "serial match",
+              "Close year: 2021 (±2 of 2019)",
+              "Premium brand",
+              "Premium set: chrome"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor",
+              "serial"
+            ],
+            "foundTypes": [
+              "refractor",
+              "serial"
+            ],
+            "reason": "✅ Player match: ronald acuna, refractor match, serial match, Close year: 2021 (±2 of 2019), Premium brand, Premium set: chrome"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|326889541215|0",
+      "title": "Ronald Acuna Jr. 2021 Topps Finest Flashbacks #176 Gold Refractor 17/50 Braves",
+      "currentPrice": 79.99,
+      "shippingCost": 0,
+      "totalPrice": 79.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/u1gAAeSw-5xpKdsd/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/326889541215?_skw=2021+ronald+acuna+gold+%2F50+refractor+-psa+-bgs+-cgc+-sgc+-graded+-slab+-mystery+-mojo+-custom+-pack+-jumbo+-replica&hash=item4c1c228e5f:g:u1gAAeSw-5xpKdsd",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "937seth",
+      "sellerFeedbackScore": 13965,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.5,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 13965,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (13965 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: ronald acuna",
+              "refractor match",
+              "serial match",
+              "Close year: 2021 (±2 of 2019)",
+              "Premium brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor",
+              "serial"
+            ],
+            "foundTypes": [
+              "refractor",
+              "serial"
+            ],
+            "reason": "✅ Player match: ronald acuna, refractor match, serial match, Close year: 2021 (±2 of 2019), Premium brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|336457958626|0",
+      "title": "2021 Topps Chrome Beisbol Gold Refractor 15/50 Ronald Acuna Jr #B-1 6m1",
+      "currentPrice": 86.79,
+      "shippingCost": 4.99,
+      "totalPrice": 91.78,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/pf0AAeSw7GxppBig/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/336457958626?_skw=2021+ronald+acuna+gold+%2F50+refractor+-psa+-bgs+-cgc+-sgc+-graded+-slab+-mystery+-mojo+-custom+-pack+-jumbo+-replica&hash=item4e567504e2:g:pf0AAeSw7GxppBig",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "comc_consignment",
+      "sellerFeedbackScore": 1361771,
+      "sellerPositivePercent": "99.6",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.5,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "99.6",
+            "salesCount": 1361771,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "99.6% (1361771 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: ronald acuna",
+              "refractor match",
+              "serial match",
+              "Close year: 2021 (±2 of 2019)",
+              "Premium brand",
+              "Premium set: chrome"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor",
+              "serial"
+            ],
+            "foundTypes": [
+              "refractor",
+              "serial"
+            ],
+            "reason": "✅ Player match: ronald acuna, refractor match, serial match, Close year: 2021 (±2 of 2019), Premium brand, Premium set: chrome"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|236656824865|0",
+      "title": "2021 Topps Chrome Gold Wave Refractor 50/50 Ronald Acuna Jr #50 jc3",
+      "currentPrice": 109.78,
+      "shippingCost": 4.99,
+      "totalPrice": 114.77,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/DOUAAeSwZ~lpoF8P/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/236656824865?_skw=2021+ronald+acuna+gold+%2F50+refractor+-psa+-bgs+-cgc+-sgc+-graded+-slab+-mystery+-mojo+-custom+-pack+-jumbo+-replica&hash=item3719d89221:g:DOUAAeSwZ~lpoF8P",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "comc_consignment",
+      "sellerFeedbackScore": 1361771,
+      "sellerPositivePercent": "99.6",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.5,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "99.6",
+            "salesCount": 1361771,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "99.6% (1361771 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: ronald acuna",
+              "refractor match",
+              "serial match",
+              "Close year: 2021 (±2 of 2019)",
+              "Premium brand",
+              "Premium set: chrome"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor",
+              "serial"
+            ],
+            "foundTypes": [
+              "refractor",
+              "serial"
+            ],
+            "reason": "✅ Player match: ronald acuna, refractor match, serial match, Close year: 2021 (±2 of 2019), Premium brand, Premium set: chrome"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|157687502566|0",
+      "title": "2021 Topps Allen & Ginter Chrome Ronald Acuna Jr #72 Mini Gold Refractor /50 ",
+      "currentPrice": 26.95,
+      "shippingCost": 5,
+      "totalPrice": 31.95,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/LYIAAeSwUH9pk9Hq/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/157687502566?_skw=2021+ronald+acuna+gold+%2F50+refractor+-psa+-bgs+-cgc+-sgc+-graded+-slab+-mystery+-mojo+-custom+-pack+-jumbo+-replica&hash=item24b6e856e6:g:LYIAAeSwUH9pk9Hq",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "jekk_cards",
+      "sellerFeedbackScore": 30378,
+      "sellerPositivePercent": "99.8",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.5,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "99.8",
+            "salesCount": 30378,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "99.8% (30378 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: ronald acuna",
+              "refractor match",
+              "serial match",
+              "Close year: 2021 (±2 of 2019)",
+              "Premium brand",
+              "Premium set: chrome"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor",
+              "serial"
+            ],
+            "foundTypes": [
+              "refractor",
+              "serial"
+            ],
+            "reason": "✅ Player match: ronald acuna, refractor match, serial match, Close year: 2021 (±2 of 2019), Premium brand, Premium set: chrome"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|317848641455|0",
+      "title": "Ronald Acuna Jr 2021 Topps Finest Gold Refractor Autograph Card #FA-RAJ 47/50",
+      "currentPrice": 239.95,
+      "shippingCost": 0,
+      "totalPrice": 239.95,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/doEAAeSw00hphkEV/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/317848641455?_skw=2021+ronald+acuna+gold+%2F50+refractor+-psa+-bgs+-cgc+-sgc+-graded+-slab+-mystery+-mojo+-custom+-pack+-jumbo+-replica&hash=item4a01415faf:g:doEAAeSw00hphkEV",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "steelcitycollectibles1",
+      "sellerFeedbackScore": 159740,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.5,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 159740,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (159740 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: ronald acuna",
+              "refractor match",
+              "serial match",
+              "Close year: 2021 (±2 of 2019)",
+              "Premium brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor",
+              "serial"
+            ],
+            "foundTypes": [
+              "refractor",
+              "serial"
+            ],
+            "reason": "✅ Player match: ronald acuna, refractor match, serial match, Close year: 2021 (±2 of 2019), Premium brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|355153053967|0",
+      "title": "2021 Topps Chrome Ben Baller Gold Refractor 50 Ronald Acuna Jr. 18/50",
+      "currentPrice": 80,
+      "shippingCost": 0,
+      "totalPrice": 80,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/RxwAAOSwaohlQWCi/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/355153053967?_skw=2021+ronald+acuna+gold+%2F50+refractor+-psa+-bgs+-cgc+-sgc+-graded+-slab+-mystery+-mojo+-custom+-pack+-jumbo+-replica&hash=item52b0c5890f:g:RxwAAOSwaohlQWCi",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "sportsnutcards",
+      "sellerFeedbackScore": 57267,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.5,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 57267,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (57267 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: ronald acuna",
+              "refractor match",
+              "serial match",
+              "Close year: 2021 (±2 of 2019)",
+              "Premium brand",
+              "Premium set: chrome"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor",
+              "serial"
+            ],
+            "foundTypes": [
+              "refractor",
+              "serial"
+            ],
+            "reason": "✅ Player match: ronald acuna, refractor match, serial match, Close year: 2021 (±2 of 2019), Premium brand, Premium set: chrome"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|236658081259|0",
+      "title": "2021 Chrome Ben Baller Edition Icy Gold Refractor 18/50 Ronald Acuna Jr 0u17",
+      "currentPrice": 35.03,
+      "shippingCost": 4.99,
+      "totalPrice": 40.02,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/CcoAAeSws2hpoVbd/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/236658081259?_skw=2021+ronald+acuna+gold+%2F50+refractor+-psa+-bgs+-cgc+-sgc+-graded+-slab+-mystery+-mojo+-custom+-pack+-jumbo+-replica&hash=item3719ebbdeb:g:CcoAAeSws2hpoVbd",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "comc_consignment",
+      "sellerFeedbackScore": 1361771,
+      "sellerPositivePercent": "99.6",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.5,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "99.6",
+            "salesCount": 1361771,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "99.6% (1361771 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: ronald acuna",
+              "refractor match",
+              "serial match",
+              "Close year: 2021 (±2 of 2019)",
+              "Premium set: chrome"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor",
+              "serial"
+            ],
+            "foundTypes": [
+              "refractor",
+              "serial"
+            ],
+            "reason": "✅ Player match: ronald acuna, refractor match, serial match, Close year: 2021 (±2 of 2019), Premium set: chrome"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|125344247810|0",
+      "title": "2021 Allen & Ginter Chrome Gold Refractor Mini #’d 14/50 Ronald Acuna",
+      "currentPrice": 39.99,
+      "shippingCost": 0,
+      "totalPrice": 39.99,
+      "condition": "Used",
+      "imageUrl": "https://i.ebayimg.com/images/g/gEQAAOSwCt5ilwjz/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/125344247810?_skw=2021+ronald+acuna+gold+%2F50+refractor+-psa+-bgs+-cgc+-sgc+-graded+-slab+-mystery+-mojo+-custom+-pack+-jumbo+-replica&hash=item1d2f197002:g:gEQAAOSwCt5ilwjz",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "tratus",
+      "sellerFeedbackScore": 1871,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.5,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 1871,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (1871 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: ronald acuna",
+              "refractor match",
+              "serial match",
+              "Close year: 2021 (±2 of 2019)",
+              "Premium set: chrome"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor",
+              "serial"
+            ],
+            "foundTypes": [
+              "refractor",
+              "serial"
+            ],
+            "reason": "✅ Player match: ronald acuna, refractor match, serial match, Close year: 2021 (±2 of 2019), Premium set: chrome"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|257383410340|0",
+      "title": "2021 Bowman Sterling Recollections Gold Refractor 2/50 Ronald Acuna Jr Acuña 4f5",
+      "currentPrice": 48.53,
+      "shippingCost": 4.99,
+      "totalPrice": 53.52,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/fZoAAeSwK6ppopka/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/257383410340?_skw=2021+ronald+acuna+gold+%2F50+refractor+-psa+-bgs+-cgc+-sgc+-graded+-slab+-mystery+-mojo+-custom+-pack+-jumbo+-replica&hash=item3bed3f2aa4:g:fZoAAeSwK6ppopka",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "comc_consignment",
+      "sellerFeedbackScore": 1361771,
+      "sellerPositivePercent": "99.6",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.5,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "99.6",
+            "salesCount": 1361771,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "99.6% (1361771 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: ronald acuna",
+              "refractor match",
+              "serial match",
+              "Close year: 2021 (±2 of 2019)",
+              "Premium brand"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor",
+              "serial"
+            ],
+            "foundTypes": [
+              "refractor",
+              "serial"
+            ],
+            "reason": "✅ Player match: ronald acuna, refractor match, serial match, Close year: 2021 (±2 of 2019), Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|286318727455|0",
+      "title": "2021 Ronald Acuna Topps Finest Gold Refractor Auto 2/50 Braves",
+      "currentPrice": 488.88,
+      "shippingCost": 6.5,
+      "totalPrice": 495.38,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/SEcAAOSwkI5nqxTI/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/286318727455?_skw=2021+ronald+acuna+gold+%2F50+refractor+-psa+-bgs+-cgc+-sgc+-graded+-slab+-mystery+-mojo+-custom+-pack+-jumbo+-replica&hash=item42a9ed111f:g:SEcAAOSwkI5nqxTI",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "jevcancel",
+      "sellerFeedbackScore": 4728,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.5,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 4728,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (4728 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: ronald acuna",
+              "refractor match",
+              "serial match",
+              "Close year: 2021 (±2 of 2019)",
+              "Premium brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor",
+              "serial"
+            ],
+            "foundTypes": [
+              "refractor",
+              "serial"
+            ],
+            "reason": "✅ Player match: ronald acuna, refractor match, serial match, Close year: 2021 (±2 of 2019), Premium brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|336443947875|0",
+      "title": "2021 Gypsy Queen Box Topper Chrome Gold Refractor 39/50 Ronald Acuna Jr #277 4f5",
+      "currentPrice": 31.81,
+      "shippingCost": 4.99,
+      "totalPrice": 36.8,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/VaMAAeSwmsVpvTXe/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/336443947875?_skw=2021+ronald+acuna+gold+%2F50+refractor+-psa+-bgs+-cgc+-sgc+-graded+-slab+-mystery+-mojo+-custom+-pack+-jumbo+-replica&hash=item4e559f3b63:g:VaMAAeSwmsVpvTXe",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "comc_consignment",
+      "sellerFeedbackScore": 1361771,
+      "sellerPositivePercent": "99.6",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.5,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "99.6",
+            "salesCount": 1361771,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "99.6% (1361771 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: ronald acuna",
+              "refractor match",
+              "serial match",
+              "Close year: 2021 (±2 of 2019)",
+              "Premium set: chrome"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor",
+              "serial"
+            ],
+            "foundTypes": [
+              "refractor",
+              "serial"
+            ],
+            "reason": "✅ Player match: ronald acuna, refractor match, serial match, Close year: 2021 (±2 of 2019), Premium set: chrome"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|168174447477|0",
+      "title": "2021 Topps Chrome Ronald Acuna Ben Baller Refractor Gold  /50 Atlanta Braves",
+      "currentPrice": 39.99,
+      "shippingCost": 4.99,
+      "totalPrice": 44.98,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/EeUAAeSwI3ppmQIK/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/168174447477?_skw=2021+ronald+acuna+gold+%2F50+refractor+-psa+-bgs+-cgc+-sgc+-graded+-slab+-mystery+-mojo+-custom+-pack+-jumbo+-replica&hash=item2727fa6b75:g:EeUAAeSwI3ppmQIK",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "autobones",
+      "sellerFeedbackScore": 520,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 7.5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 520,
+            "tier": "Established seller",
+            "trust": "✅ Good",
+            "reason": "100.0% (520 sales) - Established seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: ronald acuna",
+              "refractor match",
+              "serial match",
+              "Close year: 2021 (±2 of 2019)",
+              "Premium brand",
+              "Premium set: chrome"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor",
+              "serial"
+            ],
+            "foundTypes": [
+              "refractor",
+              "serial"
+            ],
+            "reason": "✅ Player match: ronald acuna, refractor match, serial match, Close year: 2021 (±2 of 2019), Premium brand, Premium set: chrome"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|277700216873|0",
+      "title": "Ronald Acuna Jr 2020 Bowman #90B-RAJ 1991 Bowman Gold Refractor /50",
+      "currentPrice": 60,
+      "shippingCost": 0,
+      "totalPrice": 60,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/JjoAAeSwdGlpg3P0/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/277700216873?_skw=2020+ronald+acuna+gold+%2F50+refractor+-psa+-bgs+-cgc+-sgc+-graded+-slab+-mystery+-mojo+-custom+-pack+-jumbo+-replica&hash=item40a8390829:g:JjoAAeSwdGlpg3P0",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "revl2500",
+      "sellerFeedbackScore": 373,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6.5,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 373,
+            "tier": "Decent seller",
+            "trust": "OK",
+            "reason": "100.0% (373 sales) - Decent seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: ronald acuna",
+              "refractor match",
+              "serial match",
+              "Close year: 2020 (±2 of 2019)",
+              "Premium brand"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor",
+              "serial"
+            ],
+            "foundTypes": [
+              "refractor",
+              "serial"
+            ],
+            "reason": "✅ Player match: ronald acuna, refractor match, serial match, Close year: 2020 (±2 of 2019), Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|255353388339|0",
+      "title": "RONALD ACUNA JR #20/50 Gold Photo Image Variation 2021 Topps Chrome SP Refractor",
+      "currentPrice": 400,
+      "shippingCost": 0,
+      "totalPrice": 400,
+      "condition": "Used",
+      "imageUrl": "https://i.ebayimg.com/images/g/cUAAAOSw1PBh8XxA/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/255353388339?_skw=2021+ronald+acuna+gold+%2F50+refractor+-psa+-bgs+-cgc+-sgc+-graded+-slab+-mystery+-mojo+-custom+-pack+-jumbo+-replica&hash=item3b743f7d33:g:cUAAAOSw1PBh8XxA",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "jaturne2",
+      "sellerFeedbackScore": 132,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6.5,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 132,
+            "tier": "Decent seller",
+            "trust": "OK",
+            "reason": "100.0% (132 sales) - Decent seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: ronald acuna",
+              "refractor match",
+              "serial match",
+              "Close year: 2021 (±2 of 2019)",
+              "Premium brand",
+              "Premium set: chrome"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor",
+              "serial"
+            ],
+            "foundTypes": [
+              "refractor",
+              "serial"
+            ],
+            "reason": "✅ Player match: ronald acuna, refractor match, serial match, Close year: 2021 (±2 of 2019), Premium brand, Premium set: chrome"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|365710973810|0",
+      "title": "RONALD ACUNA JR 2020 STADIUM CLUB CHROME POWER ZONE Gold Refractor PZ-7 07/50",
+      "currentPrice": 70,
+      "shippingCost": 0,
+      "totalPrice": 70,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/I1cAAeSwgRBoaDTF/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/365710973810?_skw=2020+ronald+acuna+gold+%2F50+refractor+-psa+-bgs+-cgc+-sgc+-graded+-slab+-mystery+-mojo+-custom+-pack+-jumbo+-replica&hash=item5526129b72:g:I1cAAeSwgRBoaDTF",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "jkzmemorabilia",
+      "sellerFeedbackScore": 20,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 2.5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 20,
+            "tier": "New/low feedback seller",
+            "trust": "⚠️ New seller",
+            "reason": "100.0% (20 sales) - New/low feedback seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: ronald acuna",
+              "refractor match",
+              "serial match",
+              "Close year: 2020 (±2 of 2019)",
+              "Premium brand",
+              "Premium set: chrome"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor",
+              "serial"
+            ],
+            "foundTypes": [
+              "refractor",
+              "serial"
+            ],
+            "reason": "✅ Player match: ronald acuna, refractor match, serial match, Close year: 2020 (±2 of 2019), Premium brand, Premium set: chrome"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|157758273097|0",
+      "title": "2021 Topps Allen & Ginter Chrome Ronald Acuna Jr #72 Mini Gold Refractor /50 ",
+      "currentPrice": 21.99,
+      "shippingCost": 5.99,
+      "totalPrice": 27.98,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/Mg8AAeSwyIRpt1zP/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/157758273097?_skw=2021+ronald+acuna+gold+%2F50+refractor+-psa+-bgs+-cgc+-sgc+-graded+-slab+-mystery+-mojo+-custom+-pack+-jumbo+-replica&hash=item24bb203649:g:Mg8AAeSwyIRpt1zP",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "bigzunk",
+      "sellerFeedbackScore": 97,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 2.5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 97,
+            "tier": "New/low feedback seller",
+            "trust": "⚠️ New seller",
+            "reason": "100.0% (97 sales) - New/low feedback seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: ronald acuna",
+              "refractor match",
+              "serial match",
+              "Close year: 2021 (±2 of 2019)",
+              "Premium brand",
+              "Premium set: chrome"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor",
+              "serial"
+            ],
+            "foundTypes": [
+              "refractor",
+              "serial"
+            ],
+            "reason": "✅ Player match: ronald acuna, refractor match, serial match, Close year: 2021 (±2 of 2019), Premium brand, Premium set: chrome"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|147103052229|0",
+      "title": "2021 Topps Chrome Ben Baller Gold Refractor 50 Ronald Acuna Jr. 48/50",
+      "currentPrice": 80,
+      "shippingCost": 0,
+      "totalPrice": 80,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/buoAAeSwD39pbn0H/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/147103052229?_skw=2021+ronald+acuna+gold+%2F50+refractor+-psa+-bgs+-cgc+-sgc+-graded+-slab+-mystery+-mojo+-custom+-pack+-jumbo+-replica&hash=item22400671c5:g:buoAAeSwD39pbn0H",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "cacar_517",
+      "sellerFeedbackScore": 41,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 2.5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 41,
+            "tier": "New/low feedback seller",
+            "trust": "⚠️ New seller",
+            "reason": "100.0% (41 sales) - New/low feedback seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: ronald acuna",
+              "refractor match",
+              "serial match",
+              "Close year: 2021 (±2 of 2019)",
+              "Premium brand",
+              "Premium set: chrome"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor",
+              "serial"
+            ],
+            "foundTypes": [
+              "refractor",
+              "serial"
+            ],
+            "reason": "✅ Player match: ronald acuna, refractor match, serial match, Close year: 2021 (±2 of 2019), Premium brand, Premium set: chrome"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    }
+  ]
+}

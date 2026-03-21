@@ -1,0 +1,4923 @@
+{
+  "timestamp": "2026-03-21T00:08:36.444Z",
+  "searchQuery": "topps finest michael jordan 1995",
+  "parsed": {
+    "original": "topps finest michael jordan 1995",
+    "isComplex": false,
+    "baseQuery": "topps finest michael jordan 1995",
+    "players": null,
+    "yearRange": null,
+    "detectedTypes": [],
+    "searches": [
+      "topps finest michael jordan 1995"
+    ],
+    "searchCount": 1,
+    "explanation": "Single search (no splitting needed)"
+  },
+  "searchResults": [
+    {
+      "query": "topps finest michael jordan 1995",
+      "count": 106
+    }
+  ],
+  "config": {
+    "keywords": "topps finest michael jordan 1995",
+    "minScoreToShow": 7,
+    "topN": 5,
+    "minPrice": 0,
+    "maxPrice": null,
+    "rawOnly": true,
+    "useVision": false,
+    "visionTopN": 200
+  },
+  "scanDuration": "0.8s",
+  "summary": {
+    "totalFound": 106,
+    "uniqueItems": 106,
+    "rawCardsOnly": true,
+    "afterRawFilter": 64,
+    "totalScored": 64,
+    "showingResults": 46,
+    "visionScanned": false
+  },
+  "allResults": [
+    {
+      "itemId": "v1|402774674861|0",
+      "title": "BEAUTIFUL 1995-96 Topps Finest #M1 Michael Jordan Card, Chicago Bulls, NMMT!!",
+      "currentPrice": 59.99,
+      "shippingCost": 5,
+      "totalPrice": 64.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/Zt4AAOSwAidgZoMy/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/402774674861?_skw=topps+finest+michael+jordan+1995+-psa+-bgs+-cgc+-sgc+-graded+-slab&hash=item5dc73dcdad:g:Zt4AAOSwAidgZoMy",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "scotty_dog34",
+      "sellerFeedbackScore": 28568,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.7,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 28568,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (28568 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 6,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos",
+              "NM-MT condition"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos, NM-MT condition"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Exact year: 1995",
+              "topps match",
+              "⭐ PERFECT MATCH: Player + Year + Brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [
+              "Likely base card"
+            ],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Exact year: 1995, topps match, ⭐ PERFECT MATCH: Player + Year + Brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|384650064156|0",
+      "title": "1995 TOPPS FINEST #229 MICHAEL JORDAN BULLS MINT A02322",
+      "currentPrice": 100,
+      "shippingCost": 0,
+      "totalPrice": 100,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/UtAAAOSwKPxh0JJB/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/384650064156?_skw=topps+finest+michael+jordan+1995+-psa+-bgs+-cgc+-sgc+-graded+-slab&hash=item598eee311c:g:UtAAAOSwKPxh0JJB",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "mom_and_pop_card_shop",
+      "sellerFeedbackScore": 152425,
+      "sellerPositivePercent": "99.8",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.7,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "99.8",
+            "salesCount": 152425,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "99.8% (152425 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 6,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos",
+              "Mint condition claimed"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos, Mint condition claimed"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Exact year: 1995",
+              "topps match",
+              "⭐ PERFECT MATCH: Player + Year + Brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [
+              "Likely base card"
+            ],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Exact year: 1995, topps match, ⭐ PERFECT MATCH: Player + Year + Brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|144634054550|0",
+      "title": "1995-96 Topps Finest Mystery Border Complete Set 1-22 NM/MT Michael Jordan",
+      "currentPrice": 199.99,
+      "shippingCost": 6.99,
+      "totalPrice": 206.98,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/nkoAAOSwaHJiwwEb/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/144634054550?_skw=topps+finest+michael+jordan+1995+-psa+-bgs+-cgc+-sgc+-graded+-slab&hash=item21acdc8796:g:nkoAAOSwaHJiwwEb",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "geo17",
+      "sellerFeedbackScore": 1459,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.7,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 1459,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (1459 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 6,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos",
+              "NM-MT condition"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos, NM-MT condition"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Exact year: 1995",
+              "topps match",
+              "⭐ PERFECT MATCH: Player + Year + Brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [
+              "Likely base card"
+            ],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Exact year: 1995, topps match, ⭐ PERFECT MATCH: Player + Year + Brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|314332259349|0",
+      "title": "✨1995-96 TOPPS FINEST  🏀  MICHAEL JORDAN  BLUE FINEST  W/COATING  #229  NM",
+      "currentPrice": 149.99,
+      "shippingCost": 0,
+      "totalPrice": 149.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/BvgAAOSwcl1jx31b/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/314332259349?_skw=topps+finest+michael+jordan+1995+-psa+-bgs+-cgc+-sgc+-graded+-slab&hash=item492fa9a415:g:BvgAAOSwcl1jx31b",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "stockupsportscards",
+      "sellerFeedbackScore": 1645,
+      "sellerPositivePercent": "99.7",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.7,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "99.7",
+            "salesCount": 1645,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "99.7% (1645 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 6,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos",
+              "NM-MT condition"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos, NM-MT condition"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Exact year: 1995",
+              "topps match",
+              "⭐ PERFECT MATCH: Player + Year + Brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [
+              "Likely base card"
+            ],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Exact year: 1995, topps match, ⭐ PERFECT MATCH: Player + Year + Brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|185068645674|0",
+      "title": "1995-96 topps finest michael jordan w coating  #229 Mint 🔥",
+      "currentPrice": 299,
+      "shippingCost": 0,
+      "totalPrice": 299,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/M-MAAOSwIeJhTVca/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/185068645674?_skw=topps+finest+michael+jordan+1995+-psa+-bgs+-cgc+-sgc+-graded+-slab&hash=item2b16f36d2a:g:M-MAAOSwIeJhTVca",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "hotlips1983-0786",
+      "sellerFeedbackScore": 1325,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.7,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 1325,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (1325 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 6,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos",
+              "Mint condition claimed"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos, Mint condition claimed"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Exact year: 1995",
+              "topps match",
+              "⭐ PERFECT MATCH: Player + Year + Brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [
+              "Likely base card"
+            ],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Exact year: 1995, topps match, ⭐ PERFECT MATCH: Player + Year + Brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|277809833692|0",
+      "title": "Topps 1995-96 Finest Peel Protector Michael Jordan Chicago Bulls #229 Basketball",
+      "currentPrice": 69.99,
+      "shippingCost": 1.32,
+      "totalPrice": 71.31,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/KjAAAeSww5NpuHT8/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/277809833692?_skw=topps+finest+michael+jordan+1995+-psa+-bgs+-cgc+-sgc+-graded+-slab&hash=item40aec1a6dc:g:KjAAAeSww5NpuHT8",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "kardsharkz2",
+      "sellerFeedbackScore": 3947,
+      "sellerPositivePercent": "99.8",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.5,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "99.8",
+            "salesCount": 3947,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "99.8% (3947 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Exact year: 1995",
+              "topps match",
+              "⭐ PERFECT MATCH: Player + Year + Brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [
+              "Likely base card"
+            ],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Exact year: 1995, topps match, ⭐ PERFECT MATCH: Player + Year + Brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|127663328143|0",
+      "title": "1995-96 Topps Finest Mystery #M1 MICHAEL JORDAN Chicago Bulls",
+      "currentPrice": 55,
+      "shippingCost": 0,
+      "totalPrice": 55,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/J7QAAeSwC5RpgiNI/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/127663328143?_skw=topps+finest+michael+jordan+1995+-psa+-bgs+-cgc+-sgc+-graded+-slab&hash=item1db953cb8f:g:J7QAAeSwC5RpgiNI",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "djhoog23",
+      "sellerFeedbackScore": 2389,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.5,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 2389,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (2389 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Exact year: 1995",
+              "topps match",
+              "⭐ PERFECT MATCH: Player + Year + Brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [
+              "Likely base card"
+            ],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Exact year: 1995, topps match, ⭐ PERFECT MATCH: Player + Year + Brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|326944253865|0",
+      "title": "MICHAEL JORDAN 1995-96 TOPPS FINEST MYSTERY BORDERED INSERT CARD #M1",
+      "currentPrice": 59.99,
+      "shippingCost": 5,
+      "totalPrice": 64.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/ClIAAeSwMX9pXRF8/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/326944253865?_skw=topps+finest+michael+jordan+1995+-psa+-bgs+-cgc+-sgc+-graded+-slab&hash=item4c1f6567a9:g:ClIAAeSwMX9pXRF8",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "sir-snipe-alot",
+      "sellerFeedbackScore": 6109,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.5,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 6109,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (6109 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Exact year: 1995",
+              "topps match",
+              "⭐ PERFECT MATCH: Player + Year + Brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [
+              "Likely base card"
+            ],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Exact year: 1995, topps match, ⭐ PERFECT MATCH: Player + Year + Brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|188151852611|0",
+      "title": "1995-96 Topps Finest - Mystery Finest Michael Jordan #M 1 Bordered ⚜️",
+      "currentPrice": 64,
+      "shippingCost": 5.75,
+      "totalPrice": 69.75,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/S80AAeSwdippsydt/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/188151852611?_skw=topps+finest+michael+jordan+1995+-psa+-bgs+-cgc+-sgc+-graded+-slab&hash=item2bceb96e43:g:S80AAeSwdippsydt",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "bullmarket-sportscards",
+      "sellerFeedbackScore": 1803,
+      "sellerPositivePercent": "99.9",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.5,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "99.9",
+            "salesCount": 1803,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "99.9% (1803 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Exact year: 1995",
+              "topps match",
+              "⭐ PERFECT MATCH: Player + Year + Brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [
+              "Likely base card"
+            ],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Exact year: 1995, topps match, ⭐ PERFECT MATCH: Player + Year + Brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|257343764366|0",
+      "title": "MICHAEL JORDAN 1995-96 Topps Finest Mystery Borderless #M1   SHARP",
+      "currentPrice": 179.99,
+      "shippingCost": 0,
+      "totalPrice": 179.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/WGkAAeSwUH5pgpma/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/257343764366?_skw=topps+finest+michael+jordan+1995+-psa+-bgs+-cgc+-sgc+-graded+-slab&hash=item3beae2378e:g:WGkAAeSwUH5pgpma",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "raynorshine34",
+      "sellerFeedbackScore": 10501,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.5,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 10501,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (10501 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Exact year: 1995",
+              "topps match",
+              "⭐ PERFECT MATCH: Player + Year + Brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [
+              "Likely base card"
+            ],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Exact year: 1995, topps match, ⭐ PERFECT MATCH: Player + Year + Brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|157574849004|0",
+      "title": "1995/96 TOPPS FINEST BASKETBALL HS1 MICHAEL JORDAN HOT STUFF INSERT RARE",
+      "currentPrice": 149.99,
+      "shippingCost": 6,
+      "totalPrice": 155.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/xvIAAeSwxbBpUVT5/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/157574849004?_skw=topps+finest+michael+jordan+1995+-psa+-bgs+-cgc+-sgc+-graded+-slab&hash=item24b03161ec:g:xvIAAeSwxbBpUVT5",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "stsw2112",
+      "sellerFeedbackScore": 9139,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.5,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 9139,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (9139 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Exact year: 1995",
+              "topps match",
+              "⭐ PERFECT MATCH: Player + Year + Brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [
+              "Likely base card"
+            ],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Exact year: 1995, topps match, ⭐ PERFECT MATCH: Player + Year + Brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|336489650777|0",
+      "title": "1995-96 Topps Finest Mystery Finest Bordered Michael Jordan #M1 HOF k4s",
+      "currentPrice": 69.83,
+      "shippingCost": 4.99,
+      "totalPrice": 74.82,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/Q~4AAeSwa~1pu2c6/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/336489650777?_skw=topps+finest+michael+jordan+1995+-psa+-bgs+-cgc+-sgc+-graded+-slab&hash=item4e58589a59:g:Q~4AAeSwa~1pu2c6",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "comc_consignment",
+      "sellerFeedbackScore": 1362062,
+      "sellerPositivePercent": "99.6",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.5,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "99.6",
+            "salesCount": 1362062,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "99.6% (1362062 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Exact year: 1995",
+              "topps match",
+              "⭐ PERFECT MATCH: Player + Year + Brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [
+              "Likely base card"
+            ],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Exact year: 1995, topps match, ⭐ PERFECT MATCH: Player + Year + Brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|336441152606|0",
+      "title": "1995-96 Topps Finest Mystery Finest Bordered Michael Jordan #M1 HOF 06or",
+      "currentPrice": 52.46,
+      "shippingCost": 4.99,
+      "totalPrice": 57.45,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/yRUAAeSw-Pdpus3R/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/336441152606?_skw=topps+finest+michael+jordan+1995+-psa+-bgs+-cgc+-sgc+-graded+-slab&hash=item4e5574945e:g:yRUAAeSw-Pdpus3R",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "comc_consignment",
+      "sellerFeedbackScore": 1362062,
+      "sellerPositivePercent": "99.6",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.5,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "99.6",
+            "salesCount": 1362062,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "99.6% (1362062 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Exact year: 1995",
+              "topps match",
+              "⭐ PERFECT MATCH: Player + Year + Brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [
+              "Likely base card"
+            ],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Exact year: 1995, topps match, ⭐ PERFECT MATCH: Player + Year + Brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|336439705875|0",
+      "title": "1995-96 Topps Finest Michael Jordan #229 HOF 06fp",
+      "currentPrice": 81.04,
+      "shippingCost": 4.99,
+      "totalPrice": 86.03,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/~-QAAeSwnCdpuaCv/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/336439705875?_skw=topps+finest+michael+jordan+1995+-psa+-bgs+-cgc+-sgc+-graded+-slab&hash=item4e555e8113:g:~-QAAeSwnCdpuaCv",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "comc_consignment",
+      "sellerFeedbackScore": 1362062,
+      "sellerPositivePercent": "99.6",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.5,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "99.6",
+            "salesCount": 1362062,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "99.6% (1362062 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Exact year: 1995",
+              "topps match",
+              "⭐ PERFECT MATCH: Player + Year + Brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [
+              "Likely base card"
+            ],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Exact year: 1995, topps match, ⭐ PERFECT MATCH: Player + Year + Brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|326862362759|0",
+      "title": "1995-96 TOPPS MICHAEL JORDAN MYSTERY FINEST REFRACTOR CARD #M1",
+      "currentPrice": 819.99,
+      "shippingCost": 5.5,
+      "totalPrice": 825.49,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/TO8AAeSwj5BpFdNy/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/326862362759?_skw=topps+finest+michael+jordan+1995+-psa+-bgs+-cgc+-sgc+-graded+-slab&hash=item4c1a83d887:g:TO8AAeSwj5BpFdNy",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "sir-snipe-alot",
+      "sellerFeedbackScore": 6109,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.5,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 6109,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (6109 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Premium card type",
+              "Exact year: 1995",
+              "topps match",
+              "⭐ PERFECT MATCH: Player + Year + Brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Premium card type, Exact year: 1995, topps match, ⭐ PERFECT MATCH: Player + Year + Brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|336459204470|0",
+      "title": "1995-96 Topps Finest Chicago Bulls Michael Jordan  #229 w/ Protective Coating MJ",
+      "currentPrice": 199,
+      "shippingCost": 4.58,
+      "totalPrice": 203.58,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/SRYAAeSwSgxppQyJ/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/336459204470?_skw=topps+finest+michael+jordan+1995+-psa+-bgs+-cgc+-sgc+-graded+-slab&hash=item4e56880776:g:SRYAAeSwSgxppQyJ",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "bornalliancecom",
+      "sellerFeedbackScore": 4995,
+      "sellerPositivePercent": "99.9",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.5,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "99.9",
+            "salesCount": 4995,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "99.9% (4995 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Exact year: 1995",
+              "topps match",
+              "⭐ PERFECT MATCH: Player + Year + Brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [
+              "Likely base card"
+            ],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Exact year: 1995, topps match, ⭐ PERFECT MATCH: Player + Year + Brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|326981491288|0",
+      "title": "1995-96 TOPPS FINEST COMPLETE SET SERIES 2, 141-250/252 MICHAEL JORDAN NICE",
+      "currentPrice": 119,
+      "shippingCost": 5,
+      "totalPrice": 124,
+      "condition": "Unspecified",
+      "imageUrl": "https://i.ebayimg.com/images/g/VWQAAeSwDslpf~xR/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/326981491288?_skw=topps+finest+michael+jordan+1995+-psa+-bgs+-cgc+-sgc+-graded+-slab&hash=item4c219d9a58:g:VWQAAeSwDslpf~xR",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "moonman17180hh",
+      "sellerFeedbackScore": 3067,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Sets",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.5,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 3067,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (3067 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Premium card type",
+              "Exact year: 1995",
+              "topps match",
+              "⭐ PERFECT MATCH: Player + Year + Brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Premium card type, Exact year: 1995, topps match, ⭐ PERFECT MATCH: Player + Year + Brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|227142334203|0",
+      "title": "1995-96 Topps Finest - Mystery Finest Michael Jordan #M 1 Unpeeled",
+      "currentPrice": 139.99,
+      "shippingCost": 0,
+      "totalPrice": 139.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/yXQAAeSw-ctpSVRq/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/227142334203?_skw=topps+finest+michael+jordan+1995+-psa+-bgs+-cgc+-sgc+-graded+-slab&hash=item34e2bcf6fb:g:yXQAAeSw-ctpSVRq",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "doal_36",
+      "sellerFeedbackScore": 3630,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.5,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 3630,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (3630 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Exact year: 1995",
+              "topps match",
+              "⭐ PERFECT MATCH: Player + Year + Brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [
+              "Likely base card"
+            ],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Exact year: 1995, topps match, ⭐ PERFECT MATCH: Player + Year + Brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|236648267859|0",
+      "title": "1995-96 Topps Finest Michael Jordan #229 HOF READ 7zf",
+      "currentPrice": 115.24,
+      "shippingCost": 4.99,
+      "totalPrice": 120.23,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/~R8AAeSw3oFpmecS/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/236648267859?_skw=topps+finest+michael+jordan+1995+-psa+-bgs+-cgc+-sgc+-graded+-slab&hash=item3719560053:g:~R8AAeSw3oFpmecS",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "comc_consignment",
+      "sellerFeedbackScore": 1362062,
+      "sellerPositivePercent": "99.6",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.5,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "99.6",
+            "salesCount": 1362062,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "99.6% (1362062 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Exact year: 1995",
+              "topps match",
+              "⭐ PERFECT MATCH: Player + Year + Brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [
+              "Likely base card"
+            ],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Exact year: 1995, topps match, ⭐ PERFECT MATCH: Player + Year + Brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|227151011928|0",
+      "title": "1995-96 Topps Finest - Michael Jordan #229",
+      "currentPrice": 89.99,
+      "shippingCost": 0,
+      "totalPrice": 89.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/TlUAAeSw8qBpUhFv/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/227151011928?_skw=topps+finest+michael+jordan+1995+-psa+-bgs+-cgc+-sgc+-graded+-slab&hash=item34e3416058:g:TlUAAeSw8qBpUhFv",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "punk10190",
+      "sellerFeedbackScore": 2008,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.5,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 2008,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (2008 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Exact year: 1995",
+              "topps match",
+              "⭐ PERFECT MATCH: Player + Year + Brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [
+              "Likely base card"
+            ],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Exact year: 1995, topps match, ⭐ PERFECT MATCH: Player + Year + Brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|236649207588|0",
+      "title": "1995-96 Topps Finest Michael Jordan #229 HOF 12te",
+      "currentPrice": 114.68,
+      "shippingCost": 4.99,
+      "totalPrice": 119.67,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/B9kAAeSwl4xpmp1v/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/236649207588?_skw=topps+finest+michael+jordan+1995+-psa+-bgs+-cgc+-sgc+-graded+-slab&hash=item3719645724:g:B9kAAeSwl4xpmp1v",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "comc_consignment",
+      "sellerFeedbackScore": 1362062,
+      "sellerPositivePercent": "99.6",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.5,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "99.6",
+            "salesCount": 1362062,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "99.6% (1362062 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Exact year: 1995",
+              "topps match",
+              "⭐ PERFECT MATCH: Player + Year + Brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [
+              "Likely base card"
+            ],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Exact year: 1995, topps match, ⭐ PERFECT MATCH: Player + Year + Brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|326981539934|0",
+      "title": "MICHAEL JORDAN 1995-96 TOPPS FINEST MYSTERY CARD M1 UNPEELED CHANCE OF REFRACTOR",
+      "currentPrice": 199.99,
+      "shippingCost": 5,
+      "totalPrice": 204.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/GSMAAeSwePhpXRHu/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/326981539934?_skw=topps+finest+michael+jordan+1995+-psa+-bgs+-cgc+-sgc+-graded+-slab&hash=item4c219e585e:g:GSMAAeSwePhpXRHu",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "sir-snipe-alot",
+      "sellerFeedbackScore": 6109,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.5,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 6109,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (6109 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Premium card type",
+              "Exact year: 1995",
+              "topps match",
+              "⭐ PERFECT MATCH: Player + Year + Brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Premium card type, Exact year: 1995, topps match, ⭐ PERFECT MATCH: Player + Year + Brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|363479509638|0",
+      "title": "1995-96 Topps - MICHAEL JORDAN - Bordered Mystery Finest M1 - CHICAGO BULLS",
+      "currentPrice": 54.99,
+      "shippingCost": 5.29,
+      "totalPrice": 60.28,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/m3YAAOSw08Bg-6Ni/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/363479509638?_skw=topps+finest+michael+jordan+1995+-psa+-bgs+-cgc+-sgc+-graded+-slab&hash=item54a1112a86:g:m3YAAOSw08Bg-6Ni",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "s-c-debate",
+      "sellerFeedbackScore": 52482,
+      "sellerPositivePercent": "99.9",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.5,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "99.9",
+            "salesCount": 52482,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "99.9% (52482 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Exact year: 1995",
+              "topps match",
+              "⭐ PERFECT MATCH: Player + Year + Brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [
+              "Likely base card"
+            ],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Exact year: 1995, topps match, ⭐ PERFECT MATCH: Player + Year + Brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|146891710346|0",
+      "title": "1995-96 Topps Finest Michael Jordan Hot Stuff Insert Card! Film Still On!",
+      "currentPrice": 135,
+      "shippingCost": 0,
+      "totalPrice": 135,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/fg0AAeSwn0Fo7BiZ/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/146891710346?_skw=topps+finest+michael+jordan+1995+-psa+-bgs+-cgc+-sgc+-graded+-slab&hash=item22336d9f8a:g:fg0AAeSwn0Fo7BiZ",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "zacfi42",
+      "sellerFeedbackScore": 2536,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.5,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 2536,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (2536 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Exact year: 1995",
+              "topps match",
+              "⭐ PERFECT MATCH: Player + Year + Brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [
+              "Likely base card"
+            ],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Exact year: 1995, topps match, ⭐ PERFECT MATCH: Player + Year + Brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|156822873696|0",
+      "title": "1995/96 TOPPS FINEST BASKETBALL M1 MICHAEL JORDAN MYSTERY BORDERED INSERT",
+      "currentPrice": 59.99,
+      "shippingCost": 6,
+      "totalPrice": 65.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/tFUAAOSw-zZn35aL/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/156822873696?_skw=topps+finest+michael+jordan+1995+-psa+-bgs+-cgc+-sgc+-graded+-slab&hash=item24835f2660:g:tFUAAOSw-zZn35aL",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "stsw2112",
+      "sellerFeedbackScore": 9139,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.5,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 9139,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (9139 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Exact year: 1995",
+              "topps match",
+              "⭐ PERFECT MATCH: Player + Year + Brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [
+              "Likely base card"
+            ],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Exact year: 1995, topps match, ⭐ PERFECT MATCH: Player + Year + Brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|168103611703|0",
+      "title": "MICHAEL JORDAN 1995 Topps Finest HOT STUFF HS1 RARE Insert Coating HOF GOAT MVP",
+      "currentPrice": 499.99,
+      "shippingCost": 0,
+      "totalPrice": 499.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/O8cAAeSwx5lpcsG4/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/168103611703?_skw=topps+finest+michael+jordan+1995+-psa+-bgs+-cgc+-sgc+-graded+-slab&hash=item2723c18d37:g:O8cAAeSwx5lpcsG4",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "1kovo1",
+      "sellerFeedbackScore": 17339,
+      "sellerPositivePercent": "99.7",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.5,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "99.7",
+            "salesCount": 17339,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "99.7% (17339 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Exact year: 1995",
+              "topps match",
+              "⭐ PERFECT MATCH: Player + Year + Brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [
+              "Likely base card"
+            ],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Exact year: 1995, topps match, ⭐ PERFECT MATCH: Player + Year + Brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|265114349727|0",
+      "title": "MICHAEL JORDAN 1995 Topps Finest #331 jersey 45",
+      "currentPrice": 149.99,
+      "shippingCost": 0,
+      "totalPrice": 149.99,
+      "condition": "Used",
+      "imageUrl": "https://i.ebayimg.com/images/g/jx0AAOSw65dfkFrf/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/265114349727?_skw=topps+finest+michael+jordan+1995+-psa+-bgs+-cgc+-sgc+-graded+-slab&hash=item3dba0bf09f:g:jx0AAOSw65dfkFrf",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "scoops8464",
+      "sellerFeedbackScore": 5664,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.5,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 5664,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (5664 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Premium card type",
+              "Exact year: 1995",
+              "topps match",
+              "⭐ PERFECT MATCH: Player + Year + Brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Premium card type, Exact year: 1995, topps match, ⭐ PERFECT MATCH: Player + Year + Brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|317703083008|0",
+      "title": "1995-96 Topps Finest Michael Jordan Mystery #M1 Chicago Bulls",
+      "currentPrice": 115,
+      "shippingCost": 25,
+      "totalPrice": 140,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/uUIAAeSwhGJpT6d5/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/317703083008?_skw=topps+finest+michael+jordan+1995+-psa+-bgs+-cgc+-sgc+-graded+-slab&hash=item49f8945400:g:uUIAAeSwhGJpT6d5",
+      "location": "",
+      "country": "JP",
+      "sellerUsername": "samurai_soul_24",
+      "sellerFeedbackScore": 1520,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.5,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 1520,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (1520 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Exact year: 1995",
+              "topps match",
+              "⭐ PERFECT MATCH: Player + Year + Brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [
+              "Likely base card"
+            ],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Exact year: 1995, topps match, ⭐ PERFECT MATCH: Player + Year + Brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|147175855655|0",
+      "title": "Michael Jordan 1995-96 Topps Mystery Finest Borderless Card#M1!Bulls G GOAT HOF",
+      "currentPrice": 699.99,
+      "shippingCost": 19.99,
+      "totalPrice": 719.98,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/RDUAAOSwIV1gkU4m/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/147175855655?_skw=topps+finest+michael+jordan+1995+-psa+-bgs+-cgc+-sgc+-graded+-slab&hash=item22445d5627:g:RDUAAOSwIV1gkU4m",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "nannyscloset951",
+      "sellerFeedbackScore": 1568,
+      "sellerPositivePercent": "99.7",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.5,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "99.7",
+            "salesCount": 1568,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "99.7% (1568 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Exact year: 1995",
+              "topps match",
+              "⭐ PERFECT MATCH: Player + Year + Brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [
+              "Likely base card"
+            ],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Exact year: 1995, topps match, ⭐ PERFECT MATCH: Player + Year + Brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|236627013338|0",
+      "title": "1995-96 Topps Finest Mystery Finest Bordered Michael Jordan #M1 HOF 1j6",
+      "currentPrice": 339.45,
+      "shippingCost": 4.99,
+      "totalPrice": 344.44,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/wbIAAeSwAtNpr0pf/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/236627013338?_skw=topps+finest+michael+jordan+1995+-psa+-bgs+-cgc+-sgc+-graded+-slab&hash=item371811aeda:g:wbIAAeSwAtNpr0pf",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "comc_consignment",
+      "sellerFeedbackScore": 1362062,
+      "sellerPositivePercent": "99.6",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.5,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "99.6",
+            "salesCount": 1362062,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "99.6% (1362062 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Exact year: 1995",
+              "topps match",
+              "⭐ PERFECT MATCH: Player + Year + Brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [
+              "Likely base card"
+            ],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Exact year: 1995, topps match, ⭐ PERFECT MATCH: Player + Year + Brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|224009559530|0",
+      "title": "1995 - 1996 Topps Mystery Finest Michael Jordan  #M1 Beckett 4.5",
+      "currentPrice": 50,
+      "shippingCost": 0,
+      "totalPrice": 50,
+      "condition": "Unknown",
+      "imageUrl": "https://i.ebayimg.com/images/g/ERAAAOSw6FFevEWq/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/224009559530?_skw=topps+finest+michael+jordan+1995+-psa+-bgs+-cgc+-sgc+-graded+-slab&hash=item3428029dea:g:ERAAAOSw6FFevEWq",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "jamesbush1979",
+      "sellerFeedbackScore": 2251,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.5,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 2251,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (2251 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Exact year: 1995",
+              "topps match",
+              "⭐ PERFECT MATCH: Player + Year + Brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [
+              "Likely base card"
+            ],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Exact year: 1995, topps match, ⭐ PERFECT MATCH: Player + Year + Brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|265112084521|0",
+      "title": "MICHAEL JORDAN 1995 TOPPS FINEST #M1 ORANGE BORDER INSERT CARD BULLS NBA MJ (A)",
+      "currentPrice": 149.99,
+      "shippingCost": 0,
+      "totalPrice": 149.99,
+      "condition": "Unspecified",
+      "imageUrl": "https://i.ebayimg.com/images/g/ia8AAOSwaApfkFho/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/265112084521?_skw=topps+finest+michael+jordan+1995+-psa+-bgs+-cgc+-sgc+-graded+-slab&hash=item3db9e96029:g:ia8AAOSwaApfkFho",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "scoops8464",
+      "sellerFeedbackScore": 5664,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.5,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 5664,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (5664 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Exact year: 1995",
+              "topps match",
+              "⭐ PERFECT MATCH: Player + Year + Brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [
+              "Likely base card"
+            ],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Exact year: 1995, topps match, ⭐ PERFECT MATCH: Player + Year + Brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|372074478618|0",
+      "title": "1995-96 TOPPS SERIES 1 NBA BASKETBALL JUMBO BOX: MICHAEL JORDAN MYSTERY FINEST ?",
+      "currentPrice": 637.79,
+      "shippingCost": 0,
+      "totalPrice": 637.79,
+      "condition": "New/Factory Sealed",
+      "imageUrl": "https://i.ebayimg.com/images/g/wfIAAOSwZYpm0lnR/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/372074478618?_skw=topps+finest+michael+jordan+1995+-psa+-bgs+-cgc+-sgc+-graded+-slab&hash=item56a15dfc1a:g:wfIAAOSwZYpm0lnR",
+      "location": "",
+      "country": "AU",
+      "sellerUsername": "8088edge",
+      "sellerFeedbackScore": 27220,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Sealed Trading Card Boxes",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.5,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 27220,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (27220 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Exact year: 1995",
+              "topps match",
+              "⭐ PERFECT MATCH: Player + Year + Brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [
+              "Likely base card"
+            ],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Exact year: 1995, topps match, ⭐ PERFECT MATCH: Player + Year + Brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|265114354557|0",
+      "title": "1995-96 Topps Mystery Finest Power Boosters Michael Jordan #4 Active Leader",
+      "currentPrice": 499.99,
+      "shippingCost": 0,
+      "totalPrice": 499.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/KIMAAOSwWT9fkFot/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/265114354557?_skw=topps+finest+michael+jordan+1995+-psa+-bgs+-cgc+-sgc+-graded+-slab&hash=item3dba0c037d:g:KIMAAOSwWT9fkFot",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "scoops8464",
+      "sellerFeedbackScore": 5664,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.5,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 5664,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (5664 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Exact year: 1995",
+              "topps match",
+              "⭐ PERFECT MATCH: Player + Year + Brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [
+              "Likely base card"
+            ],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Exact year: 1995, topps match, ⭐ PERFECT MATCH: Player + Year + Brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|389597731331|0",
+      "title": "1995-96 Topps Finest - Mystery Finest Michael Jordan #M 1 Bordered",
+      "currentPrice": 69.99,
+      "shippingCost": 0,
+      "totalPrice": 69.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/oAoAAeSwILlpic1K/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/389597731331?_skw=topps+finest+michael+jordan+1995+-psa+-bgs+-cgc+-sgc+-graded+-slab&hash=item5ab5d59a03:g:oAoAAeSwILlpic1K",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "fadmougae-0",
+      "sellerFeedbackScore": 2054,
+      "sellerPositivePercent": "99.8",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.5,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "99.8",
+            "salesCount": 2054,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "99.8% (2054 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Exact year: 1995",
+              "topps match",
+              "⭐ PERFECT MATCH: Player + Year + Brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [
+              "Likely base card"
+            ],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Exact year: 1995, topps match, ⭐ PERFECT MATCH: Player + Year + Brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|306793743910|0",
+      "title": "TOPPS FINEST MICHAEL JORDAN With. Protective COATING #331 1995 READY TO GRADE!!!",
+      "currentPrice": 328.44,
+      "shippingCost": 0,
+      "totalPrice": 328.44,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/NLEAAOSwb-ZnixJu/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/306793743910?_skw=topps+finest+michael+jordan+1995+-psa+-bgs+-cgc+-sgc+-graded+-slab&hash=item476e550626:g:NLEAAOSwb-ZnixJu",
+      "location": "",
+      "country": "CA",
+      "sellerUsername": "tcg-519",
+      "sellerFeedbackScore": 1768,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.5,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 1768,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (1768 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Exact year: 1995",
+              "topps match",
+              "⭐ PERFECT MATCH: Player + Year + Brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [
+              "Likely base card"
+            ],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Exact year: 1995, topps match, ⭐ PERFECT MATCH: Player + Year + Brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|168241521864|0",
+      "title": "MICHAEL JORDAN 1995-96 Topps Finest Mystery Borderless #M1   SHARP",
+      "currentPrice": 179.99,
+      "shippingCost": 0,
+      "totalPrice": 179.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/p-UAAeSwbodpuZFv/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/168241521864?_skw=topps+finest+michael+jordan+1995+-psa+-bgs+-cgc+-sgc+-graded+-slab&hash=item272bf9e4c8:g:p-UAAeSwbodpuZFv&amdata=enc%3AAQALAAABIACCtXRWQnOEpyOqnQQ8KGZzonqLO36LcR3CWZO0qDl8jkAN%2FdcCAOHslAoC%2BEFwrVuldTLPVrTAcnuzmmAfTlQNH4hUy%2BCkW2calS7a1HTFU6R0GjBFWHbEhQah2eKLOoemyUeC3cmWJ8yV7RigvZGVZ1RuL4Ae1YiLmXJnASiJQKR%2BZPF6ZQo7V8fo0%2FRa4mcU5H61V6QYpjKS4tGz5%2FMnjWnguLlNp4HzXZg0qWB8zeBB4P23Dltsi2lGNbQhGiCy6oel5%2BwjjgPW1aq9HTONJ6LPl2JUVCb5Op9gALZ6b2lsEsO3q6nziHvDgWYkfpQqmV8bKOm9iOHaPe%2FRUKV579EWKIjYlQ6IcDJy%2BHVcLWb2GMIS9r1eRY7aixaT4g%3D%3D",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "seafood_44",
+      "sellerFeedbackScore": 702,
+      "sellerPositivePercent": "99.5",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 7.5,
+            "maxPoints": 10,
+            "feedback": "99.5",
+            "salesCount": 702,
+            "tier": "Established seller",
+            "trust": "✅ Good",
+            "reason": "99.5% (702 sales) - Established seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Exact year: 1995",
+              "topps match",
+              "⭐ PERFECT MATCH: Player + Year + Brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [
+              "Likely base card"
+            ],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Exact year: 1995, topps match, ⭐ PERFECT MATCH: Player + Year + Brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|188035891701|0",
+      "title": "1995-96 Topps Finest - Michael Jordan #229 w/ coating",
+      "currentPrice": 78,
+      "shippingCost": 5.99,
+      "totalPrice": 83.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/hhsAAeSwBWJph3MV/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/188035891701?_skw=topps+finest+michael+jordan+1995+-psa+-bgs+-cgc+-sgc+-graded+-slab&hash=item2bc7d001f5:g:hhsAAeSwBWJph3MV",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "hoops-collector",
+      "sellerFeedbackScore": 3982,
+      "sellerPositivePercent": "98.2",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 7.5,
+            "maxPoints": 10,
+            "feedback": "98.2",
+            "salesCount": 3982,
+            "tier": "Established seller",
+            "trust": "✅ Good",
+            "reason": "98.2% (3982 sales) - Established seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Exact year: 1995",
+              "topps match",
+              "⭐ PERFECT MATCH: Player + Year + Brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [
+              "Likely base card"
+            ],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Exact year: 1995, topps match, ⭐ PERFECT MATCH: Player + Year + Brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|188052628444|0",
+      "title": "1995-96 Topps Finest - Mystery Finest Michael Jordan #M 1 Bordered",
+      "currentPrice": 49.99,
+      "shippingCost": 0,
+      "totalPrice": 49.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/pYMAAeSwum9pjexz/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/188052628444?_skw=topps+finest+michael+jordan+1995+-psa+-bgs+-cgc+-sgc+-graded+-slab&hash=item2bc8cf63dc:g:pYMAAeSwum9pjexz",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "hobbyknight",
+      "sellerFeedbackScore": 819,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 7.5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 819,
+            "tier": "Established seller",
+            "trust": "✅ Good",
+            "reason": "100.0% (819 sales) - Established seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Exact year: 1995",
+              "topps match",
+              "⭐ PERFECT MATCH: Player + Year + Brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [
+              "Likely base card"
+            ],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Exact year: 1995, topps match, ⭐ PERFECT MATCH: Player + Year + Brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|166701039126|0",
+      "title": "1995 Topps Finest Mystery - MICHAEL JORDAN Chicago Bulls HoF Legend RARE CARD 🐐",
+      "currentPrice": 59.99,
+      "shippingCost": 3.99,
+      "totalPrice": 63.98,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/SBMAAOSwK2Zk3BY~/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/166701039126?_skw=topps+finest+michael+jordan+1995+-psa+-bgs+-cgc+-sgc+-graded+-slab&hash=item26d027fe16:g:SBMAAOSwK2Zk3BY~",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "rphelps32",
+      "sellerFeedbackScore": 501,
+      "sellerPositivePercent": "98.3",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 7.5,
+            "maxPoints": 10,
+            "feedback": "98.3",
+            "salesCount": 501,
+            "tier": "Established seller",
+            "trust": "✅ Good",
+            "reason": "98.3% (501 sales) - Established seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Exact year: 1995",
+              "topps match",
+              "⭐ PERFECT MATCH: Player + Year + Brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [
+              "Likely base card"
+            ],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Exact year: 1995, topps match, ⭐ PERFECT MATCH: Player + Year + Brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|395409363190|0",
+      "title": "1995-96 Topps Finest Michael Jordan w/o coating # 229 ",
+      "currentPrice": 75,
+      "shippingCost": 0,
+      "totalPrice": 75,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/U6wAAOSwNmhmRnMP/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/395409363190?_skw=topps+finest+michael+jordan+1995+-psa+-bgs+-cgc+-sgc+-graded+-slab&hash=item5c103c10f6:g:U6wAAOSwNmhmRnMP",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "pops20019",
+      "sellerFeedbackScore": 577,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 7.5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 577,
+            "tier": "Established seller",
+            "trust": "✅ Good",
+            "reason": "100.0% (577 sales) - Established seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Exact year: 1995",
+              "topps match",
+              "⭐ PERFECT MATCH: Player + Year + Brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [
+              "Likely base card"
+            ],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Exact year: 1995, topps match, ⭐ PERFECT MATCH: Player + Year + Brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|168227415899|0",
+      "title": "1995-96 Topps Finest Mystery Finest Bordered Michael Jordan #M1 HOF k4s",
+      "currentPrice": 149.99,
+      "shippingCost": 0,
+      "totalPrice": 149.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/RGIAAeSwYXxprxDi/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/168227415899?_skw=topps+finest+michael+jordan+1995+-psa+-bgs+-cgc+-sgc+-graded+-slab&hash=item272b22a75b:g:RGIAAeSwYXxprxDi",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "seafood_44",
+      "sellerFeedbackScore": 702,
+      "sellerPositivePercent": "99.5",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 7.5,
+            "maxPoints": 10,
+            "feedback": "99.5",
+            "salesCount": 702,
+            "tier": "Established seller",
+            "trust": "✅ Good",
+            "reason": "99.5% (702 sales) - Established seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Exact year: 1995",
+              "topps match",
+              "⭐ PERFECT MATCH: Player + Year + Brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [
+              "Likely base card"
+            ],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Exact year: 1995, topps match, ⭐ PERFECT MATCH: Player + Year + Brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|136957499279|0",
+      "title": "1995-96 Topps Finest - Michael Jordan #229 ",
+      "currentPrice": 300,
+      "shippingCost": 8,
+      "totalPrice": 308,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/OSsAAeSwuvlpUr8E/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/136957499279?_skw=topps+finest+michael+jordan+1995+-psa+-bgs+-cgc+-sgc+-graded+-slab&hash=item1fe34d978f:g:OSsAAeSwuvlpUr8E&amdata=enc%3AAQALAAABIACCtXRWQnOEpyOqnQQ8KGayNU8LTlGnbJl8VXkwBZA4YFeA7dZ%2Bld1v1opQorfJi0%2BTK0XgECV%2FMCnYaiVmDRPveZWNErWLkzTK9NRL7ontI%2BpwrKgailcpiJJRJRFi8OepIWF8OEo460qFlq2FAGYeFbUggvISBos%2FcQAN2%2F95ZQjFMC0kuJbcFMK2eRn3iuDbvnfNlsyCILPE826oNTeLplQQ9kTMEmcPiCvB%2BDIGM88hTZ4pw00Fk1ivYP%2BMtNBcQ6t1fVgXCrWQ4KlMyc3kfiPRLerx5ORqffU90jhzTfwhjZnh9RXHLS%2BDXPuG%2BQ258GBx3KC8FHxnDghxX15Q%2BKYNrCiRQCxh0yVKmBa0UTgB0rdxG3etNmUAU10xtw%3D%3D",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "gooddealzllc",
+      "sellerFeedbackScore": 639,
+      "sellerPositivePercent": "99.6",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 7.5,
+            "maxPoints": 10,
+            "feedback": "99.6",
+            "salesCount": 639,
+            "tier": "Established seller",
+            "trust": "✅ Good",
+            "reason": "99.6% (639 sales) - Established seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Exact year: 1995",
+              "topps match",
+              "⭐ PERFECT MATCH: Player + Year + Brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [
+              "Likely base card"
+            ],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Exact year: 1995, topps match, ⭐ PERFECT MATCH: Player + Year + Brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|188132921509|0",
+      "title": "1995-96 Topps Finest - Rookie/Veteran Michael Jordan, Jason Caffey #RV-20 (RC)",
+      "currentPrice": 324.99,
+      "shippingCost": 0,
+      "totalPrice": 324.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/xlsAAeSwXQJprPIh/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/188132921509?_skw=topps+finest+michael+jordan+1995+-psa+-bgs+-cgc+-sgc+-graded+-slab&hash=item2bcd9890a5:g:xlsAAeSwXQJprPIh",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "hobbyknight",
+      "sellerFeedbackScore": 819,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 7.5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 819,
+            "tier": "Established seller",
+            "trust": "✅ Good",
+            "reason": "100.0% (819 sales) - Established seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Premium card type",
+              "Exact year: 1995",
+              "topps match",
+              "⭐ PERFECT MATCH: Player + Year + Brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Premium card type, Exact year: 1995, topps match, ⭐ PERFECT MATCH: Player + Year + Brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|177911099245|0",
+      "title": "1995-96 Topps Finest Michael Jordan #229",
+      "currentPrice": 150,
+      "shippingCost": 0,
+      "totalPrice": 150,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/GrUAAeSwFK5ppLbc/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/177911099245?_skw=topps+finest+michael+jordan+1995+-psa+-bgs+-cgc+-sgc+-graded+-slab&hash=item296c53ef6d:g:GrUAAeSwFK5ppLbc",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "omarv23",
+      "sellerFeedbackScore": 591,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 7.5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 591,
+            "tier": "Established seller",
+            "trust": "✅ Good",
+            "reason": "100.0% (591 sales) - Established seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Exact year: 1995",
+              "topps match",
+              "⭐ PERFECT MATCH: Player + Year + Brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [
+              "Likely base card"
+            ],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Exact year: 1995, topps match, ⭐ PERFECT MATCH: Player + Year + Brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|326958955960|0",
+      "title": "Michael Jordan 1995-96 Topps Mystery Finest Borderless Card#M1! Bulls  GOAT HOF",
+      "currentPrice": 799,
+      "shippingCost": 0,
+      "totalPrice": 799,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/DusAAOSwN85gmbUF/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/326958955960?_skw=topps+finest+michael+jordan+1995+-psa+-bgs+-cgc+-sgc+-graded+-slab&hash=item4c2045bdb8:g:DusAAOSwN85gmbUF",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "aburum",
+      "sellerFeedbackScore": 546,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 7.5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 546,
+            "tier": "Established seller",
+            "trust": "✅ Good",
+            "reason": "100.0% (546 sales) - Established seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Exact year: 1995",
+              "topps match",
+              "⭐ PERFECT MATCH: Player + Year + Brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [
+              "Likely base card"
+            ],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Exact year: 1995, topps match, ⭐ PERFECT MATCH: Player + Year + Brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|306829539544|0",
+      "title": "1995-96 Topps - Mystery Finest Michael Jordan #M 1",
+      "currentPrice": 50,
+      "shippingCost": 6,
+      "totalPrice": 56,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/GNUAAeSw6eZpurRo/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/306829539544?_skw=topps+finest+michael+jordan+1995+-psa+-bgs+-cgc+-sgc+-graded+-slab&hash=item47707738d8:g:GNUAAeSw6eZpurRo&amdata=enc%3AAQALAAABIACCtXRWQnOEpyOqnQQ8KGYhyVh51bIDxeBs44yC5dY%2FVsrHHI%2FAbkdXxgeaqcixj9K94W8gMwPIJPRiOiB%2FtyCebLBVwrp%2BRKhKpjP8rO%2FBpLQDzOh84JmT%2FYA2%2B3dG%2FesNfWdj8mChOTMIAG1jCXLlnx7f44zxcHX2h4Itd6p5E8D6yAlW%2FRNtHPoRfPepnAVFR9G2mBefBnFJ6Wosh7Zfxv1T12QhiEUzlcGSUgpHNU9sXv6%2B4Jt7nyBfa9PXYaqDXlVS3qAUVkQ6JuU1PKw%2B2ZGguYa%2BF2OtRKaSxdiu0gkC9luokXWqfFwr%2BWrjUOq8e7m42A%2BpiTeyONzWah4Ak2TB7Y6pGtQFLA4nEU3nAwLOKPwc%2FGUB3Q5tiYUUvg%3D%3D",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "empirecardsco",
+      "sellerFeedbackScore": 404,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6.5,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 404,
+            "tier": "Decent seller",
+            "trust": "OK",
+            "reason": "100.0% (404 sales) - Decent seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Exact year: 1995",
+              "topps match",
+              "⭐ PERFECT MATCH: Player + Year + Brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [
+              "Likely base card"
+            ],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Exact year: 1995, topps match, ⭐ PERFECT MATCH: Player + Year + Brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|318021460205|0",
+      "title": "1995-96 Topps - Mystery Finest Michael Jordan #M 1",
+      "currentPrice": 285,
+      "shippingCost": 0,
+      "totalPrice": 285,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/PCAAAeSw16NpuhS9/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/318021460205?_skw=topps+finest+michael+jordan+1995+-psa+-bgs+-cgc+-sgc+-graded+-slab&hash=item4a0b8e60ed:g:PCAAAeSw16NpuhS9",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "fromwaydowntowncards",
+      "sellerFeedbackScore": 266,
+      "sellerPositivePercent": "99.4",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6.5,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "feedback": "99.4",
+            "salesCount": 266,
+            "tier": "Decent seller",
+            "trust": "OK",
+            "reason": "99.4% (266 sales) - Decent seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Exact year: 1995",
+              "topps match",
+              "⭐ PERFECT MATCH: Player + Year + Brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [
+              "Likely base card"
+            ],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Exact year: 1995, topps match, ⭐ PERFECT MATCH: Player + Year + Brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|406704392720|0",
+      "title": "Topps 1995-96 Finest Michael Jordan #229 Chicago Bulls NBA Basketball Card",
+      "currentPrice": 113,
+      "shippingCost": 0,
+      "totalPrice": 113,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/YfIAAeSwU9pplQtX/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/406704392720?_skw=topps+finest+michael+jordan+1995+-psa+-bgs+-cgc+-sgc+-graded+-slab&hash=item5eb1788a10:g:YfIAAeSwU9pplQtX&amdata=enc%3AAQALAAABIACCtXRWQnOEpyOqnQQ8KGbnJ4qZpucSjPrAEZpaMdxbq8AhKMKwqhmX3nvmdjZW0AuPfIfl2iatmvYsXpokibHPhK9TFFbnrE04P00mpnH9qWCW7kjQBcKRT6aaSeHg3l0oJkk7Ik%2FcWX5uHkC%2BX22oj%2FjxLpy60h%2F7dB%2Bn7fsfvCUHcfT8eggodesTRSRwAofbqNshaWk8MdyKV904lNUXcJNsntGJrWIAD%2BVqI%2FpdTxg8U4F2oSevxoCyxijgDXthS8bapNo9X4boH08FHTmC1%2BoOQSgbrMQeEHIqp7VRqxmGV00n92Okv4wvonWn6cQCI1U2VFXMNrj6e7heVejW%2FSYeCWqEoNd9MXHBcSz6rpPhYMm%2FgwW6YNaHg389hw%3D%3D",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "garob1660",
+      "sellerFeedbackScore": 187,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6.5,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 187,
+            "tier": "Decent seller",
+            "trust": "OK",
+            "reason": "100.0% (187 sales) - Decent seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Exact year: 1995",
+              "topps match",
+              "⭐ PERFECT MATCH: Player + Year + Brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [
+              "Likely base card"
+            ],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Exact year: 1995, topps match, ⭐ PERFECT MATCH: Player + Year + Brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|168194702378|0",
+      "title": "1995-96 Topps Finest - Michael Jordan #229",
+      "currentPrice": 125,
+      "shippingCost": 0,
+      "totalPrice": 125,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/nhwAAeSwCzFpo0QZ/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/168194702378?_skw=topps+finest+michael+jordan+1995+-psa+-bgs+-cgc+-sgc+-graded+-slab&hash=item27292f7c2a:g:nhwAAeSwCzFpo0QZ",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "mainfightcards",
+      "sellerFeedbackScore": 116,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6.5,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 116,
+            "tier": "Decent seller",
+            "trust": "OK",
+            "reason": "100.0% (116 sales) - Decent seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Exact year: 1995",
+              "topps match",
+              "⭐ PERFECT MATCH: Player + Year + Brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [
+              "Likely base card"
+            ],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Exact year: 1995, topps match, ⭐ PERFECT MATCH: Player + Year + Brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|357617356401|0",
+      "title": "1995-96 Topps Finest - Michael Jordan #229",
+      "currentPrice": 199,
+      "shippingCost": 0,
+      "totalPrice": 199,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/sbUAAeSwqLloxuj~/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/357617356401?_skw=topps+finest+michael+jordan+1995+-psa+-bgs+-cgc+-sgc+-graded+-slab&hash=item5343a7ce71:g:sbUAAeSwqLloxuj~&amdata=enc%3AAQALAAABIACCtXRWQnOEpyOqnQQ8KGbB1LAKQ3J0GflfipA6JpeF1otG5XC4zl7jT%2BzjMEPvznaTBjACYUSlAHW2o3mIGLNP1qOSdsbzUFKiJHI4LldS%2BgPImXdproagooLi7zdiZN9qyGalEwuM1L71grt5RNoI8QSFikbCmcwqw7u%2F2xe7cCuDQeiQPbeM9Bq%2Fw0LDVE4VReVBiOm2pbbJ0ifPOtH5bCwjp5GSYT7EB9ZBX%2FLhPF9JirVCwT4DvhFdKpGv4yOBCcdGmFhPTbxio75YFG8ptU6ybFV4%2BDtze22YuE8J86BAdH3ilu8aDFaPBqPuVHEMb%2FfzUvfKLK8aAAqRyNoXv4Kq48iRrd%2BvJoYwNo5o2BdqV5VeCgGAtss6HZ1M4w%3D%3D",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "resaleconnection",
+      "sellerFeedbackScore": 197,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6.5,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 197,
+            "tier": "Decent seller",
+            "trust": "OK",
+            "reason": "100.0% (197 sales) - Decent seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Exact year: 1995",
+              "topps match",
+              "⭐ PERFECT MATCH: Player + Year + Brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [
+              "Likely base card"
+            ],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Exact year: 1995, topps match, ⭐ PERFECT MATCH: Player + Year + Brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|389624135441|0",
+      "title": "1995-96 Topps Finest - Mystery Finest Michael Jordan #M 1 Bordered",
+      "currentPrice": 59.99,
+      "shippingCost": 0,
+      "totalPrice": 59.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/IQkAAeSw4u1pkSlD/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/389624135441?_skw=topps+finest+michael+jordan+1995+-psa+-bgs+-cgc+-sgc+-graded+-slab&hash=item5ab7687f11:g:IQkAAeSw4u1pkSlD",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "drixsportscards",
+      "sellerFeedbackScore": 168,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6.5,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 168,
+            "tier": "Decent seller",
+            "trust": "OK",
+            "reason": "100.0% (168 sales) - Decent seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Exact year: 1995",
+              "topps match",
+              "⭐ PERFECT MATCH: Player + Year + Brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [
+              "Likely base card"
+            ],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Exact year: 1995, topps match, ⭐ PERFECT MATCH: Player + Year + Brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|137043052189|0",
+      "title": "1995-96 Topps Finest - Mystery Finest Michael Jordan #M 1 Bordered",
+      "currentPrice": 1000,
+      "shippingCost": 0,
+      "totalPrice": 1000,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/v1wAAeSwyQ5pk4SH/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/137043052189?_skw=topps+finest+michael+jordan+1995+-psa+-bgs+-cgc+-sgc+-graded+-slab&hash=item1fe867069d:g:v1wAAeSwyQ5pk4SH",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "llcoolu13",
+      "sellerFeedbackScore": 297,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6.5,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 297,
+            "tier": "Decent seller",
+            "trust": "OK",
+            "reason": "100.0% (297 sales) - Decent seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Exact year: 1995",
+              "topps match",
+              "⭐ PERFECT MATCH: Player + Year + Brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [
+              "Likely base card"
+            ],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Exact year: 1995, topps match, ⭐ PERFECT MATCH: Player + Year + Brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|326432211825|0",
+      "title": "1995-96 Topps Finest Michael Jordan #229 W/ Protective Film Sharp,Clean!",
+      "currentPrice": 89.99,
+      "shippingCost": 0,
+      "totalPrice": 89.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/pJIAAOSwnlNnpVKJ/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/326432211825?_skw=topps+finest+michael+jordan+1995+-psa+-bgs+-cgc+-sgc+-graded+-slab&hash=item4c00e04371:g:pJIAAOSwnlNnpVKJ",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "steve213141",
+      "sellerFeedbackScore": 265,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6.5,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 265,
+            "tier": "Decent seller",
+            "trust": "OK",
+            "reason": "100.0% (265 sales) - Decent seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Exact year: 1995",
+              "topps match",
+              "⭐ PERFECT MATCH: Player + Year + Brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [
+              "Likely base card"
+            ],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Exact year: 1995, topps match, ⭐ PERFECT MATCH: Player + Year + Brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|226603909023|0",
+      "title": "1995 Topps finest mystery factory, Michael Jordan factory, cut error, misprint",
+      "currentPrice": 7200,
+      "shippingCost": 0,
+      "totalPrice": 7200,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/C5EAAOSw1J5ns4j-/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/226603909023?_skw=topps+finest+michael+jordan+1995+-psa+-bgs+-cgc+-sgc+-graded+-slab&hash=item34c2a53f9f:g:C5EAAOSw1J5ns4j-",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "joh_melen",
+      "sellerFeedbackScore": 332,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6.5,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 332,
+            "tier": "Decent seller",
+            "trust": "OK",
+            "reason": "100.0% (332 sales) - Decent seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Premium card type",
+              "Exact year: 1995",
+              "topps match",
+              "⭐ PERFECT MATCH: Player + Year + Brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Premium card type, Exact year: 1995, topps match, ⭐ PERFECT MATCH: Player + Year + Brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|265591003913|0",
+      "title": "Michael Jordan Card 1995 - 1996 Topps Finest Chicago Bulls #229 NBA Vintage",
+      "currentPrice": 450,
+      "shippingCost": 5,
+      "totalPrice": 455,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/2XEAAOSw8nBiGYDm/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/265591003913?_skw=topps+finest+michael+jordan+1995+-psa+-bgs+-cgc+-sgc+-graded+-slab&hash=item3dd6751b09:g:2XEAAOSw8nBiGYDm",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "nkny10",
+      "sellerFeedbackScore": 307,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6.5,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 307,
+            "tier": "Decent seller",
+            "trust": "OK",
+            "reason": "100.0% (307 sales) - Decent seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Exact year: 1995",
+              "topps match",
+              "⭐ PERFECT MATCH: Player + Year + Brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [
+              "Likely base card"
+            ],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Exact year: 1995, topps match, ⭐ PERFECT MATCH: Player + Year + Brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|397148332639|0",
+      "title": "1995-96 Topps Finest - Mystery Finest Michael Jordan #M 1 Bordered",
+      "currentPrice": 125,
+      "shippingCost": 0,
+      "totalPrice": 125,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/svsAAeSwz~Vo6zWg/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/397148332639?_skw=topps+finest+michael+jordan+1995+-psa+-bgs+-cgc+-sgc+-graded+-slab&hash=item5c77e2a25f:g:svsAAeSwz~Vo6zWg",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "differentlevel_collectables",
+      "sellerFeedbackScore": 390,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6.5,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 390,
+            "tier": "Decent seller",
+            "trust": "OK",
+            "reason": "100.0% (390 sales) - Decent seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Exact year: 1995",
+              "topps match",
+              "⭐ PERFECT MATCH: Player + Year + Brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [
+              "Likely base card"
+            ],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Exact year: 1995, topps match, ⭐ PERFECT MATCH: Player + Year + Brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|174633626760|0",
+      "title": "Michael Jordan 1995 96 Topps mystery finest #M1 Chicago Bulls",
+      "currentPrice": 99.99,
+      "shippingCost": 0,
+      "totalPrice": 99.99,
+      "condition": "Used",
+      "imageUrl": "https://i.ebayimg.com/images/g/Hx8AAOSwVTdgJMOF/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/174633626760?_skw=topps+finest+michael+jordan+1995+-psa+-bgs+-cgc+-sgc+-graded+-slab&hash=item28a8f9ac88:g:Hx8AAOSwVTdgJMOF",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "reignandroyalresale",
+      "sellerFeedbackScore": 491,
+      "sellerPositivePercent": "97.6",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6.5,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "feedback": "97.6",
+            "salesCount": 491,
+            "tier": "Decent seller",
+            "trust": "OK",
+            "reason": "97.6% (491 sales) - Decent seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Exact year: 1995",
+              "topps match",
+              "⭐ PERFECT MATCH: Player + Year + Brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [
+              "Likely base card"
+            ],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Exact year: 1995, topps match, ⭐ PERFECT MATCH: Player + Year + Brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|406477825327|0",
+      "title": "1995-96 TOPPS FINEST MICHAEL JORDAN #229 MINT CONDITION WITH FOIL STILL ON CARD",
+      "currentPrice": 119.99,
+      "shippingCost": 0,
+      "totalPrice": 119.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/SpwAAeSwPWJo-E~D/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/406477825327?_skw=topps+finest+michael+jordan+1995+-psa+-bgs+-cgc+-sgc+-graded+-slab&hash=item5ea3f7652f:g:SpwAAeSwPWJo-E~D",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "sports-monster",
+      "sellerFeedbackScore": 29,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6.2,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 2.5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 29,
+            "tier": "New/low feedback seller",
+            "trust": "⚠️ New seller",
+            "reason": "100.0% (29 sales) - New/low feedback seller"
+          },
+          "listingQuality": {
+            "points": 6,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos",
+              "Mint condition claimed"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos, Mint condition claimed"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Exact year: 1995",
+              "topps match",
+              "⭐ PERFECT MATCH: Player + Year + Brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [
+              "Likely base card"
+            ],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Exact year: 1995, topps match, ⭐ PERFECT MATCH: Player + Year + Brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|358331623754|0",
+      "title": "1995-96 Topps Finest - Michael Jordan #M 1",
+      "currentPrice": 119,
+      "shippingCost": 0,
+      "totalPrice": 119,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/5XoAAeSwcKNptf4K/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/358331623754?_skw=topps+finest+michael+jordan+1995+-psa+-bgs+-cgc+-sgc+-graded+-slab&hash=item536e3aa94a:g:5XoAAeSwcKNptf4K",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "matfern-3088",
+      "sellerFeedbackScore": 79,
+      "sellerPositivePercent": "98.6",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 2.5,
+            "maxPoints": 10,
+            "feedback": "98.6",
+            "salesCount": 79,
+            "tier": "New/low feedback seller",
+            "trust": "⚠️ New seller",
+            "reason": "98.6% (79 sales) - New/low feedback seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Exact year: 1995",
+              "topps match",
+              "⭐ PERFECT MATCH: Player + Year + Brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [
+              "Likely base card"
+            ],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Exact year: 1995, topps match, ⭐ PERFECT MATCH: Player + Year + Brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|155235606067|0",
+      "title": "1995 Michael Jordan topps finest refractor card#331",
+      "currentPrice": 4500,
+      "shippingCost": 0,
+      "totalPrice": 4500,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/6hwAAOSwl9xjYiZe/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/155235606067?_skw=topps+finest+michael+jordan+1995+-psa+-bgs+-cgc+-sgc+-graded+-slab&hash=item2424c35e33:g:6hwAAOSwl9xjYiZe",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "jnelles5",
+      "sellerFeedbackScore": 11,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 2.5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 11,
+            "tier": "New/low feedback seller",
+            "trust": "⚠️ New seller",
+            "reason": "100.0% (11 sales) - New/low feedback seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Premium card type",
+              "Exact year: 1995",
+              "topps match",
+              "⭐ PERFECT MATCH: Player + Year + Brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Premium card type, Exact year: 1995, topps match, ⭐ PERFECT MATCH: Player + Year + Brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|315726369662|0",
+      "title": "1995-96 Topps Finest - Mystery Finest Bordered #M 1 Michael Jordan",
+      "currentPrice": 150,
+      "shippingCost": 0,
+      "totalPrice": 150,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/m~4AAOSwGnBm2Jfd/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/315726369662?_skw=topps+finest+michael+jordan+1995+-psa+-bgs+-cgc+-sgc+-graded+-slab&hash=item4982c2137e:g:m~4AAOSwGnBm2Jfd",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "exclusivedrops-1111",
+      "sellerFeedbackScore": 5,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 2.5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 5,
+            "tier": "New/low feedback seller",
+            "trust": "⚠️ New seller",
+            "reason": "100.0% (5 sales) - New/low feedback seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: michael jordan",
+              "Exact year: 1995",
+              "topps match",
+              "⭐ PERFECT MATCH: Player + Year + Brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [
+              "Likely base card"
+            ],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: michael jordan, Exact year: 1995, topps match, ⭐ PERFECT MATCH: Player + Year + Brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|265306196559|567050008397",
+      "title": "1995-96 Topps Basketball Jordan Finest Refractor Stockton Mystery Gold Rodman",
+      "currentPrice": 5.74,
+      "shippingCost": 5.94,
+      "totalPrice": 11.68,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/xlsAAOSwt45hOhmM/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/265306196559?_skw=topps+finest+michael+jordan+1995+-psa+-bgs+-cgc+-sgc+-graded+-slab&hash=item3dc57b4a4f:g:xlsAAOSwt45hOhmM",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "hammercards",
+      "sellerFeedbackScore": 4968,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 5.5,
+        "rating": "~ MAYBE",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 4968,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (4968 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 5,
+            "maxPoints": 10,
+            "matches": [
+              "Premium card type",
+              "Exact year: 1995",
+              "topps match",
+              "Premium set: finest"
+            ],
+            "mismatches": [
+              "WRONG PLAYER - searched for: michael jordan"
+            ],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Premium card type, Exact year: 1995, topps match, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": []
+      }
+    },
+    {
+      "itemId": "v1|318021365972|0",
+      "title": "1995-96 TOPPS MYSTERY FINEST REFRACTOR MICHAEL JORDAN #M1 extremely rare GOAT",
+      "currentPrice": 2800,
+      "shippingCost": 0,
+      "totalPrice": 2800,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/pqUAAeSwSMppuhES/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/318021365972?_skw=topps+finest+michael+jordan+1995+-psa+-bgs+-cgc+-sgc+-graded+-slab&hash=item4a0b8cf0d4:g:pqUAAeSwSMppuhES",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "fromwaydowntowncards",
+      "sellerFeedbackScore": 266,
+      "sellerPositivePercent": "99.4",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 0,
+        "rating": "❌ REJECTED - BELOW NM-MT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "feedback": "99.4",
+            "salesCount": 266,
+            "tier": "Decent seller",
+            "trust": "OK",
+            "reason": "99.4% (266 sales) - Decent seller"
+          },
+          "listingQuality": {
+            "points": 0,
+            "maxPoints": 10,
+            "signals": [],
+            "redFlags": [
+              "❌ BELOW NM-MT - AUTO-REJECTED"
+            ],
+            "hasPhotos": true,
+            "disqualified": true,
+            "reason": "❌ Condition below NM-MT - AUTO-REJECT"
+          },
+          "searchRelevance": {
+            "points": 0,
+            "reason": "Disqualified by condition"
+          },
+          "listingFreshness": {
+            "points": 0,
+            "reason": "Disqualified by condition"
+          }
+        },
+        "flags": [
+          "❌ Card condition below NM-MT - AUTO-REJECTED"
+        ],
+        "disqualified": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,2782 @@
+{
+  "timestamp": "2026-03-21T16:40:38.192Z",
+  "searchQuery": "Cooper Flagg 2025 BGS 9.5",
+  "parsed": {
+    "original": "Cooper Flagg 2025 BGS 9.5",
+    "isComplex": false,
+    "baseQuery": "cooper flagg 2025 bgs 9.5",
+    "players": null,
+    "yearRange": null,
+    "detectedTypes": [],
+    "searches": [
+      "cooper flagg 2025 bgs 9.5"
+    ],
+    "searchCount": 1,
+    "explanation": "Single search (no splitting needed)"
+  },
+  "searchResults": [
+    {
+      "query": "cooper flagg 2025 bgs 9.5",
+      "count": 37
+    }
+  ],
+  "config": {
+    "keywords": "Cooper Flagg 2025 BGS 9.5",
+    "minScoreToShow": 7,
+    "topN": 20,
+    "minPrice": 10,
+    "maxPrice": 2000,
+    "rawOnly": true,
+    "useVision": true,
+    "visionTopN": 200,
+    "excludeKeywords": "jumbo,holo,prizm,mystery",
+    "listingType": "both",
+    "cardType": "graded"
+  },
+  "scanDuration": "4.1s",
+  "summary": {
+    "totalFound": 37,
+    "uniqueItems": 37,
+    "rawCardsOnly": true,
+    "afterRawFilter": 37,
+    "totalScored": 37,
+    "showingResults": 10,
+    "visionScanned": true
+  },
+  "allResults": [
+    {
+      "itemId": "v1|267615257903|0",
+      "title": "2025-26 Topps Chrome - Cooper Flagg #251 (RC) BGS 9.5 Gem Mint🔥🔥🔥",
+      "currentPrice": 449.99,
+      "shippingCost": 0,
+      "totalPrice": 449.99,
+      "condition": "Graded",
+      "imageUrl": "https://i.ebayimg.com/images/g/TFIAAeSwP5NpvgNH/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/267615257903?_skw=cooper+flagg+2025+bgs+9.5+-jumbo+-holo+-prizm+-mystery&hash=item3e4f1cc52f:g:TFIAAeSwP5NpvgNH",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "cardgamescapital95",
+      "sellerFeedbackScore": 1269,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.8,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 1269,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (1269 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 7,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos",
+              "Gem mint claimed",
+              "Mint condition"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos, Gem mint claimed, Mint condition"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: cooper flagg",
+              "Premium card type",
+              "Exact year: 2025",
+              "Premium brand",
+              "Premium set: chrome"
+            ],
+            "mismatches": [],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: cooper flagg, Premium card type, Exact year: 2025, Premium brand, Premium set: chrome"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|157772149964|0",
+      "title": "2025 Topps Chrome #251 REFRACTOR COOPER FLAGG BGS 9.5 GEM MINT🔥ROOKIE MAVS",
+      "currentPrice": 999.99,
+      "shippingCost": 0,
+      "totalPrice": 999.99,
+      "condition": "Graded",
+      "imageUrl": "https://i.ebayimg.com/images/g/1RcAAeSwihRpvYh9/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/157772149964?_skw=cooper+flagg+2025+bgs+9.5+-jumbo+-holo+-prizm+-mystery&hash=item24bbf3f4cc:g:1RcAAeSwihRpvYh9",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "shotime2018**",
+      "sellerFeedbackScore": 3298,
+      "sellerPositivePercent": "99.7",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.8,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "99.7",
+            "salesCount": 3298,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "99.7% (3298 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 7,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos",
+              "Gem mint claimed",
+              "Mint condition"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos, Gem mint claimed, Mint condition"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: cooper flagg",
+              "Premium card type",
+              "Exact year: 2025",
+              "Premium brand",
+              "Premium set: chrome"
+            ],
+            "mismatches": [],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: cooper flagg, Premium card type, Exact year: 2025, Premium brand, Premium set: chrome"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|147211494578|0",
+      "title": "2025 Topps Now NBA Cooper Flagg #D1 RC Rookie Draft BGS 9.5 GEM MT (QTY)",
+      "currentPrice": 37.95,
+      "shippingCost": 0,
+      "totalPrice": 37.95,
+      "condition": "Graded",
+      "imageUrl": "https://i.ebayimg.com/images/g/V90AAeSwhHdpux7N/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/147211494578?_skw=cooper+flagg+2025+bgs+9.5+-jumbo+-holo+-prizm+-mystery&hash=item22467d24b2:g:V90AAeSwhHdpux7N",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "cards4la",
+      "sellerFeedbackScore": 14974,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.2,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 14974,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (14974 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 4,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 9.5,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: cooper flagg",
+              "Premium card type",
+              "Exact year: 2025",
+              "Premium brand"
+            ],
+            "mismatches": [],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: cooper flagg, Premium card type, Exact year: 2025, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|287109712832|0",
+      "title": "2025 Topps Now Draft - Cooper Flagg #D1 BGS 9.5 GEM MINT 1st pick Future MVP",
+      "currentPrice": 39.99,
+      "shippingCost": 4.99,
+      "totalPrice": 44.98,
+      "condition": "Graded",
+      "imageUrl": "https://i.ebayimg.com/images/g/m7EAAeSw~W5pXSZP/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/287109712832?_skw=cooper+flagg+2025+bgs+9.5+-jumbo+-holo+-prizm+-mystery&hash=item42d9128bc0:g:m7EAAeSw~W5pXSZP",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "briantbowling11",
+      "sellerFeedbackScore": 3033,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.2,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 3033,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (3033 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 7,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos",
+              "Gem mint claimed",
+              "Mint condition"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos, Gem mint claimed, Mint condition"
+          },
+          "searchRelevance": {
+            "points": 8.5,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: cooper flagg",
+              "Exact year: 2025",
+              "Premium brand"
+            ],
+            "mismatches": [
+              "Likely base card"
+            ],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: cooper flagg, Exact year: 2025, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|147211512568|0",
+      "title": "2025-26 Topps Now Cooper Flagg/Kon Knueppel #CFKK RC Rookie Draft BGS 9.5 GEM MT",
+      "currentPrice": 118.75,
+      "shippingCost": 0,
+      "totalPrice": 118.75,
+      "condition": "Graded",
+      "imageUrl": "https://i.ebayimg.com/images/g/B2wAAeSwcrlpuyOV/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/147211512568?_skw=cooper+flagg+2025+bgs+9.5+-jumbo+-holo+-prizm+-mystery&hash=item22467d6af8:g:B2wAAeSwcrlpuyOV",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "cards4la",
+      "sellerFeedbackScore": 14974,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.2,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 14974,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (14974 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 4,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 9.5,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: cooper flagg",
+              "Premium card type",
+              "Exact year: 2025",
+              "Premium brand"
+            ],
+            "mismatches": [],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: cooper flagg, Premium card type, Exact year: 2025, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|117043377486|0",
+      "title": "2025-26 PANINI INSTANT RR RETRO #RRR16 COOPER FLAGG ROOKIE RC BGS 9.5",
+      "currentPrice": 69,
+      "shippingCost": 5.99,
+      "totalPrice": 74.99,
+      "condition": "Graded",
+      "imageUrl": "https://i.ebayimg.com/images/g/9UYAAeSw3oFplUTA/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/117043377486?_skw=cooper+flagg+2025+bgs+9.5+-jumbo+-holo+-prizm+-mystery&hash=item1b4054354e:g:9UYAAeSw3oFplUTA",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "psa",
+      "sellerFeedbackScore": 439962,
+      "sellerPositivePercent": "99.9",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.2,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "99.9",
+            "salesCount": 439962,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "99.9% (439962 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 4,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 9.5,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: cooper flagg",
+              "Premium card type",
+              "Exact year: 2025",
+              "Premium brand"
+            ],
+            "mismatches": [],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: cooper flagg, Premium card type, Exact year: 2025, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|297889736759|0",
+      "title": "2025-26 PANINI INSTANT DRAFT NIGHT #NBADN1 COOPER FLAGG ROOKIE RC BGS 9.5",
+      "currentPrice": 75.05,
+      "shippingCost": 0,
+      "totalPrice": 75.05,
+      "condition": "Graded",
+      "imageUrl": "https://i.ebayimg.com/images/g/eVUAAeSwfH9pU1xH/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/297889736759?_skw=cooper+flagg+2025+bgs+9.5+-jumbo+-holo+-prizm+-mystery&hash=item455b9ca837:g:eVUAAeSwfH9pU1xH",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "sportsngems",
+      "sellerFeedbackScore": 3349,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.2,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 3349,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (3349 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 4,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 9.5,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: cooper flagg",
+              "Premium card type",
+              "Exact year: 2025",
+              "Premium brand"
+            ],
+            "mismatches": [],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: cooper flagg, Premium card type, Exact year: 2025, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|177819313339|0",
+      "title": "2025-26 Panini Instant COOPER FLAGG #NBADN1 RC Rookie Draft Night /68380 BGS 9.5",
+      "currentPrice": 69.99,
+      "shippingCost": 5.99,
+      "totalPrice": 75.98,
+      "condition": "Graded",
+      "imageUrl": "https://i.ebayimg.com/images/g/RugAAeSw0MNpe7FC/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/177819313339?_skw=cooper+flagg+2025+bgs+9.5+-jumbo+-holo+-prizm+-mystery&hash=item2966db64bb:g:RugAAeSw0MNpe7FC",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "cardcavecentral",
+      "sellerFeedbackScore": 20722,
+      "sellerPositivePercent": "99.9",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.2,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "99.9",
+            "salesCount": 20722,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "99.9% (20722 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 4,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 9.5,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: cooper flagg",
+              "Premium card type",
+              "Exact year: 2025",
+              "Premium brand"
+            ],
+            "mismatches": [],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: cooper flagg, Premium card type, Exact year: 2025, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|336423978977|0",
+      "title": "2025-26 Panini Instant Draft Night /68380 Cooper Flagg BGS 9.5 GEM MINT READ 3hd",
+      "currentPrice": 53.1,
+      "shippingCost": 4.99,
+      "totalPrice": 58.09,
+      "condition": "Graded",
+      "imageUrl": "https://i.ebayimg.com/images/g/1ykAAeSwa25pqvCR/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/336423978977?_skw=cooper+flagg+2025+bgs+9.5+-jumbo+-holo+-prizm+-mystery&hash=item4e546e87e1:g:1ykAAeSwa25pqvCR",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "comc_consignment",
+      "sellerFeedbackScore": 1362677,
+      "sellerPositivePercent": "99.6",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.2,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "99.6",
+            "salesCount": 1362677,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "99.6% (1362677 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 7,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos",
+              "Gem mint claimed",
+              "Mint condition"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos, Gem mint claimed, Mint condition"
+          },
+          "searchRelevance": {
+            "points": 8.5,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: cooper flagg",
+              "Exact year: 2025",
+              "Premium brand"
+            ],
+            "mismatches": [
+              "Likely base card"
+            ],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: cooper flagg, Exact year: 2025, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|206154288672|0",
+      "title": "2025-26 Topps Living Cooper Flagg RC #11 BGS 9.5 Gem Mint Dallas Mavericks",
+      "currentPrice": 199,
+      "shippingCost": 4.95,
+      "totalPrice": 203.95,
+      "condition": "Graded",
+      "imageUrl": "https://i.ebayimg.com/images/g/XYQAAeSwzT9pvaYq/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/206154288672?_skw=cooper+flagg+2025+bgs+9.5+-jumbo+-holo+-prizm+-mystery&hash=item2fffc0ce20:g:XYQAAeSwzT9pvaYq",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "rinconcandc",
+      "sellerFeedbackScore": 897,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.1,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 7.5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 897,
+            "tier": "Established seller",
+            "trust": "✅ Good",
+            "reason": "100.0% (897 sales) - Established seller"
+          },
+          "listingQuality": {
+            "points": 7,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos",
+              "Gem mint claimed",
+              "Mint condition"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos, Gem mint claimed, Mint condition"
+          },
+          "searchRelevance": {
+            "points": 9.5,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: cooper flagg",
+              "Premium card type",
+              "Exact year: 2025",
+              "Premium brand"
+            ],
+            "mismatches": [],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: cooper flagg, Premium card type, Exact year: 2025, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|188037143085|0",
+      "title": "2025-26 Topps Chrome - Cooper Flagg #251 (RC) BGS 9.5 Gem Mint🔥🔥🔥",
+      "currentPrice": 499,
+      "shippingCost": 0,
+      "totalPrice": 499,
+      "condition": "Graded",
+      "imageUrl": "https://i.ebayimg.com/images/g/IiMAAeSwgTFph-x4/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/188037143085?_skw=cooper+flagg+2025+bgs+9.5+-jumbo+-holo+-prizm+-mystery&hash=item2bc7e31a2d:g:IiMAAeSwgTFph-x4",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "bender2133",
+      "sellerFeedbackScore": 493,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6.8,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 493,
+            "tier": "Decent seller",
+            "trust": "OK",
+            "reason": "100.0% (493 sales) - Decent seller"
+          },
+          "listingQuality": {
+            "points": 7,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos",
+              "Gem mint claimed",
+              "Mint condition"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos, Gem mint claimed, Mint condition"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: cooper flagg",
+              "Premium card type",
+              "Exact year: 2025",
+              "Premium brand",
+              "Premium set: chrome"
+            ],
+            "mismatches": [],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: cooper flagg, Premium card type, Exact year: 2025, Premium brand, Premium set: chrome"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|117090111817|0",
+      "title": "2025-26 PANINI INSTANT DRAFT NIGHT 68380 #NBADN1 COOPER FLAGG BGS 9.5",
+      "currentPrice": 35,
+      "shippingCost": 5.99,
+      "totalPrice": 40.99,
+      "condition": "Graded",
+      "imageUrl": "https://i.ebayimg.com/images/g/rcUAAeSw2Mtpt1yg/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/117090111817?_skw=cooper+flagg+2025+bgs+9.5+-jumbo+-holo+-prizm+-mystery&hash=item1b431d5149:g:rcUAAeSw2Mtpt1yg",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "psa",
+      "sellerFeedbackScore": 439962,
+      "sellerPositivePercent": "99.9",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6.8,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "99.9",
+            "salesCount": 439962,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "99.9% (439962 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 4,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 8.5,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: cooper flagg",
+              "Exact year: 2025",
+              "Premium brand"
+            ],
+            "mismatches": [
+              "Likely base card"
+            ],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: cooper flagg, Exact year: 2025, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|127729265454|0",
+      "title": "2025 Panini Instant NBA Draft Night Cooper Flagg RC #NBADN-1 Mavericks BGS 9.5",
+      "currentPrice": 69.99,
+      "shippingCost": 5.75,
+      "totalPrice": 75.74,
+      "condition": "Graded",
+      "imageUrl": "https://i.ebayimg.com/images/g/7ToAAeSwultpruGI/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/127729265454?_skw=cooper+flagg+2025+bgs+9.5+-jumbo+-holo+-prizm+-mystery&hash=item1dbd41eb2e:g:7ToAAeSwultpruGI",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "riphitrepeat",
+      "sellerFeedbackScore": 979,
+      "sellerPositivePercent": "99.8",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6.7,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 7.5,
+            "maxPoints": 10,
+            "feedback": "99.8",
+            "salesCount": 979,
+            "tier": "Established seller",
+            "trust": "✅ Good",
+            "reason": "99.8% (979 sales) - Established seller"
+          },
+          "listingQuality": {
+            "points": 4,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 9.5,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: cooper flagg",
+              "Premium card type",
+              "Exact year: 2025",
+              "Premium brand"
+            ],
+            "mismatches": [],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: cooper flagg, Premium card type, Exact year: 2025, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|336482837107|0",
+      "title": "Topps Chrome 2025-26 - Cooper Flagg -  Patented Case Hit SSP - PD16 - BGS 9.5",
+      "currentPrice": 1726.8,
+      "shippingCost": 21.86,
+      "totalPrice": 1748.66,
+      "condition": "Graded",
+      "imageUrl": "https://i.ebayimg.com/images/g/K6QAAeSw551ptwOc/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/336482837107?_skw=cooper+flagg+2025+bgs+9.5+-jumbo+-holo+-prizm+-mystery&hash=item4e57f0a273:g:K6QAAeSw551ptwOc",
+      "location": "",
+      "country": "CA",
+      "sellerUsername": "tcallitsis",
+      "sellerFeedbackScore": 231,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6.4,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 231,
+            "tier": "Decent seller",
+            "trust": "OK",
+            "reason": "100.0% (231 sales) - Decent seller"
+          },
+          "listingQuality": {
+            "points": 4,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: cooper flagg",
+              "Premium card type",
+              "Exact year: 2025",
+              "Premium brand",
+              "Premium set: chrome"
+            ],
+            "mismatches": [],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: cooper flagg, Premium card type, Exact year: 2025, Premium brand, Premium set: chrome"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|287199217311|0",
+      "title": "Cooper Flagg RC 2025-26 Topps Chrome Generation Rising #GR1 BGS 9.5 GEM MINT...",
+      "currentPrice": 149.99,
+      "shippingCost": 0,
+      "totalPrice": 149.99,
+      "condition": "Graded",
+      "imageUrl": "https://i.ebayimg.com/images/g/CQ0AAeSw4-Nps2Km/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/287199217311?_skw=cooper+flagg+2025+bgs+9.5+-jumbo+-holo+-prizm+-mystery&hash=item42de68469f:g:CQ0AAeSw4-Nps2Km",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "grandpasangelscollectibles",
+      "sellerFeedbackScore": 83,
+      "sellerPositivePercent": "98.8",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6.3,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 2.5,
+            "maxPoints": 10,
+            "feedback": "98.8",
+            "salesCount": 83,
+            "tier": "New/low feedback seller",
+            "trust": "⚠️ New seller",
+            "reason": "98.8% (83 sales) - New/low feedback seller"
+          },
+          "listingQuality": {
+            "points": 7,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos",
+              "Gem mint claimed",
+              "Mint condition"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos, Gem mint claimed, Mint condition"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: cooper flagg",
+              "Premium card type",
+              "Exact year: 2025",
+              "Premium brand",
+              "Premium set: chrome"
+            ],
+            "mismatches": [],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: cooper flagg, Premium card type, Exact year: 2025, Premium brand, Premium set: chrome"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|198052362844|0",
+      "title": "2025 Panini Instant COOPER FLAGG Rookie Card #RRR-16 Rated Rookie BGS 9.5",
+      "currentPrice": 70,
+      "shippingCost": 6.99,
+      "totalPrice": 76.99,
+      "condition": "Graded",
+      "imageUrl": "https://i.ebayimg.com/images/g/DzkAAeSwwwtpdU7M/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/198052362844?_skw=cooper+flagg+2025+bgs+9.5+-jumbo+-holo+-prizm+-mystery&hash=item2e1cd73a5c:g:DzkAAeSwwwtpdU7M&amdata=enc%3AAQALAAABEACCtXRWQnOEpyOqnQQ8KGZkypV2VjJcmlNyUuw5lqyEWVvFErkrnIGkUfcCc5E73ww0TlnLqYNpwPa9h%2Fxr1GzEf7JLUFLQPTPuJxCnqyxqpxebKBUiNP8ivfftvOOD4%2Fm%2FsjHyZP935wzHYMSVH8jK7lzckvtXMLR%2Bvp5vhLLpfhqbokUd7HOnuYUrY6F7UfUNunm59oTkpOz3Wl8C9NsWPBxWDhCqdE3kiFMFw4LTlCJE%2F5POjeFg6D5Z25T8mq2pw4S%2BBM8ZMbdYlgfqH%2Fvwxw3o16yT%2BBc9YPv0ummPfqkZiiHH3OjvRqDf0LqbBXSTkdJKEYYmY2uh%2F54CRpSf9V2I2%2BWuqQa3wuz3Ypz3",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "raejayco",
+      "sellerFeedbackScore": 345,
+      "sellerPositivePercent": "99.7",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6.2,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "feedback": "99.7",
+            "salesCount": 345,
+            "tier": "Decent seller",
+            "trust": "OK",
+            "reason": "99.7% (345 sales) - Decent seller"
+          },
+          "listingQuality": {
+            "points": 4,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 9.5,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: cooper flagg",
+              "Premium card type",
+              "Exact year: 2025",
+              "Premium brand"
+            ],
+            "mismatches": [],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: cooper flagg, Premium card type, Exact year: 2025, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|198052358868|0",
+      "title": "2025 Panini Instant COOPER FLAGG Rookie Card #RRR-16 Rated Rookie BGS 9.5",
+      "currentPrice": 70,
+      "shippingCost": 6.99,
+      "totalPrice": 76.99,
+      "condition": "Graded",
+      "imageUrl": "https://i.ebayimg.com/images/g/C9AAAeSwwJdpdU0n/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/198052358868?_skw=cooper+flagg+2025+bgs+9.5+-jumbo+-holo+-prizm+-mystery&hash=item2e1cd72ad4:g:C9AAAeSwwJdpdU0n&amdata=enc%3AAQALAAABEACCtXRWQnOEpyOqnQQ8KGYn6hTwxEbUUNT6IIHYNRyuoTzuUTKWZJ%2FiIkyTo6aIsKfFei5M9vV4%2BTL8VX%2FelzU5oJWE1l9Z2qDqmCtCqrJJ7YFVfY%2Fkm8r7zqm9V%2B80VGkZm6lHJTSFCL8QRF8Mf5RopogsjyTwjkHFEGBjySjsCaviqurh7Ra2aK5FwqfmffAZnPPOBQMVsNLVXwtcSikaNI68B0B4M7b6E4OCNMSIYWcDu7OJkzEPbA5ReP4rWR9naBvOfCDLO3kWp3wpTMTgkgLnt5tNTW9hA90pEYGBxJmDvBmRgdxRYwf9wOVpd4LR%2FC8eq7eYEo%2BLLNqgBEj7jbumDMk5AFdpaOVAW%2BQM",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "raejayco",
+      "sellerFeedbackScore": 345,
+      "sellerPositivePercent": "99.7",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6.2,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "feedback": "99.7",
+            "salesCount": 345,
+            "tier": "Decent seller",
+            "trust": "OK",
+            "reason": "99.7% (345 sales) - Decent seller"
+          },
+          "listingQuality": {
+            "points": 4,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 9.5,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: cooper flagg",
+              "Premium card type",
+              "Exact year: 2025",
+              "Premium brand"
+            ],
+            "mismatches": [],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: cooper flagg, Premium card type, Exact year: 2025, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|198052361494|0",
+      "title": "2025 Panini Instant COOPER FLAGG Rookie Card #RRR-16 Rated Rookie BGS 9.5",
+      "currentPrice": 70,
+      "shippingCost": 6.99,
+      "totalPrice": 76.99,
+      "condition": "Graded",
+      "imageUrl": "https://i.ebayimg.com/images/g/mnYAAeSwDI1pdU4-/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/198052361494?_skw=cooper+flagg+2025+bgs+9.5+-jumbo+-holo+-prizm+-mystery&hash=item2e1cd73516:g:mnYAAeSwDI1pdU4-&amdata=enc%3AAQALAAABEACCtXRWQnOEpyOqnQQ8KGYbC9wAro%2Bq4z3oF%2FN4%2FHsWdq%2Bmpnfp4kaNTPKnXgirT3FfYScdir1NrtVIh5wsvo9aoIf5btuR8Birf8wN2M7h5AGabhSTQ7xCPPvP8QbXkNKNw7KMYpMYPzBx%2BMm4wAyPGDmn36cWSFqvwY9x7vghwF%2BbP4JYoNeRHkgVLaPHx%2F1GzfAUaHUiDHU7DQgWkHi0cULX8y%2BRsH37lL6TsYMmtCX19FMivSDYdbIid%2F%2BKVTBQR2HuKNdhOMYj77xbSxVnjVDmyaDs08X%2FAmc7v%2FOF0wXzOvf7CXIUF7GlkVPilK%2FJSo4%2B9AKMnuf3rJkhSGtF0zFlXmgXUkXNTDVMk3DK",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "raejayco",
+      "sellerFeedbackScore": 345,
+      "sellerPositivePercent": "99.7",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6.2,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "feedback": "99.7",
+            "salesCount": 345,
+            "tier": "Decent seller",
+            "trust": "OK",
+            "reason": "99.7% (345 sales) - Decent seller"
+          },
+          "listingQuality": {
+            "points": 4,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 9.5,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: cooper flagg",
+              "Premium card type",
+              "Exact year: 2025",
+              "Premium brand"
+            ],
+            "mismatches": [],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: cooper flagg, Premium card type, Exact year: 2025, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|397687393625|0",
+      "title": "2025-26 Topps Cooper Flagg RC Rookie #201 Mavericks BGS 9.5",
+      "currentPrice": 74.99,
+      "shippingCost": 0,
+      "totalPrice": 74.99,
+      "condition": "Graded",
+      "imageUrl": "https://i.ebayimg.com/images/g/Xa0AAeSwdUVprMW4/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/397687393625?_skw=cooper+flagg+2025+bgs+9.5+-jumbo+-holo+-prizm+-mystery&hash=item5c98040d59:g:Xa0AAeSwdUVprMW4",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "dovercards",
+      "sellerFeedbackScore": 447,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6.2,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 447,
+            "tier": "Decent seller",
+            "trust": "OK",
+            "reason": "100.0% (447 sales) - Decent seller"
+          },
+          "listingQuality": {
+            "points": 4,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 9.5,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: cooper flagg",
+              "Premium card type",
+              "Exact year: 2025",
+              "Premium brand"
+            ],
+            "mismatches": [],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: cooper flagg, Premium card type, Exact year: 2025, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|157774047557|0",
+      "title": "2025-26 Topps NBA Living Set COOPER FLAGG ROOKIE -🔥 BGS 9.5",
+      "currentPrice": 75,
+      "shippingCost": 0,
+      "totalPrice": 75,
+      "condition": "Graded",
+      "imageUrl": "https://i.ebayimg.com/images/g/zmgAAeSwQiVpvqRJ/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/157774047557?_skw=cooper+flagg+2025+bgs+9.5+-jumbo+-holo+-prizm+-mystery&hash=item24bc10e945:g:zmgAAeSwQiVpvqRJ",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "docscardcollectioncollectibles",
+      "sellerFeedbackScore": 118,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6.2,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 118,
+            "tier": "Decent seller",
+            "trust": "OK",
+            "reason": "100.0% (118 sales) - Decent seller"
+          },
+          "listingQuality": {
+            "points": 4,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 9.5,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: cooper flagg",
+              "Premium card type",
+              "Exact year: 2025",
+              "Premium brand"
+            ],
+            "mismatches": [],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: cooper flagg, Premium card type, Exact year: 2025, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|157774050299|0",
+      "title": "2025-26 Topps NBA Living Set COOPER FLAGG ROOKIE -🔥 BGS 9.5",
+      "currentPrice": 75,
+      "shippingCost": 0,
+      "totalPrice": 75,
+      "condition": "Graded",
+      "imageUrl": "https://i.ebayimg.com/images/g/59EAAeSwF8RpvqT5/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/157774050299?_skw=cooper+flagg+2025+bgs+9.5+-jumbo+-holo+-prizm+-mystery&hash=item24bc10f3fb:g:59EAAeSwF8RpvqT5",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "docscardcollectioncollectibles",
+      "sellerFeedbackScore": 118,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6.2,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 118,
+            "tier": "Decent seller",
+            "trust": "OK",
+            "reason": "100.0% (118 sales) - Decent seller"
+          },
+          "listingQuality": {
+            "points": 4,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 9.5,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: cooper flagg",
+              "Premium card type",
+              "Exact year: 2025",
+              "Premium brand"
+            ],
+            "mismatches": [],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: cooper flagg, Premium card type, Exact year: 2025, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|198110106845|0",
+      "title": "2025 Panini Instant COOPER FLAGG Rookie Card #RRR-16 Rated Rookie BGS 9.5",
+      "currentPrice": 70,
+      "shippingCost": 6.99,
+      "totalPrice": 76.99,
+      "condition": "Graded",
+      "imageUrl": "https://i.ebayimg.com/images/g/AuIAAeSwNqNpdUq4/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/198110106845?_skw=cooper+flagg+2025+bgs+9.5+-jumbo+-holo+-prizm+-mystery&hash=item2e204854dd:g:AuIAAeSwNqNpdUq4&amdata=enc%3AAQALAAABEACCtXRWQnOEpyOqnQQ8KGYwyeFbU9Yt0a7IAQCZBNNFKyFv00rRf5mlCRKUdFETK87MDHJbMf7KViF3VJfqyTIAhUFOyBFZ%2BEv8mZigvNu0GGD%2Bb8bX1Dl2Sq8Xe%2FyDP5oegm6dOrpOpz5s7d8%2BSZZuvI1hL5CfSiVZTrCa2AtUXbArFCIgYD1YiDaP%2BXpGEpkJ%2F2fTxyAlzqKNdhvy2Kt6%2FUvAQxTvLpvR3aVqP6JU5E0OhGV11Nd7Xw10Tjvv4f096t7e6UZcbRI75rciuodrPpI6M9QMeNJY9QIossQ0wvcNptVaGOPtorDZo3P0I9MOtGyOakYQUq8EfCG%2BtkZclRAacnDeo5tWlyLaot22",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "raejayco",
+      "sellerFeedbackScore": 345,
+      "sellerPositivePercent": "99.7",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6.2,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "feedback": "99.7",
+            "salesCount": 345,
+            "tier": "Decent seller",
+            "trust": "OK",
+            "reason": "99.7% (345 sales) - Decent seller"
+          },
+          "listingQuality": {
+            "points": 4,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 9.5,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: cooper flagg",
+              "Premium card type",
+              "Exact year: 2025",
+              "Premium brand"
+            ],
+            "mismatches": [],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: cooper flagg, Premium card type, Exact year: 2025, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|157774041307|0",
+      "title": "2025-26 Topps NBA Living Set COOPER FLAGG ROOKIE -🔥 BGS 9.5",
+      "currentPrice": 75,
+      "shippingCost": 0,
+      "totalPrice": 75,
+      "condition": "Graded",
+      "imageUrl": "https://i.ebayimg.com/images/g/ssIAAeSwu5tpvp7P/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/157774041307?_skw=cooper+flagg+2025+bgs+9.5+-jumbo+-holo+-prizm+-mystery&hash=item24bc10d0db:g:ssIAAeSwu5tpvp7P",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "docscardcollectioncollectibles",
+      "sellerFeedbackScore": 118,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6.2,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 118,
+            "tier": "Decent seller",
+            "trust": "OK",
+            "reason": "100.0% (118 sales) - Decent seller"
+          },
+          "listingQuality": {
+            "points": 4,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 9.5,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: cooper flagg",
+              "Premium card type",
+              "Exact year: 2025",
+              "Premium brand"
+            ],
+            "mismatches": [],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: cooper flagg, Premium card type, Exact year: 2025, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|157774043957|0",
+      "title": "2025-26 Topps NBA Living Set COOPER FLAGG ROOKIE -🔥 BGS 9.5",
+      "currentPrice": 75,
+      "shippingCost": 0,
+      "totalPrice": 75,
+      "condition": "Graded",
+      "imageUrl": "https://i.ebayimg.com/images/g/EMMAAeSwdAJpvqOc/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/157774043957?_skw=cooper+flagg+2025+bgs+9.5+-jumbo+-holo+-prizm+-mystery&hash=item24bc10db35:g:EMMAAeSwdAJpvqOc",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "docscardcollectioncollectibles",
+      "sellerFeedbackScore": 118,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6.2,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 118,
+            "tier": "Decent seller",
+            "trust": "OK",
+            "reason": "100.0% (118 sales) - Decent seller"
+          },
+          "listingQuality": {
+            "points": 4,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 9.5,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: cooper flagg",
+              "Premium card type",
+              "Exact year: 2025",
+              "Premium brand"
+            ],
+            "mismatches": [],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: cooper flagg, Premium card type, Exact year: 2025, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|397687398165|0",
+      "title": "2025-26 Topps Cooper Flagg RC Rookie #201 Mavericks BGS 9.5",
+      "currentPrice": 74.99,
+      "shippingCost": 0,
+      "totalPrice": 74.99,
+      "condition": "Graded",
+      "imageUrl": "https://i.ebayimg.com/images/g/w2sAAeSwa25prMZ8/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/397687398165?_skw=cooper+flagg+2025+bgs+9.5+-jumbo+-holo+-prizm+-mystery&hash=item5c98041f15:g:w2sAAeSwa25prMZ8",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "dovercards",
+      "sellerFeedbackScore": 447,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6.2,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 447,
+            "tier": "Decent seller",
+            "trust": "OK",
+            "reason": "100.0% (447 sales) - Decent seller"
+          },
+          "listingQuality": {
+            "points": 4,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 9.5,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: cooper flagg",
+              "Premium card type",
+              "Exact year: 2025",
+              "Premium brand"
+            ],
+            "mismatches": [],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: cooper flagg, Premium card type, Exact year: 2025, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|198110106847|0",
+      "title": "2025 Panini Instant COOPER FLAGG Rookie Card #RRR-16 Rated Rookie BGS 9.5",
+      "currentPrice": 70,
+      "shippingCost": 6.99,
+      "totalPrice": 76.99,
+      "condition": "Graded",
+      "imageUrl": "https://i.ebayimg.com/images/g/lecAAeSwF6JpdU9C/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/198110106847?_skw=cooper+flagg+2025+bgs+9.5+-jumbo+-holo+-prizm+-mystery&hash=item2e204854df:g:lecAAeSwF6JpdU9C",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "raejayco",
+      "sellerFeedbackScore": 345,
+      "sellerPositivePercent": "99.7",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6.2,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "feedback": "99.7",
+            "salesCount": 345,
+            "tier": "Decent seller",
+            "trust": "OK",
+            "reason": "99.7% (345 sales) - Decent seller"
+          },
+          "listingQuality": {
+            "points": 4,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 9.5,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: cooper flagg",
+              "Premium card type",
+              "Exact year: 2025",
+              "Premium brand"
+            ],
+            "mismatches": [],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: cooper flagg, Premium card type, Exact year: 2025, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|287150863498|0",
+      "title": "COOPER FLAGG BGS 9.5 2025 PANINI INSTANT NBA DRAFT NIGHT #NBADN-1 ROOKIE",
+      "currentPrice": 60,
+      "shippingCost": 0,
+      "totalPrice": 60,
+      "condition": "Graded",
+      "imageUrl": "https://i.ebayimg.com/images/g/C44AAeSwfOlplnxk/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/287150863498?_skw=cooper+flagg+2025+bgs+9.5+-jumbo+-holo+-prizm+-mystery&hash=item42db86748a:g:C44AAeSwfOlplnxk",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "11yardline",
+      "sellerFeedbackScore": 150,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6.2,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 150,
+            "tier": "Decent seller",
+            "trust": "OK",
+            "reason": "100.0% (150 sales) - Decent seller"
+          },
+          "listingQuality": {
+            "points": 4,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 9.5,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: cooper flagg",
+              "Premium card type",
+              "Exact year: 2025",
+              "Premium brand"
+            ],
+            "mismatches": [],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: cooper flagg, Premium card type, Exact year: 2025, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|397687499906|0",
+      "title": "2025-26 Topps - 8-Bit Ballers Cooper Flagg #8B-31 (RC). BGS 9.5",
+      "currentPrice": 79.99,
+      "shippingCost": 0,
+      "totalPrice": 79.99,
+      "condition": "Graded",
+      "imageUrl": "https://i.ebayimg.com/images/g/CpQAAeSwb6tprMuI/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/397687499906?_skw=cooper+flagg+2025+bgs+9.5+-jumbo+-holo+-prizm+-mystery&hash=item5c9805ac82:g:CpQAAeSwb6tprMuI&amdata=enc%3AAQALAAABEACCtXRWQnOEpyOqnQQ8KGYVIWK8qINvXfPVpkkQV92eWZvfKt2I6d1i1QT3A%2BTc7bTpIv6cDa8juTdPBLsRyoEvwkg1YC8%2Bm%2BHJ%2FQs92PINS%2FhKfpJZRnimiiMo4f34QWb8RRg6iau9qTVl0Ili7efHO5yMsTRrMMeuj694Ps4APJILHMNzLQ8UYBatDATN6%2FrJS4Vw2UHB0YYOnahjaqdyvGjywSaURYOF%2FuX0zju%2FevgTS%2BTmolrW55BpeftZrC0ROFVvuTms3qYoIIzrg3Mx14QXedT2sJl9RM4tx56L9RPCmvtfhxxHyjKgsY%2B6hJmbqm%2B1K%2FqgY7ru27M1Nf0OLWWnlIBpJb6rZwzuJ9%2Fd",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "dovercards",
+      "sellerFeedbackScore": 447,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6.2,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 447,
+            "tier": "Decent seller",
+            "trust": "OK",
+            "reason": "100.0% (447 sales) - Decent seller"
+          },
+          "listingQuality": {
+            "points": 4,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 9.5,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: cooper flagg",
+              "Premium card type",
+              "Exact year: 2025",
+              "Premium brand"
+            ],
+            "mismatches": [],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: cooper flagg, Premium card type, Exact year: 2025, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|287199264990|0",
+      "title": "2025-26 Topps Cooper Flagg RC #201 BGS 9.5 Gem Mint Rookie Mavericks – Subgrades",
+      "currentPrice": 199.99,
+      "shippingCost": 0,
+      "totalPrice": 199.99,
+      "condition": "Graded",
+      "imageUrl": "https://i.ebayimg.com/images/g/XhcAAeSwpZhps2he/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/287199264990?_skw=cooper+flagg+2025+bgs+9.5+-jumbo+-holo+-prizm+-mystery&hash=item42de6900de:g:XhcAAeSwpZhps2he",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "grandpasangelscollectibles",
+      "sellerFeedbackScore": 83,
+      "sellerPositivePercent": "98.8",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6.1,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 2.5,
+            "maxPoints": 10,
+            "feedback": "98.8",
+            "salesCount": 83,
+            "tier": "New/low feedback seller",
+            "trust": "⚠️ New seller",
+            "reason": "98.8% (83 sales) - New/low feedback seller"
+          },
+          "listingQuality": {
+            "points": 7,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos",
+              "Gem mint claimed",
+              "Mint condition"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos, Gem mint claimed, Mint condition"
+          },
+          "searchRelevance": {
+            "points": 9.5,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: cooper flagg",
+              "Premium card type",
+              "Exact year: 2025",
+              "Premium brand"
+            ],
+            "mismatches": [],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: cooper flagg, Premium card type, Exact year: 2025, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|287199205885|0",
+      "title": "2025-26 Topps Limited Stock Legends Cooper Flagg RC #LST-1 BGS 9.5 Gem Mint...",
+      "currentPrice": 149.99,
+      "shippingCost": 0,
+      "totalPrice": 149.99,
+      "condition": "Graded",
+      "imageUrl": "https://i.ebayimg.com/images/g/CmYAAeSw27lps2HD/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/287199205885?_skw=cooper+flagg+2025+bgs+9.5+-jumbo+-holo+-prizm+-mystery&hash=item42de6819fd:g:CmYAAeSw27lps2HD",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "grandpasangelscollectibles",
+      "sellerFeedbackScore": 83,
+      "sellerPositivePercent": "98.8",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6.1,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 2.5,
+            "maxPoints": 10,
+            "feedback": "98.8",
+            "salesCount": 83,
+            "tier": "New/low feedback seller",
+            "trust": "⚠️ New seller",
+            "reason": "98.8% (83 sales) - New/low feedback seller"
+          },
+          "listingQuality": {
+            "points": 7,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos",
+              "Gem mint claimed",
+              "Mint condition"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos, Gem mint claimed, Mint condition"
+          },
+          "searchRelevance": {
+            "points": 9.5,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: cooper flagg",
+              "Premium card type",
+              "Exact year: 2025",
+              "Premium brand"
+            ],
+            "mismatches": [],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: cooper flagg, Premium card type, Exact year: 2025, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|287199285104|0",
+      "title": "Cooper Flagg RC 2025-26 Topps Blackout #201 BGS 9.5 (9.5/9.5/9.5/9) Highest...",
+      "currentPrice": 399.99,
+      "shippingCost": 0,
+      "totalPrice": 399.99,
+      "condition": "Graded",
+      "imageUrl": "https://i.ebayimg.com/images/g/YCMAAeSwZyJps2pL/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/287199285104?_skw=cooper+flagg+2025+bgs+9.5+-jumbo+-holo+-prizm+-mystery&hash=item42de694f70:g:YCMAAeSwZyJps2pL",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "grandpasangelscollectibles",
+      "sellerFeedbackScore": 83,
+      "sellerPositivePercent": "98.8",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 5.7,
+        "rating": "~ MAYBE",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 2.5,
+            "maxPoints": 10,
+            "feedback": "98.8",
+            "salesCount": 83,
+            "tier": "New/low feedback seller",
+            "trust": "⚠️ New seller",
+            "reason": "98.8% (83 sales) - New/low feedback seller"
+          },
+          "listingQuality": {
+            "points": 4,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 9.5,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: cooper flagg",
+              "Premium card type",
+              "Exact year: 2025",
+              "Premium brand"
+            ],
+            "mismatches": [],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: cooper flagg, Premium card type, Exact year: 2025, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|287199223596|0",
+      "title": "2025-26 Topps New School Cooper Flagg RC #NS1 BGS 8 (9.5 Surface / 9.5 Edges)...",
+      "currentPrice": 49.99,
+      "shippingCost": 0,
+      "totalPrice": 49.99,
+      "condition": "Graded",
+      "imageUrl": "https://i.ebayimg.com/images/g/WVQAAeSwCTFps2Mn/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/287199223596?_skw=cooper+flagg+2025+bgs+9.5+-jumbo+-holo+-prizm+-mystery&hash=item42de685f2c:g:WVQAAeSwCTFps2Mn",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "grandpasangelscollectibles",
+      "sellerFeedbackScore": 83,
+      "sellerPositivePercent": "98.8",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 5.7,
+        "rating": "~ MAYBE",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 2.5,
+            "maxPoints": 10,
+            "feedback": "98.8",
+            "salesCount": 83,
+            "tier": "New/low feedback seller",
+            "trust": "⚠️ New seller",
+            "reason": "98.8% (83 sales) - New/low feedback seller"
+          },
+          "listingQuality": {
+            "points": 4,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 9.5,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: cooper flagg",
+              "Premium card type",
+              "Exact year: 2025",
+              "Premium brand"
+            ],
+            "mismatches": [],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: cooper flagg, Premium card type, Exact year: 2025, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|287187612919|0",
+      "title": "2025-26 Panini Instant RPS First Look Cooper Flagg #RPSFL-16 (RC) /12312 BGS 9.5",
+      "currentPrice": 48,
+      "shippingCost": 0,
+      "totalPrice": 48,
+      "condition": "Graded",
+      "imageUrl": "https://i.ebayimg.com/images/g/uJgAAeSw~epprQTj/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/287187612919?_skw=cooper+flagg+2025+bgs+9.5+-jumbo+-holo+-prizm+-mystery&hash=item42ddb734f7:g:uJgAAeSw~epprQTj&amdata=enc%3AAQALAAABEACCtXRWQnOEpyOqnQQ8KGZJOn7q%2F1FXw1tB%2BZZWUFe25jcCDRoMQsogqqR%2FwqAMWFkLRzWyybbwcDT6QPuj8A%2FiWSeuHR4ho%2B%2BHxk8QxEc%2BbFJksGYQf2DbzbL%2BrrR%2FPgzngevPZVXty7lMvxpSZoNZZBJ2UypM0I7%2FN0jyLR1RsUbQn%2BLcr2QjQ6%2BT5g1Ip2WPWfWWzJlWZZVi%2BL9X7axtxAJfhflfkX8Qx2b2WgZaMFkiva6HnTn1%2F8HQ%2FygVZ4r26KQpuy4nMTZ4r%2FTn1pPslPtScdCErQjA9qtJt%2FLbf1tkiOLpdoCCDgNYkj1QciEk6pu8FMZMIRZdToeAt%2BMexU4vj0%2FvfBqsIEZA2TiD",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "colesellspoke",
+      "sellerFeedbackScore": 37,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 5.7,
+        "rating": "~ MAYBE",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 2.5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 37,
+            "tier": "New/low feedback seller",
+            "trust": "⚠️ New seller",
+            "reason": "100.0% (37 sales) - New/low feedback seller"
+          },
+          "listingQuality": {
+            "points": 4,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 9.5,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: cooper flagg",
+              "Premium card type",
+              "Exact year: 2025",
+              "Premium brand"
+            ],
+            "mismatches": [],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: cooper flagg, Premium card type, Exact year: 2025, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|287199279022|0",
+      "title": "2025-26 Topps #201 Cooper Flagg RC BGS 8.5 (9/9/8/9.5) Rookie Dallas Mavericks",
+      "currentPrice": 69.99,
+      "shippingCost": 0,
+      "totalPrice": 69.99,
+      "condition": "Graded",
+      "imageUrl": "https://i.ebayimg.com/images/g/WVMAAeSw6Mhps2lR/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/287199279022?_skw=cooper+flagg+2025+bgs+9.5+-jumbo+-holo+-prizm+-mystery&hash=item42de6937ae:g:WVMAAeSw6Mhps2lR",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "grandpasangelscollectibles",
+      "sellerFeedbackScore": 83,
+      "sellerPositivePercent": "98.8",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 5.7,
+        "rating": "~ MAYBE",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 2.5,
+            "maxPoints": 10,
+            "feedback": "98.8",
+            "salesCount": 83,
+            "tier": "New/low feedback seller",
+            "trust": "⚠️ New seller",
+            "reason": "98.8% (83 sales) - New/low feedback seller"
+          },
+          "listingQuality": {
+            "points": 4,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 9.5,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: cooper flagg",
+              "Premium card type",
+              "Exact year: 2025",
+              "Premium brand"
+            ],
+            "mismatches": [],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: cooper flagg, Premium card type, Exact year: 2025, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|397722987158|0",
+      "title": "2025 Panini Instant COOPER FLAGG Rookie Card #RRR-16 Rated Rookie BGS 9.5",
+      "currentPrice": 69,
+      "shippingCost": 0,
+      "totalPrice": 69,
+      "condition": "Graded",
+      "imageUrl": "https://i.ebayimg.com/images/g/Ue0AAeSwezhpuICw/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/397722987158?_skw=cooper+flagg+2025+bgs+9.5+-jumbo+-holo+-prizm+-mystery&hash=item5c9a232a96:g:Ue0AAeSwezhpuICw",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "papalukescards",
+      "sellerFeedbackScore": 37,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 5.7,
+        "rating": "~ MAYBE",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 2.5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 37,
+            "tier": "New/low feedback seller",
+            "trust": "⚠️ New seller",
+            "reason": "100.0% (37 sales) - New/low feedback seller"
+          },
+          "listingQuality": {
+            "points": 4,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 9.5,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: cooper flagg",
+              "Premium card type",
+              "Exact year: 2025",
+              "Premium brand"
+            ],
+            "mismatches": [],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: cooper flagg, Premium card type, Exact year: 2025, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|406717935069|0",
+      "title": "Topps 2025 Now Draft Cooper Flagg #D1 Rookie Serial Numbered 1st Pick BGS 9.5",
+      "currentPrice": 75,
+      "shippingCost": 0,
+      "totalPrice": 75,
+      "condition": "Graded",
+      "imageUrl": "https://i.ebayimg.com/images/g/~t8AAeSwJ~JpnSdx/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/406717935069?_skw=cooper+flagg+2025+bgs+9.5+-jumbo+-holo+-prizm+-mystery&hash=item5eb2472ddd:g:~t8AAeSwJ~JpnSdx",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "chumzcardz",
+      "sellerFeedbackScore": 3,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 5.7,
+        "rating": "~ MAYBE",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 2.5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 3,
+            "tier": "New/low feedback seller",
+            "trust": "⚠️ New seller",
+            "reason": "100.0% (3 sales) - New/low feedback seller"
+          },
+          "listingQuality": {
+            "points": 4,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 9.5,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: cooper flagg",
+              "Premium card type",
+              "Exact year: 2025",
+              "Premium brand"
+            ],
+            "mismatches": [],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: cooper flagg, Premium card type, Exact year: 2025, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|177918061490|0",
+      "title": "2025-26 Panini Instant Cooper Flagg Rookie Limited Dallas Mavericks #10 BGS 9.5",
+      "currentPrice": 75,
+      "shippingCost": 0,
+      "totalPrice": 75,
+      "condition": "Graded",
+      "imageUrl": "https://i.ebayimg.com/images/g/xBYAAeSw-Llpp0og/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/177918061490?_skw=cooper+flagg+2025+bgs+9.5+-jumbo+-holo+-prizm+-mystery&hash=item296cbe2bb2:g:xBYAAeSw-Llpp0og",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "jimkan",
+      "sellerFeedbackScore": 2,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 5.7,
+        "rating": "~ MAYBE",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 2.5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 2,
+            "tier": "New/low feedback seller",
+            "trust": "⚠️ New seller",
+            "reason": "100.0% (2 sales) - New/low feedback seller"
+          },
+          "listingQuality": {
+            "points": 4,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 9.5,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: cooper flagg",
+              "Premium card type",
+              "Exact year: 2025",
+              "Premium brand"
+            ],
+            "mismatches": [],
+            "requestedTypes": [],
+            "foundTypes": [],
+            "reason": "✅ Player match: cooper flagg, Premium card type, Exact year: 2025, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    }
+  ]
+}

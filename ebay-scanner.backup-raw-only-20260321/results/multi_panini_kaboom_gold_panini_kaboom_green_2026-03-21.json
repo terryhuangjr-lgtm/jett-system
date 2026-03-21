@@ -1,0 +1,44 @@
+{
+  "timestamp": "2026-03-21T11:06:27.837Z",
+  "searchQuery": "Panini Kaboom Gold Panini Kaboom Green",
+  "parsed": {
+    "original": "Panini Kaboom Gold Panini Kaboom Green",
+    "isComplex": false,
+    "baseQuery": "panini kaboom gold panini kaboom green",
+    "players": null,
+    "yearRange": null,
+    "detectedTypes": [],
+    "searches": [
+      "panini kaboom gold panini kaboom green"
+    ],
+    "searchCount": 1,
+    "explanation": "Single search (no splitting needed)"
+  },
+  "searchResults": [
+    {
+      "query": "panini kaboom gold panini kaboom green",
+      "count": 0
+    }
+  ],
+  "config": {
+    "keywords": "Panini Kaboom Gold Panini Kaboom Green",
+    "minScoreToShow": 7,
+    "topN": 10,
+    "minPrice": 5,
+    "maxPrice": null,
+    "rawOnly": true,
+    "useVision": false,
+    "visionTopN": 200
+  },
+  "scanDuration": "0.6s",
+  "summary": {
+    "totalFound": 0,
+    "uniqueItems": 0,
+    "rawCardsOnly": true,
+    "afterRawFilter": 0,
+    "totalScored": 0,
+    "showingResults": 0,
+    "visionScanned": false
+  },
+  "allResults": []
+}

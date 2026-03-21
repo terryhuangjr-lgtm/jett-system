@@ -1,0 +1,790 @@
+{
+  "timestamp": "2026-03-21T16:05:36.220Z",
+  "searchQuery": "kobe bryant topps chrome refractor 1997-2004, kobe bryant topps finest refractor 1997-2004",
+  "parsed": {
+    "original": "kobe bryant topps chrome refractor 1997-2004, kobe bryant topps finest refractor 1997-2004",
+    "isComplex": true,
+    "baseQuery": "topps topps finest -",
+    "players": [
+      "kobe bryant",
+      "kobe bryant"
+    ],
+    "yearRange": {
+      "start": 1997,
+      "end": 2004,
+      "years": [
+        1997,
+        1998,
+        1999,
+        2000,
+        2001,
+        2002,
+        2003,
+        2004
+      ]
+    },
+    "detectedTypes": [
+      "chrome",
+      "refractor"
+    ],
+    "searches": [
+      "1997 kobe bryant topps topps finest - chrome",
+      "1997 kobe bryant topps topps finest - refractor",
+      "1998 kobe bryant topps topps finest - chrome",
+      "1998 kobe bryant topps topps finest - refractor",
+      "1999 kobe bryant topps topps finest - chrome",
+      "1999 kobe bryant topps topps finest - refractor",
+      "2000 kobe bryant topps topps finest - chrome",
+      "2000 kobe bryant topps topps finest - refractor",
+      "2001 kobe bryant topps topps finest - chrome",
+      "2001 kobe bryant topps topps finest - refractor",
+      "2002 kobe bryant topps topps finest - chrome",
+      "2002 kobe bryant topps topps finest - refractor",
+      "2003 kobe bryant topps topps finest - chrome",
+      "2003 kobe bryant topps topps finest - refractor",
+      "2004 kobe bryant topps topps finest - chrome",
+      "2004 kobe bryant topps topps finest - refractor",
+      "1997 kobe bryant topps topps finest - chrome",
+      "1997 kobe bryant topps topps finest - refractor",
+      "1998 kobe bryant topps topps finest - chrome",
+      "1998 kobe bryant topps topps finest - refractor",
+      "1999 kobe bryant topps topps finest - chrome",
+      "1999 kobe bryant topps topps finest - refractor",
+      "2000 kobe bryant topps topps finest - chrome",
+      "2000 kobe bryant topps topps finest - refractor",
+      "2001 kobe bryant topps topps finest - chrome",
+      "2001 kobe bryant topps topps finest - refractor",
+      "2002 kobe bryant topps topps finest - chrome",
+      "2002 kobe bryant topps topps finest - refractor",
+      "2003 kobe bryant topps topps finest - chrome",
+      "2003 kobe bryant topps topps finest - refractor",
+      "2004 kobe bryant topps topps finest - chrome",
+      "2004 kobe bryant topps topps finest - refractor"
+    ],
+    "searchCount": 32,
+    "explanation": "Split into 32 searches: 2 players (kobe bryant, kobe bryant) × 8 years (1997-2004) × 2 card types (chrome, refractor)"
+  },
+  "searchResults": [
+    {
+      "query": "1997 kobe bryant topps topps finest - chrome",
+      "count": 0
+    },
+    {
+      "query": "1997 kobe bryant topps topps finest - refractor",
+      "count": 4
+    },
+    {
+      "query": "1998 kobe bryant topps topps finest - chrome",
+      "count": 0
+    },
+    {
+      "query": "1998 kobe bryant topps topps finest - refractor",
+      "count": 2
+    },
+    {
+      "query": "1999 kobe bryant topps topps finest - chrome",
+      "count": 2
+    },
+    {
+      "query": "1999 kobe bryant topps topps finest - refractor",
+      "count": 9
+    },
+    {
+      "query": "2000 kobe bryant topps topps finest - chrome",
+      "count": 1
+    },
+    {
+      "query": "2000 kobe bryant topps topps finest - refractor",
+      "count": 1
+    },
+    {
+      "query": "2001 kobe bryant topps topps finest - chrome",
+      "count": 0
+    },
+    {
+      "query": "2001 kobe bryant topps topps finest - refractor",
+      "count": 0
+    },
+    {
+      "query": "2002 kobe bryant topps topps finest - chrome",
+      "count": 0
+    },
+    {
+      "query": "2002 kobe bryant topps topps finest - refractor",
+      "count": 0
+    },
+    {
+      "query": "2003 kobe bryant topps topps finest - chrome",
+      "count": 0
+    },
+    {
+      "query": "2003 kobe bryant topps topps finest - refractor",
+      "count": 0
+    },
+    {
+      "query": "2004 kobe bryant topps topps finest - chrome",
+      "count": 0
+    },
+    {
+      "query": "2004 kobe bryant topps topps finest - refractor",
+      "count": 3
+    },
+    {
+      "query": "1997 kobe bryant topps topps finest - chrome",
+      "count": 0
+    },
+    {
+      "query": "1997 kobe bryant topps topps finest - refractor",
+      "count": 4
+    },
+    {
+      "query": "1998 kobe bryant topps topps finest - chrome",
+      "count": 0
+    },
+    {
+      "query": "1998 kobe bryant topps topps finest - refractor",
+      "count": 2
+    },
+    {
+      "query": "1999 kobe bryant topps topps finest - chrome",
+      "count": 2
+    },
+    {
+      "query": "1999 kobe bryant topps topps finest - refractor",
+      "count": 9
+    },
+    {
+      "query": "2000 kobe bryant topps topps finest - chrome",
+      "count": 1
+    },
+    {
+      "query": "2000 kobe bryant topps topps finest - refractor",
+      "count": 1
+    },
+    {
+      "query": "2001 kobe bryant topps topps finest - chrome",
+      "count": 0
+    },
+    {
+      "query": "2001 kobe bryant topps topps finest - refractor",
+      "count": 0
+    },
+    {
+      "query": "2002 kobe bryant topps topps finest - chrome",
+      "count": 0
+    },
+    {
+      "query": "2002 kobe bryant topps topps finest - refractor",
+      "count": 0
+    },
+    {
+      "query": "2003 kobe bryant topps topps finest - chrome",
+      "count": 0
+    },
+    {
+      "query": "2003 kobe bryant topps topps finest - refractor",
+      "count": 0
+    },
+    {
+      "query": "2004 kobe bryant topps topps finest - chrome",
+      "count": 0
+    },
+    {
+      "query": "2004 kobe bryant topps topps finest - refractor",
+      "count": 3
+    }
+  ],
+  "config": {
+    "keywords": "kobe bryant topps chrome refractor 1997-2004, kobe bryant topps finest refractor 1997-2004",
+    "minScoreToShow": 7,
+    "topN": 20,
+    "minPrice": 40,
+    "maxPrice": null,
+    "rawOnly": true,
+    "useVision": true,
+    "visionTopN": 200,
+    "excludeKeywords": "pokemon,magic,yugioh,jumbo,custom",
+    "listingType": "both",
+    "cardType": "graded"
+  },
+  "scanDuration": "15.4s",
+  "summary": {
+    "totalFound": 44,
+    "uniqueItems": 21,
+    "rawCardsOnly": true,
+    "afterRawFilter": 7,
+    "totalScored": 7,
+    "showingResults": 0,
+    "visionScanned": true
+  },
+  "allResults": [
+    {
+      "itemId": "v1|274957281603|0",
+      "title": "1999-00 Topps Finest Coating, Stadium Chrome, & 2006-07 Kobe Bryant 3 card Lot ",
+      "currentPrice": 89.99,
+      "shippingCost": 4.95,
+      "totalPrice": 94.94,
+      "condition": "Used",
+      "imageUrl": "https://i.ebayimg.com/images/g/a8EAAOSwt41hS4Qi/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/274957281603?_skw=1999+kobe+bryant+topps+topps+finest+-+chrome+-psa+-bgs+-cgc+-sgc+-graded+-slab+-pokemon+-magic+-yugioh+-jumbo+-custom&hash=item4004bb2943:g:a8EAAOSwt41hS4Qi",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "flushing-faithful",
+      "sellerFeedbackScore": 3813,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.4,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 3813,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (3813 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 4,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: kobe bryant",
+              "chrome match",
+              "Close year: 1999 (±2 of 1997)",
+              "topps match",
+              "Premium set: finest"
+            ],
+            "mismatches": [
+              "Missing: refractor"
+            ],
+            "requestedTypes": [
+              "refractor",
+              "chrome"
+            ],
+            "foundTypes": [
+              "chrome"
+            ],
+            "reason": "✅ Player match: kobe bryant, chrome match, Close year: 1999 (±2 of 1997), topps match, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|206017901851|0",
+      "title": "1999-00 Topps Finest - Double Feat Kobe Bryant Shaquille O'Neal #DF14 Refractor",
+      "currentPrice": 1200,
+      "shippingCost": 0,
+      "totalPrice": 1200,
+      "condition": "Graded",
+      "imageUrl": "https://i.ebayimg.com/images/g/Gm8AAeSw8MBpcppu/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/206017901851?_skw=1999+kobe+bryant+topps+topps+finest+-+refractor+-psa+-bgs+-cgc+-sgc+-graded+-slab+-pokemon+-magic+-yugioh+-jumbo+-custom&hash=item2ff79fb51b:g:Gm8AAeSw8MBpcppu",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "martingale_cards",
+      "sellerFeedbackScore": 721,
+      "sellerPositivePercent": "98.3",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6.9,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 7.5,
+            "maxPoints": 10,
+            "feedback": "98.3",
+            "salesCount": 721,
+            "tier": "Established seller",
+            "trust": "✅ Good",
+            "reason": "98.3% (721 sales) - Established seller"
+          },
+          "listingQuality": {
+            "points": 4,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: kobe bryant",
+              "refractor match",
+              "Close year: 1999 (±2 of 1997)",
+              "topps match",
+              "Premium set: finest"
+            ],
+            "mismatches": [
+              "Missing: chrome"
+            ],
+            "requestedTypes": [
+              "refractor",
+              "chrome"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Player match: kobe bryant, refractor match, Close year: 1999 (±2 of 1997), topps match, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|227156496052|0",
+      "title": "1997-98 Topps Finest Kobe Bryant #137 Uncommon-Refractor  /1090 Black Mamba SP ",
+      "currentPrice": 1550,
+      "shippingCost": 8.5,
+      "totalPrice": 1558.5,
+      "condition": "Graded",
+      "imageUrl": "https://i.ebayimg.com/images/g/XgIAAeSwwjpo~Wi7/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/227156496052?_skw=1997+kobe+bryant+topps+topps+finest+-+refractor+-psa+-bgs+-cgc+-sgc+-graded+-slab+-pokemon+-magic+-yugioh+-jumbo+-custom&hash=item34e3950eb4:g:XgIAAeSwwjpo~Wi7",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "goatsonly_sportscards",
+      "sellerFeedbackScore": 202,
+      "sellerPositivePercent": "99.4",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6.4,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "feedback": "99.4",
+            "salesCount": 202,
+            "tier": "Decent seller",
+            "trust": "OK",
+            "reason": "99.4% (202 sales) - Decent seller"
+          },
+          "listingQuality": {
+            "points": 4,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: kobe bryant",
+              "refractor match",
+              "Exact year: 1997",
+              "topps match",
+              "⭐ PERFECT MATCH: Player + Year + Brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [
+              "Missing: chrome"
+            ],
+            "requestedTypes": [
+              "refractor",
+              "chrome"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Player match: kobe bryant, refractor match, Exact year: 1997, topps match, ⭐ PERFECT MATCH: Player + Year + Brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|206118799019|0",
+      "title": "1997-98 Topps Finest - Common Bronze Kobe Bryant #262 Refractor",
+      "currentPrice": 150,
+      "shippingCost": 0,
+      "totalPrice": 150,
+      "condition": "Graded",
+      "imageUrl": "https://i.ebayimg.com/images/g/~KIAAeSwm1lprKIb/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/206118799019?_skw=1997+kobe+bryant+topps+topps+finest+-+refractor+-psa+-bgs+-cgc+-sgc+-graded+-slab+-pokemon+-magic+-yugioh+-jumbo+-custom&hash=item2ffda346ab:g:~KIAAeSwm1lprKIb&amdata=enc%3AAQALAAABUACCtXRWQnOEpyOqnQQ8KGZzEZS%2BvE798Y1e3pv%2FUgn%2BpT7A9Q8ZPxnsvcVnLzDk8p6vyqh6IhK9e0lecpZ5bs1y4m2cUeBOviWnwbRMHjble%2FxEJXtpRitwvj58NhME6kaSiJ1EtC5f1fvTa3D7ClzXaOMPnP7ItkjqZA13%2BunVM9PF%2FvS0sQ7LGVqe0dp7csjY3s76euEHeWGnM%2BZeNDiqFT86qYPwSlD6OH%2Fs4qhGxUnXI2mr3693KEmkN4J%2Bd9fAfsDo0aeBFwTVhXCjU%2FVNvZDQuIzgCSam0J3PpzITmV88tqJ%2BB4JL2N6aI4FMb4FULfKHHIKOQjCCT0iboa9sAI4K6Nd%2FK9XTaGxkJq13vrDMESSaqzs1iUmYY2eaEfV4qhfo8It8GTBcXT9mVPSG%2BmXdu3v%2FCQk52KpJVmbJ2to33xKR%2Fc2%2FbTRb7irviQ%3D%3D",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "jdojado_jgorg9z",
+      "sellerFeedbackScore": 4,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 5.9,
+        "rating": "~ MAYBE",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 2.5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 4,
+            "tier": "New/low feedback seller",
+            "trust": "⚠️ New seller",
+            "reason": "100.0% (4 sales) - New/low feedback seller"
+          },
+          "listingQuality": {
+            "points": 4,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: kobe bryant",
+              "refractor match",
+              "Exact year: 1997",
+              "topps match",
+              "⭐ PERFECT MATCH: Player + Year + Brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [
+              "Missing: chrome"
+            ],
+            "requestedTypes": [
+              "refractor",
+              "chrome"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Player match: kobe bryant, refractor match, Exact year: 1997, topps match, ⭐ PERFECT MATCH: Player + Year + Brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|298109499321|0",
+      "title": "1997-98 Topps Finest - Common Bronze Kobe Bryant #262 Refractor",
+      "currentPrice": 55,
+      "shippingCost": 0,
+      "totalPrice": 55,
+      "condition": "Graded",
+      "imageUrl": "https://i.ebayimg.com/images/g/L50AAeSwPfRpsP1s/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/298109499321?_skw=1997+kobe+bryant+topps+topps+finest+-+refractor+-psa+-bgs+-cgc+-sgc+-graded+-slab+-pokemon+-magic+-yugioh+-jumbo+-custom&hash=item4568b5f7b9:g:L50AAeSwPfRpsP1s",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "shuynh8331",
+      "sellerFeedbackScore": 22,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 5.9,
+        "rating": "~ MAYBE",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 2.5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 22,
+            "tier": "New/low feedback seller",
+            "trust": "⚠️ New seller",
+            "reason": "100.0% (22 sales) - New/low feedback seller"
+          },
+          "listingQuality": {
+            "points": 4,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: kobe bryant",
+              "refractor match",
+              "Exact year: 1997",
+              "topps match",
+              "⭐ PERFECT MATCH: Player + Year + Brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [
+              "Missing: chrome"
+            ],
+            "requestedTypes": [
+              "refractor",
+              "chrome"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Player match: kobe bryant, refractor match, Exact year: 1997, topps match, ⭐ PERFECT MATCH: Player + Year + Brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|147120794819|0",
+      "title": "1998-99 Topps Finest Mystery Finest - Kobe Bryant, Allen Iverson #M37 Refractor",
+      "currentPrice": 200,
+      "shippingCost": 0,
+      "totalPrice": 200,
+      "condition": "Graded",
+      "imageUrl": "https://i.ebayimg.com/images/g/mpcAAeSw-8tpeOu1/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/147120794819?_skw=1998+kobe+bryant+topps+topps+finest+-+refractor+-psa+-bgs+-cgc+-sgc+-graded+-slab+-pokemon+-magic+-yugioh+-jumbo+-custom&hash=item2241152cc3:g:mpcAAeSw-8tpeOu1",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "ryan-cards27",
+      "sellerFeedbackScore": 33,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 5.9,
+        "rating": "~ MAYBE",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 2.5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 33,
+            "tier": "New/low feedback seller",
+            "trust": "⚠️ New seller",
+            "reason": "100.0% (33 sales) - New/low feedback seller"
+          },
+          "listingQuality": {
+            "points": 4,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: kobe bryant",
+              "refractor match",
+              "Close year: 1998 (±2 of 1997)",
+              "topps match",
+              "Premium set: finest"
+            ],
+            "mismatches": [
+              "Missing: chrome"
+            ],
+            "requestedTypes": [
+              "refractor",
+              "chrome"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Player match: kobe bryant, refractor match, Close year: 1998 (±2 of 1997), topps match, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|264678455097|566303723151",
+      "title": "1993 1996 99-00 01-02 06 Topps Finest CHROME Basketball SET JAMES JORDAN BRYANT",
+      "currentPrice": 69.14,
+      "shippingCost": 9.84,
+      "totalPrice": 78.98,
+      "condition": "Graded",
+      "imageUrl": "https://i.ebayimg.com/images/g/ZicAAOSwOTRlXTRd/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/264678455097?_skw=1999+kobe+bryant+topps+topps+finest+-+chrome+-psa+-bgs+-cgc+-sgc+-graded+-slab+-pokemon+-magic+-yugioh+-jumbo+-custom&var=566303723151&hash=item3da010b739:g:ZicAAOSwOTRlXTRd",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "hammercards",
+      "sellerFeedbackScore": 4970,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 0,
+        "rating": "❌ REJECTED - LOW RELEVANCE",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 4970,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (4970 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 4,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 3,
+            "maxPoints": 10,
+            "matches": [
+              "chrome match",
+              "Same era: 1993 (±5 of 1997)",
+              "topps match",
+              "Premium set: finest"
+            ],
+            "mismatches": [
+              "WRONG PLAYER - searched for: kobe bryant, kobe bryant",
+              "Missing: refractor"
+            ],
+            "requestedTypes": [
+              "refractor",
+              "chrome"
+            ],
+            "foundTypes": [
+              "chrome"
+            ],
+            "reason": "✅ chrome match, Same era: 1993 (±5 of 1997), topps match, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          }
+        },
+        "flags": [
+          "❌ Relevance too low - likely wrong card"
+        ],
+        "disqualified": true
+      }
+    }
+  ]
+}

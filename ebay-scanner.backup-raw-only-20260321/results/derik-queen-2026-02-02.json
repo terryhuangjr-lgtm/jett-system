@@ -1,0 +1,4050 @@
+{
+  "timestamp": "2026-02-02T15:35:41.235Z",
+  "scanDuration": "37.37s",
+  "summary": {
+    "totalFound": 57,
+    "afterFiltering": 45,
+    "afterScamCheck": 45,
+    "afterPhotoCheck": 44,
+    "analyzed": 44,
+    "top10": 10
+  },
+  "top10Deals": [
+    {
+      "itemId": "v1|376917647770|0",
+      "title": "2025 Topps Chrome NBA Rookie cards lot ",
+      "currentPrice": 11,
+      "shippingCost": 0,
+      "totalPrice": 11,
+      "condition": "New",
+      "imageUrl": "https://i.ebayimg.com/images/g/oSMAAeSwjVFpfZiZ/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/376917647770?_skw=derik+queen+topps+chrome+rookie&hash=item57c20ae19a:g:oSMAAeSwjVFpfZiZ",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "to668578",
+      "sellerFeedbackScore": 1,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Lots",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 1,
+          "avgPrice": 350,
+          "recentSales": [
+            {
+              "price": 350,
+              "title": "NBA Hoops 2025-2026/ Graded Webanyama Rookies",
+              "url": "https://www.ebay.com/itm/205835144414?_skw=2025+Topps+Chrome+NBA+Rookie+cards+PSA+9&hash=item2fecbb0cde:g:CHIAAeSw2FtpD9ZH"
+            }
+          ]
+        },
+        "foundComps": true
+      },
+      "profitAnalysis": {
+        "insufficientData": false,
+        "totalCost": 31,
+        "rawPrice": 11,
+        "gradingCost": 20,
+        "psa10Scenario": {
+          "avgCompPrice": 0,
+          "profit": 0,
+          "multiplier": 0
+        },
+        "psa9Scenario": {
+          "avgCompPrice": 350,
+          "profit": 319,
+          "multiplier": 11.3
+        },
+        "expectedValue": 127.6,
+        "roi": 411.6,
+        "recommendation": "⚡ GREAT - Very good opportunity"
+      },
+      "dealScore": {
+        "score": 10,
+        "rating": "🔥🔥🔥 EXCEPTIONAL",
+        "breakdown": [
+          "⚡ EV > $100 (+2 points)",
+          "📈 ROI > 200% (+1.5 points)",
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Strong buy - excellent opportunity with multiple positive factors"
+      }
+    },
+    {
+      "itemId": "v1|236553128014|0",
+      "title": "11) Stephon Castle RC 2024 25 26 Chrome, Prizm /175, Select + Spurs RC Card LOT",
+      "currentPrice": 29.99,
+      "shippingCost": 0,
+      "totalPrice": 29.99,
+      "condition": "New",
+      "imageUrl": "https://i.ebayimg.com/images/g/s5AAAeSwK2JpUiH4/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/236553128014?_skw=derik+queen+topps+chrome+rookie&hash=item3713aa484e:g:s5AAAeSwK2JpUiH4&amdata=enc%3AAQALAAABADZq0hFgvSYlgrFkWCFZ3z3i2oZEeWP7OuKaWNRPRg3PAt9jbqwDKZLAPYJGc9xWhuuwqbfQD8mc5Fxf8a2GBfenyZ5XWuP7GhonWfnlgptKSjqgZOdc%2BWwMNKsqPXRfTywcjxGgrV%2BrvG8xarDUd7simhZcCwEiFzLBYjbv%2By4u4FRENvrZgXwVNn%2Bm8eoLErCYFKK1k1tcC3BF9tvHgCE3lhKZAhYRmOSVz8nQINfunVkRWDDcUQ0J0FTJzRJHd8oFIwNg1O1JKHEHsHoQsTzvC306Jol%2B%2BXnGX6BxsFEd%2BkPOMz%2BK6yj6KmGhzK8usUBIQwc66mcvhHyZmoSHkD4%3D",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "1_srekal",
+      "sellerFeedbackScore": 2076,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Lots",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 8,
+        "rating": "🔥🔥 HOT",
+        "breakdown": [
+          "🎯 Numbered /175 (+0.5 points)",
+          "🌟 Hot insert: prizm (+1 point)",
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Strong buy - excellent opportunity with multiple positive factors"
+      }
+    },
+    {
+      "itemId": "v1|136949044622|0",
+      "title": "3 CARD LOT 2025-26 Topps Chrome Derik Queen RC #263 New Orleans Pelicans Rookie ",
+      "currentPrice": 6,
+      "shippingCost": 0,
+      "totalPrice": 6,
+      "condition": "New",
+      "imageUrl": "https://i.ebayimg.com/images/g/dFsAAeSwRJZpXK4p/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/136949044622?_skw=derik+queen+topps+chrome+rookie&hash=item1fe2cc958e:g:dFsAAeSwRJZpXK4p",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "adrianscarry",
+      "sellerFeedbackScore": 34,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Lots",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|206038926336|0",
+      "title": "2025-26 Topps Chrome Derik Queen #263 Refractor + Hyper RC Rookie - LOT OF 2",
+      "currentPrice": 19.99,
+      "shippingCost": 0,
+      "totalPrice": 19.99,
+      "condition": "Unspecified",
+      "imageUrl": "https://i.ebayimg.com/images/g/VEMAAeSw3tlpfW2l/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/206038926336?_skw=derik+queen+topps+chrome+rookie&hash=item2ff8e08400:g:VEMAAeSw3tlpfW2l",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "owste35",
+      "sellerFeedbackScore": 617,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Lots",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|198028446396|0",
+      "title": "🔥 2025 TOPPS CHROME DERIK QUEEN AND JEREMIAH FEARS 10 CARD ROOKIE LOT 🔥",
+      "currentPrice": 25,
+      "shippingCost": 0,
+      "totalPrice": 25,
+      "condition": "New",
+      "imageUrl": "https://i.ebayimg.com/images/g/VawAAeSwTwVpZ-dS/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/198028446396?_skw=derik+queen+topps+chrome+rookie&hash=item2e1b6a4abc:g:VawAAeSwTwVpZ-dS",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "sw1sol_722",
+      "sellerFeedbackScore": 67,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Lots",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|205988738935|0",
+      "title": "Derik Queen 2025 Topps Chrome #GT-25 #263 Rookie Go Time Pulsar Refractor RC Lot",
+      "currentPrice": 9,
+      "shippingCost": 0,
+      "totalPrice": 9,
+      "condition": "New",
+      "imageUrl": "https://i.ebayimg.com/images/g/w50AAeSwlJxpYpVn/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/205988738935?_skw=derik+queen+topps+chrome+rookie&hash=item2ff5e2b777:g:w50AAeSwlJxpYpVn",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "deadheadcards",
+      "sellerFeedbackScore": 43,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Lots",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|366081409782|0",
+      "title": "Derik Queen Topps, Chrome Rookie Cards Base, Christmas, X Factor.",
+      "currentPrice": 20,
+      "shippingCost": 0,
+      "totalPrice": 20,
+      "condition": "New",
+      "imageUrl": "https://i.ebayimg.com/images/g/7DUAAeSw-ExpTeM1/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/366081409782?_skw=derik+queen+topps+chrome+rookie&hash=item553c2702f6:g:7DUAAeSw-ExpTeM1",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "vin987363",
+      "sellerFeedbackScore": 25,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Lots",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|136969710565|0",
+      "title": "2025-26 Topps Chrome Lot of 70 Base Rookie RC Cards w/ Kon Knueppel, Derik Queen",
+      "currentPrice": 20,
+      "shippingCost": 0,
+      "totalPrice": 20,
+      "condition": "New",
+      "imageUrl": "https://i.ebayimg.com/images/g/zF4AAeSwVyNpaUv3/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/136969710565?_skw=derik+queen+topps+chrome+rookie&hash=item1fe407ebe5:g:zF4AAeSwVyNpaUv3",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "rippy_mcslabberson",
+      "sellerFeedbackScore": 1506,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Lots",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|287093532653|0",
+      "title": "Lot (10) Derik Queen 2025-26 Topps Chrome Rookie #263 + Destiny / Go Time",
+      "currentPrice": 24.99,
+      "shippingCost": 0,
+      "totalPrice": 24.99,
+      "condition": "New",
+      "imageUrl": "https://i.ebayimg.com/images/g/N78AAeSw7QJpcoGG/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/287093532653?_skw=derik+queen+topps+chrome+rookie&hash=item42d81ba7ed:g:N78AAeSw7QJpcoGG",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "johnny_ford_cards",
+      "sellerFeedbackScore": 18925,
+      "sellerPositivePercent": "99.9",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Lots",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|389558846923|0",
+      "title": "Derik Queen 7 Card Rookie Lot 6 Parallels 1 Base",
+      "currentPrice": 12,
+      "shippingCost": 3,
+      "totalPrice": 15,
+      "condition": "New",
+      "imageUrl": "https://i.ebayimg.com/images/g/eEoAAeSwm7ZpfR2O/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/389558846923?_skw=derik+queen+topps+chrome+rookie&hash=item5ab38445cb:g:eEoAAeSwm7ZpfR2O",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "crafty-30",
+      "sellerFeedbackScore": 182,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Lots",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    }
+  ],
+  "allDeals": [
+    {
+      "itemId": "v1|376917647770|0",
+      "title": "2025 Topps Chrome NBA Rookie cards lot ",
+      "currentPrice": 11,
+      "shippingCost": 0,
+      "totalPrice": 11,
+      "condition": "New",
+      "imageUrl": "https://i.ebayimg.com/images/g/oSMAAeSwjVFpfZiZ/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/376917647770?_skw=derik+queen+topps+chrome+rookie&hash=item57c20ae19a:g:oSMAAeSwjVFpfZiZ",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "to668578",
+      "sellerFeedbackScore": 1,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Lots",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 1,
+          "avgPrice": 350,
+          "recentSales": [
+            {
+              "price": 350,
+              "title": "NBA Hoops 2025-2026/ Graded Webanyama Rookies",
+              "url": "https://www.ebay.com/itm/205835144414?_skw=2025+Topps+Chrome+NBA+Rookie+cards+PSA+9&hash=item2fecbb0cde:g:CHIAAeSw2FtpD9ZH"
+            }
+          ]
+        },
+        "foundComps": true
+      },
+      "profitAnalysis": {
+        "insufficientData": false,
+        "totalCost": 31,
+        "rawPrice": 11,
+        "gradingCost": 20,
+        "psa10Scenario": {
+          "avgCompPrice": 0,
+          "profit": 0,
+          "multiplier": 0
+        },
+        "psa9Scenario": {
+          "avgCompPrice": 350,
+          "profit": 319,
+          "multiplier": 11.3
+        },
+        "expectedValue": 127.6,
+        "roi": 411.6,
+        "recommendation": "⚡ GREAT - Very good opportunity"
+      },
+      "dealScore": {
+        "score": 10,
+        "rating": "🔥🔥🔥 EXCEPTIONAL",
+        "breakdown": [
+          "⚡ EV > $100 (+2 points)",
+          "📈 ROI > 200% (+1.5 points)",
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Strong buy - excellent opportunity with multiple positive factors"
+      }
+    },
+    {
+      "itemId": "v1|236553128014|0",
+      "title": "11) Stephon Castle RC 2024 25 26 Chrome, Prizm /175, Select + Spurs RC Card LOT",
+      "currentPrice": 29.99,
+      "shippingCost": 0,
+      "totalPrice": 29.99,
+      "condition": "New",
+      "imageUrl": "https://i.ebayimg.com/images/g/s5AAAeSwK2JpUiH4/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/236553128014?_skw=derik+queen+topps+chrome+rookie&hash=item3713aa484e:g:s5AAAeSwK2JpUiH4&amdata=enc%3AAQALAAABADZq0hFgvSYlgrFkWCFZ3z3i2oZEeWP7OuKaWNRPRg3PAt9jbqwDKZLAPYJGc9xWhuuwqbfQD8mc5Fxf8a2GBfenyZ5XWuP7GhonWfnlgptKSjqgZOdc%2BWwMNKsqPXRfTywcjxGgrV%2BrvG8xarDUd7simhZcCwEiFzLBYjbv%2By4u4FRENvrZgXwVNn%2Bm8eoLErCYFKK1k1tcC3BF9tvHgCE3lhKZAhYRmOSVz8nQINfunVkRWDDcUQ0J0FTJzRJHd8oFIwNg1O1JKHEHsHoQsTzvC306Jol%2B%2BXnGX6BxsFEd%2BkPOMz%2BK6yj6KmGhzK8usUBIQwc66mcvhHyZmoSHkD4%3D",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "1_srekal",
+      "sellerFeedbackScore": 2076,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Lots",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 8,
+        "rating": "🔥🔥 HOT",
+        "breakdown": [
+          "🎯 Numbered /175 (+0.5 points)",
+          "🌟 Hot insert: prizm (+1 point)",
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Strong buy - excellent opportunity with multiple positive factors"
+      }
+    },
+    {
+      "itemId": "v1|136949044622|0",
+      "title": "3 CARD LOT 2025-26 Topps Chrome Derik Queen RC #263 New Orleans Pelicans Rookie ",
+      "currentPrice": 6,
+      "shippingCost": 0,
+      "totalPrice": 6,
+      "condition": "New",
+      "imageUrl": "https://i.ebayimg.com/images/g/dFsAAeSwRJZpXK4p/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/136949044622?_skw=derik+queen+topps+chrome+rookie&hash=item1fe2cc958e:g:dFsAAeSwRJZpXK4p",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "adrianscarry",
+      "sellerFeedbackScore": 34,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Lots",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|206038926336|0",
+      "title": "2025-26 Topps Chrome Derik Queen #263 Refractor + Hyper RC Rookie - LOT OF 2",
+      "currentPrice": 19.99,
+      "shippingCost": 0,
+      "totalPrice": 19.99,
+      "condition": "Unspecified",
+      "imageUrl": "https://i.ebayimg.com/images/g/VEMAAeSw3tlpfW2l/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/206038926336?_skw=derik+queen+topps+chrome+rookie&hash=item2ff8e08400:g:VEMAAeSw3tlpfW2l",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "owste35",
+      "sellerFeedbackScore": 617,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Lots",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|198028446396|0",
+      "title": "🔥 2025 TOPPS CHROME DERIK QUEEN AND JEREMIAH FEARS 10 CARD ROOKIE LOT 🔥",
+      "currentPrice": 25,
+      "shippingCost": 0,
+      "totalPrice": 25,
+      "condition": "New",
+      "imageUrl": "https://i.ebayimg.com/images/g/VawAAeSwTwVpZ-dS/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/198028446396?_skw=derik+queen+topps+chrome+rookie&hash=item2e1b6a4abc:g:VawAAeSwTwVpZ-dS",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "sw1sol_722",
+      "sellerFeedbackScore": 67,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Lots",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|205988738935|0",
+      "title": "Derik Queen 2025 Topps Chrome #GT-25 #263 Rookie Go Time Pulsar Refractor RC Lot",
+      "currentPrice": 9,
+      "shippingCost": 0,
+      "totalPrice": 9,
+      "condition": "New",
+      "imageUrl": "https://i.ebayimg.com/images/g/w50AAeSwlJxpYpVn/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/205988738935?_skw=derik+queen+topps+chrome+rookie&hash=item2ff5e2b777:g:w50AAeSwlJxpYpVn",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "deadheadcards",
+      "sellerFeedbackScore": 43,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Lots",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|366081409782|0",
+      "title": "Derik Queen Topps, Chrome Rookie Cards Base, Christmas, X Factor.",
+      "currentPrice": 20,
+      "shippingCost": 0,
+      "totalPrice": 20,
+      "condition": "New",
+      "imageUrl": "https://i.ebayimg.com/images/g/7DUAAeSw-ExpTeM1/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/366081409782?_skw=derik+queen+topps+chrome+rookie&hash=item553c2702f6:g:7DUAAeSw-ExpTeM1",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "vin987363",
+      "sellerFeedbackScore": 25,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Lots",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|136969710565|0",
+      "title": "2025-26 Topps Chrome Lot of 70 Base Rookie RC Cards w/ Kon Knueppel, Derik Queen",
+      "currentPrice": 20,
+      "shippingCost": 0,
+      "totalPrice": 20,
+      "condition": "New",
+      "imageUrl": "https://i.ebayimg.com/images/g/zF4AAeSwVyNpaUv3/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/136969710565?_skw=derik+queen+topps+chrome+rookie&hash=item1fe407ebe5:g:zF4AAeSwVyNpaUv3",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "rippy_mcslabberson",
+      "sellerFeedbackScore": 1506,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Lots",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|287093532653|0",
+      "title": "Lot (10) Derik Queen 2025-26 Topps Chrome Rookie #263 + Destiny / Go Time",
+      "currentPrice": 24.99,
+      "shippingCost": 0,
+      "totalPrice": 24.99,
+      "condition": "New",
+      "imageUrl": "https://i.ebayimg.com/images/g/N78AAeSw7QJpcoGG/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/287093532653?_skw=derik+queen+topps+chrome+rookie&hash=item42d81ba7ed:g:N78AAeSw7QJpcoGG",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "johnny_ford_cards",
+      "sellerFeedbackScore": 18925,
+      "sellerPositivePercent": "99.9",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Lots",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|389558846923|0",
+      "title": "Derik Queen 7 Card Rookie Lot 6 Parallels 1 Base",
+      "currentPrice": 12,
+      "shippingCost": 3,
+      "totalPrice": 15,
+      "condition": "New",
+      "imageUrl": "https://i.ebayimg.com/images/g/eEoAAeSwm7ZpfR2O/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/389558846923?_skw=derik+queen+topps+chrome+rookie&hash=item5ab38445cb:g:eEoAAeSwm7ZpfR2O",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "crafty-30",
+      "sellerFeedbackScore": 182,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Lots",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|366125284697|0",
+      "title": "Topps Chrome Derik Queen Pulsar, 8-Bit Pelicans Rookie 2025Card Lot of 24",
+      "currentPrice": 29.99,
+      "shippingCost": 0,
+      "totalPrice": 29.99,
+      "condition": "New",
+      "imageUrl": "https://i.ebayimg.com/images/g/G0wAAeSw9uhpaCWT/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/366125284697?_skw=derik+queen+topps+chrome+rookie&hash=item553ec47d59:g:G0wAAeSw9uhpaCWT",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "pokemonavailable",
+      "sellerFeedbackScore": 56,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Lots",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|117003322329|0",
+      "title": "2025-26 Topps Derik Queen Rookie Card Lot (4 Cards)",
+      "currentPrice": 5,
+      "shippingCost": 0,
+      "totalPrice": 5,
+      "condition": "New",
+      "imageUrl": "https://i.ebayimg.com/images/g/VuoAAeSwBgdpeCZj/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/117003322329?_skw=derik+queen+topps+chrome+rookie&hash=item1b3df103d9:g:VuoAAeSwBgdpeCZj",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "sher_rite",
+      "sellerFeedbackScore": 172,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Lots",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|127647276815|0",
+      "title": "Derik Queen RC Rookie Lot Topps Sand Glitter Chrome Destiny Tall Tales and more",
+      "currentPrice": 8,
+      "shippingCost": 5.5,
+      "totalPrice": 13.5,
+      "condition": "New",
+      "imageUrl": "https://i.ebayimg.com/images/g/6tEAAeSwPjVpY9t2/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/127647276815?_skw=derik+queen+topps+chrome+rookie&hash=item1db85edf0f:g:6tEAAeSwPjVpY9t2",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "sportscardguys",
+      "sellerFeedbackScore": 7539,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Lots",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|267554162434|0",
+      "title": "Topps Chrome Derik Queen Rookie Lot New Orleans Pelicans Basketball - 2 Cards",
+      "currentPrice": 20,
+      "shippingCost": 0,
+      "totalPrice": 20,
+      "condition": "New",
+      "imageUrl": "https://i.ebayimg.com/images/g/EQkAAeSwhnhpcn4E/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/267554162434?_skw=derik+queen+topps+chrome+rookie&hash=item3e4b788702:g:EQkAAeSwhnhpcn4E",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "cbruder35",
+      "sellerFeedbackScore": 138,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Lots",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|389448264825|0",
+      "title": "(3) Derik Queen 2025-26 Topps Big Box Ballers Rookie RC + Chrome Base + Insert",
+      "currentPrice": 5.99,
+      "shippingCost": 0,
+      "totalPrice": 5.99,
+      "condition": "New",
+      "imageUrl": "https://i.ebayimg.com/images/g/jX8AAeSwHd1pWMXW/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/389448264825?_skw=derik+queen+topps+chrome+rookie&hash=item5aacecec79:g:jX8AAeSwHd1pWMXW",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "fortune6_cards",
+      "sellerFeedbackScore": 19,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Lots",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|317825946305|0",
+      "title": "2025-26 Topps Chrome Derik Queen RC Refractor #263 2 Card Lot",
+      "currentPrice": 19.99,
+      "shippingCost": 0,
+      "totalPrice": 19.99,
+      "condition": "New",
+      "imageUrl": "https://i.ebayimg.com/images/g/HUcAAeSwWJ1pflmD/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/317825946305?_skw=derik+queen+topps+chrome+rookie&hash=item49ffe712c1:g:HUcAAeSwWJ1pflmD",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "jaysitemcloset",
+      "sellerFeedbackScore": 324,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Lots",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|127630350171|0",
+      "title": "2025-26 Topps Chrome, Holiday And Flagship Derik Queen RC Base Lot",
+      "currentPrice": 4.5,
+      "shippingCost": 6.5,
+      "totalPrice": 11,
+      "condition": "New",
+      "imageUrl": "https://i.ebayimg.com/images/g/8KcAAeSwSytpbE-~/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/127630350171?_skw=derik+queen+topps+chrome+rookie&hash=item1db75c975b:g:8KcAAeSwSytpbE-~",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "slack-7",
+      "sellerFeedbackScore": 27,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Lots",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|198049940222|0",
+      "title": "2024 Topps Chrome McDonalds All-American- Derik Queen Rookie Lot RC Pelicans",
+      "currentPrice": 4,
+      "shippingCost": 1.32,
+      "totalPrice": 5.32,
+      "condition": "Unspecified",
+      "imageUrl": "https://i.ebayimg.com/images/g/~7oAAeSwGjBpc-2h/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/198049940222?_skw=derik+queen+topps+chrome+rookie&hash=item2e1cb242fe:g:~7oAAeSwGjBpc-2h",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "treehouse_cards",
+      "sellerFeedbackScore": 271,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Lots",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|147076305632|0",
+      "title": "Derik Queen Go Time 2025-26 Topps Chrome RC GT-25 Rookie w/ rare error NM LOT 4",
+      "currentPrice": 18.99,
+      "shippingCost": 0,
+      "totalPrice": 18.99,
+      "condition": "New",
+      "imageUrl": "https://i.ebayimg.com/images/g/-uAAAeSwqGRpXLNU/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/147076305632?_skw=derik+queen+topps+chrome+rookie&hash=item223e6e52e0:g:-uAAAeSwqGRpXLNU",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "bangbangsportscards1",
+      "sellerFeedbackScore": 240,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Lots",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "good",
+          "issues": [
+            "✓ Near Mint condition",
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|236558814123|0",
+      "title": "DERIK QUEEN 2025-26 Topps & Chrome Basketball Pelicans Rookie RC 9 Card LOT 22a",
+      "currentPrice": 17.99,
+      "shippingCost": 0,
+      "totalPrice": 17.99,
+      "condition": "New",
+      "imageUrl": "https://i.ebayimg.com/images/g/9t0AAeSw4TxpVkTj/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/236558814123?_skw=derik+queen+topps+chrome+rookie&hash=item3714010bab:g:9t0AAeSw4TxpVkTj",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "1_srekal",
+      "sellerFeedbackScore": 2076,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Lots",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|236558828304|0",
+      "title": "DERIK QUEEN 2025-26 Topps & Chrome Basketball Pelicans Rookie RC 9 Card LOT 22b",
+      "currentPrice": 17.99,
+      "shippingCost": 0,
+      "totalPrice": 17.99,
+      "condition": "New",
+      "imageUrl": "https://i.ebayimg.com/images/g/2QUAAeSwuBRpVkaw/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/236558828304?_skw=derik+queen+topps+chrome+rookie&hash=item3714014310:g:2QUAAeSwuBRpVkaw&amdata=enc%3AAQALAAABADZq0hFgvSYlgrFkWCFZ3z1zV%2FrQKUpG1itL%2BVYIDGUc3ZZQ%2Fifx3r%2F0GDLDrJ4EApMLeUIHGncPNF%2BI3OFP0aLBshv5byI%2FKKiFxjpgqO7AC9EHFfr%2F%2BdpuAZRMKgJJ1Ic8kL%2ByzT7CvhvsvpcXiAXF6kju4hwrdXBHab3sX2XOELpJR%2BdKnCs%2F8Sf%2F1CVFn33Yx%2FzOguJoAD2Lx77xR5L8Xd4YPvGHCfqMLfshVFMiexHk4QBCPGBRbUFDd0yO8AJEoa%2B0c%2BdKFee%2F32q4Hp667riaKpSRaONQXrrxugNqcd%2BWlp4yseMjxWE7Ac2FVq45K%2BiaqwPYjdMYIBh5fOg%3D",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "1_srekal",
+      "sellerFeedbackScore": 2076,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Lots",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|406530821210|0",
+      "title": "Derik Queen 2025-26 Topps Chrome Aqua Ray Wave Refractor Rookie /199 + 5 Inserts",
+      "currentPrice": 125,
+      "shippingCost": 0,
+      "totalPrice": 125,
+      "condition": "New",
+      "imageUrl": "https://i.ebayimg.com/images/g/z9UAAeSwptlpUW3A/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/406530821210?_skw=derik+queen+topps+chrome+rookie&hash=item5ea7200c5a:g:z9UAAeSwptlpUW3A&amdata=enc%3AAQALAAABADZq0hFgvSYlgrFkWCFZ3z0DiqRN5FHAo62WQtFH5X%2Bcp%2F2nR0vdsNqSiH2kgYKui9%2BUArEEpi%2FPCBO0h1grqFD8EHvuVFW5QeQs7Le176OlxZh2GKkh7ejGnRzDjv29kO7kjLb4y6nl5Y4cvmpM%2BZp9K1L7b3jLdrJsJJdLoa%2BjmqnDql853W66KEtz%2BRwwqIuBp2uHxCQsUHk7BczuzkgBZdvbCoofYLnhz1pkJWfOR4xAp9b3aeYwdvTAd4GahtpBI54MZWlWjvVu7WAY0SvBNxVXujalobcqwLyscDLxacTkMvOm4tBlULSRwa%2BcWDMaLFtBgl34kFfiOu8x3IM%3D",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "jari-806",
+      "sellerFeedbackScore": 192,
+      "sellerPositivePercent": "99.5",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Lots",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "🎯 Numbered /199 (+0.5 points)",
+          "🆕 Rookie card (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|227166386153|0",
+      "title": "Topps Chrome Go Time Rookie Edgecombe 76ers Queen Pelicans Coward Grizzlies Har…",
+      "currentPrice": 7,
+      "shippingCost": 0,
+      "totalPrice": 7,
+      "condition": "New",
+      "imageUrl": "https://i.ebayimg.com/images/g/ZVUAAeSwel1pYEyc/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/227166386153?_skw=derik+queen+topps+chrome+rookie&hash=item34e42bf7e9:g:ZVUAAeSwel1pYEyc",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "50halse",
+      "sellerFeedbackScore": 235,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Lots",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|236558837396|0",
+      "title": "DERIK QUEEN 2025-26 Topps & Chrome Basketball Pelicans Rookie RC 9 Card LOT 22c",
+      "currentPrice": 17.99,
+      "shippingCost": 0,
+      "totalPrice": 17.99,
+      "condition": "New",
+      "imageUrl": "https://i.ebayimg.com/images/g/LjAAAeSwhuhpVkeU/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/236558837396?_skw=derik+queen+topps+chrome+rookie&hash=item3714016694:g:LjAAAeSwhuhpVkeU&amdata=enc%3AAQALAAABADZq0hFgvSYlgrFkWCFZ3z3HwvbY8NB8VH8mR2yt8KbXUFB0hQimy%2FR8HPtnF9Qcmef%2Fsv5H1XccBDgzuG20a%2FSBH%2BN7LLpOMKzk7ym9%2FoegB%2BzZmfhTYM3LcYvmfCDu1BawYpmUsLIEAmVAOqRxriKr1ISJuwIlm0QemAIlqeLbsZrGMDPYm1Nbz1yWeBpSsusIThfaUEdgAJlBSKqg9ROfZsR1nh00FI%2FgOEzDOhmKpxKP3VBR%2FdY99iHrZ2N4dqwav2hbSM0qMGP2YURLyHu7Aq6R1mnD1OJbLi7Z99R5FVLMgi9wdGAEWSGIUNIybHCOkwmWs%2B4wrVXoDjSJkEQ%3D",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "1_srekal",
+      "sellerFeedbackScore": 2076,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Lots",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|168070881670|0",
+      "title": "2025 Topps Chrome - Derik Queen #263 Base Rookie (RC) Pelicans Card Lot OF 5",
+      "currentPrice": 14.99,
+      "shippingCost": 0,
+      "totalPrice": 14.99,
+      "condition": "New",
+      "imageUrl": "https://i.ebayimg.com/images/g/RCIAAeSwwNhpYpgk/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/168070881670?_skw=derik+queen+topps+chrome+rookie&hash=item2721ce2186:g:RCIAAeSwwNhpYpgk",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "professo3579",
+      "sellerFeedbackScore": 161,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Lots",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|205942733047|0",
+      "title": "Pelicans Rookie Lot – Derik Queen 8-Bit Ballers RC + Peavy & Fears Chrome",
+      "currentPrice": 8.99,
+      "shippingCost": 0,
+      "totalPrice": 8.99,
+      "condition": "New",
+      "imageUrl": "https://i.ebayimg.com/images/g/Dh0AAeSwNOppSsXd/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/205942733047?_skw=derik+queen+topps+chrome+rookie&hash=item2ff324b8f7:g:Dh0AAeSwNOppSsXd",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "buddyfellers",
+      "sellerFeedbackScore": 22,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Lots",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|227197300461|0",
+      "title": "Topps Chrome Coward Grizzlies Queen Pelicans Rookie 2025-26 Lot of 3 Cards",
+      "currentPrice": 3.5,
+      "shippingCost": 1.65,
+      "totalPrice": 5.15,
+      "condition": "New",
+      "imageUrl": "https://i.ebayimg.com/images/g/tAEAAeSwP-VpfqgA/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/227197300461?_skw=derik+queen+topps+chrome+rookie&hash=item34e603aeed:g:tAEAAeSwP-VpfqgA",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "50halse",
+      "sellerFeedbackScore": 235,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Lots",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|277669923236|0",
+      "title": "(2) 2025-26 Topps Chrome Derik Queen #263 RC Rookie Refractor & Base Lot",
+      "currentPrice": 14.99,
+      "shippingCost": 0,
+      "totalPrice": 14.99,
+      "condition": "New",
+      "imageUrl": "https://i.ebayimg.com/images/g/03gAAeSw7Wtpc989/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/277669923236?_skw=derik+queen+topps+chrome+rookie&hash=item40a66ac9a4:g:03gAAeSw7Wtpc989",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "garver1510",
+      "sellerFeedbackScore": 5644,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Lots",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|336412696934|0",
+      "title": "2025-26 Topps/ Bowman Chrome - Derik Queen Rookie Lot Of 10",
+      "currentPrice": 15,
+      "shippingCost": 0,
+      "totalPrice": 15,
+      "condition": "New",
+      "imageUrl": "https://i.ebayimg.com/images/g/EjUAAeSwCZZpfCfF/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/336412696934?_skw=derik+queen+topps+chrome+rookie&hash=item4e53c26166:g:EjUAAeSwCZZpfCfF",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "kowen850",
+      "sellerFeedbackScore": 1212,
+      "sellerPositivePercent": "99.5",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Lots",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|277612770368|0",
+      "title": "2025-26 Topps Chrome Derik Queen RC Rookie Card Xfractor Refractor Parallel SP",
+      "currentPrice": 15,
+      "shippingCost": 0,
+      "totalPrice": 15,
+      "condition": "New",
+      "imageUrl": "https://i.ebayimg.com/images/g/6EIAAeSwsGFpUo22/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/277612770368?_skw=derik+queen+topps+chrome+rookie&hash=item40a302b440:g:6EIAAeSwsGFpUo22",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "partrode",
+      "sellerFeedbackScore": 3330,
+      "sellerPositivePercent": "99.9",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Lots",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6.5,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|177817311020|0",
+      "title": "(13) Lot 2025 Topps Chrome RC Rookie Derik Queen Refractor, VJ Edgecombe RC ",
+      "currentPrice": 35,
+      "shippingCost": 0,
+      "totalPrice": 35,
+      "condition": "New",
+      "imageUrl": "https://i.ebayimg.com/images/g/-jEAAeSwZ0Vper1G/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/177817311020?_skw=derik+queen+topps+chrome+rookie&hash=item2966bcd72c:g:-jEAAeSwZ0Vper1G",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "knlsportscardz",
+      "sellerFeedbackScore": 362,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Lots",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|389538369341|0",
+      "title": "2025-26 Topps Chrome - Derik Queen #263 (RC) LOT OF 6",
+      "currentPrice": 8.99,
+      "shippingCost": 0,
+      "totalPrice": 8.99,
+      "condition": "New",
+      "imageUrl": "https://i.ebayimg.com/images/g/-F4AAeSwo-RpdnyU/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/389538369341?_skw=derik+queen+topps+chrome+rookie&hash=item5ab24bcf3d:g:-F4AAeSwo-RpdnyU",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "rvzcards",
+      "sellerFeedbackScore": 15,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Lots",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|326970724121|0",
+      "title": "Topps Chrome - lot Larry Bird /275, Cason /50 And Refractor, Derik Queen RC",
+      "currentPrice": 49,
+      "shippingCost": 0,
+      "totalPrice": 49,
+      "condition": "New",
+      "imageUrl": "https://i.ebayimg.com/images/g/6HgAAeSwZUppdpea/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/326970724121?_skw=derik+queen+topps+chrome+rookie&hash=item4c20f94f19:g:6HgAAeSwZUppdpea&amdata=enc%3AAQALAAABADZq0hFgvSYlgrFkWCFZ3z0F0Ooas6m80QsCgAHy7K9gFvNlPoszvK3tOTtxRFE%2BryaNRRkMIXUQ6NQgb5vy1nGs1Cb%2BxUp4rS%2FumLqnVdCzAJd%2FlJHMxJaxekiA9AlUTiJzNNiUDXyqvwdVLLnjJ2iKvHltblvr30Cy7PZDA9HALGo8UOikrAiYxr37DkV5O%2Bn17GGYaOWiAkaEqVwaEpYFNt3HAQzNENSRTmqDh0mZywpqP%2BE9dyW0Is4itm3dOk9yChC6SUaf1BYi28tx9Z4ZSCWARexFKlei1fFUFg0qTazhLyMsBPgzEIezFXOcMeCTxwYFYdoyENc%2FPyVzah8%3D",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "thompson.chad",
+      "sellerFeedbackScore": 181,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Lots",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "🎯 Numbered /275 (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|157640494493|0",
+      "title": "Derik Queen 2025-26 Topps Chrome Basketball Rookie RC #263 Lot 8",
+      "currentPrice": 49.99,
+      "shippingCost": 7.99,
+      "totalPrice": 57.98,
+      "condition": "Unspecified",
+      "imageUrl": "https://i.ebayimg.com/images/g/CXcAAeSwaP1peEtR/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/157640494493?_skw=derik+queen+topps+chrome+rookie&hash=item24b41b0d9d:g:CXcAAeSwaP1peEtR",
+      "location": "",
+      "country": "CN",
+      "sellerUsername": "lost325",
+      "sellerFeedbackScore": 16267,
+      "sellerPositivePercent": "99.6",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Lots",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|257340480537|0",
+      "title": "Derik Queen Lot Of Rookie Cards( Skylight, 45th anniversary, 8-bit baller)",
+      "currentPrice": 45,
+      "shippingCost": 0,
+      "totalPrice": 45,
+      "condition": "New",
+      "imageUrl": "https://i.ebayimg.com/images/g/K9AAAeSwAYFpf-lt/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/257340480537?_skw=derik+queen+topps+chrome+rookie&hash=item3beab01c19:g:K9AAAeSwAYFpf-lt",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "retrobuyer921",
+      "sellerFeedbackScore": 125,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Lots",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|366160655853|0",
+      "title": "Topps Derik Queen NBA Card Lot 34 8-Bit Ballers Gen Now, Chrome, Rookies",
+      "currentPrice": 34,
+      "shippingCost": 0,
+      "totalPrice": 34,
+      "condition": "New",
+      "imageUrl": "https://i.ebayimg.com/images/g/X40AAeSw-hppaB4h/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/366160655853?_skw=derik+queen+topps+chrome+rookie&hash=item5540e035ed:g:X40AAeSw-hppaB4h",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "pokemonavailable",
+      "sellerFeedbackScore": 56,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Lots",
+      "itemEndDate": "2026-02-03T22:57:39.000Z",
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|336335821794|0",
+      "title": "(20) Derik Queen 2024 Topps Chrome McDonald’s All American Rookie Lot",
+      "currentPrice": 55,
+      "shippingCost": 0,
+      "totalPrice": 55,
+      "condition": "New",
+      "imageUrl": "https://i.ebayimg.com/images/g/pTkAAeSwrAxpHeMk/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/336335821794?_skw=derik+queen+topps+chrome+rookie&hash=item4e4f2d5be2:g:pTkAAeSwrAxpHeMk",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "irishcards21",
+      "sellerFeedbackScore": 3726,
+      "sellerPositivePercent": "99.8",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Lots",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|177713850144|0",
+      "title": "2025-26 Topps Chrome Derik Queen Lot Of 3",
+      "currentPrice": 15,
+      "shippingCost": 0,
+      "totalPrice": 15,
+      "condition": "New",
+      "imageUrl": "https://i.ebayimg.com/images/g/AdAAAeSwhuhpTzno/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/177713850144?_skw=derik+queen+topps+chrome+rookie&hash=item2960922720:g:AdAAAeSwhuhpTzno",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "strewbi",
+      "sellerFeedbackScore": 20,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Lots",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|157640519480|0",
+      "title": "Derik Queen 2025-26 Topps Chrome Basketball Rookie RC #263 Lot 25",
+      "currentPrice": 149.99,
+      "shippingCost": 8.99,
+      "totalPrice": 158.98,
+      "condition": "Unspecified",
+      "imageUrl": "https://i.ebayimg.com/images/g/OzUAAeSw2zppeE8F/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/157640519480?_skw=derik+queen+topps+chrome+rookie&hash=item24b41b6f38:g:OzUAAeSw2zppeE8F",
+      "location": "",
+      "country": "CN",
+      "sellerUsername": "lost325",
+      "sellerFeedbackScore": 16267,
+      "sellerPositivePercent": "99.6",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Lots",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|168123138103|0",
+      "title": "New Orleans Pelicans lot 2025 Topps Chrome Yves Missi Derik Queen ",
+      "currentPrice": 25.99,
+      "shippingCost": 0,
+      "totalPrice": 25.99,
+      "condition": "New",
+      "imageUrl": "https://i.ebayimg.com/images/g/Tt8AAeSw9aBpfTdF/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/168123138103?_skw=derik+queen+topps+chrome+rookie&hash=item2724eb8037:g:Tt8AAeSw9aBpfTdF",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "lilianag6",
+      "sellerFeedbackScore": 54,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Lots",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|157555301547|0",
+      "title": "4 count lot mixed 2024 Topps Chrome Mcdonald's Derik Queen RC's w/ Inserts",
+      "currentPrice": 7.99,
+      "shippingCost": 0,
+      "totalPrice": 7.99,
+      "condition": "Unspecified",
+      "imageUrl": "https://i.ebayimg.com/images/g/TKAAAeSwk~JpRivJ/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/157555301547?_skw=derik+queen+topps+chrome+rookie&hash=item24af071cab:g:TKAAAeSwk~JpRivJ",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "playerlots4u",
+      "sellerFeedbackScore": 12202,
+      "sellerPositivePercent": "99.9",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Lots",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "💵 Low entry price (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|317705522139|0",
+      "title": "Topps Chrome Derik Queen New Orleans Pelicans Rookie Refractor Card Lot (2) 2024",
+      "currentPrice": 35,
+      "shippingCost": 0,
+      "totalPrice": 35,
+      "condition": "New",
+      "imageUrl": "https://i.ebayimg.com/images/g/3lUAAeSwUXtpUJZX/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/317705522139?_skw=derik+queen+topps+chrome+rookie&hash=item49f8b98bdb:g:3lUAAeSwUXtpUJZX",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "r-lawma-hyig1y78j",
+      "sellerFeedbackScore": 37,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Lots",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 6,
+        "rating": "⚡ GOOD",
+        "breakdown": [
+          "🆕 Rookie card (+0.5 points)",
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Good opportunity - review comps and card condition carefully"
+      }
+    },
+    {
+      "itemId": "v1|236606384152|0",
+      "title": "2025 Topps Dylan Harper / Derik Queen Silver Pack Chrome Mojo Lot of (14)",
+      "currentPrice": 28,
+      "shippingCost": 4.99,
+      "totalPrice": 32.99,
+      "condition": "Unspecified",
+      "imageUrl": "https://i.ebayimg.com/images/g/SpAAAeSwpr1pcWcF/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/236606384152?_skw=derik+queen+topps+chrome+rookie&hash=item3716d6e818:g:SpAAAeSwpr1pcWcF",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "txcardsbkb",
+      "sellerFeedbackScore": 5942,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Lots",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 5.5,
+        "rating": "💰 DECENT",
+        "breakdown": [
+          "✅ Excellent seller (+0.5 points)"
+        ],
+        "recommendation": "Decent opportunity - consider if it fits your strategy"
+      }
+    },
+    {
+      "itemId": "v1|236581289140|0",
+      "title": "2025-26 Topps Chrome Basketball New Orleans Pelicans Complete Team Set 10 Cards",
+      "currentPrice": 12,
+      "shippingCost": 5.95,
+      "totalPrice": 17.95,
+      "condition": "New",
+      "imageUrl": "https://i.ebayimg.com/images/g/bYwAAeSw0XJpZ0mj/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/236581289140?_skw=derik+queen+topps+chrome+rookie&hash=item371557fcb4:g:bYwAAeSw0XJpZ0mj",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "polism607",
+      "sellerFeedbackScore": 28077,
+      "sellerPositivePercent": "98.4",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Lots",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "photoAnalysis": {
+        "photoQuality": {
+          "photoCount": 3,
+          "hasBackPhoto": false,
+          "cornersVisible": false,
+          "photoQualityScore": 7,
+          "issues": [
+            "✓ Photos available (assumed multiple)"
+          ],
+          "passed": true,
+          "redFlags": []
+        },
+        "condition": {
+          "centering": "unknown",
+          "centeringScore": 5,
+          "corners": "unknown",
+          "cornerScore": 5,
+          "overallCondition": "unknown",
+          "issues": [
+            "⚠️ No condition details in listing"
+          ],
+          "passed": true,
+          "confidence": "very low"
+        },
+        "passed": true,
+        "listingQualityScore": 6,
+        "recommendation": "✅ PROCEED - No red flags detected"
+      },
+      "comps": {
+        "psa10": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "psa9": {
+          "count": 0,
+          "avgPrice": 0,
+          "recentSales": []
+        },
+        "foundComps": false
+      },
+      "profitAnalysis": {
+        "insufficientData": true
+      },
+      "dealScore": {
+        "score": 4.5,
+        "rating": "✓ CONSIDER",
+        "breakdown": [
+          "💵 Low entry price (+0.5 points)",
+          "⚠️ Lower seller rating (-1 point)"
+        ],
+        "recommendation": "Marginal opportunity - only if you have specific knowledge of this card"
+      }
+    }
+  ]
+}

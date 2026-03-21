@@ -1,0 +1,45 @@
+{
+  "timestamp": "2026-03-21T16:13:02.022Z",
+  "searchQuery": "michael jordan psa 10",
+  "parsed": {
+    "original": "michael jordan psa 10",
+    "isComplex": false,
+    "baseQuery": "michael jordan psa 10",
+    "players": null,
+    "yearRange": null,
+    "detectedTypes": [],
+    "searches": [
+      "michael jordan psa 10"
+    ],
+    "searchCount": 1,
+    "explanation": "Single search (no splitting needed)"
+  },
+  "searchResults": [
+    {
+      "query": "michael jordan psa 10",
+      "count": 0
+    }
+  ],
+  "config": {
+    "keywords": "michael jordan psa 10",
+    "minScoreToShow": 7,
+    "topN": 10,
+    "minPrice": 0,
+    "maxPrice": null,
+    "rawOnly": true,
+    "useVision": false,
+    "visionTopN": 200,
+    "cardType": "graded"
+  },
+  "scanDuration": "0.3s",
+  "summary": {
+    "totalFound": 0,
+    "uniqueItems": 0,
+    "rawCardsOnly": true,
+    "afterRawFilter": 0,
+    "totalScored": 0,
+    "showingResults": 0,
+    "visionScanned": false
+  },
+  "allResults": []
+}

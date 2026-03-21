@@ -1,0 +1,252 @@
+{
+  "version": "1.0",
+  "last_updated": "2026-03-19T20:39:38.634Z",
+  "global_filters": {
+    "graded_keywords": [
+      "psa",
+      "bgs",
+      "sgc",
+      "leaf",
+      "pack",
+      "custom",
+      "replica",
+      "cgs",
+      "hga",
+      "fan",
+      "lot",
+      "pack",
+      "hobby",
+      "retail",
+      "jumbo"
+    ],
+    "exclude_item_types": [
+      "psa",
+      "bgs",
+      "sgc",
+      "leaf",
+      "replica",
+      "custom",
+      "cgs",
+      "hga",
+      "fan",
+      "lot"
+    ],
+    "quality_rules": {
+      "seller_feedback_min": 98,
+      "listing_age_max_days": 60,
+      "require_raw_cards": true
+    },
+    "listing_type": "fixed_price",
+    "card_type": "raw"
+  },
+  "scans": {
+    "monday": {
+      "name": "MJ Topps Finest 1994-1999",
+      "enabled": true,
+      "search_terms": [
+        "topps finest michael jordan 1994-1999"
+      ],
+      "filters": {
+        "topN": 25,
+        "minPrice": 10,
+        "maxPrice": 150,
+        "exclude_words": [
+          "mystery",
+          "refractor",
+          "prizm",
+          "jumbo",
+          "custom"
+        ]
+      },
+      "output_file": "/tmp/mj-finest-scan.json",
+      "last_run": "2026-03-19T23:20:03.696Z",
+      "last_results": {
+        "timestamp": "2026-03-19T23:20:03.697Z",
+        "success": true
+      },
+      "last_updated": "2026-03-17T01:30:54.623Z",
+      "useVision": true
+    },
+    "tuesday": {
+      "name": "Ronald Acuna",
+      "enabled": true,
+      "search_terms": [
+        "Ronald Acuna Gold Refractors",
+        "Ronald Acuna Auto"
+      ],
+      "filters": {
+        "topN": 20,
+        "minPrice": 20,
+        "maxPrice": 2000,
+        "exclude_words": [
+          "mystery",
+          "custom",
+          "pack",
+          "jumbo",
+          "replica"
+        ]
+      },
+      "output_file": "/tmp/griffey-refractors-scan.json",
+      "last_run": "2026-03-19T20:41:03.447Z",
+      "last_results": {
+        "timestamp": "2026-03-19T20:41:03.447Z",
+        "success": true
+      },
+      "last_updated": "2026-03-19T20:39:38.630Z",
+      "useVision": true
+    },
+    "wednesday": {
+      "name": "Kobe Bryant Refractors 1997-2004",
+      "enabled": true,
+      "search_terms": [
+        "kobe bryant topps chrome refractor 1997-2004",
+        "kobe bryant topps finest refractor 1997-2004"
+      ],
+      "filters": {
+        "topN": 20,
+        "exclude_words": [
+          "pokemon",
+          "magic",
+          "yugioh",
+          "jumbo",
+          "custom"
+        ],
+        "minPrice": 40,
+        "maxPrice": null
+      },
+      "output_file": "/tmp/kobe-refractors-scan.json",
+      "last_run": "2026-03-18T13:00:23.035Z",
+      "last_results": {
+        "timestamp": "2026-03-18T13:00:23.035Z",
+        "success": true
+      },
+      "last_updated": "2026-03-18T02:13:06.591Z",
+      "useVision": true
+    },
+    "thursday": {
+      "name": "MJ Upper Deck 96-00",
+      "enabled": true,
+      "search_terms": [
+        "upper deck michael jordan 1994-1999"
+      ],
+      "filters": {
+        "topN": 20,
+        "minPrice": 5,
+        "maxPrice": 100,
+        "exclude_words": [
+          "pokemon",
+          "magic",
+          "yugioh",
+          "jumbo",
+          "custom",
+          "reprint",
+          "size"
+        ]
+      },
+      "output_file": "/tmp/mj-upperdeck-scan.json",
+      "last_run": "2026-03-19T13:52:43.671Z",
+      "last_results": {
+        "timestamp": "2026-03-19T13:52:43.672Z",
+        "success": true
+      },
+      "last_updated": "2026-03-19T13:51:15.890Z",
+      "useVision": true
+    },
+    "friday": {
+      "name": "Multi: hakeem/charles barkley/Dirk/Iverson",
+      "enabled": true,
+      "search_terms": [
+        "hakeem olojuwon topps refractor",
+        "1994-1999",
+        "charles barkley topps refractor",
+        "1994-1999",
+        "dirk nowitzki topps refractor",
+        "1994-1999",
+        "allen iverson topps refractor",
+        "1994-1999"
+      ],
+      "filters": {
+        "topN": 20,
+        "maxPrice": 600,
+        "exclude_words": [
+          "jumbo",
+          "holo",
+          "prizm",
+          "mystery"
+        ],
+        "minPrice": 15
+      },
+      "output_file": "/tmp/topps-refractors-multi-scan.json",
+      "last_run": "2026-03-17T01:41:09.876Z",
+      "last_results": {
+        "timestamp": "2026-03-17T01:41:09.876Z",
+        "success": true
+      },
+      "last_updated": "2026-03-18T02:15:24.150Z",
+      "useVision": true
+    },
+    "saturday": {
+      "name": "Gold Refractors",
+      "enabled": true,
+      "search_terms": [
+        "gold refractor 1996-2003"
+      ],
+      "filters": {
+        "topN": 20,
+        "minPrice": 25,
+        "maxPrice": null,
+        "exclude_words": [
+          "pokemon",
+          "magic",
+          "yugioh",
+          "jumbo",
+          "custom",
+          "psa",
+          "bgs",
+          "HGA",
+          "ultra"
+        ]
+      },
+      "output_file": "/tmp/mj-base-scan.json",
+      "last_run": "2026-03-14T13:00:24.825Z",
+      "last_results": {
+        "timestamp": "2026-03-14T13:00:24.826Z",
+        "success": true
+      },
+      "last_updated": "2026-03-18T02:16:37.218Z",
+      "useVision": true
+    },
+    "sunday": {
+      "name": "Barry Sanders",
+      "enabled": true,
+      "search_terms": [
+        "1994 Skybox Barry Sanders",
+        "1994-1999 Barry Sanders Finest"
+      ],
+      "filters": {
+        "topN": 20,
+        "exclude_words": [
+          "bowman",
+          "draft picks",
+          "leaf"
+        ],
+        "minPrice": 0,
+        "maxPrice": null
+      },
+      "output_file": "/tmp/cam-ward-scan.json",
+      "last_run": "2026-03-19T18:15:04.108Z",
+      "last_results": {
+        "timestamp": "2026-03-19T18:15:04.109Z",
+        "success": true
+      },
+      "last_updated": "2026-03-19T20:37:24.143Z",
+      "useVision": true
+    }
+  },
+  "deploy": {
+    "enabled": true,
+    "time": "13:30",
+    "slack_channel": "#levelupcards",
+    "last_run": null
+  }
+}

@@ -1,0 +1,1386 @@
+{
+  "timestamp": "2026-03-21T15:41:05.531Z",
+  "searchQuery": "Dwyane Wade Refractor 2003",
+  "parsed": {
+    "original": "Dwyane Wade Refractor 2003",
+    "isComplex": false,
+    "baseQuery": "dwyane wade refractor 2003",
+    "players": null,
+    "yearRange": null,
+    "detectedTypes": [
+      "refractor"
+    ],
+    "searches": [
+      "dwyane wade refractor 2003"
+    ],
+    "searchCount": 1,
+    "explanation": "Single search (no splitting needed)"
+  },
+  "searchResults": [
+    {
+      "query": "dwyane wade refractor 2003",
+      "count": 23
+    }
+  ],
+  "config": {
+    "keywords": "Dwyane Wade Refractor 2003",
+    "minScoreToShow": 7,
+    "topN": 20,
+    "minPrice": 10,
+    "maxPrice": 2000,
+    "rawOnly": true,
+    "useVision": true,
+    "visionTopN": 200,
+    "excludeKeywords": "jumbo,holo,prizm,mystery",
+    "listingType": "fixed_price",
+    "cardType": "raw"
+  },
+  "scanDuration": "5.4s",
+  "summary": {
+    "totalFound": 23,
+    "uniqueItems": 23,
+    "rawCardsOnly": true,
+    "afterRawFilter": 17,
+    "totalScored": 17,
+    "showingResults": 12,
+    "visionScanned": true
+  },
+  "allResults": [
+    {
+      "itemId": "v1|357103066644|0",
+      "title": "2003 04 Dwyane Wade Topps Pristine Refractor Rookie RC Serially# /499 Sealed 16A",
+      "currentPrice": 124.99,
+      "shippingCost": 4.5,
+      "totalPrice": 129.49,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/DmwAAOSwIUVoTG1o/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/357103066644?_skw=dwyane+wade+refractor+2003+-psa+-bgs+-cgc+-sgc+-graded+-slab+-jumbo+-holo+-prizm+-mystery&hash=item5325005e14:g:DmwAAOSwIUVoTG1o",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "cardheaven",
+      "sellerFeedbackScore": 7873,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.7,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 7873,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (7873 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 6,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos",
+              "Perfect grade"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos, Perfect grade"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: dwyane wade",
+              "refractor match",
+              "Exact year: 2003",
+              "Premium brand"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Player match: dwyane wade, refractor match, Exact year: 2003, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|136975497289|0",
+      "title": "Dwyane Wade 2003-04 Topps Pristine Refractor RC /1999 #113 Miami Heat",
+      "currentPrice": 60.25,
+      "shippingCost": 0,
+      "totalPrice": 60.25,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/u-cAAeSwwdZpc2bU/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/136975497289?_skw=dwyane+wade+refractor+2003+-psa+-bgs+-cgc+-sgc+-graded+-slab+-jumbo+-holo+-prizm+-mystery&hash=item1fe4603849:g:u-cAAeSwwdZpc2bU",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "thecardtreasury",
+      "sellerFeedbackScore": 36748,
+      "sellerPositivePercent": "99.9",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.7,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "99.9",
+            "salesCount": 36748,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "99.9% (36748 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 6,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos",
+              "Perfect grade"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos, Perfect grade"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: dwyane wade",
+              "refractor match",
+              "Exact year: 2003",
+              "Premium brand"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Player match: dwyane wade, refractor match, Exact year: 2003, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|177862044887|0",
+      "title": "SEALED 2003-04 Topps Pristine Dwyane Wade RC Rookie Refractor #113 HOF /1999",
+      "currentPrice": 99.99,
+      "shippingCost": 0,
+      "totalPrice": 99.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/~zEAAeSw3~Fpj~45/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/177862044887?_skw=dwyane+wade+refractor+2003+-psa+-bgs+-cgc+-sgc+-graded+-slab+-jumbo+-holo+-prizm+-mystery&hash=item2969676cd7:g:~zEAAeSw3~Fpj~45",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "allsportsfan23",
+      "sellerFeedbackScore": 1082,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.7,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 1082,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (1082 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 6,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos",
+              "Perfect grade"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos, Perfect grade"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: dwyane wade",
+              "refractor match",
+              "Exact year: 2003",
+              "Premium brand"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Player match: dwyane wade, refractor match, Exact year: 2003, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|277138050572|0",
+      "title": "SEALED 2003-04 Topps Pristine Dwyane Wade SSP Rookie Refractor #113 HOF /1999",
+      "currentPrice": 100,
+      "shippingCost": 0,
+      "totalPrice": 100,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/vrwAAeSwOL5oMqeH/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/277138050572?_skw=dwyane+wade+refractor+2003+-psa+-bgs+-cgc+-sgc+-graded+-slab+-jumbo+-holo+-prizm+-mystery&hash=item4086b70e0c:g:vrwAAeSwOL5oMqeH",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "gemsbyjake707",
+      "sellerFeedbackScore": 2228,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.7,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 2228,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (2228 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 6,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos",
+              "Perfect grade"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos, Perfect grade"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: dwyane wade",
+              "refractor match",
+              "Exact year: 2003",
+              "Premium brand"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Player match: dwyane wade, refractor match, Exact year: 2003, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|226764971250|0",
+      "title": "2003-04 Topps Pristine - Dwyane Wade #113 Refractor /1999 (RC) - original holder",
+      "currentPrice": 165,
+      "shippingCost": 0,
+      "totalPrice": 165,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/8mUAAOSw5YRoLMpe/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/226764971250?_skw=dwyane+wade+refractor+2003+-psa+-bgs+-cgc+-sgc+-graded+-slab+-jumbo+-holo+-prizm+-mystery&hash=item34cc3edcf2:g:8mUAAOSw5YRoLMpe",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "dcb18gt",
+      "sellerFeedbackScore": 4121,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.7,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 4121,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (4121 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 6,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos",
+              "Perfect grade"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos, Perfect grade"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: dwyane wade",
+              "refractor match",
+              "Exact year: 2003",
+              "Premium brand"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Player match: dwyane wade, refractor match, Exact year: 2003, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|155777800565|0",
+      "title": "DWYANE WADE 2003 TOPPS PRISTINE REFRACTOR 113 1521/1999",
+      "currentPrice": 277.73,
+      "shippingCost": 40.5,
+      "totalPrice": 318.23,
+      "condition": "Non gradée",
+      "imageUrl": "https://i.ebayimg.com/images/g/qIMAAOSwEA1lJlfH/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/155777800565?_skw=dwyane+wade+refractor+2003+-psa+-bgs+-cgc+-sgc+-graded+-slab+-jumbo+-holo+-prizm+-mystery&hash=item2445149975:g:qIMAAOSwEA1lJlfH&amdata=enc%3AAQALAAABQACCtXRWQnOEpyOqnQQ8KGY4Kzuj3uH2VjSQqG7zGfBsT1hlsqjvUAK75LB9WVlvkjA9cLooARYfWlyJfb1H%2BSehaBHlI40VLcCcp0Z1SnBsOJw8TQuJBEdHuZ0dvyWE0F7Mgm7GUkqNda7KAPOl4qBW07laqxc8drdY%2FuMlsMYZIAHPdDxMwuCp1gLP4UEsWsW8Uzt16ZbFbdZYr8KigkSEBeBPXN7ojfJiRCdd%2FCXJFk8UrAEfayUAQWJqY7oaDMpMcXuXZHlSjFUdLPzrnkHMMbbbR8TDGw2KjXpxWuvGUQr1%2BULk3%2Fd9uWjU51CFjbHZ2pkyd3%2BAGfLBtAhp%2BJT%2BFfdlHol64hu3Hox9r%2BojlujSQn5lGytwmsK6TCV8usRmCE46TMVX7mNYhnlzcpmnewqkWwkh%2BosZVxxCUK%2BP",
+      "location": "",
+      "country": "FR",
+      "sellerUsername": "gaa-sportscards",
+      "sellerFeedbackScore": 4562,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Cartes à l'unité",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.7,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 4562,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (4562 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 6,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos",
+              "Perfect grade"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos, Perfect grade"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: dwyane wade",
+              "refractor match",
+              "Exact year: 2003",
+              "Premium brand"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Player match: dwyane wade, refractor match, Exact year: 2003, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|194926589397|0",
+      "title": "2003-04 Dwyane Wade Topps Pristine Gold Refractor NM 71/99 ",
+      "currentPrice": 689.99,
+      "shippingCost": 0,
+      "totalPrice": 689.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/Rw4AAOSwD-liNjbb/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/194926589397?_skw=dwyane+wade+refractor+2003+-psa+-bgs+-cgc+-sgc+-graded+-slab+-jumbo+-holo+-prizm+-mystery&hash=item2d6287b5d5:g:Rw4AAOSwD-liNjbb",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "dbdawgs",
+      "sellerFeedbackScore": 2841,
+      "sellerPositivePercent": "99.5",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.7,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "99.5",
+            "salesCount": 2841,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "99.5% (2841 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 6,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos",
+              "Perfect grade"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos, Perfect grade"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: dwyane wade",
+              "refractor match",
+              "Exact year: 2003",
+              "Premium brand"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Player match: dwyane wade, refractor match, Exact year: 2003, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|353980386505|0",
+      "title": "Dwyane Wade 2003 pristine refractor #113 85/1999",
+      "currentPrice": 225,
+      "shippingCost": 5,
+      "totalPrice": 230,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/UIkAAOSwQUNiQheU/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/353980386505?_skw=dwyane+wade+refractor+2003+-psa+-bgs+-cgc+-sgc+-graded+-slab+-jumbo+-holo+-prizm+-mystery&hash=item526ae00cc9:g:UIkAAOSwQUNiQheU",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "maiaharveycards",
+      "sellerFeedbackScore": 20513,
+      "sellerPositivePercent": "99.2",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.7,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "99.2",
+            "salesCount": 20513,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "99.2% (20513 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 6,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos",
+              "Perfect grade"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos, Perfect grade"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: dwyane wade",
+              "refractor match",
+              "Exact year: 2003"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Player match: dwyane wade, refractor match, Exact year: 2003"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|227029446416|0",
+      "title": "2003-04 Topps Chrome Black Refractor #15 Dwyane Wade RC Rookie #/500 HOF HEAT SP",
+      "currentPrice": 799.99,
+      "shippingCost": 0,
+      "totalPrice": 799.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/fDYAAeSwidpo8f65/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/227029446416?_skw=dwyane+wade+refractor+2003+-psa+-bgs+-cgc+-sgc+-graded+-slab+-jumbo+-holo+-prizm+-mystery&hash=item34dc026f10:g:fDYAAeSwidpo8f65",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "taga6253",
+      "sellerFeedbackScore": 10776,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.4,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 10776,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (10776 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 4,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: dwyane wade",
+              "refractor match",
+              "Exact year: 2003",
+              "Premium brand",
+              "Premium set: chrome"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Player match: dwyane wade, refractor match, Exact year: 2003, Premium brand, Premium set: chrome"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|389508479073|0",
+      "title": "2003 04 Dwyane Wade eTopps Refractor Rookie RC Card #47 Heat 37A",
+      "currentPrice": 120,
+      "shippingCost": 0,
+      "totalPrice": 120,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/WsEAAeSwA3JpbGi1/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/389508479073?_skw=dwyane+wade+refractor+2003+-psa+-bgs+-cgc+-sgc+-graded+-slab+-jumbo+-holo+-prizm+-mystery&hash=item5ab083b861:g:WsEAAeSwA3JpbGi1",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "cardheaven",
+      "sellerFeedbackScore": 7873,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.4,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 7873,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (7873 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 4,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: dwyane wade",
+              "refractor match",
+              "Exact year: 2003",
+              "Premium brand"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Player match: dwyane wade, refractor match, Exact year: 2003, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|265143052829|0",
+      "title": "2003-04 Dwyane Wade eTopps #47 Refractor RC Factory Sealed /1208",
+      "currentPrice": 499.99,
+      "shippingCost": 0,
+      "totalPrice": 499.99,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/p40AAOSw195gjBek/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/265143052829?_skw=dwyane+wade+refractor+2003+-psa+-bgs+-cgc+-sgc+-graded+-slab+-jumbo+-holo+-prizm+-mystery&hash=item3dbbc1ea1d:g:p40AAOSw195gjBek",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "allstarsigs",
+      "sellerFeedbackScore": 3373,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.4,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 10,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 3373,
+            "tier": "Elite seller",
+            "trust": "✅ TRUSTED",
+            "reason": "100.0% (3373 sales) - Elite seller"
+          },
+          "listingQuality": {
+            "points": 4,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: dwyane wade",
+              "refractor match",
+              "Exact year: 2003",
+              "Premium brand"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Player match: dwyane wade, refractor match, Exact year: 2003, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search",
+          "✅ Trusted seller + perfect match - HIGH CONFIDENCE"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|116551384571|0",
+      "title": "2003 Topps Pristine Dwyane Wade Refractor 603/1999 #113 Card NM-Mint!!!! RC Heat",
+      "currentPrice": 250,
+      "shippingCost": 4.84,
+      "totalPrice": 254.84,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/XrUAAeSw0QJn81qB/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/116551384571?_skw=dwyane+wade+refractor+2003+-psa+-bgs+-cgc+-sgc+-graded+-slab+-jumbo+-holo+-prizm+-mystery&hash=item1b2300fdfb:g:XrUAAeSw0QJn81qB",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "stickertire",
+      "sellerFeedbackScore": 537,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 7.3,
+        "rating": "💰 SOLID DEAL",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 7.5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 537,
+            "tier": "Established seller",
+            "trust": "✅ Good",
+            "reason": "100.0% (537 sales) - Established seller"
+          },
+          "listingQuality": {
+            "points": 7,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos",
+              "Perfect grade",
+              "Mint condition"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos, Perfect grade, Mint condition"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: dwyane wade",
+              "refractor match",
+              "Exact year: 2003",
+              "Premium brand"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Player match: dwyane wade, refractor match, Exact year: 2003, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|146703171309|0",
+      "title": "2003-04 Topps Chrome - Dwyane Wade #115 Refractor (RC)",
+      "currentPrice": 300,
+      "shippingCost": 0,
+      "totalPrice": 300,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/OHUAAeSw5KVocbBR/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/146703171309?_skw=dwyane+wade+refractor+2003+-psa+-bgs+-cgc+-sgc+-graded+-slab+-jumbo+-holo+-prizm+-mystery&hash=item222830beed:g:OHUAAeSw5KVocbBR",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "flohobllc",
+      "sellerFeedbackScore": 865,
+      "sellerPositivePercent": "98.5",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6.9,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 7.5,
+            "maxPoints": 10,
+            "feedback": "98.5",
+            "salesCount": 865,
+            "tier": "Established seller",
+            "trust": "✅ Good",
+            "reason": "98.5% (865 sales) - Established seller"
+          },
+          "listingQuality": {
+            "points": 4,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: dwyane wade",
+              "refractor match",
+              "Exact year: 2003",
+              "Premium brand",
+              "Premium set: chrome"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Player match: dwyane wade, refractor match, Exact year: 2003, Premium brand, Premium set: chrome"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|287073876415|0",
+      "title": "2003-04 Topps Pristine - Dwyane Wade #113 Refractor /1999 (RC)",
+      "currentPrice": 140,
+      "shippingCost": 0,
+      "totalPrice": 140,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/-sIAAeSwyQppZ0nU/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/287073876415?_skw=dwyane+wade+refractor+2003+-psa+-bgs+-cgc+-sgc+-graded+-slab+-jumbo+-holo+-prizm+-mystery&hash=item42d6efb9bf:g:-sIAAeSwyQppZ0nU",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "jabaays907",
+      "sellerFeedbackScore": 135,
+      "sellerPositivePercent": "99.2",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6.7,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "feedback": "99.2",
+            "salesCount": 135,
+            "tier": "Decent seller",
+            "trust": "OK",
+            "reason": "99.2% (135 sales) - Decent seller"
+          },
+          "listingQuality": {
+            "points": 6,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos",
+              "Perfect grade"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos, Perfect grade"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: dwyane wade",
+              "refractor match",
+              "Exact year: 2003",
+              "Premium brand"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Player match: dwyane wade, refractor match, Exact year: 2003, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|388652927882|0",
+      "title": "2003-04 Topps Finest DWYANE WADE Auto Jersey Rookie Refractor RPA 76/250 heat🔥",
+      "currentPrice": 1000,
+      "shippingCost": 23,
+      "totalPrice": 1023,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/DIkAAOSw~Rtn70c7/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/388652927882?_skw=dwyane+wade+refractor+2003+-psa+-bgs+-cgc+-sgc+-graded+-slab+-jumbo+-holo+-prizm+-mystery&hash=item5a7d850b8a:g:DIkAAOSw~Rtn70c7",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "chosencard23",
+      "sellerFeedbackScore": 152,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6.4,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 152,
+            "tier": "Decent seller",
+            "trust": "OK",
+            "reason": "100.0% (152 sales) - Decent seller"
+          },
+          "listingQuality": {
+            "points": 4,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: dwyane wade",
+              "refractor match",
+              "Exact year: 2003",
+              "Premium brand",
+              "Premium set: finest"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Player match: dwyane wade, refractor match, Exact year: 2003, Premium brand, Premium set: finest"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|315647145377|0",
+      "title": "Dwyane Wade 2003-04 Topps Pristine Refractor RC #113 Miami Heat *MINT*",
+      "currentPrice": 70,
+      "shippingCost": 0,
+      "totalPrice": 70,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/-wMAAOSwPDZmtc2A/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/315647145377?_skw=dwyane+wade+refractor+2003+-psa+-bgs+-cgc+-sgc+-graded+-slab+-jumbo+-holo+-prizm+-mystery&hash=item497e0935a1:g:-wMAAOSwPDZmtc2A&amdata=enc%3AAQALAAABMACCtXRWQnOEpyOqnQQ8KGaJXwpip9aUQrVGceIbD5n%2Bz5AfCs5YxGaaBy9TRy1f7ReQ4s9i1XYSnj48q3c8blLAlcxaWo97DzFybxgi%2BN5lf1ay0Z7Wja138Fp7BWUBqvCh3NpNaqkp7A46%2BIFVCTmsGlx9zYRuiEIZO3KMbMHNFqN7lIgquMFyI4J1iKTbu%2BB%2F5R3Rz1WXjLw4%2Fkdee9w%2FvbHVcWEQZBEUqdZErWhT3%2F%2B8bDxWypSHvF%2FkFOLX1RoJ4GEsoR3rEUk921DVbmPBuguKIR2SH4MbS%2F2sd1GMHbDV%2FseDQ0dEq4m5WbJpY4DQwJKlkEmZIFQhCcUxhJPHyotoCZAqkIYej%2BKeZyZoo4TCN6UntbuRC1Wn8XXsNRxSaDGb8eI0KH5N3jfd6Zk%3D",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "ag_mintcardcollection",
+      "sellerFeedbackScore": 62,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6.3,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 2.5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 62,
+            "tier": "New/low feedback seller",
+            "trust": "⚠️ New seller",
+            "reason": "100.0% (62 sales) - New/low feedback seller"
+          },
+          "listingQuality": {
+            "points": 7,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos",
+              "Perfect grade",
+              "Mint condition"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos, Perfect grade, Mint condition"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: dwyane wade",
+              "refractor match",
+              "Exact year: 2003",
+              "Premium brand"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Player match: dwyane wade, refractor match, Exact year: 2003, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    },
+    {
+      "itemId": "v1|397080403784|0",
+      "title": "2003-04 Topps Pristine - Dwyane Wade #115 Refractor /499 (RC)",
+      "currentPrice": 95,
+      "shippingCost": 0,
+      "totalPrice": 95,
+      "condition": "Ungraded",
+      "imageUrl": "https://i.ebayimg.com/images/g/51MAAeSwz2Jo0NWl/s-l225.jpg",
+      "viewItemURL": "https://www.ebay.com/itm/397080403784?_skw=dwyane+wade+refractor+2003+-psa+-bgs+-cgc+-sgc+-graded+-slab+-jumbo+-holo+-prizm+-mystery&hash=item5c73d61f48:g:51MAAeSwz2Jo0NWl",
+      "location": "",
+      "country": "US",
+      "sellerUsername": "omahaking101",
+      "sellerFeedbackScore": 40,
+      "sellerPositivePercent": "100.0",
+      "bidCount": 0,
+      "listingType": "FIXED_PRICE",
+      "categoryPath": "Trading Card Singles",
+      "itemEndDate": null,
+      "availableQuantity": 0,
+      "dealScore": {
+        "score": 6.2,
+        "rating": "✓ DECENT",
+        "breakdown": {
+          "sellerQuality": {
+            "points": 2.5,
+            "maxPoints": 10,
+            "feedback": "100.0",
+            "salesCount": 40,
+            "tier": "New/low feedback seller",
+            "trust": "⚠️ New seller",
+            "reason": "100.0% (40 sales) - New/low feedback seller"
+          },
+          "listingQuality": {
+            "points": 6,
+            "maxPoints": 10,
+            "signals": [
+              "Has photos",
+              "Perfect grade"
+            ],
+            "redFlags": [],
+            "hasPhotos": true,
+            "disqualified": false,
+            "reason": "✅ Has photos, Perfect grade"
+          },
+          "searchRelevance": {
+            "points": 10,
+            "maxPoints": 10,
+            "matches": [
+              "Player match: dwyane wade",
+              "refractor match",
+              "Exact year: 2003",
+              "Premium brand"
+            ],
+            "mismatches": [],
+            "requestedTypes": [
+              "refractor"
+            ],
+            "foundTypes": [
+              "refractor"
+            ],
+            "reason": "✅ Player match: dwyane wade, refractor match, Exact year: 2003, Premium brand"
+          },
+          "listingFreshness": {
+            "points": 5,
+            "maxPoints": 10,
+            "ageInDays": null,
+            "reason": "Unknown listing age"
+          },
+          "visionScore": {
+            "points": 0,
+            "maxPoints": 10
+          }
+        },
+        "flags": [
+          "✅ Perfect match for your search"
+        ]
+      }
+    }
+  ]
+}

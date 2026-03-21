@@ -29,7 +29,7 @@ function getDayFromArgs() {
   return dayNames[today];
 }
 
-function sendResultsEmail(outputFile, day, scanName) {
+function sendResultsEmail(outputFile, day, scanName, cardMode = 'raw') {
   try {
     if (!fs.existsSync(outputFile)) {
       console.log('No results file to email');
@@ -46,39 +46,81 @@ function sendResultsEmail(outputFile, day, scanName) {
     }
 
     const dayLabel = day.charAt(0).toUpperCase() + day.slice(1);
-    const subject = `[${dayLabel}] Scan - ${scanName || 'eBay Results'}`;
+    const modeLabel = cardMode === 'graded' ? '[GRADED]' : '[RAW]';
+    const subject = `[${dayLabel}] ${modeLabel} Scan - ${scanName || 'eBay Results'}`;
 
     let html = `<html><body style="font-family: Arial, sans-serif; font-size: 14px; color: #333;">`;
     html += `<h2 style="color: #1a73e8;">${subject}</h2>`;
     html += `<p>Found ${results.length} total results, showing top ${topResults.length}:</p>`;
-    html += `<table style="width: 100%; border-collapse: collapse; font-size: 12px;">`;
-    html += `<tr style="background: #f5f5f5;">
-      <th style="padding: 8px; text-align: left; border-bottom: 1px solid #ddd;">#</th>
-      <th style="padding: 8px; text-align: left; border-bottom: 1px solid #ddd;">Title</th>
-      <th style="padding: 8px; text-align: right; border-bottom: 1px solid #ddd;">Price</th>
-      <th style="padding: 8px; text-align: center; border-bottom: 1px solid #ddd;">Score</th>
-    </tr>`;
-
-    topResults.forEach((item, i) => {
-      const score = item.dealScore?.score || 'N/A';
-      const scoreColor = score >= 8 ? '#22c55e' : score >= 7 ? '#f59e0b' : '#ef4444';
-      // Show more title (80 chars), use currentPrice for actual price
-      const title = (item.title || '').substring(0, 80) + ((item.title || '').length > 80 ? '...' : '');
-      // Simple price - just use currentPrice directly, format nicely
-      const price = item.currentPrice !== undefined ? '$' + Number(item.currentPrice).toFixed(2) : (item.totalPrice ? '$' + Number(item.totalPrice).toFixed(2) : 'N/A');
-      
-      html += `<tr style="${i % 2 === 0 ? 'background: #fff;' : 'background: #fafafa;'}">
-        <td style="padding: 6px 8px; border-bottom: 1px solid #eee;">${i + 1}</td>
-        <td style="padding: 6px 8px; border-bottom: 1px solid #eee;">
-          <a href="${item.viewItemURL || '#'}" style="color: #1a73e8; text-decoration: none;">${title}</a>
-        </td>
-        <td style="padding: 6px 8px; border-bottom: 1px solid #eee; text-align: right; font-weight: bold;">${price}</td>
-        <td style="padding: 6px 8px; border-bottom: 1px solid #eee; text-align: center; color: ${scoreColor}; font-weight: bold;">${score}</td>
+    
+    if (cardMode === 'graded') {
+      // GRADED MODE - Show Grade, Price, Score
+      html += `<table style="width: 100%; border-collapse: collapse; font-size: 12px;">`;
+      html += `<tr style="background: #f5f5f5;">
+        <th style="padding: 8px; text-align: left; border-bottom: 1px solid #ddd;">#</th>
+        <th style="padding: 8px; text-align: left; border-bottom: 1px solid #ddd;">Title</th>
+        <th style="padding: 8px; text-align: center; border-bottom: 1px solid #ddd;">Grade</th>
+        <th style="padding: 8px; text-align: right; border-bottom: 1px solid #ddd;">Price</th>
+        <th style="padding: 8px; text-align: center; border-bottom: 1px solid #ddd;">Score</th>
       </tr>`;
-    });
+
+      topResults.forEach((item, i) => {
+        const score = item.dealScore?.score || 'N/A';
+        const scoreColor = score >= 8 ? '#22c55e' : score >= 7 ? '#f59e0b' : '#ef4444';
+        const title = (item.title || '').substring(0, 60) + ((item.title || '').length > 60 ? '...' : '');
+        const price = item.currentPrice !== undefined ? '$' + Number(item.currentPrice).toFixed(2) : (item.totalPrice ? '$' + Number(item.totalPrice).toFixed(2) : 'N/A');
+        
+        // Extract grade from title
+        const titleLower = (item.title || '').toLowerCase();
+        let grade = '-';
+        if (titleLower.includes('psa 10') || titleLower.includes('psa gem mint')) grade = 'PSA 10';
+        else if (titleLower.includes('psa 9')) grade = 'PSA 9';
+        else if (titleLower.includes('psa 8')) grade = 'PSA 8';
+        else if (titleLower.includes('psa 7')) grade = 'PSA 7';
+        else if (titleLower.includes('bgs 10') || titleLower.includes('bgs gem mint')) grade = 'BGS 10';
+        else if (titleLower.includes('bgs 9.5')) grade = 'BGS 9.5';
+        else if (titleLower.includes('bgs 9')) grade = 'BGS 9';
+        else if (titleLower.includes('sgc 10')) grade = 'SGC 10';
+        
+        html += `<tr style="${i % 2 === 0 ? 'background: #fff;' : 'background: #fafafa;'}">
+          <td style="padding: 6px 8px; border-bottom: 1px solid #eee;">${i + 1}</td>
+          <td style="padding: 6px 8px; border-bottom: 1px solid #eee;">
+            <a href="${item.viewItemURL || '#'}" style="color: #1a73e8; text-decoration: none;">${title}</a>
+          </td>
+          <td style="padding: 6px 8px; border-bottom: 1px solid #eee; text-align: center; font-weight: bold;">${grade}</td>
+          <td style="padding: 6px 8px; border-bottom: 1px solid #eee; text-align: right; font-weight: bold;">${price}</td>
+          <td style="padding: 6px 8px; border-bottom: 1px solid #eee; text-align: center; color: ${scoreColor}; font-weight: bold;">${score}</td>
+        </tr>`;
+      });
+    } else {
+      // RAW MODE - Original format
+      html += `<table style="width: 100%; border-collapse: collapse; font-size: 12px;">`;
+      html += `<tr style="background: #f5f5f5;">
+        <th style="padding: 8px; text-align: left; border-bottom: 1px solid #ddd;">#</th>
+        <th style="padding: 8px; text-align: left; border-bottom: 1px solid #ddd;">Title</th>
+        <th style="padding: 8px; text-align: right; border-bottom: 1px solid #ddd;">Price</th>
+        <th style="padding: 8px; text-align: center; border-bottom: 1px solid #ddd;">Score</th>
+      </tr>`;
+
+      topResults.forEach((item, i) => {
+        const score = item.dealScore?.score || 'N/A';
+        const scoreColor = score >= 8 ? '#22c55e' : score >= 7 ? '#f59e0b' : '#ef4444';
+        const title = (item.title || '').substring(0, 80) + ((item.title || '').length > 80 ? '...' : '');
+        const price = item.currentPrice !== undefined ? '$' + Number(item.currentPrice).toFixed(2) : (item.totalPrice ? '$' + Number(item.totalPrice).toFixed(2) : 'N/A');
+        
+        html += `<tr style="${i % 2 === 0 ? 'background: #fff;' : 'background: #fafafa;'}">
+          <td style="padding: 6px 8px; border-bottom: 1px solid #eee;">${i + 1}</td>
+          <td style="padding: 6px 8px; border-bottom: 1px solid #eee;">
+            <a href="${item.viewItemURL || '#'}" style="color: #1a73e8; text-decoration: none;">${title}</a>
+          </td>
+          <td style="padding: 6px 8px; border-bottom: 1px solid #eee; text-align: right; font-weight: bold;">${price}</td>
+          <td style="padding: 6px 8px; border-bottom: 1px solid #eee; text-align: center; color: ${scoreColor}; font-weight: bold;">${score}</td>
+        </tr>`;
+      });
+    }
 
     html += `</table>`;
-    html += `<p style="margin-top: 20px; font-size: 11px; color: #666;">Sent from Jett eBay Scanner</p>`;
+    html += `<p style="margin-top: 20px; font-size: 11px; color: #666;">Sent from Jett eBay Scanner (${cardMode} mode)</p>`;
     html += `</body></html>`;
 
     const emailScript = path.join(__dirname, '..', 'lib', 'send-email.js');
@@ -162,7 +204,7 @@ async function runScan(day) {
     console.log(`Results saved to: ${outputFile}`);
 
     // Send email with results
-    sendResultsEmail(outputFile, day, scan.name);
+    sendResultsEmail(outputFile, day, scan.name, cardMode);
 
   } catch (error) {
     console.error(`\n❌ ${day} scan failed: ${error.message}`);

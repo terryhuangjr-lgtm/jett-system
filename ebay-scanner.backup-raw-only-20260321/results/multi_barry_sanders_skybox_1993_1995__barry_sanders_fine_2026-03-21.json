@@ -1,0 +1,83 @@
+{
+  "timestamp": "2026-03-21T11:16:01.000Z",
+  "searchQuery": "barry sanders skybox 1993-1995, barry sanders finest 1994-1999",
+  "parsed": {
+    "original": "barry sanders skybox 1993-1995, barry sanders finest 1994-1999",
+    "isComplex": true,
+    "baseQuery": "finest 1994-1999",
+    "players": [
+      "barry sanders skybox",
+      "barry sanders"
+    ],
+    "yearRange": {
+      "start": 1993,
+      "end": 1995,
+      "years": [
+        1993,
+        1994,
+        1995
+      ]
+    },
+    "detectedTypes": [],
+    "searches": [
+      "1993 barry sanders skybox finest 1994-1999",
+      "1994 barry sanders skybox finest 1994-1999",
+      "1995 barry sanders skybox finest 1994-1999",
+      "1993 barry sanders finest 1994-1999",
+      "1994 barry sanders finest 1994-1999",
+      "1995 barry sanders finest 1994-1999"
+    ],
+    "searchCount": 6,
+    "explanation": "Split into 6 searches: 2 players (barry sanders skybox, barry sanders) × 3 years (1993-1995)"
+  },
+  "searchResults": [
+    {
+      "query": "1993 barry sanders skybox finest 1994-1999",
+      "count": 0
+    },
+    {
+      "query": "1994 barry sanders skybox finest 1994-1999",
+      "count": 0
+    },
+    {
+      "query": "1995 barry sanders skybox finest 1994-1999",
+      "count": 0
+    },
+    {
+      "query": "1993 barry sanders finest 1994-1999",
+      "count": 0
+    },
+    {
+      "query": "1994 barry sanders finest 1994-1999",
+      "count": 0
+    },
+    {
+      "query": "1995 barry sanders finest 1994-1999",
+      "count": 0
+    }
+  ],
+  "config": {
+    "keywords": "barry sanders skybox 1993-1995, barry sanders finest 1994-1999",
+    "minScoreToShow": 7,
+    "topN": 20,
+    "minPrice": 0,
+    "maxPrice": null,
+    "rawOnly": true,
+    "useVision": true,
+    "visionTopN": 200,
+    "excludeKeywords": "draft picks,leaf,jumbo,replica",
+    "listingType": "fixed_price",
+    "cardType": "raw"
+  },
+  "scanDuration": "2.5s",
+  "summary": {
+    "totalFound": 0,
+    "uniqueItems": 0,
+    "rawCardsOnly": true,
+    "afterRawFilter": 0,
+    "totalScored": 0,
+    "showingResults": 0,
+    "visionScanned": true
+  },
+  "allResults": []
+}
