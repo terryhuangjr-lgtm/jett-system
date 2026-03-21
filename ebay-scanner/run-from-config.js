@@ -121,8 +121,8 @@ async function runScan(day) {
   
   // Global filters
   const listingType = config.global_filters?.listing_type || 'fixed_price';
-  const cardType = config.global_filters?.card_type || 'raw';
-  console.log(`Listing type: ${listingType} | Card type: ${cardType}`);
+  const cardMode = config.cardMode || 'raw';
+  console.log(`Listing type: ${listingType} | Card mode: ${cardMode}`);
   console.log('');
 
   // Build command
@@ -139,7 +139,7 @@ async function runScan(day) {
   if (excludeWords.length > 0) args.push('--exclude', excludeWords.join(','));
   if (scan.useVision) args.push('--vision');
   args.push('--listing-type', listingType);
-  args.push('--card-type', cardType);
+  args.push('--card-mode', cardMode);
 
   console.log(`Executing: node ${args.join(' ')}\n`);
 

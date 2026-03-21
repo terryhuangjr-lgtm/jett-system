@@ -6,6 +6,7 @@
 
 const EbayBrowseAPI = require('./ebay-browse-api');
 const DealScorerV2 = require('./deal-scorer-v2');
+const DealScorerGraded = require('./deal-scorer-graded');
 const RawCardFilter = require('./raw-card-filter');
 const SmartQueryParser = require('./smart-query-parser');
 const VisionFilter = require('./vision-filter');
@@ -30,7 +31,7 @@ async function multiSearch(searchConfig) {
     useVision = false,
     visionTopN = 200,
     listingType = 'fixed_price',
-    cardType = 'raw'
+    cardMode = 'raw'  // 'raw' or 'graded'
   } = searchConfig || {};
 
   try {
@@ -63,7 +64,7 @@ async function multiSearch(searchConfig) {
         maxPrice,
         excludeKeywords,
         listingType,
-        cardType,
+        cardType: cardMode,
         sortOrder: 'PricePlusShippingLowest',
         limit: 200
       });
@@ -84,19 +85,29 @@ async function multiSearch(searchConfig) {
     const uniqueItems = deduplicateItems(allItems);
     console.log(`After deduplication: ${uniqueItems.length} unique listings`);
 
-    // Filter to raw cards only
+    // Filter based on cardMode
     let filteredItems = uniqueItems;
     let softRejectItems = [];
-    if (rawOnly) {
-      filteredItems = rawFilter.filterRawOnly(uniqueItems, cardType);
+    if (cardMode === 'raw') {
+      filteredItems = rawFilter.filterRawOnly(uniqueItems, 'raw');
       softRejectItems = rawFilter.getSoftRejects(uniqueItems);
-      console.log(`After raw filter: ${filteredItems.length} raw + ${softRejectItems.length} soft-reject (cardType: ${cardType})`);
+      console.log(`After raw filter: ${filteredItems.length} raw + ${softRejectItems.length} soft-reject`);
+    } else if (cardMode === 'graded') {
+      filteredItems = rawFilter.filterRawOnly(uniqueItems, 'graded');
+      console.log(`After graded filter: ${filteredItems.length} graded cards`);
     }
 
     console.log(`\nScoring ${filteredItems.length} listings...`);
 
-    // Create scorer with ORIGINAL query for relevance matching
-    const scorer = new DealScorerV2(keywords);
+    // Choose scorer based on cardMode
+    let scorer;
+    if (cardMode === 'graded') {
+      console.log(`Using Graded Scorer (no vision)`);
+      scorer = new DealScorerGraded(keywords);
+    } else {
+      console.log(`Using Raw Scorer`);
+      scorer = new DealScorerV2(keywords);
+    }
 
     // Score all items
     const scoredItems = [];
@@ -119,8 +130,9 @@ async function multiSearch(searchConfig) {
     const displayItems = scoredItems.filter(item => item.dealScore.score >= minScoreToShow);
 
     // === VISION OVERRIDE FOR SOFT REJECTS ===
+    // Only run vision for raw cards - graded cards (slabs) can't be visually assessed
     let visionOverrideItems = [];
-    if (rawOnly && softRejectItems.length > 0 && useVision) {
+    if (cardMode === 'raw' && rawOnly && softRejectItems.length > 0 && useVision) {
       console.log(`\n👁️  Vision override: scanning ${softRejectItems.length} soft-reject items...`);
       
       // Score soft rejects first
@@ -154,11 +166,14 @@ async function multiSearch(searchConfig) {
     }
 
     // Vision scanning (optional - costs ~$0.02 per 30 items)
+    // Only run vision for raw cards - graded cards (slabs) can't be visually assessed
     let finalItems = displayItems;
-    if (useVision && displayItems.length > 0) {
+    if (cardMode === 'raw' && useVision && displayItems.length > 0) {
       const visionFilter = new VisionFilter();
       finalItems = await visionFilter.filterItems(displayItems, visionTopN);
       console.log(`After vision filter: ${finalItems.length} listings`);
+    } else if (cardMode === 'graded') {
+      console.log(`Skipping vision (graded mode - slabs cannot be visually assessed)`);
     }
     
     // Add vision override items to final results
@@ -390,8 +405,12 @@ if (require.main === module) {
       } else if (flagName === 'listing-type' && nextArg) {
         config.listingType = nextArg;
         i++;
+      } else if (flagName === 'card-mode' && nextArg) {
+        config.cardMode = nextArg;
+        i++;
       } else if (flagName === 'card-type' && nextArg) {
-        config.cardType = nextArg;
+        // Backwards compatibility
+        config.cardMode = nextArg;
         i++;
       }
     } else {

@@ -1,24 +1,8 @@
 {
-  "version": "1.0",
-  "last_updated": "2026-03-21T11:25:41.919Z",
+  "version": "1.1",
+  "last_updated": "2026-03-21T16:40:31.985Z",
+  "cardMode": "raw",
   "global_filters": {
-    "graded_keywords": [
-      "psa",
-      "bgs",
-      "sgc",
-      "leaf",
-      "pack",
-      "custom",
-      "replica",
-      "cgs",
-      "hga",
-      "fan",
-      "lot",
-      "pack",
-      "hobby",
-      "retail",
-      "jumbo"
-    ],
     "exclude_item_types": [
       "psa",
       "bgs",
@@ -33,11 +17,9 @@
     ],
     "quality_rules": {
       "seller_feedback_min": 98,
-      "listing_age_max_days": 25,
-      "require_raw_cards": true
+      "listing_age_max_days": 25
     },
-    "listing_type": "fixed_price",
-    "card_type": "raw"
+    "listing_type": "both"
   },
   "scans": {
     "monday": {
@@ -59,10 +41,11 @@
         ]
       },
       "output_file": "/tmp/mj-finest-scan.json",
-      "last_run": "2026-03-21T11:17:33.062Z",
+      "last_run": "2026-03-21T18:45:39.919Z",
       "last_results": {
-        "timestamp": "2026-03-21T11:17:33.063Z",
-        "success": true
+        "timestamp": "2026-03-21T18:45:39.919Z",
+        "success": false,
+        "error": "Command failed: node multi-search.js topps finest michael jordan 1994-1999 --topN 25 --output /tmp/mj-finest-scan.json --minPrice 10 --maxPrice 150 --exclude mystery,refractor,prizm,jumbo,custom --vision --listing-type both --card-mode raw"
       },
       "last_updated": "2026-03-17T01:30:54.623Z",
       "useVision": true
@@ -83,6 +66,7 @@
           "custom",
           "pack",
           "jumbo",
+          "gypsy",
           "replica"
         ]
       },
@@ -92,7 +76,7 @@
         "timestamp": "2026-03-21T11:17:50.837Z",
         "success": true
       },
-      "last_updated": "2026-03-20T18:34:48.472Z",
+      "last_updated": "2026-03-21T15:45:07.693Z",
       "useVision": true
     },
     "wednesday": {
@@ -131,7 +115,7 @@
       ],
       "filters": {
         "topN": 20,
-        "minPrice": 25,
+        "minPrice": 0,
         "maxPrice": null,
         "exclude_words": [
           "custom",
@@ -147,14 +131,14 @@
         "timestamp": "2026-03-21T11:25:47.825Z",
         "success": true
       },
-      "last_updated": "2026-03-21T11:25:41.916Z",
+      "last_updated": "2026-03-21T15:52:55.253Z",
       "useVision": true
     },
     "friday": {
-      "name": "Dwyane Wade Refractor",
+      "name": "Cooper Flagg",
       "enabled": true,
       "search_terms": [
-        "Dwyane Wade Refractor 2003"
+        "Cooper Flagg 2025 BGS 9.5"
       ],
       "filters": {
         "topN": 20,
@@ -168,12 +152,12 @@
         "minPrice": 10
       },
       "output_file": "/tmp/topps-refractors-multi-scan.json",
-      "last_run": "2026-03-21T11:18:23.907Z",
+      "last_run": "2026-03-21T16:40:38.203Z",
       "last_results": {
-        "timestamp": "2026-03-21T11:18:23.908Z",
+        "timestamp": "2026-03-21T16:40:38.204Z",
         "success": true
       },
-      "last_updated": "2026-03-21T11:07:15.780Z",
+      "last_updated": "2026-03-21T16:40:31.982Z",
       "useVision": true
     },
     "saturday": {
@@ -199,19 +183,19 @@
         ]
       },
       "output_file": "/tmp/mj-base-scan.json",
-      "last_run": "2026-03-21T11:19:46.909Z",
+      "last_run": "2026-03-21T13:01:45.185Z",
       "last_results": {
-        "timestamp": "2026-03-21T11:19:46.909Z",
+        "timestamp": "2026-03-21T13:01:45.185Z",
         "success": true
       },
       "last_updated": "2026-03-20T20:17:34.016Z",
       "useVision": true
     },
     "sunday": {
-      "name": "Barry Sanders",
+      "name": "Victor Wembanyama",
       "enabled": true,
       "search_terms": [
-        "Barry Sanders 1994"
+        "Victor Wembanyama auto"
       ],
       "filters": {
         "topN": 20,
@@ -230,7 +214,7 @@
         "timestamp": "2026-03-21T11:19:57.796Z",
         "success": true
       },
-      "last_updated": "2026-03-20T18:30:41.416Z",
+      "last_updated": "2026-03-21T15:57:09.181Z",
       "useVision": true
     }
   },
