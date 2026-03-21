@@ -84,7 +84,7 @@ function sendResultsEmail(outputFile, day, scanName) {
     const emailScript = path.join(__dirname, '..', 'lib', 'send-email.js');
     const { execSync } = require('child_process');
     
-    execSync(`node ${emailScript} --to "terryhuangjr@gmail.com" --subject "${subject}" --body "${html.replace(/"/g, '\\"')}" --html`, {
+    execSync(`node ${emailScript} --to "terryhuangjr@gmail.com" --subject "${subject}" --body "${html.replace(/"/g, '\\"').replace(/\$/g, '\\$')}" --html`, {
       timeout: 30000
     });
     
@@ -126,7 +126,7 @@ async function runScan(day) {
   console.log('');
 
   // Build command
-  const terms = scan.search_terms.join(', ');  // Use commas for multi-search splitting
+  const terms = scan.search_terms.join(', ');  // Comma-separated for smart query parser
   const minPrice = scan.filters.minPrice || '';
   const maxPrice = scan.filters.maxPrice || '';
   const topN = scan.filters.topN || 20;

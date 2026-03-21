@@ -182,6 +182,19 @@ Saved to config and applied to all scans.
 
 ---
 
+## Future Features (Customer UI)
+
+### Deal Mode vs Browse Mode
+- **Deal Mode (default)**: Only show items scoring >= 7.0
+- **Browse Mode**: Show all items regardless of score (for customers who just want to see what's available)
+- Could be a toggle per scan in the dashboard
+
+### Per-Scan Customization
+- Custom minScore threshold
+- Toggle between deal-focused vs browse-focused searches
+
+---
+
 ## API Keys Required
 
 | Service | Location |

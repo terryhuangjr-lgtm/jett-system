@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "last_updated": "2026-03-20T13:19:57.176Z",
+  "last_updated": "2026-03-21T11:25:41.919Z",
   "global_filters": {
     "graded_keywords": [
       "psa",
@@ -59,9 +59,9 @@
         ]
       },
       "output_file": "/tmp/mj-finest-scan.json",
-      "last_run": "2026-03-17T00:23:09.532Z",
+      "last_run": "2026-03-21T11:17:33.062Z",
       "last_results": {
-        "timestamp": "2026-03-17T00:23:09.533Z",
+        "timestamp": "2026-03-21T11:17:33.063Z",
         "success": true
       },
       "last_updated": "2026-03-17T01:30:54.623Z",
@@ -71,8 +71,7 @@
       "name": "Ronald Acuna",
       "enabled": true,
       "search_terms": [
-        "Ronald Acuna Gold Refractors 2019-2021",
-        "Ronald Acuna Auto 2019-2021"
+        "Ronald Acuna Gold Refractor /50 2019-2021"
       ],
       "filters": {
         "topN": 20,
@@ -88,12 +87,12 @@
         ]
       },
       "output_file": "/tmp/griffey-refractors-scan.json",
-      "last_run": "2026-03-17T13:01:19.418Z",
+      "last_run": "2026-03-21T11:17:50.836Z",
       "last_results": {
-        "timestamp": "2026-03-17T13:01:19.418Z",
+        "timestamp": "2026-03-21T11:17:50.837Z",
         "success": true
       },
-      "last_updated": "2026-03-20T13:19:57.170Z",
+      "last_updated": "2026-03-20T18:34:48.472Z",
       "useVision": true
     },
     "wednesday": {
@@ -116,81 +115,72 @@
         "maxPrice": null
       },
       "output_file": "/tmp/kobe-refractors-scan.json",
-      "last_run": "2026-03-18T13:00:23.035Z",
+      "last_run": "2026-03-21T11:18:09.316Z",
       "last_results": {
-        "timestamp": "2026-03-18T13:00:23.035Z",
+        "timestamp": "2026-03-21T11:18:09.316Z",
         "success": true
       },
       "last_updated": "2026-03-18T02:13:06.591Z",
       "useVision": true
     },
     "thursday": {
-      "name": "MJ Upper Deck 96-00",
+      "name": "Kaboom",
       "enabled": true,
       "search_terms": [
-        "upper deck michael jordan 1994-1999"
+        "Panini Kaboom 2014-2020"
       ],
       "filters": {
         "topN": 20,
-        "minPrice": 5,
-        "maxPrice": 100,
+        "minPrice": 25,
+        "maxPrice": null,
         "exclude_words": [
-          "pokemon",
-          "magic",
-          "yugioh",
-          "jumbo",
           "custom",
-          "reprint",
-          "size"
+          "fan",
+          "made",
+          "pack",
+          "chase"
         ]
       },
       "output_file": "/tmp/mj-upperdeck-scan.json",
-      "last_run": "2026-03-19T13:52:43.671Z",
+      "last_run": "2026-03-21T11:25:47.825Z",
       "last_results": {
-        "timestamp": "2026-03-19T13:52:43.672Z",
+        "timestamp": "2026-03-21T11:25:47.825Z",
         "success": true
       },
-      "last_updated": "2026-03-19T13:51:15.890Z",
+      "last_updated": "2026-03-21T11:25:41.916Z",
       "useVision": true
     },
     "friday": {
-      "name": "Multi: hakeem/charles barkley/Dirk/Iverson",
+      "name": "Dwyane Wade Refractor",
       "enabled": true,
       "search_terms": [
-        "hakeem olojuwon topps refractor",
-        "1994-1999",
-        "charles barkley topps refractor",
-        "1994-1999",
-        "dirk nowitzki topps refractor",
-        "1994-1999",
-        "allen iverson topps refractor",
-        "1994-1999"
+        "Dwyane Wade Refractor 2003"
       ],
       "filters": {
         "topN": 20,
-        "maxPrice": 600,
+        "maxPrice": 2000,
         "exclude_words": [
           "jumbo",
           "holo",
           "prizm",
           "mystery"
         ],
-        "minPrice": 15
+        "minPrice": 10
       },
       "output_file": "/tmp/topps-refractors-multi-scan.json",
-      "last_run": "2026-03-17T01:41:09.876Z",
+      "last_run": "2026-03-21T11:18:23.907Z",
       "last_results": {
-        "timestamp": "2026-03-17T01:41:09.876Z",
+        "timestamp": "2026-03-21T11:18:23.908Z",
         "success": true
       },
-      "last_updated": "2026-03-18T02:15:24.150Z",
+      "last_updated": "2026-03-21T11:07:15.780Z",
       "useVision": true
     },
     "saturday": {
       "name": "Gold Refractors",
       "enabled": true,
       "search_terms": [
-        "gold refractor 1996-2003"
+        "gold refractor 1996-2001"
       ],
       "filters": {
         "topN": 20,
@@ -209,38 +199,38 @@
         ]
       },
       "output_file": "/tmp/mj-base-scan.json",
-      "last_run": "2026-03-14T13:00:24.825Z",
+      "last_run": "2026-03-21T11:19:46.909Z",
       "last_results": {
-        "timestamp": "2026-03-14T13:00:24.826Z",
+        "timestamp": "2026-03-21T11:19:46.909Z",
         "success": true
       },
-      "last_updated": "2026-03-18T02:16:37.218Z",
+      "last_updated": "2026-03-20T20:17:34.016Z",
       "useVision": true
     },
     "sunday": {
       "name": "Barry Sanders",
       "enabled": true,
       "search_terms": [
-        "1994 Skybox Barry Sanders",
-        "1994-1999 Barry Sanders Finest"
+        "Barry Sanders 1994"
       ],
       "filters": {
         "topN": 20,
         "exclude_words": [
-          "bowman",
           "draft picks",
-          "leaf"
+          "leaf",
+          "jumbo",
+          "replica"
         ],
         "minPrice": 0,
         "maxPrice": null
       },
       "output_file": "/tmp/cam-ward-scan.json",
-      "last_run": "2026-03-19T18:15:04.108Z",
+      "last_run": "2026-03-21T11:19:57.796Z",
       "last_results": {
-        "timestamp": "2026-03-19T18:15:04.109Z",
+        "timestamp": "2026-03-21T11:19:57.796Z",
         "success": true
       },
-      "last_updated": "2026-03-19T20:37:24.143Z",
+      "last_updated": "2026-03-20T18:30:41.416Z",
       "useVision": true
     }
   },

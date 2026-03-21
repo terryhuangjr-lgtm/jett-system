@@ -166,6 +166,25 @@ async function sendTelegram(message) {
     return true;
   } catch(e) {
     logError(`Telegram failed: ${e.message}`);
+    // Fallback to email
+    return await sendEmailFallback(message);
+  }
+}
+
+async function sendEmailFallback(message) {
+  const emailScript = '/home/clawd/clawd/lib/send-email.js';
+  const subject = 'Watchlist Alert';
+  const cleanMessage = message.replace(/[*_]/g, '').replace(/📈|📉/g, '');
+  
+  try {
+    const { execSync } = require('child_process');
+    execSync(`node ${emailScript} --to "terryhuangjr@gmail.com" --subject "${subject}" --body "${cleanMessage}"`, {
+      timeout: 30000
+    });
+    log('Email fallback sent successfully');
+    return true;
+  } catch(e) {
+    logError(`Email fallback also failed: ${e.message}`);
     return false;
   }
 }
@@ -239,8 +258,12 @@ async function main() {
         `Change: ${pctStr} today\n` +
         `Threshold: ±${alerts.daily_gain_pct || 5}%`;
 
-      await sendTelegram(msg);
-      log(`${symbol}: ALERT SENT - ${pctStr}`);
+      const sent = await sendTelegram(msg);
+      if (sent) {
+        log(`${symbol}: ALERT SENT - ${pctStr}`);
+      } else {
+        logError(`FAILED to send alert for ${symbol}`);
+      }
     }
   }
   

@@ -642,6 +642,27 @@ class TaskServer {
       }
     }
     
+    // Run scan: POST /api/ebay-scans/{day}/run
+    const ebayScanRunMatch = pathname.match(/^\/api\/ebay-scans\/(\w+)\/run$/);
+    if (ebayScanRunMatch && req.method === 'POST') {
+      const day = ebayScanRunMatch[1].toLowerCase();
+      const validDays = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];
+      if (!validDays.includes(day)) {
+        return this.sendJSON(res, { success: false, error: 'Invalid day' });
+      }
+      try {
+        const { execSync } = require('child_process');
+        const output = execSync(`node /home/clawd/clawd/ebay-scanner/run-from-config.js ${day}`, {
+          encoding: 'utf8',
+          timeout: 300000,
+          cwd: '/home/clawd/clawd/ebay-scanner'
+        });
+        return this.sendJSON(res, { success: true, output: output.slice(-1000) });
+      } catch (e) {
+        return this.sendJSON(res, { success: false, error: e.message, output: e.stdout?.slice(-500) });
+      }
+    }
+
     if (pathname === '/api/ebay-deploy' && req.method === 'POST') {
       return this.sendJSON(res, { message: 'Deploy triggered', success: true });
     }

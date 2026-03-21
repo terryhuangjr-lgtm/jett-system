@@ -338,7 +338,7 @@ cd /home/clawd/clawd/ebay-scanner && node run-from-config.js [day]
 ```
 
 **Scripts:**
-- `automation/jett-watchlist-check.js` — Deterministic price checker. Runs via crontab every 15 min (6AM-8PM M-F). Fetches live Yahoo Finance prices, compares to previous close, fires Telegram alert ONLY when thresholds breach. Zero token cost unless alert fires.
+- `automation/jett-watchlist-check.js` — Deterministic price checker. Runs via crontab every 15 min (6AM-8PM M-F). Fetches live Yahoo Finance prices, compares to previous close, fires Telegram alert ONLY when thresholds breach. Zero token cost unless alert fires. Falls back to email if Telegram fails.
 - `automation/watchlist-dashboard.py` — Flask web dashboard (port 5002) for managing tickers. Access via Mission Control > Watchlist tab or directly at `/watchlist`
 - **Dashboard:** http://localhost:5002 (local) or http://jettmissioncontrol.com/watchlist (tunnel)
 - **Cron:** System crontab (not clawdbot) — `*/15 6-20 * * 1-5`
