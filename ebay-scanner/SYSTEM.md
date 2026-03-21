@@ -90,29 +90,48 @@ node run-from-config.js monday --vision
 
 ### 1. Vision Filter (Claude Haiku)
 Analyzes card images to detect:
-- Centering issues
-- Corners/edges damage
-- Surface scratches
-- Overall condition score
+- Centering issues (50% weight)
+- Corners/edges damage (50% weight)
+- Surface scratches (IGNORED - always neutral)
+- Overall condition score with confidence multiplier
+
+**Confidence Multiplier:**
+- High: 1.0x
+- Medium: 0.85x
+- Low: 0.7x
 
 **Usage:**
 ```bash
 node run-from-config.js monday --vision
 ```
 
-**API:**
-```javascript
-const vision = require('./vision-filter.js');
-const score = await vision.analyzeImage(imageUrl);
-```
+### 2. Deal Scoring System (deal-scorer-v2.js)
 
-### 2. Run Scan Now Button
+**Weights:**
+- Search Relevance: 40% (player/year/brand match)
+- Seller Quality: 20% (feedback % + sales count)
+- Listing Quality: 15% (photos + premium condition signals)
+- Listing Freshness: 15% (age of listing)
+- Vision Score: 10% (image analysis)
+
+**Freshness Tiers:**
+- <1 day: 10 pts | 1-3 days: 8 pts | 4-7 days: 6 pts | 8-14 days: 4 pts | 15-30 days: 2 pts | 30+ days: 0 pts
+
+**Auto-Reject Rules:**
+- Condition below NM-MT: score 0
+- Relevance < 4 points: score 0 (likely wrong card)
+
+**Premium Signals (listing quality):**
+- Pack fresh: +2.5 | Investment grade: +2 | Gem mint: +2 | Perfect grade: +2
+- Mint condition: +1 | NM-MT: +1 | Well centered: +1 | Clean: +0.5
+
+### 3. Run Scan Now Button
 Located in Mission Control dashboard (eBay tab).
 - Triggers immediate scan for selected day
 - Uses current config settings
 - Sends email on completion
 
-### 3. Global Toggles
+### 4. Global Toggles
 In Mission Control dashboard:
 - **Listing Type**: Filter by BIN/Auction/Both
 - **Card Type**: Filter by Raw/Graded/Both
