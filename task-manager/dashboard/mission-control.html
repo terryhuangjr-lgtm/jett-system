@@ -1490,17 +1490,17 @@ function openGlobalModal() {
             </label>
           </div>
         </div>
-        <div>
+          <div>
           <div class="card-label" style="margin-bottom:6px">CARD TYPE</div>
           <div style="display:flex;flex-direction:column;gap:6px">
             <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:12px;color:var(--text-secondary)">
               <input type="radio" name="cardType" value="raw" id="ct-raw" style="accent-color:var(--accent)"
-                ${(gf.cardMode||'raw')==='raw'?'checked':''}>
+                ${(data.cardMode||'raw')==='raw'?'checked':''}>
               Raw only
             </label>
             <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:12px;color:var(--text-secondary)">
               <input type="radio" name="cardType" value="graded" id="ct-graded" style="accent-color:var(--accent)"
-                ${gf.cardMode==='graded'?'checked':''}>
+                ${data.cardMode==='graded'?'checked':''}>
               Graded only
             </label>
           </div>
