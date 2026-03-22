@@ -29,7 +29,7 @@ function getDayFromArgs() {
   return dayNames[today];
 }
 
-function sendResultsEmail(outputFile, day, scanName, cardMode = 'raw') {
+function sendResultsEmail(outputFile, day, scanName, cardMode = 'raw', listingType = 'both') {
   try {
     if (!fs.existsSync(outputFile)) {
       console.log('No results file to email');
@@ -47,14 +47,15 @@ function sendResultsEmail(outputFile, day, scanName, cardMode = 'raw') {
 
     const dayLabel = day.charAt(0).toUpperCase() + day.slice(1);
     const modeLabel = cardMode === 'graded' ? '[GRADED]' : '[RAW]';
-    const subject = `[${dayLabel}] ${modeLabel} Scan - ${scanName || 'eBay Results'}`;
+    const typeLabel = listingType === 'auction' ? '[AUCTION]' : listingType === 'fixed_price' ? '[BIN]' : '';
+    const subject = `[${dayLabel}] ${modeLabel} ${typeLabel} Scan - ${scanName || 'eBay Results'}`;
 
     let html = `<html><body style="font-family: Arial, sans-serif; font-size: 14px; color: #333;">`;
     html += `<h2 style="color: #1a73e8;">${subject}</h2>`;
     html += `<p>Found ${results.length} total results, showing top ${topResults.length}:</p>`;
     
+    // GRADED MODE
     if (cardMode === 'graded') {
-      // GRADED MODE - Show Grade, Price, Score
       html += `<table style="width: 100%; border-collapse: collapse; font-size: 12px;">`;
       html += `<tr style="background: #f5f5f5;">
         <th style="padding: 8px; text-align: left; border-bottom: 1px solid #ddd;">#</th>
@@ -68,7 +69,8 @@ function sendResultsEmail(outputFile, day, scanName, cardMode = 'raw') {
         const score = item.dealScore?.score || 'N/A';
         const scoreColor = score >= 8 ? '#22c55e' : score >= 7 ? '#f59e0b' : '#ef4444';
         const title = (item.title || '').substring(0, 60) + ((item.title || '').length > 60 ? '...' : '');
-        const price = item.currentPrice !== undefined ? '$' + Number(item.currentPrice).toFixed(2) : (item.totalPrice ? '$' + Number(item.totalPrice).toFixed(2) : 'N/A');
+        const priceValue = (item.currentPrice > 0) ? item.currentPrice : (item.totalPrice || 0);
+        const price = priceValue > 0 ? '$' + priceValue.toFixed(2) : 'N/A';
         
         // Extract grade from title
         const titleLower = (item.title || '').toLowerCase();
@@ -92,8 +94,39 @@ function sendResultsEmail(outputFile, day, scanName, cardMode = 'raw') {
           <td style="padding: 6px 8px; border-bottom: 1px solid #eee; text-align: center; color: ${scoreColor}; font-weight: bold;">${score}</td>
         </tr>`;
       });
-    } else {
-      // RAW MODE - Original format
+    } 
+    // RAW + AUCTION MODE
+    else if (listingType === 'auction') {
+      html += `<table style="width: 100%; border-collapse: collapse; font-size: 12px;">`;
+      html += `<tr style="background: #f5f5f5;">
+        <th style="padding: 8px; text-align: left; border-bottom: 1px solid #ddd;">#</th>
+        <th style="padding: 8px; text-align: left; border-bottom: 1px solid #ddd;">Title</th>
+        <th style="padding: 8px; text-align: right; border-bottom: 1px solid #ddd;">Current Bid</th>
+        <th style="padding: 8px; text-align: center; border-bottom: 1px solid #ddd;">Bids</th>
+        <th style="padding: 8px; text-align: center; border-bottom: 1px solid #ddd;">Score</th>
+      </tr>`;
+
+      topResults.forEach((item, i) => {
+        const score = item.dealScore?.score || 'N/A';
+        const scoreColor = score >= 8 ? '#22c55e' : score >= 7 ? '#f59e0b' : '#ef4444';
+        const title = (item.title || '').substring(0, 60) + ((item.title || '').length > 60 ? '...' : '');
+        const priceValue = item.totalPrice || 0;
+        const currentBid = priceValue > 0 ? '$' + priceValue.toFixed(2) : 'N/A';
+        const bids = item.bidCount || 0;
+        
+        html += `<tr style="${i % 2 === 0 ? 'background: #fff;' : 'background: #fafafa;'}">
+          <td style="padding: 6px 8px; border-bottom: 1px solid #eee;">${i + 1}</td>
+          <td style="padding: 6px 8px; border-bottom: 1px solid #eee;">
+            <a href="${item.viewItemURL || '#'}" style="color: #1a73e8; text-decoration: none;">${title}</a>
+          </td>
+          <td style="padding: 6px 8px; border-bottom: 1px solid #eee; text-align: right; font-weight: bold;">${currentBid}</td>
+          <td style="padding: 6px 8px; border-bottom: 1px solid #eee; text-align: center;">${bids}</td>
+          <td style="padding: 6px 8px; border-bottom: 1px solid #eee; text-align: center; color: ${scoreColor}; font-weight: bold;">${score}</td>
+        </tr>`;
+      });
+    }
+    // RAW + BIN MODE (default)
+    else {
       html += `<table style="width: 100%; border-collapse: collapse; font-size: 12px;">`;
       html += `<tr style="background: #f5f5f5;">
         <th style="padding: 8px; text-align: left; border-bottom: 1px solid #ddd;">#</th>
@@ -106,7 +139,8 @@ function sendResultsEmail(outputFile, day, scanName, cardMode = 'raw') {
         const score = item.dealScore?.score || 'N/A';
         const scoreColor = score >= 8 ? '#22c55e' : score >= 7 ? '#f59e0b' : '#ef4444';
         const title = (item.title || '').substring(0, 80) + ((item.title || '').length > 80 ? '...' : '');
-        const price = item.currentPrice !== undefined ? '$' + Number(item.currentPrice).toFixed(2) : (item.totalPrice ? '$' + Number(item.totalPrice).toFixed(2) : 'N/A');
+        const priceValue = item.currentPrice || 0;
+        const price = priceValue > 0 ? '$' + priceValue.toFixed(2) : 'N/A';
         
         html += `<tr style="${i % 2 === 0 ? 'background: #fff;' : 'background: #fafafa;'}">
           <td style="padding: 6px 8px; border-bottom: 1px solid #eee;">${i + 1}</td>
@@ -204,7 +238,7 @@ async function runScan(day) {
     console.log(`Results saved to: ${outputFile}`);
 
     // Send email with results
-    sendResultsEmail(outputFile, day, scan.name, cardMode);
+    sendResultsEmail(outputFile, day, scan.name, cardMode, listingType);
 
   } catch (error) {
     console.error(`\n❌ ${day} scan failed: ${error.message}`);
