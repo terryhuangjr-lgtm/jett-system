@@ -13,9 +13,9 @@ class DealScorerGraded {
     this.searchKeywords = searchKeywords.toLowerCase();
     this.weights = {
       sellerQuality: 0.25,      // 25% - Trust matters more for slabs
-      searchRelevance: 0.40,   // 40% - Does it match what you want?
-      gradeMatch: 0.25,         // 25% - Grade accuracy (PSA 10 vs 9)
-      listingFreshness: 0.10   // 10% - Age matters (many slabs don't have dates)
+      searchRelevance: 0.25,   // 25% - Baseline (user search handles player)
+      gradeMatch: 0.35,         // 35% - Grade is key for slabs
+      listingFreshness: 0.15   // 15% - Age matters
       // NO vision weight - not applicable for graded
     };
   }
@@ -177,44 +177,21 @@ class DealScorerGraded {
 
   /**
    * Search Relevance (40% weight)
+   * For graded cards - user already specified player in search
+   * Just verify year matches and give baseline points
    */
   scoreSearchRelevance(item) {
     const title = (item.title || '').toLowerCase();
     const search = this.searchKeywords;
 
-    let points = 0;
+    let points = 7; // Default to good relevance - user search already filtered
     let matches = [];
 
     if (!search || search.trim() === '') {
       return { points: 5, maxPoints: 10, matches: [], reason: 'No search keywords' };
     }
 
-    // Player name matching
-    const playerPatterns = [
-      // Basketball
-      'michael jordan', 'mike jordan', 'jordan',
-      'kobe bryant', 'kobe',
-      'lebron james', 'lebron',
-      // Baseball
-      'ronald acuna', 'acuna',
-      'mike trout', 'trout',
-      'shohei ohtani', 'ohtani',
-      'aaron judge', 'judge',
-      'mookie betts', 'betts',
-      'juan soto', 'soto',
-      'freddie freeman', 'freeman',
-      'manny machado', 'machado'
-    ];
-
-    for (const player of playerPatterns) {
-      if (search.includes(player) && title.includes(player)) {
-        points += 3;
-        matches.push(`Player: ${player}`);
-        break;
-      }
-    }
-
-    // Year matching
+    // Year matching - bonus if year matches
     const yearMatch = search.match(/19[89]\d|20[0-2]\d/);
     if (yearMatch) {
       if (title.includes(yearMatch[0])) {
