@@ -146,3 +146,14 @@ When spawning or acting as a subagent (especially with kimi-k2.5:cloud):
 3. **Output final answer only after reflection.**
 4. **For research/lead gen/podcast/21M:** list sources, check contradictions, cite reasoning.
 5. **For eBay tasks:** double-check filters, vision score, relevance before finalizing.
+
+---
+
+## Subagent Tool Use Rules
+
+When a task requires external data or checks:
+- You can call tools via clawdbot commands.
+- Example: To re-check eBay filters: "run bash: clawdbot message send --channel telegram --target '5867308866' --message 'Check raw filter status'"
+- To get current time: use system time.
+- To search memory: ask main Jett "recall [topic]".
+- Always prefer tool calls when uncertain.
