@@ -138,11 +138,11 @@ class EbayBrowseAPI {
         filters.push(priceFilter);
       }
 
-      // Listing type filter
+      // Listing type filter - eBay API requires curly braces format
       if (listingType === 'fixed_price') {
-        filters.push('buyingOptions:FIXED_PRICE');
+        filters.push('buyingOptions:{FIXED_PRICE}');
       } else if (listingType === 'auction') {
-        filters.push('buyingOptions:AUCTION');
+        filters.push('buyingOptions:{AUCTION}');
       }
       // If 'both' - no filter needed
 
@@ -154,6 +154,8 @@ class EbayBrowseAPI {
       // Build search path
       const searchPath = `/buy/browse/v1/item_summary/search?q=${encodeURIComponent(query)}&limit=${limit}`;
       const filterParam = filters.length > 0 ? `&filter=${encodeURIComponent(filters.join(','))}` : '';
+      
+
 
       return new Promise((resolve, reject) => {
         const options = {
