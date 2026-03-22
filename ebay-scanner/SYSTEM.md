@@ -105,7 +105,23 @@ Analyzes card images to detect:
 node run-from-config.js monday --vision
 ```
 
-### 2. Deal Scoring System (deal-scorer-v2.js)
+### 2. Raw vs Graded Modes
+
+**cardMode: "raw"** (default)
+- Scorer: deal-scorer-v2.js
+- Vision: ON (analyzes corners + centering)
+- Email columns: Title | Price | Score
+- Excludes: PSA, BGS, SGC, graded, slab
+
+**cardMode: "graded"**
+- Scorer: deal-scorer-graded.js
+- Vision: OFF (slabs can't be visually assessed)
+- Email columns: Title | Grade | Price | Score
+- No exclusions (shows all graded cards)
+
+Set via `cardMode` in config or dashboard toggle.
+
+### 3. Deal Scoring (Raw Mode - deal-scorer-v2.js)
 
 **Weights:**
 - Search Relevance: 40% (player/year/brand match)
@@ -125,7 +141,19 @@ node run-from-config.js monday --vision
 - Pack fresh: +2.5 | Investment grade: +2 | Gem mint: +2 | Perfect grade: +2
 - Mint condition: +1 | NM-MT: +1 | Well centered: +1 | Clean: +0.5
 
-### 3. Run Scan Now Button
+### 4. Deal Scoring (Graded Mode - deal-scorer-graded.js)
+
+**Weights:**
+- Search Relevance: 25% (user search handles player)
+- Seller Quality: 25% (trust matters more for slabs)
+- Grade Match: 35% (PSA 10/9/8 vs lower)
+- Listing Freshness: 15%
+
+**Grade Scoring:**
+- PSA 10: 10 pts | PSA 9: 8 pts | PSA 8: 6 pts | PSA 7: 4 pts
+- BGS 10: 10 pts | BGS 9.5: 9 pts | BGS 9: 7 pts
+
+### 5. Run Scan Now Button
 Located in Mission Control dashboard (eBay tab).
 - Triggers immediate scan for selected day
 - Uses current config settings
@@ -211,6 +239,13 @@ Saved to config and applied to all scans.
 ### Per-Scan Customization
 - Custom minScore threshold
 - Toggle between deal-focused vs browse-focused searches
+
+### Market Comps for Graded Cards
+- Replace "Score" with "vs. Market" - compare listing to recent sold comps
+- Fetch sold listings from eBay (completed listings API)
+- If listing $200 and avg sold $300 = "33% below market" ✅
+- If listing $400 and avg sold $300 = "33% above market" ❌
+- This gives the "deal" scoring real market data to compare against
 
 ---
 
