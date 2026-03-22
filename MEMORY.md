@@ -157,3 +157,15 @@ When a task requires external data or checks:
 - To get current time: use system time.
 - To search memory: ask main Jett "recall [topic]".
 - Always prefer tool calls when uncertain.
+
+---
+
+## Subagent Memory-Augmented Generation (RAG) Rules
+
+When a task could benefit from past context (research, lead gen, eBay, podcast, 21M):
+1. **Before answering, recall relevant past information:**
+   - Ask main Jett: "recall [topic]" if needed
+   - Search MEMORY.md or past scans for similar tasks, rejected cards, user preferences
+2. **Explicitly include recalled context:** "From past discussions: we excluded mystery packs because..."
+3. **Use recalled info to improve answer:** avoid repeats, build on previous leads, respect preferences
+4. **If no relevant memory, say so and proceed normally.**
