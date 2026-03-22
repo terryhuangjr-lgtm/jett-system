@@ -286,8 +286,8 @@ function generateReport(keywords, items, topN, duration, stats) {
 
   topDeals.forEach((item, i) => {
     const score = item.dealScore;
-    const breakdown = score.breakdown;
-    const cleanRating = score.rating.replace(/[🔥⚡💰✓~⚠️❌]/g, '').trim();
+    const breakdown = score.breakdown || {};
+    const cleanRating = (score.rating || '').replace(/[🔥⚡💰✓~⚠️❌]/g, '').trim();
 
     // Show more title (up to 80 chars), use currentPrice for actual price
     const title = item.title ? item.title.substring(0, 80) + (item.title.length > 80 ? '...' : '') : 'N/A';
@@ -301,19 +301,24 @@ function generateReport(keywords, items, topN, duration, stats) {
 
     if (breakdown.sellerQuality) {
       const sq = breakdown.sellerQuality;
-      const cleanTrust = sq.trust.replace(/[✅⚠️❌]/g, '').trim();
+      const cleanTrust = (sq.trust || '').replace(/[✅⚠️❌]/g, '').trim();
       lines.push(`   - Seller (20%): ${sq.points}/${sq.maxPoints} pts | ${sq.feedback}% feedback, ${sq.salesCount} sales (${cleanTrust})`);
     }
 
     if (breakdown.listingQuality) {
       const lq = breakdown.listingQuality;
       lines.push(`   - Listing (20%): ${lq.points}/${lq.maxPoints} pts`);
-      if (lq.signals.length > 0) {
+      if (lq.signals && lq.signals.length > 0) {
         lines.push(`     Positive: ${lq.signals.join(', ')}`);
       }
-      if (lq.redFlags.length > 0) {
+      if (lq.redFlags && lq.redFlags.length > 0) {
         lines.push(`     Red flags: ${lq.redFlags.join(', ')}`);
       }
+    }
+
+    if (breakdown.gradeMatch) {
+      const gm = breakdown.gradeMatch;
+      lines.push(`   - Grade (25%): ${gm.points}/${gm.maxPoints} pts | ${gm.grade || 'N/A'}`);
     }
 
     if (breakdown.searchRelevance) {
