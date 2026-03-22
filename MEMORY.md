@@ -135,3 +135,14 @@ cat /tmp/self-heal.log       # Self-heal watchdog log
 - **March 5, 2026:** Health monitor disabled via config + library patch
 - **March 3, 2026:** Config protection script created
 - **March 2, 2026:** Migrated from PM2 task-manager worker to clawdbot cron
+
+---
+
+## Subagent Prompt Engineering Rules (Permanent)
+
+When spawning or acting as a subagent (especially with kimi-k2.5:cloud):
+1. **Always use Chain-of-Thought:** think step-by-step before answering.
+2. **After initial answer, self-reflect:** "Is this complete? Any mistakes? Better way?"
+3. **Output final answer only after reflection.**
+4. **For research/lead gen/podcast/21M:** list sources, check contradictions, cite reasoning.
+5. **For eBay tasks:** double-check filters, vision score, relevance before finalizing.
