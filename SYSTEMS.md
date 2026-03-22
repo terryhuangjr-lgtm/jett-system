@@ -70,15 +70,22 @@ Last Updated: 2026-03-17
 
 | Attribute | Value |
 |-----------|-------|
-| Process | `task-manager-server` (PM2) |
+| Process | `server.js` via `start.sh` |
 | Port | 3000 |
-| PID | 445 |
-| Auto-start | Via `pm2 resurrect` on reboot |
+| Auto-start | Via systemd service or `./start.sh` |
+| **CRITICAL** | Must export PATH with NVM node - see `start.sh` |
 
 **Responsibilities:**
 - Web dashboard showing cron jobs
 - Reads from clawdbot cron API
 - Health check display
+
+**Start command:**
+```bash
+cd /home/clawd/clawd/task-manager && ./start.sh
+```
+
+**NOTE:** The `start.sh` script exports PATH to include NVM node. This is required for clawdbot cron commands to work properly (requires Node v22+).
 
 **API Endpoints:**
 - `GET /api/tasks` - List all cron jobs (from clawdbot)
@@ -139,6 +146,18 @@ Last Updated: 2026-03-17
 
 ## Scheduling Systems
 
+**System Crontab** (token-free, runs directly):
+- Gateway Ping, PM2 Monitor, Watchlist Monitor
+- Finance Monitor (AM/Midday/PM weekdays)
+- Performance Check, Patch OpenClaw
+
+**Clawdbot Cron** (uses LLM tokens):
+- eBay Scans (all 7 days)
+- Bitcoin Tweet, Sports Tweet
+- Morning Family Brief, Weekly Summary
+- Backup, Log Rotate
+- Lead Generator, Podcast Queue, Research
+
 ### Primary: Clawdbot Cron
 
 **Command:** `clawdbot cron list`
@@ -153,13 +172,13 @@ Last Updated: 2026-03-17
 | 8caf62e2 | Sports Tweet | 30 7 * * * | node 21m-daily-generator-v2.js --type sports --email |
 | de3f5203 | Morning Family Brief | 0 8 * * * | python3 morning_brief.py --post |
 | 7da794a0 | Podcast Queue Nightly | 0 4 * * * | python3 process_queue_nightly.py |
-| 34f4d211 | eBay Scan Monday | 0 9 * * 1 | node run-from-config.js monday |
-| cb846aad | eBay Scan Tuesday | 0 9 * * 2 | node run-from-config.js tuesday |
-| cf2665e4 | eBay Scan Wednesday | 0 9 * * 3 | node run-from-config.js wednesday |
-| ccedb5e5 | eBay Scan Thursday | 0 9 * * 4 | node run-from-config.js thursday |
-| 07ceb4b8 | eBay Scan Friday | 0 9 * * 5 | node run-from-config.js friday |
-| 9b58aa01 | eBay Scan Saturday | 0 9 * * 6 | node run-from-config.js saturday |
-| 6e1b794f | eBay Scan Sunday | 0 9 * * 0 | node run-from-config.js sunday |
+| 34f4d211 | eBay Scan Monday | 0 9 * * 1 | run bash: node run-from-config.js monday |
+| cb846aad | eBay Scan Tuesday | 0 9 * * 2 | run bash: node run-from-config.js tuesday |
+| cf2665e4 | eBay Scan Wednesday | 0 9 * * 3 | run bash: node run-from-config.js wednesday |
+| ccedb5e5 | eBay Scan Thursday | 0 9 * * 4 | run bash: node run-from-config.js thursday |
+| 07ceb4b8 | eBay Scan Friday | 0 9 * * 5 | run bash: node run-from-config.js friday |
+| 9b58aa01 | eBay Scan Saturday | 0 9 * * 6 | run bash: node run-from-config.js saturday |
+| 6e1b794f | eBay Scan Sunday | 0 9 * * 0 | run bash: node run-from-config.js sunday |
 
 ---
 
