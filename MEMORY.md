@@ -169,3 +169,16 @@ When a task could benefit from past context (research, lead gen, eBay, podcast, 
 2. **Explicitly include recalled context:** "From past discussions: we excluded mystery packs because..."
 3. **Use recalled info to improve answer:** avoid repeats, build on previous leads, respect preferences
 4. **If no relevant memory, say so and proceed normally.**
+
+---
+
+## Multi-Agent Collaboration Rules
+
+For complex tasks (research, lead gen, 21M content, podcast summaries, eBay analysis):
+- **You can spawn multiple subagents in parallel:**
+  - **Researcher:** gathers data, facts, sources
+  - **Critic:** reviews, finds errors, suggests improvements
+  - **Summarizer:** combines into final answer
+- **Example prompt:** "spawn a researcher subagent to find data, then a critic to review, then summarize"
+- **Coordinate:** Researcher answers first, Critic comments, Summarizer finalizes.
+- **Keep it to 2–3 agents max** for speed.
