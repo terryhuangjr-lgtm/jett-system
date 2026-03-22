@@ -126,6 +126,7 @@ Last Updated: 2026-03-17
 | `/card/*` | Port 5000 | Card detail pages |
 | `/podcast` | Port 5001 | Podcast summarizer |
 | `/watchlist` | Port 5002 | Watchlist dashboard |
+| `/sienna` | Port 3000 | Sienna Lesson Launcher (AI learning for kids) |
 
 **Local ports:**
 | Port | Service |
@@ -249,6 +250,9 @@ node automation/jett-community-pulse.js "NIL deals college football"
 - Global filters: listing_type (BIN/Auction/Both), card_type (Raw/Graded/Both)
 - Run Scan Now button in Mission Control dashboard
 - Results stored in `ebay-scanner/results/` (gitignored)
+
+**⚠️ Known Limitations:**
+- **Auction prices are stale:** eBay Browse API only returns starting bid, not real-time current bids. Auction prices shown are from scan time. For now, auction prices display as "N/A" in emails. (March 2026)
 
 **Cron (deterministic - no LLM):**
 ```bash

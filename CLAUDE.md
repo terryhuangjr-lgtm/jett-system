@@ -1,5 +1,5 @@
 # CLAUDE.md - Jett System Standing Orders
-Last Updated: 2026-03-17
+Last Updated: 2026-03-22
 
 READ THIS ENTIRE FILE BEFORE TOUCHING ANYTHING.
 
@@ -880,4 +880,40 @@ gws calendar events list --params '{"calendarId": "primary", "timeMin": "2026-03
 - ✅ Phase 4: Messaging → Telegram
 - ⏳ Phase 5: Remove Slack (deferred to tomorrow)
 - ⏳ Phase 6: Lead gen to Sheets (future)
+
+---
+
+## SIENNA LESSON LAUNCHER
+
+**Live at:** `jettmissioncontrol.com/sienna`
+
+A Claude-powered at-home learning activity generator for Sienna (age 3).
+Built directly into the Task Manager server — no separate port or service.
+
+**How it works:**
+- Frontend: `/home/clawd/clawd/task-manager/dashboard/sienna.html`
+- Session history: `/home/clawd/clawd/task-manager/dashboard/sienna-sessions.json`
+- API routes: `/api/sienna/generate` and `/api/sienna/history` in `server.js`
+- Model: `claude-haiku-4-5-20251001` (fast, cheap, perfect for this use case)
+- API key loaded from `/home/clawd/clawd/.env` via `SIENNA_API_KEY` block at top of `server.js`
+
+**Generates 4 activities per session:**
+1. Story — read-aloud themed story with a question at the end
+2. Letters — phonics/letter recognition game, no writing needed
+3. Numbers — counting game using household objects, numbers 1-10
+4. Create — drawing or imaginative play with crayons and paper
+
+**Session history** is saved automatically to `sienna-sessions.json` (last 50 sessions).
+Recent themes are passed back to the API to avoid repeating content.
+
+**Process management note:**
+`server.js` is managed by `systemd` (jett-task-manager.service) only.
+PM2 previously had a conflicting `task-manager-server` process — this was deleted on 2026-03-22.
+Do NOT add server.js back to PM2. If server won't start, check `pm2 list` for ghost processes.
+
+**To restart manually:**
+`sudo systemctl restart jett-task-manager`
+
+**To check logs:**
+`tail -f /home/clawd/clawd/task-manager/logs/server.log`
 
