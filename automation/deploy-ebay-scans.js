@@ -166,7 +166,7 @@ function renderHtmlTemplate(template, data) {
   
   // If no cards, return empty state
   if (!cards || cards.length === 0) {
-    return html.replace(/\{\{TABLE_ROWS\}\}/g, '<tr><td colspan="9" style="padding:40px;text-align:center;color:#64748b;">No results found</td></tr>');
+    return html.replace(/\{\{TABLE_ROWS\}\}/g, '<tr><td colspan="10" style="padding:40px;text-align:center;color:#64748b;">No results found</td></tr>');
   }
   
   // Render table rows
@@ -194,6 +194,19 @@ function renderHtmlTemplate(template, data) {
       scoreBadge = '<span style="background-color: #e2e8f0; color: #64748b; padding: 3px 8px; border-radius: 10px; font-size: 11px; font-weight: 600;">' + score.toFixed(1) + '</span>';
     }
     
+    // Vision score (for raw cards)
+    let vision = '—';
+    if (card.visionCorners !== undefined || card.visionCentering !== undefined) {
+      const corners = card.visionCorners || card.vision?.corners || '—';
+      const center = card.visionCentering || card.vision?.centering || '—';
+      const surface = card.visionSurface || card.vision?.surface || '—';
+      if (corners !== '—' || center !== '—') {
+        vision = `${corners}c / ${center}ctr`;
+      }
+    } else if (card.grade) {
+      vision = card.grade; // For graded cards, show the grade
+    }
+    
     // Seller
     const seller = card.sellerRating ? `${card.sellerRating}%` : '—';
     
@@ -212,11 +225,12 @@ function renderHtmlTemplate(template, data) {
       <td style="padding: 12px 16px; color: #1e293b; font-size: 13px;" title="${(card.title || '').replace(/"/g, '&quot;')}">${title}</td>
       <td style="padding: 12px 16px; text-align: right; color: #059669; font-size: 13px; font-weight: 700;">$${price}</td>
       <td style="padding: 12px 16px; text-align: center;">${scoreBadge}</td>
-      <td style="padding: 12px 16px; text-align: center; color: #64748b; font-size: 12px;">${seller}</td>
+      <td style="padding: 12px 16px; text-align: center; color: #64748b; font-size: 12px;" class="mobile-hide">${vision}</td>
+      <td style="padding: 12px 16px; text-align: center; color: #64748b; font-size: 12px;" class="mobile-hide">${seller}</td>
       <td style="padding: 12px 16px; text-align: center; color: #94a3b8; font-size: 12px;" class="mobile-hide">${age}</td>
       <td style="padding: 12px 16px; text-align: center; color: #94a3b8; font-size: 12px;" class="mobile-hide">${psa9}</td>
       <td style="padding: 12px 16px; text-align: center; color: #94a3b8; font-size: 12px;" class="mobile-hide">${psa10}</td>
-      <td style="padding: 12px 16px; text-align: center;"><a href="${url}" style="color: #1e3a5f; font-size: 12px; font-weight: 600; text-decoration: none;">View &#8594;</a></td>
+      <td style="padding: 12px 16px; text-align: center;"><a href="${url}" style="color: #1e3a5f; font-size: 12px; font-weight: 600; text-decoration: none;">View</a></td>
     </tr>`;
   }).join('\n');
   
@@ -338,7 +352,11 @@ try {
         score: item.dealScore?.score || item.score,
         url: item.viewItemURL || item.url,
         psa9Est: item.psa9Est,
-        psa10Est: item.psa10Est
+        psa10Est: item.psa10Est,
+        grade: item.grade,
+        visionCorners: item.visionCorners,
+        visionCentering: item.visionCentering,
+        visionSurface: item.visionSurface
       })) : []
     };
     success = postToEmailHtml(htmlData, scanName);
