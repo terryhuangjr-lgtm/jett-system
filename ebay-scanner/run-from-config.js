@@ -29,6 +29,71 @@ function getDayFromArgs() {
   return dayNames[today];
 }
 
+// Load HTML template
+function loadHtmlTemplate() {
+  const templatePath = path.join(__dirname, '..', 'templates', 'ebay-scan-email.html');
+  if (fs.existsSync(templatePath)) {
+    return fs.readFileSync(templatePath, 'utf8');
+  }
+  return null;
+}
+
+// Render using new template
+function renderHtmlTemplate(template, data) {
+  let html = template;
+  
+  html = html.replace(/\{\{DATE\}\}/g, data.date || new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }));
+  html = html.replace(/\{\{TOTAL_RESULTS\}\}/g, data.totalResults || data.cards?.length || 0);
+  html = html.replace(/\{\{SCAN_NAME\}\}/g, data.scanName || 'eBay Scan');
+  html = html.replace(/\{\{SEARCH_TERM\}\}/g, data.searchTerm || 'Card Search');
+  
+  const cards = data.cards || [];
+  const highScores = cards.filter(c => {
+    const s = typeof c.score === 'number' ? c.score : parseFloat(c.score) || 0;
+    return s >= 8.0;
+  }).length;
+  const steals = cards.filter(c => {
+    const s = typeof c.score === 'number' ? c.score : parseFloat(c.score) || 0;
+    return s >= 9.0;
+  }).length;
+  
+  html = html.replace(/\{\{HIGH_SCORES\}\}/g, String(highScores));
+  html = html.replace(/\{\{STEALS\}\}/g, String(steals));
+  
+  if (!cards || cards.length === 0) {
+    return html.replace(/\{\{TABLE_ROWS\}\}/g, '<tr><td colspan="10" style="padding:40px;text-align:center;color:#64748b;">No results found</td></tr>');
+  }
+  
+  const topCards = cards.slice(0, 20);
+  const tableRows = topCards.map((card, i) => {
+    const score = typeof card.score === 'number' ? card.score : parseFloat(card.score) || 0;
+    const scoreColor = score >= 8 ? '#22c55e' : score >= 7 ? '#f59e0b' : '#ef4444';
+    const price = card.price ? `$${card.price.toFixed(2)}` : 'N/A';
+    const title = (card.title || '').substring(0, 50) + ((card.title || '').length > 50 ? '...' : '');
+    const seller = card.seller || '-';
+    const age = card.listingAge || '-';
+    const psa9 = card.psa9 || '-';
+    const psa10 = card.psa10 || '-';
+    const vision = card.vision ? (card.vision.grade || card.vision.raw || '✓') : '-';
+    const url = card.url || '#';
+    
+    return `<tr style="${i % 2 === 0 ? 'background: #ffffff;' : 'background: #f8fafc;'}">
+      <td style="padding: 10px 16px; font-size: 12px; color: #64748b;">${i + 1}</td>
+      <td style="padding: 10px 16px; font-size: 13px;"><a href="${url}" style="color: #1e3a5f; text-decoration: none; font-weight: 500;">${title}</a></td>
+      <td style="padding: 10px 16px; text-align: right; font-size: 13px; font-weight: 600; color: #0f172a;">${price}</td>
+      <td style="padding: 10px 16px; text-align: center; font-size: 13px; font-weight: 700; color: ${scoreColor};">${score.toFixed(1)}</td>
+      <td class="mobile-hide" style="padding: 10px 16px; text-align: center; font-size: 12px; color: #64748b;">${vision}</td>
+      <td class="mobile-hide" style="padding: 10px 16px; text-align: center; font-size: 12px; color: #64748b;">${seller}</td>
+      <td class="mobile-hide" style="padding: 10px 16px; text-align: center; font-size: 12px; color: #64748b;">${age}</td>
+      <td class="mobile-hide" style="padding: 10px 16px; text-align: center; font-size: 12px; color: #64748b;">${psa9}</td>
+      <td class="mobile-hide" style="padding: 10px 16px; text-align: center; font-size: 12px; color: #64748b;">${psa10}</td>
+      <td style="padding: 10px 16px; text-align: center;"><a href="${url}" style="display:inline-block;padding:6px 12px;background-color:#1e3a5f;color:#ffffff;text-decoration:none;font-size:11px;border-radius:4px;">View</a></td>
+    </tr>`;
+  }).join('');
+  
+  return html.replace(/\{\{TABLE_ROWS\}\}/g, tableRows);
+}
+
 function sendResultsEmail(outputFile, day, scanName, cardMode = 'raw', listingType = 'both') {
   try {
     if (!fs.existsSync(outputFile)) {
@@ -38,129 +103,46 @@ function sendResultsEmail(outputFile, day, scanName, cardMode = 'raw', listingTy
 
     const data = JSON.parse(fs.readFileSync(outputFile, 'utf8'));
     const results = data.allResults || data.results || [];
-    const topResults = results.slice(0, 20);
 
-    if (topResults.length === 0) {
+    if (results.length === 0) {
       console.log('No results to email');
       return;
     }
+
+    // Transform data for new template format
+    const cards = results.slice(0, 20).map(item => ({
+      title: item.title,
+      price: item.currentPrice || item.totalPrice || 0,
+      score: parseFloat(item.dealScore?.score) || 0,
+      url: item.viewItemURL,
+      seller: item.seller || '-',
+      listingAge: item.listingAge || '-',
+      psa9: item.psa9 || '-',
+      psa10: item.psa10 || '-',
+      vision: item.vision || null
+    }));
 
     const dayLabel = day.charAt(0).toUpperCase() + day.slice(1);
     const modeLabel = cardMode === 'graded' ? '[GRADED]' : '[RAW]';
     const typeLabel = listingType === 'auction' ? '[AUCTION]' : listingType === 'fixed_price' ? '[BIN]' : '';
     const subject = `[${dayLabel}] ${modeLabel} ${typeLabel} Scan - ${scanName || 'eBay Results'}`;
 
-    let html = `<html><body style="font-family: Arial, sans-serif; font-size: 14px; color: #333;">`;
-    html += `<h2 style="color: #1a73e8;">${subject}</h2>`;
-    html += `<p>Found ${results.length} total results, showing top ${topResults.length}:</p>`;
+    // Use new template
+    const template = loadHtmlTemplate();
+    const htmlData = {
+      date: new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }),
+      totalResults: results.length,
+      scanName: scanName || 'eBay Scan',
+      searchTerm: scanName || 'Card Search',
+      cards: cards
+    };
     
-    // GRADED MODE
-    if (cardMode === 'graded') {
-      html += `<table style="width: 100%; border-collapse: collapse; font-size: 12px;">`;
-      html += `<tr style="background: #f5f5f5;">
-        <th style="padding: 8px; text-align: left; border-bottom: 1px solid #ddd;">#</th>
-        <th style="padding: 8px; text-align: left; border-bottom: 1px solid #ddd;">Title</th>
-        <th style="padding: 8px; text-align: center; border-bottom: 1px solid #ddd;">Grade</th>
-        <th style="padding: 8px; text-align: right; border-bottom: 1px solid #ddd;">Price</th>
-        <th style="padding: 8px; text-align: center; border-bottom: 1px solid #ddd;">Score</th>
-      </tr>`;
-
-      topResults.forEach((item, i) => {
-        const score = item.dealScore?.score || 'N/A';
-        const scoreColor = score >= 8 ? '#22c55e' : score >= 7 ? '#f59e0b' : '#ef4444';
-        const title = (item.title || '').substring(0, 60) + ((item.title || '').length > 60 ? '...' : '');
-        const priceValue = (item.currentPrice > 0) ? item.currentPrice : (item.totalPrice || 0);
-        const price = priceValue > 0 ? '$' + priceValue.toFixed(2) : 'N/A';
-        
-        // Extract grade from title
-        const titleLower = (item.title || '').toLowerCase();
-        let grade = '-';
-        if (titleLower.includes('psa 10') || titleLower.includes('psa gem mint')) grade = 'PSA 10';
-        else if (titleLower.includes('psa 9')) grade = 'PSA 9';
-        else if (titleLower.includes('psa 8')) grade = 'PSA 8';
-        else if (titleLower.includes('psa 7')) grade = 'PSA 7';
-        else if (titleLower.includes('bgs 10') || titleLower.includes('bgs gem mint')) grade = 'BGS 10';
-        else if (titleLower.includes('bgs 9.5')) grade = 'BGS 9.5';
-        else if (titleLower.includes('bgs 9')) grade = 'BGS 9';
-        else if (titleLower.includes('sgc 10')) grade = 'SGC 10';
-        
-        html += `<tr style="${i % 2 === 0 ? 'background: #fff;' : 'background: #fafafa;'}">
-          <td style="padding: 6px 8px; border-bottom: 1px solid #eee;">${i + 1}</td>
-          <td style="padding: 6px 8px; border-bottom: 1px solid #eee;">
-            <a href="${item.viewItemURL || '#'}" style="color: #1a73e8; text-decoration: none;">${title}</a>
-          </td>
-          <td style="padding: 6px 8px; border-bottom: 1px solid #eee; text-align: center; font-weight: bold;">${grade}</td>
-          <td style="padding: 6px 8px; border-bottom: 1px solid #eee; text-align: right; font-weight: bold;">${price}</td>
-          <td style="padding: 6px 8px; border-bottom: 1px solid #eee; text-align: center; color: ${scoreColor}; font-weight: bold;">${score}</td>
-        </tr>`;
-      });
-    } 
-    // RAW + AUCTION MODE
-    else if (listingType === 'auction') {
-      html += `<table style="width: 100%; border-collapse: collapse; font-size: 12px;">`;
-      html += `<tr style="background: #f5f5f5;">
-        <th style="padding: 8px; text-align: left; border-bottom: 1px solid #ddd;">#</th>
-        <th style="padding: 8px; text-align: left; border-bottom: 1px solid #ddd;">Title</th>
-        <th style="padding: 8px; text-align: right; border-bottom: 1px solid #ddd;">Current Bid</th>
-        <th style="padding: 8px; text-align: center; border-bottom: 1px solid #ddd;">Bids</th>
-        <th style="padding: 8px; text-align: center; border-bottom: 1px solid #ddd;">Score</th>
-      </tr>`;
-
-      topResults.forEach((item, i) => {
-        const scoreNum = Number(item.dealScore?.score) || 0;
-        const score = item.dealScore?.score || 'N/A';
-        const scoreColor = scoreNum >= 8 ? '#22c55e' : scoreNum >= 7 ? '#f59e0b' : '#ef4444';
-        const title = (item.title || '').substring(0, 60) + ((item.title || '').length > 60 ? '...' : '');
-        const currentBid = 'N/A';
-        const bids = item.bidCount || 0;
-        
-        html += `<tr style="${i % 2 === 0 ? 'background: #fff;' : 'background: #fafafa;'}">
-          <td style="padding: 6px 8px; border-bottom: 1px solid #eee;">${i + 1}</td>
-          <td style="padding: 6px 8px; border-bottom: 1px solid #eee;">
-            <a href="${item.viewItemURL || '#'}" style="color: #1a73e8; text-decoration: none;">${title}</a>
-          </td>
-          <td style="padding: 6px 8px; border-bottom: 1px solid #eee; text-align: right; font-weight: bold;">${currentBid}</td>
-          <td style="padding: 6px 8px; border-bottom: 1px solid #eee; text-align: center;">${bids}</td>
-          <td style="padding: 6px 8px; border-bottom: 1px solid #eee; text-align: center; color: ${scoreColor}; font-weight: bold;">${score}</td>
-        </tr>`;
-      });
-    }
-    // RAW + BIN MODE (default)
-    else {
-      html += `<table style="width: 100%; border-collapse: collapse; font-size: 12px;">`;
-      html += `<tr style="background: #f5f5f5;">
-        <th style="padding: 8px; text-align: left; border-bottom: 1px solid #ddd;">#</th>
-        <th style="padding: 8px; text-align: left; border-bottom: 1px solid #ddd;">Title</th>
-        <th style="padding: 8px; text-align: right; border-bottom: 1px solid #ddd;">Price</th>
-        <th style="padding: 8px; text-align: center; border-bottom: 1px solid #ddd;">Score</th>
-      </tr>`;
-
-      topResults.forEach((item, i) => {
-        const score = item.dealScore?.score || 'N/A';
-        const scoreColor = score >= 8 ? '#22c55e' : score >= 7 ? '#f59e0b' : '#ef4444';
-        const title = (item.title || '').substring(0, 80) + ((item.title || '').length > 80 ? '...' : '');
-        const priceValue = item.currentPrice || 0;
-        const price = priceValue > 0 ? '$' + priceValue.toFixed(2) : 'N/A';
-        
-        html += `<tr style="${i % 2 === 0 ? 'background: #fff;' : 'background: #fafafa;'}">
-          <td style="padding: 6px 8px; border-bottom: 1px solid #eee;">${i + 1}</td>
-          <td style="padding: 6px 8px; border-bottom: 1px solid #eee;">
-            <a href="${item.viewItemURL || '#'}" style="color: #1a73e8; text-decoration: none;">${title}</a>
-          </td>
-          <td style="padding: 6px 8px; border-bottom: 1px solid #eee; text-align: right; font-weight: bold;">${price}</td>
-          <td style="padding: 6px 8px; border-bottom: 1px solid #eee; text-align: center; color: ${scoreColor}; font-weight: bold;">${score}</td>
-        </tr>`;
-      });
-    }
-
-    html += `</table>`;
-    html += `<p style="margin-top: 20px; font-size: 11px; color: #666;">Sent from Jett eBay Scanner (${cardMode} mode)</p>`;
-    html += `</body></html>`;
+    const body = renderHtmlTemplate(template, htmlData);
 
     const emailScript = path.join(__dirname, '..', 'lib', 'send-email.js');
     const { execSync } = require('child_process');
     
-    const escapedHtml = html.replace(/"/g, '\\"').replace(/\$/g, '\\$');
+    const escapedHtml = body.replace(/"/g, '\\"').replace(/\$/g, '\\$');
     execSync(`node ${emailScript} --to "terryhuangjr@gmail.com" --subject "${subject}" --body "${escapedHtml}" --html`, {
       timeout: 30000
     });

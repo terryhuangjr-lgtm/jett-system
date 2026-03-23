@@ -9,6 +9,10 @@ echo "Starting Task Manager..."
 export TZ='America/New_York'
 echo "⏰ Timezone: EST ($(date +%T))"
 
+# CRITICAL: Set PATH to include nvm node (required for clawdbot cron calls)
+export PATH="/home/clawd/.nvm/versions/node/v22.22.0/bin:$PATH"
+echo "📍 PATH: $PATH"
+
 # Use NVM Node v22 (required for clawdbot)
 NODE_BIN="/home/clawd/.nvm/versions/node/v22.22.0/bin/node"
 

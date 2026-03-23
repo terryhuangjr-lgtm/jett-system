@@ -10,6 +10,20 @@ const path = require('path');
 const TaskDatabase = require('./database');
 
 const PORT = 3000;
+// ── SIENNA: load .env for Anthropic key ──────────────────────────
+const _siennaEnv = (() => {
+  const out = {};
+  try {
+    require('fs').readFileSync('/home/clawd/clawd/.env', 'utf8')
+      .split('\n').forEach(line => {
+        const eq = line.indexOf('=');
+        if (eq > 0) out[line.slice(0, eq).trim()] = line.slice(eq + 1).trim();
+      });
+  } catch(e) {}
+  return out;
+})();
+const SIENNA_API_KEY = _siennaEnv['ANTHROPIC_API_KEY'] || process.env.ANTHROPIC_API_KEY || '';
+// ─────────────────────────────────────────────────────────────────
 const db = new TaskDatabase();
 
 class TaskServer {
@@ -67,6 +81,8 @@ class TaskServer {
       return this.serveFile(res, 'dashboard/app.js', 'application/javascript');
     } else if (pathname === '/mission-control' || pathname === '/mission-control.html') {
       return this.serveFile(res, 'dashboard/mission-control.html', 'text/html');
+    } else if (pathname === '/sienna' || pathname === '/sienna.html') {
+      return this.serveFile(res, 'dashboard/sienna.html', 'text/html');
     }
 
     // Proxy routes for iframes
@@ -299,6 +315,125 @@ class TaskServer {
   }
 
   async handleAPI(req, res, pathname, url) {
+    // ── SIENNA LESSON LAUNCHER ──────────────────────────────────────
+    const SIENNA_SESSIONS = path.join(__dirname, 'dashboard', 'sienna-sessions.json');
+
+    if (pathname === '/api/sienna/history' && req.method === 'GET') {
+      try {
+        const raw = await fs.readFile(SIENNA_SESSIONS, 'utf-8').catch(() => '[]');
+        return this.sendJSON(res, JSON.parse(raw).slice(0, 20));
+      } catch(e) {
+        return this.sendJSON(res, []);
+      }
+    }
+
+    if (pathname === '/api/sienna/generate' && req.method === 'POST') {
+      const body = await this.readBodyJSON(req);
+      const { theme, focus } = body;
+      if (!theme) return this.sendJSON(res, { error: 'Theme required' }, 400);
+
+      // Load recent themes to avoid content repeats
+      let recentThemes = [];
+      try {
+        const existing = JSON.parse(await fs.readFile(SIENNA_SESSIONS, 'utf-8').catch(() => '[]'));
+        recentThemes = existing.slice(0, 5).map(s => s.theme);
+      } catch(e) {}
+
+      const focusList = (focus && focus.length) ? focus.join(', ') : 'letters, counting, vocabulary, drawing';
+
+      const prompt = `You are designing a short at-home learning session for Sienna, a 3-year-old girl. She is verbally advanced for her age but just beginning with letters, reading, writing, and numbers. Her parent will do these activities with her at home — no special materials needed beyond what is typically found in a house (crayons, paper, household objects).
+
+Theme: ${theme}
+Learning focus: ${focusList}
+${recentThemes.length > 0 ? `Recent themes used (avoid repeating the same content): ${recentThemes.join(', ')}` : ''}
+
+Generate exactly 4 activities. Respond ONLY with a valid JSON array — no markdown, no explanation, no code fences, just raw JSON starting with [ and ending with ].
+
+Format:
+[
+  {
+    "type": "story",
+    "title": "short catchy title",
+    "description": "2-3 sentences written TO the parent — exactly what to do, say, and ask. Warm, specific, playful.",
+    "learning": "one short phrase: what skill this builds",
+    "tip": "one follow-up question to ask Sienna, or a fun variation to try"
+  }
+]
+
+Activity types — use exactly one of each, in this order:
+1. "story" — A 5-7 sentence read-aloud story themed around ${theme}. Naturally weave in 2-3 simple words tied to the focus areas (e.g. a number, a letter sound, a shape). End with one open question for Sienna.
+2. "letters" — A letter recognition or early phonics activity using ${theme} as the hook. No pencil needed — just pointing, saying sounds, finding letters on objects around the room, or clapping syllables.
+3. "numbers" — A counting or number recognition activity using imagination or household objects tied to ${theme}. Keep numbers between 1 and 10. Make it feel like a game.
+4. "create" — A drawing, tracing (shapes or wavy lines, not letters), or imaginative play activity. Simple enough for a 3-year-old with one crayon and a piece of paper.
+
+Rules: Keep all language simple. Every activity 3-6 minutes. Make it feel like play, not school. Never use the word "worksheet".`;
+
+      try {
+        const https = require('https');
+
+        const apiBody = JSON.stringify({
+          model: 'claude-haiku-4-5-20251001',
+          max_tokens: 1200,
+          messages: [{ role: 'user', content: prompt }]
+        });
+
+        const responseText = await new Promise((resolve, reject) => {
+          const options = {
+            hostname: 'api.anthropic.com',
+            path: '/v1/messages',
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'x-api-key': SIENNA_API_KEY,
+              'anthropic-version': '2023-06-01',
+              'Content-Length': Buffer.byteLength(apiBody)
+            }
+          };
+
+          const apiReq = https.request(options, (apiRes) => {
+            let data = '';
+            apiRes.on('data', chunk => data += chunk);
+            apiRes.on('end', () => resolve(data));
+          });
+          apiReq.on('error', reject);
+          apiReq.setTimeout(30000, () => reject(new Error('Anthropic API timeout')));
+          apiReq.write(apiBody);
+          apiReq.end();
+        });
+
+        const parsed = JSON.parse(responseText);
+        if (parsed.error) throw new Error(parsed.error.message || 'API error');
+
+        const text = (parsed.content || []).map(b => b.text || '').join('');
+        const clean = text.replace(/```json|```/g, '').trim();
+        const activities = JSON.parse(clean);
+
+        const session = {
+          id: Date.now(),
+          theme,
+          focus: focus || [],
+          activities,
+          date: new Date().toISOString()
+        };
+
+        // Save session to history (keep last 50)
+        try {
+          const existing = JSON.parse(await fs.readFile(SIENNA_SESSIONS, 'utf-8').catch(() => '[]'));
+          existing.unshift(session);
+          await fs.writeFile(SIENNA_SESSIONS, JSON.stringify(existing.slice(0, 50), null, 2));
+        } catch(e) {
+          console.error('Sienna: could not save session:', e.message);
+        }
+
+        return this.sendJSON(res, session);
+
+      } catch(e) {
+        console.error('Sienna generate error:', e.message);
+        return this.sendJSON(res, { error: e.message }, 500);
+      }
+    }
+    // ── END SIENNA ──────────────────────────────────────────────────
+
     // GET /api/tasks - read from clawdbot cron list (source of truth)
     if (pathname === '/api/tasks' && req.method === 'GET') {
       try {

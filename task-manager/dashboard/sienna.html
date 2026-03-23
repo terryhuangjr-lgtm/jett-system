@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Sienna's Lesson Launcher ⭐</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sun: #FFB830;
+    --sky: #4EAEE5;
+    --grass: #5DC074;
+    --berry: #E8527A;
+    --lavender: #9B7FD4;
+    --peach: #FF8C5A;
+    --peach-dark: #C85F2A;
+    --cream: #FFFAF3;
+    --ink: #2D2417;
+    --soft: #F5EDD8;
+    --radius: 20px;
+    --shadow: 0 4px 20px rgba(45,36,23,0.10);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--cream);
+    min-height: 100vh;
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(78,174,229,0.12) 1px, transparent 1px);
+    background-size: 28px 28px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 2rem 1.25rem 4rem;
+  }
+
+  /* Back link */
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #8A7560;
+    text-decoration: none;
+    margin-bottom: 1.5rem;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: var(--soft);
+    transition: background 0.15s;
+  }
+  .back-link:hover { background: #EAE0CC; }
+
+  /* Header */
+  .header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    animation: floatIn 0.5s ease both;
+  }
+
+  .header-star {
+    display: inline-block;
+    font-size: 48px;
+    margin-bottom: 0.25rem;
+    animation: spin 10s linear infinite;
+  }
+
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .header h1 {
+    font-family: 'Fredoka One', cursive;
+    font-size: clamp(2rem, 7vw, 2.75rem);
+    color: var(--peach);
+    letter-spacing: 0.5px;
+    line-height: 1.1;
+  }
+
+  .header p {
+    font-size: 14px;
+    color: #8A7560;
+    margin-top: 6px;
+    font-weight: 600;
+  }
+
+  @keyframes floatIn {
+    from { opacity: 0; transform: translateY(-14px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Section labels */
+  .section-label {
+    font-family: 'Fredoka One', cursive;
+    font-size: 17px;
+    color: var(--ink);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  /* Theme grid */
+  .theme-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 8px;
+    margin-bottom: 1.75rem;
+  }
+
+  .theme-btn {
+    background: white;
+    border: 2px solid transparent;
+    border-radius: var(--radius);
+    padding: 12px 8px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    box-shadow: var(--shadow);
+    transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+    font-family: 'Nunito', sans-serif;
+  }
+
+  .theme-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(45,36,23,0.13);
+  }
+
+  .theme-btn.selected {
+    border-color: var(--peach);
+    background: #FFF4EE;
+    transform: translateY(-3px);
+  }
+
+  .theme-emoji { font-size: 28px; }
+  .theme-name { font-size: 12px; font-weight: 700; color: var(--ink); }
+
+  /* Focus chips */
+  .focus-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 1.75rem;
+  }
+
+  .focus-chip {
+    padding: 7px 14px;
+    border-radius: 999px;
+    border: 2px solid #E8DFD0;
+    background: white;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    color: #8A7560;
+    font-family: 'Nunito', sans-serif;
+    transition: all 0.15s;
+  }
+
+  .focus-chip:hover { border-color: var(--sky); color: var(--ink); }
+
+  .focus-chip.selected {
+    background: var(--sky);
+    border-color: var(--sky);
+    color: white;
+  }
+
+  /* Generate button */
+  .gen-btn {
+    width: 100%;
+    padding: 17px;
+    border-radius: var(--radius);
+    background: var(--peach);
+    border: none;
+    color: white;
+    font-family: 'Fredoka One', cursive;
+    font-size: 21px;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    box-shadow: 0 6px 0 var(--peach-dark), var(--shadow);
+    transition: transform 0.1s, box-shadow 0.1s;
+  }
+
+  .gen-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 0 var(--peach-dark), var(--shadow);
+  }
+
+  .gen-btn:active:not(:disabled) {
+    transform: translateY(3px);
+    box-shadow: 0 2px 0 var(--peach-dark);
+  }
+
+  .gen-btn:disabled {
+    background: #D4C9B8;
+    box-shadow: 0 6px 0 #B5A99A;
+    cursor: not-allowed;
+    color: #A89A87;
+  }
+
+  /* Loading */
+  .loading {
+    text-align: center;
+    padding: 3rem 1rem;
+  }
+
+  .loading-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 1rem;
+  }
+
+  .dot {
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    animation: bounce 1s ease infinite;
+  }
+
+  .dot:nth-child(1) { background: var(--peach); animation-delay: 0s; }
+  .dot:nth-child(2) { background: var(--sky); animation-delay: 0.15s; }
+  .dot:nth-child(3) { background: var(--grass); animation-delay: 0.3s; }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-12px); }
+  }
+
+  .loading p {
+    font-family: 'Fredoka One', cursive;
+    font-size: 17px;
+    color: #8A7560;
+  }
+
+  /* Session output */
+  .session-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 2rem 0 1rem;
+  }
+
+  .session-title h2 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 22px;
+    color: var(--ink);
+  }
+
+  .session-badge {
+    background: var(--sun);
+    color: #5C3D00;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 3px 12px;
+    border-radius: 999px;
+  }
+
+  .activities { display: flex; flex-direction: column; gap: 12px; }
+
+  .activity-card {
+    background: white;
+    border-radius: var(--radius);
+    padding: 1.1rem 1.3rem;
+    box-shadow: var(--shadow);
+    border-left: 6px solid var(--sky);
+    animation: slideUp 0.35s ease both;
+  }
+
+  .activity-card.story   { border-left-color: var(--sky); }
+  .activity-card.letters { border-left-color: var(--berry); }
+  .activity-card.numbers { border-left-color: var(--grass); }
+  .activity-card.create  { border-left-color: var(--lavender); }
+
+  .activity-card:nth-child(1) { animation-delay: 0.05s; }
+  .activity-card:nth-child(2) { animation-delay: 0.13s; }
+  .activity-card:nth-child(3) { animation-delay: 0.21s; }
+  .activity-card:nth-child(4) { animation-delay: 0.29s; }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 8px;
+  }
+
+  .card-num {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    font-family: 'Fredoka One', cursive;
+    font-size: 15px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .story   .card-num { background: #DCF0FC; color: #1A6FA8; }
+  .letters .card-num { background: #FCE0E8; color: #A8244A; }
+  .numbers .card-num { background: #DCFAE5; color: #1A7A3C; }
+  .create  .card-num { background: #EDE0FF; color: #5A2DA8; }
+
+  .card-type-badge {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 2px 10px;
+    border-radius: 999px;
+  }
+
+  .story   .card-type-badge { background: #DCF0FC; color: #1A6FA8; }
+  .letters .card-type-badge { background: #FCE0E8; color: #A8244A; }
+  .numbers .card-type-badge { background: #DCFAE5; color: #1A7A3C; }
+  .create  .card-type-badge { background: #EDE0FF; color: #5A2DA8; }
+
+  .card-title {
+    font-family: 'Fredoka One', cursive;
+    font-size: 17px;
+    color: var(--ink);
+    margin-bottom: 5px;
+  }
+
+  .card-desc {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #4A3F31;
+  }
+
+  .card-learning {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 9px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #8A7560;
+  }
+
+  .card-tip {
+    margin-top: 9px;
+    padding: 9px 13px;
+    background: var(--soft);
+    border-radius: 12px;
+    font-size: 13px;
+    color: #6B5C48;
+    font-weight: 600;
+  }
+
+  /* Bottom actions */
+  .bottom-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 1.25rem;
+  }
+
+  .regen-btn, .history-toggle {
+    flex: 1;
+    padding: 12px;
+    border-radius: var(--radius);
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.15s;
+    border: 2px solid #E8DFD0;
+    background: white;
+    color: #6B5C48;
+  }
+
+  .regen-btn:hover, .history-toggle:hover {
+    background: var(--soft);
+    border-color: var(--peach);
+    color: var(--ink);
+  }
+
+  /* History */
+  .history-panel { margin-top: 1.5rem; display: none; }
+  .history-panel.open { display: block; }
+
+  .history-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 11px 15px;
+    background: white;
+    border-radius: 14px;
+    margin-bottom: 8px;
+    box-shadow: 0 2px 8px rgba(45,36,23,0.07);
+  }
+
+  .history-theme { font-weight: 700; font-size: 14px; color: var(--ink); }
+  .history-date { font-size: 12px; color: #A89A87; }
+
+  /* Error */
+  .error-box {
+    background: #FEE8EC;
+    border: 2px solid #F5A0B0;
+    border-radius: 14px;
+    padding: 1rem 1.25rem;
+    color: #7A1A2E;
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 1rem;
+  }
+
+  @media (max-width: 480px) {
+    .theme-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <a href="/" class="back-link">← Mission Control</a>
+
+  <div class="header">
+    <div class="header-star">⭐</div>
+    <h1>Sienna's Lesson Launcher</h1>
+    <p>Pick a theme · choose focus areas · have fun together</p>
+  </div>
+
+  <div class="section-label">🌈 Choose a theme</div>
+  <div class="theme-grid" id="themeGrid">
+    <button class="theme-btn" data-theme="Animals"><span class="theme-emoji">🐾</span><span class="theme-name">Animals</span></button>
+    <button class="theme-btn" data-theme="Space"><span class="theme-emoji">🚀</span><span class="theme-name">Space</span></button>
+    <button class="theme-btn" data-theme="Ocean"><span class="theme-emoji">🌊</span><span class="theme-name">Ocean</span></button>
+    <button class="theme-btn" data-theme="Dinosaurs"><span class="theme-emoji">🦕</span><span class="theme-name">Dinosaurs</span></button>
+    <button class="theme-btn" data-theme="Seasons"><span class="theme-emoji">🍂</span><span class="theme-name">Seasons</span></button>
+    <button class="theme-btn" data-theme="Food"><span class="theme-emoji">🍎</span><span class="theme-name">Food</span></button>
+    <button class="theme-btn" data-theme="Colors"><span class="theme-emoji">🎨</span><span class="theme-name">Colors</span></button>
+    <button class="theme-btn" data-theme="Bugs"><span class="theme-emoji">🐛</span><span class="theme-name">Bugs</span></button>
+    <button class="theme-btn" data-theme="Vehicles"><span class="theme-emoji">🚂</span><span class="theme-name">Vehicles</span></button>
+    <button class="theme-btn" data-theme="Community Helpers"><span class="theme-emoji">👩‍⚕️</span><span class="theme-name">Helpers</span></button>
+    <button class="theme-btn" data-theme="Weather"><span class="theme-emoji">⛅</span><span class="theme-name">Weather</span></button>
+    <button class="theme-btn" data-theme="Fairy Tales"><span class="theme-emoji">🏰</span><span class="theme-name">Fairy Tales</span></button>
+  </div>
+
+  <div class="section-label">🎯 Focus areas</div>
+  <div class="focus-row" id="focusRow">
+    <button class="focus-chip selected" data-focus="letters and early reading">📖 Letters</button>
+    <button class="focus-chip selected" data-focus="counting and numbers 1-10">🔢 Numbers</button>
+    <button class="focus-chip selected" data-focus="drawing shapes and early writing">✏️ Writing</button>
+    <button class="focus-chip selected" data-focus="vocabulary and storytelling">💬 Speech</button>
+    <button class="focus-chip" data-focus="colors and shapes">🔵 Colors &amp; Shapes</button>
+    <button class="focus-chip" data-focus="emotions and feelings">❤️ Emotions</button>
+    <button class="focus-chip" data-focus="movement and body awareness">🤸 Movement</button>
+  </div>
+
+  <button class="gen-btn" id="genBtn" disabled>Pick a theme above!</button>
+
+  <div id="output"></div>
+
+  <div class="bottom-actions" id="bottomActions" style="display:none;">
+    <button class="regen-btn" id="regenBtn">🔄 New session, same theme</button>
+    <button class="history-toggle" id="historyToggle">📚 Past sessions</button>
+  </div>
+
+  <div class="history-panel" id="historyPanel"></div>
+
+</div>
+
+<script>
+  let selectedTheme = null;
+  let selectedFocus = new Set(['letters and early reading','counting and numbers 1-10','drawing shapes and early writing','vocabulary and storytelling']);
+  let historyOpen = false;
+
+  // Theme buttons
+  document.querySelectorAll('.theme-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.theme-btn').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      selectedTheme = btn.dataset.theme;
+      const gb = document.getElementById('genBtn');
+      gb.disabled = false;
+      gb.textContent = '✨ Make "' + selectedTheme + '" Session!';
+    });
+  });
+
+  // Focus chips — always keep at least 1 selected
+  document.querySelectorAll('.focus-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      if (selectedFocus.has(chip.dataset.focus)) {
+        if (selectedFocus.size > 1) {
+          selectedFocus.delete(chip.dataset.focus);
+          chip.classList.remove('selected');
+        }
+      } else {
+        selectedFocus.add(chip.dataset.focus);
+        chip.classList.add('selected');
+      }
+    });
+  });
+
+  document.getElementById('genBtn').addEventListener('click', generateSession);
+
+  async function generateSession() {
+    if (!selectedTheme) return;
+    const output = document.getElementById('output');
+    const bottomActions = document.getElementById('bottomActions');
+    const genBtn = document.getElementById('genBtn');
+
+    genBtn.disabled = true;
+    bottomActions.style.display = 'none';
+    output.innerHTML = `
+      <div class="loading">
+        <div class="loading-dots">
+          <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+        </div>
+        <p>Building Sienna's ${selectedTheme} session...</p>
+      </div>`;
+
+    try {
+      const res = await fetch('/api/sienna/generate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ theme: selectedTheme, focus: [...selectedFocus] })
+      });
+
+      if (!res.ok) throw new Error('Server error ' + res.status);
+      const session = await res.json();
+      if (session.error) throw new Error(session.error);
+
+      const typeLabels = { story: 'Story Time', letters: 'Letters', numbers: 'Numbers', create: 'Create' };
+      const typeEmojis = { story: '📖', letters: '🔤', numbers: '🔢', create: '🎨' };
+
+      output.innerHTML = `
+        <div class="session-title">
+          <h2>${session.theme} Session</h2>
+          <span class="session-badge">~20 min</span>
+        </div>
+        <div class="activities">
+          ${session.activities.map((a, i) => `
+            <div class="activity-card ${a.type}">
+              <div class="card-header">
+                <div class="card-num">${i + 1}</div>
+                <span class="card-type-badge">${typeEmojis[a.type] || '⭐'} ${typeLabels[a.type] || a.type}</span>
+              </div>
+              <div class="card-title">${a.title}</div>
+              <div class="card-desc">${a.description}</div>
+              ${a.learning ? `<div class="card-learning">⚡ ${a.learning}</div>` : ''}
+              ${a.tip ? `<div class="card-tip">${a.tip}</div>` : ''}
+            </div>
+          `).join('')}
+        </div>`;
+
+      bottomActions.style.display = 'flex';
+
+      // Wire up regen and history buttons fresh each time
+      const regenBtn = document.getElementById('regenBtn');
+      const historyToggle = document.getElementById('historyToggle');
+      regenBtn.onclick = generateSession;
+      historyToggle.onclick = toggleHistory;
+
+    } catch(e) {
+      output.innerHTML = `<div class="error-box">Something went wrong: ${e.message}. Check Jett logs and try again.</div>`;
+    }
+
+    genBtn.disabled = false;
+    genBtn.textContent = '✨ Make "' + selectedTheme + '" Session!';
+  }
+
+  async function toggleHistory() {
+    const panel = document.getElementById('historyPanel');
+    historyOpen = !historyOpen;
+    if (!historyOpen) { panel.classList.remove('open'); return; }
+    panel.classList.add('open');
+    panel.innerHTML = '<p style="font-size:13px;color:#8A7560;padding:8px 0;">Loading...</p>';
+
+    try {
+      const res = await fetch('/api/sienna/history');
+      const sessions = await res.json();
+      if (!sessions.length) {
+        panel.innerHTML = '<p style="font-size:13px;color:#8A7560;padding:8px 0;">No sessions yet — this will be your first!</p>';
+        return;
+      }
+      panel.innerHTML = `
+        <div class="section-label" style="margin-top:1rem;">📚 Past Sessions</div>
+        ${sessions.map(s => `
+          <div class="history-item">
+            <div>
+              <div class="history-theme">${s.theme}</div>
+              <div style="font-size:12px;color:#A89A87;margin-top:2px;">${(s.focus||[]).slice(0,2).join(' · ')}</div>
+            </div>
+            <div class="history-date">${new Date(s.date).toLocaleDateString('en-US',{month:'short',day:'numeric'})}</div>
+          </div>`).join('')}`;
+    } catch(e) {
+      panel.innerHTML = '<p style="font-size:13px;color:#A8244A;">Could not load history.</p>';
+    }
+  }
+</script>
+</body>
+</html>

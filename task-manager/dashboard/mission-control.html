@@ -368,7 +368,7 @@
       <div class="card" style="margin-bottom:12px" id="ebayGlobalCard">
         <div style="display:flex;align-items:center;justify-content:space-between">
           <div class="card-label">Global Filters</div>
-          <button class="btn" id="editGlobalBtn" style="font-size:11px;padding:4px 10px">Edit</button>
+          <button class="btn" id="editGlobalBtn" onclick="typeof openGlobalModal==='function'?openGlobalModal():alert('Function not loaded - refresh page')" style="font-size:11px;padding:4px 10px">Edit</button>
         </div>
         <div id="ebayGlobalSummary" style="font-size:11px;color:var(--text-secondary);margin-top:6px">Loading...</div>
       </div>
@@ -1269,11 +1269,6 @@ let currentModalType = null;
 const DAY_ORDER = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];
 const DAY_LABELS = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
 
-// Attach global edit button listener
-document.addEventListener('DOMContentLoaded', function() {
-  document.getElementById('editGlobalBtn')?.addEventListener('click', openGlobalModal);
-});
-
 async function loadEbayConfig() {
   try {
     const data = await apiFetch('/api/ebay/config');
@@ -1495,18 +1490,16 @@ function openGlobalModal() {
               Both
             </label>
           </div>
-        </div>
-          <div>
           <div class="card-label" style="margin-bottom:6px">CARD TYPE</div>
           <div style="display:flex;flex-direction:column;gap:6px">
             <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:12px;color:var(--text-secondary)">
               <input type="radio" name="cardType" value="raw" id="ct-raw" style="accent-color:var(--accent)"
-                ${(data.cardMode||'raw')==='raw'?'checked':''}>
+                ${(ebayConfigData.cardMode||'raw')==='raw'?'checked':''}>
               Raw only
             </label>
             <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:12px;color:var(--text-secondary)">
               <input type="radio" name="cardType" value="graded" id="ct-graded" style="accent-color:var(--accent)"
-                ${data.cardMode==='graded'?'checked':''}>
+                ${ebayConfigData.cardMode==='graded'?'checked':''}>
               Graded only
             </label>
           </div>

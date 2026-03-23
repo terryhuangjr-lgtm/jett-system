@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "last_updated": "2026-03-20",
+  "last_updated": "2026-03-23",
   "entries": [
     {
       "id": 1,
@@ -542,7 +542,10 @@
       "btc_price_then": 65000,
       "verified_fact": "Bitcoin's 4th halving occurred in April 2024. Block reward dropped from 6.25 to 3.125 BTC. New supply cut in half by code, not committee.",
       "source": "Bitcoin protocol",
-      "cooldown_days": 60
+      "cooldown_days": 60,
+      "used_dates": [
+        "2026-03-23"
+      ]
     },
     {
       "id": 36,
@@ -568,7 +571,10 @@
       "btc_price_then": 45000,
       "verified_fact": "US inflation hit 9.1% in June 2022 — highest since 1981. A $1M contract signed in 2020 had $820K of real purchasing power by 2022. Inflation is a tax nobody voted for.",
       "source": "US Bureau of Labor Statistics",
-      "cooldown_days": 60
+      "cooldown_days": 60,
+      "used_dates": [
+        "2026-03-23"
+      ]
     },
     {
       "id": 38,
@@ -594,7 +600,9 @@
       "btc_allocation": 124,
       "verified_fact": "Ja Morant signed his $8.9M rookie deal in 2019 when BTC was $7,200. 10% allocation = 124 BTC.",
       "source": "Spotrac",
-      "used_dates": [],
+      "used_dates": [
+        "2026-03-23"
+      ],
       "cooldown_days": 90
     },
     {
@@ -1153,7 +1161,9 @@
         "https://www.nfl.com/news/bills-reigning-mvp-josh-allen-agree-to-six-year-deal-worth-330-million",
         "https://www.spotrac.com/nfl/player/_/id/25102/josh-allen"
       ],
-      "used_dates": [],
+      "used_dates": [
+        "2026-03-22"
+      ],
       "cooldown_days": 90
     },
     {
@@ -1299,6 +1309,144 @@
       "used_dates": [],
       "cooldown_days": 60,
       "id": 91
+    },
+    {
+      "id": 92,
+      "category": "endorsement_deal",
+      "athlete": "Zion Williamson",
+      "sport": "NBA",
+      "year": 2019,
+      "deal_type": "Jordan Brand Shoe Deal",
+      "contract_value": 75000000,
+      "contract_years": 7,
+      "btc_price_then": 10000,
+      "btc_allocation": 750,
+      "btc_value_today": 51228000,
+      "verified_fact": "Zion Williamson signed a 7-year, $75M Jordan Brand endorsement deal in July 2019 when BTC was $10,000. If he allocated 10% ($7.5M) to Bitcoin = 750 BTC, worth $51.2M today.",
+      "sources": [
+        "https://www.forbes.com/sites/adamzagoria/2019/07/23/zion-williamson-signs-multi-year-deal-with-jordan-brand/",
+        "https://sports.yahoo.com/zion-williamson-signs-endorsement-deal-with-jordan-brand-164817591.html",
+        "https://www.si.com/fannation/sneakers/news/jordan-brand-ends-zion-williamson-signature-sneaker-line"
+      ],
+      "used_dates": [],
+      "cooldown_days": 90
+    },
+    {
+      "id": 93,
+      "category": "endorsement_deal",
+      "athlete": "LeBron James",
+      "sport": "NBA",
+      "year": 2015,
+      "deal_type": "Nike Lifetime Deal",
+      "contract_value": 1000000000,
+      "contract_years": null,
+      "btc_price_then": 430,
+      "btc_allocation": 232558,
+      "btc_value_today": 15887288000,
+      "verified_fact": "LeBron James signed a lifetime Nike deal in December 2015 worth over $1B when BTC was $430. If he allocated 10% ($100M) to Bitcoin = 232,558 BTC, worth $15.9 BILLION today.",
+      "sources": [
+        "https://www.espn.com/nba/story/_/id/14314807/lebron-james-signs-life-deal-nike",
+        "https://www.businessinsider.com/lebron-james-nike-deal-exceeds-1-billion-maverick-carter-says-2016-5",
+        "https://www.cbssports.com/nba/news/lebrons-business-partner-suggests-james-nike-deal-is-worth-1-billion/"
+      ],
+      "used_dates": [],
+      "cooldown_days": 90
+    },
+    {
+      "id": 94,
+      "category": "endorsement_deal",
+      "athlete": "Kevin Durant",
+      "sport": "NBA",
+      "year": 2014,
+      "deal_type": "Nike 10-Year Extension",
+      "contract_value": 300000000,
+      "contract_years": 10,
+      "btc_price_then": 500,
+      "btc_allocation": 60000,
+      "btc_value_today": 4098240000,
+      "verified_fact": "Kevin Durant signed a 10-year, $300M Nike deal in August 2014 when BTC was $500. If he allocated 10% ($30M) to Bitcoin = 60,000 BTC, worth $4.1 BILLION today.",
+      "sources": [
+        "https://www.espn.com/nba/story/_/id/11443079/kevin-durant-oklahoma-city-thunder-stays-nike-shoe-company-matches-armour-offer",
+        "https://www.cbssports.com/nba/news/kevin-durant-staying-with-nike-turns-down-under-armours-megaoffer/",
+        "https://www.forbes.com/sites/kurtbadenhausen/2017/06/09/the-nbas-biggest-shoe-deals/"
+      ],
+      "used_dates": [],
+      "cooldown_days": 90
+    },
+    {
+      "id": 95,
+      "category": "endorsement_deal",
+      "athlete": "Giannis Antetokounmpo",
+      "sport": "NBA",
+      "year": 2017,
+      "deal_type": "Nike Long-Term Partnership",
+      "contract_value": 100000000,
+      "contract_years": 10,
+      "btc_price_then": 8000,
+      "btc_allocation": 1250,
+      "btc_value_today": 85380000,
+      "verified_fact": "Giannis Antetokounmpo signed a Nike deal in November 2017 worth ~$10M/year (~$100M total) when BTC was $8,000. If he allocated 10% ($10M) to Bitcoin = 1,250 BTC, worth $85.4M today.",
+      "sources": [
+        "https://www.nytimes.com/athletic/1416236/2019/12/02/the-business-of-giannis-how-the-nike-zoom-freak-1-signature-shoe-puts-the-greek-freak-in-elite-nba-company/",
+        "https://bleacherreport.com/articles/2743057-giannis-antetokounmpo-signs-new-contract-with-nike-will-get-signature-shoe",
+        "https://www.essentiallysports.com/nba-news-giannis-antetokounmpo-shoes-contract-details-signature-shoes-and-more/"
+      ],
+      "used_dates": [],
+      "cooldown_days": 90
+    },
+    {
+      "id": 96,
+      "category": "etf_outflows_athlete_window",
+      "athlete": "Caleb Williams",
+      "sport": "NFL",
+      "year": 2024,
+      "contract_value": 25500000,
+      "btc_price_then": 60000,
+      "btc_allocation": 425,
+      "verified_fact": "Caleb Williams \\$25.5M Bears rookie signing bonus (2024). BTC ETFs -\\$306M outflows over 3 days (Mar 18-20, 2026) = 12x his bonus. Institutions sell highs, athletes buy dips.",
+      "sources": [
+        "https://www.nfl.com/news/no-1-overall-pick-caleb-williams-signing-rookie-contract-with-bears",
+        "https://www.spotrac.com/nfl/player/_/id/90330/caleb-williams",
+        "https://farside.co.uk/?p=997",
+        "https://sosovalue.com/assets/etf/usbt"
+      ],
+      "used_dates": [],
+      "cooldown_days": 90
+    },
+    {
+      "id": 97,
+      "category": "etf_outflows_athlete_window",
+      "athlete": "Zion Williamson",
+      "sport": "NBA",
+      "year": 2019,
+      "contract_value": 15000000,
+      "btc_price_then": 7200,
+      "btc_allocation": 2083,
+      "verified_fact": "Zion Williamson \\$75M Jordan deal ~\\$15M annual payout (2019). BTC ETFs -\\$306M 3-day outflows (Mar 2026). His yearly check buys 2,083 BTC today vs institutional noise.",
+      "sources": [
+        "https://www.espn.com/nba/story/_/id/27123456/zion-williamson-signs-75m-jordan-brand-deal",
+        "https://farside.co.uk/?p=997",
+        "https://en.bloomingbit.io/feed/news/108349"
+      ],
+      "used_dates": [],
+      "cooldown_days": 90
+    },
+    {
+      "id": 98,
+      "category": "etf_outflows_athlete_window",
+      "athlete": null,
+      "deal": "BTC ETF 3-Day Outflows",
+      "sport": "Bitcoin",
+      "year": 2026,
+      "contract_value": 306000000,
+      "verified_fact": "BTC ETFs -\\$306M outflows Mar 18-20, 2026 (IBIT -\\$46M lead). = 30x avg NFL rookie bonus. Institutions treat billions as noise—athletes' lump sums expire in fiat.",
+      "sources": [
+        "https://farside.co.uk/?p=997",
+        "https://sosovalue.com/assets/etf/usbt",
+        "https://en.bloomingbit.io/feed/news/108349"
+      ],
+      "used_dates": [],
+      "cooldown_days": 60
     }
   ]
 }
