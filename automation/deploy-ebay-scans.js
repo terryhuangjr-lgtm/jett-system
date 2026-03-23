@@ -43,7 +43,7 @@ function getScanFileFromDay() {
   try {
     const files = fs.readdirSync('/tmp');
     const scanFiles = files
-      .filter(f => f.match(/^[a-z].*-\d{4}-\d{2}-\d{2}\.json$/))
+      .filter(f => f.endsWith('.json') && (f.includes('-scan') || f.match(/-\d{4}-\d{2}-\d{2}\.json$/)))
       .map(f => ({
         name: f,
         path: path.join('/tmp', f),
@@ -52,6 +52,7 @@ function getScanFileFromDay() {
       .sort((a, b) => b.mtime - a.mtime);
     
     if (scanFiles.length > 0) {
+      console.log('[DEBUG] Found scan files:', scanFiles.map(f => `${f.name} (${new Date(f.mtime).toLocaleTimeString()})`).join(', '));
       return scanFiles[0].path;
     }
   } catch (e) {
