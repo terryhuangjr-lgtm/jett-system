@@ -1,7 +1,7 @@
 {
   "version": "1.1",
-  "last_updated": "2026-03-21T16:40:31.985Z",
-  "cardMode": "raw",
+  "last_updated": "2026-03-23T02:26:21.459Z",
+  "cardMode": "graded",
   "global_filters": {
     "exclude_item_types": [
       "psa",
@@ -19,7 +19,7 @@
       "seller_feedback_min": 98,
       "listing_age_max_days": 25
     },
-    "listing_type": "both"
+    "listing_type": "auction"
   },
   "scans": {
     "monday": {
@@ -40,7 +40,6 @@
           "custom"
         ]
       },
-      "output_file": "/tmp/mj-finest-scan.json",
       "last_run": "2026-03-21T18:50:23.955Z",
       "last_results": {
         "timestamp": "2026-03-21T18:50:23.956Z",
@@ -53,14 +52,15 @@
       "name": "Ronald Acuna",
       "enabled": true,
       "search_terms": [
-        "Ronald Acuna Gold Refractor /50 2019-2021"
+        "Ronald Acuna orange /25 2019-2021"
       ],
       "filters": {
         "topN": 20,
         "minPrice": 20,
         "maxPrice": 2000,
         "exclude_words": [
-          "mystery",
+          "ginter",
+          "mini",
           "mojo",
           "custom",
           "pack",
@@ -69,13 +69,12 @@
           "replica"
         ]
       },
-      "output_file": "/tmp/griffey-refractors-scan.json",
-      "last_run": "2026-03-21T11:17:50.836Z",
+      "last_run": "2026-03-21T23:55:53.897Z",
       "last_results": {
-        "timestamp": "2026-03-21T11:17:50.837Z",
+        "timestamp": "2026-03-21T23:55:53.898Z",
         "success": true
       },
-      "last_updated": "2026-03-21T15:45:07.693Z",
+      "last_updated": "2026-03-22T13:58:25.930Z",
       "useVision": true
     },
     "wednesday": {
@@ -97,20 +96,19 @@
         "minPrice": 40,
         "maxPrice": null
       },
-      "output_file": "/tmp/kobe-refractors-scan.json",
-      "last_run": "2026-03-21T11:18:09.316Z",
+      "last_run": "2026-03-22T23:57:29.795Z",
       "last_results": {
-        "timestamp": "2026-03-21T11:18:09.316Z",
+        "timestamp": "2026-03-22T23:57:29.796Z",
         "success": true
       },
       "last_updated": "2026-03-18T02:13:06.591Z",
       "useVision": true
     },
     "thursday": {
-      "name": "Kaboom",
+      "name": "Multi Testing",
       "enabled": true,
       "search_terms": [
-        "Panini Kaboom 2014-2020"
+        "charles barkley, david robinson 1993-1996 finest refractor"
       ],
       "filters": {
         "topN": 20,
@@ -121,80 +119,76 @@
           "fan",
           "made",
           "pack",
+          "mystery",
           "chase"
         ]
       },
-      "output_file": "/tmp/mj-upperdeck-scan.json",
       "last_run": "2026-03-21T11:25:47.825Z",
       "last_results": {
         "timestamp": "2026-03-21T11:25:47.825Z",
         "success": true
       },
-      "last_updated": "2026-03-21T15:52:55.253Z",
+      "last_updated": "2026-03-22T15:46:04.415Z",
       "useVision": true
     },
     "friday": {
-      "name": "Cooper Flagg",
+      "name": "luka doncic",
       "enabled": true,
       "search_terms": [
-        "Cooper Flagg 2025 BGS 9.5"
+        "luka doncic 2018 psa"
       ],
       "filters": {
         "topN": 20,
         "maxPrice": 2000,
         "exclude_words": [
+          "leaf",
           "jumbo",
+          "edge",
+          "signed",
           "holo",
+          "sage",
           "prizm",
           "mystery"
         ],
         "minPrice": 10
       },
-      "output_file": "/tmp/topps-refractors-multi-scan.json",
-      "last_run": "2026-03-21T16:40:38.203Z",
+      "last_run": "2026-03-23T02:07:21.561Z",
       "last_results": {
-        "timestamp": "2026-03-21T16:40:38.204Z",
+        "timestamp": "2026-03-23T02:07:21.561Z",
         "success": true
       },
-      "last_updated": "2026-03-21T16:40:31.982Z",
+      "last_updated": "2026-03-23T01:58:30.623Z",
       "useVision": true
     },
     "saturday": {
       "name": "Gold Refractors",
       "enabled": true,
       "search_terms": [
-        "gold refractor 1996-2001"
+        "gold refractor 1996-2004"
       ],
       "filters": {
         "topN": 20,
         "minPrice": 25,
         "maxPrice": null,
         "exclude_words": [
-          "pokemon",
-          "magic",
-          "yugioh",
+          "packs",
           "jumbo",
-          "custom",
-          "psa",
-          "bgs",
-          "HGA",
-          "ultra"
+          "hobby"
         ]
       },
-      "output_file": "/tmp/mj-base-scan.json",
       "last_run": "2026-03-21T13:01:45.185Z",
       "last_results": {
         "timestamp": "2026-03-21T13:01:45.185Z",
         "success": true
       },
-      "last_updated": "2026-03-20T20:17:34.016Z",
+      "last_updated": "2026-03-23T02:04:23.079Z",
       "useVision": true
     },
     "sunday": {
       "name": "Victor Wembanyama",
       "enabled": true,
       "search_terms": [
-        "Victor Wembanyama auto"
+        "Victor Wembanyama /99"
       ],
       "filters": {
         "topN": 20,
@@ -207,13 +201,13 @@
         "minPrice": 0,
         "maxPrice": null
       },
-      "output_file": "/tmp/cam-ward-scan.json",
-      "last_run": "2026-03-21T11:19:57.796Z",
+      "last_run": "2026-03-23T02:25:07.314Z",
       "last_results": {
-        "timestamp": "2026-03-21T11:19:57.796Z",
-        "success": true
+        "timestamp": "2026-03-23T02:25:07.314Z",
+        "success": false,
+        "error": "Command failed: node multi-search.js Victor Wembanyama /99 --topN 20 --output /tmp/victor-wembanyama-99-2026-03-23.json --exclude draft picks,leaf,jumbo,replica --vision --listing-type auction --card-mode graded"
       },
-      "last_updated": "2026-03-21T15:57:09.181Z",
+      "last_updated": "2026-03-22T03:39:44.921Z",
       "useVision": true
     }
   },

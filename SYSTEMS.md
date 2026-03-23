@@ -260,18 +260,27 @@ node automation/jett-community-pulse.js "NIL deals college football"
 **Scripts:**
 - `ebay-scanner/run-from-config.js` - Runs scans from config, sends HTML email
 - `ebay-scanner/vision-filter.js` - Claude Haiku vision for card condition analysis
-- `automation/deploy-ebay-scans.js` - Legacy (Slack deprecated)
+- `automation/deploy-ebay-scans.js` - Emails latest scan results (finds most recent file automatically)
 
 **Config:** `task-manager/ebay-scans-config.json`
 
 **Features:**
 - Vision scanning for card condition (using Claude Haiku)
-- Global filters: listing_type (BIN/Auction/Both), card_type (Raw/Graded/Both)
+- Global filters: listing_type (fixed_price/auction), card_mode (raw/graded)
 - Run Scan Now button in Mission Control dashboard
-- Results stored in `ebay-scanner/results/` (gitignored)
+- Dynamic output filenames: `{search-term}-{YYYY-MM-DD}.json` (e.g., `luka-doncic-psa-2026-03-22.json`)
+- HTML email template: `templates/ebay-scan-email.html`
+- Email uses most recent scan file regardless of day
 
-**⚠️ Known Limitations:**
-- **Auction prices are stale:** eBay Browse API only returns starting bid, not real-time current bids. Auction prices shown are from scan time. For now, auction prices display as "N/A" in emails. (March 2026)
+**Email Template:** `templates/ebay-scan-email.html`
+- White background, navy header (#1e3a5f)
+- Table format: # | Card | Price | Score | Seller | Age | PSA 9 | PSA 10 | View
+- Score badges: green (7.0+), navy (8.0+), red (9.0+)
+- Mobile responsive (hides Age, PSA columns on small screens)
+- Note: No emojis in HTML - causes rendering issues in some email clients
+
+**Known Limitations:**
+- **Auction prices are stale:** eBay Browse API only returns starting bid, not real-time current bids. Auction prices shown are from scan time. (March 2026)
 
 **Cron (deterministic - no LLM):**
 ```bash

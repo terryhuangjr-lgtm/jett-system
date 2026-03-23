@@ -107,11 +107,11 @@ function sendResultsEmail(outputFile, day, scanName, cardMode = 'raw', listingTy
       </tr>`;
 
       topResults.forEach((item, i) => {
+        const scoreNum = Number(item.dealScore?.score) || 0;
         const score = item.dealScore?.score || 'N/A';
-        const scoreColor = score >= 8 ? '#22c55e' : score >= 7 ? '#f59e0b' : '#ef4444';
+        const scoreColor = scoreNum >= 8 ? '#22c55e' : scoreNum >= 7 ? '#f59e0b' : '#ef4444';
         const title = (item.title || '').substring(0, 60) + ((item.title || '').length > 60 ? '...' : '');
-        const priceValue = item.totalPrice || 0;
-        const currentBid = priceValue > 0 ? '$' + priceValue.toFixed(2) : 'N/A';
+        const currentBid = 'N/A';
         const bids = item.bidCount || 0;
         
         html += `<tr style="${i % 2 === 0 ? 'background: #fff;' : 'background: #fafafa;'}">
@@ -160,7 +160,8 @@ function sendResultsEmail(outputFile, day, scanName, cardMode = 'raw', listingTy
     const emailScript = path.join(__dirname, '..', 'lib', 'send-email.js');
     const { execSync } = require('child_process');
     
-    execSync(`node ${emailScript} --to "terryhuangjr@gmail.com" --subject "${subject}" --body "${html.replace(/"/g, '\\"').replace(/\$/g, '\\$')}" --html`, {
+    const escapedHtml = html.replace(/"/g, '\\"').replace(/\$/g, '\\$');
+    execSync(`node ${emailScript} --to "terryhuangjr@gmail.com" --subject "${subject}" --body "${escapedHtml}" --html`, {
       timeout: 30000
     });
     
@@ -206,7 +207,17 @@ async function runScan(day) {
   const minPrice = scan.filters.minPrice || '';
   const maxPrice = scan.filters.maxPrice || '';
   const topN = scan.filters.topN || 20;
-  const outputFile = scan.output_file;
+  // Build dynamic filename from search terms
+  const firstTerm = scan.search_terms[0] || 'scan';
+  const safeName = firstTerm
+    .toLowerCase()
+    .replace(/[^a-z0-9\s]/g, '')  // remove special chars
+    .replace(/\s+/g, '-')          // spaces to hyphens
+    .substring(0, 25)               // cap length
+    .replace(/-+$/, '');           // trim trailing hyphens
+  const timestamp = new Date().toISOString().split('T')[0]; // 2026-03-22
+  const outputFile = `/tmp/${safeName}-${timestamp}.json`;
+  
   const excludeWords = scan.filters.exclude_words || [];
 
   const args = ['multi-search.js', terms, '--topN', String(topN), '--output', outputFile];
