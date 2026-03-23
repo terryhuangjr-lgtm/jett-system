@@ -290,12 +290,26 @@ const scanFile = scanFileArg || getScanFileFromDay();
 console.log(useEmail ? '📤 Emailing eBay scan results...' : '📤 Deploying eBay scan results to Slack...');
 
 try {
-  // Extract scan name from filename (e.g., "luka-doncic-2026-03-22.json" -> "luka doncic")
+  // Read scan file to get actual search query
+  let scanQuery = 'Card Scan';
+  try {
+    const scanData = JSON.parse(fs.readFileSync(scanFile, 'utf8'));
+    if (scanData.searchQuery) {
+      scanQuery = scanData.searchQuery;
+    }
+  } catch (e) {
+    // Fall back to filename
+  }
+  
+  // Extract scan name from filename (fallback)
   const filename = path.basename(scanFile, '.json');
-  const scanName = filename
-    .replace(/-\d{4}-\d{2}-\d{2}$/, '')  // remove date suffix
-    .replace(/-/g, ' ')                    // hyphens to spaces
-    .replace(/\b\w/g, c => c.toUpperCase()); // title case
+  const scanNameFromFile = filename
+    .replace(/-\d{4}-\d{2}-\d{2}$/, '')
+    .replace(/-/g, ' ')
+    .replace(/\b\w/g, c => c.toUpperCase());
+  
+  // Use search query from scan file, or fallback to filename
+  const scanName = scanQuery !== 'Card Scan' ? scanQuery : scanNameFromFile;
   
   console.log(`  Scan file: ${scanFile}`);
   console.log(`  Scan name: ${scanName}`);
