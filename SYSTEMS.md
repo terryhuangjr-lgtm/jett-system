@@ -273,14 +273,19 @@ node automation/jett-community-pulse.js "NIL deals college football"
 - Email uses most recent scan file regardless of day
 
 **Email Template:** `templates/ebay-scan-email.html`
-- White background, navy header (#1e3a5f)
-- Table format: # | Card | Price | Score | Seller | Age | PSA 9 | PSA 10 | View
-- Score badges: green (7.0+), navy (8.0+), red (9.0+)
-- Mobile responsive (hides Age, PSA columns on small screens)
-- Note: No emojis in HTML - causes rendering issues in some email clients
+- White background, dark navy header (#0f1923)
+- Table format: # | Card | Price | Score | Trust | Age | PSA 9 | PSA 10 | Time | Link
+- Score badges: green (8.0+), amber (7.0+), red (<7.0)
+- Trust column: Trusted (98%+ & 500+ sales), OK (95%+ or 100+ sales), Caution (below)
+- Mobile responsive (hides Trust, Age, PSA, Time columns on small screens)
+- No emojis in HTML - causes rendering issues in some email clients
+- AUC/BIN badges per row, capture time for auctions
 
-**Known Limitations:**
-- **Auction prices are stale:** eBay Browse API only returns starting bid, not real-time current bids. Auction prices shown are from scan time. (March 2026)
+**Auction Features (March 2026):**
+- eBay Browse API DOES return current bid prices for auctions (corrected!)
+- Shows current bid, bid count, time remaining with color coding
+- Capture time shown per auction row: "at 6:02am"
+- Disclaimer note in summary bar for auction scans
 
 **Cron (deterministic - no LLM):**
 ```bash

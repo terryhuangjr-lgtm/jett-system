@@ -10,6 +10,7 @@ const path = require('path');
 const { execFileSync } = require('child_process');
 
 const CONFIG_PATH = path.join(__dirname, '..', 'task-manager', 'ebay-scans-config.json');
+const { getTimeRemaining, formatBidCount, getTrustBadge } = require('../automation/auction-utils');
 
 // Get day from args or use today
 function getDayFromArgs() {
@@ -42,10 +43,18 @@ function loadHtmlTemplate() {
 function renderHtmlTemplate(template, data) {
   let html = template;
   
+  // Card mode and styling
+  const cardMode = data.cardMode || 'Raw';
+  const cardModeStyle = cardMode === 'Graded' 
+    ? 'background: #E6F1FB; color: #0C447C;'
+    : 'background: #E1F5EE; color: #085041;';
+  
   html = html.replace(/\{\{DATE\}\}/g, data.date || new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }));
   html = html.replace(/\{\{TOTAL_RESULTS\}\}/g, data.totalResults || data.cards?.length || 0);
   html = html.replace(/\{\{SCAN_NAME\}\}/g, data.scanName || 'eBay Scan');
   html = html.replace(/\{\{SEARCH_TERM\}\}/g, data.searchTerm || 'Card Search');
+  html = html.replace(/\{\{CARD_MODE\}\}/g, cardMode);
+  html = html.replace(/\{\{CARD_MODE_STYLE\}\}/g, cardModeStyle);
   
   const cards = data.cards || [];
   const highScores = cards.filter(c => {
@@ -61,33 +70,102 @@ function renderHtmlTemplate(template, data) {
   html = html.replace(/\{\{STEALS\}\}/g, String(steals));
   
   if (!cards || cards.length === 0) {
-    return html.replace(/\{\{TABLE_ROWS\}\}/g, '<tr><td colspan="10" style="padding:40px;text-align:center;color:#64748b;">No results found</td></tr>');
+    return html.replace(/\{\{TABLE_ROWS\}\}/g, '<tr><td colspan="9" style="padding:40px;text-align:center;color:#64748b;">No results found</td></tr>');
   }
   
   const topCards = cards.slice(0, 20);
   const tableRows = topCards.map((card, i) => {
-    const score = typeof card.score === 'number' ? card.score : parseFloat(card.score) || 0;
-    const scoreColor = score >= 8 ? '#22c55e' : score >= 7 ? '#f59e0b' : '#ef4444';
-    const price = card.price ? `$${card.price.toFixed(2)}` : 'N/A';
-    const title = (card.title || '').substring(0, 50) + ((card.title || '').length > 50 ? '...' : '');
-    const seller = card.seller || '-';
-    const age = card.listingAge || '-';
-    const psa9 = card.psa9 || '-';
-    const psa10 = card.psa10 || '-';
-    const vision = card.vision ? (card.vision.grade || card.vision.raw || '✓') : '-';
-    const url = card.url || '#';
+    const isEven = i % 2 === 0;
+    const rowBg = isEven ? '#ffffff' : '#fafafa';
     
-    return `<tr style="${i % 2 === 0 ? 'background: #ffffff;' : 'background: #f8fafc;'}">
-      <td style="padding: 10px 16px; font-size: 12px; color: #64748b;">${i + 1}</td>
-      <td style="padding: 10px 16px; font-size: 13px;"><a href="${url}" style="color: #1e3a5f; text-decoration: none; font-weight: 500;">${title}</a></td>
-      <td style="padding: 10px 16px; text-align: right; font-size: 13px; font-weight: 600; color: #0f172a;">${price}</td>
-      <td style="padding: 10px 16px; text-align: center; font-size: 13px; font-weight: 700; color: ${scoreColor};">${score.toFixed(1)}</td>
-      <td class="mobile-hide" style="padding: 10px 16px; text-align: center; font-size: 12px; color: #64748b;">${vision}</td>
-      <td class="mobile-hide" style="padding: 10px 16px; text-align: center; font-size: 12px; color: #64748b;">${seller}</td>
-      <td class="mobile-hide" style="padding: 10px 16px; text-align: center; font-size: 12px; color: #64748b;">${age}</td>
-      <td class="mobile-hide" style="padding: 10px 16px; text-align: center; font-size: 12px; color: #64748b;">${psa9}</td>
-      <td class="mobile-hide" style="padding: 10px 16px; text-align: center; font-size: 12px; color: #64748b;">${psa10}</td>
-      <td style="padding: 10px 16px; text-align: center;"><a href="${url}" style="display:inline-block;padding:6px 12px;background-color:#1e3a5f;color:#ffffff;text-decoration:none;font-size:11px;border-radius:4px;">View</a></td>
+    // Full title - NO truncation
+    const title = card.title || '';
+    const titleEscaped = title.replace(/"/g, '&quot;');
+    
+    // Price with shipping
+    const price = typeof card.price === 'number' ? card.price.toFixed(2) : '0.00';
+    const shipping = card.shippingCost ? `<br><span style="font-size:11px;color:#94a3b8">+ $${card.shippingCost.toFixed(2)} ship</span>` : '';
+    
+    // Score pill
+    const score = typeof card.score === 'number' ? card.score : parseFloat(card.score) || 0;
+    let scoreStyle = '';
+    if (score >= 8.0) {
+      scoreStyle = 'background: #E1F5EE; color: #085041;';
+    } else if (score >= 7.0) {
+      scoreStyle = 'background: #FAEEDA; color: #633806;';
+    } else {
+      scoreStyle = 'background: #FAECE7; color: #712B13;';
+    }
+    const scoreBadge = `<span style="font-size:11px;font-weight:500;padding:2px 8px;border-radius:20px;${scoreStyle}">${score.toFixed(1)}</span>`;
+    
+    // Trust badge
+    const trust = getTrustBadge(card.sellerRating, card.sellerSales);
+    const trustBadge = `<span style="display:inline-block;padding:2px 6px;border-radius:4px;font-size:10px;font-weight:500;background:${trust.bg};color:${trust.color}">● ${trust.display}</span>`;
+    
+    // Age
+    const age = card.daysListed ? `${card.daysListed}d` : '—';
+    
+    // PSA columns
+    const psa9Val = card.psa9Est && card.psa9Est !== '—' ? `$${card.psa9Est}` : '—';
+    const psa9Style = card.psa9Est && card.psa9Est !== '—' ? 'color: #1a1a1a;' : 'color: #cbd5e1;';
+    const psa10Val = card.psa10Est && card.psa10Est !== '—' ? `$${card.psa10Est}` : '—';
+    const psa10Style = card.psa10Est && card.psa10Est !== '—' ? 'color: #1a1a1a;' : 'color: #cbd5e1;';
+    
+    // Card mode badge
+    const isGraded = cardMode === 'Graded' || (card.grade && !card.vision);
+    const badgeStyle = isGraded ? 'background: #E6F1FB; color: #0C447C;' : 'background: #E1F5EE; color: #085041;';
+    const badgeText = isGraded ? 'Graded' : 'Raw';
+    
+    // Listing type badge - get from card or use passed listingType
+    const cardListingType = card.listingType || listingType || 'bin';
+    const isAuction = cardListingType === 'auction' || cardListingType === 'AUCTION';
+    const listingBadgeStyle = isAuction 
+      ? 'background: #FAEEDA; color: #633806;' 
+      : 'background: #E1F5EE; color: #085041;';
+    const listingBadgeText = isAuction ? 'AUC' : 'BIN';
+    
+    // Auction-specific: time remaining and bid count
+    const timeRemaining = isAuction ? getTimeRemaining(card.itemEndDate) : null;
+    const bidInfo = isAuction ? formatBidCount(card.bidCount || 0) : null;
+    
+    // Price cell - show differently for auctions
+    const currentBid = typeof card.currentBidPrice === 'number' ? card.currentBidPrice : parseFloat(card.currentBidPrice) || 0;
+    let priceCell = `$${price}`;
+    if (isAuction && currentBid > 0) {
+      const captureTime = new Date(data.scanTimestamp).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+      priceCell = `$${currentBid.toFixed(2)}<br><span style="font-size:10px;color:#64748b">at ${captureTime}</span><br><span style="font-size:10px;color:#64748b">${bidInfo.display}</span>`;
+    } else if (shipping) {
+      const shipCost = typeof card.shippingCost === 'number' ? card.shippingCost : parseFloat(card.shippingCost) || 0;
+      priceCell = `$${price}<br><span style="font-size:10px;color:#94a3b8">+ $${shipCost.toFixed(2)} ship</span>`;
+    }
+    
+    // Time remaining cell
+    let timeCell = '<span style="color:#cbd5e1;">—</span>';
+    if (timeRemaining) {
+      timeCell = `<span style="color:${timeRemaining.color};font-weight:500;font-size:11px;">${timeRemaining.display}</span>`;
+    }
+    
+    // URL
+    const url = card.url || card.viewItemURL || '#';
+    
+    return `<tr style="background-color: ${rowBg}; border-bottom: 1px solid #f0f0f0;">
+      <td style="padding: 10px 12px; font-size: 11px; color: #94a3b8; text-align: center;">${i + 1}</td>
+      <td style="padding: 10px 12px; font-size: 13px; color: #1a1a1a; font-weight: 500; min-width: 320px; white-space: normal; word-wrap: break-word;">
+        ${titleEscaped}
+        <br>
+        <span style="display:inline-block;margin-top:4px;padding:1px 6px;border-radius:4px;font-size:10px;${badgeStyle}">${badgeText}</span>
+        <span style="display:inline-block;margin-top:4px;margin-left:6px;padding:1px 6px;border-radius:4px;font-size:10px;${listingBadgeStyle}">${listingBadgeText}</span>
+      </td>
+      <td style="padding: 10px 12px; font-size: 13px; font-weight: 500; color: #1a1a1a; text-align: right;">
+        ${priceCell}
+      </td>
+      <td style="padding: 10px 12px; text-align: center;">${scoreBadge}</td>
+      <td class="hide-mobile" style="padding: 10px 12px; text-align: center;">${trustBadge}</td>
+      <td class="hide-mobile" style="padding: 10px 12px; font-size: 11px; color: #64748b; text-align: center;">${age}</td>
+      <td class="hide-mobile" style="padding: 10px 12px; font-size: 12px; text-align: center;${psa9Style}">${psa9Val}</td>
+      <td class="hide-mobile" style="padding: 10px 12px; font-size: 12px; text-align: center;${psa10Style}">${psa10Val}</td>
+      <td class="hide-mobile" style="padding: 10px 12px; text-align: center;">${timeCell}</td>
+      <td style="padding: 10px 12px; text-align: center;"><a href="${url}" style="font-size: 12px; color: #1e3a5f; text-decoration: none;">View -&gt;</a></td>
     </tr>`;
   }).join('');
   
@@ -116,10 +194,16 @@ function sendResultsEmail(outputFile, day, scanName, cardMode = 'raw', listingTy
       score: parseFloat(item.dealScore?.score) || 0,
       url: item.viewItemURL,
       seller: item.seller || '-',
+      sellerRating: item.sellerPositivePercent || item.sellerFeedbackPercent || 0,
+      sellerSales: item.sellerFeedbackScore || 0,
       listingAge: item.listingAge || '-',
       psa9: item.psa9 || '-',
       psa10: item.psa10 || '-',
-      vision: item.vision || null
+      vision: item.vision || null,
+      listingType: item.listingType || 'BIN',
+      itemEndDate: item.itemEndDate || null,
+      currentBidPrice: item.currentBidPrice || null,
+      bidCount: item.bidCount || 0
     }));
 
     const dayLabel = day.charAt(0).toUpperCase() + day.slice(1);
@@ -134,6 +218,8 @@ function sendResultsEmail(outputFile, day, scanName, cardMode = 'raw', listingTy
       totalResults: results.length,
       scanName: scanName || 'eBay Scan',
       searchTerm: scanName || 'Card Search',
+      cardMode: cardMode === 'graded' ? 'Graded' : 'Raw',
+      scanTimestamp: new Date().toISOString(),
       cards: cards
     };
     
@@ -178,10 +264,17 @@ async function runScan(day) {
   console.log(`Filters: min=$${scan.filters.minPrice || 'any'}, max=$${scan.filters.maxPrice || 'any'}, topN=${scan.filters.topN}`);
   console.log(`Vision: ${scan.useVision ? 'enabled' : 'disabled'}`);
   
-  // Global filters
-  const listingType = config.global_filters?.listing_type || 'fixed_price';
-  const cardMode = config.cardMode || 'raw';
-  console.log(`Listing type: ${listingType} | Card mode: ${cardMode}`);
+  // Per-scan setting wins over global setting, then default
+  const cardCondition = scan.card_condition 
+    || config.global_filters?.default_card_condition 
+    || 'raw';
+
+  const listingTypeRaw = scan.listing_type 
+    || config.global_filters?.listing_type 
+    || 'bin';
+  const listingType = listingTypeRaw === 'bin' ? 'fixed_price' : listingTypeRaw;
+  
+  console.log(`Listing type: ${listingType} (${listingTypeRaw}) | Card mode: ${cardCondition}`);
   console.log('');
 
   // Build command
@@ -208,7 +301,7 @@ async function runScan(day) {
   if (excludeWords.length > 0) args.push('--exclude', excludeWords.join(','));
   if (scan.useVision) args.push('--vision');
   args.push('--listing-type', listingType);
-  args.push('--card-mode', cardMode);
+  args.push('--card-mode', cardCondition);
 
   console.log(`Executing: node ${args.join(' ')}\n`);
 
@@ -231,7 +324,7 @@ async function runScan(day) {
     console.log(`Results saved to: ${outputFile}`);
 
     // Send email with results
-    sendResultsEmail(outputFile, day, scan.name, cardMode, listingType);
+    sendResultsEmail(outputFile, day, scan.name, cardCondition, listingType);
 
   } catch (error) {
     console.error(`\n❌ ${day} scan failed: ${error.message}`);

@@ -9,6 +9,7 @@ const fs = require('fs');
 const path = require('path');
 const { execFileSync } = require('child_process');
 const notifyFailure = require('../lib/notify-failure');
+const { getTimeRemaining, formatBidCount, getTrustBadge } = require('./auction-utils');
 
 // Load config from task manager (single source of truth)
 const CONFIG_PATH = path.join(__dirname, '..', 'task-manager', 'ebay-scans-config.json');
@@ -132,6 +133,20 @@ function postToSlack(message) {
   return false;
 }
 
+// Template selector - routes to different templates based on scan config
+function selectEmailTemplate(scan) {
+  const condition = scan.card_condition || 'raw';
+  const listingType = scan.listing_type || 'bin';
+  
+  if (listingType === 'auction') {
+    return 'auction';
+  }
+  if (condition === 'graded') {
+    return 'graded';
+  }
+  return 'raw'; // default
+}
+
 // Load HTML template
 function loadHtmlTemplate() {
   const templatePath = path.join(__dirname, '..', 'templates', 'ebay-scan-email.html');
@@ -145,11 +160,19 @@ function loadHtmlTemplate() {
 function renderHtmlTemplate(template, data) {
   let html = template;
   
+  // Card mode and styling
+  const cardMode = data.cardMode || 'Raw';
+  const cardModeStyle = cardMode === 'Graded' 
+    ? 'background: #E6F1FB; color: #0C447C;'
+    : 'background: #E1F5EE; color: #085041;';
+  
   // Replace header variables
   html = html.replace(/\{\{DATE\}\}/g, data.date || new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }));
   html = html.replace(/\{\{TOTAL_RESULTS\}\}/g, data.totalResults || data.cards?.length || 0);
   html = html.replace(/\{\{SCAN_NAME\}\}/g, data.scanName || 'eBay Scan');
   html = html.replace(/\{\{SEARCH_TERM\}\}/g, data.searchTerm || 'Card Search');
+  html = html.replace(/\{\{CARD_MODE\}\}/g, cardMode);
+  html = html.replace(/\{\{CARD_MODE_STYLE\}\}/g, cardModeStyle);
   
   // Calculate summary stats - handle both string and number scores
   const cards = data.cards || [];
@@ -170,68 +193,104 @@ function renderHtmlTemplate(template, data) {
     return html.replace(/\{\{TABLE_ROWS\}\}/g, '<tr><td colspan="10" style="padding:40px;text-align:center;color:#64748b;">No results found</td></tr>');
   }
   
+  // Check if this is an auction scan
+  const hasAuctions = cards.some(c => c.listingType === 'AUCTION' || c.listingType === 'auction' || c.listingType === 'AUC');
+  if (hasAuctions) {
+    html = html.replace('</td>', '</td><td style="padding:8px 12px;font-size:11px;color:#BA7517;">Auction prices and times captured at scan time. Check eBay for current status.</td>');
+  }
+  
   // Render table rows
   const tableRows = cards.slice(0, 20).map((card, index) => {
     const isEven = index % 2 === 0;
-    const rowBg = isEven ? '#ffffff' : '#f9f9f9';
+    const rowBg = isEven ? '#ffffff' : '#fafafa';
     
-    // Truncate title to ~50 chars
-    let title = (card.title || '').substring(0, 50);
-    if (card.title && card.title.length > 50) title += '...';
+    // Full title - NO truncation
+    const title = card.title || '';
+    const titleEscaped = title.replace(/"/g, '&quot;');
     
-    // Price
-    const price = typeof card.price === 'number' ? card.price.toFixed(2) : String(card.price || '0.00');
+    // Price with shipping
+    const price = typeof card.price === 'number' ? card.price.toFixed(2) : '0.00';
+    const shipCost = typeof card.shippingCost === 'number' ? card.shippingCost : parseFloat(card.shippingCost) || 0;
+    const shipping = shipCost > 0 ? `<br><span style="font-size:11px;color:#94a3b8">+ $${shipCost.toFixed(2)} ship</span>` : '';
     
-    // Score
+    // Score pill - colored based on value
     const score = typeof card.score === 'number' ? card.score : parseFloat(card.score) || 0;
-    let scoreBadge = '';
-    if (score >= 9.0) {
-      scoreBadge = '<span style="background-color: #dc2626; color: white; padding: 3px 8px; border-radius: 10px; font-size: 11px; font-weight: 600;">' + score.toFixed(1) + '</span>';
-    } else if (score >= 8.0) {
-      scoreBadge = '<span style="background-color: #1e3a5f; color: white; padding: 3px 8px; border-radius: 10px; font-size: 11px; font-weight: 600;">' + score.toFixed(1) + '</span>';
+    let scoreStyle = '';
+    if (score >= 8.0) {
+      scoreStyle = 'background: #E1F5EE; color: #085041;';
     } else if (score >= 7.0) {
-      scoreBadge = '<span style="background-color: #059669; color: white; padding: 3px 8px; border-radius: 10px; font-size: 11px; font-weight: 600;">' + score.toFixed(1) + '</span>';
+      scoreStyle = 'background: #FAEEDA; color: #633806;';
     } else {
-      scoreBadge = '<span style="background-color: #e2e8f0; color: #64748b; padding: 3px 8px; border-radius: 10px; font-size: 11px; font-weight: 600;">' + score.toFixed(1) + '</span>';
+      scoreStyle = 'background: #FAECE7; color: #712B13;';
     }
+    const scoreBadge = `<span style="font-size:11px;font-weight:500;padding:2px 8px;border-radius:20px;${scoreStyle}">${score.toFixed(1)}</span>`;
     
-    // Vision score (for raw cards)
-    let vision = '—';
-    if (card.visionCorners !== undefined || card.visionCentering !== undefined) {
-      const corners = card.visionCorners || card.vision?.corners || '—';
-      const center = card.visionCentering || card.vision?.centering || '—';
-      const surface = card.visionSurface || card.vision?.surface || '—';
-      if (corners !== '—' || center !== '—') {
-        vision = `${corners}c / ${center}ctr`;
-      }
-    } else if (card.grade) {
-      vision = card.grade; // For graded cards, show the grade
-    }
-    
-    // Seller
-    const seller = card.sellerRating ? `${card.sellerRating}%` : '—';
+    // Trust badge
+    const trust = getTrustBadge(card.sellerRating, card.sellerSales);
+    const trustBadge = `<span style="display:inline-block;padding:2px 6px;border-radius:4px;font-size:10px;font-weight:500;background:${trust.bg};color:${trust.color}">● ${trust.display}</span>`;
     
     // Age
     const age = card.daysListed ? `${card.daysListed}d` : '—';
     
-    // PSA
-    const psa9 = card.psa9Est || '—';
-    const psa10 = card.psa10Est || '—';
+    // PSA columns - show $XXX or —
+    const psa9Val = card.psa9Est && card.psa9Est !== '—' ? `$${card.psa9Est}` : '—';
+    const psa9Style = card.psa9Est && card.psa9Est !== '—' ? 'color: #1a1a1a;' : 'color: #cbd5e1;';
+    const psa10Val = card.psa10Est && card.psa10Est !== '—' ? `$${card.psa10Est}` : '—';
+    const psa10Style = card.psa10Est && card.psa10Est !== '—' ? 'color: #1a1a1a;' : 'color: #cbd5e1;';
+    
+    // Card mode badge
+    const isGraded = data.cardMode === 'Graded' || (card.grade && !card.vision);
+    const badgeStyle = isGraded ? 'background: #E6F1FB; color: #0C447C;' : 'background: #E1F5EE; color: #085041;';
+    const badgeText = isGraded ? 'Graded' : 'Raw';
+    
+    // Listing type badge
+    const isAuction = card.listingType === 'auction' || card.listingType === 'AUC' || card.listingType === 'AUCTION';
+    const listingBadgeStyle = isAuction 
+      ? 'background: #FAEEDA; color: #633806;' 
+      : 'background: #E1F5EE; color: #085041;';
+    const listingBadgeText = isAuction ? 'AUC' : 'BIN';
+    
+    // Auction-specific: time remaining and bid count
+    const timeRemaining = isAuction ? getTimeRemaining(card.itemEndDate) : null;
+    const bidInfo = isAuction ? formatBidCount(card.bidCount || 0) : null;
+    
+    // Price cell - show differently for auctions
+    const currentBid = typeof card.currentBidPrice === 'number' ? card.currentBidPrice : parseFloat(card.currentBidPrice) || 0;
+    let priceCell = `$${price}`;
+    if (isAuction && currentBid > 0) {
+      const captureTime = new Date(data.scanTimestamp).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+      priceCell = `$${currentBid.toFixed(2)}<br><span style="font-size:10px;color:#64748b">at ${captureTime}</span><br><span style="font-size:10px;color:#64748b">${bidInfo.display}</span>`;
+    } else if (shipping) {
+      priceCell = `$${price}${shipping}`;
+    }
+    
+    // Time remaining cell
+    let timeCell = '<span style="color:#cbd5e1;">—</span>';
+    if (timeRemaining) {
+      timeCell = `<span style="color:${timeRemaining.color};font-weight:500;font-size:11px;">${timeRemaining.display}</span>`;
+    }
     
     // URL
     const url = card.url || card.viewItemURL || '#';
     
-    return `<tr style="background-color: ${rowBg}; border-bottom: 1px solid #e5e5e5;">
-      <td style="padding: 12px 16px; color: #64748b; font-size: 13px; font-weight: 500;">${card.rank || index + 1}</td>
-      <td style="padding: 12px 16px; color: #1e293b; font-size: 13px;" title="${(card.title || '').replace(/"/g, '&quot;')}">${title}</td>
-      <td style="padding: 12px 16px; text-align: right; color: #059669; font-size: 13px; font-weight: 700;">$${price}</td>
-      <td style="padding: 12px 16px; text-align: center;">${scoreBadge}</td>
-      <td style="padding: 12px 16px; text-align: center; color: #64748b; font-size: 12px;" class="mobile-hide">${vision}</td>
-      <td style="padding: 12px 16px; text-align: center; color: #64748b; font-size: 12px;" class="mobile-hide">${seller}</td>
-      <td style="padding: 12px 16px; text-align: center; color: #94a3b8; font-size: 12px;" class="mobile-hide">${age}</td>
-      <td style="padding: 12px 16px; text-align: center; color: #94a3b8; font-size: 12px;" class="mobile-hide">${psa9}</td>
-      <td style="padding: 12px 16px; text-align: center; color: #94a3b8; font-size: 12px;" class="mobile-hide">${psa10}</td>
-      <td style="padding: 12px 16px; text-align: center;"><a href="${url}" style="color: #1e3a5f; font-size: 12px; font-weight: 600; text-decoration: none;">View</a></td>
+    return `<tr style="background-color: ${rowBg}; border-bottom: 1px solid #f0f0f0;">
+      <td style="padding: 10px 12px; font-size: 11px; color: #94a3b8; text-align: center;">${index + 1}</td>
+      <td style="padding: 10px 12px; font-size: 13px; color: #1a1a1a; font-weight: 500; min-width: 320px; white-space: normal; word-wrap: break-word;">
+        ${titleEscaped}
+        <br>
+        <span style="display:inline-block;margin-top:4px;padding:1px 6px;border-radius:4px;font-size:10px;${badgeStyle}">${badgeText}</span>
+        <span style="display:inline-block;margin-top:4px;margin-left:6px;padding:1px 6px;border-radius:4px;font-size:10px;${listingBadgeStyle}">${listingBadgeText}</span>
+      </td>
+      <td style="padding: 10px 12px; font-size: 13px; font-weight: 500; color: #1a1a1a; text-align: right;">
+        ${priceCell}
+      </td>
+      <td style="padding: 10px 12px; text-align: center;">${scoreBadge}</td>
+      <td class="hide-mobile" style="padding: 10px 12px; text-align: center;">${trustBadge}</td>
+      <td class="hide-mobile" style="padding: 10px 12px; font-size: 11px; color: #64748b; text-align: center;">${age}</td>
+      <td class="hide-mobile" style="padding: 10px 12px; font-size: 12px; text-align: center;${psa9Style}">${psa9Val}</td>
+      <td class="hide-mobile" style="padding: 10px 12px; font-size: 12px; text-align: center;${psa10Style}">${psa10Val}</td>
+      <td class="hide-mobile" style="padding: 10px 12px; text-align: center;">${timeCell}</td>
+      <td style="padding: 10px 12px; text-align: center;"><a href="${url}" style="font-size: 12px; color: #1e3a5f; text-decoration: none;">View -&gt;</a></td>
     </tr>`;
   }).join('\n');
   
@@ -314,6 +373,11 @@ try {
   console.log(`  Scan file: ${scanFile}`);
   console.log(`  Scan name: ${scanName}`);
   console.log(`  Source: task-manager/ebay-scans-config.json`);
+  
+  // Get template type based on scan config
+  const todayScan = getTodayScanConfig();
+  const templateType = selectEmailTemplate(todayScan || {});
+  console.log(`  Template: ${templateType}`);
 
   // Check if file exists
   if (!fs.existsSync(scanFile)) {
@@ -354,12 +418,14 @@ try {
       scanName: scanName,
       searchTerm: scanName,
       totalResults: data.results ? data.results.length : 0,
+      cardMode: data.cardMode || 'Raw',
+      scanTimestamp: data.timestamp || new Date().toISOString(),
       cards: data.results ? data.results.slice(0, 20).map((item, index) => ({
         rank: index + 1,
         title: item.title,
         subtype: item.subtype || item.variant,
         price: item.totalPrice || item.price,
-        shipping: item.shippingCost,
+        shippingCost: item.shippingCost,
         condition: item.condition,
         daysListed: item.daysListed,
         sellerRating: item.sellerRating,
@@ -371,7 +437,11 @@ try {
         grade: item.grade,
         visionCorners: item.visionCorners,
         visionCentering: item.visionCentering,
-        visionSurface: item.visionSurface
+        visionSurface: item.visionSurface,
+        listingType: item.listingType || 'BIN',
+        itemEndDate: item.itemEndDate || null,
+        currentBidPrice: item.currentBidPrice || null,
+        bidCount: item.bidCount || 0
       })) : []
     };
     success = postToEmailHtml(htmlData, scanName);

@@ -227,6 +227,7 @@ class EbayBrowseAPI {
       sellerPositivePercent: item.seller?.feedbackPercentage || 0,
       bidCount: item.bidCount || 0,
       listingType: item.buyingOptions?.[0] || 'UNKNOWN',
+      currentBidPrice: item.currentBidPrice?.value || item.price?.value || null,
 
       // Additional Browse API features
       categoryPath: item.categories?.[0]?.categoryName || '',

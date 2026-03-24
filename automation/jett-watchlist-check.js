@@ -17,6 +17,7 @@ const https = require('https');
 const LOG_FILE = '/tmp/jett-watchlist.log';
 const PRICE_FILE = '/tmp/jett-watchlist-prices.json';
 const ALERT_COOLDOWN_FILE = '/tmp/jett-watchlist-alerts.json';
+const NODE_BIN = '/home/clawd/.nvm/versions/node/v22.22.0/bin/node';
 const CLAWDBOT_BIN = '/home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot';
 const TELEGRAM_TARGET = '5867308866';
 const WATCHLIST_PORT = 5002;
@@ -161,7 +162,11 @@ async function sendTelegram(message) {
   
   try {
     const { execFileSync } = require('child_process');
-    execFileSync(CLAWDBOT_BIN, args, { timeout: 15000, stdio: 'pipe' });
+    const result = execFileSync(CLAWDBOT_BIN, args, { 
+      timeout: 15000, 
+      stdio: 'pipe',
+      env: { ...process.env, PATH: '/home/clawd/.nvm/versions/node/v22.22.0/bin:/usr/local/bin:/usr/bin:/bin' }
+    });
     log('Telegram notification sent');
     return true;
   } catch(e) {
@@ -178,8 +183,9 @@ async function sendEmailFallback(message) {
   
   try {
     const { execSync } = require('child_process');
-    execSync(`node ${emailScript} --to "terryhuangjr@gmail.com" --subject "${subject}" --body "${cleanMessage}"`, {
-      timeout: 30000
+    execSync(`${NODE_BIN} ${emailScript} --to "terryhuangjr@gmail.com" --subject "${subject}" --body "${cleanMessage}"`, {
+      timeout: 30000,
+      env: { ...process.env, PATH: '/home/clawd/.nvm/versions/node/v22.22.0/bin:/usr/local/bin:/usr/bin:/bin' }
     });
     log('Email fallback sent successfully');
     return true;
@@ -248,7 +254,6 @@ async function main() {
 
       // Fire alert
       alertsTriggered++;
-      alertCooldowns[symbol] = Date.now();
       
       const direction = changePct > 0 ? '📈' : '📉';
       const pctStr = changePct >= 0 ? `+${changePct.toFixed(1)}%` : `${changePct.toFixed(1)}%`;
@@ -260,9 +265,12 @@ async function main() {
 
       const sent = await sendTelegram(msg);
       if (sent) {
+        // Only set cooldown if alert was sent successfully
+        alertCooldowns[symbol] = Date.now();
         log(`${symbol}: ALERT SENT - ${pctStr}`);
       } else {
         logError(`FAILED to send alert for ${symbol}`);
+        // Don't set cooldown if failed - will retry next check
       }
     }
   }

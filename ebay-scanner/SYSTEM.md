@@ -60,29 +60,38 @@ node run-from-config.js monday --vision
 **Structure:**
 ```json
 {
-  "global": {
-    "listing_type": "BIN",        // "BIN", "Auction", "Both"
-    "card_type": "Raw"           // "Raw", "Graded", "Both"
+  "version": "1.2",
+  "global_filters": {
+    "exclude_item_types": ["psa", "bgs", "sgc", ...],
+    "quality_rules": {
+      "seller_feedback_min": 98,
+      "listing_age_max_days": 25
+    }
   },
   "scans": {
     "monday": {
-      "name": "MJ Topps Finest",
-      "search_terms": ["Michael Jordan", "Topps Finest", "1993-1999"],
+      "name": "MJ Topps Finest 1994-1999",
+      "enabled": true,
+      "card_condition": "raw",     // "raw" or "graded"
+      "listing_type": "bin",       // "bin" or "auction"
+      "search_terms": ["topps finest michael jordan 1994-1999"],
       "filters": {
-        "min_price": 50,
-        "max_price": 1500,
-        "exclude_keywords": ["PSA", "BGS", "graded", "lot of"],
-        "condition": "Raw"
-      }
+        "topN": 25,
+        "minPrice": 10,
+        "maxPrice": 75,
+        "exclude_words": ["mystery", "refractor", ...]
+      },
+      "useVision": true
     },
     ...
   }
 }
 ```
 
-### Global Filters
-- **listing_type**: BIN (Buy It Now), Auction, Both
-- **card_type**: Raw (ungraded), Graded (PSA/BGS), Both
+### Per-Scan Settings (v1.2+)
+- **card_condition**: "raw" or "graded" - controls scorer and exclusions
+- **listing_type**: "bin" (Buy It Now) or "auction" - filters eBay results
+- Priority: scan setting > global setting > default
 
 ---
 
