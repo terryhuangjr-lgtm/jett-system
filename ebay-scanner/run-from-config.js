@@ -264,17 +264,11 @@ async function runScan(day) {
   console.log(`Filters: min=$${scan.filters.minPrice || 'any'}, max=$${scan.filters.maxPrice || 'any'}, topN=${scan.filters.topN}`);
   console.log(`Vision: ${scan.useVision ? 'enabled' : 'disabled'}`);
   
-  // Per-scan setting wins over global setting, then default
-  const cardCondition = scan.card_condition 
-    || config.global_filters?.default_card_condition 
-    || 'raw';
+  const cardCondition = scan.card_condition || 'raw';
+  const listingType = scan.listing_type || 'bin';
 
-  const listingTypeRaw = scan.listing_type 
-    || config.global_filters?.listing_type 
-    || 'bin';
-  const listingType = listingTypeRaw === 'bin' ? 'fixed_price' : listingTypeRaw;
-  
-  console.log(`Listing type: ${listingType} (${listingTypeRaw}) | Card mode: ${cardCondition}`);
+  console.log(`Card condition: ${cardCondition.toUpperCase()} (per-scan)`);
+  console.log(`Listing type: ${listingType.toUpperCase()} (per-scan)`);
   console.log('');
 
   // Build command

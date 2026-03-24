@@ -1,24 +1,11 @@
 {
   "version": "1.2",
-  "last_updated": "2026-03-24T00:17:03.397Z",
+  "last_updated": "2026-03-24T02:36:05.695Z",
   "global_filters": {
-    "exclude_item_types": [
-      "psa",
-      "bgs",
-      "sgc",
-      "leaf",
-      "replica",
-      "custom",
-      "cgs",
-      "hga",
-      "fan",
-      "lot"
-    ],
     "quality_rules": {
       "seller_feedback_min": 98,
       "listing_age_max_days": 25
-    },
-    "listing_type": "auction"
+    }
   },
   "scans": {
     "monday": {
@@ -42,12 +29,12 @@
         ]
       },
       "output_file": "/tmp/mj-finest-scan.json",
-      "last_run": "2026-03-24T00:24:15.125Z",
+      "last_run": "2026-03-24T00:14:34.791Z",
       "last_results": {
-        "timestamp": "2026-03-24T00:24:15.125Z",
+        "timestamp": "2026-03-24T00:14:34.791Z",
         "success": true
       },
-      "last_updated": "2026-03-23T13:17:50.953Z",
+      "last_updated": "2026-03-24T02:06:46.852Z",
       "useVision": true
     },
     "tuesday": {
@@ -148,7 +135,7 @@
       "card_condition": "graded",
       "listing_type": "bin",
       "search_terms": [
-        "luka doncic 2018 psa"
+        "luka doncic 2018 donruss BGS 9.5"
       ],
       "filters": {
         "topN": 20,
@@ -166,12 +153,12 @@
         "minPrice": 10
       },
       "output_file": "/tmp/topps-refractors-multi-scan.json",
-      "last_run": "2026-03-22T22:21:28.660Z",
+      "last_run": "2026-03-24T02:36:09.569Z",
       "last_results": {
-        "timestamp": "2026-03-22T22:21:28.660Z",
+        "timestamp": "2026-03-24T02:36:09.569Z",
         "success": true
       },
-      "last_updated": "2026-03-23T01:58:30.623Z",
+      "last_updated": "2026-03-24T02:36:05.691Z",
       "useVision": true
     },
     "saturday": {
@@ -221,9 +208,9 @@
         "maxPrice": null
       },
       "output_file": "/tmp/cam-ward-scan.json",
-      "last_run": "2026-03-24T00:33:15.608Z",
+      "last_run": "2026-03-24T00:14:07.210Z",
       "last_results": {
-        "timestamp": "2026-03-24T00:33:15.608Z",
+        "timestamp": "2026-03-24T00:14:07.210Z",
         "success": true
       },
       "last_updated": "2026-03-22T03:39:44.921Z",
@@ -236,5 +223,5 @@
     "slack_channel": "#levelupcards",
     "last_run": null
   },
-  "cardMode": "raw"
+  "cardMode": "graded"
 }

@@ -1398,6 +1398,24 @@ function openDayModal(day) {
           style="width:14px;height:14px;accent-color:var(--accent)">
         <label for="modal-enabled" style="font-size:12px;color:var(--text-secondary)">Enabled</label>
       </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <div>
+          <div class="card-label" style="margin-bottom:4px">Card Condition</div>
+          <select class="podcast-input" id="modal-card-condition" style="height:36px">
+            <option value="raw" ${scan.card_condition==='raw'?'selected':''}>Raw / Ungraded</option>
+            <option value="graded" ${scan.card_condition==='graded'?'selected':''}>Graded Slabs</option>
+            <option value="both" ${scan.card_condition==='both'?'selected':''}>Both</option>
+          </select>
+        </div>
+        <div>
+          <div class="card-label" style="margin-bottom:4px">Listing Type</div>
+          <select class="podcast-input" id="modal-listing-type" style="height:36px">
+            <option value="bin" ${scan.listing_type==='bin'?'selected':''}>Buy It Now</option>
+            <option value="auction" ${scan.listing_type==='auction'?'selected':''}>Auction</option>
+            <option value="both" ${scan.listing_type==='both'?'selected':''}>Both</option>
+          </select>
+        </div>
+      </div>
       <div>
         <div class="card-label" style="margin-bottom:4px">Search Terms (one per line)</div>
         <textarea class="podcast-input" id="modal-terms" rows="4" 
@@ -1537,6 +1555,8 @@ async function saveModalData() {
     updated.scans[day].filters.maxPrice = parseInt(document.getElementById('modal-max').value)||null;
     updated.scans[day].filters.topN = parseInt(document.getElementById('modal-topn').value)||20;
     updated.scans[day].useVision = document.getElementById('modal-vision')?.checked || false;
+    updated.scans[day].card_condition = document.getElementById('modal-card-condition').value;
+    updated.scans[day].listing_type = document.getElementById('modal-listing-type').value;
     updated.scans[day].last_updated = new Date().toISOString();
   } else if (currentModalType === 'global') {
     if (!updated.global_filters) updated.global_filters = {};

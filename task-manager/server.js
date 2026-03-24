@@ -729,17 +729,31 @@ Rules: Keep all language simple. Every activity 3-6 minutes. Make it feel like p
         const data = await this.readBodyJSON(req);
         const content = await fs.readFile(EBAY_CONFIG_FILE, 'utf-8');
         const config = JSON.parse(content);
-        
-        // Fix nested global_filters issue - save directly, not under another global_filters
-        if (data.global_filters && !data.global_filters.graded_keywords) {
-          // Data is wrapped in extra global_filters, unwrap it
-          config.global_filters = data.global_filters;
-        } else {
-          config.global_filters = data.global_filters;
-        }
-        
+        const incoming = data.global_filters || data;
+
+        // Map ALL possible dashboard field names to config fields
+        const cardOverride = 
+          incoming.card_condition_override !== undefined ? incoming.card_condition_override :
+          incoming.cardMode !== undefined ? incoming.cardMode :
+          incoming.card_condition !== undefined ? incoming.card_condition :
+          config.global_filters?.card_condition_override;
+
+        const listingOverride =
+          incoming.listing_type_override !== undefined ? incoming.listing_type_override :
+          incoming.listingMode !== undefined ? incoming.listingMode :
+          incoming.listing_type !== undefined ? incoming.listing_type :
+          config.global_filters?.listing_type;
+
+        config.global_filters = {
+          ...config.global_filters,
+          ...incoming,
+          card_condition_override: cardOverride,
+          listing_type_override: listingOverride
+        };
+
         config.last_updated = new Date().toISOString();
-        await fs.writeFile(EBAY_CONFIG_FILE, JSON.stringify(config, null, 2));
+        await fs.writeFile(EBAY_CONFIG_FILE, 
+          JSON.stringify(config, null, 2));
         return this.sendJSON(res, { success: true });
       } catch (e) {
         return this.sendJSON(res, { error: e.message }, 500);

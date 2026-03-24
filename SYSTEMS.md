@@ -266,8 +266,8 @@ node automation/jett-community-pulse.js "NIL deals college football"
 
 **Features:**
 - Vision scanning for card condition (using Claude Haiku)
-- Global filters: listing_type (fixed_price/auction), card_mode (raw/graded)
-- Run Scan Now button in Mission Control dashboard
+- Per-scan settings: card_condition (raw/graded/both), listing_type (bin/auction/both)
+- Each scan configured independently via Mission Control dashboard
 - Dynamic output filenames: `{search-term}-{YYYY-MM-DD}.json` (e.g., `luka-doncic-psa-2026-03-22.json`)
 - HTML email template: `templates/ebay-scan-email.html`
 - Email uses most recent scan file regardless of day

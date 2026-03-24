@@ -89,9 +89,9 @@ node run-from-config.js monday --vision
 ```
 
 ### Per-Scan Settings (v1.2+)
-- **card_condition**: "raw" or "graded" - controls scorer and exclusions
-- **listing_type**: "bin" (Buy It Now) or "auction" - filters eBay results
-- Priority: scan setting > global setting > default
+- **card_condition**: "raw", "graded", or "both" - controls scorer and exclusions
+- **listing_type**: "bin" (Buy It Now), "auction", or "both" - filters eBay results
+- Each scan configured independently via Mission Control dashboard
 
 ---
 
