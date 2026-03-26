@@ -7,6 +7,16 @@ const https = require('https');
 const fs = require('fs');
 const path = require('path');
 
+const { logVisionDecision } = require('./vision-logger');
+
+function upgradeImageUrl(url) {
+  if (!url) return url;
+  return url
+    .replace('s-l225.jpg', 's-l500.jpg')
+    .replace('s-l140.jpg', 's-l500.jpg')
+    .replace('s-l64.jpg',  's-l500.jpg');
+}
+
 let Anthropic;
 try {
   Anthropic = require('@anthropic-ai/sdk');
@@ -60,7 +70,8 @@ class VisionFilter {
     }
 
     try {
-      const imageBase64 = await this.fetchImageAsBase64(imageUrl);
+      const upgradedUrl = upgradeImageUrl(imageUrl);
+      const imageBase64 = await this.fetchImageAsBase64(upgradedUrl);
       if (!imageBase64) {
         return { score: 5, skip: false, reason: 'Could not fetch image', issues: [] };
       }
@@ -81,28 +92,38 @@ class VisionFilter {
             },
             {
               type: 'text',
-              text: `Analyze this sports card listing photo. Return ONLY valid JSON, no other text:
+              text: `Analyze this sports card listing photo for obvious condition problems.
+Return ONLY valid JSON, no other text:
 {
   "corners": 1-10,
   "centering": 1-10,
-  "surface": 1-10,
   "overall": 1-10,
-  "issues": ["list any visible problems"],
+  "issues": ["list only OBVIOUS visible problems"],
   "skip": true/false,
   "confidence": "high/medium/low"
 }
 
-SCORING RULES:
-- corners: Score what you can actually see. 10=perfect sharp corners, 1=badly rounded/worn
-- centering: Score left/right and top/bottom ratio. 10=60/40 or better, 1=severely off-center
-- surface: IGNORE - do not score surface. Always return 7 as neutral default.
-- overall: Weight corners 50%, centering 50%. Surface is NOT factored in.
-- skip: Set true ONLY if corners are clearly worn/rounded OR centering is worse than 70/30 
-  OR there are obvious creases/writing visible. Do NOT skip for lighting or glare issues.
-- confidence: "high" if card is clearly visible, "medium" if partial, "low" if too small/dark
+SCORING:
+- corners: 10=sharp perfect corners, 7=minor wear, 
+  5=clearly rounded/white corners, 1=badly damaged
+- centering: 10=perfectly centered, 7=slight off-center,
+  5=noticeably off-center, 3=badly off-center, 1=severe
+- overall: average of corners and centering
 
-Be strict on corners and centering. Ignore surface entirely.
-If image is too small, dark, or obscured to assess properly, return overall:6 skip:false confidence:low`
+SKIP RULES - only set skip:true for OBVIOUS problems:
+- Corners are CLEARLY white, rounded, or worn (score 5 or below)
+- Centering is OBVIOUSLY bad - worse than 65/35 ratio (score 4 or below)
+- Visible creases, folds, or writing on card face
+- Card is clearly damaged or heavily worn
+- DO NOT skip for: slight wear, minor off-center, 
+  protective coatings/film (these are GOOD), 
+  lighting issues, blurry photos, or borderline cases
+
+IMPORTANT: Protective plastic film or coating on the card
+surface is a POSITIVE sign - do NOT penalize for this.
+When in doubt, set skip:false and give an honest score.
+If image is too small or dark to assess, return 
+overall:6 skip:false confidence:low`
             }
           ]
         }]
@@ -144,6 +165,7 @@ If image is too small, dark, or obscured to assess properly, return overall:6 sk
         confidence: result.confidence || 'medium',
         corners: result.corners || 5,
         centering: result.centering || 5,
+        overall: result.overall || ((result.corners || 5 + result.centering || 5) / 2),
         surface: 7, // Ignored - always neutral
         skip: result.skip || false,
         issues: result.issues || [],
@@ -193,26 +215,39 @@ If image is too small, dark, or obscured to assess properly, return overall:6 sk
       let batchPassed = 0;
       let batchSkipped = 0;
       for (const { item, vision } of batchResults) {
+        // Only reject on explicit skip:true from Haiku
+        // Score-based penalization happens in deal scoring, not here
+        const cornerScore = vision.corners || 6;
+        const centerScore = vision.centering || 6;
+        const overallScore = vision.overall || 
+          ((cornerScore + centerScore) / 2);
+        const confidenceMult = vision.confidence === 'high' ? 1.0 :
+                             vision.confidence === 'medium' ? 0.9 : 0.75;
+        const finalScore = parseFloat((overallScore * confidenceMult).toFixed(1));
+
         if (vision.skip) {
           skipped++;
           batchSkipped++;
+          logVisionDecision(item, vision, 'REJECT');
+          process.stdout.write(` ❌ SKIP (${vision.issues?.join(', ') || 'obvious defect'})\n`);
         } else {
           passed++;
           batchPassed++;
+          logVisionDecision(item, vision, 'PASS');
+          // Cards with issues get lower scores but still appear in results
+          const label = finalScore >= 7 ? '✅' : finalScore >= 5.5 ? '⚠️' : '🔶';
+          process.stdout.write(` ${label} PASS (corners:${cornerScore} center:${centerScore} score:${finalScore})\n`);
           results.push({
             ...item,
-            visionScore: vision.score,
-            visionCorners: vision.corners,
-            visionCentering: vision.centering,
-            visionSurface: vision.surface,
-            visionIssues: vision.issues,
-            visionReason: vision.reason,
-            visionConfidence: vision.confidence
+            visionScore: finalScore,
+            visionCorners: cornerScore,
+            visionCentering: centerScore,
+            visionIssues: vision.issues || [],
+            visionReason: vision.issues?.join(', ') || 'Passed vision check',
+            visionConfidence: vision.confidence || 'medium'
           });
         }
       }
-
-      process.stdout.write(` ✅ ${batchPassed} passed, ❌ ${batchSkipped} skipped\n`);
 
       // Small delay between batches to avoid rate limiting
       if (i + BATCH_SIZE < toScan.length) {

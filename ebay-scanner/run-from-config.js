@@ -98,6 +98,17 @@ function renderHtmlTemplate(template, data) {
     }
     const scoreBadge = `<span style="font-size:11px;font-weight:500;padding:2px 8px;border-radius:20px;${scoreStyle}">${score.toFixed(1)}</span>`;
     
+    // Vision tier badge
+    const visionScore = typeof card.visionScore === 'number' ? card.visionScore : 0;
+    let visionBadge = '';
+    if (visionScore >= 7) {
+      visionBadge = '<span title="Vision: Clean" style="display:inline-block;margin-left:4px;color:#1D9E75;font-size:10px;">✅</span>';
+    } else if (visionScore >= 5.5) {
+      visionBadge = '<span title="Vision: Borderline - visible issues" style="display:inline-block;margin-left:4px;color:#BA7517;font-size:10px;">⚠️</span>';
+    } else if (visionScore > 0) {
+      visionBadge = '<span title="Vision: Issues - buyer beware" style="display:inline-block;margin-left:4px;color:#E24B4A;font-size:10px;">🔶</span>';
+    }
+    
     // Trust badge
     const trust = getTrustBadge(card.sellerRating, card.sellerSales);
     const trustBadge = `<span style="display:inline-block;padding:2px 6px;border-radius:4px;font-size:10px;font-weight:500;background:${trust.bg};color:${trust.color}">● ${trust.display}</span>`;
@@ -159,13 +170,13 @@ function renderHtmlTemplate(template, data) {
       <td style="padding: 10px 12px; font-size: 13px; font-weight: 500; color: #1a1a1a; text-align: right;">
         ${priceCell}
       </td>
-      <td style="padding: 10px 12px; text-align: center;">${scoreBadge}</td>
+      <td style="padding: 10px 12px; text-align: center;">${scoreBadge}${visionBadge}</td>
       <td class="hide-mobile" style="padding: 10px 12px; text-align: center;">${trustBadge}</td>
       <td class="hide-mobile" style="padding: 10px 12px; font-size: 11px; color: #64748b; text-align: center;">${age}</td>
       <td class="hide-mobile" style="padding: 10px 12px; font-size: 12px; text-align: center;${psa9Style}">${psa9Val}</td>
       <td class="hide-mobile" style="padding: 10px 12px; font-size: 12px; text-align: center;${psa10Style}">${psa10Val}</td>
       <td class="hide-mobile" style="padding: 10px 12px; text-align: center;">${timeCell}</td>
-      <td style="padding: 10px 12px; text-align: center;"><a href="${url}" style="font-size: 12px; color: #1e3a5f; text-decoration: none;">View -&gt;</a></td>
+      <td style="padding: 10px 12px; text-align: center;"><a href="${url}" style="font-size: 12px; color: #000000; text-decoration: none;">View -&gt;</a></td>
     </tr>`;
   }).join('');
   
