@@ -181,13 +181,21 @@ function renderHtmlTemplate(template, data) {
     ${card.visionCorners ? `<tr style="${rowBg}">
       <td colspan="9" style="padding:4px 8px 8px;font-size:11px;color:#888;font-style:italic">
         🤖 AI Scout: ${(() => {
+          const issues = card.visionIssues || [];
           const avg = ((card.visionCorners || 5) + (card.visionCentering || 5)) / 2;
           const emoji = avg >= 7.5 ? '✅' : avg >= 6 ? '⚠️' : '🔶';
-          const cornerText = card.visionCorners >= 8 ? 'Sharp corners' :
-                             card.visionCorners >= 6 ? 'Minor wear' : 'Corner wear';
-          const centerText = card.visionCentering >= 8 ? 'Well centered' :
-                             card.visionCentering >= 6 ? 'Slight off-center' : 'Off-center';
-          return `${emoji} ${cornerText}, ${centerText}`;
+          
+          if (issues.length > 0) {
+            // Use actual issue
+            const firstIssue = issues[0].length > 35 ? issues[0].substring(0, 32) + '...' : issues[0];
+            return `${emoji} ${firstIssue}`;
+          } else if (card.visionCorners >= 7 && card.visionCentering >= 7) {
+            return `${emoji} Card looks clean`;
+          } else if (card.visionCorners >= 6) {
+            return `${emoji} Minor corner wear${card.visionCentering < 6 ? ', slight off-center' : ''}`;
+          } else {
+            return `${emoji} Corner wear, off-center`;
+          }
         })()}
       </td>
     </tr>` : ''}`;
@@ -224,6 +232,9 @@ function sendResultsEmail(outputFile, day, scanName, cardMode = 'raw', listingTy
       psa9: item.psa9 || '-',
       psa10: item.psa10 || '-',
       vision: item.vision || null,
+      visionCorners: item.visionCorners || null,
+      visionCentering: item.visionCentering || null,
+      visionIssues: item.visionIssues || [],
       listingType: item.listingType || 'BIN',
       itemEndDate: item.itemEndDate || null,
       currentBidPrice: item.currentBidPrice || null,

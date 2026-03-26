@@ -316,25 +316,25 @@ overall:6 skip:false confidence:low`
     
     const parts = [];
     
-    // Corner assessment
-    if (corners >= 8) {
-      parts.push('Corners look sharp');
+    // Use ACTUAL specific issues from Haiku if available
+    if (issues.length > 0) {
+      // Take first issue (truncated)
+      const firstIssue = issues[0].length > 40 ? issues[0].substring(0, 37) + '...' : issues[0];
+      parts.push(firstIssue);
+    } else if (corners >= 7 && centering >= 7) {
+      // No issues AND good scores = clean card
+      parts.push('Card looks clean');
     } else if (corners >= 6) {
-      parts.push('Minor corner wear visible');
+      parts.push('Minor corner wear');
     } else {
       parts.push('Noticeable corner wear');
+      
+      if (centering < 6) {
+        parts.push(centering >= 5 ? 'slight off-center' : 'off-center');
+      }
     }
     
-    // Centering assessment  
-    if (centering >= 8) {
-      parts.push('well-centered');
-    } else if (centering >= 6) {
-      parts.push('slight off-center');
-    } else {
-      parts.push('noticeably off-center');
-    }
-    
-    // Coating (positive signal)
+    // Coating (positive signal) - add to description if present
     const hasCoating = issues.some(i => 
       i.toLowerCase().includes('coat') || 
       i.toLowerCase().includes('film')
@@ -356,8 +356,7 @@ overall:6 skip:false confidence:low`
     }
     
     // Low confidence disclaimer
-    const disclaimer = confidence === 'low' ? 
-      ' (limited photo quality)' : '';
+    const disclaimer = confidence === 'low' ? ' (limited photo quality)' : '';
     
     return {
       text: parts.join(', ') + '.',
