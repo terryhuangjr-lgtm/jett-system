@@ -306,7 +306,7 @@ if (breakdown.listingFreshness) {
         confidence: item.visionConfidence || 'medium'
       });
       if (scout) {
-        lines.push(`   🤖 AI Scout: ${scout.formatted}`);
+        lines.push(`   AI Scout: ${scout.formatted}`);
       }
     }
     

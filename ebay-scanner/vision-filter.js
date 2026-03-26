@@ -98,7 +98,7 @@ Return ONLY valid JSON, no other text:
   "corners": 1-10,
   "centering": 1-10,
   "overall": 1-10,
-  "issues": ["describe SPECIFIC things you actually see, not generic statements. BAD: 'minor wear visible'. GOOD: 'top-right corner shows white edges'. BAD: 'slight off-center'. GOOD: 'left border is noticeably wider than right'. If card looks genuinely clean, say exactly what looks good: e.g. 'corners appear sharp', 'borders look even'"],
+  "issues": ["describe SPECIFIC things you actually see, not generic statements. Do NOT specify which side (left/right/top/bottom) is off-center or worn - just describe WHAT you see. BAD: 'Left border noticeably wider than right'. GOOD: 'Off-center alignment visible'. BAD: 'Top-left corner shows wear'. GOOD: 'Corner wear visible'. If card looks genuinely clean, say exactly what looks good: e.g. 'corners appear sharp', 'borders look even'"],
   "skip": true/false,
   "confidence": "high/medium/low"
 }
@@ -123,6 +123,16 @@ DISTRIBUTION REQUIREMENT: Across a batch of cards you
 MUST vary your scores. Most raw eBay cards have real 
 flaws. If you are giving every card the same score you
 are not analyzing carefully enough. 
+
+CALIBRATION GUIDE for raw eBay card listings:
+- Most raw cards on eBay score 6-8 for corners
+- A score of 9-10 means genuinely exceptional condition
+- A score of 5 or below means clearly visible problems
+- Do not cluster scores around 7 - this is meaningless
+- If you cannot clearly see the corners due to image 
+  quality, score 6 and note low confidence
+- Centering: most cards are slightly off, score 6-7 
+  is normal. Score 8+ means visibly well-centered. 
 
 A score of 7 means "above average condition" - most cards
 should NOT score 7. Be honest and critical.
@@ -358,29 +368,18 @@ overall:6 skip:false confidence:low`
     );
     if (hasCoating) parts.push('coating intact ✓');
     
-    // Overall verdict
+    // Overall verdict - Bloomberg terminal style
     const avg = (corners + centering) / 2;
-    let verdict, emoji;
-    if (avg >= 7.5) {
-      verdict = 'Strong candidate';
-      emoji = '✅';
-    } else if (avg >= 6) {
-      verdict = 'Worth a closer look';
-      emoji = '⚠️';
-    } else {
-      verdict = 'Proceed with caution';
-      emoji = '🔶';
-    }
+    const verdictLabel = avg >= 7.5 ? 'CLEAN' : 
+                         avg >= 6 ? 'REVIEW' : 'CAUTION';
     
     // Low confidence disclaimer
     const disclaimer = confidence === 'low' ? ' (limited photo quality)' : '';
     
     return {
       text: parts.join(', ') + '.',
-      verdict,
-      emoji,
-      disclaimer,
-      formatted: `${emoji} ${parts.join(', ')}. ${verdict}${disclaimer}`
+      verdict: verdictLabel,
+      formatted: `[${verdictLabel}] ${parts.join(' · ')}${disclaimer}`
     };
   }
 }

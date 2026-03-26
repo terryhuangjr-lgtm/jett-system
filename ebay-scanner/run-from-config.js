@@ -180,21 +180,19 @@ function renderHtmlTemplate(template, data) {
     </tr>
     ${card.visionCorners ? `<tr style="${rowBg}">
       <td colspan="9" style="padding:4px 8px 8px;font-size:11px;color:#888;font-style:italic">
-        🤖 AI Scout: ${(() => {
+        AI Scout: ${(() => {
           const issues = card.visionIssues || [];
           const avg = ((card.visionCorners || 5) + (card.visionCentering || 5)) / 2;
-          const emoji = avg >= 7.5 ? '✅' : avg >= 6 ? '⚠️' : '🔶';
+          const label = avg >= 7.5 ? 'CLEAN' : avg >= 6 ? 'REVIEW' : 'CAUTION';
           
           if (issues.length > 0) {
-            // Use actual issue
-            const firstIssue = issues[0].length > 35 ? issues[0].substring(0, 32) + '...' : issues[0];
-            return `${emoji} ${firstIssue}`;
+            return `[${label}] ${issues[0]}`;
           } else if (card.visionCorners >= 7 && card.visionCentering >= 7) {
-            return `${emoji} Card looks clean`;
+            return `[${label}] Card looks clean`;
           } else if (card.visionCorners >= 6) {
-            return `${emoji} Minor corner wear${card.visionCentering < 6 ? ', slight off-center' : ''}`;
+            return `[${label}] Minor corner wear${card.visionCentering < 6 ? ' · slight off-center' : ''}`;
           } else {
-            return `${emoji} Corner wear, off-center`;
+            return `[${label}] Corner wear · off-center`;
           }
         })()}
       </td>
