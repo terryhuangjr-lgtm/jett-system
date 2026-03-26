@@ -81,7 +81,8 @@ node run-from-config.js monday --vision
         "maxPrice": 75,
         "exclude_words": ["mystery", "refractor", ...]
       },
-      "useVision": true
+      "useVisionScout": true,
+      "useVisionFilter": false
     },
     ...
   }
@@ -91,27 +92,37 @@ node run-from-config.js monday --vision
 ### Per-Scan Settings (v1.2+)
 - **card_condition**: "raw", "graded", or "both" - controls scorer and exclusions
 - **listing_type**: "bin" (Buy It Now), "auction", or "both" - filters eBay results
+- **useVisionScout**: true/false - show AI Scout condition notes in email (default: true for Terry)
+- **useVisionFilter**: true/false - remove bad cards from results (default: false)
 - Each scan configured independently via Mission Control dashboard
 
 ---
 
 ## Features
 
-### 1. Vision Filter (Claude Haiku)
-Analyzes card images to detect:
-- Centering issues (50% weight)
-- Corners/edges damage (50% weight)
-- Surface scratches (IGNORED - always neutral)
-- Overall condition score with confidence multiplier
+### 1. AI Vision (Claude Haiku)
 
-**Confidence Multiplier:**
-- High: 1.0x
-- Medium: 0.85x
-- Low: 0.7x
+**Two Modes:**
+- **AI Scout**: Always ON for Terry. Analyzes card images for condition, adds notes to email. Cost: ~$0.01/scan.
+- **AI Filter**: OFF by default. Removes cards with obvious defects from results. Cost: ~$0.02/scan.
+
+**Analyzes:**
+- Corners (10=sharp, 5=rounded/worn, 1=badly damaged)
+- Centering (10=60/40 or better, 5=70/30, 1=severely off-center)
+- Confidence: high/medium/low
+
+**Email Display:**
+- [CLEAN]: Score 7+ - good condition
+- [REVIEW]: Score 5.5-6.9 - borderline, worth a look
+- [CAUTION]: Score <5.5 - visible issues, buyer beware
 
 **Usage:**
 ```bash
-node run-from-config.js monday --vision
+# Scout only (default for Terry)
+node run-from-config.js monday
+
+# With Filter enabled (via dashboard toggle)
+node run-from-config.js monday  # useVisionFilter: true in config
 ```
 
 ### 2. Raw vs Graded Modes
@@ -133,14 +144,29 @@ Set via `cardMode` in config or dashboard toggle.
 ### 3. Deal Scoring (Raw Mode - deal-scorer-v2.js)
 
 **Weights:**
-- Search Relevance: 40% (player/year/brand match)
-- Seller Quality: 20% (feedback % + sales count)
-- Listing Quality: 15% (photos + premium condition signals)
-- Listing Freshness: 15% (age of listing)
-- Vision Score: 10% (image analysis)
+- Seller Quality: 35% (feedback % + sales count curve)
+- Listing Quality: 30% (photos + premium condition signals + price vs median)
+- Search Relevance: 25% (player/year/brand match)
+- Listing Freshness: 10% (age of listing)
 
-**Freshness Tiers:**
+**Seller Quality Curve:**
+- 99.8%+ & 10K+ sales: 10 pts (Elite)
+- 99.5%+ & 2K+ sales: 8.5 pts (Very good)
+- 99%+ & 500+ sales: 7.5 pts (Good)
+- 98%+ & 100+ sales: 6 pts (Established)
+- 95%+: 4 pts (Decent)
+- 90%+: 2.5 pts (New)
+- <90%: 1 pt (Low trust)
+
+**Freshness Scoring:**
+- Priority: itemCreationDate → itemEndDate → fallback
+- Unknown age: 4 pts (slight penalty, was 5)
 - <1 day: 10 pts | 1-3 days: 8 pts | 4-7 days: 6 pts | 8-14 days: 4 pts | 15-30 days: 2 pts | 30+ days: 0 pts
+
+**Price Signal:**
+- 20%+ below median: +3 pts ("Well below median")
+- 10-20% below median: +1.5 pts ("Below median price")
+- 20%+ above median: -1 pt ("Above median price")
 
 **Auto-Reject Rules:**
 - Condition below NM-MT: score 0
