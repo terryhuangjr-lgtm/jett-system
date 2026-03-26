@@ -28,7 +28,7 @@ async function multiSearch(searchConfig) {
     rawOnly = true,
     minScoreToShow = 7.0,
     topN = 20,
-    useVisionScout = true,   // Show AI Scout comments
+    useVisionScout = false,   // Default OFF - must be explicitly enabled
     useVisionFilter = false, // Actively filter bad cards
     visionTopN = 200,
     listingType = 'fixed_price',
@@ -350,7 +350,7 @@ if (require.main === module) {
     minPrice: 0,
     maxPrice: null,
     rawOnly: true,
-    useVisionScout: true,
+    useVisionScout: false,  // Default OFF - must be explicitly enabled
     useVisionFilter: false,
     visionTopN: 200
   };

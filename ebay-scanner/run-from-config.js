@@ -295,8 +295,8 @@ async function runScan(day) {
   console.log(`Terms: ${scan.search_terms.join(', ')}`);
   console.log(`Exclude: ${(scan.filters.exclude_words || []).join(', ') || 'none'}`);
   console.log(`Filters: min=$${scan.filters.minPrice || 'any'}, max=$${scan.filters.maxPrice || 'any'}, topN=${scan.filters.topN}`);
-  const useVisionScout = scan.useVisionScout !== false; // default true
-  const useVisionFilter = scan.useVisionFilter || false;
+  const useVisionScout = scan.useVisionScout === true; // only true if explicitly set
+  const useVisionFilter = scan.useVisionFilter === true; // only true if explicitly set
   console.log(`AI Scout: ${useVisionScout ? 'ON' : 'OFF'}`);
   console.log(`AI Filter: ${useVisionFilter ? 'ON' : 'OFF'}`);
   
