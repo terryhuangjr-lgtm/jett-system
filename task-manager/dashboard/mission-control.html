@@ -1312,8 +1312,12 @@ async function loadEbayConfig() {
           <div style="font-size:10px;color:var(--text-muted);margin-bottom:6px">
             ${scan.filters?.minPrice?'$'+scan.filters.minPrice:''} 
             ${scan.filters?.maxPrice?' – $'+scan.filters.maxPrice:''}
-            ${scan.useVisionFilter ? '<div style="font-size:10px;color:var(--accent)">👁 Filter ON</div>' : 
-              scan.useVisionScout !== false ? '<div style="font-size:10px;color:var(--text-muted)">👁 Scout</div>' : ''}
+            <div style="margin-top:4px">
+              ${scan.useVisionScout !== false ? 
+                '<span style="font-size:9px;padding:2px 5px;border:1px solid var(--accent);border-radius:3px;color:var(--accent);font-family:DM Mono,monospace">SCOUT</span>' : ''}
+              ${scan.useVisionFilter ? 
+                '<span style="font-size:9px;padding:2px 5px;border:1px solid var(--green);border-radius:3px;color:var(--green);font-family:DM Mono,monospace;margin-left:4px">FILTER</span>' : ''}
+            </div>
           </div>
           <div style="font-size:10px;color:var(--text-muted);font-family:'DM Mono',monospace">
             Last: ${lastRun}
