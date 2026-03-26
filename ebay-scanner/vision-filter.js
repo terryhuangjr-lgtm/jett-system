@@ -305,6 +305,68 @@ overall:6 skip:false confidence:low`
       }
     });
   }
+
+  generateScoutReport(vision) {
+    if (!vision || !vision.corners) return null;
+    
+    const corners = vision.corners;
+    const centering = vision.centering;
+    const issues = vision.issues || [];
+    const confidence = vision.confidence || 'medium';
+    
+    const parts = [];
+    
+    // Corner assessment
+    if (corners >= 8) {
+      parts.push('Corners look sharp');
+    } else if (corners >= 6) {
+      parts.push('Minor corner wear visible');
+    } else {
+      parts.push('Noticeable corner wear');
+    }
+    
+    // Centering assessment  
+    if (centering >= 8) {
+      parts.push('well-centered');
+    } else if (centering >= 6) {
+      parts.push('slight off-center');
+    } else {
+      parts.push('noticeably off-center');
+    }
+    
+    // Coating (positive signal)
+    const hasCoating = issues.some(i => 
+      i.toLowerCase().includes('coat') || 
+      i.toLowerCase().includes('film')
+    );
+    if (hasCoating) parts.push('coating intact ✓');
+    
+    // Overall verdict
+    const avg = (corners + centering) / 2;
+    let verdict, emoji;
+    if (avg >= 7.5) {
+      verdict = 'Strong candidate';
+      emoji = '✅';
+    } else if (avg >= 6) {
+      verdict = 'Worth a closer look';
+      emoji = '⚠️';
+    } else {
+      verdict = 'Proceed with caution';
+      emoji = '🔶';
+    }
+    
+    // Low confidence disclaimer
+    const disclaimer = confidence === 'low' ? 
+      ' (limited photo quality)' : '';
+    
+    return {
+      text: parts.join(', ') + '.',
+      verdict,
+      emoji,
+      disclaimer,
+      formatted: `${emoji} ${parts.join(', ')}. ${verdict}${disclaimer}`
+    };
+  }
 }
 
 module.exports = VisionFilter;

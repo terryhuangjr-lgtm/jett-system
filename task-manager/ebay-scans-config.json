@@ -1,6 +1,6 @@
 {
   "version": "1.2",
-  "last_updated": "2026-03-24T02:36:05.695Z",
+  "last_updated": "2026-03-25T21:40:26.170Z",
   "global_filters": {
     "quality_rules": {
       "seller_feedback_min": 98,
@@ -29,9 +29,9 @@
         ]
       },
       "output_file": "/tmp/mj-finest-scan.json",
-      "last_run": "2026-03-24T00:14:34.791Z",
+      "last_run": "2026-03-26T01:44:13.496Z",
       "last_results": {
-        "timestamp": "2026-03-24T00:14:34.791Z",
+        "timestamp": "2026-03-26T01:44:13.496Z",
         "success": true
       },
       "last_updated": "2026-03-24T02:06:46.852Z",
@@ -43,7 +43,7 @@
       "card_condition": "raw",
       "listing_type": "bin",
       "search_terms": [
-        "Ronald Acuna 2018 refractor"
+        "Ronald Acuna 2018 /99"
       ],
       "filters": {
         "topN": 20,
@@ -66,17 +66,16 @@
         "timestamp": "2026-03-21T23:55:53.898Z",
         "success": true
       },
-      "last_updated": "2026-03-23T22:51:53.746Z",
+      "last_updated": "2026-03-25T00:26:28.991Z",
       "useVision": true
     },
     "wednesday": {
-      "name": "Kobe Bryant Refractors 1997-2004",
+      "name": "inserts",
       "enabled": true,
       "card_condition": "raw",
-      "listing_type": "bin",
+      "listing_type": "auction",
       "search_terms": [
-        "kobe bryant topps chrome refractor 1997-2004 PSA",
-        "kobe bryant topps finest refractor 1997-2004 PSA"
+        "gold refractor 1996-1999"
       ],
       "filters": {
         "topN": 20,
@@ -91,13 +90,13 @@
         "maxPrice": 5000
       },
       "output_file": "/tmp/kobe-refractors-scan.json",
-      "last_run": "2026-03-23T23:03:20.255Z",
+      "last_run": "2026-03-25T21:40:31.010Z",
       "last_results": {
-        "timestamp": "2026-03-23T23:03:20.255Z",
+        "timestamp": "2026-03-25T21:40:31.010Z",
         "success": true
       },
-      "last_updated": "2026-03-23T23:03:04.987Z",
-      "useVision": true
+      "last_updated": "2026-03-25T21:40:26.161Z",
+      "useVision": false
     },
     "thursday": {
       "name": "Multi Testing",
@@ -105,7 +104,7 @@
       "card_condition": "raw",
       "listing_type": "bin",
       "search_terms": [
-        "stephen curry, james harden 2009"
+        "charles barkley, david robinson 1993-1998 refractor"
       ],
       "filters": {
         "topN": 20,
@@ -126,16 +125,16 @@
         "timestamp": "2026-03-23T21:46:10.276Z",
         "success": true
       },
-      "last_updated": "2026-03-23T21:45:31.957Z",
+      "last_updated": "2026-03-25T21:24:38.311Z",
       "useVision": true
     },
     "friday": {
       "name": "luka doncic",
       "enabled": true,
-      "card_condition": "graded",
+      "card_condition": "raw",
       "listing_type": "bin",
       "search_terms": [
-        "luka doncic 2018 donruss BGS 9.5"
+        "luka doncic 2018 prizm"
       ],
       "filters": {
         "topN": 20,
@@ -147,7 +146,6 @@
           "signed",
           "holo",
           "sage",
-          "prizm",
           "mystery"
         ],
         "minPrice": 10
@@ -158,7 +156,7 @@
         "timestamp": "2026-03-24T02:36:09.569Z",
         "success": true
       },
-      "last_updated": "2026-03-24T02:36:05.691Z",
+      "last_updated": "2026-03-24T23:55:49.740Z",
       "useVision": true
     },
     "saturday": {

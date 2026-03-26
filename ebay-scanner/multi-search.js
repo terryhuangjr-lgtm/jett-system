@@ -129,42 +129,6 @@ async function multiSearch(searchConfig) {
     // Filter by minimum score
     const displayItems = scoredItems.filter(item => item.dealScore.score >= minScoreToShow);
 
-    // === VISION OVERRIDE FOR SOFT REJECTS ===
-    // Only run vision for raw cards - graded cards (slabs) can't be visually assessed
-    let visionOverrideItems = [];
-    if (cardMode === 'raw' && rawOnly && softRejectItems.length > 0 && useVision) {
-      console.log(`\n👁️  Vision override: scanning ${softRejectItems.length} soft-reject items...`);
-      
-      // Score soft rejects first
-      const softScored = [];
-      for (const item of softRejectItems) {
-        try {
-          const score = scorer.score(item, { foundComps: false });
-          softScored.push({ ...item, dealScore: score });
-        } catch (e) {
-          // skip
-        }
-      }
-      
-      // Run vision on soft rejects
-      if (softScored.length > 0) {
-        const visionFilter = new VisionFilter();
-        const visioned = await visionFilter.filterItems(softScored, softScored.length);
-        
-        // Keep only if vision score >= 7.5 and confidence not low
-        for (const v of visioned) {
-          if (v.visionScore >= 7.5 && v.visionConfidence !== 'low') {
-            v.visionOverride = true;
-            visionOverrideItems.push(v);
-            console.log(`   ✅ Vision OVERRIDE KEEP: ${v.title?.substring(0, 40)}... (vision: ${v.visionScore})`);
-          } else {
-            console.log(`   ❌ Vision OVERRIDE REJECT: ${v.title?.substring(0, 40)}... (vision: ${v.visionScore})`);
-          }
-        }
-      }
-      console.log(`   Vision override saved ${visionOverrideItems.length} items`);
-    }
-
     // Vision scanning (optional - costs ~$0.02 per 30 items)
     // Only run vision for raw cards - graded cards (slabs) can't be visually assessed
     let finalItems = displayItems;
@@ -174,12 +138,6 @@ async function multiSearch(searchConfig) {
       console.log(`After vision filter: ${finalItems.length} listings`);
     } else if (cardMode === 'graded') {
       console.log(`Skipping vision (graded mode - slabs cannot be visually assessed)`);
-    }
-    
-    // Add vision override items to final results
-    if (visionOverrideItems.length > 0) {
-      finalItems = [...finalItems, ...visionOverrideItems];
-      console.log(`After vision override: ${finalItems.length} total listings`);
     }
 
     console.log(`Scored ${scoredItems.length} listings`);
@@ -332,9 +290,24 @@ function generateReport(keywords, items, topN, duration, stats) {
       }
     }
 
-    if (breakdown.listingFreshness) {
+if (breakdown.listingFreshness) {
       const lf = breakdown.listingFreshness;
       lines.push(`   - Freshness (10%): ${lf.points}/${lf.maxPoints} pts | ${lf.ageInDays !== null ? lf.ageInDays + ' days old' : 'Unknown age'}`);
+    }
+    
+    // AI Scout report (vision must be enabled and item scanned)
+    if (item.visionCorners) {
+      const VisionFilter = require('./vision-filter');
+      const vf = new VisionFilter();
+      const scout = vf.generateScoutReport({
+        corners: item.visionCorners,
+        centering: item.visionCentering,
+        issues: item.visionIssues || [],
+        confidence: item.visionConfidence || 'medium'
+      });
+      if (scout) {
+        lines.push(`   🤖 AI Scout: ${scout.formatted}`);
+      }
     }
     
     // Add vision score if available

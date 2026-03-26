@@ -177,7 +177,20 @@ function renderHtmlTemplate(template, data) {
       <td class="hide-mobile" style="padding: 10px 12px; font-size: 12px; text-align: center;${psa10Style}">${psa10Val}</td>
       <td class="hide-mobile" style="padding: 10px 12px; text-align: center;">${timeCell}</td>
       <td style="padding: 10px 12px; text-align: center;"><a href="${url}" style="font-size: 12px; color: #000000; text-decoration: none;">View -&gt;</a></td>
-    </tr>`;
+    </tr>
+    ${card.visionCorners ? `<tr style="${rowBg}">
+      <td colspan="9" style="padding:4px 8px 8px;font-size:11px;color:#888;font-style:italic">
+        🤖 AI Scout: ${(() => {
+          const avg = ((card.visionCorners || 5) + (card.visionCentering || 5)) / 2;
+          const emoji = avg >= 7.5 ? '✅' : avg >= 6 ? '⚠️' : '🔶';
+          const cornerText = card.visionCorners >= 8 ? 'Sharp corners' :
+                             card.visionCorners >= 6 ? 'Minor wear' : 'Corner wear';
+          const centerText = card.visionCentering >= 8 ? 'Well centered' :
+                             card.visionCentering >= 6 ? 'Slight off-center' : 'Off-center';
+          return `${emoji} ${cornerText}, ${centerText}`;
+        })()}
+      </td>
+    </tr>` : ''}`;
   }).join('');
   
   return html.replace(/\{\{TABLE_ROWS\}\}/g, tableRows);

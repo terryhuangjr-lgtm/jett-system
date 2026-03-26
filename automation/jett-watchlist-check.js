@@ -17,6 +17,7 @@ const https = require('https');
 const LOG_FILE = '/tmp/jett-watchlist.log';
 const PRICE_FILE = '/tmp/jett-watchlist-prices.json';
 const ALERT_COOLDOWN_FILE = '/tmp/jett-watchlist-alerts.json';
+const ALERT_STATE_FILE = '/tmp/jett-watchlist-active.json';
 const NODE_BIN = '/home/clawd/.nvm/versions/node/v22.22.0/bin/node';
 const CLAWDBOT_BIN = '/home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot';
 const TELEGRAM_TARGET = '5867308866';
@@ -144,6 +145,19 @@ function saveAlertCooldowns(cooldowns) {
   fs.writeFileSync(ALERT_COOLDOWN_FILE, JSON.stringify(cooldowns, null, 2));
 }
 
+function loadAlertStates() {
+  try {
+    if (fs.existsSync(ALERT_STATE_FILE)) {
+      return JSON.parse(fs.readFileSync(ALERT_STATE_FILE, 'utf8'));
+    }
+  } catch(e) {}
+  return {};
+}
+
+function saveAlertStates(states) {
+  fs.writeFileSync(ALERT_STATE_FILE, JSON.stringify(states, null, 2));
+}
+
 function isAlertOnCooldown(symbol, cooldownMinutes, alertCooldowns) {
   const last = alertCooldowns[symbol];
   if (!last) return false;
@@ -214,6 +228,7 @@ async function main() {
   
   const previousPrices = loadPrices();
   const alertCooldowns = loadAlertCooldowns();
+  const alertStates = loadAlertStates();
   const currentPrices = {};
   let alertsTriggered = 0;
   
@@ -238,21 +253,36 @@ async function main() {
     
     // Check daily change vs thresholds
     const changePct = priceData.change;
-    const breach =
-      changePct >= (alerts.daily_gain_pct || 5) ||
-      changePct <= -(alerts.daily_drop_pct || 5);
+    const gainThreshold = alerts.daily_gain_pct || 5;
+    const dropThreshold = alerts.daily_drop_pct || 5;
+    
+    // Determine breach direction (null = no breach, 'up' = gain breach, 'down' = drop breach)
+    let breachDirection = null;
+    if (changePct >= gainThreshold) {
+      breachDirection = 'up';
+    } else if (changePct <= -dropThreshold) {
+      breachDirection = 'down';
+    }
+    
+    const prevDirection = alertStates[symbol]?.direction || null;
 
-    log(`${symbol}: $${priceData.price} (${changePct >= 0 ? '+' : ''}${changePct.toFixed(2)}%) threshold: ±${alerts.daily_gain_pct || 5}%`);
+    log(`${symbol}: $${priceData.price} (${changePct >= 0 ? '+' : ''}${changePct.toFixed(2)}%) threshold: +${gainThreshold}%/-${dropThreshold}%`);
 
-    if (breach) {
-      // Check alert cooldown ONLY when breach detected
+    if (breachDirection) {
+      // Check if we're already alerting on this SAME direction
+      if (prevDirection === breachDirection) {
+        log(`${symbol}: Still in ${breachDirection} breach (${changePct.toFixed(2)}%), no new alert needed`);
+        continue;
+      }
+      
+      // Check cooldown for any new alert (even if direction changed)
       if (isAlertOnCooldown(symbol, cooldownMins, alertCooldowns)) {
         const minsSince = Math.round((Date.now() - alertCooldowns[symbol]) / 60000);
         log(`${symbol}: Breach detected but alert on cooldown (${minsSince}/${cooldownMins}m)`);
         continue;
       }
 
-      // Fire alert
+      // Fire alert - new breach or direction change
       alertsTriggered++;
       
       const direction = changePct > 0 ? '📈' : '📉';
@@ -261,16 +291,22 @@ async function main() {
         `*${symbol}* (${ticker.name || ticker.sector || ''})\n` +
         `Current: $${priceData.price}\n` +
         `Change: ${pctStr} today\n` +
-        `Threshold: ±${alerts.daily_gain_pct || 5}%`;
+        `Threshold: +${gainThreshold}%/-${dropThreshold}%`;
 
       const sent = await sendTelegram(msg);
       if (sent) {
-        // Only set cooldown if alert was sent successfully
+        // Set cooldown AND active alert state
         alertCooldowns[symbol] = Date.now();
-        log(`${symbol}: ALERT SENT - ${pctStr}`);
+        alertStates[symbol] = { direction: breachDirection, timestamp: Date.now() };
+        log(`${symbol}: ALERT SENT - ${pctStr} (${breachDirection} breach)`);
       } else {
         logError(`FAILED to send alert for ${symbol}`);
-        // Don't set cooldown if failed - will retry next check
+      }
+    } else {
+      // Price returned to normal - clear active alert state
+      if (prevDirection) {
+        alertStates[symbol] = null;
+        log(`${symbol}: Price returned to normal (was ${prevDirection} breach), cleared alert state`);
       }
     }
   }
@@ -278,6 +314,7 @@ async function main() {
   // Save prices and alert cooldowns after loop
   savePrices(currentPrices);
   saveAlertCooldowns(alertCooldowns);
+  saveAlertStates(alertStates);
   
   if (alertsTriggered === 0) {
     log(`No alerts triggered for ${tickers.length} tickers (zero token cost)`);

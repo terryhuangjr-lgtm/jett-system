@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "last_updated": "2026-03-23",
+  "last_updated": "2026-03-25",
   "entries": [
     {
       "id": 1,
@@ -301,7 +301,9 @@
       "btc_price_then": 0,
       "verified_fact": "Antoine Walker earned $108M in his NBA career and filed for bankruptcy in 2010. BTC was less than $1.",
       "source": "Bankruptcy filings",
-      "used_dates": [],
+      "used_dates": [
+        "2026-03-24"
+      ],
       "cooldown_days": 90
     },
     {
@@ -926,7 +928,10 @@
       "verified_fact": "In 2008, Satoshi Nakamoto created the Bitcoin whitepaper",
       "source": "Research",
       "cooldown_days": 60,
-      "id": 65
+      "id": 65,
+      "used_dates": [
+        "2026-03-25"
+      ]
     },
     {
       "category": "historic_contract",
@@ -1447,6 +1452,20 @@
       ],
       "used_dates": [],
       "cooldown_days": 60
+    },
+    {
+      "category": "bitcoin_education",
+      "athlete": null,
+      "deal": "Peter Schiff Bitcoin criticism gold bug",
+      "sport": "Bitcoin",
+      "year": 2013,
+      "contract_value": null,
+      "btc_price_then": 0,
+      "verified_fact": "In 2013, Peter Schiff called Bitcoin a bubble when its price exceeded $1,000 per BTC",
+      "source": "Research",
+      "used_dates": [],
+      "cooldown_days": 60,
+      "id": 99
     }
   ]
 }

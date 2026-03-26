@@ -16,11 +16,10 @@ class DealScorerV2 {
   constructor(searchKeywords = '') {
     this.searchKeywords = searchKeywords.toLowerCase();
     this.weights = {
-      sellerQuality: 0.20,      // 20% - Trust matters
-      listingQuality: 0.15,     // 15% - Photos/condition (reduced)
-      searchRelevance: 0.40,   // 40% - Does it match what you want?
-      listingFreshness: 0.15,  // 15% - Age matters (increased)
-      visionScore: 0.10        // 10% - Image condition (NEW)
+      sellerQuality: 0.35,     // 35% - Trust matters
+      listingQuality: 0.30,    // 30% - Photos/title quality
+      searchRelevance: 0.25,   // 25% - Does it match what you want?
+      listingFreshness: 0.10   // 10% - Age matters
     };
   }
 
@@ -69,16 +68,12 @@ class DealScorerV2 {
       };
     }
 
-    // Get vision score from item (if available from vision filter)
-    const visionScore = item.visionScore || null;
-
     // Calculate weighted total
     const totalScore = (
       ((sellerScore.points || 0) * this.weights.sellerQuality) +
       ((qualityScore.points || 0) * this.weights.listingQuality) +
       ((relevanceScore.points || 0) * this.weights.searchRelevance) +
-      ((freshnessScore.points || 0) * this.weights.listingFreshness) +
-      ((visionScore || 0) * this.weights.visionScore)
+      ((freshnessScore.points || 0) * this.weights.listingFreshness)
     );
 
     // Normalize to 1-10 scale
@@ -91,8 +86,7 @@ class DealScorerV2 {
         sellerQuality: sellerScore,
         listingQuality: qualityScore,
         searchRelevance: relevanceScore,
-        listingFreshness: freshnessScore,
-        visionScore: { points: visionScore || 0, maxPoints: 10 }
+        listingFreshness: freshnessScore
       },
       flags: this.getFlags(item, null, {
         sellerScore,

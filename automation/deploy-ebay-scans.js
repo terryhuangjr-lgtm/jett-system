@@ -290,7 +290,7 @@ function renderHtmlTemplate(template, data) {
       <td class="hide-mobile" style="padding: 10px 12px; font-size: 12px; text-align: center;${psa9Style}">${psa9Val}</td>
       <td class="hide-mobile" style="padding: 10px 12px; font-size: 12px; text-align: center;${psa10Style}">${psa10Val}</td>
       <td class="hide-mobile" style="padding: 10px 12px; text-align: center;">${timeCell}</td>
-      <td style="padding: 10px 12px; text-align: center;"><a href="${url}" style="font-size: 12px; color: #1e3a5f; text-decoration: none;">View -&gt;</a></td>
+      <td style="padding: 10px 12px; text-align: center;"><a href="${url}" style="font-size: 12px; color: #000000; text-decoration: none;">View -&gt;</a></td>
     </tr>`;
   }).join('\n');
   
