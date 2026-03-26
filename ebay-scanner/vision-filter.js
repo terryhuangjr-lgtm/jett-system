@@ -98,17 +98,34 @@ Return ONLY valid JSON, no other text:
   "corners": 1-10,
   "centering": 1-10,
   "overall": 1-10,
-  "issues": ["list ONLY obvious physical defects like worn corners, creases, writing. Do NOT list coating, film, lighting, image quality, or photo focus as issues"],
+  "issues": ["describe SPECIFIC things you actually see, not generic statements. BAD: 'minor wear visible'. GOOD: 'top-right corner shows white edges'. BAD: 'slight off-center'. GOOD: 'left border is noticeably wider than right'. If card looks genuinely clean, say exactly what looks good: e.g. 'corners appear sharp', 'borders look even'"],
   "skip": true/false,
   "confidence": "high/medium/low"
 }
 
-SCORING:
-- corners: 10=sharp perfect corners, 7=minor wear, 
-  5=clearly rounded/white corners, 1=badly damaged
-- centering: 10=perfectly centered, 7=slight off-center,
-  5=noticeably off-center, 3=badly off-center, 1=severe
-- overall: average of corners and centering
+SCORING RULES - you MUST use the full 1-10 range:
+
+corners scoring (be specific and honest):
+- 9-10: Perfect sharp corners, no visible wear at all
+- 7-8: Very minor wear only visible up close
+- 5-6: Clearly visible corner wear or slight rounding
+- 3-4: Obvious corner rounding, white edges visible  
+- 1-2: Badly damaged corners
+
+centering scoring (measure the border ratio):
+- 9-10: Borders appear equal on all sides (60/40 or better)
+- 7-8: Slightly off but barely noticeable (65/35)
+- 5-6: Noticeably off-center, one border clearly wider (70/30)
+- 3-4: Badly off-center, major border difference (80/20)
+- 1-2: Severely miscut
+
+DISTRIBUTION REQUIREMENT: Across a batch of cards you 
+MUST vary your scores. Most raw eBay cards have real 
+flaws. If you are giving every card the same score you
+are not analyzing carefully enough. 
+
+A score of 7 means "above average condition" - most cards
+should NOT score 7. Be honest and critical.
 
 SKIP RULES - only set skip:true for OBVIOUS problems:
 - Corners are CLEARLY white, rounded, or worn (score 5 or below)
