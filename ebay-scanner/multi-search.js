@@ -28,7 +28,8 @@ async function multiSearch(searchConfig) {
     rawOnly = true,
     minScoreToShow = 7.0,
     topN = 20,
-    useVision = false,
+    useVisionScout = true,   // Show AI Scout comments
+    useVisionFilter = false, // Actively filter bad cards
     visionTopN = 200,
     listingType = 'fixed_price',
     cardMode = 'raw'  // 'raw' or 'graded'
@@ -129,13 +130,20 @@ async function multiSearch(searchConfig) {
     // Filter by minimum score
     const displayItems = scoredItems.filter(item => item.dealScore.score >= minScoreToShow);
 
-    // Vision scanning (optional - costs ~$0.02 per 30 items)
-    // Only run vision for raw cards - graded cards (slabs) can't be visually assessed
+    // Vision scanning - split into Scout (always on) and Filter (optional)
     let finalItems = displayItems;
-    if (cardMode === 'raw' && useVision && displayItems.length > 0) {
+    if (cardMode === 'raw' && (useVisionScout || useVisionFilter) && displayItems.length > 0) {
       const visionFilter = new VisionFilter();
-      finalItems = await visionFilter.filterItems(displayItems, visionTopN);
-      console.log(`After vision filter: ${finalItems.length} listings`);
+      
+      if (useVisionFilter) {
+        // Filter mode: remove bad cards from results
+        finalItems = await visionFilter.filterItems(displayItems, visionTopN);
+        console.log(`AI Filter active: ${finalItems.length} cards after filtering`);
+      } else {
+        // Scout mode: scan all cards but keep everything
+        finalItems = await visionFilter.scanItems(displayItems, visionTopN);
+        console.log(`AI Scout active: all ${finalItems.length} cards kept with vision notes`);
+      }
     } else if (cardMode === 'graded') {
       console.log(`Skipping vision (graded mode - slabs cannot be visually assessed)`);
     }
@@ -172,7 +180,9 @@ async function multiSearch(searchConfig) {
         afterRawFilter: filteredItems.length,
         totalScored: scoredItems.length,
         showingResults: finalItems.length,
-        visionScanned: useVision
+        visionScanned: useVisionScout || useVisionFilter,
+        visionScout: useVisionScout,
+        visionFilter: useVisionFilter
       },
       allResults: scoredItems
     }, null, 2));
@@ -340,7 +350,8 @@ if (require.main === module) {
     minPrice: 0,
     maxPrice: null,
     rawOnly: true,
-    useVision: false,
+    useVisionScout: true,
+    useVisionFilter: false,
     visionTopN: 200
   };
 
@@ -375,8 +386,10 @@ if (require.main === module) {
       } else if (flagName === 'exclude' && nextArg) {
         config.excludeKeywords = nextArg;
         i++;
-      } else if (flagName === 'vision') {
-        config.useVision = true;
+      } else if (flagName === 'vision-scout') {
+        config.useVisionScout = true;
+      } else if (flagName === 'vision-filter') {
+        config.useVisionFilter = true;
       } else if (flagName === 'vision-top') {
         config.visionTopN = parseInt(nextArg) || 200;
         i++;

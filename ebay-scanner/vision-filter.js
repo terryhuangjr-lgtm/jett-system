@@ -295,6 +295,70 @@ overall:6 skip:false confidence:low`
   }
 
   /**
+   * Scan items for AI Scout - adds vision data to ALL cards without filtering
+   */
+  async scanItems(items, topN = 200) {
+    const toScan = items.slice(0, topN);
+    console.log(`\n👁  AI Scout scanning ${toScan.length} listings...`);
+
+    const BATCH_SIZE = 8;
+    const results = [];
+    let processed = 0;
+    let totalCost = 0;
+
+    for (let i = 0; i < toScan.length; i += BATCH_SIZE) {
+      const batch = toScan.slice(i, i + BATCH_SIZE);
+      const batchNum = Math.floor(i / BATCH_SIZE) + 1;
+      const totalBatches = Math.ceil(toScan.length / BATCH_SIZE);
+      
+      process.stdout.write(`  Batch ${batchNum}/${totalBatches}...`);
+
+      const batchResults = await Promise.all(
+        batch.map(async (item) => {
+          const vision = await this.analyzeCardImage(item.imageUrl, item.title);
+          totalCost += 0.002;
+          processed++;
+          return { item, vision };
+        })
+      );
+
+      for (const { item, vision } of batchResults) {
+        const cornerScore = vision.corners || 6;
+        const centerScore = vision.centering || 6;
+        const avg = (cornerScore + centerScore) / 2;
+        const confidenceMult = 
+          vision.confidence === 'high' ? 1.0 :
+          vision.confidence === 'medium' ? 0.9 : 0.75;
+        const finalScore = parseFloat((avg * confidenceMult).toFixed(1));
+        
+        // Keep ALL cards regardless of vision score
+        results.push({
+          ...item,
+          visionScore: finalScore,
+          visionCorners: cornerScore,
+          visionCentering: centerScore,
+          visionIssues: vision.issues || [],
+          visionReason: vision.issues?.join(', ') || 'Passed vision check',
+          visionConfidence: vision.confidence || 'medium',
+          visionSkipped: vision.skip || false
+        });
+      }
+
+      process.stdout.write(' done\n');
+      
+      if (i + BATCH_SIZE < toScan.length) {
+        await new Promise(r => setTimeout(r, 300));
+      }
+    }
+
+    const estimatedCost = (totalCost / 100).toFixed(4);
+    console.log(`\n👁  Scout complete: ${processed} cards analyzed`);
+    console.log(`💰 Estimated cost: ~$${estimatedCost}`);
+
+    return results.sort((a, b) => (b.visionScore || 0) - (a.visionScore || 0));
+  }
+
+  /**
    * Fetch an image URL and return as base64
    */
   async fetchImageAsBase64(url) {

@@ -295,7 +295,10 @@ async function runScan(day) {
   console.log(`Terms: ${scan.search_terms.join(', ')}`);
   console.log(`Exclude: ${(scan.filters.exclude_words || []).join(', ') || 'none'}`);
   console.log(`Filters: min=$${scan.filters.minPrice || 'any'}, max=$${scan.filters.maxPrice || 'any'}, topN=${scan.filters.topN}`);
-  console.log(`Vision: ${scan.useVision ? 'enabled' : 'disabled'}`);
+  const useVisionScout = scan.useVisionScout !== false; // default true
+  const useVisionFilter = scan.useVisionFilter || false;
+  console.log(`AI Scout: ${useVisionScout ? 'ON' : 'OFF'}`);
+  console.log(`AI Filter: ${useVisionFilter ? 'ON' : 'OFF'}`);
   
   const cardCondition = scan.card_condition || 'raw';
   const listingType = scan.listing_type || 'bin';
@@ -326,7 +329,8 @@ async function runScan(day) {
   if (minPrice) args.push('--minPrice', minPrice);
   if (maxPrice) args.push('--maxPrice', maxPrice);
   if (excludeWords.length > 0) args.push('--exclude', excludeWords.join(','));
-  if (scan.useVision) args.push('--vision');
+  if (useVisionScout) args.push('--vision-scout');
+  if (useVisionFilter) args.push('--vision-filter');
   args.push('--listing-type', listingType);
   args.push('--card-mode', cardCondition);
 

@@ -1312,7 +1312,8 @@ async function loadEbayConfig() {
           <div style="font-size:10px;color:var(--text-muted);margin-bottom:6px">
             ${scan.filters?.minPrice?'$'+scan.filters.minPrice:''} 
             ${scan.filters?.maxPrice?' – $'+scan.filters.maxPrice:''}
-            ${scan.useVision ? '<div style="font-size:10px;color:var(--accent)">👁️ Vision on</div>' : ''}
+            ${scan.useVisionFilter ? '<div style="font-size:10px;color:var(--accent)">👁 Filter ON</div>' : 
+              scan.useVisionScout !== false ? '<div style="font-size:10px;color:var(--text-muted)">👁 Scout</div>' : ''}
           </div>
           <div style="font-size:10px;color:var(--text-muted);font-family:'DM Mono',monospace">
             Last: ${lastRun}
@@ -1444,12 +1445,28 @@ function openDayModal(day) {
             value="${scan.filters?.topN||20}" placeholder="20">
         </div>
       </div>
-      <div style="display:flex;align-items:center;gap:8px;margin-top:8px;padding-top:8px;border-top:1px solid var(--border)">
-        <input type="checkbox" id="modal-vision" ${scan.useVision ? 'checked' : ''}
-          style="width:14px;height:14px;accent-color:var(--accent)">
-        <label for="modal-vision" style="font-size:12px;color:var(--text-secondary)">
-          Enable vision scanning (Claude Haiku — ~$0.02/scan)
-        </label>
+      <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border)">
+        <div class="card-label" style="margin-bottom:8px">AI VISION</div>
+        
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+          <input type="checkbox" id="modal-vision-scout"
+            ${scan.useVisionScout !== false ? 'checked' : ''}
+            style="width:14px;height:14px;accent-color:var(--accent)">
+          <label for="modal-vision-scout" 
+            style="font-size:12px;color:var(--text-secondary)">
+            AI Scout — show condition notes in email
+          </label>
+        </div>
+        
+        <div style="display:flex;align-items:center;gap:8px">
+          <input type="checkbox" id="modal-vision-filter"
+            ${scan.useVisionFilter ? 'checked' : ''}
+            style="width:14px;height:14px;accent-color:var(--accent)">
+          <label for="modal-vision-filter"
+            style="font-size:12px;color:var(--text-secondary)">
+            AI Filter — remove obvious defects from results
+          </label>
+        </div>
       </div>
     </div>
   `;
@@ -1554,7 +1571,10 @@ async function saveModalData() {
     updated.scans[day].filters.minPrice = parseInt(document.getElementById('modal-min').value)||0;
     updated.scans[day].filters.maxPrice = parseInt(document.getElementById('modal-max').value)||null;
     updated.scans[day].filters.topN = parseInt(document.getElementById('modal-topn').value)||20;
-    updated.scans[day].useVision = document.getElementById('modal-vision')?.checked || false;
+    updated.scans[day].useVisionScout = 
+      document.getElementById('modal-vision-scout')?.checked !== false;
+    updated.scans[day].useVisionFilter = 
+      document.getElementById('modal-vision-filter')?.checked || false;
     updated.scans[day].card_condition = document.getElementById('modal-card-condition').value;
     updated.scans[day].listing_type = document.getElementById('modal-listing-type').value;
     updated.scans[day].last_updated = new Date().toISOString();

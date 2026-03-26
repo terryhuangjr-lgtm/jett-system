@@ -1,6 +1,6 @@
 {
   "version": "1.2",
-  "last_updated": "2026-03-26T01:48:20.777Z",
+  "last_updated": "2026-03-26T02:09:10.762Z",
   "global_filters": {
     "quality_rules": {
       "seller_feedback_min": 98,
@@ -29,13 +29,14 @@
         ]
       },
       "output_file": "/tmp/mj-finest-scan.json",
-      "last_run": "2026-03-26T02:03:38.244Z",
+      "last_run": "2026-03-26T02:53:06.686Z",
       "last_results": {
-        "timestamp": "2026-03-26T02:03:38.244Z",
+        "timestamp": "2026-03-26T02:53:06.686Z",
         "success": true
       },
       "last_updated": "2026-03-24T02:06:46.852Z",
-      "useVision": true
+      "useVisionScout": true,
+      "useVisionFilter": false
     },
     "tuesday": {
       "name": "Ronald Acuna",
@@ -67,7 +68,8 @@
         "success": true
       },
       "last_updated": "2026-03-25T00:26:28.991Z",
-      "useVision": true
+      "useVisionScout": true,
+      "useVisionFilter": false
     },
     "wednesday": {
       "name": "inserts",
@@ -96,7 +98,8 @@
         "success": true
       },
       "last_updated": "2026-03-26T01:48:20.784Z",
-      "useVision": true
+      "useVisionScout": true,
+      "useVisionFilter": false
     },
     "thursday": {
       "name": "Multi Testing",
@@ -126,7 +129,8 @@
         "success": true
       },
       "last_updated": "2026-03-25T21:24:38.311Z",
-      "useVision": true
+      "useVisionScout": true,
+      "useVisionFilter": false
     },
     "friday": {
       "name": "luka doncic",
@@ -151,13 +155,14 @@
         "minPrice": 10
       },
       "output_file": "/tmp/topps-refractors-multi-scan.json",
-      "last_run": "2026-03-24T02:36:09.569Z",
+      "last_run": "2026-03-26T02:09:30.799Z",
       "last_results": {
-        "timestamp": "2026-03-24T02:36:09.569Z",
+        "timestamp": "2026-03-26T02:09:30.799Z",
         "success": true
       },
-      "last_updated": "2026-03-24T23:55:49.740Z",
-      "useVision": true
+      "last_updated": "2026-03-26T02:09:10.724Z",
+      "useVisionScout": true,
+      "useVisionFilter": false
     },
     "saturday": {
       "name": "Gold Refractors",
@@ -184,7 +189,8 @@
         "success": true
       },
       "last_updated": "2026-03-23T02:04:23.079Z",
-      "useVision": true
+      "useVisionScout": true,
+      "useVisionFilter": false
     },
     "sunday": {
       "name": "Victor Wembanyama",
@@ -212,7 +218,8 @@
         "success": true
       },
       "last_updated": "2026-03-22T03:39:44.921Z",
-      "useVision": true
+      "useVisionScout": true,
+      "useVisionFilter": false
     }
   },
   "deploy": {
