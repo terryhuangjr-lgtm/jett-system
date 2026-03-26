@@ -100,6 +100,18 @@ async function multiSearch(searchConfig) {
 
     console.log(`\nScoring ${filteredItems.length} listings...`);
 
+    // Calculate median price for price signal scoring
+    const prices = filteredItems
+      .map(i => i.currentPrice || i.totalPrice)
+      .filter(p => typeof p === 'number' && p > 0)
+      .sort((a, b) => a - b);
+    const medianPrice = prices.length > 0 
+      ? prices[Math.floor(prices.length / 2)] 
+      : null;
+    if (medianPrice) {
+      console.log(`Median price: $${medianPrice.toFixed(2)}`);
+    }
+
     // Choose scorer based on cardMode
     let scorer;
     if (cardMode === 'graded') {
@@ -107,7 +119,7 @@ async function multiSearch(searchConfig) {
       scorer = new DealScorerGraded(keywords);
     } else {
       console.log(`Using Raw Scorer`);
-      scorer = new DealScorerV2(keywords);
+      scorer = new DealScorerV2(keywords, medianPrice);
     }
 
     // Score all items
@@ -146,6 +158,21 @@ async function multiSearch(searchConfig) {
       }
     } else if (cardMode === 'graded') {
       console.log(`Skipping vision (graded mode - slabs cannot be visually assessed)`);
+    }
+
+    // Post-filter: additional AI Filter check (redundant backup to filterItems)
+    if (useVisionFilter) {
+      const beforeFilter = finalItems.length;
+      finalItems = finalItems.filter(item => {
+        // Remove if vision skipped it (high confidence bad card)
+        if (item.visionSkipped === true) return false;
+        // Remove if vision score is very low AND high confidence
+        if (item.visionScore && 
+            item.visionScore < 4 && 
+            item.visionConfidence === 'high') return false;
+        return true;
+      });
+      console.log(`AI Filter removed ${beforeFilter - finalItems.length} cards`);
     }
 
     console.log(`Scored ${scoredItems.length} listings`);

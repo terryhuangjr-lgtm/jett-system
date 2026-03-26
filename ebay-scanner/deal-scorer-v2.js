@@ -13,8 +13,9 @@
  */
 
 class DealScorerV2 {
-  constructor(searchKeywords = '') {
+  constructor(searchKeywords = '', medianPrice = null) {
     this.searchKeywords = searchKeywords.toLowerCase();
+    this.medianPrice = medianPrice;
     this.weights = {
       sellerQuality: 0.35,     // 35% - Trust matters
       listingQuality: 0.30,    // 30% - Photos/title quality
@@ -109,24 +110,32 @@ class DealScorerV2 {
     let tier = '';
     let trust = '';
 
-    if (feedback >= 99 && salesCount >= 1000) {
+    if (feedback >= 99.8 && salesCount >= 10000) {
       points = 10;
       tier = 'Elite seller';
       trust = '✅ TRUSTED';
-    } else if (feedback >= 98 && salesCount >= 500) {
+    } else if (feedback >= 99.5 && salesCount >= 2000) {
+      points = 8.5;
+      tier = 'Very good seller';
+      trust = '✅ TRUSTED';
+    } else if (feedback >= 99 && salesCount >= 500) {
       points = 7.5;
-      tier = 'Established seller';
+      tier = 'Good seller';
       trust = '✅ Good';
-    } else if (feedback >= 95 && salesCount >= 100) {
-      points = 5;
+    } else if (feedback >= 98 && salesCount >= 100) {
+      points = 6;
+      tier = 'Established seller';
+      trust = '✅ OK';
+    } else if (feedback >= 95) {
+      points = 4;
       tier = 'Decent seller';
       trust = 'OK';
-    } else if (feedback >= 90 || salesCount < 100) {
+    } else if (feedback >= 90) {
       points = 2.5;
       tier = 'New/low feedback seller';
       trust = '⚠️ New seller';
     } else {
-      points = 0;
+      points = 1;
       tier = 'Low trust seller';
       trust = '⚠️ Low trust';
     }
@@ -220,6 +229,21 @@ class DealScorerV2 {
       if (signal.keywords.some(k => title.includes(k))) {
         points += signal.points;
         signals.push(signal.label);
+      }
+    }
+    
+    // Price signal — lower price relative to median = better deal
+    if (this.medianPrice && item.currentPrice) {
+      const priceDelta = (this.medianPrice - item.currentPrice) / this.medianPrice;
+      if (priceDelta > 0.20) {
+        points += 3;
+        signals.push('Well below median');
+      } else if (priceDelta > 0.10) {
+        points += 1.5;
+        signals.push('Below median price');
+      } else if (priceDelta < -0.20) {
+        points -= 1;
+        redFlags.push('Above median price');
       }
     }
 
@@ -572,29 +596,38 @@ class DealScorerV2 {
    * How recently listed
    */
   scoreListingFreshness(item) {
-    if (!item.itemCreationDate && !item.itemEndDate) {
-      return {
-        points: 5,
-        maxPoints: 10,
-        ageInDays: null,
-        reason: 'Unknown listing age'
-      };
-    }
-
-    const now = Date.now();
-    let listingDate;
-
+    // Try itemCreationDate first
     if (item.itemCreationDate) {
-      listingDate = new Date(item.itemCreationDate).getTime();
-    } else if (item.itemEndDate) {
-      const endDate = new Date(item.itemEndDate).getTime();
-      listingDate = endDate - (7 * 24 * 60 * 60 * 1000);
+      const ageInDays = (Date.now() - new Date(item.itemCreationDate)) 
+                        / (1000 * 60 * 60 * 24);
+      return this.freshnessFromAge(ageInDays);
     }
-
-    const ageInDays = (now - listingDate) / (1000 * 60 * 60 * 24);
+    
+    // Try itemEndDate as fallback (for auctions)
+    if (item.itemEndDate) {
+      const endDate = new Date(item.itemEndDate).getTime();
+      // Estimate creation as 7 days before end
+      const ageInDays = (Date.now() - (endDate - 7 * 24 * 60 * 60 * 1000)) 
+                        / (1000 * 60 * 60 * 24);
+      return this.freshnessFromAge(ageInDays);
+    }
+    
+    // No date available - default to neutral 4 (slight penalty for unknown)
+    return {
+      points: 4,
+      maxPoints: 10,
+      ageInDays: null,
+      reason: 'Listing age unavailable'
+    };
+  }
+  
+  /**
+   * Convert age in days to freshness score
+   */
+  freshnessFromAge(ageInDays) {
     let points = 0;
     let tier = '';
-
+    
     if (ageInDays < 1) {
       points = 10;
       tier = 'Listed <24 hours - FRESH';
@@ -614,7 +647,7 @@ class DealScorerV2 {
       points = 0;
       tier = 'Old listing - why still available?';
     }
-
+    
     return {
       points,
       maxPoints: 10,
