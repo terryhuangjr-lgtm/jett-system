@@ -98,7 +98,7 @@ Return ONLY valid JSON, no other text:
   "corners": 1-10,
   "centering": 1-10,
   "overall": 1-10,
-  "issues": ["list only OBVIOUS visible problems"],
+  "issues": ["list ONLY obvious physical defects like worn corners, creases, writing. Do NOT list coating, film, lighting, image quality, or photo focus as issues"],
   "skip": true/false,
   "confidence": "high/medium/low"
 }
@@ -115,12 +115,16 @@ SKIP RULES - only set skip:true for OBVIOUS problems:
 - Centering is OBVIOUSLY bad - worse than 65/35 ratio (score 4 or below)
 - Visible creases, folds, or writing on card face
 - Card is clearly damaged or heavily worn
-- DO NOT skip for: slight wear, minor off-center, 
-  protective coatings/film (these are GOOD), 
-  lighting issues, blurry photos, or borderline cases
 
-IMPORTANT: Protective plastic film or coating on the card
-surface is a POSITIVE sign - do NOT penalize for this.
+CRITICAL: Topps Finest cards (1993-1999) have a protective 
+plastic coating/film that is FACTORY APPLIED. This coating 
+IS NOT a defect. If the coating is still intact (unpeeled) 
+this is actually MORE valuable, not less. 
+NEVER penalize for protective coating or film.
+NEVER list coating as an issue.
+If you see a shiny plastic layer covering the card surface,
+ignore it completely when scoring.
+
 When in doubt, set skip:false and give an honest score.
 If image is too small or dark to assess, return 
 overall:6 skip:false confidence:low`
