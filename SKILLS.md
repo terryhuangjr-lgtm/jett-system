@@ -235,3 +235,27 @@ When a new capability is built, do ALL of the following:
    cd /home/clawd/skills && git add . && git commit -m "feat: add [skill-name] skill" && git push
    cd /home/clawd/clawd && git add SKILLS.md SYSTEMS.md && git commit -m "docs: add [skill-name] to skill index" && git push
    ```
+
+---
+
+### 6. Shopify Manager
+**Location:** `/home/clawd/skills/shopify-manager/`
+**Read:** `SKILL.md` for full command reference
+**Purpose:** Manage Superare's Shopify store via natural language
+
+**What it does:**
+- Inventory checks and adjustments across locations
+- Catalog audit with health scoring (SKUs, UPCs, descriptions, tags, pricing)
+- Purchase order generation based on low stock
+- Order tracking, creation, and fulfillment status
+- Daily sales reports and revenue summaries
+- Morning operations brief
+
+**Invoke via:**
+```bash
+node /home/clawd/skills/shopify-manager/run.js "<command>"
+```
+
+**Telegram Triggers:** When Terry says anything Shopify-related, run the appropriate command and send result back via Telegram.
+
+**⚠️ DEMO MODE:** Currently pointed at superare-demo.myshopify.com — swap SHOPIFY_STORE and SHOPIFY_TOKEN in ~/.env when going live.

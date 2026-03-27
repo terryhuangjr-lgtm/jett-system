@@ -3,6 +3,7 @@
     "@anthropic-ai/sdk": "^0.79.0",
     "axios": "^1.13.4",
     "cheerio": "^1.2.0",
+    "dotenv": "^17.3.1",
     "ebay-node-api": "^2.9.0",
     "http-proxy-middleware": "^3.0.5",
     "js-yaml": "^4.1.1",
