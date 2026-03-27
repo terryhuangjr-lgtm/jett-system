@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "last_updated": "2026-03-25",
+  "last_updated": "2026-03-27",
   "entries": [
     {
       "id": 1,
@@ -1204,7 +1204,9 @@
         "https://www.usatoday.com/story/sports/nfl/bengals/2025/03/16/tee-higgins-extension-cincinnati-bengals/82418916007/",
         "https://www.bengals.com/news/bengals-resign-tee-higgins-2025-roster-update"
       ],
-      "used_dates": [],
+      "used_dates": [
+        "2026-03-26"
+      ],
       "cooldown_days": 90
     },
     {
@@ -1241,7 +1243,9 @@
         "https://theeagleswire.usatoday.com/story/sports/nfl/eagles/2025/03/07/philadelphia-eagles-news-saquon-barkley-contract-extension-details/81996509007/",
         "https://api.coingecko.com/api/v3/simple/price"
       ],
-      "used_dates": [],
+      "used_dates": [
+        "2026-03-27"
+      ],
       "cooldown_days": 60
     },
     {
@@ -1466,6 +1470,20 @@
       "used_dates": [],
       "cooldown_days": 60,
       "id": 99
+    },
+    {
+      "category": "bitcoin_education",
+      "athlete": null,
+      "deal": "First Bitcoin exchange Mt Gox 2010",
+      "sport": "Bitcoin",
+      "year": 2010,
+      "contract_value": null,
+      "btc_price_then": 0,
+      "verified_fact": "In 2010, Mt. Gox launched on July 17 with Bitcoin opening price of $0.0495 per BTC",
+      "source": "Research",
+      "used_dates": [],
+      "cooldown_days": 60,
+      "id": 100
     }
   ]
 }

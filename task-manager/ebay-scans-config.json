@@ -1,6 +1,6 @@
 {
   "version": "1.2",
-  "last_updated": "2026-03-26T03:16:18.333Z",
+  "last_updated": "2026-03-26T23:23:15.344Z",
   "global_filters": {
     "quality_rules": {
       "seller_feedback_min": 98,
@@ -62,14 +62,14 @@
         ]
       },
       "output_file": "/tmp/griffey-refractors-scan.json",
-      "last_run": "2026-03-26T03:36:06.586Z",
+      "last_run": "2026-03-26T02:58:47.781Z",
       "last_results": {
-        "timestamp": "2026-03-26T03:36:06.586Z",
+        "timestamp": "2026-03-26T02:58:47.781Z",
         "success": true
       },
-      "last_updated": "2026-03-25T00:26:28.991Z",
+      "last_updated": "2026-03-26T23:22:43.442Z",
       "useVisionScout": true,
-      "useVisionFilter": false
+      "useVisionFilter": true
     },
     "wednesday": {
       "name": "inserts",
@@ -138,7 +138,7 @@
       "card_condition": "raw",
       "listing_type": "bin",
       "search_terms": [
-        "luka doncic 2018 prizm"
+        "luka doncic 2018 optic"
       ],
       "filters": {
         "topN": 20,
@@ -155,14 +155,14 @@
         "minPrice": 10
       },
       "output_file": "/tmp/topps-refractors-multi-scan.json",
-      "last_run": "2026-03-26T02:09:30.799Z",
+      "last_run": "2026-03-27T13:00:28.392Z",
       "last_results": {
-        "timestamp": "2026-03-26T02:09:30.799Z",
+        "timestamp": "2026-03-27T13:00:28.392Z",
         "success": true
       },
-      "last_updated": "2026-03-26T02:09:10.724Z",
+      "last_updated": "2026-03-26T23:23:14.115Z",
       "useVisionScout": true,
-      "useVisionFilter": false
+      "useVisionFilter": true
     },
     "saturday": {
       "name": "Gold Refractors",
