@@ -259,9 +259,9 @@ def get_place_details(place_id):
 # ─── WEBSITE CHECKING & EMAIL EXTRACTION ───────────────────────────────────
 
 def check_website(url):
-    """Returns (status_label, url)."""
+    """Returns (status_label, url, emails)."""
     if not url:
-        return "NO WEBSITE", ""
+        return "NO WEBSITE", "", []
 
     template_platforms = [
         "wix.com", "weebly.com", "wordpress.com", "godaddysites.com",
@@ -269,7 +269,7 @@ def check_website(url):
     ]
     for p in template_platforms:
         if p in url:
-            return "BASIC/TEMPLATE SITE", url
+            return "BASIC/TEMPLATE SITE", url, []
 
     try:
         resp = requests.get(url, timeout=8, allow_redirects=True,
@@ -494,11 +494,7 @@ def process_business(place, industry, town, sheet_id, logged_names, session_log)
     business_status = details.get("business_status", "")
     
     # Website check
-    if isinstance(check_website(website), tuple):
-        website_status, website_url, emails_from_page = check_website(website)
-    else:
-        website_status, website_url = check_website(website), ""
-        emails_from_page = []
+    website_status, website_url, emails_from_page = check_website(website)
     
     # Extract additional emails
     additional_emails = extract_emails_from_website(website) if ENABLE_EMAIL_SCRAPE else []
