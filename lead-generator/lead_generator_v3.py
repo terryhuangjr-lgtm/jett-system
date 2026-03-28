@@ -354,6 +354,7 @@ def extract_emails_from_website(url):
 
 # Global API counter (shared across function calls)
 BRAVE_CALLS = 0
+MAX_BRAVE_CALLS = 60  # Safe limit for free tier
 
 def brave_search_with_retry(query, count=5, retries=3):
     """Brave Search API query with retry and rate limit handling."""
@@ -599,6 +600,7 @@ def process_business(place, industry, town, sheet_id, logged_names, session_log)
     if sheet_id and append_lead(sheet_id, row):
         logged_names.add(name.lower())
         session_log.append(f"{name} — {town['name']} ({industry}) score:{ai_score}")
+        print(f"         💾 Saved: {name}")
         return True
     
     return False
@@ -620,6 +622,7 @@ def process_town(town, industries, sheet_id, logged_names, session_log):
         for place in results:
             try:
                 if process_business(place, industry, town, sheet_id, logged_names, session_log):
+                    leads += 1
                     found += 1
                     time.sleep(0.3)
             except Exception as e:
@@ -770,10 +773,6 @@ if __name__ == "__main__":
     
     # Parse args: python3 lead_generator_v3.py [tier] [num_towns] [start_index]
     # OR: python3 lead_generator_v3.py (auto-rotation)
-    
-    # API budget counter
-    MAX_BRAVE_CALLS = 60  # Safe limit for free tier
-    brave_calls = 0
     
     print(f"Config: MIN_RATING={MIN_RATING}, MAX_REVIEWS={MAX_REVIEWS}, RADIUS={SEARCH_RADIUS_METERS}")
     print(f"API budget: {MAX_BRAVE_CALLS} Brave searches max")
