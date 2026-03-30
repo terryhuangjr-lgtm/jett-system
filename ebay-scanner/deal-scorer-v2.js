@@ -112,30 +112,26 @@ class DealScorerV2 {
 
     if (feedback >= 99.8 && salesCount >= 10000) {
       points = 10;
-      tier = 'Elite seller';
+      tier = 'Elite mega seller';
       trust = '✅ TRUSTED';
     } else if (feedback >= 99.5 && salesCount >= 2000) {
       points = 8.5;
-      tier = 'Very good seller';
+      tier = 'Top seller';
       trust = '✅ TRUSTED';
     } else if (feedback >= 99 && salesCount >= 500) {
       points = 7.5;
-      tier = 'Good seller';
+      tier = 'Established seller';
       trust = '✅ Good';
     } else if (feedback >= 98 && salesCount >= 100) {
       points = 6;
-      tier = 'Established seller';
-      trust = '✅ OK';
-    } else if (feedback >= 95) {
-      points = 4;
       tier = 'Decent seller';
       trust = 'OK';
-    } else if (feedback >= 90) {
-      points = 2.5;
+    } else if (feedback >= 95) {
+      points = 4;
       tier = 'New/low feedback seller';
       trust = '⚠️ New seller';
     } else {
-      points = 1;
+      points = 2;
       tier = 'Low trust seller';
       trust = '⚠️ Low trust';
     }
