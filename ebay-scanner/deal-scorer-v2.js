@@ -233,7 +233,7 @@ class DealScorerV2 {
       const priceDelta = (this.medianPrice - item.currentPrice) / this.medianPrice;
       if (priceDelta > 0.20) {
         points += 3;
-        signals.push('Well below median');
+        signals.push('20%+ below median price');
       } else if (priceDelta > 0.10) {
         points += 1.5;
         signals.push('Below median price');
