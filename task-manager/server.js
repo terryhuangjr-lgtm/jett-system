@@ -92,9 +92,6 @@ class TaskServer {
     if (pathname.startsWith('/proxy/podcast')) {
       return this.proxyRequest(res, pathname.replace('/proxy/podcast', '/'), 5001);
     }
-    if (pathname.startsWith('/proxy/watchlist')) {
-      return this.proxyRequest(res, pathname.replace('/proxy/watchlist', '/'), 5002);
-    }
 
     // Direct routes for external services (for remote access)
     if (pathname === '/levelup' || pathname === '/levelup/') {
@@ -102,46 +99,6 @@ class TaskServer {
     }
     if (pathname === '/podcast' || pathname === '/podcast/') {
       return this.proxyRequest(res, '/', 5001);
-    }
-    if (pathname === '/watchlist' || pathname === '/watchlist/') {
-      return this.proxyRequest(res, '/', 5002);
-    }
-
-    // Watchlist API proxy
-    if (pathname.startsWith('/watchlist-api/')) {
-      const apiPath = '/api' + pathname.replace('/watchlist-api', '');
-      const method = req.method;
-      let body = null;
-      if (method === 'POST' || method === 'PUT' || method === 'DELETE') {
-        body = await new Promise((resolve) => {
-          let data = '';
-          req.on('data', chunk => data += chunk);
-          req.on('end', () => resolve(data));
-        });
-      }
-      return this.proxyRequest(res, apiPath, 5002, method, body);
-    }
-
-    // Also handle /api/ticker when accessed through /watchlist
-    if (pathname === '/api/ticker' || pathname.startsWith('/api/ticker/')) {
-      const tickerPath = pathname.replace('/api', '');
-      const method = req.method;
-      let body = null;
-      if (method === 'POST' || method === 'PUT' || method === 'DELETE') {
-        body = await new Promise((resolve) => {
-          let data = '';
-          req.on('data', chunk => data += chunk);
-          req.on('end', () => resolve(data));
-        });
-      }
-      // Check if it's a watchlist request (has proper headers or from same origin)
-      return this.proxyRequest(res, tickerPath, 5002, method, body);
-    }
-
-    // Watchlist proxy - handle all routes
-    if (pathname.startsWith('/watchlist') || pathname.startsWith('/static') && pathname.includes('watchlist')) {
-      const watchlistPath = pathname.replace(/^\/watchlist/, '') || '/';
-      return this.proxyRequest(res, watchlistPath, 5002, req.method);
     }
 
     // Podcast API proxy
@@ -287,9 +244,6 @@ class TaskServer {
           }
           if (headers.location && headers.location.includes('localhost:5001')) {
             headers.location = headers.location.replace('http://localhost:5001', '');
-          }
-          if (headers.location && headers.location.includes('localhost:5002')) {
-            headers.location = headers.location.replace('http://localhost:5002', '');
           }
           res.writeHead(proxyRes.statusCode, headers);
           proxyRes.on('data', chunk => res.write(chunk));
@@ -1015,45 +969,6 @@ Rules: Keep all language simple. Every activity 3-6 minutes. Make it feel like p
     }
     if (pathname === '/api/levelup/stats' && req.method === 'GET') {
       return this.proxyRequest(res, '/api/stats', 5000);
-    }
-
-    // ── PODCAST proxy ──────────────────────────────────────────────
-    if (pathname === '/api/podcast/queue' && req.method === 'GET') {
-      return this.proxyRequest(res, '/api/queue', 5001);
-    }
-    if (pathname === '/api/podcast/add' && req.method === 'POST') {
-      const body = await this.readBody(req);
-      return this.proxyRequest(res, '/api/queue/add', 5001, 'POST', body, 'application/json');
-    }
-    if (pathname.startsWith('/api/podcast/queue/') && req.method === 'DELETE') {
-      const position = pathname.split('/').pop();
-      return this.proxyRequest(res, `/api/queue/remove/${position}`, 5001, 'DELETE');
-    }
-    if (pathname === '/api/podcast/reorder' && req.method === 'POST') {
-      const body = await this.readBody(req);
-      return this.proxyRequest(res, '/api/queue/reorder', 5001, 'POST', body, 'application/json');
-    }
-    if (pathname === '/api/podcast/process' && req.method === 'POST') {
-      return this.proxyRequest(res, '/api/process/now', 5001, 'POST');
-    }
-
-    // ── SERVICE restart ─────────────────────────────────────────────
-    if (pathname === '/api/service/restart' && req.method === 'POST') {
-      return this.sendJSON(res, { ok: false, error: 'Use /api/service/restart/:name' });
-    }
-    if (pathname.startsWith('/api/service/restart/') && req.method === 'POST') {
-      const { execFileSync } = require('child_process');
-      const allowed = ['watchlist-dashboard', 'podcast-summary', 'levelup-cards'];
-      const name = pathname.split('/').pop();
-      if (!allowed.includes(name)) {
-        return this.sendJSON(res, { ok: false, error: 'Service not allowed' });
-      }
-      try {
-        execFileSync('sudo', ['systemctl', 'restart', name]);
-        return this.sendJSON(res, { ok: true, service: name });
-      } catch(e) {
-        return this.sendJSON(res, { ok: false, error: e.message });
-      }
     }
 
     // ── GATEWAY restart ───────────────────────────────────────────

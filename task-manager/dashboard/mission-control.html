@@ -266,10 +266,6 @@
       <svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2M12 19v4M8 23h8"/></svg>
       <span class="tooltip">Podcast</span>
     </div>
-    <div class="nav-item" data-tab="watchlist">
-      <svg viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
-      <span class="tooltip">Watchlist</span>
-    </div>
     <div class="nav-divider"></div>
     <div class="nav-item" data-tab="memory">
       <svg viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg>
@@ -294,12 +290,6 @@
               <line x1="12" y1="2" x2="12" y2="12"/>
             </svg>
             Restart Gateway
-          </button>
-          <button class="btn" onclick="restartService('watchlist-dashboard')" 
-            title="Restart Watchlist">
-            <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/>
-              <path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg>
-            Watchlist
           </button>
           <button class="btn" onclick="restartService('podcast-summary')"
             title="Restart Podcast">
@@ -445,62 +435,6 @@
       </div>
     </div>
 
-    <div class="tab-panel" id="tab-watchlist">
-      <div class="section-header">
-        <span class="section-title">Watchlist</span>
-        <div style="display:flex;align-items:center;gap:10px">
-          <span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--text-muted)" 
-            id="watchlistUpdated"></span>
-          <button class="btn" onclick="loadWatchlist()">
-            <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/>
-              <path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg>
-            Refresh
-          </button>
-        </div>
-      </div>
-
-      <!-- Add ticker -->
-      <div class="card" style="margin-bottom:12px">
-        <div class="card-label">Add Ticker</div>
-        <div style="display:flex;gap:8px;margin-top:6px;flex-wrap:wrap">
-          <input class="podcast-input" id="newTickerSymbol" 
-            placeholder="Symbol (e.g. MSTR)" 
-            style="max-width:120px;text-transform:uppercase">
-          <input class="podcast-input" id="newTickerName" 
-            placeholder="Company name">
-          <input class="podcast-input" id="newTickerCategory" 
-            placeholder="Category (e.g. bitcoin_proxy)" 
-            style="max-width:200px">
-          <button class="btn primary" onclick="addTicker()">Add</button>
-        </div>
-      </div>
-
-      <!-- Ticker grid -->
-      <div class="ticker-grid" id="tickerGrid"></div>
-
-      <!-- Watchlist Modal -->
-      <div id="watchlistModal" style="display:none;position:fixed;inset:0;
-        background:rgba(0,0,0,0.7);z-index:1000;align-items:center;justify-content:center">
-        <div style="background:var(--bg-surface);border:1px solid var(--border-mid);
-          border-radius:8px;padding:24px;width:460px;position:relative">
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
-            <span id="watchlistModalTitle" style="font-family:'DM Mono',monospace;
-              font-size:13px;font-weight:500;color:var(--text-primary)"></span>
-            <button onclick="closeWatchlistModal()"
-              style="background:none;border:none;color:var(--text-muted);
-              cursor:pointer;font-size:20px;line-height:1;padding:0">×</button>
-          </div>
-          <div id="watchlistModalContent"></div>
-          <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:20px;
-            padding-top:16px;border-top:1px solid var(--border)">
-            <button class="btn danger" id="watchlistDeleteBtn" onclick="deleteCurrentTicker()">Remove</button>
-            <button class="btn" onclick="closeWatchlistModal()">Cancel</button>
-            <button class="btn primary" onclick="saveTickerModal()">Save</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <div class="tab-panel" id="tab-memory">
       <div class="section-header">
         <span class="section-title">Jett Memory</span>
@@ -534,7 +468,6 @@ function loadTab(tab) {
     ebay: loadEbayConfig,
     levelup: loadInventory,
     podcast: loadPodcastQueue,
-    watchlist: loadWatchlist,
     memory: loadMemory
   };
   if (loaders[tab]) loaders[tab]();
@@ -624,7 +557,7 @@ async function restartService(name) {
 
 async function restartAllServices() {
   if (!confirm('Restart ALL services? This will briefly interrupt everything.')) return;
-  const services = ['watchlist-dashboard', 'podcast-summary', 'levelup-cards'];
+  const services = ['podcast-summary', 'levelup-cards'];
   for (const s of services) {
     await fetch(`/api/service/restart/${s}`, {method:'POST'});
     await new Promise(r => setTimeout(r, 500));
@@ -811,7 +744,7 @@ function extractJobName(cmd) {
     'bitcoin': 'Bitcoin Tweet', 'sports': 'Sports Tweet', 'morning': 'Morning Brief',
     'podcast': 'Podcast Queue', 'ebay': 'eBay Scan', 'backup': 'Backup',
     'log': 'Log Rotate', 'finance': 'Finance Monitor', 'lead': 'Lead Generator',
-    'research': 'Research', 'watchlist': 'Watchlist',
+    'research': 'Research',
     'summary': 'Weekly Summary', 'reminder': 'Reminder Checker', 'gateway': 'Gateway Ping',
     'self-heal': 'Self Heal', 'health': 'Health Check', 'performance': 'Performance Check'
   };
@@ -1054,196 +987,6 @@ async function addPodcast() {
     document.getElementById('podcastUrl').value = '';
     document.getElementById('podcastTitle').value = '';
     loadPodcastQueue();
-  } catch(e) { alert(e.message); }
-}
-
-let watchlistData = [];
-let currentTickerSymbol = null;
-
-async function loadWatchlist() {
-  try {
-    const data = await apiFetch('/api/watchlist/tickers');
-    watchlistData = data.tickers || data || [];
-    document.getElementById('watchlistUpdated').textContent =
-      'Updated ' + new Date().toLocaleTimeString();
-
-    document.getElementById('tickerGrid').innerHTML = watchlistData.length ?
-      watchlistData.map(t => `
-        <div class="ticker-card" onclick="openTickerModal('${t.ticker||t.symbol}')"
-          style="cursor:pointer;transition:all 0.15s"
-          onmouseover="this.style.borderColor='var(--accent)'"
-          onmouseout="this.style.borderColor='var(--border)'">
-          <div class="ticker-symbol">${t.ticker||t.symbol||'—'}</div>
-          <div style="font-size:11px;color:var(--text-muted);margin-bottom:6px;
-            overflow:hidden;text-overflow:ellipsis;white-space:nowrap">
-            ${t.name||t.company_name||''}
-          </div>
-          <div style="font-size:10px;color:var(--text-muted);font-family:'DM Mono',monospace;
-            margin-bottom:8px">${t.sector||t.category||t.type||''}</div>
-          <div style="border-top:1px solid var(--border);padding-top:8px;margin-top:4px;
-            display:grid;grid-template-columns:1fr 1fr;gap:4px">
-            <div style="font-size:10px;color:var(--text-muted)">
-              ▲ <span style="color:var(--green)">${t.alerts?.daily_gain_pct||5}%</span>
-            </div>
-            <div style="font-size:10px;color:var(--text-muted)">
-              ▼ <span style="color:var(--red)">${t.alerts?.daily_drop_pct||5}%</span>
-            </div>
-          </div>
-          <div style="font-size:10px;color:var(--accent);margin-top:6px">Edit →</div>
-        </div>
-      `).join('') :
-      '<div class="loading" style="grid-column:1/-1">No tickers — add one above</div>';
-  } catch(e) {
-    document.getElementById('tickerGrid').innerHTML =
-      `<div class="error-msg" style="grid-column:1/-1">${e.message}</div>`;
-  }
-}
-
-function openTickerModal(symbol) {
-  const t = watchlistData.find(x => (x.ticker||x.symbol) === symbol);
-  if (!t) return;
-  currentTickerSymbol = symbol;
-
-  document.getElementById('watchlistModalTitle').textContent = symbol + ' — ' + (t.name||'');
-  document.getElementById('watchlistModalContent').innerHTML = `
-    <div style="display:flex;flex-direction:column;gap:14px">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-        <div>
-          <div class="card-label" style="margin-bottom:4px">Symbol</div>
-          <input class="podcast-input" id="wl-symbol" value="${t.ticker||t.symbol||''}"
-            style="text-transform:uppercase">
-        </div>
-        <div>
-          <div class="card-label" style="margin-bottom:4px">Type</div>
-          <input class="podcast-input" id="wl-type" value="${t.type||'stock'}">
-        </div>
-      </div>
-      <div>
-        <div class="card-label" style="margin-bottom:4px">Company Name</div>
-        <input class="podcast-input" id="wl-name" value="${t.name||''}">
-      </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-        <div>
-          <div class="card-label" style="margin-bottom:4px">Sector / Category</div>
-          <input class="podcast-input" id="wl-sector" value="${t.sector||t.category||''}">
-        </div>
-        <div>
-          <div class="card-label" style="margin-bottom:4px">Cooldown (minutes)</div>
-          <input class="podcast-input" id="wl-cooldown" type="number" 
-            value="${t.cooldown_minutes||90}">
-        </div>
-      </div>
-      <div style="background:var(--bg-elevated);border-radius:var(--radius);padding:12px">
-        <div class="card-label" style="margin-bottom:10px">Alert Thresholds</div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-          <div>
-            <div style="font-size:10px;color:var(--green);font-family:'DM Mono',monospace;
-              margin-bottom:4px">DAILY GAIN % ALERT</div>
-            <input class="podcast-input" id="wl-gain" type="number" step="0.5"
-              value="${t.alerts?.daily_gain_pct||5}">
-          </div>
-          <div>
-            <div style="font-size:10px;color:var(--red);font-family:'DM Mono',monospace;
-              margin-bottom:4px">DAILY DROP % ALERT</div>
-            <input class="podcast-input" id="wl-drop" type="number" step="0.5"
-              value="${t.alerts?.daily_drop_pct||5}">
-          </div>
-          <div>
-            <div style="font-size:10px;color:var(--green);font-family:'DM Mono',monospace;
-              margin-bottom:4px">PRICE GAIN % ALERT</div>
-            <input class="podcast-input" id="wl-pgain" type="number" step="0.5"
-              value="${t.alerts?.price_gain_pct||5}">
-          </div>
-          <div>
-            <div style="font-size:10px;color:var(--red);font-family:'DM Mono',monospace;
-              margin-bottom:4px">PRICE DROP % ALERT</div>
-            <input class="podcast-input" id="wl-pdrop" type="number" step="0.5"
-              value="${t.alerts?.price_drop_pct||5}">
-          </div>
-          <div>
-            <div style="font-size:10px;color:var(--amber);font-family:'DM Mono',monospace;
-              margin-bottom:4px">VOLUME SPIKE (×)</div>
-            <input class="podcast-input" id="wl-volume" type="number" step="0.5"
-              value="${t.alerts?.volume_spike_x||2}">
-          </div>
-        </div>
-      </div>
-    </div>
-  `;
-  document.getElementById('watchlistModal').style.display = 'flex';
-}
-
-function closeWatchlistModal() {
-  document.getElementById('watchlistModal').style.display = 'none';
-  currentTickerSymbol = null;
-}
-
-document.getElementById('watchlistModal').addEventListener('click', function(e) {
-  if (e.target === this) closeWatchlistModal();
-});
-
-async function saveTickerModal() {
-  if (!currentTickerSymbol) return;
-  const updated = {
-    ticker: document.getElementById('wl-symbol').value.trim().toUpperCase(),
-    name: document.getElementById('wl-name').value.trim(),
-    type: document.getElementById('wl-type').value.trim(),
-    sector: document.getElementById('wl-sector').value.trim(),
-    cooldown_minutes: parseInt(document.getElementById('wl-cooldown').value)||90,
-    alerts: {
-      daily_gain_pct: parseFloat(document.getElementById('wl-gain').value)||5,
-      daily_drop_pct: parseFloat(document.getElementById('wl-drop').value)||5,
-      price_gain_pct: parseFloat(document.getElementById('wl-pgain').value)||5,
-      price_drop_pct: parseFloat(document.getElementById('wl-pdrop').value)||5,
-      volume_spike_x: parseFloat(document.getElementById('wl-volume').value)||2
-    }
-  };
-
-  try {
-    // Delete old symbol if renamed
-    if (currentTickerSymbol !== updated.ticker) {
-      await fetch(`/api/watchlist/ticker/${currentTickerSymbol}`, {method:'DELETE'});
-    }
-    // Update via PUT
-    const res = await fetch(`/api/watchlist/ticker/${currentTickerSymbol}`, {
-      method: 'PUT',
-      headers: {'Content-Type':'application/json'},
-      body: JSON.stringify(updated)
-    });
-    closeWatchlistModal();
-    loadWatchlist();
-  } catch(e) { alert(e.message); }
-}
-
-async function deleteCurrentTicker() {
-  if (!currentTickerSymbol) return;
-  if (!confirm(`Remove ${currentTickerSymbol} from watchlist?`)) return;
-  try {
-    await fetch(`/api/watchlist/ticker/${currentTickerSymbol}`, {method:'DELETE'});
-    closeWatchlistModal();
-    loadWatchlist();
-  } catch(e) { alert(e.message); }
-}
-
-async function addTicker() {
-  const symbol = document.getElementById('newTickerSymbol').value.trim().toUpperCase();
-  const name = document.getElementById('newTickerName').value.trim();
-  const category = document.getElementById('newTickerCategory').value.trim();
-  if (!symbol) return;
-  try {
-    await fetch('/api/watchlist/ticker', {
-      method: 'POST',
-      headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({ ticker: symbol, name, sector: category, type: 'stock',
-        cooldown_minutes: 90,
-        alerts: { daily_gain_pct:5, daily_drop_pct:5,
-          price_gain_pct:5, price_drop_pct:5, volume_spike_x:2 }
-      })
-    });
-    document.getElementById('newTickerSymbol').value = '';
-    document.getElementById('newTickerName').value = '';
-    document.getElementById('newTickerCategory').value = '';
-    loadWatchlist();
   } catch(e) { alert(e.message); }
 }
 
