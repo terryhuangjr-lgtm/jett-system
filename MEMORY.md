@@ -70,20 +70,18 @@ Help with automation, find opportunities, handle tech/code, stay on top of sport
 
 | Time | Task | Output |
 |------|------|--------|
+| 2:00 AM Wed/Sat | Ecosystem Research Digest | email |
 | 3:00 AM Mon/Thu | Trending Research | Content Bank |
 | 3:00 AM Tue/Fri | Deep Research | Content Bank |
 | 4:00 AM | Podcast Processing | background |
-| 6:00 AM | Finance Monitor | Telegram DM |
-| 6:00 AM Mon | Lead Generator (Tier 1) | Google Sheets |
-| 6:00 AM Thu | Lead Generator (Tier 2) | Google Sheets |
+| 6:00 AM Mon | Lead Generator v3 (auto-rotating) | Google Sheets |
+| 6:00 AM Thu | Lead Generator v3 (auto-rotating) | Google Sheets |
 | 7:00 AM | Bitcoin Tweet | Email → terryhuangjr@gmail.com |
 | 7:30 AM | Sports Tweet | Email → terryhuangjr@gmail.com |
 | 8:00 AM | Morning Family Brief | Telegram DM |
 | 9:00 AM | eBay Scan (rotation) | Email → terryhuangjr@gmail.com |
 | 9:30 AM | System Health Check | Telegram DM |
-| 10:00 AM | Sports Betting Scout | Telegram DM |
 | 12:00 PM | Finance Monitor | Telegram DM |
-| 4:00 PM | Sports Betting Pick | Telegram DM |
 | 6:00 PM | Finance Monitor | Telegram DM |
 
 **On-Demand (manual trigger):**
@@ -125,6 +123,11 @@ cat /tmp/self-heal.log       # Self-heal watchdog log
 
 ## Recent Updates (March 2026)
 
+- **March 30, 2026:** Lead generator crons updated to v3 (was v1 with hardcoded API key)
+- **March 30, 2026:** Lead generator v3 bugs fixed (check_website return count, MAX_BRAVE_CALLS scoping, lead counting)
+- **March 30, 2026:** Ecosystem Research digest created (Wed/Sat 2 AM) — Brave + Grok X search, HTML email
+- **March 30, 2026:** Deal scorer seller tiers updated (Elite mega seller, Top seller, etc.)
+- **March 30, 2026:** SKILLS.md, SYSTEMS.md, MEMORY.md, CLAUDE.md updated
 - **March 12, 2026:** SKILLS.md created — full capability index for all skills + automation
 - **March 12, 2026:** MEMORY.md updated — removed stale Slack refs, corrected SOUL→IDENTITY
 - **March 11, 2026:** SYSTEMS.md updated to latest architecture
@@ -182,3 +185,18 @@ For complex tasks (research, lead gen, 21M content, podcast summaries, eBay anal
 - **Example prompt:** "spawn a researcher subagent to find data, then a critic to review, then summarize"
 - **Coordinate:** Researcher answers first, Critic comments, Summarizer finalizes.
 - **Keep it to 2–3 agents max** for speed.
+
+## Shopify — Direct API Access
+Store: superare-demo.myshopify.com
+Location ID: 85513961637
+
+Any Node.js script MUST start with:
+require('dotenv').config({ path: '/home/clawd/.env', override: true });
+
+## Output Formatting Rule
+When running Shopify reports or commands for Terry:
+- Return clean results only
+- NO source code paths in output
+- NO follow-up command suggestions unless Terry asks
+- NO technical metadata at the bottom of reports
+- Keep it professional and clean

@@ -1,5 +1,5 @@
 # CLAUDE.md - Jett System Standing Orders
-Last Updated: 2026-03-22 (evening)
+Last Updated: 2026-03-30
 
 READ THIS ENTIRE FILE BEFORE TOUCHING ANYTHING.
 
@@ -159,14 +159,19 @@ Changing the default model requires these steps. Skipping any can cause problems
 
 | Time | Task ID | Task | Output |
 |------|---------|------|--------|
+| 2:00AM Wed/Sat | — | Ecosystem Research Digest | email |
+| 3:00AM Mon/Thu | — | Trending Research | content bank |
+| 3:00AM Tue/Fri | — | Deep Research | content bank |
 | 4:00AM | 75 | Podcast Processing | background |
+| 6:00AM Mon | — | Lead Generator v3 (auto-rotating) | Google Sheets |
+| 6:00AM Thu | — | Lead Generator v3 (auto-rotating) | Google Sheets |
 | 7:00AM | 67 | Bitcoin Tweet Generation | email |
 | 7:30AM | 60 | Sports Tweet Generation | email |
-| 8:00AM | 78 | Morning Family Brief | #huangfamily |
+| 8:00AM | 78 | Morning Family Brief | Telegram |
 | 9:00AM | varies | eBay Scan (daily rotation) | email |
-| 9:30AM | 79 | System Health Check | DM |
-| 10:00AM | 71 | Sports Betting Scout | DM |
-| 4:00PM | 72 | Sports Betting Pick | DM |
+| 9:30AM | 79 | System Health Check | Telegram |
+| 10:00AM | 71 | Sports Betting Scout | Telegram |
+| 4:00PM | 72 | Sports Betting Pick | Telegram |
 
 ---
 
@@ -196,14 +201,21 @@ clawdbot message send --channel telegram --target "5867308866" --message "text" 
 | automation/deploy-podcast-summary.js | Podcast deploy |
 | automation/deploy-ebay-scans.js | eBay deploy (legacy - email via run-from-config) |
 | automation/add-to-content-bank.js | CLI tool to add new content entries |
+| automation/jett-ecosystem-research.js | Wed/Sat AI & tools digest (Brave + X search → email) |
+| automation/jett-trending-research.js | Trending topics research (Mon/Thu) |
+| automation/jett-daily-research.js | Deep research via Spotrac (Tue/Fri) |
+| automation/jett-finance-monitor.js | BTC/ETF/AI/energy news (3x daily) |
+| automation/jett-watchlist-check.js | Stock price alerts (deterministic) |
+| automation/jett-community-pulse.js | On-demand Reddit + X intelligence |
 | task-manager/server.js | Dashboard (port 3000) |
 | task-manager/worker.js | Task scheduler |
 | ebay-scanner/run-from-config.js | eBay scanner (sends email) |
-| ebay-scanner/vision-filter.js | Claude Haiku vision for card condition |
+| ebay-scanner/vision-filter.js | AI Scout + AI Filter for card condition |
+| ebay-scanner/deal-scorer-v2.js | Deal scoring (seller, price, freshness) |
+| lead-generator/lead_generator_v3.py | Lead gen with retry, email extraction, AI qualify |
 | skills/podcast-summary/app.py | Podcast processor |
 | skills/morning-brief/morning_brief.py | Family brief (Google Calendar only) |
 | automation/watchlist-dashboard.py | Watchlist dashboard (port 5002) |
-| automation/jett-watchlist-check.js | Watchlist price checker (deterministic, zero token cost) |
 
 ---
 
@@ -917,3 +929,15 @@ Do NOT add server.js back to PM2. If server won't start, check `pm2 list` for gh
 **To check logs:**
 `tail -f /home/clawd/clawd/task-manager/logs/server.log`
 
+
+## CRITICAL: Any Node.js script touching Shopify MUST start with:
+require('dotenv').config({ path: '/home/clawd/.env', override: true });
+## Without this line the script will get 401 errors every time.
+## This applies to ANY script Jett writes, not just Shopify skills.
+
+## MANDATORY — EVERY SHOPIFY SCRIPT
+Every single Node.js script MUST have this as line 1:
+require('dotenv').config({ path: '/home/clawd/.env', override: true });
+
+Without this line the script gets 401 every time.
+This is non-negotiable. No exceptions.

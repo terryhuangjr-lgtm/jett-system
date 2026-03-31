@@ -1,6 +1,6 @@
 # Jett System Architecture
 
-Last Updated: 2026-03-17
+Last Updated: 2026-03-30
 
 ---
 
@@ -214,12 +214,44 @@ cd /home/clawd/clawd/task-manager && ./start.sh
 
 | Type | Schedule | Script | Description |
 |------|----------|--------|-------------|
+| **Ecosystem** | Wed/Sat 2AM | `jett-ecosystem-research.js` | AI tools & skills digest (Brave + X search → email) |
 | **Trending** | Mon/Thu 3AM | `jett-trending-research.js` | Current topics via Grok + Brave Search |
 | **Deep** | Tue/Fri 3AM | `jett-daily-research.js` | Historic contracts via Spotrac |
+
+### 2a. Ecosystem Research Digest
+
+```
+┌──────────────────┐     ┌──────────────────┐     ┌──────────────────┐
+│ Cron Wed/Sat     │────▶│ Brave + Grok     │────▶│ HTML Email       │
+│ 2AM              │     │ X Search         │     │ (terryhuangjr)   │
+└──────────────────┘     └──────────────────┘     └──────────────────┘
+```
+
+**Script:** `automation/jett-ecosystem-research.js`
+
+**6 Topic Areas:**
+1. OpenClaw & Agent Tools (ClawHub, MCP, Hermes)
+2. Content Generation & Social (X automation, AI tools)
+3. Sports Cards & Collecting (pricing APIs, grading tools)
+4. Lead Generation (Google Maps scraping, outreach tools)
+5. Web Scraping & Data (new scrapers, browser automation)
+6. Local LLM & AI Updates (Ollama models, GPU inference)
+
+**Flow per topic:**
+1. 2 Brave web searches (3 results each → 6 web results)
+2. 1 Grok X search via `/v1/responses` with `x_search` tool (past week)
+3. Grok synthesis combining web + X sources into actionable findings
+
+**Budget:** 12 Brave calls + 6 X searches per run (well under 40 cap)
+
+**Crons:**
+- `Ecosystem Research Wed` (e86a1cd9) — Wed 2 AM ET
+- `Ecosystem Research Sat` (ebb75f36) — Sat 2 AM ET
 
 **Scripts:**
 - `automation/jett-trending-research.js` - Finds trending topics (Mon/Thu)
 - `automation/jett-daily-research.js` - Deep research (Tue/Fri)
+- `automation/jett-ecosystem-research.js` - Ecosystem digest (Wed/Sat)
 - `automation/jett-scraper.py` - Spotrac data fetcher
 - `automation/brave-search.js` - Web search for research
 
@@ -336,7 +368,7 @@ cd /home/clawd/clawd/ebay-scanner && node run-from-config.js [day]
 ```
 ┌──────────────────┐     ┌──────────────────┐     ┌──────────────────┐
 │ Cron Mon/Thu     │────▶│ lead-generator/  │────▶│ Google Sheets    │
-│ 6AM              │     │ lead_generator.py│     │ (Leads)         │
+│ 6AM              │     │ v3.py            │     │ (Leads)         │
 └──────────────────┘     └──────────────────┘     └──────────────────┘
 ```
 
@@ -344,23 +376,34 @@ cd /home/clawd/clawd/ebay-scanner && node run-from-config.js [day]
 
 **What it does:**
 - Searches Google Places API for local service businesses in Nassau County
-- Filters: 5-500 reviews, 4.0+ rating, no/outdated website
-- Brave Search for social media (FB/IG) on qualified leads
-- Writes to Google Sheets (shared with Terry + Jett)
+- Filters: 3.8+ rating, 3-1000 reviews, 10000m radius, no/outdated website
+- Email extraction from business websites
+- Optional AI-powered lead qualification
+- Saves each lead immediately (crash-safe)
+- Brave API budget: max 60 calls per run with retry + rate limit handling
+
+**v3 Improvements:**
+- Broader filters (was 4.0★ / 5-500 reviews)
+- Email extraction from websites
+- AI qualification (optional)
+- 5 towns per run (was 3)
+- Expanded industries (9 types)
+- State-based town rotation
+- Auto-rotating tiers (no hardcoded tier per cron)
 
 **Cron Jobs:**
-- `Lead Generator Monday` - 6 AM Monday (Tier 1: pressure washing, painter, handyman)
-- `Lead Generator Thursday` - 6 AM Thursday (Tier 2: landscaper, lawn care, roofing)
+- `Lead Generator Monday` (460d992a) — 6 AM Monday, auto-rotating
+- `Lead Generator Thursday` (fe56a724) — 6 AM Thursday, auto-rotating
 
 **Rotation:**
-- Towns: Cycles through 25 Nassau County towns (3 per run)
-- Industries: Tier 1 → Tier 2 → Tier 3 → repeat
+- Towns: Cycles through 25 Nassau County towns (5 per run)
+- Industries: Auto-rotates via state file
 - State: `/home/clawd/.lead-gen-state.json`
 
 **Spreadsheet:** https://docs.google.com/spreadsheets/d/1Dl0VF4yASbUSXcuyS1km-Uo1fa6fZVfAYlRFl7h38gc
 
 **API Keys:**
-- Brave Search API: BSA42Y7KAuT2JbIsWjI1CUkm57PTxfi
+- Brave Search API: via os.environ.get() fallback
 - Google Places API: AIzaSyAgmfVMDHDCbQdq06pCDiMCEeN-0lx-_d4
 
 ---

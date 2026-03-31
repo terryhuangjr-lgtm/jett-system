@@ -1,6 +1,6 @@
 # SKILLS.md - What Jett Can Do
 
-Last Updated: 2026-03-12
+Last Updated: 2026-03-30
 
 This file is Jett's capability index. Read it when you need to know what tools and skills are available, or when deciding how to approach a task.
 
@@ -123,11 +123,12 @@ These are scripts, not modular skills — they run via cron or manually.
 **Scripts:**
 - `jett-trending-research.js` — Trending topics via Grok + Brave Search
 - `jett-daily-research.js` — Deep research via Spotrac (historic contracts)
+- `jett-ecosystem-research.js` — Wed/Sat AI & tools digest (Brave + Grok X search → email)
 - `brave-search.js` — Brave Search API wrapper
 - `jett-scraper.py` — Spotrac data fetcher
 
 **Output:** Adds verified entries to content bank (SQLite DB)
-**Cron:** Mon/Thu 3 AM (Trending), Tue/Fri 3 AM (Deep)
+**Cron:** Mon/Thu 3 AM (Trending), Tue/Fri 3 AM (Deep), Wed/Sat 2 AM (Ecosystem)
 
 ---
 
@@ -142,23 +143,25 @@ These are scripts, not modular skills — they run via cron or manually.
 ---
 
 ### 8. Lead Generator (Level Up Digital)
-**Location:** `/home/clawd/clawd/lead-generator/lead_generator.py`
+**Location:** `/home/clawd/clawd/lead-generator/lead_generator_v3.py`
 **Purpose:** Find local business leads for Level Up Digital outreach
 
 **What it does:**
 - Searches Google Places API for Nassau County businesses
-- Filters: 5–500 reviews, 4.0+ rating, no/outdated website
-- Brave Search for social media (FB/IG) on qualified leads
-- Writes to Google Sheets (shared with Terry)
+- Filters: 3.8+ rating, 3-1000 reviews, 10000m radius, no/outdated website
+- Email extraction from business websites
+- Optional AI-powered lead qualification
+- Saves each lead immediately (crash-safe)
+- Brave API budget: max 60 calls/run with retry + rate limit handling
 
 **Invoke via:**
 ```bash
-cd /home/clawd/clawd/lead-generator && python3 lead_generator.py [tier] [num_towns]
+cd /home/clawd/clawd/lead-generator && python3 lead_generator_v3.py
 ```
 
 **State file:** `/home/clawd/.lead-gen-state.json` (tracks rotation)
 **Spreadsheet:** https://docs.google.com/spreadsheets/d/1Dl0VF4yASbUSXcuyS1km-Uo1fa6fZVfAYlRFl7h38gc
-**Cron:** Mon 6 AM (Tier 1: pressure washing, painter, handyman), Thu 6 AM (Tier 2: landscaper, lawn care, roofing)
+**Cron:** Mon 6 AM, Thu 6 AM (auto-rotating tiers via state file)
 
 ---
 
@@ -212,9 +215,10 @@ Need to send a message to Terry? → Telegram (clawdbot) — see TOOLS.md
 Need to send an email?           → lib/send-email.js (GWS Gmail)
 Need to check the calendar?      → gws calendar OR notion-assistant/gcal_client.py
 Need to summarize a podcast?     → podcast-summary skill
-Need to find leads?              → lead-generator/lead_generator.py
+Need to find leads?              → lead-generator/lead_generator_v3.py
 Need to research a sports topic? → automation/jett-daily-research.js
 Need to check BTC/finance news?  → automation/jett-finance-monitor.js
+Need AI/tools ecosystem news?    → automation/jett-ecosystem-research.js --dry-run
 Need to log something?           → Write to memory/YYYY-MM-DD.md
 Need to add to content bank?     → node automation/add-to-content-bank.js
 ```
@@ -259,3 +263,8 @@ node /home/clawd/skills/shopify-manager/run.js "<command>"
 **Telegram Triggers:** When Terry says anything Shopify-related, run the appropriate command and send result back via Telegram.
 
 **⚠️ DEMO MODE:** Currently pointed at superare-demo.myshopify.com — swap SHOPIFY_STORE and SHOPIFY_TOKEN in ~/.env when going live.
+
+## SHOPIFY MANAGER — ALWAYS USE THIS
+node /home/clawd/skills/shopify-manager/run.js "<command>"
+NEVER ask Terry for credentials. NEVER create new scripts.
+Full docs: /home/clawd/skills/shopify-manager/SKILL.md
