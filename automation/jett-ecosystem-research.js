@@ -189,20 +189,85 @@ function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+// ─── Grok X Search ──────────────────────────────────────────────────────────
+
+async function xSearchWithGrok(query) {
+  if (!XAI_API_KEY) {
+    console.log('   ⚠️ No xAI key — skipping X search');
+    return null;
+  }
+
+  try {
+    // Calculate date range: past week
+    const now = new Date();
+    const oneWeekAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+    const fromDate = oneWeekAgo.toISOString().split('T')[0];
+    const toDate = now.toISOString().split('T')[0];
+
+    const response = await fetch('https://api.x.ai/v1/responses', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${XAI_API_KEY}`
+      },
+      body: JSON.stringify({
+        model: 'grok-4-1-fast',
+        input: [
+          {
+            role: 'user',
+            content: `What are people on X (Twitter) saying about: ${query}? Summarize the key discussions, announcements, and any new tools or projects mentioned. Be specific — include names, links, and reactions.`
+          }
+        ],
+        tools: [
+          {
+            type: 'x_search',
+            from_date: fromDate,
+            to_date: toDate
+          }
+        ]
+      })
+    });
+
+    const data = await response.json();
+
+    // Extract text content from Responses API format
+    let text = '';
+    if (Array.isArray(data.output)) {
+      for (const item of data.output) {
+        if (item.type === 'message' && item.content) {
+          if (Array.isArray(item.content)) {
+            text += item.content.map(c => c.text || '').join('');
+          } else {
+            text += item.content;
+          }
+        }
+      }
+    }
+
+    return text || null;
+  } catch (e) {
+    console.log(`   ⚠️ X search error: ${e.message}`);
+    return null;
+  }
+}
+
 // ─── Grok Synthesis ──────────────────────────────────────────────────────────
 
-async function synthesizeFindings(allResults) {
+async function synthesizeFindings(combinedInput) {
   if (!XAI_API_KEY) {
     console.error('   ❌ No xAI API key configured');
     return 'Unable to synthesize — no API key.';
   }
+
+  const webResults = combinedInput.webResults || [];
+  const xDiscussion = combinedInput.xDiscussion || 'No X discussion found.';
 
   const prompt = `You are Terry's AI research assistant.
 Terry runs: CardMiner (eBay card scanner), @21MSports
 (Bitcoin/sports content), Level Up Digital (web design
 agency), and uses OpenClaw/Jett for automation.
 
-Analyze these search results and identify the 3-5 most
+Analyze these search results and X discussions to identify the 3-5 most
 relevant and actionable findings for Terry's projects.
 
 For each finding include:
@@ -214,8 +279,11 @@ Be specific and practical. Skip generic AI news.
 Focus on tools, skills, APIs, or techniques Terry
 could actually use.
 
-Search results:
-${JSON.stringify(allResults, null, 2)}`;
+Web search results:
+${JSON.stringify(webResults, null, 2)}
+
+X (Twitter) discussions:
+${xDiscussion}`;
 
   try {
     const response = await fetch('https://api.x.ai/v1/chat/completions', {
@@ -324,7 +392,18 @@ async function main() {
       return true;
     });
 
-    if (unique.length === 0) {
+    // X Search via Grok
+    const xQuery = topic.queries[0]; // Use primary query for X
+    console.log(`   🐦 X search: "${xQuery}"`);
+    const xResults = await xSearchWithGrok(xQuery);
+    if (xResults) {
+      console.log(`      Got X discussion summary`);
+    } else {
+      console.log(`      No X results`);
+    }
+    await sleep(1000);
+
+    if (unique.length === 0 && !xResults) {
       console.log(`   ⚠️ No results for ${topic.area}`);
       topicResults.push({
         area: topic.area,
@@ -334,8 +413,14 @@ async function main() {
       continue;
     }
 
-    console.log(`   🧠 Synthesizing ${unique.length} results...`);
-    const synthesis = await synthesizeFindings(unique);
+    // Combine Brave results with X search summary for synthesis
+    const combinedInput = {
+      webResults: unique,
+      xDiscussion: xResults || 'No X discussion found.'
+    };
+
+    console.log(`   🧠 Synthesizing ${unique.length} web + X results...`);
+    const synthesis = await synthesizeFindings(combinedInput);
 
     topicResults.push({
       area: topic.area,
