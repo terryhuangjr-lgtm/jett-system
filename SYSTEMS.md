@@ -132,7 +132,6 @@ cd /home/clawd/clawd/task-manager && ./start.sh
 | `/analytics` | Port 5000 | Level Up analytics |
 | `/card/*` | Port 5000 | Card detail pages |
 | `/podcast` | Port 5001 | Podcast summarizer |
-| `/watchlist` | Port 5002 | Watchlist dashboard |
 | `/sienna` | Port 3000 | Sienna Lesson Launcher (AI learning for kids) |
 
 **Local ports:**
@@ -140,7 +139,6 @@ cd /home/clawd/clawd/task-manager && ./start.sh
 |------|---------|
 | 5000 | Level Up Cards (Python/Flask) |
 | 5001 | Podcast Summarizer (Python/Flask) |
-| 5002 | Watchlist Dashboard (Python/Flask) |
 
 ---
 
@@ -523,7 +521,6 @@ crontab -l                  # View watchdog cron
   - Gateway (openclaw-gateway)
   - PM2 dashboard (task-manager-server)
   - Ollama (local LLM)
-  - Watchlist Dashboard (port 5002)
 - Fixes MTU on eth0
 - Emails Terry via Gmail if services fail to restart
 - Log: `/tmp/self-heal.log`
