@@ -279,6 +279,10 @@ Be specific and practical. Skip generic AI news.
 Focus on tools, skills, APIs, or techniques Terry
 could actually use.
 
+Do NOT use hashtags. Do NOT use markdown bold (**text**).
+Keep formatting plain — just short finding titles followed by
+explanatory bullets.
+
 Web search results:
 ${JSON.stringify(webResults, null, 2)}
 
@@ -309,36 +313,67 @@ ${xDiscussion}`;
 
 // ─── Email Formatting ────────────────────────────────────────────────────────
 
+function cleanSynthesisText(text) {
+  // Remove hashtags (#word)
+  text = text.replace(/#\w+/g, '');
+  // Remove markdown bold markers
+  text = text.replace(/\*\*/g, '');
+  // Collapse multiple spaces
+  text = text.replace(/[ \t]+/g, ' ');
+  return text.trim();
+}
+
 function buildEmailHtml(topicResults, dateStr) {
-  let html = `<h2>AI &amp; Tools Digest — ${dateStr}</h2>`;
-  html += `<p>Here's what's new and relevant this week:</p>`;
+  let html = `
+<div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;max-width:640px;margin:0 auto;padding:20px;color:#333;line-height:1.6">
+  <h2 style="margin:0 0 4px 0;font-size:22px;color:#1a1a1a">Ecosystem Research Digest</h2>
+  <p style="margin:0 0 24px 0;color:#888;font-size:14px">${dateStr}</p>
+`;
 
   for (const topic of topicResults) {
     if (!topic.synthesis || topic.synthesis === 'Unable to synthesize — no API key.') continue;
 
-    html += `<h3>${topic.area}</h3>`;
-    html += `<ul>`;
+    html += `
+  <div style="margin-bottom:28px">
+    <h3 style="margin:0 0 12px 0;font-size:16px;color:#1a1a1a;border-bottom:1px solid #eee;padding-bottom:6px">${topic.area}</h3>
+    <div style="margin:0;padding:0">`;
 
-    // Parse synthesis into bullet points
+    // Parse synthesis into readable paragraphs
     const lines = topic.synthesis.split('\n').filter(l => l.trim());
+    let inList = false;
+
     for (const line of lines) {
-      const cleaned = line.replace(/^[-*•]\s*/, '').trim();
-      if (cleaned.length > 20) {
-        html += `<li>${cleaned}</li>`;
+      const cleaned = cleanSynthesisText(line.replace(/^[-*•]\s*/, '').trim());
+      if (cleaned.length < 20) continue;
+
+      // Check if this looks like a finding title (short, ends with colon or is bold-ish)
+      if (cleaned.length < 100 && !cleaned.endsWith('.')) {
+        if (inList) html += `</ul>`;
+        html += `<p style="margin:8px 0 4px 0;font-weight:600;font-size:14px">${cleaned}</p>`;
+        inList = false;
+      } else {
+        if (!inList) html += `<ul style="margin:4px 0 0 0;padding-left:20px">`;
+        html += `<li style="margin-bottom:6px;font-size:14px;color:#444">${cleaned}</li>`;
+        inList = true;
       }
     }
+    if (inList) html += `</ul>`;
 
-    html += `</ul>`;
+    html += `</div>`;
 
     // Source links
     if (topic.sources && topic.sources.length > 0) {
-      html += `<p style="font-size:12px;color:#888">Sources: `;
-      html += topic.sources.map(s => `<a href="${s.url}" style="color:#666">${s.title.substring(0, 40)}</a>`).join(' · ');
+      html += `<p style="font-size:11px;color:#aaa;margin:10px 0 0 0">Sources: `;
+      html += topic.sources.map(s => `<a href="${s.url}" style="color:#888">${s.title.substring(0, 40)}</a>`).join(' &middot; ');
       html += `</p>`;
     }
+
+    html += `</div>`;
   }
 
-  html += `<p style="color:#666;font-size:11px">Searched ${topicResults.length} topics · ${braveCallCount}/${MAX_BRAVE_CALLS} Brave API calls used</p>`;
+  html += `
+  <p style="color:#bbb;font-size:11px;margin-top:32px;border-top:1px solid #eee;padding-top:12px">Searched ${topicResults.length} topics &middot; ${braveCallCount}/${MAX_BRAVE_CALLS} Brave API calls used</p>
+</div>`;
 
   return html;
 }
@@ -455,7 +490,7 @@ async function main() {
     console.log(`📊 Brave API calls used: ${braveCallCount}/${MAX_BRAVE_CALLS}`);
     console.log('   (Email NOT sent — dry run mode)');
   } else {
-    const subject = `🔍 Ecosystem Research — ${dayName} ${new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}`;
+    const subject = `Ecosystem Research -- ${dayName} ${new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}`;
 
     try {
       execFileSync('node', [
@@ -483,7 +518,7 @@ main().catch(error => {
       execFileSync('node', [
         EMAIL_SCRIPT,
         '--to', 'terryhuangjr@gmail.com',
-        '--subject', '🔍 Ecosystem Research — ERROR',
+        '--subject', 'Ecosystem Research -- ERROR',
         '--body', `Ecosystem research failed:\n\n${error.message}\n\nPlease check the system.`
       ], { timeout: 30000, stdio: 'pipe' });
     } catch {}
