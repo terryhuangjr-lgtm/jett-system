@@ -73,7 +73,7 @@ function renderHtmlTemplate(template, data) {
     return html.replace(/\{\{TABLE_ROWS\}\}/g, '<tr><td colspan="9" style="padding:40px;text-align:center;color:#64748b;">No results found</td></tr>');
   }
   
-  const topCards = cards.slice(0, 20);
+  const topCards = cards.slice(0, data.topN || 20);
   const tableRows = topCards.map((card, i) => {
     const isEven = i % 2 === 0;
     const rowBg = isEven ? '#ffffff' : '#fafafa';
@@ -202,7 +202,7 @@ function renderHtmlTemplate(template, data) {
   return html.replace(/\{\{TABLE_ROWS\}\}/g, tableRows);
 }
 
-function sendResultsEmail(outputFile, day, scanName, cardMode = 'raw', listingType = 'both') {
+function sendResultsEmail(outputFile, day, scanName, cardMode = 'raw', listingType = 'both', topN = 20) {
   try {
     if (!fs.existsSync(outputFile)) {
       console.log('No results file to email');
@@ -218,7 +218,7 @@ function sendResultsEmail(outputFile, day, scanName, cardMode = 'raw', listingTy
     }
 
     // Transform data for new template format
-    const cards = results.slice(0, 20).map(item => ({
+    const cards = results.slice(0, topN).map(item => ({
       title: item.title,
       price: item.currentPrice || item.totalPrice || 0,
       score: parseFloat(item.dealScore?.score) || 0,
@@ -253,6 +253,7 @@ function sendResultsEmail(outputFile, day, scanName, cardMode = 'raw', listingTy
       searchTerm: scanName || 'Card Search',
       cardMode: cardMode === 'graded' ? 'Graded' : 'Raw',
       scanTimestamp: new Date().toISOString(),
+      topN: topN,
       cards: cards
     };
     
@@ -355,7 +356,7 @@ async function runScan(day) {
     console.log(`Results saved to: ${outputFile}`);
 
     // Send email with results
-    sendResultsEmail(outputFile, day, scan.name, cardCondition, listingType);
+    sendResultsEmail(outputFile, day, scan.name, cardCondition, listingType, topN);
 
   } catch (error) {
     console.error(`\n❌ ${day} scan failed: ${error.message}`);
