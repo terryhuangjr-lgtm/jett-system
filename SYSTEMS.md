@@ -1,6 +1,6 @@
 # Jett System Architecture
 
-Last Updated: 2026-03-30
+Last Updated: 2026-04-04
 
 ---
 
@@ -105,7 +105,32 @@ cd /home/clawd/clawd/task-manager && ./start.sh
 
 ---
 
-### 4. Remote Access (Cloudflare Tunnel)
+### 4. Gemma Assistant (Port 3001)
+
+| Attribute | Value |
+|-----------|-------|
+| Process | `node /home/clawd/gemma-assistant/server.js` |
+| Port | 3001 |
+| Auto-start | Manually (not yet systemd) |
+| Model | Ollama gemma4:e2b |
+
+**Purpose:** AI content transformation tool with preset prompts for:
+- Article summarization (summary, bullets, takeaways)
+- Email writing (professional, casual)
+- Tweet generation (single, 21M-style, threads)
+- Article analysis
+
+**Endpoints:**
+- `GET /` - Web UI
+- `POST /api/process` - Process text with specified output type
+
+**Usage:** Access via Mission Control → Gemma tab or directly at http://localhost:3001
+
+**Added:** 2026-04-04
+
+---
+
+### 5. Remote Access (Cloudflare Tunnel)
 
 | Attribute | Value |
 |-----------|-------|

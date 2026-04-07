@@ -1,25 +1,5 @@
 # TOOLS.md - How Jett Gets Things Done
 
-## SHOPIFY — ALWAYS USE THE SKILL
-**CRITICAL RULES — NEVER BREAK THESE:**
-- NEVER ask Terry for Shopify credentials
-- NEVER create new Shopify scripts  
-- ALWAYS use the skill for ALL Shopify tasks
-- NEVER run raw API calls without loading .env first
-
-**The ONLY correct way to run Shopify commands:**
-```bash
-node /home/clawd/skills/shopify-manager/run.js "<command>"
-```
-
-**If you MUST write a custom script, ALWAYS start with:**
-```javascript
-require('dotenv').config({ path: require('os').homedir() + '/.env' });
-```
-
-**This is why the skill always works and raw scripts get 401 errors.**
-
-
 ## Communication Tools
 
 ### Telegram (Primary)

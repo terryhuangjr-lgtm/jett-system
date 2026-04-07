@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "last_updated": "2026-03-27",
+  "last_updated": "2026-04-06",
   "entries": [
     {
       "id": 1,
@@ -662,7 +662,9 @@
       "btc_allocation": 67,
       "verified_fact": "Trevor Lawrence signed a $36.8M rookie deal in 2021 when BTC was $55,000. 10% allocation = 67 BTC worth $4.5M today on a $3.68M investment.",
       "source": "Spotrac",
-      "used_dates": [],
+      "used_dates": [
+        "2026-03-31"
+      ],
       "cooldown_days": 90
     },
     {
@@ -751,7 +753,10 @@
       "btc_price_then": 65000,
       "verified_fact": "Bitcoin is secured by over 17,000 nodes globally. No single government, company, or person controls it. Every other asset you own has a counterparty that can freeze, confiscate, or inflate it.",
       "source": "Bitnodes.io",
-      "cooldown_days": 60
+      "cooldown_days": 60,
+      "used_dates": [
+        "2026-04-06"
+      ]
     },
     {
       "id": 53,
@@ -884,7 +889,9 @@
       "btc_allocation": 0,
       "verified_fact": "Here are some verified facts about NCAA athlete NIL deals for 2024 and 2025:",
       "source": "Research",
-      "used_dates": [],
+      "used_dates": [
+        "2026-04-02"
+      ],
       "cooldown_days": 90,
       "id": 62
     },
@@ -1102,7 +1109,10 @@
       "source": "NFL pension reporting",
       "angle": "pension_inflation",
       "cooldown_days": 30,
-      "id": 79
+      "id": 79,
+      "used_dates": [
+        "2026-04-03"
+      ]
     },
     {
       "category": "bitcoin_education",
@@ -1264,7 +1274,9 @@
         "https://www.spotrac.com/nfl/player/_/id/25102/josh-allen",
         "https://api.coingecko.com/api/v3/simple/price"
       ],
-      "used_dates": [],
+      "used_dates": [
+        "2026-04-01"
+      ],
       "cooldown_days": 60
     },
     {
@@ -1302,7 +1314,9 @@
         "https://www.spotrac.com/nfl/player/_/id/72384/jamarr-chase",
         "https://www.usatoday.com/story/sports/nfl/bengals/2025/03/16/tee-higgins-extension-cincinnati-bengals/82418916007/"
       ],
-      "used_dates": [],
+      "used_dates": [
+        "2026-03-30"
+      ],
       "cooldown_days": 60
     },
     {
@@ -1484,6 +1498,48 @@
       "used_dates": [],
       "cooldown_days": 60,
       "id": 100
+    },
+    {
+      "category": "bitcoin_education",
+      "athlete": null,
+      "deal": "Ray Dalio Bitcoin vs gold comparison",
+      "sport": "Bitcoin",
+      "year": 2021,
+      "contract_value": null,
+      "btc_price_then": 0,
+      "verified_fact": "In 2021, Ray Dalio stated Bitcoin's market cap hit $1 trillion compared to gold's $12 trillion market cap",
+      "source": "Research",
+      "used_dates": [],
+      "cooldown_days": 60,
+      "id": 101
+    },
+    {
+      "category": "historic_contract",
+      "athlete": "Lamar Jackson",
+      "sport": "NFL",
+      "year": 2023,
+      "contract_value": 260000000,
+      "btc_price_then": 27000,
+      "btc_allocation": 481,
+      "verified_fact": "Lamar Jackson signed a $260 million contract extension in 2023",
+      "source": "Research",
+      "used_dates": [],
+      "cooldown_days": 90,
+      "id": 102
+    },
+    {
+      "category": "bitcoin_education",
+      "athlete": null,
+      "deal": "Bill Gates Bitcoin opinion",
+      "sport": "Bitcoin",
+      "year": 2018,
+      "contract_value": null,
+      "btc_price_then": 0,
+      "verified_fact": "In 2018, Bill Gates stated he would short Bitcoin when it was trading around $9,000",
+      "source": "Research",
+      "used_dates": [],
+      "cooldown_days": 60,
+      "id": 103
     }
   ]
 }

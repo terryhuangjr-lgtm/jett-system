@@ -92,6 +92,9 @@ class TaskServer {
     if (pathname.startsWith('/proxy/podcast')) {
       return this.proxyRequest(res, pathname.replace('/proxy/podcast', '/'), 5001);
     }
+    if (pathname.startsWith('/proxy/gemma')) {
+      return this.proxyRequest(res, pathname.replace('/proxy/gemma', '/'), 3001);
+    }
 
     // Direct routes for external services (for remote access)
     if (pathname === '/levelup' || pathname === '/levelup/') {
@@ -99,6 +102,9 @@ class TaskServer {
     }
     if (pathname === '/podcast' || pathname === '/podcast/') {
       return this.proxyRequest(res, '/', 5001);
+    }
+    if (pathname === '/gemma' || pathname === '/gemma/') {
+      return this.proxyRequest(res, '/', 3001);
     }
 
     // Podcast API proxy
@@ -508,7 +514,7 @@ Rules: Keep all language simple. Every activity 3-6 minutes. Make it feel like p
         checks.push({ name: 'Gateway', status: 'unhealthy', message: 'Gateway not running' });
       }
       
-      // Check Ollama (for memory embeddings + minimax)
+      // Check Ollama (for memory embeddings + local models)
       try {
         const http = require('http');
         const ollama = await new Promise((resolve) => {
@@ -518,7 +524,8 @@ Rules: Keep all language simple. Every activity 3-6 minutes. Make it feel like p
           req.on('error', () => resolve({ status: 'unhealthy' }));
           req.setTimeout(3000, () => resolve({ status: 'unhealthy' }));
         });
-        checks.push({ name: 'Ollama', status: ollama.status, message: ollama.status === 'healthy' ? 'nomic-embed + minimax-m2.5 ready' : 'Ollama not responding' });
+        const models = ['gemma4:e2b', 'minimax-m2.5:cloud', 'kimi-k2.5:cloud'];
+        checks.push({ name: 'Ollama', status: ollama.status, message: ollama.status === 'healthy' ? `${models.join(', ')} ready` : 'Ollama not responding' });
       } catch (e) {
         checks.push({ name: 'Ollama', status: 'unhealthy', message: 'Ollama not responding' });
       }
@@ -580,10 +587,25 @@ Rules: Keep all language simple. Every activity 3-6 minutes. Make it feel like p
       try {
         const { execSync } = require('child_process');
         const output = execSync('/home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot cron list', { encoding: 'utf8', timeout: 10000 });
-        const jobCount = (output.match(/\n/g) || []).length;
-        checks.push({ name: 'Cron Jobs', status: 'healthy', message: `${jobCount} jobs in clawdbot` });
+        const jobCount = output.split('\n').filter(line => line.match(/^\w{8}-\w{4}/)).length;
+        checks.push({ name: 'Cron Jobs', status: 'healthy', message: `${jobCount} jobs scheduled` });
       } catch (e) {
         checks.push({ name: 'Cron Jobs', status: 'unhealthy', message: 'Could not list cron jobs' });
+      }
+      
+      // Check Gemma Assistant
+      try {
+        const http = require('http');
+        const gemma = await new Promise((resolve) => {
+          const req = http.get('http://localhost:3001', (res) => {
+            resolve({ status: 'healthy' });
+          });
+          req.on('error', () => resolve({ status: 'unhealthy' }));
+          req.setTimeout(3000, () => resolve({ status: 'unhealthy' }));
+        });
+        checks.push({ name: 'Gemma Assistant', status: gemma.status, message: gemma.status === 'healthy' ? 'Running on port 3001' : 'Not responding' });
+      } catch (e) {
+        checks.push({ name: 'Gemma Assistant', status: 'unhealthy', message: 'Not running' });
       }
       
       // Check Level Up Cards (port 5000)

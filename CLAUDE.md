@@ -1,5 +1,5 @@
 # CLAUDE.md - Jett System Standing Orders
-Last Updated: 2026-03-30
+Last Updated: 2026-04-04
 
 READ THIS ENTIRE FILE BEFORE TOUCHING ANYTHING.
 
@@ -209,6 +209,7 @@ clawdbot message send --channel telegram --target "5867308866" --message "text" 
 | automation/jett-community-pulse.js | On-demand Reddit + X intelligence |
 | task-manager/server.js | Dashboard (port 3000) |
 | task-manager/worker.js | Task scheduler |
+| gemma-assistant/server.js | Content transformation tool (port 3001) |
 | ebay-scanner/run-from-config.js | eBay scanner (sends email) |
 | ebay-scanner/vision-filter.js | AI Scout + AI Filter for card condition |
 | ebay-scanner/deal-scorer-v2.js | Deal scoring (seller, price, freshness) |
@@ -236,7 +237,7 @@ clawdbot message send --channel telegram --target "5867308866" --message "text" 
 
 **Tabs in Mission Control:**
 - System, Schedule, Tasks (native)
-- eBay, Level Up, Podcast (embedded via iframe with dark theme injection)
+- eBay, Level Up, Podcast, Gemma (embedded via iframe with dark theme injection)
 
 ---
 
@@ -395,16 +396,22 @@ Level-up-cards and watchlist-dashboard are started via their own startup scripts
 
 **Subagent Configuration:**
 - Default subagent model: ollama/kimi-k2.5:cloud (free, reasoning)
-- Fallback: xai/grok-4-1-fast (if Kimi unavailable)
+- Note: openclaw v2026.2.26 doesn't support default model config. Specify model at spawn time.
+- To use gemma: spawn with `model: "ollama/gemma4:e2b"` in the sessions_spawn call
+- Fallback: xai/grok-4-1-fast (if Ollama unavailable)
 - Config location: `~/.openclaw/openclaw.json` → `agents.defaults.subagents`
 
 **To spawn a subagent for coding tasks:**
+```
+spawn agent "kimi" to [describe task]
+```
+Or just:
 ```
 spawn a subagent to [describe task]
 ```
 
 **Example prompts:**
-- "spawn a subagent to fix the bug in automation.js"
+- "spawn agent 'kimi' to fix the bug in automation.js"
 - "spawn a subagent to build a new script that does X"
 - "spawn a subagent to review this code and suggest improvements"
 
@@ -941,3 +948,15 @@ require('dotenv').config({ path: '/home/clawd/.env', override: true });
 
 Without this line the script gets 401 every time.
 This is non-negotiable. No exceptions.
+
+## Shopify API Rule
+Always use REST API not GraphQL for Shopify operations.
+REST endpoints are simpler and more reliable.
+When in doubt use the wrapper:
+bash /home/clawd/clawd/shopify-run.sh "<command>"
+
+## Shopify API Rule
+Always use REST API not GraphQL for Shopify operations.
+REST endpoints are simpler and more reliable.
+When in doubt use the wrapper:
+bash /home/clawd/clawd/shopify-run.sh "<command>"

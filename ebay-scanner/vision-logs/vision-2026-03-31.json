@@ -1,0 +1,1231 @@
+[
+  {
+    "timestamp": "2026-03-31T13:00:18.109Z",
+    "decision": "PASS",
+    "itemId": "v1|127707398143|0",
+    "title": "2018 Bowman Prospect Green Ronald Acuna /99 Atlanta Braves #BP1",
+    "price": 36,
+    "imageUrl": "https://i.ebayimg.com/images/g/pagAAeSwfzBpoPdR/s-l225.jpg",
+    "ebayUrl": "https://www.ebay.com/itm/127707398143?_skw=ronald+acuna+2018+%2F99+-psa+-bgs+-cgc+-sgc+-graded+-slab+-ginter+-mini+-mojo+-custom+-pack+-jumbo+-gypsy+-replica&hash=item1dbbf43fff:g:pagAAeSwfzBpoPdR",
+    "vision": {
+      "corners": 7,
+      "centering": 7,
+      "overallScore": 6,
+      "confidence": "medium",
+      "issues": [
+        "corners appear sharp with only minor wear visible upon close inspection",
+        "borders appear slightly uneven but within acceptable range",
+        "card face is clean with no visible creases or damage"
+      ],
+      "reason": "corners appear sharp with only minor wear visible upon close inspection, borders appear slightly uneven but within acceptable range, card face is clean with no visible creases or damage"
+    },
+    "dealScore": 8.5
+  },
+  {
+    "timestamp": "2026-03-31T13:00:18.110Z",
+    "decision": "REJECT",
+    "itemId": "v1|137007163080|0",
+    "title": "Ronald Acuna Jr. 2018 Panini The National Magnetic Fur RC /99 #126 Atlanta",
+    "price": 52.75,
+    "imageUrl": "https://i.ebayimg.com/images/g/-wUAAeSwYAVpgKSF/s-l225.jpg",
+    "ebayUrl": "https://www.ebay.com/itm/137007163080?_skw=ronald+acuna+2018+%2F99+-psa+-bgs+-cgc+-sgc+-graded+-slab+-ginter+-mini+-mojo+-custom+-pack+-jumbo+-gypsy+-replica&hash=item1fe64366c8:g:-wUAAeSwYAVpgKSF&amdata=enc%3AAQALAAABUACCtXRWQnOEpyOqnQQ8KGYhBXWckx9vjKgG9nZRnEfrUTbnqpNerQYGLosm8B3fD5a5pqHoTj1Uf5Cd8bpnVsn5kAgEj8TaoHsmEEPLxkTCl6tKZ6MDRqWJ4%2FYSsUgyBVebEgv6tuHPaIBOB%2Fk%2BpoTNi7yrLcX2zngSOazwC45nzTghX0l8AJawHE0Xg3lG1LDRy5KIWbIERcpwecUHn8d994QNO6IulFFo3DEQGM4lArt56zGiC8hK0SdV3kJlwsOfuemfD4NX9sPdvY91V2JSHr2VLxH4jVttV4SRmihjpAVQB%2Bwa0beB9kar3oSKJHlxIHuXCdzYavMVtzD4S404RIVDUorcOALSIeFgUNYU9te4VLCZvkzwj0wX7nNN1nzWT6rx%2FagFuF7SWqx%2B8J51kNCwzdq0GZIwyqNzvTpktl8nnm99YoUE1K171iBQUg%3D%3D",
+    "vision": {
+      "corners": 4,
+      "centering": 5,
+      "overallScore": 3,
+      "confidence": "medium",
+      "issues": [
+        "Visible corner rounding and wear present",
+        "White edge/fraying visible at corners",
+        "Off-center alignment noticeable",
+        "Surface appears to have scratches or scuffing on the protective layer",
+        "Image quality and lighting make detailed assessment difficult"
+      ],
+      "reason": "Visible corner rounding and wear present, White edge/fraying visible at corners, Off-center alignment noticeable, Surface appears to have scratches or scuffing on the protective layer, Image quality and lighting make detailed assessment difficult"
+    },
+    "dealScore": 8.5
+  },
+  {
+    "timestamp": "2026-03-31T13:00:18.110Z",
+    "decision": "PASS",
+    "itemId": "v1|166319586606|0",
+    "title": "2018 Panini Chronicles Ronald Acuna Jr #21 Status Rookie Holo /99 Braves",
+    "price": 39.95,
+    "imageUrl": "https://i.ebayimg.com/images/g/eTcAAOSwn65k-lOY/s-l225.jpg",
+    "ebayUrl": "https://www.ebay.com/itm/166319586606?_skw=ronald+acuna+2018+%2F99+-psa+-bgs+-cgc+-sgc+-graded+-slab+-ginter+-mini+-mojo+-custom+-pack+-jumbo+-gypsy+-replica&hash=item26b96b7d2e:g:eTcAAOSwn65k-lOY",
+    "vision": {
+      "corners": 7,
+      "centering": 6,
+      "overallScore": 6,
+      "confidence": "medium",
+      "issues": [
+        "Off-center alignment visible in borders",
+        "Corners show minor wear consistent with handling",
+        "Image resolution makes precise corner assessment difficult"
+      ],
+      "reason": "Off-center alignment visible in borders, Corners show minor wear consistent with handling, Image resolution makes precise corner assessment difficult"
+    },
+    "dealScore": 8.5
+  },
+  {
+    "timestamp": "2026-03-31T13:00:18.114Z",
+    "decision": "PASS",
+    "itemId": "v1|317445744283|0",
+    "title": "2018 Topps Pro Debut Ronald Acuna Jr. #1 Green Parallel #'d /99 Braves",
+    "price": 79.99,
+    "imageUrl": "https://i.ebayimg.com/images/g/Kj8AAeSwsnBo9vK1/s-l225.jpg",
+    "ebayUrl": "https://www.ebay.com/itm/317445744283?_skw=ronald+acuna+2018+%2F99+-psa+-bgs+-cgc+-sgc+-graded+-slab+-ginter+-mini+-mojo+-custom+-pack+-jumbo+-gypsy+-replica&hash=item49e93da69b:g:Kj8AAeSwsnBo9vK1",
+    "vision": {
+      "corners": 7,
+      "centering": 7,
+      "overallScore": 6,
+      "confidence": "medium",
+      "issues": [
+        "Corners appear sharp with only very minor wear visible",
+        "Borders appear slightly off-center but only marginally noticeable",
+        "Card shows typical handling wear consistent with raw vintage card"
+      ],
+      "reason": "Corners appear sharp with only very minor wear visible, Borders appear slightly off-center but only marginally noticeable, Card shows typical handling wear consistent with raw vintage card"
+    },
+    "dealScore": 8.1
+  },
+  {
+    "timestamp": "2026-03-31T13:00:18.114Z",
+    "decision": "PASS",
+    "itemId": "v1|306839904570|0",
+    "title": "2018 Bowman Chrome Ronald Acuna Jr Green Refractor Rookie Card RC /99 Braves",
+    "price": 64.99,
+    "imageUrl": "https://i.ebayimg.com/images/g/WwIAAeSwehlpSc1k/s-l225.jpg",
+    "ebayUrl": "https://www.ebay.com/itm/306839904570?_skw=ronald+acuna+2018+%2F99+-psa+-bgs+-cgc+-sgc+-graded+-slab+-ginter+-mini+-mojo+-custom+-pack+-jumbo+-gypsy+-replica&hash=item477115613a:g:WwIAAeSwehlpSc1k",
+    "vision": {
+      "corners": 7,
+      "centering": 7,
+      "overallScore": 6,
+      "confidence": "medium",
+      "issues": [
+        "corners appear sharp with minimal wear visible",
+        "borders appear relatively even with only slight off-center alignment",
+        "protective coating appears intact"
+      ],
+      "reason": "corners appear sharp with minimal wear visible, borders appear relatively even with only slight off-center alignment, protective coating appears intact"
+    },
+    "dealScore": 8
+  },
+  {
+    "timestamp": "2026-03-31T13:00:18.115Z",
+    "decision": "PASS",
+    "itemId": "v1|298088371734|0",
+    "title": "2018 Bowman Platinum Ronald Acuna Jr. Prospects Green /99",
+    "price": 29.99,
+    "imageUrl": "https://i.ebayimg.com/images/g/c~cAAeSw16NpqChG/s-l225.jpg",
+    "ebayUrl": "https://www.ebay.com/itm/298088371734?_skw=ronald+acuna+2018+%2F99+-psa+-bgs+-cgc+-sgc+-graded+-slab+-ginter+-mini+-mojo+-custom+-pack+-jumbo+-gypsy+-replica&hash=item4567739616:g:c~cAAeSw16NpqChG",
+    "vision": {
+      "corners": 7,
+      "centering": 6,
+      "overallScore": 6,
+      "confidence": "medium",
+      "issues": [
+        "Off-center alignment visible with border ratio imbalance",
+        "Image angle and lighting make precise corner assessment difficult",
+        "Card appears to have factory protective coating intact (typical for this product)"
+      ],
+      "reason": "Off-center alignment visible with border ratio imbalance, Image angle and lighting make precise corner assessment difficult, Card appears to have factory protective coating intact (typical for this product)"
+    },
+    "dealScore": 8
+  },
+  {
+    "timestamp": "2026-03-31T13:00:18.115Z",
+    "decision": "PASS",
+    "itemId": "v1|168262532091|0",
+    "title": "2018 TOPPS HIGH TEK GREEN REFRACTOR ROOKIE RONALD ACUNA RC /99",
+    "price": 74.99,
+    "imageUrl": "https://i.ebayimg.com/images/g/LOcAAOSwBlNjgmnl/s-l225.jpg",
+    "ebayUrl": "https://www.ebay.com/itm/168262532091?_skw=ronald+acuna+2018+%2F99+-psa+-bgs+-cgc+-sgc+-graded+-slab+-ginter+-mini+-mojo+-custom+-pack+-jumbo+-gypsy+-replica&hash=item272d3a7bfb:g:LOcAAOSwBlNjgmnl",
+    "vision": {
+      "corners": 7,
+      "centering": 6,
+      "overallScore": 6,
+      "confidence": "medium",
+      "issues": [
+        "Off-center alignment visible with uneven border distribution",
+        "Corners show minor wear consistent with handling",
+        "Image clarity makes precise corner assessment difficult"
+      ],
+      "reason": "Off-center alignment visible with uneven border distribution, Corners show minor wear consistent with handling, Image clarity makes precise corner assessment difficult"
+    },
+    "dealScore": 8
+  },
+  {
+    "timestamp": "2026-03-31T13:00:18.115Z",
+    "decision": "PASS",
+    "itemId": "v1|136989854569|0",
+    "title": "RONALD ACUNA JR Rookie 2018 Bowman Chrome Trending GREEN Refractor /99",
+    "price": 59.99,
+    "imageUrl": "https://i.ebayimg.com/images/g/2~QAAOSwJ6hj79Bj/s-l225.jpg",
+    "ebayUrl": "https://www.ebay.com/itm/136989854569?_skw=ronald+acuna+2018+%2F99+-psa+-bgs+-cgc+-sgc+-graded+-slab+-ginter+-mini+-mojo+-custom+-pack+-jumbo+-gypsy+-replica&hash=item1fe53b4b69:g:2~QAAOSwJ6hj79Bj",
+    "vision": {
+      "corners": 7,
+      "centering": 6,
+      "overallScore": 6,
+      "confidence": "medium",
+      "issues": [
+        "Off-center alignment visible",
+        "Corners appear to have minor wear consistent with handling"
+      ],
+      "reason": "Off-center alignment visible, Corners appear to have minor wear consistent with handling"
+    },
+    "dealScore": 8
+  },
+  {
+    "timestamp": "2026-03-31T13:00:25.397Z",
+    "decision": "PASS",
+    "itemId": "v1|187805044007|0",
+    "title": "2018 Bowman Platinum Ronald Acuna Jr. Prospects Green /99",
+    "price": 24.99,
+    "imageUrl": "https://i.ebayimg.com/images/g/NjQAAeSwrX9pMDHb/s-l225.jpg",
+    "ebayUrl": "https://www.ebay.com/itm/187805044007?_skw=ronald+acuna+2018+%2F99+-psa+-bgs+-cgc+-sgc+-graded+-slab+-ginter+-mini+-mojo+-custom+-pack+-jumbo+-gypsy+-replica&hash=item2bba0d8d27:g:NjQAAeSwrX9pMDHb",
+    "vision": {
+      "corners": 7,
+      "centering": 6,
+      "overallScore": 6,
+      "confidence": "medium",
+      "issues": [
+        "Off-center alignment visible - borders appear uneven",
+        "Corners show minor wear consistent with handling",
+        "Card has protective coating/film applied (factory standard for this product line)"
+      ],
+      "reason": "Off-center alignment visible - borders appear uneven, Corners show minor wear consistent with handling, Card has protective coating/film applied (factory standard for this product line)"
+    },
+    "dealScore": 8
+  },
+  {
+    "timestamp": "2026-03-31T13:00:25.398Z",
+    "decision": "PASS",
+    "itemId": "v1|374562297735|0",
+    "title": "Ronald Acuna Jr. 2018 Panini Studio Rookie Card RC #19 BLUE Parallel 17/99",
+    "price": 49.99,
+    "imageUrl": "https://i.ebayimg.com/images/g/MqgAAOSw01JkD6AO/s-l225.jpg",
+    "ebayUrl": "https://www.ebay.com/itm/374562297735?_skw=ronald+acuna+2018+%2F99+-psa+-bgs+-cgc+-sgc+-graded+-slab+-ginter+-mini+-mojo+-custom+-pack+-jumbo+-gypsy+-replica&hash=item5735a71787:g:MqgAAOSw01JkD6AO",
+    "vision": {
+      "corners": 7,
+      "centering": 6,
+      "overallScore": 6,
+      "confidence": "medium",
+      "issues": [
+        "Off-center alignment visible - borders appear uneven",
+        "Minor corner wear visible on examination",
+        "Card appears to have factory protective coating/film intact (Topps Finest characteristic - not a defect)"
+      ],
+      "reason": "Off-center alignment visible - borders appear uneven, Minor corner wear visible on examination, Card appears to have factory protective coating/film intact (Topps Finest characteristic - not a defect)"
+    },
+    "dealScore": 8
+  },
+  {
+    "timestamp": "2026-03-31T13:00:25.398Z",
+    "decision": "PASS",
+    "itemId": "v1|336459974307|0",
+    "title": "2018 Panini Chronicles Classics Timeless Tributes Gold 44/99 Ronald Acuna Jr 4f5",
+    "price": 29.42,
+    "imageUrl": "https://i.ebayimg.com/images/g/2bcAAeSwxQFppa-Y/s-l225.jpg",
+    "ebayUrl": "https://www.ebay.com/itm/336459974307?_skw=ronald+acuna+2018+%2F99+-psa+-bgs+-cgc+-sgc+-graded+-slab+-ginter+-mini+-mojo+-custom+-pack+-jumbo+-gypsy+-replica&hash=item4e5693c6a3:g:2bcAAeSwxQFppa-Y",
+    "vision": {
+      "corners": 8,
+      "centering": 7,
+      "overallScore": 8,
+      "confidence": "high",
+      "issues": [
+        "Corners appear sharp with only minor wear visible on close inspection",
+        "Borders show slight off-center alignment",
+        "Card surface appears clean and bright"
+      ],
+      "reason": "Corners appear sharp with only minor wear visible on close inspection, Borders show slight off-center alignment, Card surface appears clean and bright"
+    },
+    "dealScore": 8
+  },
+  {
+    "timestamp": "2026-03-31T13:00:25.398Z",
+    "decision": "PASS",
+    "itemId": "v1|236632457077|0",
+    "title": "2018 Bowman #Bowman Trending Green Refractor 79/99 Ronald Acuna Jr ##-RA 4f5",
+    "price": 69.53,
+    "imageUrl": "https://i.ebayimg.com/images/g/QeUAAeSwlvBpsr1~/s-l225.jpg",
+    "ebayUrl": "https://www.ebay.com/itm/236632457077?_skw=ronald+acuna+2018+%2F99+-psa+-bgs+-cgc+-sgc+-graded+-slab+-ginter+-mini+-mojo+-custom+-pack+-jumbo+-gypsy+-replica&hash=item371864bf75:g:QeUAAeSwlvBpsr1~",
+    "vision": {
+      "corners": 7,
+      "centering": 6,
+      "overallScore": 6,
+      "confidence": "medium",
+      "issues": [
+        "Off-center alignment visible on borders",
+        "Minor corner wear visible on close inspection",
+        "Image quality and lighting make detailed corner assessment difficult"
+      ],
+      "reason": "Off-center alignment visible on borders, Minor corner wear visible on close inspection, Image quality and lighting make detailed corner assessment difficult"
+    },
+    "dealScore": 8
+  },
+  {
+    "timestamp": "2026-03-31T13:00:25.399Z",
+    "decision": "PASS",
+    "itemId": "v1|257353808396|0",
+    "title": "2018 Panini Chronicles Score Gold Zone 39/99 Ronald Acuna Jr #10 dd2",
+    "price": 53.73,
+    "imageUrl": "https://i.ebayimg.com/images/g/O04AAeSwZ35pr~h0/s-l225.jpg",
+    "ebayUrl": "https://www.ebay.com/itm/257353808396?_skw=ronald+acuna+2018+%2F99+-psa+-bgs+-cgc+-sgc+-graded+-slab+-ginter+-mini+-mojo+-custom+-pack+-jumbo+-gypsy+-replica&hash=item3beb7b7a0c:g:O04AAeSwZ35pr~h0",
+    "vision": {
+      "corners": 7,
+      "centering": 6,
+      "overallScore": 6,
+      "confidence": "medium",
+      "issues": [
+        "Off-center alignment visible on borders",
+        "Minor corner wear consistent with handling",
+        "Slight surface wear visible on card face"
+      ],
+      "reason": "Off-center alignment visible on borders, Minor corner wear consistent with handling, Slight surface wear visible on card face"
+    },
+    "dealScore": 8
+  },
+  {
+    "timestamp": "2026-03-31T13:00:25.399Z",
+    "decision": "PASS",
+    "itemId": "v1|396814001958|0",
+    "title": "2018 Topps  Baseball Pro Debut Ronald Acuna 48/99 Gwinnett Braves #1",
+    "price": 71.1,
+    "imageUrl": "https://i.ebayimg.com/images/g/Lf0AAeSw4choZYPU/s-l225.jpg",
+    "ebayUrl": "https://www.ebay.com/itm/396814001958?_skw=ronald+acuna+2018+%2F99+-psa+-bgs+-cgc+-sgc+-graded+-slab+-ginter+-mini+-mojo+-custom+-pack+-jumbo+-gypsy+-replica&hash=item5c63f52726:g:Lf0AAeSw4choZYPU",
+    "vision": {
+      "corners": 7,
+      "centering": 7,
+      "overallScore": 6,
+      "confidence": "medium",
+      "issues": [
+        "corners appear sharp with only very minor wear visible up close",
+        "borders appear slightly off-center but barely noticeable",
+        "card surface appears clean and intact"
+      ],
+      "reason": "corners appear sharp with only very minor wear visible up close, borders appear slightly off-center but barely noticeable, card surface appears clean and intact"
+    },
+    "dealScore": 8
+  },
+  {
+    "timestamp": "2026-03-31T13:00:25.399Z",
+    "decision": "PASS",
+    "itemId": "v1|336456829793|0",
+    "title": "2018 Bowman Talent Pipeline Green Refractor /99 Ronald Acuna Jr Mike Soroka 2x6",
+    "price": 68.68,
+    "imageUrl": "https://i.ebayimg.com/images/g/XU4AAeSwrudpyAMU/s-l225.jpg",
+    "ebayUrl": "https://www.ebay.com/itm/336456829793?_skw=ronald+acuna+2018+%2F99+-psa+-bgs+-cgc+-sgc+-graded+-slab+-ginter+-mini+-mojo+-custom+-pack+-jumbo+-gypsy+-replica&hash=item4e5663cb61:g:XU4AAeSwrudpyAMU",
+    "vision": {
+      "corners": 7,
+      "centering": 6,
+      "overallScore": 6,
+      "confidence": "medium",
+      "issues": [
+        "Off-center alignment visible with uneven border distribution",
+        "Minor corner wear visible on multiple corners",
+        "Card appears to have factory protective coating/film intact which is normal for this product type"
+      ],
+      "reason": "Off-center alignment visible with uneven border distribution, Minor corner wear visible on multiple corners, Card appears to have factory protective coating/film intact which is normal for this product type"
+    },
+    "dealScore": 8
+  },
+  {
+    "timestamp": "2026-03-31T13:00:25.399Z",
+    "decision": "PASS",
+    "itemId": "v1|227259842219|0",
+    "title": "Ronald Acuna Jr. 2018 Panini The National Magnetic Fur RC /99 #126 Atlanta",
+    "price": 79.99,
+    "imageUrl": "https://i.ebayimg.com/images/g/CeAAAeSwUEdpuIcl/s-l225.jpg",
+    "ebayUrl": "https://www.ebay.com/itm/227259842219?_skw=ronald+acuna+2018+%2F99+-psa+-bgs+-cgc+-sgc+-graded+-slab+-ginter+-mini+-mojo+-custom+-pack+-jumbo+-gypsy+-replica&hash=item34e9bdfeab:g:CeAAAeSwUEdpuIcl&amdata=enc%3AAQALAAABUACCtXRWQnOEpyOqnQQ8KGYSlhpZGw6cntVp9Uts6NukHGUYj3p6zw8OgQ6dJTL3ghLcVN3NgL619W9DAbMbu1ZgjnB%2BHVTBGiMIk0Ed2NRNrYreF8N%2FVBBTkPULI0BhkepinuY0x3MiowLdQ2Ll7XgWP4KerqRbN93F6FYdF90bAD4ciYgdGG%2Br7iv8aobIauwSAbED9HtbeOl55IPF%2BvfZHAgCnsv5YZiYVi4iT%2B5yqlmOZO74Bmhc9yHn5%2BYBBWo2ahPsd%2B7qt01iB2iJ2%2FgSI483HMv%2Bd11e%2FbKOgjyf00micVvypcwBjcajzKOike2F5u5VhdsqvOb1V5tv0LpblGAHlSSB6Wll3qGDDlRo5CUMReT62dq8j1HGvbsrHvdoMGFA75jy2sdg0i9R0mgmWRQnHBw2X%2Bwp0UeMUxAZ5ImyKUPuUsrIfCFaopo8xw%3D%3D",
+    "vision": {
+      "corners": 7,
+      "centering": 6,
+      "overallScore": 6,
+      "confidence": "medium",
+      "issues": [
+        "Off-center alignment visible",
+        "Image lighting and angle make corner assessment difficult",
+        "Card appears to have slight print quality variation typical of modern releases"
+      ],
+      "reason": "Off-center alignment visible, Image lighting and angle make corner assessment difficult, Card appears to have slight print quality variation typical of modern releases"
+    },
+    "dealScore": 7.5
+  },
+  {
+    "timestamp": "2026-03-31T13:00:29.084Z",
+    "decision": "PASS",
+    "itemId": "v1|236345061936|0",
+    "title": "Ronald Acuna Jr. 2018 Bowman Chrome Top 100 Green Refractor 36/99 Atlanta Braves",
+    "price": 79.99,
+    "imageUrl": "https://i.ebayimg.com/images/g/PYcAAeSwxFNo0tiW/s-l225.jpg",
+    "ebayUrl": "https://www.ebay.com/itm/236345061936?_skw=ronald+acuna+2018+%2F99+-psa+-bgs+-cgc+-sgc+-graded+-slab+-ginter+-mini+-mojo+-custom+-pack+-jumbo+-gypsy+-replica&hash=item3707437230:g:PYcAAeSwxFNo0tiW",
+    "vision": {
+      "corners": 7,
+      "centering": 6,
+      "overallScore": 6,
+      "confidence": "medium",
+      "issues": [
+        "Off-center alignment visible",
+        "Minor corner wear consistent with handling"
+      ],
+      "reason": "Off-center alignment visible, Minor corner wear consistent with handling"
+    },
+    "dealScore": 7.5
+  },
+  {
+    "timestamp": "2026-03-31T13:00:29.084Z",
+    "decision": "PASS",
+    "itemId": "v1|175889946012|0",
+    "title": "2018 Bowman Chrome Talent Pipeline Green Refractor Ronald Acuna 16/99",
+    "price": 79,
+    "imageUrl": "https://i.ebayimg.com/images/g/OUoAAOSwdY1k9zgO/s-l225.jpg",
+    "ebayUrl": "https://www.ebay.com/itm/175889946012?_skw=ronald+acuna+2018+%2F99+-psa+-bgs+-cgc+-sgc+-graded+-slab+-ginter+-mini+-mojo+-custom+-pack+-jumbo+-gypsy+-replica&hash=item28f3db959c:g:OUoAAOSwdY1k9zgO",
+    "vision": {
+      "corners": 7,
+      "centering": 6,
+      "overallScore": 6,
+      "confidence": "medium",
+      "issues": [
+        "Off-center alignment visible across the card",
+        "Minor corner wear consistent with handling",
+        "Surface appears to have protective coating typical of product"
+      ],
+      "reason": "Off-center alignment visible across the card, Minor corner wear consistent with handling, Surface appears to have protective coating typical of product"
+    },
+    "dealScore": 7.5
+  },
+  {
+    "timestamp": "2026-03-31T13:00:29.088Z",
+    "decision": "PASS",
+    "itemId": "v1|177401070123|0",
+    "title": "2018 Topps Gold Label Class 1 Black Ronald Acuna Jr RC #99 SP RARE! READ DESCRIP",
+    "price": 20,
+    "imageUrl": "https://i.ebayimg.com/images/g/18MAAeSwqMdowJuf/s-l225.jpg",
+    "ebayUrl": "https://www.ebay.com/itm/177401070123?_skw=ronald+acuna+2018+%2F99+-psa+-bgs+-cgc+-sgc+-graded+-slab+-ginter+-mini+-mojo+-custom+-pack+-jumbo+-gypsy+-replica&hash=item294ded822b:g:18MAAeSwqMdowJuf",
+    "vision": {
+      "corners": 7,
+      "centering": 6,
+      "overallScore": 6,
+      "confidence": "medium",
+      "issues": [
+        "Off-center alignment visible",
+        "Minor corner wear consistent with handled raw card",
+        "Protective coating present on card surface (factory-applied, not a defect)"
+      ],
+      "reason": "Off-center alignment visible, Minor corner wear consistent with handled raw card, Protective coating present on card surface (factory-applied, not a defect)"
+    },
+    "dealScore": 7.4
+  },
+  {
+    "timestamp": "2026-03-31T13:00:29.089Z",
+    "decision": "PASS",
+    "itemId": "v1|287150601712|0",
+    "title": "2018 Topps Gold Label Class 1 Ronald Acuna Jr Ronald Acuña Jr #99",
+    "price": 15.99,
+    "imageUrl": "https://i.ebayimg.com/images/g/~XUAAeSwcJ5plkc~/s-l225.jpg",
+    "ebayUrl": "https://www.ebay.com/itm/287150601712?_skw=ronald+acuna+2018+%2F99+-psa+-bgs+-cgc+-sgc+-graded+-slab+-ginter+-mini+-mojo+-custom+-pack+-jumbo+-gypsy+-replica&hash=item42db8275f0:g:~XUAAeSwcJ5plkc~",
+    "vision": {
+      "corners": 7,
+      "centering": 6,
+      "overallScore": 6,
+      "confidence": "medium",
+      "issues": [
+        "Off-center alignment visible",
+        "Minor wear on corners consistent with handling",
+        "Image angle and display stand make precise centering assessment difficult"
+      ],
+      "reason": "Off-center alignment visible, Minor wear on corners consistent with handling, Image angle and display stand make precise centering assessment difficult"
+    },
+    "dealScore": 7.4
+  },
+  {
+    "timestamp": "2026-03-31T13:00:29.089Z",
+    "decision": "PASS",
+    "itemId": "v1|336449506683|0",
+    "title": "2018 Topps Gold Label Class 3 Ronald Acuna Jr Ronald Acuña Jr #99 0o9",
+    "price": 21.22,
+    "imageUrl": "https://i.ebayimg.com/images/g/XUQAAeSwwBxpwhyX/s-l225.jpg",
+    "ebayUrl": "https://www.ebay.com/itm/336449506683?_skw=ronald+acuna+2018+%2F99+-psa+-bgs+-cgc+-sgc+-graded+-slab+-ginter+-mini+-mojo+-custom+-pack+-jumbo+-gypsy+-replica&hash=item4e55f40d7b:g:XUQAAeSwwBxpwhyX",
+    "vision": {
+      "corners": 7,
+      "centering": 6,
+      "overallScore": 6,
+      "confidence": "medium",
+      "issues": [
+        "Off-center alignment visible",
+        "Minor corner wear consistent with handling"
+      ],
+      "reason": "Off-center alignment visible, Minor corner wear consistent with handling"
+    },
+    "dealScore": 7.4
+  },
+  {
+    "timestamp": "2026-03-31T13:00:29.090Z",
+    "decision": "PASS",
+    "itemId": "v1|236722168058|0",
+    "title": "2018 Topps Gold Label Class 3 Ronald Acuna Jr Ronald Acuña Jr #99 1u6",
+    "price": 27.34,
+    "imageUrl": "https://i.ebayimg.com/images/g/R2EAAeSwcalpyWGq/s-l225.jpg",
+    "ebayUrl": "https://www.ebay.com/itm/236722168058?_skw=ronald+acuna+2018+%2F99+-psa+-bgs+-cgc+-sgc+-graded+-slab+-ginter+-mini+-mojo+-custom+-pack+-jumbo+-gypsy+-replica&hash=item371dbda0fa:g:R2EAAeSwcalpyWGq",
+    "vision": {
+      "corners": 7,
+      "centering": 6,
+      "overallScore": 6,
+      "confidence": "medium",
+      "issues": [
+        "Off-center alignment visible",
+        "Minor corner wear consistent with handling",
+        "Image quality makes precise corner assessment difficult"
+      ],
+      "reason": "Off-center alignment visible, Minor corner wear consistent with handling, Image quality makes precise corner assessment difficult"
+    },
+    "dealScore": 7.4
+  },
+  {
+    "timestamp": "2026-03-31T13:00:29.090Z",
+    "decision": "PASS",
+    "itemId": "v1|236651507185|0",
+    "title": "2018 Topps Gold Label Class 3 Ronald Acuna Jr Ronald Acuña Jr #99 04br",
+    "price": 21.2,
+    "imageUrl": "https://i.ebayimg.com/images/g/t-UAAeSwjKxpwUqe/s-l225.jpg",
+    "ebayUrl": "https://www.ebay.com/itm/236651507185?_skw=ronald+acuna+2018+%2F99+-psa+-bgs+-cgc+-sgc+-graded+-slab+-ginter+-mini+-mojo+-custom+-pack+-jumbo+-gypsy+-replica&hash=item3719876df1:g:t-UAAeSwjKxpwUqe",
+    "vision": {
+      "corners": 7,
+      "centering": 6,
+      "overallScore": 6,
+      "confidence": "medium",
+      "issues": [
+        "Off-center alignment visible",
+        "Image quality and angle make precise corner assessment difficult",
+        "Card appears to have protective coating intact (factory standard for this product)"
+      ],
+      "reason": "Off-center alignment visible, Image quality and angle make precise corner assessment difficult, Card appears to have protective coating intact (factory standard for this product)"
+    },
+    "dealScore": 7.4
+  },
+  {
+    "timestamp": "2026-03-31T13:00:29.090Z",
+    "decision": "PASS",
+    "itemId": "v1|365861687623|0",
+    "title": "2018 Topps Gold Label Class 1 Rookie RC Ronald Acuna Jr. #99 Atlanta Braves",
+    "price": 19.95,
+    "imageUrl": "https://i.ebayimg.com/images/g/uLEAAeSwoUloxeal/s-l225.jpg",
+    "ebayUrl": "https://www.ebay.com/itm/365861687623?_skw=ronald+acuna+2018+%2F99+-psa+-bgs+-cgc+-sgc+-graded+-slab+-ginter+-mini+-mojo+-custom+-pack+-jumbo+-gypsy+-replica&hash=item552f0e5147:g:uLEAAeSwoUloxeal",
+    "vision": {
+      "corners": 7,
+      "centering": 6,
+      "overallScore": 6,
+      "confidence": "medium",
+      "issues": [
+        "Off-center alignment visible with uneven border distribution",
+        "Corners show minor wear consistent with handling",
+        "Image quality and glare make precise corner assessment difficult"
+      ],
+      "reason": "Off-center alignment visible with uneven border distribution, Corners show minor wear consistent with handling, Image quality and glare make precise corner assessment difficult"
+    },
+    "dealScore": 7.4
+  },
+  {
+    "timestamp": "2026-03-31T13:00:31.034Z",
+    "decision": "PASS",
+    "itemId": "v1|336506953728|0",
+    "title": "2018 Topps Gold Label Class 3 Ronald Acuna Jr Ronald Acuña Jr #99 pe8",
+    "price": 29.58,
+    "imageUrl": "https://i.ebayimg.com/images/g/XQ8AAeSwt~9pyRiz/s-l225.jpg",
+    "ebayUrl": "https://www.ebay.com/itm/336506953728?_skw=ronald+acuna+2018+%2F99+-psa+-bgs+-cgc+-sgc+-graded+-slab+-ginter+-mini+-mojo+-custom+-pack+-jumbo+-gypsy+-replica&hash=item4e5960a000:g:XQ8AAeSwt~9pyRiz",
+    "vision": {
+      "corners": 7,
+      "centering": 6,
+      "overallScore": 6,
+      "confidence": "medium",
+      "issues": [
+        "Off-center alignment visible with uneven border distribution",
+        "Corner wear present but not severe",
+        "Image quality and angle make precise corner assessment difficult"
+      ],
+      "reason": "Off-center alignment visible with uneven border distribution, Corner wear present but not severe, Image quality and angle make precise corner assessment difficult"
+    },
+    "dealScore": 7.4
+  },
+  {
+    "timestamp": "2026-03-31T13:00:31.034Z",
+    "decision": "PASS",
+    "itemId": "v1|336441136723|0",
+    "title": "2018 Topps Gold Label Class 1 Ronald Acuna Jr Ronald Acuña Jr #99 07i7",
+    "price": 15.76,
+    "imageUrl": "https://i.ebayimg.com/images/g/pCUAAeSwqcZpusfi/s-l225.jpg",
+    "ebayUrl": "https://www.ebay.com/itm/336441136723?_skw=ronald+acuna+2018+%2F99+-psa+-bgs+-cgc+-sgc+-graded+-slab+-ginter+-mini+-mojo+-custom+-pack+-jumbo+-gypsy+-replica&hash=item4e55745653:g:pCUAAeSwqcZpusfi",
+    "vision": {
+      "corners": 7,
+      "centering": 6,
+      "overallScore": 6,
+      "confidence": "medium",
+      "issues": [
+        "Off-center alignment visible",
+        "Corners show minor wear consistent with handling",
+        "Image quality makes precise corner assessment difficult"
+      ],
+      "reason": "Off-center alignment visible, Corners show minor wear consistent with handling, Image quality makes precise corner assessment difficult"
+    },
+    "dealScore": 7.4
+  },
+  {
+    "timestamp": "2026-03-31T13:00:31.034Z",
+    "decision": "PASS",
+    "itemId": "v1|257424087582|0",
+    "title": "2018 Topps Gold Label Class 1 Ronald Acuna Jr Ronald Acuña Jr #99 1lj1",
+    "price": 23.83,
+    "imageUrl": "https://i.ebayimg.com/images/g/trMAAeSwvKppw6A5/s-l225.jpg",
+    "ebayUrl": "https://www.ebay.com/itm/257424087582?_skw=ronald+acuna+2018+%2F99+-psa+-bgs+-cgc+-sgc+-graded+-slab+-ginter+-mini+-mojo+-custom+-pack+-jumbo+-gypsy+-replica&hash=item3befabda1e:g:trMAAeSwvKppw6A5",
+    "vision": {
+      "corners": 7,
+      "centering": 6,
+      "overallScore": 6,
+      "confidence": "medium",
+      "issues": [
+        "Off-center alignment visible with uneven borders",
+        "Minor corner wear consistent with handling",
+        "Image quality makes precise corner assessment difficult"
+      ],
+      "reason": "Off-center alignment visible with uneven borders, Minor corner wear consistent with handling, Image quality makes precise corner assessment difficult"
+    },
+    "dealScore": 7.4
+  },
+  {
+    "timestamp": "2026-03-31T13:00:31.035Z",
+    "decision": "PASS",
+    "itemId": "v1|257384312441|0",
+    "title": "2018 Topps Gold Label Class 1 Ronald Acuna Jr Ronald Acuña Jr #99 04br",
+    "price": 15.73,
+    "imageUrl": "https://i.ebayimg.com/images/g/TZUAAeSwCEdpyAU7/s-l225.jpg",
+    "ebayUrl": "https://www.ebay.com/itm/257384312441?_skw=ronald+acuna+2018+%2F99+-psa+-bgs+-cgc+-sgc+-graded+-slab+-ginter+-mini+-mojo+-custom+-pack+-jumbo+-gypsy+-replica&hash=item3bed4cee79:g:TZUAAeSwCEdpyAU7",
+    "vision": {
+      "corners": 7,
+      "centering": 6,
+      "overallScore": 6,
+      "confidence": "medium",
+      "issues": [
+        "Off-center alignment visible with uneven borders",
+        "Minor corner wear consistent with handling",
+        "Image quality limits detailed corner assessment"
+      ],
+      "reason": "Off-center alignment visible with uneven borders, Minor corner wear consistent with handling, Image quality limits detailed corner assessment"
+    },
+    "dealScore": 7.4
+  },
+  {
+    "timestamp": "2026-03-31T13:00:31.035Z",
+    "decision": "PASS",
+    "itemId": "v1|257372005875|0",
+    "title": "2018 Topps Gold Label Class 2 Ronald Acuna Jr Ronald Acuña Jr #99 04br",
+    "price": 16.92,
+    "imageUrl": "https://i.ebayimg.com/images/g/iAcAAeSwnc1pvt12/s-l225.jpg",
+    "ebayUrl": "https://www.ebay.com/itm/257372005875?_skw=ronald+acuna+2018+%2F99+-psa+-bgs+-cgc+-sgc+-graded+-slab+-ginter+-mini+-mojo+-custom+-pack+-jumbo+-gypsy+-replica&hash=item3bec9125f3:g:iAcAAeSwnc1pvt12",
+    "vision": {
+      "corners": 7,
+      "centering": 6,
+      "overallScore": 6,
+      "confidence": "medium",
+      "issues": [
+        "Off-center alignment visible",
+        "Corners appear to have minor wear consistent with handling",
+        "Image quality makes detailed corner assessment difficult"
+      ],
+      "reason": "Off-center alignment visible, Corners appear to have minor wear consistent with handling, Image quality makes detailed corner assessment difficult"
+    },
+    "dealScore": 7.4
+  },
+  {
+    "timestamp": "2026-03-31T13:00:31.035Z",
+    "decision": "PASS",
+    "itemId": "v1|236675903474|0",
+    "title": "2018 Topps Gold Label Class 1 Ronald Acuna Jr Ronald Acuña Jr #99 b3r",
+    "price": 29.28,
+    "imageUrl": "https://i.ebayimg.com/images/g/-JMAAeSwlVRpresO/s-l225.jpg",
+    "ebayUrl": "https://www.ebay.com/itm/236675903474?_skw=ronald+acuna+2018+%2F99+-psa+-bgs+-cgc+-sgc+-graded+-slab+-ginter+-mini+-mojo+-custom+-pack+-jumbo+-gypsy+-replica&hash=item371afbaff2:g:-JMAAeSwlVRpresO",
+    "vision": {
+      "corners": 7,
+      "centering": 6,
+      "overallScore": 6,
+      "confidence": "medium",
+      "issues": [
+        "Off-center alignment visible",
+        "Corners show minor wear consistent with handling",
+        "Image quality makes precise corner assessment difficult"
+      ],
+      "reason": "Off-center alignment visible, Corners show minor wear consistent with handling, Image quality makes precise corner assessment difficult"
+    },
+    "dealScore": 7.4
+  },
+  {
+    "timestamp": "2026-03-31T13:00:31.036Z",
+    "decision": "PASS",
+    "itemId": "v1|257433190099|0",
+    "title": "2018 Topps Gold Label Class 1 Ronald Acuna Jr Ronald Acuña Jr #99 0jj3",
+    "price": 35.03,
+    "imageUrl": "https://i.ebayimg.com/images/g/k-UAAeSwxRxpykqn/s-l225.jpg",
+    "ebayUrl": "https://www.ebay.com/itm/257433190099?_skw=ronald+acuna+2018+%2F99+-psa+-bgs+-cgc+-sgc+-graded+-slab+-ginter+-mini+-mojo+-custom+-pack+-jumbo+-gypsy+-replica&hash=item3bf036bed3:g:k-UAAeSwxRxpykqn",
+    "vision": {
+      "corners": 7,
+      "centering": 6,
+      "overallScore": 6,
+      "confidence": "medium",
+      "issues": [
+        "Off-center alignment visible with uneven borders",
+        "Minor corner wear consistent with typical handling",
+        "Image quality and glare make detailed corner assessment difficult"
+      ],
+      "reason": "Off-center alignment visible with uneven borders, Minor corner wear consistent with typical handling, Image quality and glare make detailed corner assessment difficult"
+    },
+    "dealScore": 7.4
+  },
+  {
+    "timestamp": "2026-03-31T13:00:31.036Z",
+    "decision": "PASS",
+    "itemId": "v1|257394189650|0",
+    "title": "2018 Topps Gold Label Class 1 #99 Ronald Acuna Jr. RC - Rookie Card Atl ID:60564",
+    "price": 69.99,
+    "imageUrl": "https://i.ebayimg.com/images/g/inMAAeSwgnhpq2vj/s-l225.jpg",
+    "ebayUrl": "https://www.ebay.com/itm/257394189650?_skw=ronald+acuna+2018+%2F99+-psa+-bgs+-cgc+-sgc+-graded+-slab+-ginter+-mini+-mojo+-custom+-pack+-jumbo+-gypsy+-replica&hash=item3bede3a552:g:inMAAeSwgnhpq2vj",
+    "vision": {
+      "corners": 7,
+      "centering": 6,
+      "overallScore": 6,
+      "confidence": "medium",
+      "issues": [
+        "Off-center alignment visible",
+        "Corners show minor wear consistent with handling",
+        "Image quality makes precise corner assessment difficult"
+      ],
+      "reason": "Off-center alignment visible, Corners show minor wear consistent with handling, Image quality makes precise corner assessment difficult"
+    },
+    "dealScore": 7.4
+  },
+  {
+    "timestamp": "2026-03-31T13:00:33.621Z",
+    "decision": "PASS",
+    "itemId": "v1|336421651210|0",
+    "title": "2018 Topps Gold Label Class 2 Ronald Acuna Jr Ronald Acuña Jr #99 07cc",
+    "price": 16.93,
+    "imageUrl": "https://i.ebayimg.com/images/g/aAIAAeSw8jppqPUL/s-l225.jpg",
+    "ebayUrl": "https://www.ebay.com/itm/336421651210?_skw=ronald+acuna+2018+%2F99+-psa+-bgs+-cgc+-sgc+-graded+-slab+-ginter+-mini+-mojo+-custom+-pack+-jumbo+-gypsy+-replica&hash=item4e544b030a:g:aAIAAeSw8jppqPUL",
+    "vision": {
+      "corners": 7,
+      "centering": 6,
+      "overallScore": 6,
+      "confidence": "medium",
+      "issues": [
+        "Off-center alignment visible with border width variance",
+        "Minor corner wear consistent with handling",
+        "Image quality makes precise corner assessment difficult"
+      ],
+      "reason": "Off-center alignment visible with border width variance, Minor corner wear consistent with handling, Image quality makes precise corner assessment difficult"
+    },
+    "dealScore": 7.4
+  },
+  {
+    "timestamp": "2026-03-31T13:00:33.621Z",
+    "decision": "PASS",
+    "itemId": "v1|257381574894|0",
+    "title": "2018 Bowman High Tek Prospects 99/191 Ronald Acuna Jr #PHT-RA 19cf",
+    "price": 46.83,
+    "imageUrl": "https://i.ebayimg.com/images/g/I0wAAeSw6o1pxf7N/s-l225.jpg",
+    "ebayUrl": "https://www.ebay.com/itm/257381574894?_skw=ronald+acuna+2018+%2F99+-psa+-bgs+-cgc+-sgc+-graded+-slab+-ginter+-mini+-mojo+-custom+-pack+-jumbo+-gypsy+-replica&hash=item3bed2328ee:g:I0wAAeSw6o1pxf7N",
+    "vision": {
+      "corners": 7,
+      "centering": 6,
+      "overallScore": 6,
+      "confidence": "medium",
+      "issues": [
+        "Off-center alignment visible",
+        "Corners appear to have minor wear consistent with handling",
+        "Image quality makes detailed corner assessment difficult"
+      ],
+      "reason": "Off-center alignment visible, Corners appear to have minor wear consistent with handling, Image quality makes detailed corner assessment difficult"
+    },
+    "dealScore": 7.4
+  },
+  {
+    "timestamp": "2026-03-31T13:00:33.627Z",
+    "decision": "PASS",
+    "itemId": "v1|257431992342|0",
+    "title": "2018 Topps Gold Label Class 2 Ronald Acuna Jr Ronald Acuña Jr #99 rf2",
+    "price": 35.32,
+    "imageUrl": "https://i.ebayimg.com/images/g/J9oAAeSwIXxpyVvK/s-l225.jpg",
+    "ebayUrl": "https://www.ebay.com/itm/257431992342?_skw=ronald+acuna+2018+%2F99+-psa+-bgs+-cgc+-sgc+-graded+-slab+-ginter+-mini+-mojo+-custom+-pack+-jumbo+-gypsy+-replica&hash=item3bf0247816:g:J9oAAeSwIXxpyVvK",
+    "vision": {
+      "corners": 7,
+      "centering": 6,
+      "overallScore": 6,
+      "confidence": "medium",
+      "issues": [
+        "Off-center alignment visible with uneven border distribution",
+        "Minor corner wear consistent with handling",
+        "Image quality and angle make precise corner assessment difficult"
+      ],
+      "reason": "Off-center alignment visible with uneven border distribution, Minor corner wear consistent with handling, Image quality and angle make precise corner assessment difficult"
+    },
+    "dealScore": 7.4
+  },
+  {
+    "timestamp": "2026-03-31T13:00:33.628Z",
+    "decision": "PASS",
+    "itemId": "v1|336500606246|0",
+    "title": "2018 Topps Gold Label Class 2 Ronald Acuna Jr Ronald Acuña Jr #99 g1z",
+    "price": 55.73,
+    "imageUrl": "https://i.ebayimg.com/images/g/C6cAAeSwPSxpxIdR/s-l225.jpg",
+    "ebayUrl": "https://www.ebay.com/itm/336500606246?_skw=ronald+acuna+2018+%2F99+-psa+-bgs+-cgc+-sgc+-graded+-slab+-ginter+-mini+-mojo+-custom+-pack+-jumbo+-gypsy+-replica&hash=item4e58ffc526:g:C6cAAeSwPSxpxIdR",
+    "vision": {
+      "corners": 7,
+      "centering": 6,
+      "overallScore": 6,
+      "confidence": "medium",
+      "issues": [
+        "Off-center alignment visible",
+        "Minor corner wear consistent with handling"
+      ],
+      "reason": "Off-center alignment visible, Minor corner wear consistent with handling"
+    },
+    "dealScore": 7.4
+  },
+  {
+    "timestamp": "2026-03-31T13:00:33.629Z",
+    "decision": "PASS",
+    "itemId": "v1|257380712490|0",
+    "title": "2018 Topps Gold Label Class 1 Black Ronald Acuna Jr Ronald Acuña Jr #99 04br",
+    "price": 23.23,
+    "imageUrl": "https://i.ebayimg.com/images/g/rzUAAeSwgGNpxW0E/s-l225.jpg",
+    "ebayUrl": "https://www.ebay.com/itm/257380712490?_skw=ronald+acuna+2018+%2F99+-psa+-bgs+-cgc+-sgc+-graded+-slab+-ginter+-mini+-mojo+-custom+-pack+-jumbo+-gypsy+-replica&hash=item3bed16002a:g:rzUAAeSwgGNpxW0E",
+    "vision": {
+      "corners": 7,
+      "centering": 6,
+      "overallScore": 6,
+      "confidence": "medium",
+      "issues": [
+        "Off-center alignment visible",
+        "Minor corner wear consistent with typical handling"
+      ],
+      "reason": "Off-center alignment visible, Minor corner wear consistent with typical handling"
+    },
+    "dealScore": 7.4
+  },
+  {
+    "timestamp": "2026-03-31T13:00:33.629Z",
+    "decision": "PASS",
+    "itemId": "v1|168197295942|0",
+    "title": "Ronald Acuna Jr 2018 Topps Gold Label #99",
+    "price": 25,
+    "imageUrl": "https://i.ebayimg.com/images/g/apwAAeSwAM9ppF8H/s-l225.jpg",
+    "ebayUrl": "https://www.ebay.com/itm/168197295942?_skw=ronald+acuna+2018+%2F99+-psa+-bgs+-cgc+-sgc+-graded+-slab+-ginter+-mini+-mojo+-custom+-pack+-jumbo+-gypsy+-replica&hash=item2729570f46:g:apwAAeSwAM9ppF8H",
+    "vision": {
+      "corners": 7,
+      "centering": 6,
+      "overallScore": 6,
+      "confidence": "medium",
+      "issues": [
+        "Off-center alignment visible",
+        "Image quality and angle make precise corner assessment difficult"
+      ],
+      "reason": "Off-center alignment visible, Image quality and angle make precise corner assessment difficult"
+    },
+    "dealScore": 7.4
+  },
+  {
+    "timestamp": "2026-03-31T13:00:33.630Z",
+    "decision": "PASS",
+    "itemId": "v1|336438756819|0",
+    "title": "2018 Topps Gold Label Class 2 Black Ronald Acuna Jr Ronald Acuña Jr #99 rf2",
+    "price": 46.82,
+    "imageUrl": "https://i.ebayimg.com/images/g/n98AAeSwHqRpuOPm/s-l225.jpg",
+    "ebayUrl": "https://www.ebay.com/itm/336438756819?_skw=ronald+acuna+2018+%2F99+-psa+-bgs+-cgc+-sgc+-graded+-slab+-ginter+-mini+-mojo+-custom+-pack+-jumbo+-gypsy+-replica&hash=item4e555005d3:g:n98AAeSwHqRpuOPm",
+    "vision": {
+      "corners": 7,
+      "centering": 6,
+      "overallScore": 6,
+      "confidence": "medium",
+      "issues": [
+        "Off-center alignment visible with uneven borders",
+        "Minor corner wear consistent with handling",
+        "Image quality makes precise corner assessment difficult"
+      ],
+      "reason": "Off-center alignment visible with uneven borders, Minor corner wear consistent with handling, Image quality makes precise corner assessment difficult"
+    },
+    "dealScore": 7.4
+  },
+  {
+    "timestamp": "2026-03-31T13:00:33.630Z",
+    "decision": "PASS",
+    "itemId": "v1|336428130344|0",
+    "title": "2018 Topps Gold Label Class 1 Black Ronald Acuna Jr Ronald Acuña Jr #99 7d5",
+    "price": 23.25,
+    "imageUrl": "https://i.ebayimg.com/images/g/uy0AAeSw16Nprv28/s-l225.jpg",
+    "ebayUrl": "https://www.ebay.com/itm/336428130344?_skw=ronald+acuna+2018+%2F99+-psa+-bgs+-cgc+-sgc+-graded+-slab+-ginter+-mini+-mojo+-custom+-pack+-jumbo+-gypsy+-replica&hash=item4e54ade028:g:uy0AAeSw16Nprv28",
+    "vision": {
+      "corners": 7,
+      "centering": 6,
+      "overallScore": 6,
+      "confidence": "medium",
+      "issues": [
+        "Off-center alignment visible",
+        "Minor corner wear present but not severe",
+        "Image quality makes precise corner assessment difficult"
+      ],
+      "reason": "Off-center alignment visible, Minor corner wear present but not severe, Image quality makes precise corner assessment difficult"
+    },
+    "dealScore": 7.4
+  },
+  {
+    "timestamp": "2026-03-31T13:00:35.692Z",
+    "decision": "PASS",
+    "itemId": "v1|236632082092|0",
+    "title": "2018 Topps Gold Label Class 2 Ronald Acuna Jr Ronald Acuña Jr #99 0s5s",
+    "price": 23.83,
+    "imageUrl": "https://i.ebayimg.com/images/g/ifIAAeSwMcVpsnrj/s-l225.jpg",
+    "ebayUrl": "https://www.ebay.com/itm/236632082092?_skw=ronald+acuna+2018+%2F99+-psa+-bgs+-cgc+-sgc+-graded+-slab+-ginter+-mini+-mojo+-custom+-pack+-jumbo+-gypsy+-replica&hash=item37185f06ac:g:ifIAAeSwMcVpsnrj",
+    "vision": {
+      "corners": 7,
+      "centering": 6,
+      "overallScore": 6,
+      "confidence": "medium",
+      "issues": [
+        "Off-center alignment visible",
+        "Corners show minor wear consistent with handling",
+        "Surface appears to have factory protective coating intact"
+      ],
+      "reason": "Off-center alignment visible, Corners show minor wear consistent with handling, Surface appears to have factory protective coating intact"
+    },
+    "dealScore": 7.4
+  },
+  {
+    "timestamp": "2026-03-31T13:00:35.692Z",
+    "decision": "PASS",
+    "itemId": "v1|127736999333|0",
+    "title": "2018 Bowman High Tek Green Ronald Acuna Auto /99 Atlanta Braves #PHT-RA",
+    "price": 202.49,
+    "imageUrl": "https://i.ebayimg.com/images/g/q0EAAeSwYkRpdVdU/s-l225.jpg",
+    "ebayUrl": "https://www.ebay.com/itm/127736999333?_skw=ronald+acuna+2018+%2F99+-psa+-bgs+-cgc+-sgc+-graded+-slab+-ginter+-mini+-mojo+-custom+-pack+-jumbo+-gypsy+-replica&hash=item1dbdb7eda5:g:q0EAAeSwYkRpdVdU&amdata=enc%3AAQALAAABUACCtXRWQnOEpyOqnQQ8KGY8JBNI2UoW1UHvZ14%2FS%2Fb9jz9ZUJDbOozlWoUhhCel0ZYSIFXqBDZVmZoK8a%2Fy%2Fa5ALkIdtKQZ64DSPXrfV1RbR1XL1GKhAFjvyidWG1yVFLvaTwTpoOK%2FYviJcALDY2C6%2Bc6cDpjWGOa7rA63sORUpirf30TYRrtHsaUBDlj6G5IF4418wxxS7asw80zZO3ifSJFiwSiifSCqd3eRS81Wr%2BfuSUts%2FJwB9LsRbJQLHUgvBbR5AQdmAO4ApO7fXjfR7p8qUjpkEmaCsECPTggOWb9TCTFW68ov1yatLin8N1OshMtPtf1a2241T69GHBXpdg35WVxqoouZpBP27N%2BFLSWnECSdjtYVm0dt5Y5FoUyWBFBq%2B729gBGtTpzmp31qZwp39BYFN3XCwYBkUtJfA2YiqF45BtPolm0mMiK%2FIg%3D%3D",
+    "vision": {
+      "corners": 7,
+      "centering": 6,
+      "overallScore": 6,
+      "confidence": "medium",
+      "issues": [
+        "Off-center alignment visible in borders",
+        "Corners show minor wear but remain fairly sharp",
+        "Factory protective coating intact on card surface"
+      ],
+      "reason": "Off-center alignment visible in borders, Corners show minor wear but remain fairly sharp, Factory protective coating intact on card surface"
+    },
+    "dealScore": 7.3
+  },
+  {
+    "timestamp": "2026-03-31T13:00:35.696Z",
+    "decision": "PASS",
+    "itemId": "v1|236359768397|0",
+    "title": "Ronald Acuna 2018 Topps Gallery Autograph Rookie Card #140 02/99",
+    "price": 249.95,
+    "imageUrl": "https://i.ebayimg.com/images/g/uvUAAeSwyTZo29x-/s-l225.jpg",
+    "ebayUrl": "https://www.ebay.com/itm/236359768397?_skw=ronald+acuna+2018+%2F99+-psa+-bgs+-cgc+-sgc+-graded+-slab+-ginter+-mini+-mojo+-custom+-pack+-jumbo+-gypsy+-replica&hash=item370823d94d:g:uvUAAeSwyTZo29x-",
+    "vision": {
+      "corners": 8,
+      "centering": 7,
+      "overallScore": 8,
+      "confidence": "high",
+      "issues": [
+        "Corners appear sharp with only very minor wear visible on close inspection",
+        "Borders appear slightly uneven but within acceptable range for a raw card",
+        "Signature is clean and legible",
+        "Card surface appears bright with good color saturation"
+      ],
+      "reason": "Corners appear sharp with only very minor wear visible on close inspection, Borders appear slightly uneven but within acceptable range for a raw card, Signature is clean and legible, Card surface appears bright with good color saturation"
+    },
+    "dealScore": 7.3
+  },
+  {
+    "timestamp": "2026-03-31T13:00:35.697Z",
+    "decision": "PASS",
+    "itemId": "v1|355303531323|0",
+    "title": "2018 TOPPS NOW RONALD ACUNA JR AUTO #D/99 RC SIGNED GAME USED BASE GRAND SLAM",
+    "price": 675,
+    "imageUrl": "https://i.ebayimg.com/images/g/aqwAAOSwxiRlgjgb/s-l225.jpg",
+    "ebayUrl": "https://www.ebay.com/itm/355303531323?_skw=ronald+acuna+2018+%2F99+-psa+-bgs+-cgc+-sgc+-graded+-slab+-ginter+-mini+-mojo+-custom+-pack+-jumbo+-gypsy+-replica&hash=item52b9bda33b:g:aqwAAOSwxiRlgjgb",
+    "vision": {
+      "corners": 7,
+      "centering": 6,
+      "overallScore": 6,
+      "confidence": "medium",
+      "issues": [
+        "Off-center alignment visible on card face",
+        "Corners show minor wear consistent with handling",
+        "Image quality/lighting makes detailed corner assessment difficult",
+        "Protective coating present (factory standard for this product)"
+      ],
+      "reason": "Off-center alignment visible on card face, Corners show minor wear consistent with handling, Image quality/lighting makes detailed corner assessment difficult, Protective coating present (factory standard for this product)"
+    },
+    "dealScore": 7.3
+  },
+  {
+    "timestamp": "2026-03-31T13:00:35.698Z",
+    "decision": "PASS",
+    "itemId": "v1|404767420714|0",
+    "title": "2018 Bowman Chrome RONALD ACUNA Green Shimmer Refractor 76/99 #BCP-1 Braves",
+    "price": 202.49,
+    "imageUrl": "https://i.ebayimg.com/images/g/pWMAAOSwoFlltn-O/s-l225.jpg",
+    "ebayUrl": "https://www.ebay.com/itm/404767420714?_skw=ronald+acuna+2018+%2F99+-psa+-bgs+-cgc+-sgc+-graded+-slab+-ginter+-mini+-mojo+-custom+-pack+-jumbo+-gypsy+-replica&hash=item5e3e04b12a:g:pWMAAOSwoFlltn-O",
+    "vision": {
+      "corners": 7,
+      "centering": 6,
+      "overallScore": 6,
+      "confidence": "medium",
+      "issues": [
+        "Off-center alignment visible",
+        "Minor corner wear consistent with handling"
+      ],
+      "reason": "Off-center alignment visible, Minor corner wear consistent with handling"
+    },
+    "dealScore": 7.3
+  },
+  {
+    "timestamp": "2026-03-31T13:00:35.698Z",
+    "decision": "PASS",
+    "itemId": "v1|123267395212|0",
+    "title": "Ronald Acuna 2018 Topps Now Baseball #125 on-card Autograph Auto RC /99 - Braves",
+    "price": 799.99,
+    "imageUrl": "https://i.ebayimg.com/images/g/d9IAAOSwPhhbVeoN/s-l225.jpg",
+    "ebayUrl": "https://www.ebay.com/itm/123267395212?_skw=ronald+acuna+2018+%2F99+-psa+-bgs+-cgc+-sgc+-graded+-slab+-ginter+-mini+-mojo+-custom+-pack+-jumbo+-gypsy+-replica&hash=item1cb34f2e8c:g:d9IAAOSwPhhbVeoN",
+    "vision": {
+      "corners": 8,
+      "centering": 7,
+      "overallScore": 6,
+      "confidence": "medium",
+      "issues": [
+        "Slight off-center alignment visible",
+        "Minor wear consistent with handled raw card",
+        "Corners appear relatively sharp with minimal rounding"
+      ],
+      "reason": "Slight off-center alignment visible, Minor wear consistent with handled raw card, Corners appear relatively sharp with minimal rounding"
+    },
+    "dealScore": 7.3
+  },
+  {
+    "timestamp": "2026-03-31T13:00:35.699Z",
+    "decision": "PASS",
+    "itemId": "v1|236170255884|0",
+    "title": "Ronald Acuna 2018 Panini National Treasures Signature Names RC Patch Auto 63/99",
+    "price": 219.95,
+    "imageUrl": "https://i.ebayimg.com/images/g/gX0AAeSwudBoXtdw/s-l225.jpg",
+    "ebayUrl": "https://www.ebay.com/itm/236170255884?_skw=ronald+acuna+2018+%2F99+-psa+-bgs+-cgc+-sgc+-graded+-slab+-ginter+-mini+-mojo+-custom+-pack+-jumbo+-gypsy+-replica&hash=item36fcd81e0c:g:gX0AAeSwudBoXtdw",
+    "vision": {
+      "corners": 8,
+      "centering": 7,
+      "overallScore": 8,
+      "confidence": "high",
+      "issues": [
+        "Slight off-center alignment visible in borders",
+        "Corners appear sharp with only very minor wear visible upon close inspection"
+      ],
+      "reason": "Slight off-center alignment visible in borders, Corners appear sharp with only very minor wear visible upon close inspection"
+    },
+    "dealScore": 7.3
+  },
+  {
+    "timestamp": "2026-03-31T13:00:35.699Z",
+    "decision": "PASS",
+    "itemId": "v1|365892031919|0",
+    "title": "Ronald Acuna Jr 2018 Immaculate Dual Rookie Patch Autograph Card #151 29/99",
+    "price": 329.95,
+    "imageUrl": "https://i.ebayimg.com/images/g/kXkAAeSw64po2sGk/s-l225.jpg",
+    "ebayUrl": "https://www.ebay.com/itm/365892031919?_skw=ronald+acuna+2018+%2F99+-psa+-bgs+-cgc+-sgc+-graded+-slab+-ginter+-mini+-mojo+-custom+-pack+-jumbo+-gypsy+-replica&hash=item5530dd55af:g:kXkAAeSw64po2sGk",
+    "vision": {
+      "corners": 8,
+      "centering": 7,
+      "overallScore": 8,
+      "confidence": "high",
+      "issues": [
+        "Slight off-center alignment visible",
+        "Corners appear sharp with only very minor wear visible on close inspection",
+        "Card surface appears clean with no visible creases or damage"
+      ],
+      "reason": "Slight off-center alignment visible, Corners appear sharp with only very minor wear visible on close inspection, Card surface appears clean with no visible creases or damage"
+    },
+    "dealScore": 7.3
+  },
+  {
+    "timestamp": "2026-03-31T13:00:38.449Z",
+    "decision": "PASS",
+    "itemId": "v1|235348993135|0",
+    "title": "2018 TOPPS NOW RONALD ACUNA JR~OZZIE ALBIES AUTO #D/99 RC SIGNED ATLANTA BRAVES",
+    "price": 665.95,
+    "imageUrl": "https://i.ebayimg.com/images/g/~HMAAOSwKFVlf9Zd/s-l225.jpg",
+    "ebayUrl": "https://www.ebay.com/itm/235348993135?_skw=ronald+acuna+2018+%2F99+-psa+-bgs+-cgc+-sgc+-graded+-slab+-ginter+-mini+-mojo+-custom+-pack+-jumbo+-gypsy+-replica&hash=item36cbe4a46f:g:~HMAAOSwKFVlf9Zd",
+    "vision": {
+      "corners": 7,
+      "centering": 6,
+      "overallScore": 6,
+      "confidence": "medium",
+      "issues": [
+        "Off-center alignment visible on card",
+        "Minor corner wear consistent with handling",
+        "Card appears to be in a graded/slabbed holder with protective case"
+      ],
+      "reason": "Off-center alignment visible on card, Minor corner wear consistent with handling, Card appears to be in a graded/slabbed holder with protective case"
+    },
+    "dealScore": 7.3
+  },
+  {
+    "timestamp": "2026-03-31T13:00:38.450Z",
+    "decision": "PASS",
+    "itemId": "v1|192771704670|0",
+    "title": "Ronald Acuna Jr. 2018 Topps Now Postseason RC Autograph Auto #'d 40/99 - BRAVES",
+    "price": 1279.99,
+    "imageUrl": "https://i.ebayimg.com/images/g/u-YAAOSw99tcJC27/s-l225.jpg",
+    "ebayUrl": "https://www.ebay.com/itm/192771704670?_skw=ronald+acuna+2018+%2F99+-psa+-bgs+-cgc+-sgc+-graded+-slab+-ginter+-mini+-mojo+-custom+-pack+-jumbo+-gypsy+-replica&hash=item2ce216c75e:g:u-YAAOSw99tcJC27",
+    "vision": {
+      "corners": 8,
+      "centering": 7,
+      "overallScore": 8,
+      "confidence": "high",
+      "issues": [
+        "Corners appear sharp with only minor wear visible upon close inspection",
+        "Borders show slight off-center alignment but within acceptable range",
+        "Card appears clean with no visible creases or damage to playing surface",
+        "Autograph is clearly visible and well-applied"
+      ],
+      "reason": "Corners appear sharp with only minor wear visible upon close inspection, Borders show slight off-center alignment but within acceptable range, Card appears clean with no visible creases or damage to playing surface, Autograph is clearly visible and well-applied"
+    },
+    "dealScore": 7.3
+  },
+  {
+    "timestamp": "2026-03-31T13:00:38.454Z",
+    "decision": "PASS",
+    "itemId": "v1|405862550650|0",
+    "title": "2018 Topps Gallery Masterpiece Blue /99 Ronald Acuna Jr #M-27 Rookie RC",
+    "price": 85,
+    "imageUrl": "https://i.ebayimg.com/images/g/mb4AAeSwdshoI10e/s-l225.jpg",
+    "ebayUrl": "https://www.ebay.com/itm/405862550650?_skw=ronald+acuna+2018+%2F99+-psa+-bgs+-cgc+-sgc+-graded+-slab+-ginter+-mini+-mojo+-custom+-pack+-jumbo+-gypsy+-replica&hash=item5e7f4b0c7a:g:mb4AAeSwdshoI10e",
+    "vision": {
+      "corners": 7,
+      "centering": 6,
+      "overallScore": 6,
+      "confidence": "medium",
+      "issues": [
+        "Image quality makes precise corner assessment difficult",
+        "Off-center alignment visible - borders appear uneven",
+        "Card appears to have protective coating/film intact (factory applied, not a defect)"
+      ],
+      "reason": "Image quality makes precise corner assessment difficult, Off-center alignment visible - borders appear uneven, Card appears to have protective coating/film intact (factory applied, not a defect)"
+    },
+    "dealScore": 7.2
+  },
+  {
+    "timestamp": "2026-03-31T13:00:38.455Z",
+    "decision": "PASS",
+    "itemId": "v1|236648492035|0",
+    "title": "2018 Topps High Tek 70/99 Ronald Acuna Jr Acuña #HT-RA lz7",
+    "price": 114.68,
+    "imageUrl": "https://i.ebayimg.com/images/g/d~EAAeSwH~dpvuIR/s-l225.jpg",
+    "ebayUrl": "https://www.ebay.com/itm/236648492035?_skw=ronald+acuna+2018+%2F99+-psa+-bgs+-cgc+-sgc+-graded+-slab+-ginter+-mini+-mojo+-custom+-pack+-jumbo+-gypsy+-replica&hash=item3719596c03:g:d~EAAeSwH~dpvuIR",
+    "vision": {
+      "corners": 7,
+      "centering": 6,
+      "overallScore": 6,
+      "confidence": "medium",
+      "issues": [
+        "Off-center alignment visible",
+        "Corners appear to have minor wear consistent with handling",
+        "Card has the characteristic protective coating typical of this product, which is factory-applied and not a defect"
+      ],
+      "reason": "Off-center alignment visible, Corners appear to have minor wear consistent with handling, Card has the characteristic protective coating typical of this product, which is factory-applied and not a defect"
+    },
+    "dealScore": 7.1
+  },
+  {
+    "timestamp": "2026-03-31T13:00:38.455Z",
+    "decision": "PASS",
+    "itemId": "v1|257352779262|0",
+    "title": "2018 Panini Chronicles Rookies and Stars Gold 35/99 Ronald Acuna Jr #3 2x6",
+    "price": 98.58,
+    "imageUrl": "https://i.ebayimg.com/images/g/HMIAAeSwwNlpry2r/s-l225.jpg",
+    "ebayUrl": "https://www.ebay.com/itm/257352779262?_skw=ronald+acuna+2018+%2F99+-psa+-bgs+-cgc+-sgc+-graded+-slab+-ginter+-mini+-mojo+-custom+-pack+-jumbo+-gypsy+-replica&hash=item3beb6bc5fe:g:HMIAAeSwwNlpry2r",
+    "vision": {
+      "corners": 7,
+      "centering": 6,
+      "overallScore": 6,
+      "confidence": "medium",
+      "issues": [
+        "Off-center alignment visible",
+        "Minor corner wear consistent with handling"
+      ],
+      "reason": "Off-center alignment visible, Minor corner wear consistent with handling"
+    },
+    "dealScore": 7.1
+  },
+  {
+    "timestamp": "2026-03-31T13:00:38.456Z",
+    "decision": "PASS",
+    "itemId": "v1|336418659317|0",
+    "title": "2018 Topps Gallery Masterpiece Blue 41/99 Ronald Acuna Jr #M-27 0ls",
+    "price": 90.24,
+    "imageUrl": "https://i.ebayimg.com/images/g/tPIAAeSwtF1ppoii/s-l225.jpg",
+    "ebayUrl": "https://www.ebay.com/itm/336418659317?_skw=ronald+acuna+2018+%2F99+-psa+-bgs+-cgc+-sgc+-graded+-slab+-ginter+-mini+-mojo+-custom+-pack+-jumbo+-gypsy+-replica&hash=item4e541d5bf5:g:tPIAAeSwtF1ppoii",
+    "vision": {
+      "corners": 7,
+      "centering": 6,
+      "overallScore": 5,
+      "confidence": "low",
+      "issues": [
+        "Off-center alignment visible",
+        "Image quality makes detailed corner assessment difficult due to photograph angle and black and white printing",
+        "Protective coating present but appears intact"
+      ],
+      "reason": "Off-center alignment visible, Image quality makes detailed corner assessment difficult due to photograph angle and black and white printing, Protective coating present but appears intact"
+    },
+    "dealScore": 7.1
+  },
+  {
+    "timestamp": "2026-03-31T13:00:38.457Z",
+    "decision": "PASS",
+    "itemId": "v1|257432126081|0",
+    "title": "2018 Topps Gallery Masterpiece Blue 21/99 Ronald Acuna Jr #M-27 0ed",
+    "price": 96.28,
+    "imageUrl": "https://i.ebayimg.com/images/g/q1kAAeSw4DRpyXF4/s-l225.jpg",
+    "ebayUrl": "https://www.ebay.com/itm/257432126081?_skw=ronald+acuna+2018+%2F99+-psa+-bgs+-cgc+-sgc+-graded+-slab+-ginter+-mini+-mojo+-custom+-pack+-jumbo+-gypsy+-replica&hash=item3bf0268281:g:q1kAAeSw4DRpyXF4",
+    "vision": {
+      "corners": 6,
+      "centering": 5,
+      "overallScore": 4,
+      "confidence": "medium",
+      "issues": [
+        "Off-center alignment visible with uneven border distribution",
+        "Corner wear visible on multiple corners",
+        "Image quality and angle make precise assessment difficult",
+        "Surface appears to have some wear consistent with vintage card age"
+      ],
+      "reason": "Off-center alignment visible with uneven border distribution, Corner wear visible on multiple corners, Image quality and angle make precise assessment difficult, Surface appears to have some wear consistent with vintage card age"
+    },
+    "dealScore": 7.1
+  },
+  {
+    "timestamp": "2026-03-31T13:00:38.458Z",
+    "decision": "PASS",
+    "itemId": "v1|277343512897|0",
+    "title": "RONALD ACUNA 2018 TOPPS GOLD LABEL ROOKIE CLASS 2 #99 RC Atlanta Braves",
+    "price": 19.99,
+    "imageUrl": "https://i.ebayimg.com/images/g/OcgAAeSwfgZoqyN7/s-l225.jpg",
+    "ebayUrl": "https://www.ebay.com/itm/277343512897?_skw=ronald+acuna+2018+%2F99+-psa+-bgs+-cgc+-sgc+-graded+-slab+-ginter+-mini+-mojo+-custom+-pack+-jumbo+-gypsy+-replica&hash=item4092f62941:g:OcgAAeSwfgZoqyN7",
+    "vision": {
+      "corners": 7,
+      "centering": 6,
+      "overallScore": 6,
+      "confidence": "medium",
+      "issues": [
+        "Off-center alignment visible on borders",
+        "Minor corner wear consistent with handling",
+        "Protective coating intact on card surface (factory applied - not a defect)"
+      ],
+      "reason": "Off-center alignment visible on borders, Minor corner wear consistent with handling, Protective coating intact on card surface (factory applied - not a defect)"
+    },
+    "dealScore": 7
+  }
+]

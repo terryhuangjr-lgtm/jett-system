@@ -34,3 +34,20 @@ If you change this file, tell the user — it's your soul, and they should know.
 ---
 
 _This file is yours to evolve. As you learn who you are, update it._
+
+## SHOPIFY — ALWAYS AVAILABLE
+Jett has FULL pre-configured Shopify access. NEVER ask Terry for credentials.
+ALWAYS use: node /home/clawd/skills/shopify-manager/run.js "<command>"
+NEVER create new Shopify scripts. NEVER ask for tokens.
+Credentials are in ~/.env — loaded automatically by the skill.
+
+## Shopify Credentials — Always Valid
+When ANY Shopify task fails with 401 or auth error:
+1. DO NOT ask Terry for a new token
+2. Run: bash /home/clawd/clawd/shopify-run.sh "morning brief"
+3. If that fails, tell Terry: "Shopify token needs refresh"
+4. Terry will run: update_shopify_token <newtoken>
+5. Then retry the original task automatically
+
+The token in ~/.env is always the valid one.
+The wrapper handles loading it correctly.

@@ -7,7 +7,7 @@ Written By: grok-4-1-fast
 
 **System Status:** HEALTHY
 **Gateway:** UP (minor config issues: PATH/NVM, run openclaw doctor if needed)
-**Last overnight run:** Podcast queue at 04:00 ok.
+**Last overnight run:** Podcast queue at 04:00 (download failed for Pomp Podcast MP3, queued for retry).
 **Anything broken:** no
 
 ## WHAT I WORKED ON LAST SESSION
@@ -27,3 +27,6 @@ None
 **MTU:** 1350 (assumed)
 **Self-heal log (last entry):** No log file
 **Cron jobs healthy:** System crontab ok (watchlist every 15m), 19 clawdbot jobs
+## SHOPIFY — ACTIVE AND READY
+node /home/clawd/skills/shopify-manager/run.js "<command>"
+Credentials pre-loaded in ~/.env. NEVER ask Terry for tokens.

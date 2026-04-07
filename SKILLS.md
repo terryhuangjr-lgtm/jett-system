@@ -268,3 +268,19 @@ node /home/clawd/skills/shopify-manager/run.js "<command>"
 node /home/clawd/skills/shopify-manager/run.js "<command>"
 NEVER ask Terry for credentials. NEVER create new scripts.
 Full docs: /home/clawd/skills/shopify-manager/SKILL.md
+
+## PDF Report Generation — Always Available
+To generate and send any report as PDF to Telegram:
+
+node /home/clawd/skills/shopify-manager/run.js "sales report" 
+→ Gets the data
+
+Full PDF workflow:
+const { generateWeeklyReport } = require('/home/clawd/skills/shopify-manager/pdf-generator');
+const { sendPDFToTelegram } = require('/home/clawd/skills/shopify-manager/send-pdf');
+
+Or just tell Terry to run:
+node ~/skills/shopify-manager/run.js "weekly report as pdf"
+
+PDF files send directly to Telegram automatically.
+Credentials load from /home/clawd/.env automatically.

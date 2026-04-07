@@ -1,6 +1,6 @@
 {
   "version": "1.2",
-  "last_updated": "2026-04-02T01:59:20.190Z",
+  "last_updated": "2026-04-04T04:15:00.000Z",
   "global_filters": {
     "quality_rules": {
       "seller_feedback_min": 98,
@@ -25,17 +25,16 @@
           "refractor",
           "prizm",
           "jumbo",
-          "custom"
+          "custom",
+          "23kt",
+          "gold foil",
+          "commemorative",
+          "reprint",
+          "facsimile"
         ]
       },
       "output_file": "/tmp/mj-finest-scan.json",
-      "last_run": "2026-04-06T13:00:08.039Z",
-      "last_results": {
-        "timestamp": "2026-04-06T13:00:08.039Z",
-        "success": true
-      },
-      "last_updated": "2026-03-26T03:16:17.947Z",
-      "useVisionScout": false,
+      "useVisionScout": true,
       "useVisionFilter": false
     },
     "tuesday": {
@@ -56,21 +55,19 @@
           "leaf",
           "panini",
           "redeem",
-          "redemption"
+          "redemption",
+          "reprint",
+          "facsimile",
+          "sticker",
+          "signed card"
         ]
       },
-      "output_file": "/tmp/griffey-refractors-scan.json",
-      "last_run": "2026-03-31T13:00:38.480Z",
-      "last_results": {
-        "timestamp": "2026-03-31T13:00:38.480Z",
-        "success": true
-      },
-      "last_updated": "2026-04-02T01:58:47.759Z",
+      "output_file": "/tmp/acuna-auto-scan.json",
       "useVisionScout": true,
       "useVisionFilter": true
     },
     "wednesday": {
-      "name": "maxey",
+      "name": "Maxey Galactic",
       "enabled": true,
       "card_condition": "raw",
       "listing_type": "both",
@@ -79,59 +76,54 @@
       ],
       "filters": {
         "topN": 40,
+        "minPrice": 5,
+        "maxPrice": 5000,
         "exclude_words": [
           "pokemon",
           "magic",
           "yugioh",
           "jumbo",
-          "custom"
-        ],
-        "minPrice": 5,
-        "maxPrice": 5000
+          "custom",
+          "reprint",
+          "lot",
+          "bulk"
+        ]
       },
-      "output_file": "/tmp/kobe-refractors-scan.json",
-      "last_run": "2026-04-01T13:01:59.554Z",
-      "last_results": {
-        "timestamp": "2026-04-01T13:01:59.554Z",
-        "success": true
-      },
-      "last_updated": "2026-04-02T01:53:35.316Z",
+      "output_file": "/tmp/maxey-galactic-scan.json",
       "useVisionScout": true,
       "useVisionFilter": true
     },
     "thursday": {
-      "name": "Multi Testing",
+      "name": "Multi Testing - Barkley/Robinson",
       "enabled": true,
       "card_condition": "raw",
       "listing_type": "bin",
       "search_terms": [
-        "charles barkley, david robinson 1993-1998 refractor"
+        "charles barkley 1993-1998 refractor",
+        "david robinson 1993-1998 refractor"
       ],
       "filters": {
         "topN": 20,
-        "minPrice": 0,
-        "maxPrice": null,
+        "minPrice": 5,
+        "maxPrice": 150,
         "exclude_words": [
           "custom",
           "fan",
           "made",
           "pack",
           "mystery",
-          "chase"
+          "chase",
+          "reprint",
+          "23kt",
+          "commemorative"
         ]
       },
-      "output_file": "/tmp/mj-upperdeck-scan.json",
-      "last_run": "2026-04-02T13:01:01.646Z",
-      "last_results": {
-        "timestamp": "2026-04-02T13:01:01.646Z",
-        "success": true
-      },
-      "last_updated": "2026-03-25T21:24:38.311Z",
+      "output_file": "/tmp/multi-hof-refractor-scan.json",
       "useVisionScout": true,
       "useVisionFilter": false
     },
     "friday": {
-      "name": "ace bailey",
+      "name": "Ace Bailey /25",
       "enabled": true,
       "card_condition": "raw",
       "listing_type": "both",
@@ -140,7 +132,8 @@
       ],
       "filters": {
         "topN": 20,
-        "maxPrice": null,
+        "minPrice": 10,
+        "maxPrice": 500,
         "exclude_words": [
           "leaf",
           "jumbo",
@@ -148,17 +141,13 @@
           "signed",
           "holo",
           "sage",
-          "mystery"
-        ],
-        "minPrice": 10
+          "mystery",
+          "reprint",
+          "facsimile",
+          "custom"
+        ]
       },
-      "output_file": "/tmp/topps-refractors-multi-scan.json",
-      "last_run": "2026-04-03T13:00:24.887Z",
-      "last_results": {
-        "timestamp": "2026-04-03T13:00:24.887Z",
-        "success": true
-      },
-      "last_updated": "2026-03-30T01:47:21.918Z",
+      "output_file": "/tmp/ace-bailey-scan.json",
       "useVisionScout": true,
       "useVisionFilter": true
     },
@@ -173,25 +162,24 @@
       "filters": {
         "topN": 30,
         "minPrice": 25,
-        "maxPrice": null,
+        "maxPrice": 250,
         "exclude_words": [
           "packs",
           "jumbo",
-          "hobby"
+          "hobby",
+          "23kt",
+          "commemorative",
+          "reprint",
+          "custom",
+          "fan made"
         ]
       },
-      "output_file": "/tmp/mj-base-scan.json",
-      "last_run": "2026-04-04T13:01:36.435Z",
-      "last_results": {
-        "timestamp": "2026-04-04T13:01:36.435Z",
-        "success": true
-      },
-      "last_updated": "2026-04-02T01:59:00.519Z",
+      "output_file": "/tmp/gold-refractor-scan.json",
       "useVisionScout": true,
       "useVisionFilter": false
     },
     "sunday": {
-      "name": "Victor Wembanyama",
+      "name": "Wembanyama /99",
       "enabled": true,
       "card_condition": "raw",
       "listing_type": "auction",
@@ -200,22 +188,20 @@
       ],
       "filters": {
         "topN": 20,
+        "minPrice": 10,
+        "maxPrice": 1000,
         "exclude_words": [
           "draft picks",
           "leaf",
           "jumbo",
-          "replica"
-        ],
-        "minPrice": 0,
-        "maxPrice": null
+          "replica",
+          "reprint",
+          "custom",
+          "fan made",
+          "lot"
+        ]
       },
-      "output_file": "/tmp/cam-ward-scan.json",
-      "last_run": "2026-04-05T13:00:27.768Z",
-      "last_results": {
-        "timestamp": "2026-04-05T13:00:27.768Z",
-        "success": true
-      },
-      "last_updated": "2026-03-22T03:39:44.921Z",
+      "output_file": "/tmp/wembanyama-scan.json",
       "useVisionScout": true,
       "useVisionFilter": false
     }
