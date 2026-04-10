@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "last_updated": "2026-04-06",
+  "last_updated": "2026-04-10",
   "entries": [
     {
       "id": 1,
@@ -618,7 +618,9 @@
       "btc_allocation": null,
       "verified_fact": "Evander Holyfield earned over $250M in his boxing career and lost his mansion to foreclosure in 2012. $25M in Bitcoin at $13 would be 1.9M BTC worth $130B today.",
       "source": "Forbes",
-      "used_dates": [],
+      "used_dates": [
+        "2026-04-07"
+      ],
       "cooldown_days": 90
     },
     {
@@ -632,7 +634,9 @@
       "btc_allocation": null,
       "verified_fact": "Alex Rodriguez signed a $252M deal with the Rangers in 2000 — largest in sports history at the time. Bitcoin didn't exist. That contract is worth $480M in today's dollars due to inflation alone.",
       "source": "Spotrac",
-      "used_dates": [],
+      "used_dates": [
+        "2026-04-09"
+      ],
       "cooldown_days": 90
     },
     {
@@ -1022,7 +1026,10 @@
       "source": "Historical NFL salary data",
       "angle": "sound_money",
       "cooldown_days": 30,
-      "id": 72
+      "id": 72,
+      "used_dates": [
+        "2026-04-08"
+      ]
     },
     {
       "category": "bitcoin_education",
@@ -1537,9 +1544,39 @@
       "btc_price_then": 0,
       "verified_fact": "In 2018, Bill Gates stated he would short Bitcoin when it was trading around $9,000",
       "source": "Research",
-      "used_dates": [],
+      "used_dates": [
+        "2026-04-10"
+      ],
       "cooldown_days": 60,
       "id": 103
+    },
+    {
+      "category": "bitcoin_education",
+      "athlete": null,
+      "deal": "Historical gold money vs paper money",
+      "sport": "Bitcoin",
+      "year": 1944,
+      "contract_value": null,
+      "btc_price_then": 0,
+      "verified_fact": "In 1944, the Bretton Woods Agreement pegged the US dollar to gold at $35 per ounce",
+      "source": "Research",
+      "used_dates": [],
+      "cooldown_days": 60,
+      "id": 104
+    },
+    {
+      "category": "bitcoin_education",
+      "athlete": null,
+      "deal": "Square Cash App Bitcoin adoption",
+      "sport": "Bitcoin",
+      "year": 2020,
+      "contract_value": null,
+      "btc_price_then": 0,
+      "verified_fact": "In 2020, Square purchased 4,709 BTC for $50 million",
+      "source": "Research",
+      "used_dates": [],
+      "cooldown_days": 60,
+      "id": 105
     }
   ]
 }

@@ -1,5 +1,43 @@
 [
   {
+    "id": 1775792167789,
+    "theme": "Food",
+    "focus": [
+      "letters and early reading"
+    ],
+    "activities": [
+      {
+        "type": "story",
+        "title": "Apple's Adventure",
+        "description": "Sit together and tell this story in a warm, animated voice: \"Once there was a happy Apple named Alfie. Alfie loved to roll down the hill—roll, roll, roll! One day, Alfie met his friend Banana. 'Hello, B-Banana!' said Alfie. They played together all day. At the end, they rolled into a cozy Bowl. What do you think happened next? Did Alfie and Banana make new friends?\"",
+        "learning": "Initial letter sounds (A, B) and early story comprehension",
+        "tip": "Ask Sienna to repeat the 'B' sound for Banana while you clap together, or ask her to mime rolling like Alfie."
+      },
+      {
+        "type": "letters",
+        "title": "Food Letter Hunt",
+        "description": "Play a detective game around the kitchen or dining area. Say: \"We're looking for the letter C today—it sounds like 'kuh.' C is hiding in words about food. Can you help me find it?\" Point to and name items: Carrot, Crackers, Cookie, Cup. Have Sienna repeat the 'C' sound and point at each item with you. Then ask if she can find any other Cs in the room (on boxes, labels, etc.).",
+        "learning": "Letter sound recognition and environmental print awareness",
+        "tip": "Play the game again with the letter B (Bread, Broccoli, Bowl, Banana) if she's engaged and eager for more."
+      },
+      {
+        "type": "numbers",
+        "title": "Snack Stack Game",
+        "description": "Gather 5–8 small safe objects (crackers, cereal pieces, grapes, pasta shapes—whatever is handy). Sit together and say: \"We're going to count our yummy snacks and stack them. Ready?\" Count together as you place each item in a little pile: \"One cracker, two crackers, three crackers...\" Once stacked, ask: \"How many snacks did we count?\" Let her touch and recount if she wants. Repeat with a different number (up to 5 or 6) if she enjoys it.",
+        "learning": "Number sequencing and one-to-one correspondence",
+        "tip": "Ask her to point and say the number as you stack, or let her decide when to stop counting."
+      },
+      {
+        "type": "create",
+        "title": "Favorite Food Masterpiece",
+        "description": "Give Sienna one piece of paper and a crayon (or crayons if available). Say: \"Draw your favorite food! It can be a yummy apple, a silly pizza, a beautiful strawberry—whatever makes you happy.\" Don't worry about how it looks. As she draws, chat warmly: \"Tell me about your food! What color is it? Does it taste sweet or crunchy?\" Celebrate her creation when she's done.",
+        "learning": "Fine motor skill development and creative expression",
+        "tip": "Once she's finished, ask her to name her food and tell you one thing about how it tastes or smells."
+      }
+    ],
+    "date": "2026-04-10T03:36:07.789Z"
+  },
+  {
     "id": 1774209314027,
     "theme": "Colors",
     "focus": [

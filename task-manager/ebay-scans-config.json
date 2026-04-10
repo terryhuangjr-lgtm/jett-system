@@ -29,9 +29,9 @@
         ]
       },
       "output_file": "/tmp/mj-finest-scan.json",
-      "last_run": "2026-04-06T13:00:08.039Z",
+      "last_run": "2026-04-10T04:08:43.259Z",
       "last_results": {
-        "timestamp": "2026-04-06T13:00:08.039Z",
+        "timestamp": "2026-04-10T04:08:43.259Z",
         "success": true
       },
       "last_updated": "2026-03-26T03:16:17.947Z",
@@ -60,9 +60,9 @@
         ]
       },
       "output_file": "/tmp/griffey-refractors-scan.json",
-      "last_run": "2026-03-31T13:00:38.480Z",
+      "last_run": "2026-04-07T13:00:36.309Z",
       "last_results": {
-        "timestamp": "2026-03-31T13:00:38.480Z",
+        "timestamp": "2026-04-07T13:00:36.309Z",
         "success": true
       },
       "last_updated": "2026-04-02T01:58:47.759Z",
@@ -90,9 +90,9 @@
         "maxPrice": 5000
       },
       "output_file": "/tmp/kobe-refractors-scan.json",
-      "last_run": "2026-04-01T13:01:59.554Z",
+      "last_run": "2026-04-08T13:00:05.200Z",
       "last_results": {
-        "timestamp": "2026-04-01T13:01:59.554Z",
+        "timestamp": "2026-04-08T13:00:05.200Z",
         "success": true
       },
       "last_updated": "2026-04-02T01:53:35.316Z",
@@ -121,9 +121,9 @@
         ]
       },
       "output_file": "/tmp/mj-upperdeck-scan.json",
-      "last_run": "2026-04-02T13:01:01.646Z",
+      "last_run": "2026-04-09T13:01:15.336Z",
       "last_results": {
-        "timestamp": "2026-04-02T13:01:01.646Z",
+        "timestamp": "2026-04-09T13:01:15.336Z",
         "success": true
       },
       "last_updated": "2026-03-25T21:24:38.311Z",
@@ -153,9 +153,9 @@
         "minPrice": 10
       },
       "output_file": "/tmp/topps-refractors-multi-scan.json",
-      "last_run": "2026-04-03T13:00:24.887Z",
+      "last_run": "2026-04-10T13:00:27.011Z",
       "last_results": {
-        "timestamp": "2026-04-03T13:00:24.887Z",
+        "timestamp": "2026-04-10T13:00:27.011Z",
         "success": true
       },
       "last_updated": "2026-03-30T01:47:21.918Z",

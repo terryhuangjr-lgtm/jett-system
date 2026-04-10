@@ -10,6 +10,7 @@ const DealScorerGraded = require('./deal-scorer-graded');
 const RawCardFilter = require('./raw-card-filter');
 const SmartQueryParser = require('./smart-query-parser');
 const VisionFilter = require('./vision-filter');
+const { getPSAComps } = require('./cardsight-client.mjs');
 const fs = require('fs');
 const path = require('path');
 
@@ -160,6 +161,48 @@ async function multiSearch(searchConfig) {
       console.log(`Skipping vision (graded mode - slabs cannot be visually assessed)`);
     }
 
+    // Enrich top results with CardSight PSA comp data
+    // Only fetch for top 25 to control API usage
+    const topItemsForEnrichment = scoredItems.slice(0, 25);
+    const cardCondition = searchConfig.cardCondition || 'raw';
+
+    if (cardCondition === 'raw' && topItemsForEnrichment.length > 0) {
+      console.log(`\n💰 Fetching PSA comps from CardSight AI for top ${topItemsForEnrichment.length} results...`);
+      
+      // Extract player and year from search query for CardSight lookup
+      const yearMatch = keywords.match(/\b(19\d{2}|20\d{2})\b/);
+      const year = yearMatch ? yearMatch[0] : null;
+      
+      // Simple player extraction — first two words before year or brand
+      const playerMatch = keywords.match(/^([a-zA-Z]+\s+[a-zA-Z]+)/);
+      const player = playerMatch ? playerMatch[1] : keywords.split(' ').slice(0, 2).join(' ');
+
+      // Get set from search keywords
+      const setKeywords = ['topps finest', 'topps chrome', 'bowman chrome', 
+                           'panini prizm', 'optic', 'select', 'donruss'];
+      const set = setKeywords.find(s => keywords.toLowerCase().includes(s)) || 'Topps';
+
+      if (year && player) {
+        try {
+          const comps = await getPSAComps(player, year, set);
+          
+          // Apply to all top items (same card search = same comps)
+          for (const item of topItemsForEnrichment) {
+            item.psa9Est = comps.psa9 || '—';
+            item.psa10Est = comps.psa10 || '—';
+          }
+          
+          if (comps.psa9 || comps.psa10) {
+            console.log(`✅ PSA comps: PSA 9 = ${comps.psa9 || 'N/A'} | PSA 10 = ${comps.psa10 || 'N/A'}`);
+          } else {
+            console.log('⚠️ No pricing data yet from CardSight (beta) — columns will show —');
+          }
+        } catch (e) {
+          console.log('⚠️ CardSight lookup failed:', e.message);
+        }
+      }
+    }
+
     // Post-filter: additional AI Filter check (redundant backup to filterItems)
     if (useVisionFilter) {
       const beforeFilter = finalItems.length;
@@ -213,6 +256,14 @@ async function multiSearch(searchConfig) {
       },
       allResults: scoredItems
     }, null, 2));
+
+    // CardSight PSA comp summary
+    const withComps = scoredItems.filter(i => i.psa9Est && i.psa9Est !== '—').length;
+    if (withComps > 0) {
+      console.log(`\n💰 ${withComps} results enriched with CardSight PSA comp data`);
+    } else {
+      console.log('\n💰 CardSight pricing: beta data pending — columns ready for when data flows');
+    }
 
     // Print report
     console.log(report);
