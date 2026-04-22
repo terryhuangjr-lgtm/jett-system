@@ -381,13 +381,13 @@ Systemd is enabled.
 
 Active services:
 - clawdbot-gateway.service     (main AI gateway)
-- pm2.service                  (task-manager dashboard)
+- jett-task-manager.service  (dashboard :3000)
 - openclaw-patch.service       (safety patch on boot)
 
 Check status anytime with:
 ```bash
 systemctl --user status clawdbot-gateway.service
-systemctl --user status pm2.service
+systemctl --user status jett-task-manager.service
 ```
 
 Level-up-cards and watchlist-dashboard are started via their own startup scripts (kept simple).

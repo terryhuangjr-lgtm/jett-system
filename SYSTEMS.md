@@ -70,22 +70,24 @@ Last Updated: 2026-04-04
 
 | Attribute | Value |
 |-----------|-------|
-| Process | `server.js` via `start.sh` |
+| Process | `server.js` |
 | Port | 3000 |
-| Auto-start | Via systemd service or `./start.sh` |
-| **CRITICAL** | Must export PATH with NVM node - see `start.sh` |
+| Auto-start | **Via systemd service (jett-task-manager.service)** |
+| Service location | `~/.config/systemd/user/jett-task-manager.service` |
 
 **Responsibilities:**
 - Web dashboard showing cron jobs
 - Reads from clawdbot cron API
 - Health check display
+- Sienna Lesson Launcher (AI learning for kids)
 
-**Start command:**
+**Commands:**
 ```bash
-cd /home/clawd/clawd/task-manager && ./start.sh
+systemctl --user status jett-task-manager.service
+systemctl --user restart jett-task-manager.service
 ```
 
-**NOTE:** The `start.sh` script exports PATH to include NVM node. This is required for clawdbot cron commands to work properly (requires Node v22+).
+**NOTE:** Service was created 2026-04-21 after system moved to new house. Previously had no systemd service for auto-start.
 
 **API Endpoints:**
 - `GET /api/tasks` - List all cron jobs (from clawdbot)
@@ -525,12 +527,15 @@ See: `docs/MIGRATION-ROADMAP.md`
 
 ## Process Management
 
-### PM2 (Dashboard Only)
+### Systemd (Primary)
 ```
-pm2 list                     # Check status
-pm2 logs task-manager-server # View logs
-pm2 restart task-manager-server
+systemctl --user status jett-task-manager.service
+systemctl --user restart jett-task-manager.service
+journalctl --user -u jett-task-manager.service -f
 ```
+
+### Legacy: PM2 (Removed)
+PM2 was previously used for task-manager-server but is no longer needed. Dashboard now runs via systemd.
 
 ### Crontab
 ```
@@ -603,6 +608,6 @@ gws sheets spreadsheets list       # List spreadsheets
 | Gateway down | `clawdbot gateway --force &` |
 | PM2 processes down | `pm2 resurrect` |
 | Task stuck | `sqlite3 tasks.db "UPDATE tasks SET status='pending'..."` |
-| Port 3000 down | `pm2 start task-manager/server.js --name task-manager-server` |
+| Port 3000 down | `systemctl --user restart jett-task-manager.service` |
 | Test Telegram | `clawdbot message send --channel telegram --target "5867308866" --message "test" --json` |
 | Test GWS Email | `node lib/send-email.js --to "terryhuangjr@gmail.com" --subject "Test" --body "Message"` |
