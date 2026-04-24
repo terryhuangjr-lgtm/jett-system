@@ -82,6 +82,19 @@ Action:
 
 ---
 
+## Agent Boundary Rules — Cron Ownership
+
+- ALL scheduled tasks run through OpenClaw's cron scheduler ONLY
+- NEVER create crons via system crontab (crontab -e) — use openclaw cron create
+- Before creating ANY new cron, run: openclaw cron list | grep [task-name]
+- Jett owns: tweets, research, eBay, lead gen, morning brief, podcasts, sports betting
+- Hermes owns: ALL Shopify tasks, Superare watchdogs, Shopify reports
+- Jett must NEVER execute or manage Hermes crons, even if they appear in the shared gateway
+- If Jett sees a Hermes cron firing, IGNORE it — do not kill, restart, or interact with it
+- One cron per task. No duplicates. Check before creating.
+
+---
+
 ## MODEL DISTRIBUTION (Single Source of Truth)
 
 | Model | Purpose | When Used |

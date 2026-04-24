@@ -107,13 +107,13 @@ systemctl --user restart jett-task-manager.service
 
 ---
 
-### 4. Gemma Assistant (Port 3001)
+### 4. Gemma Assistant (Port 3002)
 
 | Attribute | Value |
 |-----------|-------|
-| Process | `node /home/clawd/gemma-assistant/server.js` |
-| Port | 3001 |
-| Auto-start | Manually (not yet systemd) |
+| Process | `systemctl --user start jett-gemma.service` |
+| Port | 3002 |
+| Auto-start | Systemd (jett-gemma.service) |
 | Model | Ollama gemma4:e2b |
 
 **Purpose:** AI content transformation tool with preset prompts for:
@@ -197,13 +197,13 @@ systemctl --user restart jett-task-manager.service
 | 8caf62e2 | Sports Tweet | 30 7 * * * | node 21m-daily-generator-v2.js --type sports --email |
 | de3f5203 | Morning Family Brief | 0 8 * * * | python3 morning_brief.py --post |
 | 7da794a0 | Podcast Queue Nightly | 0 4 * * * | python3 process_queue_nightly.py |
-| 34f4d211 | eBay Scan Monday | 0 9 * * 1 | run bash: node run-from-config.js monday |
-| cb846aad | eBay Scan Tuesday | 0 9 * * 2 | run bash: node run-from-config.js tuesday |
-| cf2665e4 | eBay Scan Wednesday | 0 9 * * 3 | run bash: node run-from-config.js wednesday |
-| ccedb5e5 | eBay Scan Thursday | 0 9 * * 4 | run bash: node run-from-config.js thursday |
-| 07ceb4b8 | eBay Scan Friday | 0 9 * * 5 | run bash: node run-from-config.js friday |
-| 9b58aa01 | eBay Scan Saturday | 0 9 * * 6 | run bash: node run-from-config.js saturday |
-| 6e1b794f | eBay Scan Sunday | 0 9 * * 0 | run bash: node run-from-config.js sunday |
+| 34f4d211 | eBay Scan Monday | 0 9 * * 1 | node run-from-config.js monday |
+| cb846aad | eBay Scan Tuesday | 0 9 * * 2 | node run-from-config.js tuesday |
+| cf2665e4 | eBay Scan Wednesday | 0 9 * * 3 | node run-from-config.js wednesday |
+| ccedb5e5 | eBay Scan Thursday | 0 9 * * 4 | node run-from-config.js thursday |
+| 07ceb4b8 | eBay Scan Friday | 0 9 * * 5 | node run-from-config.js friday |
+| 9b58aa01 | eBay Scan Saturday | 0 9 * * 6 | node run-from-config.js saturday |
+| 6e1b794f | eBay Scan Sunday | 0 9 * * 0 | node run-from-config.js sunday |
 
 ---
 

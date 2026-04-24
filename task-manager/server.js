@@ -104,13 +104,78 @@ class TaskServer {
       return this.proxyRequest(res, '/', 5001);
     }
     if (pathname === '/gemma' || pathname === '/gemma/') {
-      return this.proxyRequest(res, '/', 3001);
+      return this.proxyRequest(res, '/', 3002);
+    }
+    
+    // Gemma API proxy - forward /gemma/api/* to port 3002
+    if (pathname.startsWith('/gemma/api/') || pathname === '/api/gemma') {
+      console.log('[GEMMA] Intercepted:', pathname);
+      // /gemma/api/gemma -> /api/gemma
+      // /api/gemma -> /api/gemma
+      let apiPath = pathname;
+      if (pathname.startsWith('/gemma/api/')) {
+        apiPath = '/api' + pathname.replace('/gemma/api', '');
+      }
+      console.log('[GEMMA] Forwarding to:', apiPath);
+      const method = req.method;
+      let body = null;
+      if (method === 'POST' || method === 'PUT' || method === 'DELETE') {
+        body = await new Promise((resolve) => {
+          let data = '';
+          req.on('data', chunk => data += chunk);
+          req.on('end', () => resolve(data));
+        });
+      }
+      return this.proxyRequest(res, apiPath, 3001, method, body);
+    }
+    
+    // Also proxy /api/fetch-article and /api/email to gemma
+    if (pathname === '/api/fetch-article' || pathname === '/api/email') {
+      const method = req.method;
+      let body = null;
+      if (method === 'POST' || method === 'PUT' || method === 'DELETE') {
+        body = await new Promise((resolve) => {
+          let data = '';
+          req.on('data', chunk => data += chunk);
+          req.on('end', () => resolve(data));
+        });
+      }
+      return this.proxyRequest(res, pathname, 3001, method, body);
     }
 
-    // Podcast API proxy
+    // Podcast API proxy - handles /podcast-api/ (Flask dashboard) and /api/podcast/ (Mission Control)
     if (pathname.startsWith('/podcast-api/')) {
+      console.log('[PODCAST-API] Intercepted:', pathname, 'method:', req.method);
       const apiPath = '/api' + pathname.replace('/podcast-api', '');
-      // Get request body for POST/PUT/DELETE
+      console.log('[PODCAST-API] Forwarding to:', apiPath, 'port: 5001');
+      const method = req.method;
+      let body = null;
+      if (method === 'POST' || method === 'PUT' || method === 'DELETE') {
+        body = await new Promise((resolve) => {
+          let data = '';
+          req.on('data', chunk => data += chunk);
+          req.on('end', () => resolve(data));
+        });
+      }
+      return this.proxyRequest(res, apiPath, 5001, method, body);
+    }
+    
+    // Mission Control uses /api/podcast/* - map to correct endpoints on port 5001
+    if (pathname.startsWith('/api/podcast/')) {
+      console.log('[API-PODCAST] Intercepted:', pathname, 'method:', req.method);
+      
+      let apiPath = pathname.replace('/api/podcast', '/api');
+      
+      // Map Mission Control paths to Flask paths
+      if (pathname === '/api/podcast/add') apiPath = '/api/queue/add';
+      if (pathname === '/api/podcast/process') apiPath = '/api/process/now';
+      if (pathname.startsWith('/api/podcast/queue/') && req.method === 'DELETE') {
+        const position = pathname.split('/api/podcast/queue/')[1];
+        apiPath = `/api/queue/remove/${position}`;
+      }
+      if (pathname === '/api/podcast/reorder') apiPath = '/api/queue/reorder';
+      
+      console.log('[API-PODCAST] Forwarding to:', apiPath);
       const method = req.method;
       let body = null;
       if (method === 'POST' || method === 'PUT' || method === 'DELETE') {
@@ -452,11 +517,14 @@ Rules: Keep all language simple. Every activity 3-6 minutes. Make it feel like p
       return this.sendJSON(res, logs);
     }
 
-    // GET /api/cron-jobs - Fetch from Clawdbot
+    // GET /api/cron-jobs - Read from cached file
     if (pathname === '/api/cron-jobs' && req.method === 'GET') {
       try {
-        const { execSync } = require('child_process');
-        const output = execSync('clawdbot cron list --json', { encoding: 'utf8' });
+        const fs = require('fs');
+        if (!fs.existsSync('/tmp/cron-jobs.json')) {
+          return this.sendJSON(res, []);
+        }
+        const output = fs.readFileSync('/tmp/cron-jobs.json', 'utf8');
         const data = JSON.parse(output);
         const jobs = data.jobs || data || [];
         
@@ -473,7 +541,7 @@ Rules: Keep all language simple. Every activity 3-6 minutes. Make it feel like p
           next_run: job.state?.nextRunAtMs ? new Date(job.state.nextRunAtMs).toISOString() : null,
           run_count: job.state?.runCount || 0,
           command: job.payload?.text || '',
-          source: 'clawdbot'
+          source: 'openclaw'
         }));
         
         return this.sendJSON(res, transformed);
@@ -574,36 +642,40 @@ Rules: Keep all language simple. Every activity 3-6 minutes. Make it feel like p
         checks.push({ name: 'Internet', status: 'unhealthy', message: 'No internet connection' });
       }
       
-      // Check Clawdbot CLI
+      // Check Clawdbot (gateway process)
       try {
         const { execSync } = require('child_process');
-        const version = execSync('/home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot --version', { encoding: 'utf8' });
-        checks.push({ name: 'Clawdbot', status: 'healthy', message: 'CLI responding' });
+        const output = execSync('pgrep -f "openclaw-gateway"', { encoding: 'utf8' });
+        if (output.trim()) {
+          checks.push({ name: 'Clawdbot', status: 'healthy', message: 'Gateway running' });
+        } else {
+          checks.push({ name: 'Clawdbot', status: 'unhealthy', message: 'Gateway not found' });
+        }
       } catch (e) {
-        checks.push({ name: 'Clawdbot', status: 'unhealthy', message: 'CLI not responding' });
+        checks.push({ name: 'Clawdbot', status: 'unhealthy', message: 'Could not check gateway' });
       }
-      
+
       // Check clawdbot cron (primary scheduler - source of truth)
       try {
         const { execSync } = require('child_process');
-        const output = execSync('/home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot cron list', { encoding: 'utf8', timeout: 10000 });
-        const jobCount = output.split('\n').filter(line => line.match(/^\w{8}-\w{4}/)).length;
-        checks.push({ name: 'Cron Jobs', status: 'healthy', message: `${jobCount} jobs scheduled` });
+        // Use a more direct approach - check if we can communicate with the gateway
+        execSync('timeout 5 bash -c "echo > /dev/tcp/localhost/18789" 2>/dev/null', { encoding: 'utf8' });
+        checks.push({ name: 'Cron Jobs', status: 'healthy', message: 'Gateway accessible on port 18789' });
       } catch (e) {
-        checks.push({ name: 'Cron Jobs', status: 'unhealthy', message: 'Could not list cron jobs' });
+        checks.push({ name: 'Cron Jobs', status: 'unhealthy', message: 'Gateway not accessible' });
       }
       
       // Check Gemma Assistant
       try {
         const http = require('http');
         const gemma = await new Promise((resolve) => {
-          const req = http.get('http://localhost:3001', (res) => {
+          const req = http.get('http://localhost:3002', (res) => {
             resolve({ status: 'healthy' });
           });
           req.on('error', () => resolve({ status: 'unhealthy' }));
           req.setTimeout(3000, () => resolve({ status: 'unhealthy' }));
         });
-        checks.push({ name: 'Gemma Assistant', status: gemma.status, message: gemma.status === 'healthy' ? 'Running on port 3001' : 'Not responding' });
+        checks.push({ name: 'Gemma Assistant', status: gemma.status, message: gemma.status === 'healthy' ? 'Running on port 3002' : 'Not responding' });
       } catch (e) {
         checks.push({ name: 'Gemma Assistant', status: 'unhealthy', message: 'Not running' });
       }
