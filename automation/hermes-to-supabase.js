@@ -82,15 +82,6 @@ async function fetchShopifyMetrics(supabaseKey) {
     return [];
   }
   
-  const today = new Date();
-  const todayStr = today.toISOString().split('T')[0];
-  const sevenDaysAgo = new Date();
-  sevenDaysAgo.setDate(today.getDate() - 7);
-  const thirtyDaysAgo = new Date();
-  thirtyDaysAgo.setDate(today.getDate() - 30);
-  const sixtyDaysAgo = new Date();
-  sixtyDaysAgo.setDate(today.getDate() - 60);
-  
   const baseUrl = `https://${shopDomain}/admin/api/2024-01/orders.json`;
   const headers = {
     'X-Shopify-Access-Token': accessToken,
@@ -99,20 +90,60 @@ async function fetchShopifyMetrics(supabaseKey) {
   
   console.log(`  📥 Fetching orders from Shopify...`);
   
+    // Step 1: Fetch the most recent order to determine "current date"
   try {
-    // Fetch all orders from last 60 days for comparison metrics
-    const allOrders = [];
-    let pageInfo = null;
-    let pageCount = 0;
+    let mostRecentOrderDate = null;
+    let firstPageOrders = [];
     
-    do {
-      pageCount++;
-      let url = `${baseUrl}?created_at_min=${thirtyDaysAgo.toISOString()}&status=any&limit=250`;
-      if (pageInfo) {
-        url = `${baseUrl}?page_info=${pageInfo}&limit=250`;
+    const firstPageUrl = `${baseUrl}?status=any&limit=1&order=created_at+desc`;
+    const firstResponse = await fetch(firstPageUrl, { method: "GET", headers });
+    if (!firstResponse.ok) {
+      console.error(`❌ Shopify API error: ${firstResponse.status} ${firstResponse.statusText}`);
+      return [];
+    }
+    const firstData = await firstResponse.json();
+    firstPageOrders = firstData.orders || [];
+    
+    if (firstPageOrders.length === 0) {
+      console.error("❌ No orders found in Shopify store");
+      return [];
+    }
+    
+    const mostRecentDateStr = firstPageOrders[0].created_at.split("T")[0];
+    mostRecentOrderDate = new Date(mostRecentDateStr + "T00:00:00");
+    console.log(`  ✅ Most recent order date: ${mostRecentDateStr}`);
+    
+    // Now use mostRecentOrderDate as "today" for all calculations
+    const today = mostRecentOrderDate;
+    const todayStr = mostRecentDateStr;
+    const sevenDaysAgo = new Date(today);
+    sevenDaysAgo.setDate(today.getDate() - 7);
+    const thirtyDaysAgo = new Date(today);
+    thirtyDaysAgo.setDate(today.getDate() - 30);
+    const sixtyDaysAgo = new Date(today);
+    sixtyDaysAgo.setDate(today.getDate() - 60);
+
+    // Step 2: Fetch ALL orders (for complete history)
+    const allOrders = [...firstPageOrders];
+    
+    let pageInfo = null;
+    
+    // Check link header from first response
+    const firstLinkHeader = firstResponse.headers.get("link");
+    if (firstLinkHeader) {
+      const nextMatch = firstLinkHeader.match(/<([^>]+)>; rel="next"/);
+      if (nextMatch) {
+        const nextUrl = new URL(nextMatch[1]);
+        pageInfo = nextUrl.searchParams.get("page_info");
       }
+    }
+    
+    let pageCount = 0;
+    while (pageInfo && pageCount < 20) {
+      pageCount++;
+      const url = `${baseUrl}?page_info=${pageInfo}&limit=250`;
       
-      const response = await fetch(url, { method: 'GET', headers });
+      const response = await fetch(url, { method: "GET", headers });
       
       if (!response.ok) {
         console.error(`❌ Shopify API error: ${response.status} ${response.statusText}`);
@@ -126,18 +157,17 @@ async function fetchShopifyMetrics(supabaseKey) {
       allOrders.push(...orders);
       
       pageInfo = null;
-      const linkHeader = response.headers.get('link');
+      const linkHeader = response.headers.get("link");
       if (linkHeader) {
         const nextMatch = linkHeader.match(/<([^>]+)>; rel="next"/);
         if (nextMatch) {
           const nextUrl = new URL(nextMatch[1]);
-          pageInfo = nextUrl.searchParams.get('page_info');
+          pageInfo = nextUrl.searchParams.get("page_info");
         }
       }
-    } while (pageInfo && pageCount < 10);
-    
-    console.log(`  ✅ Fetched ${allOrders.length} total orders from Shopify`);
-    
+    }
+
+
     // ====== TODAY'S METRICS ======
     const todayOrders = allOrders.filter(o => {
       const orderDate = o.created_at.split('T')[0];
