@@ -1,5 +1,5 @@
 # CLAUDE.md - Jett System Standing Orders
-Last Updated: 2026-04-04
+Last Updated: 2026-05-01
 
 READ THIS ENTIRE FILE BEFORE TOUCHING ANYTHING.
 
@@ -92,6 +92,35 @@ Action:
 - Jett must NEVER execute or manage Hermes crons, even if they appear in the shared gateway
 - If Jett sees a Hermes cron firing, IGNORE it — do not kill, restart, or interact with it
 - One cron per task. No duplicates. Check before creating.
+
+---
+
+## HERMES AGENT (Parallel System — DO NOT CONFUSE WITH JETT)
+
+Hermes is a **separate AI agent** (Nous Research framework) running in parallel on the same machine. It handles Shopify/Superare operations and Terry's personal assistant tasks.
+
+**Jett must NEVER:**
+- Modify files in `~/.hermes/` (especially `shopify.py`, `run.js`, `pdf-generator.js`)
+- Touch or restart `hermes-gateway-personal.service`
+- Create, delete, or modify Hermes crons
+
+**Key locations:**
+| Item | Path |
+|------|------|
+| Personal config | `~/.hermes/profiles/personal/config.yaml` |
+| Personal env | `~/.hermes/profiles/personal/.env` |
+| Identity/rules | `~/.hermes/SOUL.md`, `~/.hermes/MEMORY.md` |
+| Shopify script | `~/.hermes/shopify.py` (production — never edit) |
+| Service | `hermes-gateway-personal.service` |
+
+**Current model (personal profile):** `deepseek-v4-flash` via `custom:deepseek`
+**Model switch syntax:** `/model <model> --provider <custom:slug> --global`
+- DeepSeek: `/model deepseek-v4-flash --provider custom:deepseek --global`
+- Grok: `/model grok-4-1-fast-reasoning --provider custom:api.x.ai --global`
+
+**Note:** `/model` alias-only syntax does NOT work for provider switching. The `--provider` flag is mandatory. Colons in provider names are used for OpenRouter variant suffixes only.
+
+**Full docs:** See `SYSTEMS.md` → Core Services → Hermes Agent
 
 ---
 

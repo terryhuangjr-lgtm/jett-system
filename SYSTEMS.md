@@ -1,6 +1,6 @@
 # Jett System Architecture
 
-Last Updated: 2026-04-04
+Last Updated: 2026-05-01
 
 ---
 
@@ -24,20 +24,31 @@ Last Updated: 2026-04-04
 │                  │  - Message handling │                                   │
 │                  │  - Cron scheduler   │                                   │
 │                  │  - Telegram only    │                                   │
-│                  └──────────┬────────────┘                                   │
-│                             │                                                │
-│         ┌───────────────────┼───────────────────┐                           │
-│         ▼                   ▼                   ▼                           │
-│  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐                    │
-│  │   PM2       │    │   Scripts   │    │   Skills    │                    │
-│  │  (Server)   │    │ (Automation)│    │ (External)  │                    │
-│  │  :3000      │    │             │    │             │                    │
-│  └─────────────┘    └─────────────┘    └─────────────┘                    │
+│                  └──────────┬──────────┘                                   │
+│                             │                                               │
+│         ┌───────────────────┼───────────────────┐                          │
+│         ▼                   ▼                   ▼                          │
+│  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐                   │
+│  │   Systemd   │    │   Scripts   │    │   Skills    │                   │
+│  │  (Server)   │    │ (Automation)│    │ (External)  │                   │
+│  │  :3000      │    │             │    │             │                   │
+│  └─────────────┘    └─────────────┘    └─────────────┘                   │
 │                                                                             │
 │  ┌─────────────┐    ┌─────────────┐                                        │
-│  │   GWS CLI    │    │ Notion API  │                                        │
-│  │(Email/Cal)   │    │(Lists only) │                                        │
+│  │   GWS CLI   │    │ Notion API  │                                        │
+│  │(Email/Cal)  │    │(Lists only) │                                        │
 │  └─────────────┘    └─────────────┘                                        │
+│                                                                             │
+│  ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─  │
+│  PARALLEL AGENT (independent process, different domain)                    │
+│                                                                             │
+│  ┌────────────────────────────────────────────────────────────────┐        │
+│  │  Hermes Agent (Nous Research) — Shopify / Personal Assistant   │        │
+│  │  Profiles: default (~/.hermes/)  |  personal (~/.hermes/profiles/personal/) │
+│  │  Service: hermes-gateway-personal.service (systemd)            │        │
+│  │  Default model: DeepSeek V4 Flash  |  Fallback: Grok 4.1-fast │        │
+│  │  Cron owner: Supergel watchdog, Low Stock, Shopify reports     │        │
+│  └────────────────────────────────────────────────────────────────┘        │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
@@ -107,7 +118,55 @@ systemctl --user restart jett-task-manager.service
 
 ---
 
-### 4. Gemma Assistant (Port 3002)
+### 4. Hermes Agent — Shopify / Personal Gateway
+
+| Attribute | Value |
+|-----------|-------|
+| Framework | Nous Research Hermes Agent (Python venv) |
+| Default profile | `~/.hermes/` (Superare/Shopify ops) |
+| Personal profile | `~/.hermes/profiles/personal/` |
+| Personal service | `hermes-gateway-personal.service` (systemd) |
+| Platform | Telegram (separate bot from Jett's) |
+
+**Responsibilities:**
+- ALL Shopify operations for Superare (inventory, costs, draft orders, PDFs)
+- Superare low-stock watchdog (every 2hrs)
+- Personal Telegram assistant (coding, general queries)
+
+**Default model (personal profile):** `deepseek-v4-flash` via `custom:deepseek`
+**Fallback model:** `grok-4-1-fast-reasoning` via `custom:api.x.ai`
+
+**Model switching (Telegram):**
+```bash
+/model deepseek-v4-flash --provider custom:deepseek --global
+/model grok-4-1-fast-reasoning --provider custom:api.x.ai --global
+```
+
+**Key files:**
+- `~/.hermes/profiles/personal/config.yaml` — personal gateway config
+- `~/.hermes/profiles/personal/.env` — Telegram bot token + allowed users
+- `~/.hermes/SOUL.md` — Hermes identity (Superare ops agent)
+- `~/.hermes/MEMORY.md` — Shopify hard rules + toolkit reference
+- `~/.hermes/PRODUCTS.md` — Superare product/variant ID reference
+- `~/.hermes/shopify.py` — All Shopify operations (DO NOT MODIFY without Terry approval)
+
+**Commands:**
+```bash
+personal gateway status
+personal gateway restart
+journalctl --user -u hermes-gateway-personal.service -n 50 --no-pager
+```
+
+**Cron ownership (via OpenClaw scheduler):**
+- Supergel V Watchdog: `fa206808-174a-4e73-9603-d457105443ac` (every 2hrs)
+- Update Cron Cache: `fe6d7c10-ced5-4260-b280-aac7a3a20af3` (every 5min)
+- Low Stock General: (every 2hrs)
+
+**CRITICAL:** Jett must NEVER touch Hermes crons. Hermes is an independent agent.
+
+---
+
+### 5. Gemma Assistant (Port 3002)
 
 | Attribute | Value |
 |-----------|-------|
@@ -132,7 +191,7 @@ systemctl --user restart jett-task-manager.service
 
 ---
 
-### 5. Remote Access (Cloudflare Tunnel)
+### 6. Remote Access (Cloudflare Tunnel)
 
 | Attribute | Value |
 |-----------|-------|
