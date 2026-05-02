@@ -52,7 +52,7 @@ class VisionFilter {
     }
 
     this.client = new Anthropic({ apiKey });
-    this.model = 'claude-haiku-4-5-20251001';
+    this.model = 'claude-3-5-haiku-20241022';
   }
 
   /**

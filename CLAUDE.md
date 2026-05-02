@@ -124,7 +124,7 @@ Each agent/profile has its own default model. Do not assume a single default.
 | Agent / Profile | Default Model | Notes |
 |-----------------|---------------|-------|
 | **Jett (Coder)** — this agent | `deepseek-chat` | You are running this right now |
-| **Hermes Personal Profile** | `haiku-3.5` | Terry's personal assistant |
+| **Hermes Personal Profile** | `claude-3-5-haiku-20241022` | Terry's personal assistant |
 | **Hermes Shopify Agent** | `grok-4-1-fast-reasoning` | Shopify operations |
 | **OpenClaw Jett (gateway)** | `grok-4-1-fast-reasoning` | Automation cron tasks |
 | **claude-sonnet-4-5** | — | 21M sports tweet generation ONLY (hardcoded in generator) |
@@ -360,7 +360,7 @@ Built directly into the Task Manager server — no separate port or service.
 - Frontend: `/home/clawd/clawd/task-manager/dashboard/sienna.html`
 - Session history: `/home/clawd/clawd/task-manager/dashboard/sienna-sessions.json`
 - API routes: `/api/sienna/generate` and `/api/sienna/history` in `server.js`
-- Model: `claude-haiku-4-5` (fast, cheap, perfect for this use case)
+- Model: `claude-3-5-haiku-20241022` (fast, cheap, perfect for this use case)
 - API key loaded from `/home/clawd/clawd/.env` via `SIENNA_API_KEY`
 
 **Generates 4 activities per session:**
