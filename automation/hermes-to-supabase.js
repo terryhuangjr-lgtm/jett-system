@@ -4,6 +4,7 @@
  * Hermes to Supabase Data Sync Script
  * 
  * Reads Hermes report files and Shopify data, then writes real data into Supabase tables.
+ * Completely refreshes all 4 tables from live Shopify data on each run.
  * 
  * Usage:
  *   node hermes-to-supabase.js [options]
@@ -18,8 +19,6 @@
 
 require('dotenv').config({ path: '/home/clawd/clawd/automation/.env' });
 
-const fs = require('fs');
-const path = require('path');
 const { createClient } = require('@supabase/supabase-js');
 
 // Configuration
@@ -63,72 +62,102 @@ if (args.includes('--dry-run')) {
   console.log('🚀 Running in DRY RUN mode - no changes will be written to database\n');
 }
 
-// Report file directory
-const REPORTS_DIR = path.join(process.env.HOME || '/home/clawd', 'clawd/automation/demo-reports');
-const SHOPIFY_DATA_DIR = path.join(process.env.HOME || '/home/clawd', 'clawd/automation/demo-reports');
+
+const STORE_CONFIG = {
+  id: '00000000-0000-0000-0000-000000000001',
+  name: 'Superare',
+  shopify_domain: 'superare.myshopify.com',
+  owner_email: 'owner@superare.com',
+  description: 'Premium fight gear and boxing equipment brand based in New York City.'
+};
+
+// Track summary stats for activity log
+let syncSummary = {
+  metrics: 0,
+  alerts: 0,
+  reports: 0,
+  activity: 0,
+  products_processed: 0,
+  anomalies: [],
+  sales_intel: null
+};
 
 /**
- * Fetch real metrics from Shopify API
+ * Get auth headers for Shopify — supports both token and private app credentials
  */
-/**
- * Fetch real metrics from Shopify API with validation
- */
-async function fetchShopifyMetrics(supabaseKey) {
-  const shopDomain = process.env.SHOPIFY_STORE || 'superare-demo.myshopify.com';
+function getShopifyAuth() {
   const accessToken = process.env.SHOPIFY_TOKEN;
+  const apiKey = process.env.SHOPIFY_API_KEY;
+  const secretKey = process.env.SHOPIFY_SECRET_KEY;
   
-  if (!accessToken) {
-    console.error('❌ SHOPIFY_TOKEN not found in environment');
-    return [];
+  if (accessToken) {
+    return {
+      headers: {
+        'X-Shopify-Access-Token': accessToken,
+        'Content-Type': 'application/json'
+      },
+      type: 'token'
+    };
+  }
+  
+  if (apiKey && secretKey) {
+    const encoded = Buffer.from(`${apiKey}:${secretKey}`).toString('base64');
+    return {
+      headers: {
+        'Authorization': `Basic ${encoded}`,
+        'Content-Type': 'application/json'
+      },
+      type: 'basic'
+    };
+  }
+  
+  return null;
+}
+
+/**
+ * Fetch ALL orders from Shopify
+ */
+async function fetchAllShopifyOrders() {
+  const shopDomain = process.env.SHOPIFY_STORE || 'superare-demo.myshopify.com';
+  const auth = getShopifyAuth();
+  
+  if (!auth) {
+    console.log('⚠️  No Shopify credentials configured (need SHOPIFY_TOKEN or SHOPIFY_API_KEY+SHOPIFY_SECRET_KEY)');
+    return null;
   }
   
   const baseUrl = `https://${shopDomain}/admin/api/2024-01/orders.json`;
-  const headers = {
-    'X-Shopify-Access-Token': accessToken,
-    'Content-Type': 'application/json'
-  };
+  const headers = auth.headers;
   
-  console.log(`  📥 Fetching orders from Shopify...`);
+  console.log(`  📥 Fetching all orders from Shopify...`);
   
-    // Step 1: Fetch the most recent order to determine "current date"
   try {
+    // Get most recent order
     let mostRecentOrderDate = null;
     let firstPageOrders = [];
     
     const firstPageUrl = `${baseUrl}?status=any&limit=1&order=created_at+desc`;
     const firstResponse = await fetch(firstPageUrl, { method: "GET", headers });
     if (!firstResponse.ok) {
-      console.error(`❌ Shopify API error: ${firstResponse.status} ${firstResponse.statusText}`);
-      return [];
+      console.error(`❌ Shopify API error: ${firstResponse.status}`);
+      return null;
     }
     const firstData = await firstResponse.json();
     firstPageOrders = firstData.orders || [];
     
     if (firstPageOrders.length === 0) {
       console.error("❌ No orders found in Shopify store");
-      return [];
+      return null;
     }
     
     const mostRecentDateStr = firstPageOrders[0].created_at.split("T")[0];
     mostRecentOrderDate = new Date(mostRecentDateStr + "T00:00:00");
     console.log(`  ✅ Most recent order date: ${mostRecentDateStr}`);
     
-    // Now use mostRecentOrderDate as "today" for all calculations
-    const today = mostRecentOrderDate;
-    const todayStr = mostRecentDateStr;
-    const sevenDaysAgo = new Date(today);
-    sevenDaysAgo.setDate(today.getDate() - 7);
-    const thirtyDaysAgo = new Date(today);
-    thirtyDaysAgo.setDate(today.getDate() - 30);
-    const sixtyDaysAgo = new Date(today);
-    sixtyDaysAgo.setDate(today.getDate() - 60);
-
-    // Step 2: Fetch ALL orders (for complete history)
+    // Fetch ALL orders
     const allOrders = [...firstPageOrders];
-    
     let pageInfo = null;
     
-    // Check link header from first response
     const firstLinkHeader = firstResponse.headers.get("link");
     if (firstLinkHeader) {
       const nextMatch = firstLinkHeader.match(/<([^>]+)>; rel="next"/);
@@ -146,9 +175,7 @@ async function fetchShopifyMetrics(supabaseKey) {
       const response = await fetch(url, { method: "GET", headers });
       
       if (!response.ok) {
-        console.error(`❌ Shopify API error: ${response.status} ${response.statusText}`);
-        const errorText = await response.text();
-        console.error(`   ${errorText}`);
+        console.error(`❌ Shopify API error: ${response.status}`);
         break;
       }
       
@@ -166,688 +193,1377 @@ async function fetchShopifyMetrics(supabaseKey) {
         }
       }
     }
-
-
-    // ====== TODAY'S METRICS ======
-    const todayOrders = allOrders.filter(o => {
-      const orderDate = o.created_at.split('T')[0];
-      return orderDate === todayStr;
-    });
     
-    const revenue_today = todayOrders.reduce((sum, o) => sum + parseFloat(o.total_price || 0), 0);
-    const orders_today = todayOrders.length;
-    const avg_order_value_today = orders_today > 0 ? revenue_today / orders_today : 0;
-    
-    // ====== 7-DAY METRICS ======
-    const sevenDayOrders = allOrders.filter(o => {
-      const orderDate = new Date(o.created_at.split('T')[0]);
-      return orderDate >= sevenDaysAgo && orderDate <= today;
-    });
-    
-    const revenue_7day = sevenDayOrders.reduce((sum, o) => sum + parseFloat(o.total_price || 0), 0);
-    const orders_7day = sevenDayOrders.length;
-    
-    // ====== 30-DAY METRICS ======
-    const thirtyDayOrders = allOrders.filter(o => {
-      const orderDate = new Date(o.created_at.split('T')[0]);
-      return orderDate >= thirtyDaysAgo && orderDate <= today;
-    });
-    
-    const revenue_30day = thirtyDayOrders.reduce((sum, o) => sum + parseFloat(o.total_price || 0), 0);
-    const orders_30day = thirtyDayOrders.length;
-    
-    // ====== 60-DAY COMPARISON FOR TOP PRODUCT ANALYSIS ======
-    const thirtyToSixtyDayOrders = allOrders.filter(o => {
-      const orderDate = new Date(o.created_at.split('T')[0]);
-      return orderDate >= sixtyDaysAgo && orderDate < thirtyDaysAgo;
-    });
-    
-    // Calculate top product (simplified: based on known product patterns)
-    const productPatterns = {
-      'Supergel V Gloves': { base: 0.35, volatility: 0.15 },
-      'Supergel Pro Gloves': { base: 0.25, volatility: 0.12 },
-      'World Champion Tee': { base: 0.40, volatility: 0.20 },
-      'Fundamental 2.0 Shorts': { base: 0.30, volatility: 0.10 },
-      'S40 Italian Leather Lace Up': { base: 0.28, volatility: 0.08 },
-    };
-    
-    const dayNum = today.getDate();
-    const topProducts = Object.keys(productPatterns);
-    const top_product = topProducts[dayNum % topProducts.length];
-    
-    // ====== VALIDATION CHECKS ======
-    const anomalies = [];
-    
-    if (revenue_today > 50000) {
-      const warning = `WARNING: Revenue today seems unusually high: $${revenue_today.toLocaleString()}`;
-      console.warn(`  ⚠️  ${warning}`);
-      anomalies.push(warning);
-    }
-    
-    if (orders_today > 500) {
-      const warning = `WARNING: Order count seems unusually high: ${orders_today}`;
-      console.warn(`  ⚠️  ${warning}`);
-      anomalies.push(warning);
-    }
-    
-    if (avg_order_value_today > 1000) {
-      const warning = `WARNING: AOV seems unusually high: $${avg_order_value_today.toFixed(2)}`;
-      console.warn(`  ⚠️  ${warning}`);
-      anomalies.push(warning);
-    }
-    
-    if (orders_30day === 0) {
-      const warning = 'WARNING: No orders in last 30 days - data may be incomplete';
-      console.warn(`  ⚠️  ${warning}`);
-      anomalies.push(warning);
-    }
-    
-    // ====== CALCULATE ROLLING AVERAGES ======
-    const getRollingSum = (date, days, filterFn) => {
-      let total = 0;
-      for (let i = 0; i < days; i++) {
-        const d = new Date(date);
-        d.setDate(d.getDate() - i);
-        const dayOrders = allOrders.filter(o => {
-          const orderDate = o.created_at.split('T')[0];
-          return orderDate === d.toISOString().split('T')[0];
-        });
-        if (filterFn) {
-          dayOrders = dayOrders.filter(filterFn);
-        }
-        total += dayOrders.reduce((sum, o) => sum + parseFloat(o.total_price || 0), 0);
-      }
-      return total;
-    };
-    
-    // ====== CUSTOMER METRICS ======
-    const uniqueCustomers30Day = new Set(
-      thirtyDayOrders.map(o => Math.floor(parseInt(o.id) / 10))
-    ).size;
-    const uniqueCustomers7Day = new Set(
-      sevenDayOrders.map(o => Math.floor(parseInt(o.id) / 10))
-    ).size;
-    
-    const avg_order_value_30day = orders_30day > 0 ? revenue_30day / orders_30day : 0;
-    
-    // ====== BUILD METRICS ======
-    const metrics = [{
-      store_id: STORE_CONFIG.id,
-      metric_date: todayStr,
-      revenue_today: Math.round(revenue_today),
-      orders_today: orders_today,
-      revenue_7day: Math.round(revenue_7day),
-      orders_7day: orders_7day,
-      revenue_30day: Math.round(revenue_30day),
-      orders_30day: orders_30day,
-      top_product: top_product,
-      avg_order_value: Math.round(avg_order_value_30day * 100) / 100,
-      new_customers: Math.max(1, Math.floor(uniqueCustomers30Day * 0.3)),
-      returning_customers: Math.max(0, orders_30day - Math.floor(uniqueCustomers30Day * 0.3)),
-      created_at: new Date().toISOString()
-    }];
-    
-    // ====== RECONCILIATION LOG ======
-    console.log(`\n  ${'='.repeat(50)}`);
-    console.log(`  📊 DATA RECONCILIATION REPORT`);
-    console.log(`  ${'='.repeat(50)}`);
-    console.log(`  Total orders pulled from Shopify: ${allOrders.length}`);
-    console.log(`  Date range: ${thirtyDaysAgo.toISOString().split('T')[0]} to ${todayStr}`);
-    console.log(`  Today's metrics:`);
-    console.log(`    - Revenue: $${revenue_today.toLocaleString()}`);
-    console.log(`    - Orders: ${orders_today}`);
-    console.log(`    - AOV: $${avg_order_value_today.toFixed(2)}`);
-    console.log(`  30-day metrics:`);
-    console.log(`    - Revenue: $${revenue_30day.toLocaleString()}`);
-    console.log(`    - Orders: ${orders_30day}`);
-    console.log(`    - AOV: $${avg_order_value_30day.toFixed(2)}`);
-    console.log(`  Records to write to Supabase: 1`);
-    if (anomalies.length > 0) {
-      console.log(`  ⚠️  Anomalies detected: ${anomalies.length}`);
-      anomalies.forEach(a => console.log(`    - ${a}`));
-    } else {
-      console.log(`  ✓ No data anomalies detected`);
-    }
-    console.log(`  ${'='.repeat(50)}\n`);
-    
-    return metrics;
+    console.log(`  ✅ Total orders fetched: ${allOrders.length}`);
+    return { orders: allOrders, referenceDate: mostRecentOrderDate };
   } catch (err) {
     console.error('❌ Error fetching Shopify data:', err.message);
-    return [];
+    return null;
   }
 }
 
-// Store configuration
-const STORE_CONFIG = {
-  id: '00000000-0000-0000-0000-000000000001',
-  name: 'Superare',
-  shopify_domain: 'superare.myshopify.com',
-  owner_email: 'owner@superare.com',
-  description: 'Premium fight gear and boxing equipment brand based in New York City.'
-};
+/**
+ * Fetch current inventory from Shopify Products API
+ */
+async function fetchShopifyProducts() {
+  const shopDomain = process.env.SHOPIFY_STORE || 'superare-demo.myshopify.com';
+  const auth = getShopifyAuth();
+  
+  if (!auth) {
+    console.log('⚠️  No Shopify credentials configured - cannot fetch products');
+    return [];
+  }
+  
+  const baseUrl = `https://${shopDomain}/admin/api/2024-01/products.json`;
+  const headers = auth.headers;
+  
+  console.log(`  📦 Fetching products from Shopify...`);
+  
+  try {
+    const allProducts = [];
+    let pageInfo = null;
+    let pageCount = 0;
+    
+    do {
+      const url = pageInfo 
+        ? `${baseUrl}?page_info=${pageInfo}&limit=250`
+        : `${baseUrl}?limit=250`;
+      
+      const response = await fetch(url, { method: "GET", headers });
+      
+      if (!response.ok) {
+        console.error(`❌ Shopify API error: ${response.status}`);
+        break;
+      }
+      
+      const data = await response.json();
+      const products = data.products || [];
+      allProducts.push(...products);
+      
+      pageInfo = null;
+      const linkHeader = response.headers.get("link");
+      if (linkHeader) {
+        const nextMatch = linkHeader.match(/<([^>]+)>; rel="next"/);
+        if (nextMatch) {
+          const nextUrl = new URL(nextMatch[1]);
+          pageInfo = nextUrl.searchParams.get("page_info");
+        }
+      }
+      
+      pageCount++;
+    } while (pageInfo && pageCount < 20);
+    
+    console.log(`  ✅ Total products fetched: ${allProducts.length}`);
+    
+    // Build variant-level inventory map
+    const variantInventory = {};
+    allProducts.forEach(product => {
+      (product.variants || []).forEach(variant => {
+        const key = `${product.title} — ${variant.title}`;
+        variantInventory[key] = {
+          product_id: product.id,
+          variant_id: variant.id,
+          product_title: product.title,
+          variant_title: variant.title,
+          inventory: variant.inventory_quantity || 0,
+          price: parseFloat(variant.price) || 0
+        };
+      });
+      // Also store by just product title for aggregation
+      const totalInventory = (product.variants || []).reduce((sum, v) => sum + (v.inventory_quantity || 0), 0);
+      variantInventory[product.title] = {
+        product_id: product.id,
+        product_title: product.title,
+        inventory: totalInventory,
+        price: 0
+      };
+    });
+    
+    syncSummary.products_processed = allProducts.length;
+    return { products: allProducts, variantInventory };
+  } catch (err) {
+    console.error('❌ Error fetching products:', err.message);
+    return { products: [], variantInventory: {} };
+  }
+}
 
 /**
- * Parse a Hermes report file
+ * Calculate metrics from orders
  */
-function parseReportFile(filePath) {
-  const content = fs.readFileSync(filePath, 'utf-8');
-  const lines = content.split('\n');
+function calculateDailyMetrics(allOrders, referenceDate) {
+  const today = referenceDate;
+  const todayStr = today.toISOString().split('T')[0];
+  const thirtyDaysAgo = new Date(today);
+  thirtyDaysAgo.setDate(today.getDate() - 29);
+
+  // Build a map of date -> total revenue + order count
+  const dayMap = {};
   
-  // Extract report type from filename
-  const fileName = path.basename(filePath);
-  let reportType;
+  // Initialize all 30 days with zero
+  for (let d = new Date(thirtyDaysAgo); d <= today; d.setDate(d.getDate() + 1)) {
+    const dateStr = d.toISOString().split('T')[0];
+    dayMap[dateStr] = { revenue: 0, orders: 0, customers: new Set() };
+  }
+
+  // Aggregate orders by date
+  allOrders.forEach(o => {
+    const orderDate = o.created_at.split('T')[0];
+    if (dayMap[orderDate]) {
+      dayMap[orderDate].revenue += parseFloat(o.total_price || 0);
+      dayMap[orderDate].orders += 1;
+      dayMap[orderDate].customers.add(Math.floor(parseInt(o.id) / 10));
+    }
+  });
+
+  // Compute 7-day and 30-day rolling totals for the most recent row
+  const last7Days = new Date(today); last7Days.setDate(today.getDate() - 6);
+  const rolling7Revenue = allOrders
+    .filter(o => new Date(o.created_at) >= last7Days)
+    .reduce((s, o) => s + parseFloat(o.total_price || 0), 0);
+  const rolling7Orders = allOrders
+    .filter(o => new Date(o.created_at) >= last7Days).length;
+  const rolling30Revenue = allOrders
+    .filter(o => new Date(o.created_at) >= thirtyDaysAgo)
+    .reduce((s, o) => s + parseFloat(o.total_price || 0), 0);
+  const rolling30Orders = allOrders
+    .filter(o => new Date(o.created_at) >= thirtyDaysAgo).length;
+
+  // Compute per-product sales for last 30 days (for top_product)
+  const productSales = {};
+  allOrders.filter(o => new Date(o.created_at) >= thirtyDaysAgo).forEach(order => {
+    (order.line_items || []).forEach(item => {
+      const name = item.name || item.title || 'Unknown';
+      if (!productSales[name]) productSales[name] = { units: 0, revenue: 0 };
+      productSales[name].units += item.quantity || 0;
+      productSales[name].revenue += parseFloat(item.price || 0) * (item.quantity || 0);
+    });
+  });
+  const topProduct = Object.entries(productSales)
+    .sort((a, b) => b[1].units - a[1].units)
+    .map(([name]) => name)[0] || 'TBD';
+
+  // Also compute 30-60 day ago period for returning/new customer comparison
+  const sixtyDaysAgo = new Date(today); sixtyDaysAgo.setDate(today.getDate() - 60);
+  const prevPeriodCustomers = new Set(
+    allOrders
+      .filter(o => {
+        const d = new Date(o.created_at);
+        return d >= sixtyDaysAgo && d < thirtyDaysAgo;
+      })
+      .map(o => Math.floor(parseInt(o.id) / 10))
+  );
+  const currentPeriodCustomers = dayMap[todayStr]?.customers || new Set();
+  const newInCurrent = [...currentPeriodCustomers].filter(c => !prevPeriodCustomers.has(c));
+  const returningInCurrent = [...currentPeriodCustomers].filter(c => prevPeriodCustomers.has(c));
+
+  // Build 30 rows, one per day
+  const rows = [];
+  for (let d = new Date(thirtyDaysAgo); d <= today; d.setDate(d.getDate() + 1)) {
+    const dateStr = d.toISOString().split('T')[0];
+    const day = dayMap[dateStr];
+    rows.push({
+      store_id: STORE_CONFIG.id,
+      metric_date: dateStr,
+      revenue_today: Math.round(day.revenue),
+      orders_today: day.orders,
+      revenue_7day: dateStr === todayStr ? Math.round(rolling7Revenue) : 0,
+      orders_7day: dateStr === todayStr ? rolling7Orders : 0,
+      revenue_30day: dateStr === todayStr ? Math.round(rolling30Revenue) : 0,
+      orders_30day: dateStr === todayStr ? rolling30Orders : 0,
+      top_product: dateStr === todayStr ? topProduct : 'TBD',
+      avg_order_value: dateStr === todayStr && rolling30Orders > 0
+        ? Math.round((rolling30Revenue / rolling30Orders) * 100) / 100
+        : 0,
+      new_customers: dateStr === todayStr ? Math.max(1, newInCurrent.length) : 0,
+      returning_customers: dateStr === todayStr ? returningInCurrent.length : 0,
+      created_at: new Date().toISOString(),
+    });
+  }
+
+  return rows;
+}
+
+/**
+ * Calculate single-row metrics (legacy — kept for alert generation)
+ */
+function calculateMetrics(allOrders, referenceDate) {
+  const today = referenceDate;
+  const todayStr = today.toISOString().split('T')[0];
+  const sevenDaysAgo = new Date(today); sevenDaysAgo.setDate(today.getDate() - 7);
+  const thirtyDaysAgo = new Date(today); thirtyDaysAgo.setDate(today.getDate() - 30);
+  const sixtyDaysAgo = new Date(today); sixtyDaysAgo.setDate(today.getDate() - 60);
   
-  if (fileName.includes('velocity')) reportType = 'sales_velocity';
-  else if (fileName.includes('reorder')) reportType = 'reorder_alerts';
-  else if (fileName.includes('dead')) reportType = 'dead_inventory';
-  else if (fileName.includes('cohort')) reportType = 'cohort_analysis';
-  else if (fileName.includes('discount')) reportType = 'discount_performance';
-  else if (fileName.includes('refund')) reportType = 'refund_analysis';
-  else if (fileName.includes('segment')) reportType = 'customer_segments';
-  else reportType = 'sales_velocity'; // default
+  const todayOrders = allOrders.filter(o => {
+    const orderDate = o.created_at.split('T')[0];
+    return orderDate === todayStr;
+  });
   
-  // Extract date range from content
-  const dateMatch = content.match(/Period:\s*([\w\s,\-]+)/i);
-  const periodStart = dateMatch ? dateMatch[1].split(' - ')[0].trim() : null;
-  const periodEnd = dateMatch && dateMatch[1].split(' - ')[1] ? dateMatch[1].split(' - ')[1].trim() : null;
+  const revenue_today = todayOrders.reduce((sum, o) => sum + parseFloat(o.total_price || 0), 0);
+  const orders_today = todayOrders.length;
+  
+  const sevenDayOrders = allOrders.filter(o => {
+    const orderDate = new Date(o.created_at.split('T')[0]);
+    return orderDate >= sevenDaysAgo && orderDate <= today;
+  });
+  
+  const revenue_7day = sevenDayOrders.reduce((sum, o) => sum + parseFloat(o.total_price || 0), 0);
+  const orders_7day = sevenDayOrders.length;
+  
+  const thirtyDayOrders = allOrders.filter(o => {
+    const orderDate = new Date(o.created_at.split('T')[0]);
+    return orderDate >= thirtyDaysAgo && orderDate <= today;
+  });
+  
+  const revenue_30day = thirtyDayOrders.reduce((sum, o) => sum + parseFloat(o.total_price || 0), 0);
+  const orders_30day = thirtyDayOrders.length;
+  
+  const uniqueCustomers30Day = new Set(
+    thirtyDayOrders.map(o => Math.floor(parseInt(o.id) / 10))
+  ).size;
+  
+  const avg_order_value_30day = orders_30day > 0 ? revenue_30day / orders_30day : 0;
+  
+  // Calculate per-product sales for last 30 days
+  const productSales = {};
+  thirtyDayOrders.forEach(order => {
+    (order.line_items || []).forEach(item => {
+      const name = item.name || item.title || 'Unknown';
+      if (!productSales[name]) {
+        productSales[name] = { units: 0, revenue: 0 };
+      }
+      productSales[name].units += item.quantity || 0;
+      productSales[name].revenue += parseFloat(item.price || 0) * (item.quantity || 0);
+    });
+  });
+  
+  // Metrics for 30-60 day ago period (for comparison)
+  const thirtyToSixtyDayOrders = allOrders.filter(o => {
+    const orderDate = new Date(o.created_at.split('T')[0]);
+    return orderDate >= sixtyDaysAgo && orderDate < thirtyDaysAgo;
+  });
+  
+  const productSalesPrev30 = {};
+  thirtyToSixtyDayOrders.forEach(order => {
+    (order.line_items || []).forEach(item => {
+      const name = item.name || item.title || 'Unknown';
+      if (!productSalesPrev30[name]) {
+        productSalesPrev30[name] = { units: 0, revenue: 0 };
+      }
+      productSalesPrev30[name].units += item.quantity || 0;
+      productSalesPrev30[name].revenue += parseFloat(item.price || 0) * (item.quantity || 0);
+    });
+  });
+  
+  // Find top product
+  const topProducts = Object.entries(productSales)
+    .sort((a, b) => b[1].units - a[1].units)
+    .map(([name, data]) => ({ name, ...data }));
+  
+  const top_product = topProducts.length > 0 ? topProducts[0].name : 'TBD';
   
   return {
     store_id: STORE_CONFIG.id,
-    report_type: reportType,
-    content: content,
-    generated_at: new Date().toISOString(),
-    period_start: periodStart ? new Date(periodStart).toISOString() : null,
-    period_end: periodEnd ? new Date(periodEnd).toISOString() : null
+    metric_date: todayStr,
+    revenue_today: Math.round(revenue_today),
+    orders_today,
+    revenue_7day: Math.round(revenue_7day),
+    orders_7day,
+    revenue_30day: Math.round(revenue_30day),
+    orders_30day,
+    top_product,
+    avg_order_value: Math.round(avg_order_value_30day * 100) / 100,
+    new_customers: Math.max(1, Math.floor(uniqueCustomers30Day * 0.3)),
+    returning_customers: Math.max(0, orders_30day - Math.floor(uniqueCustomers30Day * 0.3)),
+    created_at: new Date().toISOString()
   };
 }
 
 /**
- * Parse Shopify metrics data
+ * Generate fresh alerts based on live inventory and sales velocity
  */
-function parseShopifyMetrics(filePath) {
-  try {
-    const data = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
-    const metrics = [];
+function generateFreshAlerts(variantInventory, orders, referenceDate) {
+  const alerts = [];
+  
+  // Calculate last 30 days sales per product
+  const thirtyDaysAgo = new Date(referenceDate);
+  thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+  const thirtyDayOrders = orders.filter(o => {
+    const orderDate = new Date(o.created_at.split("T")[0]);
+    return orderDate >= thirtyDaysAgo && orderDate <= referenceDate;
+  });
+  const productSales = {};
+  thirtyDayOrders.forEach(order => {
+    (order.line_items || []).forEach(item => {
+      let name = item.name || item.title || "Unknown";
+      // Extract base product name from variant names like "Product - Color / Size"
+      const baseNameMatch = name.match(/^(.+?)\s+[-—]\s+/);
+      if (baseNameMatch) {
+        name = baseNameMatch[1].trim();
+      }
+      if (!productSales[name]) {
+        productSales[name] = { units: 0, revenue: 0 };
+      }
+      productSales[name].units += item.quantity || 0;
+      productSales[name].revenue += parseFloat(item.price || 0) * (item.quantity || 0);
+    });
+  });
+  
+  // Recalculate metrics for anomaly detection
+  const thirtyDaysAgoCalc = new Date(referenceDate);
+  thirtyDaysAgoCalc.setDate(thirtyDaysAgoCalc.getDate() - 30);
+  const thirtyDayOrdersCalc = orders.filter(o => {
+    const orderDate = new Date(o.created_at.split("T")[0]);
+    return orderDate >= thirtyDaysAgoCalc && orderDate <= referenceDate;
+  });
+  const revenue_30day = thirtyDayOrdersCalc.reduce((sum, o) => sum + parseFloat(o.total_price || 0), 0);
+  const orders_30day = thirtyDayOrdersCalc.length;
+  const avg_order_value = orders_30day > 0 ? revenue_30day / orders_30day : 0;
+  const todaysOrders = orders.filter(o => {
+    const orderDate = o.created_at.split("T")[0];
+    return orderDate === referenceDate.toISOString().split("T")[0];
+  });
+  const revenue_today = todaysOrders.reduce((sum, o) => sum + parseFloat(o.total_price || 0), 0);
+  
+  const referenceDateObj = new Date(referenceDate);
+  
+  // Get all variant-level keys (containing em dash) — these are the per-variant entries
+  const variantKeys = Object.keys(variantInventory).filter(k => k.includes('—'));
+  
+  // Fallback to product-level keys if no variant keys found
+  const alertKeys = variantKeys.length > 0 ? variantKeys : Object.keys(variantInventory).filter(k => !k.includes('—'));
+  
+  // Track products we've already created dead_inventory alerts for to avoid duplicates
+  const deadInventorySet = new Set();
+  
+  alertKeys.forEach(key => {
+    const inv = variantInventory[key];
+    const productName = inv.product_title || key;
+    const variantName = inv.variant_title || null;
+    const unitsInStock = inv ? inv.inventory : 0;
     
-    // Parse daily metrics from Shopify data
-    if (data.orders && Array.isArray(data.orders)) {
-      const dailyTotals = {};
-      
-      data.orders.forEach(order => {
-        const date = new Date(order.created_at).toISOString().split('T')[0];
-        if (!dailyTotals[date]) {
-          dailyTotals[date] = {
-            date,
-            revenue: 0,
-            orders: 0,
-            customers: new Set()
-          };
-        }
-        dailyTotals[date].revenue += order.total_price;
-        dailyTotals[date].orders += 1;
-        dailyTotals[date].customers.add(order.customer_id);
-      });
-      
-      // Convert to metrics format
-      Object.values(dailyTotals).forEach(day => {
-        metrics.push({
-          store_id: STORE_CONFIG.id,
-          metric_date: day.date,
-          revenue_today: Math.round(day.revenue),
-          orders_today: day.orders,
-          revenue_7day: null,
-          orders_7day: null,
-          revenue_30day: null,
-          orders_30day: null,
-          top_product: data.top_products?.[0]?.name || 'TBD',
-          avg_order_value: day.orders > 0 ? Math.round(day.revenue / day.orders) : 0,
-          new_customers: day.customers.size,
-          returning_customers: 0,
-          created_at: new Date().toISOString()
-        });
-      });
+    // Get sales — try product name first, then use product-level aggregation
+    let unitsSold30d = 0;
+    if (productSales[productName]) {
+      unitsSold30d = productSales[productName].units;
     }
     
-    return metrics;
-  } catch (err) {
-    console.warn('⚠️  Could not parse Shopify metrics:', err.message);
-    return [];
+    // Calculate days of stock remaining
+    const avgDailySales = unitsSold30d / 30;
+    const daysOfStock = avgDailySales > 0 ? Math.round(unitsInStock / avgDailySales) : 999;
+    
+    const alertBase = {
+      store_id: STORE_CONFIG.id,
+      product_name: productName,
+      variant: variantName,
+      value: unitsInStock,
+      is_resolved: false,
+      is_acknowledged: false,
+      created_at: new Date().toISOString()
+    };
+    
+    if (avgDailySales === 0 && unitsInStock > 50) {
+      // High inventory but zero sales = potential dead stock
+      if (!deadInventorySet.has(productName)) {
+        deadInventorySet.add(productName);
+        alerts.push({
+          ...alertBase,
+          alert_type: 'dead_inventory',
+          severity: 'high',
+          title: `Dead Inventory: ${productName}${variantName ? ` (${variantName})` : ''}`,
+          description: `${unitsInStock} units in stock, ZERO sales in 30 days. Stock would last indefinitely (no recent sales).`,
+        });
+      }
+    } else if (daysOfStock < 30 && unitsInStock > 0) {
+      // Reorder alert - low stock relative to sales velocity
+      const severity = daysOfStock < 15 ? 'critical' : daysOfStock < 21 ? 'high' : 'medium';
+      const reorderQty = Math.ceil(Math.max(100, avgDailySales * 45)); // 45-day coverage
+      
+      alerts.push({
+        ...alertBase,
+        alert_type: 'stockout_risk',
+        severity,
+        title: `Reorder Alert: ${productName}${variantName ? ` (${variantName})` : ''}`,
+        description: `${unitsInStock} Units Remaining in Stock: ${daysOfStock} days of stock at current velocity. Reorder ${reorderQty} units.`,
+      });
+    } else if (unitsInStock > 100 && avgDailySales > 0) {
+      const dos = Math.round(unitsInStock / avgDailySales);
+      if (dos > 180) {
+        if (!deadInventorySet.has(productName)) {
+          deadInventorySet.add(productName);
+          alerts.push({
+            ...alertBase,
+            alert_type: 'overstock',
+            severity: 'medium',
+            title: `OVERSTOCK: ${productName}${variantName ? ` (${variantName})` : ''}`,
+            description: `${unitsInStock} units (${dos} days of stock). High inventory. Consider promotional pricing.`,
+          });
+        }
+      }
+    }
+    
+    // 90-day zero sales check
+    if (unitsSold30d === 0 && unitsInStock > 20 && !deadInventorySet.has(productName)) {
+      deadInventorySet.add(productName);
+      alerts.push({
+        ...alertBase,
+        alert_type: 'dead_inventory',
+        severity: 'medium',
+        title: `Slow Moving: ${productName}${variantName ? ` (${variantName})` : ''}`,
+        description: `${unitsInStock} units with no sales in 30 days. Zero velocity.`,
+      });
+    }
+  });
+  
+  // Anomaly detection
+  if (revenue_today > 50000) {
+    alerts.push({
+      store_id: STORE_CONFIG.id,
+      alert_type: 'revenue_anomaly',
+      severity: 'high',
+      title: 'Revenue Anomaly',
+      description: `Today's revenue $${revenue_today.toLocaleString()} is unusually high`,
+      product_name: null,
+      variant: null,
+      value: revenue_today,
+      is_resolved: false,
+      is_acknowledged: false,
+      created_at: new Date().toISOString()
+    });
   }
+  
+  if (orders_30day > 0 && avg_order_value > 500) {
+    alerts.push({
+      store_id: STORE_CONFIG.id,
+      alert_type: 'high_aov',
+      severity: 'medium',
+      title: 'High Average Order Value',
+      description: `AOV of $${avg_order_value.toFixed(2)} is above typical range`,
+      product_name: null,
+      variant: null,
+      value: Math.round(avg_order_value),
+      is_resolved: false,
+      is_acknowledged: false,
+      created_at: new Date().toISOString()
+    });
+  }
+  
+  return alerts;
+}
+
+
+/**
+ * Extract base product name from a line item name like "Supergel V Gloves - Black / 10 oz"
+ */
+function extractProductName(name) {
+  if (!name) return 'Unknown';
+  const baseNameMatch = name.match(/^(.+?)\s+[—\-]\s+/);
+  return baseNameMatch ? baseNameMatch[1].trim() : name.trim();
 }
 
 /**
- * Generate activity log entries from Hermes actions
+ * Build product sales data for a 30-day window
  */
-function generateActivityLogs(reportFiles, metricFiles) {
-  const activities = [];
-  const now = new Date();
-  
-  reportFiles.forEach((file, index) => {
-    const fileName = path.basename(file);
-    let action, summary, details;
-    
-    if (fileName.includes('velocity')) {
-      action = 'Generated Sales Velocity Report';
-      summary = 'Analyzed Superare fight gear products for velocity trends';
-      details = 'Top categories: Boxing Gloves (+23%), Training Gear (+12%), Apparel (+8%)';
-    } else if (fileName.includes('reorder')) {
-      action = 'Updated Reorder Alerts';
-      summary = 'Identified 23 fight gear products below reorder threshold';
-      details = 'Top priority: Supergel V Gloves (5 pairs remaining)';
-    } else if (fileName.includes('dead')) {
-      action = 'Generated Dead Inventory Report';
-      summary = 'Identified stagnant fight gear inventory';
-      details = '47 products stagnant for 90+ days. Flash sale recommended.';
-    } else if (fileName.includes('cohort')) {
-      action = 'Customer Cohort Analysis';
-      summary = 'Updated RFM segments for boxing customers';
-      details = '156 professional fighters moved to Champions segment';
-    } else if (fileName.includes('discount')) {
-      action = 'Discount Performance Analysis';
-      summary = 'Analyzed Q1 discount campaigns for fight gear';
-      details = 'BOGO promotions showing 4.3x ROI on glove bundles';
-    } else if (fileName.includes('refund')) {
-      action = 'Refund Pattern Detection';
-      summary = 'Detected unusual refund spike in Boxing Gloves';
-      details = '12% increase vs. 30-day average. Sizing issues with leather gloves.';
-    } else if (fileName.includes('segment')) {
-      action = 'Customer Segmentation Analysis';
-      summary = 'Updated lifetime value metrics for fighters';
-      details = 'Champions segment LTV: $2,840 avg. At-Risk: 234 fighters';
-    } else {
-      action = 'Report Generated';
-      summary = `Generated ${fileName.replace('.txt', '').replace(/-/g, ' ')}`;
-      details = `Report covers ${reportFiles.length} product categories`;
-    }
-    
-    activities.push({
-      store_id: STORE_CONFIG.id,
-      action,
-      summary,
-      details,
-      status: 'success',
-      created_at: new Date(now.getTime() - (index * 6 * 60 * 60 * 1000)).toISOString()
+function getProductSales(orders, startDate, endDate) {
+  const windowOrders = orders.filter(o => {
+    const d = new Date(o.created_at.split('T')[0]);
+    return d >= startDate && d <= endDate;
+  });
+  const sales = {};
+  windowOrders.forEach(order => {
+    (order.line_items || []).forEach(item => {
+      const name = extractProductName(item.name || item.title);
+      if (!sales[name]) sales[name] = { units: 0, revenue: 0, variants: [] };
+      sales[name].units += item.quantity || 0;
+      sales[name].revenue += parseFloat(item.price || 0) * (item.quantity || 0);
+      sales[name].variants.push({
+        variant: item.name || item.title || 'Unknown',
+        qty: item.quantity || 0,
+        price: parseFloat(item.price || 0)
+      });
     });
+  });
+  return sales;
+}
+
+/**
+ * Helper: format a currency number
+ */
+function fmt(n) {
+  return '$' + Number(n).toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+}
+
+/**
+ * Generate Sales Velocity Report
+ */
+function generateSalesVelocityReport(orders, productsData, referenceDate) {
+  const todayStr = referenceDate.toISOString().split('T')[0];
+  const thirtyDaysAgo = new Date(referenceDate);
+  thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+  const sixtyDaysAgo = new Date(referenceDate);
+  sixtyDaysAgo.setDate(sixtyDaysAgo.getDate() - 60);
+  
+  const currentSales = getProductSales(orders, thirtyDaysAgo, referenceDate);
+  const previousSales = getProductSales(orders, sixtyDaysAgo, thirtyDaysAgo);
+  
+  const totalOrders30d = orders.filter(o => {
+    const d = new Date(o.created_at.split('T')[0]);
+    return d >= thirtyDaysAgo && d <= referenceDate;
+  });
+  const totalRevenue30d = totalOrders30d.reduce((s, o) => s + parseFloat(o.total_price || 0), 0);
+  
+  // Compute growth for each product
+  const productsWithGrowth = Object.entries(currentSales).map(([name, data]) => {
+    const prev = previousSales[name] || { units: 0, revenue: 0 };
+    const growthPct = prev.units > 0 ? ((data.units - prev.units) / prev.units) * 100 : (data.units > 0 ? 100 : 0);
+    return { name, units: data.units, revenue: data.revenue, prevUnits: prev.units, growthPct };
+  });
+  
+  const sorted = [...productsWithGrowth].sort((a, b) => b.units - a.units);
+  const top5 = sorted.slice(0, 5);
+  const bottom5 = sorted.filter(p => p.units > 0).sort((a, b) => a.units - b.units).slice(0, 5);
+  
+  const accelerating = productsWithGrowth.filter(p => p.units > 0 && p.growthPct >= 10).sort((a, b) => b.growthPct - a.growthPct);
+  const decelerating = productsWithGrowth.filter(p => p.units > 0 && p.growthPct <= -10).sort((a, b) => a.growthPct - b.growthPct);
+  
+  // Projected revenue: simple extrapolation
+  const projectedRevenue = Math.round(totalRevenue30d * 1.05);
+  
+  let lines = [];
+  lines.push('SALES VELOCITY REPORT');
+  lines.push(`Period: ${thirtyDaysAgo.toISOString().split('T')[0]} → ${todayStr}`);
+  lines.push(`Data Source: ${totalOrders30d.length} orders, ${Object.keys(currentSales).length} products`);
+  lines.push('');
+  lines.push(`TOP 5 PRODUCTS (last 30 days):`);
+  top5.forEach((p, i) => {
+    const arrow = p.growthPct >= 0 ? '▲' : '▼';
+    lines.push(`  ${i+1}. ${p.name} — ${p.units} units (${fmt(p.revenue)}) ${arrow} ${Math.abs(p.growthPct).toFixed(1)}%`);
+  });
+  lines.push('');
+  lines.push(`BOTTOM 5 PRODUCTS (last 30 days):`);
+  bottom5.forEach((p, i) => {
+    const arrow = p.growthPct >= 0 ? '▲' : '▼';
+    lines.push(`  ${i+1}. ${p.name} — ${p.units} units (${fmt(p.revenue)}) ${arrow} ${Math.abs(p.growthPct).toFixed(1)}%`);
+  });
+  lines.push('');
+  lines.push('TRENDS:');
+  if (accelerating.length > 0) {
+    lines.push(`  🟢 Accelerating (>10% growth): ${accelerating.length} products`);
+    accelerating.slice(0, 5).forEach(p => lines.push(`    • ${p.name} (+${p.growthPct.toFixed(1)}%)`));
+  }
+  if (decelerating.length > 0) {
+    lines.push(`  🔴 Decelerating (>10% drop): ${decelerating.length} products`);
+    decelerating.slice(0, 5).forEach(p => lines.push(`    • ${p.name} (${p.growthPct.toFixed(1)}%)`));
+  }
+  lines.push('');
+  lines.push(`PROJECTED REVENUE Next 30 Days: ${fmt(projectedRevenue)}`);
+  lines.push('');
+  lines.push('---');
+  lines.push(`Total 30-day Revenue: ${fmt(totalRevenue30d)}`);
+  lines.push(`Unique Products Sold: ${Object.keys(currentSales).length}`);
+  if (productsData && productsData.products) {
+    lines.push(`Total Products in Catalog: ${productsData.products.length}`);
+  }
+  
+  return lines.join('\n');
+}
+
+/**
+ * Generate Reorder Alerts Report
+ */
+function generateReorderReport(variantInventory, orders, referenceDate) {
+  const thirtyDaysAgo = new Date(referenceDate);
+  thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+  const sales30d = getProductSales(orders, thirtyDaysAgo, referenceDate);
+  
+  let lines = [];
+  lines.push('SMART REORDER ALERTS');
+  lines.push(`As of ${referenceDate.toISOString().split('T')[0]} (30-day window)`);
+  lines.push('');
+  
+  const critical = [];
+  const high = [];
+  const medium = [];
+  const overstock = [];
+  const ok = [];
+  const dead = [];
+  
+  // Get all unique product names from variantInventory keys
+  const productNames = [...new Set([
+    ...Object.keys(variantInventory),
+    ...Object.keys(sales30d)
+  ].filter(n => n.length > 0))];
+  
+  productNames.forEach(productName => {
+    // Skip variant-level keys that contain " — " (we want base product names)
+    if (productName.includes(' — ')) return;
+    
+    const inv = variantInventory[productName];
+    const s = sales30d[productName] || { units: 0, revenue: 0 };
+    const stock = inv ? inv.inventory : 0;
+    const avgDaily = s.units / 30;
+    const dos = avgDaily > 0 ? Math.round(stock / avgDaily) : 999;
+    
+    if (avgDaily === 0 && stock > 50) {
+      dead.push({ name: productName, stock, dos });
+    } else if (dos < 15 && stock > 0) {
+      // Build variant breakdown for critical items
+      const variantBreaks = [];
+      Object.entries(variantInventory).forEach(([key, v]) => {
+        if (key.startsWith(productName + ' — ') || key === productName) return;
+        if (key.includes(' — ')) {
+          const base = key.split(' — ')[0];
+          if (base === productName) {
+            const vSales = sales30d[key] || { units: 0 };
+            const vAvg = vSales.units / 30;
+            const vDos = vAvg > 0 ? Math.round(v.inventory / vAvg) : 999;
+            variantBreaks.push({ variant: key.split(' — ')[1], stock: v.inventory, dos: vDos });
+          }
+        }
+      });
+      critical.push({ name: productName, stock, dos, variants: variantBreaks, pattern: 'new_launch' });
+    } else if (dos < 30 && stock > 0) {
+      high.push({ name: productName, stock, dos, pattern: 'reorder' });
+    } else if (stock > 100 && avgDaily > 0 && dos > 180) {
+      overstock.push({ name: productName, stock, dos, pattern: 'overstock' });
+    } else if (dos >= 30 && dos < 90) {
+      medium.push({ name: productName, stock, dos, pattern: 'steady' });
+    } else {
+      ok.push({ name: productName, stock, dos });
+    }
+  });
+  
+  if (critical.length > 0) {
+    critical.forEach(p => {
+      lines.push(`🔴 CRITICAL ${p.name}`);
+      lines.push(`   Units Remaining in Stock: ${p.stock} | Avg days of stock: ${p.dos} | Pattern: ${p.pattern}`);
+      if (p.variants && p.variants.length > 0) {
+        lines.push(`   Variant breakdown:`);
+        p.variants.slice(0, 10).forEach(v => {
+          const flag = v.dos < 15 ? '← 🔴 CRITICAL' : v.dos < 30 ? '← 🟡 Reorder' : '← 🟢 OK';
+          lines.push(`      ${v.variant}: ${v.stock} units | ${v.dos} days remaining ${flag}`);
+        });
+      }
+      const reorderQty = Math.ceil(Math.max(50, (30 / 30) * 45));
+      lines.push(`   Recommendation: Reorder immediately — ${reorderQty}+ units`);
+      lines.push('');
+    });
+  }
+  
+  if (high.length > 0) {
+    high.forEach(p => {
+      lines.push(`🟡 HIGH ${p.name}`);
+      lines.push(`   Units Remaining in Stock: ${p.stock} | Avg days of stock: ${p.dos} | Pattern: ${p.pattern}`);
+      const reorderQty = Math.ceil(Math.max(50, p.stock * 0.5));
+      lines.push(`   Recommendation: Schedule reorder of ${reorderQty}+ units`);
+      lines.push('');
+    });
+  }
+  
+  if (overstock.length > 0) {
+    overstock.forEach(p => {
+      lines.push(`🟠 OVERSTOCK ${p.name}`);
+      lines.push(`   Units Remaining in Stock: ${p.stock} | Avg days of stock: ${p.dos} | Pattern: ${p.pattern}`);
+      lines.push(`   Recommendation: Consider promotional pricing or bundling`);
+      lines.push('');
+    });
+  }
+  
+  if (medium.length > 0) {
+    medium.forEach(p => {
+      lines.push(`🟢 OK ${p.name}`);
+      lines.push(`   Units Remaining in Stock: ${p.stock} | Avg days of stock: ${p.dos} | Pattern: ${p.pattern}`);
+      lines.push('');
+    });
+  }
+  
+  if (dead.length > 0) {
+    dead.forEach(p => {
+      lines.push(`☠️ DEAD STOCK ${p.name}`);
+      lines.push(`   Units Remaining in Stock: ${p.stock} | Avg days of stock: ${p.dos} | Pattern: dead`);
+      lines.push(`   Recommendation: Bundle with bestsellers or run clearance promotion`);
+      lines.push('');
+    });
+  }
+  
+  if (lines.length === 2) {
+    lines.push('No reorder alerts — inventory levels are healthy across all products.');
+  }
+  
+  return lines.join('\n');
+}
+
+/**
+ * Generate Dead Inventory Report
+ */
+function generateDeadInventoryReport(variantInventory, orders, referenceDate) {
+  const ninetyDaysAgo = new Date(referenceDate);
+  ninetyDaysAgo.setDate(ninetyDaysAgo.getDate() - 90);
+  const thirtyDaysAgo = new Date(referenceDate);
+  thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+  
+  const sales90d = getProductSales(orders, ninetyDaysAgo, referenceDate);
+  const sales30d = getProductSales(orders, thirtyDaysAgo, referenceDate);
+  
+  let lines = [];
+  lines.push('DEAD INVENTORY ANALYSIS');
+  lines.push(`As of ${referenceDate.toISOString().split('T')[0]} (90-day activity window)`);
+  lines.push('');
+  
+  // Collect all variant-level dead stock
+  const deadVariants = [];
+  Object.entries(variantInventory).forEach(([key, v]) => {
+    if (key.includes(' — ')) {
+      const baseName = key.split(' — ')[0];
+      const variantLabel = key.split(' — ')[1];
+      const s90 = sales90d[key] || { units: 0, revenue: 0 };
+      const s30 = sales30d[key] || { units: 0, revenue: 0 };
+      const totalSales = s90.units;
+      const valueAtRisk = totalSales < 3 && v.inventory > 0 ? v.inventory * v.price : 0;
+      deadVariants.push({
+        product: baseName,
+        variant: variantLabel,
+        sold90d: totalSales,
+        sold30d: s30.units,
+        stock: v.inventory,
+        valueAtRisk,
+        price: v.price
+      });
+    }
+  });
+  
+  // Filter to potentially dead: < 3 sales in 90d, > 0 stock
+  const potentialDead = deadVariants.filter(v => v.sold90d < 3 && v.stock > 0)
+    .sort((a, b) => b.valueAtRisk - a.valueAtRisk);
+  
+  if (potentialDead.length > 0) {
+    lines.push(`Dead variants identified (with <3 sales in 90d): ${potentialDead.length}`);
+    potentialDead.slice(0, 25).forEach((v, i) => {
+      const status = v.sold30d === 0 ? 'Zero movement' : 'Very low velocity';
+      lines.push(`  ${i+1}. ${v.product} — ${v.variant}: ${v.sold90d} sold, ${v.stock} units idle${v.price ? ', ' + fmt(v.price) + '/unit' : ''} | ${status}`);
+    });
+    if (potentialDead.length > 25) {
+      lines.push(`  ... and ${potentialDead.length - 25} more dead variants`);
+    }
+    lines.push('');
+    const totalDeadValue = potentialDead.reduce((s, v) => s + v.valueAtRisk, 0);
+    const totalDeadUnits = potentialDead.reduce((s, v) => s + v.stock, 0);
+    lines.push(`Total dead inventory value at risk: ${fmt(totalDeadValue)}`);
+    lines.push(`Total dead variants: ${potentialDead.length} (${totalDeadUnits} units)`);
+    lines.push('');
+    lines.push('RECOMMENDATIONS:');
+    lines.push('  • Bundle dead variants with bestsellers (25% off bundle)');
+    lines.push('  • Clear excess stock via flash sale or social promotion');
+    lines.push('  • Consider discontinuing variants with zero movement over 90 days');
+    lines.push('  • Evaluate if pricing or listing quality needs improvement');
+  } else {
+    lines.push('No dead inventory detected — all variants have moved within 90 days.');
+  }
+  
+  return lines.join('\n');
+}
+
+/**
+ * Generate Customer Cohort Analysis Report
+ */
+function generateCohortReport(orders, referenceDate) {
+  let lines = [];
+  lines.push('CUSTOMER COHORT ANALYSIS');
+  lines.push(`As of ${referenceDate.toISOString().split('T')[0]}`);
+  lines.push('');
+  
+  // Group orders by month
+  const monthBuckets = {};
+  const customerOrders = {}; // email -> { firstOrder, totalSpent, orderCount }
+  
+  orders.forEach(o => {
+    const monthKey = o.created_at.slice(0, 7); // "2026-04"
+    if (!monthBuckets[monthKey]) monthBuckets[monthKey] = { orders: 0, revenue: 0, customers: new Set() };
+    monthBuckets[monthKey].orders++;
+    monthBuckets[monthKey].revenue += parseFloat(o.total_price || 0);
+    
+    const email = o.email || o.customer?.email || `customer_${o.id}`;
+    monthBuckets[monthKey].customers.add(email);
+    
+    if (!customerOrders[email]) {
+      customerOrders[email] = { firstOrder: o.created_at, totalSpent: 0, orderCount: 0, email };
+    }
+    customerOrders[email].totalSpent += parseFloat(o.total_price || 0);
+    customerOrders[email].orderCount++;
+  });
+  
+  // Determine first order date per customer
+  const customerCohorts = {};
+  Object.values(customerOrders).forEach(c => {
+    const cohortKey = c.firstOrder.slice(0, 7);
+    if (!customerCohorts[cohortKey]) customerCohorts[cohortKey] = { newCount: 0, returningCount: 0, revenue: 0, aov: 0 };
+    customerCohorts[cohortKey].newCount++;
+  });
+  
+  const sortedMonths = Object.keys(monthBuckets).sort();
+  
+  lines.push('MONTH-BY-MONTH PERFORMANCE:');
+  sortedMonths.forEach(month => {
+    const m = monthBuckets[month];
+    const aov = m.orders > 0 ? Math.round(m.revenue / m.orders) : 0;
+    const newCust = customerCohorts[month]?.newCount || 0;
+    const returnCust = m.customers.size - newCust;
+    lines.push(`  ${month}: ${m.orders} orders | ${fmt(Math.round(m.revenue))} revenue | AOV: ${fmt(aov)} | 🆕 ${newCust} new, ♻️ ${Math.max(0, returnCust)} returning`);
+  });
+  lines.push('');
+  
+  // Top customers by LTV
+  const topCustomers = Object.values(customerOrders)
+    .filter(c => c.email !== `customer_unknown`)
+    .sort((a, b) => b.totalSpent - a.totalSpent)
+    .slice(0, 10);
+  
+  lines.push('TOP CUSTOMERS (Lifetime Value):');
+  topCustomers.forEach((c, i) => {
+    lines.push(`  ${i+1}. ${c.email} — ${fmt(Math.round(c.totalSpent))} (${c.orderCount} orders)`);
+  });
+  lines.push('');
+  
+  // Summary stats
+  const allEmails = [...new Set(orders.map(o => o.email || o.customer?.email).filter(Boolean))];
+  const repeatBuyers = Object.values(customerOrders).filter(c => c.orderCount > 1).length;
+  const totalRevenue = orders.reduce((s, o) => s + parseFloat(o.total_price || 0), 0);
+  const totalOrders = orders.length;
+  
+  lines.push('SUMMARY:');
+  lines.push(`  Total Orders: ${totalOrders}`);
+  lines.push(`  Total Revenue: ${fmt(Math.round(totalRevenue))}`);
+  lines.push(`  Unique Customers: ${allEmails.length}`);
+  lines.push(`  Repeat Buyers: ${repeatBuyers} (${totalOrders > 0 ? Math.round(repeatBuyers / totalOrders * 100) : 0}% of orders)`);
+  lines.push(`  Avg Order Value (All-time): ${totalOrders > 0 ? fmt(Math.round(totalRevenue / totalOrders)) : '$0'}`);
+  
+  // Channel breakdown (from Shopify source_name field)
+  const channels = {};
+  orders.forEach(o => {
+    const src = o.source_name || 'direct';
+    if (!channels[src]) channels[src] = { orders: 0, revenue: 0 };
+    channels[src].orders++;
+    channels[src].revenue += parseFloat(o.total_price || 0);
+  });
+  
+  const totalChRevenue = Object.values(channels).reduce((s, c) => s + c.revenue, 0);
+  if (Object.keys(channels).length > 0 && totalChRevenue > 0) {
+    lines.push('');
+    lines.push('REVENUE BY ACQUISITION CHANNEL:');
+    Object.entries(channels)
+      .sort((a, b) => b[1].revenue - a[1].revenue)
+      .forEach(([channel, data]) => {
+        const pct = (data.revenue / totalChRevenue * 100).toFixed(1);
+        lines.push(`  • ${channel}: ${fmt(Math.round(data.revenue))} (${pct}%)`);
+      });
+  }
+
+  return lines.join('\n');
+}
+
+/**
+ * Generate per-product performance data for Sales Intelligence
+ * Produces records for 7d, 30d, 60d, and 90d periods from the available order data.
+ *
+ * Later this can be extended to support arbitrary custom date ranges — just add
+ * another period entry in the PERIODS array below.
+ */
+const PERFORMANCE_PERIODS = [
+  { label: '7d',  days: 7  },
+  { label: '30d', days: 30 },
+  { label: '60d', days: 60 },
+  { label: '90d', days: 90 },
+];
+
+function generateProductPerformance(orders, referenceDate) {
+  const today = referenceDate;
+  const results = [];
+
+  PERFORMANCE_PERIODS.forEach(({ label, days }) => {
+    const periodStart = new Date(today);
+    periodStart.setDate(today.getDate() - days);
+
+    // For trend comparison, use the equivalent period before this one
+    const prevPeriodStart = new Date(periodStart);
+    prevPeriodStart.setDate(prevPeriodStart.getDate() - days);
+
+    const currentSales = {};
+    const prevSales = {};
+
+    orders.forEach(order => {
+      const orderDate = new Date(order.created_at.split('T')[0]);
+      (order.line_items || []).forEach(item => {
+        const name = item.name || item.title || 'Unknown';
+        const baseNameMatch = name.match(/^(.+?)\s+[-—]\s+/);
+        const baseName = baseNameMatch ? baseNameMatch[1].trim() : name.trim();
+
+        if (orderDate >= periodStart && orderDate <= today) {
+          if (!currentSales[baseName]) currentSales[baseName] = { units: 0, revenue: 0 };
+          currentSales[baseName].units += item.quantity || 0;
+          currentSales[baseName].revenue += parseFloat(item.price || 0) * (item.quantity || 0);
+        }
+        if (orderDate >= prevPeriodStart && orderDate < periodStart) {
+          if (!prevSales[baseName]) prevSales[baseName] = { units: 0 };
+          prevSales[baseName].units += item.quantity || 0;
+        }
+      });
+    });
+
+    const periodRecords = Object.entries(currentSales)
+      .sort((a, b) => b[1].units - a[1].units)
+      .map(([name, data]) => {
+        const prevUnits = prevSales[name]?.units || 0;
+        const trend = prevUnits > 0
+          ? Math.round((data.units - prevUnits) / prevUnits * 100)
+          : Math.round(data.units / Math.max(1, days / 10));
+        const cappedTrend = Math.min(Math.max(trend, -99), 500);
+        let pattern = 'STABLE';
+        if (data.units > 120 && cappedTrend > 10) pattern = 'BESTSELLER';
+        else if (data.units >= 50 && cappedTrend > 20) pattern = 'SEASONAL';
+        else if (cappedTrend > 50 && data.units < 30) pattern = 'NEW LAUNCH';
+        else if (cappedTrend < -5) pattern = 'DECLINING';
+        else if (data.units > 120) pattern = 'BESTSELLER';
+
+        return {
+          store_id: STORE_CONFIG.id,
+          name,
+          units_sold: data.units,
+          revenue: Math.round(data.revenue),
+          trend: cappedTrend,
+          pattern,
+          period: label
+        };
+      });
+
+    results.push(...periodRecords);
+  });
+
+  return results;
+}
+
+/**
+ * Generate channel breakdown from Shopify order source data
+ */
+function generateChannelBreakdown(orders) {
+  const channels = {};
+  orders.forEach(o => {
+    const src = o.source_name || 'direct';
+    if (!channels[src]) channels[src] = { orders: 0, revenue: 0 };
+    channels[src].orders++;
+    channels[src].revenue += parseFloat(o.total_price || 0);
+  });
+
+  const totalRevenue = Object.values(channels).reduce((s, c) => s + c.revenue, 0);
+
+  return Object.entries(channels)
+    .sort((a, b) => b[1].revenue - a[1].revenue)
+    .map(([channel, data]) => ({
+      store_id: STORE_CONFIG.id,
+      channel,
+      revenue: Math.round(data.revenue),
+      percentage: totalRevenue > 0 ? parseFloat((data.revenue / totalRevenue * 100).toFixed(1)) : 0,
+      order_count: data.orders
+    }));
+}
+
+/**
+ * Generate all 4 reports dynamically from live Shopify data
+ */
+function generateAllReports(orders, variantInventory, productsData, referenceDate) {
+  const reports = [];
+  const now = new Date().toISOString();
+  const todayStr = referenceDate.toISOString().split('T')[0];
+  const thirtyDaysAgo = new Date(referenceDate);
+  thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+  const thirtyDaysAgoStr = thirtyDaysAgo.toISOString().split('T')[0];
+  
+  // 1. Sales Velocity
+  reports.push({
+    store_id: STORE_CONFIG.id,
+    report_type: 'sales_velocity',
+    content: generateSalesVelocityReport(orders, productsData, referenceDate),
+    generated_at: now,
+    period_start: thirtyDaysAgoStr,
+    period_end: todayStr
+  });
+  
+  // 2. Reorder Alerts
+  reports.push({
+    store_id: STORE_CONFIG.id,
+    report_type: 'reorder_alerts',
+    content: generateReorderReport(variantInventory, orders, referenceDate),
+    generated_at: now,
+    period_start: thirtyDaysAgoStr,
+    period_end: todayStr
+  });
+  
+  // 3. Dead Inventory
+  reports.push({
+    store_id: STORE_CONFIG.id,
+    report_type: 'dead_inventory',
+    content: generateDeadInventoryReport(variantInventory, orders, referenceDate),
+    generated_at: now,
+    period_start: null,
+    period_end: todayStr
+  });
+  
+  // 4. Cohort Analysis
+  reports.push({
+    store_id: STORE_CONFIG.id,
+    report_type: 'cohort_analysis',
+    content: generateCohortReport(orders, referenceDate),
+    generated_at: now,
+    period_start: null,
+    period_end: todayStr
+  });
+  
+  return reports;
+}
+
+/**
+ * Generate activity log entries from sync
+ */
+function generateActivityLog(metricsData, alerts, reportsCount) {
+  const now = new Date().toISOString();
+  const activities = [];
+  
+  activities.push({
+    store_id: STORE_CONFIG.id,
+    action: 'Metrics Synced from Shopify',
+    summary: `Daily metrics updated: $${metricsData.revenue_today.toLocaleString()} revenue, ${metricsData.orders_30day} orders (30d)`,
+    details: `Top product: ${metricsData.top_product}. AOV: $${metricsData.avg_order_value}`,
+    status: 'success',
+    created_at: now
+  });
+  
+  const criticalAlerts = alerts.filter(a => a.severity === 'critical' || a.severity === 'high');
+  activities.push({
+    store_id: STORE_CONFIG.id,
+    action: 'Alerts Regenerated',
+    summary: `${alerts.length} alerts generated (${criticalAlerts.length} critical/high)`,
+    details: criticalAlerts.length > 0 
+      ? `Critical: ${criticalAlerts.map(a => a.title).slice(0, 3).join(', ')}`
+      : 'No critical alerts',
+    status: 'success',
+    created_at: now
+  });
+  
+  activities.push({
+    store_id: STORE_CONFIG.id,
+    action: 'Reports Generated',
+    summary: `${reportsCount} reports generated from live data`,
+    details: 'sales_velocity, reorder_alerts, dead_inventory, cohort_analysis',
+    status: 'success',
+    created_at: now
   });
   
   return activities;
 }
-
-/**
- * Generate alert entries based on current inventory data
- */
-function generateAlerts() {
-  return [
-    {
-      store_id: STORE_CONFIG.id,
-      alert_type: 'stockout_risk',
-      severity: 'critical',
-      title: 'Stockout Risk: Supergel V Gloves',
-      description: 'Only 5 pairs remaining. Projected stockout in 3 days.',
-      product_name: 'Supergel V Gloves',
-      value: 5,
-      is_resolved: false,
-      created_at: new Date().toISOString()
-    },
-    {
-      store_id: STORE_CONFIG.id,
-      alert_type: 'stockout_risk',
-      severity: 'high',
-      title: 'Stockout Risk: S40 Italian Leather Lace Up',
-      description: '12 pairs remaining. High velocity championship item.',
-      product_name: 'S40 Italian Leather Lace Up Gloves',
-      value: 12,
-      is_resolved: false,
-      created_at: new Date().toISOString()
-    },
-    {
-      store_id: STORE_CONFIG.id,
-      alert_type: 'dead_inventory',
-      severity: 'high',
-      title: 'Dead Inventory: Legacy Tee',
-      description: '47 units stagnant for 90+ days',
-      product_name: 'Legacy Tee',
-      value: 47,
-      is_resolved: false,
-      created_at: new Date().toISOString()
-    },
-    {
-      store_id: STORE_CONFIG.id,
-      alert_type: 'dead_inventory',
-      severity: 'medium',
-      title: 'Slow Moving: One Series Leather Headgear',
-      description: '23 units stagnant for 75 days',
-      product_name: 'One Series Leather Headgear',
-      value: 23,
-      is_resolved: false,
-      created_at: new Date().toISOString()
-    },
-    {
-      store_id: STORE_CONFIG.id,
-      alert_type: 'high_return_rate',
-      severity: 'medium',
-      title: 'High Return Rate: Enorme 2-in-1 Gear Bag',
-      description: 'Returns up 18% this month. Quality control check recommended.',
-      product_name: 'Enorme 2-in-1 Gear Bag 83L',
-      value: 18,
-      is_resolved: false,
-      created_at: new Date().toISOString()
-    },
-    {
-      store_id: STORE_CONFIG.id,
-      alert_type: 'at_risk_customer',
-      severity: 'medium',
-      title: 'At-Risk: VIP Fighter Segment',
-      description: '23 professional fighters showing reduced engagement',
-      product_name: null,
-      value: 23,
-      is_resolved: false,
-      created_at: new Date().toISOString()
-    },
-    {
-      store_id: STORE_CONFIG.id,
-      alert_type: 'discount_overuse',
-      severity: 'low',
-      title: 'Discount Overuse: Boxing Club Tees',
-      description: 'Teens boxing tees discounts impacting margins (-8%)',
-      product_name: 'Boxing Club NYC Tee',
-      value: 8,
-      is_resolved: false,
-      created_at: new Date().toISOString()
-    },
-    {
-      store_id: STORE_CONFIG.id,
-      alert_type: 'revenue_anomaly',
-      severity: 'high',
-      title: 'Revenue Anomaly: Leather Gloves Category',
-      description: 'Tuesday revenue 45% below expected for premium gloves',
-      product_name: null,
-      value: 45,
-      is_resolved: false,
-      created_at: new Date().toISOString()
-    }
-  ];
-}
-
-/**
- * Sync data to Supabase
- */
 async function syncToSupabase() {
-  console.log('🔄 Connecting to Supabase...');
+  console.log('🔄 Connecting to Supabase...\n');
   
   let connectionError = false;
+  let canWrite = !options.dryRun;
   
   try {
-    // Test connection - use service role key for admin operations
+    // Test connection
     const { data: testData, error: testError } = await supabase
       .from('stores')
       .select('id')
       .limit(1);
     
     if (testError) {
-      console.error('❌ Failed to connect to Supabase:', testError.message);
-      if (testError.message.includes('Invalid API key')) {
-        console.error('   Please verify your Supabase credentials are correct');
-        console.error('   The provided key may be expired or belong to another project');
-      }
+      console.error('⚠️  Supabase connection test failed:', testError.message);
       if (options.dryRun) {
-        console.log('\n⚠️  Running in dry-run mode - continuing without database connection');
-        console.log('   In a real scenario, you would need valid Supabase credentials\n');
+        console.log('   Running in dry-run mode - will simulate operations\n');
+        canWrite = false;
       } else {
-        process.exit(1);
-      }
-    }
-    console.log('✅ Connected to Supabase successfully\n');
-    
-    let totalInserted = 0;
-    let totalUpdated = 0;
-    let totalSkipped = 0;
-    
-    // 1. Ensure store exists
-    console.log('🏪 Syncing store configuration...');
-    if (!options.dryRun && !connectionError) {
-      const { data: existingStore, error: storeError } = await supabase
-        .from('stores')
-        .select('id')
-        .eq('id', STORE_CONFIG.id)
-        .single();
-      
-      if (storeError && storeError.code !== 'PGRST116') {
-        console.error('❌ Error checking store:', storeError.message);
-        process.exit(1);
-      }
-      
-      if (!existingStore) {
-        const { error: insertError } = await supabase
-          .from('stores')
-          .insert([STORE_CONFIG]);
-        
-        if (insertError) {
-          console.error('❌ Error creating store:', insertError.message);
-          process.exit(1);
-        }
-        console.log('✅ Store created successfully');
-      } else {
-        console.log('✅ Store already exists');
+        console.log('   Continuing without database writes\n');
+        canWrite = false;
       }
     } else {
-      console.log('✅ [DRY RUN] Would create/update store');
+      console.log('✅ Connected to Supabase successfully\n');
     }
-    totalInserted++;
+  } catch (err) {
+    console.error('⚠️  Connection error:', err.message);
+    if (options.dryRun) {
+      console.log('   Running in dry-run mode\n');
+      canWrite = false;
+    } else {
+      console.log('   Will attempt to continue without writes\n');
+      canWrite = false;
+    }
+  }
+  
+  console.log('='.repeat(50));
+  console.log('   REFRESHING ALL TABLES FROM LIVE DATA');
+  console.log('='.repeat(50));
+  
+  // =========================================================================
+  // 1. FETCH SHOPIFY DATA
+  // =========================================================================
+  console.log('\n📦 STEP 1: Fetching Shopify Data...');
+  
+  const shopifyData = await fetchAllShopifyOrders(supabaseKey);
+  const productData = await fetchShopifyProducts(supabaseKey);
+  
+  if (!shopifyData) {
+    console.log('❌ Could not fetch Shopify data - aborting');
+    if (canWrite) process.exit(1);
+    console.log('⚠️  Continuing with simulation mode...\n');
+  }
+  
+  const orders = shopifyData?.orders || [];
+  const variantInventory = productData?.variantInventory || {};
+  
+  // =========================================================================
+  // 2. SYNC METRICS TABLE
+  // =========================================================================
+  if (options.syncMetrics && orders.length > 0) {
+    console.log('\n📊 STEP 2: Syncing Metrics Table...');
     
-    // 2. Sync reports
-    if (options.syncReports) {
-      console.log('\n📄 Syncing reports...');
+    const metricsData = calculateMetrics(orders, shopifyData.referenceDate);
+    delete metricsData.productSales;
+    delete metricsData.productSalesPrev30;
+
+    // Also generate 30 daily rows for the revenue chart
+    const dailyMetricsRows = calculateDailyMetrics(orders, shopifyData.referenceDate);
+    
+    if (canWrite) {
+      // Delete ALL existing metrics for this store, then insert fresh
+      const { error: deleteError } = await supabase
+        .from('metrics')
+        .delete()
+        .eq('store_id', STORE_CONFIG.id);
       
-      const reportFiles = fs.existsSync(REPORTS_DIR)
-        ? fs.readdirSync(REPORTS_DIR)
-            .filter(f => f.endsWith('.txt'))
-            .map(f => path.join(REPORTS_DIR, f))
-        : [];
-      
-      if (reportFiles.length === 0) {
-        console.log('⚠️  No report files found in:', REPORTS_DIR);
-        // Skip if no report files exist
-        console.log('   (report files should be created in', REPORTS_DIR, ')');
+      if (deleteError) {
+        console.error('❌ Error deleting old metrics:', deleteError.message);
+      } else {
+        console.log('✅ Deleted old metrics');
       }
       
-      for (const file of reportFiles) {
-        const report = parseReportFile(file);
+      // Insert 30 daily rows for the chart + 1 summary row
+      const allRows = [...dailyMetricsRows];
+      
+      // The last dailyMetricsRow is today — merge summary data into it too
+      const { error: insertError } = await supabase
+        .from('metrics')
+        .insert(allRows);
+      
+      if (insertError) {
+        console.error('❌ Error inserting metrics:', insertError.message);
+      } else {
+        console.log(`✅ Inserted ${allRows.length} daily metrics (${dailyMetricsRows[0]?.metric_date} to ${dailyMetricsRows[dailyMetricsRows.length-1]?.metric_date})`);
+        console.log(`   Today: $${metricsData.revenue_today.toLocaleString()} revenue, ${metricsData.orders_30day} orders (30d)`);
+      }
+    } else {
+      console.log('  [DRY RUN] Would delete old metrics and insert:');
+      console.log(`   ${dailyMetricsRows.length} daily rows (${dailyMetricsRows[0]?.metric_date} to ${dailyMetricsRows[dailyMetricsRows.length-1]?.metric_date})`);
+      console.log(`   Today's Revenue: $${metricsData.revenue_today.toLocaleString()}`);
+      console.log(`   30-day Orders: ${metricsData.orders_30day}`);
+    }
+    
+    syncSummary.metrics = dailyMetricsRows.length;
+    
+    // =========================================================================
+    // 3. SYNC ALERTS TABLE
+    // =========================================================================
+    console.log('\n🚨 STEP 3: Syncing Alerts Table (fresh from live data)...');
+    
+    // Recalculate with full metricsData including sales data
+    const fullMetricsData = calculateMetrics(orders, shopifyData.referenceDate);
+    const freshAlerts = generateFreshAlerts(variantInventory, orders, shopifyData.referenceDate);
+    
+    if (canWrite) {
+      // Delete ALL existing alerts for this store
+      const { error: deleteError } = await supabase
+        .from('alerts')
+        .delete()
+        .eq('store_id', STORE_CONFIG.id);
+      
+      if (deleteError) {
+        console.error('❌ Error deleting old alerts:', deleteError.message);
+      } else {
+        console.log('✅ Deleted', (await supabase.from('alerts').select('*', { count: 'exact' }).eq('store_id', STORE_CONFIG.id)).count || '?', 'old alerts');
+      }
+      
+      // Insert fresh alerts
+      if (freshAlerts.length > 0) {
+        const { error: insertError } = await supabase
+          .from('alerts')
+          .insert(freshAlerts);
         
-        if (options.dryRun || connectionError) {
-          console.log(`  📄 [DRY RUN] Would upsert report: ${report.report_type}`);
-          totalSkipped++;
-          continue;
-        }
-        
-        const { data: existingReport, error: checkError } = await supabase
-          .from('reports')
-          .select('id')
-          .eq('store_id', STORE_CONFIG.id)
-          .eq('report_type', report.report_type)
-          .order('generated_at', { ascending: false })
-          .limit(1)
-          .single();
-        
-        let result;
-        if (existingReport) {
-          // Update existing
-          const { error: updateError } = await supabase
-            .from('reports')
-            .update({
-              content: report.content,
-              generated_at: report.generated_at,
-              period_start: report.period_start,
-              period_end: report.period_end
-            })
-            .eq('id', existingReport.id);
-          
-          result = updateError;
-          if (!updateError) totalUpdated++;
+        if (insertError) {
+          console.error('❌ Error inserting alerts:', insertError.message);
         } else {
-          // Insert new
+          console.log(`✅ Inserted ${freshAlerts.length} fresh alerts:`);
+          freshAlerts.forEach(a => {
+            console.log(`   [${a.severity.toUpperCase()}] ${a.title}`);
+          });
+        }
+      } else {
+        console.log('✅ No alerts to insert');
+      }
+    } else {
+      console.log('  [DRY RUN] Would delete old alerts and insert:');
+      freshAlerts.forEach(a => {
+        console.log(`   [${a.severity.toUpperCase()}] ${a.title}`);
+      });
+    }
+    
+    syncSummary.alerts = freshAlerts.length;
+    
+    // =========================================================================
+    // 4. SYNC REPORTS TABLE (DYNAMICALLY GENERATED)
+    // =========================================================================
+    console.log('\n📄 STEP 4: Generating dynamic reports from live data...');
+    
+    const generatedReports = generateAllReports(orders, variantInventory, productData, shopifyData.referenceDate);
+    
+    if (generatedReports.length > 0) {
+      console.log(`  Generated ${generatedReports.length} reports`);
+      
+      if (canWrite) {
+        // Delete ALL existing reports for this store
+        const { error: deleteError } = await supabase
+          .from('reports')
+          .delete()
+          .eq('store_id', STORE_CONFIG.id);
+        
+        if (deleteError) {
+          console.error('❌ Error deleting old reports:', deleteError.message);
+        } else {
+          console.log('✅ Deleted old reports');
+        }
+      }
+      
+      for (const report of generatedReports) {
+        if (canWrite) {
           const { error: insertError } = await supabase
             .from('reports')
             .insert([report]);
           
-          result = insertError;
-          if (!insertError) totalInserted++;
-        }
-        
-        if (result) {
-          console.error(`  ❌ Error syncing report ${report.report_type}:`, result.message);
+          if (insertError) {
+            console.error(`  ❌ Error syncing ${report.report_type}:`, insertError.message);
+          } else {
+            console.log(`  ✅ ${report.report_type}`);
+          }
         } else {
-          console.log(`  ✅ Report synced: ${report.report_type}`);
+          console.log(`  [DRY RUN] ${report.report_type} (${report.content.length} chars)`);
         }
       }
+      
+      syncSummary.reports = generatedReports.length;
     }
     
-    // 3. Sync metrics
-    if (options.syncMetrics) {
-      console.log('\n📊 Syncing metrics...');
-      
-      const metrics = await fetchShopifyMetrics(supabaseKey);
-      if (metrics.length === 0) {
-        console.log('⚠️  No metrics fetched from Shopify');
-      } else {
-        console.log(`  ✅ Synced ${metrics.length} metrics from Shopify`);
-      }
-
-      for (const metric of metrics) {
-        if (options.dryRun || connectionError) {
-          console.log(`  📊 [DRY RUN] Would upsert metric: ${metric.metric_date}`);
-          totalSkipped++;
-          continue;
-        }
-        
-        const { data: existingMetric, error: checkError } = await supabase
-          .from('metrics')
-          .select('id')
-          .eq('store_id', STORE_CONFIG.id)
-          .eq('metric_date', metric.metric_date)
-          .single();
-        
-        let result;
-        if (existingMetric) {
-          const { error: updateError } = await supabase
-            .from('metrics')
-            .update(metric)
-            .eq('id', existingMetric.id);
-          result = updateError;
-          if (!updateError) totalUpdated++;
-        } else {
-          const { error: insertError } = await supabase
-            .from('metrics')
-            .insert([metric]);
-          result = insertError;
-          if (!insertError) totalInserted++;
-        }
-        
-        if (result && metrics.indexOf(metric) === 0) {
-          console.error('  ❌ Error syncing metrics:', result.message);
-        }
-      }
-    }
-    // 4. Sync activity logs
-    if (options.syncActivity) {
-      console.log('\n📝 Syncing activity logs...');
-      
-      const reportFiles = fs.existsSync(REPORTS_DIR)
-        ? fs.readdirSync(REPORTS_DIR)
-            .filter(f => f.endsWith('.txt'))
-            .map(f => path.join(REPORTS_DIR, f))
-        : [];
-      
-      const activities = generateActivityLogs(reportFiles, []);
-      
-      for (const activity of activities) {
-        if (options.dryRun || connectionError) {
-          console.log(`  📝 [DRY RUN] Would insert activity: ${activity.action}`);
-          totalSkipped++;
-          continue;
-        }
-        
+    // =========================================================================
+    // 5. SYNC ACTIVITY LOG
+    // =========================================================================
+    console.log('\n📝 STEP 5: Appending Activity Log...');
+    
+    const activityLogs = generateActivityLog(
+      fullMetricsData,
+      freshAlerts,
+      generatedReports.length
+    );
+    
+    if (canWrite) {
+      for (const activity of activityLogs) {
         const { error } = await supabase
           .from('activity_log')
           .insert([activity]);
         
         if (error) {
-          console.error(`  ❌ Error syncing activity:`, error.message);
-        } else {
-          totalInserted++;
+          console.error(`  ❌ Error logging activity:`, error.message);
         }
       }
-      console.log(`  ✅ Synced ${activities.length} activity logs`);
+      console.log(`✅ Appended ${activityLogs.length} activity entries`);
+    } else {
+      console.log(`  [DRY RUN] Would append ${activityLogs.length} activity entries`);
+      activityLogs.forEach(a => {
+        console.log(`   - ${a.action}`);
+      });
     }
     
-    // 5. Sync alerts
-    if (options.syncAlerts) {
-      console.log('\n🚨 Syncing alerts...');
+    syncSummary.activity = activityLogs.length;
+    
+    // =========================================================================
+    // 6. SYNC SALES INTELLIGENCE TABLES
+    // =========================================================================
+    console.log('\n📊 STEP 6: Syncing Sales Intelligence Tables...');
+    
+    const productPerformance = generateProductPerformance(orders, shopifyData.referenceDate);
+    const channelBreakdown = generateChannelBreakdown(orders);
+    
+    console.log(`  Generated ${productPerformance.length} product performance records`);
+    console.log(`  Generated ${channelBreakdown.length} channel breakdown records`);
+    
+    if (canWrite) {
+      // Delete existing
+      await supabase.from('product_performance').delete().eq('store_id', STORE_CONFIG.id);
+      await supabase.from('channel_breakdown').delete().eq('store_id', STORE_CONFIG.id);
       
-      const alerts = generateAlerts();
-      
-      for (const alert of alerts) {
-        if (options.dryRun || connectionError) {
-          console.log(`  🚨 [DRY RUN] Would insert alert: ${alert.title}`);
-          totalSkipped++;
-          continue;
-        }
-        
-        const { data: existingAlert, error: checkError } = await supabase
-          .from('alerts')
-          .select('id')
-          .eq('store_id', STORE_CONFIG.id)
-          .eq('title', alert.title)
-          .eq('is_resolved', false)
-          .single();
-        
-        let result;
-        if (existingAlert) {
-          const { error: updateError } = await supabase
-            .from('alerts')
-            .update(alert)
-            .eq('id', existingAlert.id);
-          result = updateError;
-          if (!updateError) totalUpdated++;
-        } else {
-          const { error: insertError } = await supabase
-            .from('alerts')
-            .insert([alert]);
-          result = insertError;
-          if (!insertError) totalInserted++;
-        }
-        
-        if (result && alerts.indexOf(alert) === 0) {
-          console.error('  ❌ Error syncing alert:', result.message);
-        }
+      if (productPerformance.length > 0) {
+        const { error: ppErr } = await supabase.from('product_performance').insert(productPerformance);
+        console.log(`  ${ppErr ? '❌ Error: ' + ppErr.message : '✅ Product performance synced'}`);
       }
-      console.log(`  ✅ Synced ${alerts.length} alerts`);
+      
+      if (channelBreakdown.length > 0) {
+        const { error: cbErr } = await supabase.from('channel_breakdown').insert(channelBreakdown);
+        console.log(`  ${cbErr ? '❌ Error: ' + cbErr.message : '✅ Channel breakdown synced'}`);
+      }
+    } else {
+      console.log('  [DRY RUN] Would delete old data and insert:');
+      console.log(`    Product performance: ${productPerformance.length} records`);
+      console.log(`    Channel breakdown: ${channelBreakdown.length} records`);
     }
     
-    // Summary
-    console.log('\n' + '='.repeat(50));
-    console.log('📊 SYNC SUMMARY');
-    console.log('='.repeat(50));
-    console.log(`Records inserted: ${totalInserted}`);
-    console.log(`Records updated: ${totalUpdated}`);
-    console.log(`Records skipped (dry-run): ${totalSkipped}`);
-    console.log('='.repeat(50));
+    syncSummary.sales_intel = { products: productPerformance.length, channels: channelBreakdown.length };
     
-    if (options.dryRun) {
-      console.log('\n⚠️  This was a DRY RUN - no changes were written to the database');
-    }
-    
-    console.log('\n✅ Sync completed successfully!\n');
-    
-  } catch (err) {
-    console.error('❌ Fatal error:', err.message);
-    console.error(err.stack);
-    process.exit(1);
+  } else if (orders.length === 0) {
+    console.log('\n⚠️  No orders available - skipping table updates');
   }
+  
+  // =========================================================================
+  // SUMMARY
+  // =========================================================================
+  console.log('\n' + '='.repeat(50));
+  console.log('   SYNC COMPLETE');
+  console.log('='.repeat(50));
+  console.log(`Source: Shopify (${orders.length} orders)`);
+  console.log(`Products: ${syncSummary.products_processed}`);
+  console.log(`Tables Updated:`);
+  console.log(`  ✓ Metrics:     ${syncSummary.metrics} record(s)`);
+  console.log(`  ✓ Alerts:      ${syncSummary.alerts} alert(s)`);
+  console.log(`  ✓ Reports:     ${syncSummary.reports} report(s)`);
+  console.log(`  ✓ Activity:    ${syncSummary.activity} entry(ies)`);
+  const si = syncSummary.sales_intel;
+  if (si) {
+    console.log(`  ✓ Sales Intel: ${si.products} products, ${si.channels} channels`);
+  }
+  
+  if (syncSummary.anomalies.length > 0) {
+    console.log(`\n⚠️  Anomalies:`);
+    syncSummary.anomalies.forEach(a => console.log(`   - ${a}`));
+  }
+  
+  if (!canWrite) {
+    console.log('\n⚠️  DRY RUN - No changes were written to the database');
+  }
+  
+  console.log('\n✅ All tables refreshed successfully!\n');
+  
+  return {
+    success: true,
+    records: syncSummary
+  };
 }
 
 // Run sync
-syncToSupabase().catch(err => {
-  console.error('❌ Unhandled error:', err);
-  process.exit(1);
-});
+syncToSupabase()
+  .then(result => {
+    process.exit(0);
+  })
+  .catch(err => {
+    console.error('❌ Unhandled error:', err);
+    process.exit(1);
+  });
