@@ -146,30 +146,42 @@ Refer to `TOOLS.md` or `SYSTEMS.md` for provider details.
   - Cloudflare tunnel: jettmissioncontrol.com → localhost:3000
 - **Port 3002** — Gemma Assistant (content transformation)
 - **Port 3003** — storeiq-dashboard (Shopify analytics for clients)
-- **Port 5000** — Level Up Cards (Flask)
-- **Port 5001** — Podcast Summarizer (Flask)
-- **Port 5002** — Watchlist Dashboard (Flask)
+- **Port 5000** — Level Up Cards (Flask, systemd: jett-levelup.service)
+- **Port 5001** — Podcast Summarizer (Flask, systemd: jett-podcast.service)
+- **Port 5002** — Watchlist Dashboard (Flask, systemd: jett-watchlist.service)
 - **Port 8000** — API Usage Dashboard
 
+**NOTE: PM2 is DEAD.** As of the May 2026 system audit, PM2 was killed and disabled. All services use systemd. Do NOT use `pm2` commands — use `systemctl --user` instead.
+
 ```bash
-pm2 list                     # Check dashboard server status
-crontab -l                  # View system cron (all jobs)
+systemctl --user list-units --type=service  # Show all running services
+crontab -l                                   # View system cron (all jobs)
 ```
 
 **Notes:**
 - Some jobs migrated from clawdbot cron to system crontab (zero token cost):
-  - Gateway Ping (`*/10 * * * *`)
-  - PM2 Monitor (`*/15 * * * *`)
+  - Self-Heal Ping (`*/15 * * * *`) — dropped from 5 min to 15 min
+  - PM2 Monitor (`*/15 * * * *`) — legacy, PM2 is dead
   - Performance Check (`0 */6 * * *`)
   - Watchlist Monitor (`*/15 6-20 * * 1-5`) — deterministic, only alerts when threshold breaches
+  - Patch OpenClaw (weekly Sundays) — dropped from daily
 - Morning Brief stays in clawdbot (low frequency)
 - Other automation stays in clawdbot cron (agent turns required)
 
-**PM2 Processes:**
-- task-manager-server (port 3000) - dashboard only
+**systemd Services (9 total):**
+| Service | Port | Restart Policy |
+|---------|------|----------------|
+| clawdbot-gateway.service | 18789/18791 | Restart=always |
+| jett-task-manager.service | 3000 | Restart=on-failure |
+| jett-gemma.service | 3002 | Restart=on-failure |
+| jett-levelup.service | 5000 | Restart=always |
+| jett-podcast.service | 5001 | Restart=always |
+| jett-watchlist.service | 5002 | Restart=always |
+| hermes-gateway.service | — | Restart=always |
+| hermes-gateway-personal.service | — | Restart=always |
+| hermes-gateway-coder.service | — | Restart=always |
 
-**Independent:**
-- clawdbot-gateway (manages itself, do NOT add to PM2)
+Plus jett-keepalive.timer (fires every 2 min, auto-restarts any downed service).
 
 **Scheduling:** clawdbot cron (primary) — all tasks run through clawdbot gateway
 
@@ -457,13 +469,23 @@ Systemd is enabled.
 
 Active services:
 - clawdbot-gateway.service     (main AI gateway)
-- jett-task-manager.service  (dashboard :3000)
-- openclaw-patch.service       (safety patch on boot)
+- jett-task-manager.service    (dashboard :3000)
+- jett-gemma.service           (content tool :3002)
+- jett-levelup.service         (cards :5000)
+- jett-podcast.service         (podcasts :5001)
+- jett-watchlist.service       (stocks :5002)
+- hermes-gateway.service       (Hermes default)
+- hermes-gateway-personal.service (Hermes personal)
+- hermes-gateway-coder.service (Hermes coder)
+- jett-keepalive.timer         (self-heal every 2 min)
+
+Windows resiliency (prevents WSL shutdown on terminal close):
+- `C:\Users\Jett\.wslconfig` with `shutdownOnDetach=false`
+- Windows Startup script at `C:\Users\Jett\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\wsl-startup.bat` — starts WSL 60s after boot
 
 Check status anytime with:
 ```bash
-systemctl --user status clawdbot-gateway.service
-systemctl --user status jett-task-manager.service
+systemctl --user list-units --type=service
 ```
 
 ---

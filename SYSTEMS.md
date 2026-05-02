@@ -221,10 +221,11 @@ journalctl --user -u hermes-gateway-personal.service -n 50 --no-pager
 | `/sienna` | Port 3000 | Sienna Lesson Launcher (AI learning for kids) |
 
 **Local ports:**
-| Port | Service |
-|------|---------|
-| 5000 | Level Up Cards (Python/Flask) |
-| 5001 | Podcast Summarizer (Python/Flask) |
+|| Port | Service | systemd Unit | Restart |
+||------|---------|-------------|---------|
+|| 5000 | Level Up Cards (Python/Flask) | jett-levelup.service | always |
+|| 5001 | Podcast Summarizer (Python/Flask) | jett-podcast.service | always |
+|| 5002 | Watchlist Dashboard (Python/Flask) | jett-watchlist.service | always |
 
 ---
 
@@ -662,11 +663,49 @@ gws sheets spreadsheets list       # List spreadsheets
 
 ## Troubleshooting
 
-| Issue | Command |
-|-------|---------|
-| Gateway down | `clawdbot gateway --force &` |
-| PM2 processes down | `pm2 resurrect` |
-| Task stuck | `sqlite3 tasks.db "UPDATE tasks SET status='pending'..."` |
-| Port 3000 down | `systemctl --user restart jett-task-manager.service` |
-| Test Telegram | `clawdbot message send --channel telegram --target "5867308866" --message "test" --json` |
-| Test GWS Email | `node lib/send-email.js --to "terryhuangjr@gmail.com" --subject "Test" --body "Message"` |
+|| Issue | Command |
+||-------|---------|
+|| Gateway down | `clawdbot gateway --force &` |
+|| Task stuck | `sqlite3 tasks.db "UPDATE tasks SET status='pending'..."` |
+|| Port 3000 down | `systemctl --user restart jett-task-manager.service` |
+|| Test Telegram | `clawdbot message send --channel telegram --target "5867308866" --message "test" --json` |
+|| Test GWS Email | `node lib/send-email.js --to "terryhuangjr@gmail.com" --subject "Test" --body "Message"` |
+
+---
+
+## System Audit 📋
+
+Completed 2026-05-02. Results:
+
+### Services — 0 Failed
+All 9 systemd services running clean. Zero OOM kills on record. jett-keepalive.timer monitors every 2 min.
+
+### Security — 2 HIGH Fixes Applied
+- `.env` files hardened: `chmod 600` across all env files and GWS token cache
+- CLI history redirected: `ln -sf /dev/null ~/.bash_history` (prevents credential leaks via terminal history)
+- PM2 daemon killed: was using 177MB RAM idle with zero managed processes
+
+### Performance — PM2 Eliminated
+- PM2 removed from system. All services migrated to systemd.
+- npm cache cleaned: 8.5GB freed
+- RAM usage: 1.8GB of 27GB (6.6%)
+- Storage: 893GB free on `/`
+
+### Cron Optimization
+- self-heal.sh: every 5 min → every 15 min (288→96 runs/day)
+- patch-openclaw.sh: daily → weekly (Sundays)
+- PM2 monitor cron: kept as legacy (PM2 is dead, no-weight task)
+
+### Dependencies
+- npm: 26 vulns fixed (1 critical, 16 high) → 9 remaining (all safe dev deps)
+- `@anthropic-ai/sdk` updated to 0.92.0
+
+### Git History Purge
+- `memory/credentials.md` (Gmail password) and `ebay-scanner/credentials.json` (eBay app creds) scrubbed from entire history
+- Repo: 97MB → 80MB
+- Force-pushed to `master`
+- `main` branch deleted
+
+### Windows Resiliency
+- `C:\Users\Jett\.wslconfig` with `shutdownOnDetach=false` — WSL survives terminal closure
+- Windows Startup script launches WSL 60s after boot
