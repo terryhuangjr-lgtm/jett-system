@@ -124,10 +124,12 @@ Each agent/profile has its own default model. Do not assume a single default.
 | Agent / Profile | Default Model | Notes |
 |-----------------|---------------|-------|
 | **Jett (Coder)** — this agent | `deepseek-chat` | You are running this right now |
-| **Hermes Personal Profile** | `claude-haiku-4-5-20251001` | Terry's personal assistant |
-| **Hermes Shopify Agent** | `grok-4-1-fast-reasoning` | Shopify operations |
-| **OpenClaw Jett (gateway)** | `grok-4-1-fast-reasoning` | Automation cron tasks |
+| **Hermes Personal Profile** | `grok-4-1-fast-reasoning` | Terry's personal assistant (xAI provider) |
+| **Hermes Superare Profile** | `grok-4-1-fast` | Shopify ops + reports — no reasoning needed |
+| **Hermes Coder Profile** | `deepseek-chat` | Dev tasks (unchanged) |
+| **OpenClaw Jett (gateway)** | `grok-4-1-fast-reasoning` | Automation cron tasks + Telegram |
 | **claude-sonnet-4-5** | — | 21M sports tweet generation ONLY (hardcoded in generator) |
+| **BACKUP (everywhere)** | `grok-4-1-fast` | Default fallback if primary unavailable |
 
 Refer to `TOOLS.md` or `SYSTEMS.md` for provider details.
 
