@@ -56,7 +56,7 @@ clawdbot message send --channel telegram --target "5867308866" --message "text"
 
 **Models:**
 - `grok-4-1-fast` - DEFAULT for everything (Slack/Telegram, automation, research, subagents)
-- `claude-3-5-haiku` (`claude-3-5-haiku-20241022`) - BACKUP if Grok down
+- `claude-haiku-4-5` (`claude-haiku-4-5-20251001`) - BACKUP if Grok down
 - `claude-sonnet-4-5` - 21M sports content generation only
 
 ### Ollama (Memory Search Only)
