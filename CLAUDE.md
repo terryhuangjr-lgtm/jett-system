@@ -137,6 +137,8 @@ Refer to `TOOLS.md` or `SYSTEMS.md` for provider details.
 
 ## SYSTEM ARCHITECTURE
 
+**Port Registry:** See `~/clawd/clawd/context/PORT-REGISTRY.md` for the complete list of reserved ports. Do NOT start anything on those ports without updating the registry.
+
 **Detailed Architecture:** See `SYSTEMS.md` for complete system diagram and documentation.
 - **Port 3000** — Jett Mission Control (Task Manager + all proxy routes) - `~/clawd/task-manager/server.js`
   - Root `/` redirects to `/mission-control` (SPA with 7 tabs)
