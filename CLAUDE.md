@@ -192,7 +192,7 @@ crontab -l                                   # View system cron (all jobs)
 **systemd Services (9 total):**
 | Service | Port | Restart Policy |
 |---------|------|----------------|
-| clawdbot-gateway.service | 18789/18791 | Restart=always |
+| openclaw-gateway.service | 18789/18791 | Restart=always |
 | jett-task-manager.service | 3000 | Restart=on-failure |
 | jett-gemma.service | 3002 | Restart=on-failure |
 | jett-levelup.service | 5000 | Restart=always |
@@ -449,9 +449,9 @@ sqlite3 /home/clawd/clawd/task-manager/tasks.db "UPDATE tasks SET status='pendin
 sqlite3 /home/clawd/clawd/task-manager/tasks.db "SELECT id, name, next_run FROM tasks WHERE status='pending' AND next_run < datetime('now') ORDER BY next_run;"
 ```
 
-**clawdbot-gateway down:**
+**openclaw-gateway down:**
 ```bash
-clawdbot-gateway &
+systemctl --user restart openclaw-gateway.service
 ```
 
 **API Usage Dashboard (port 8000) down:**
@@ -490,7 +490,7 @@ cp ~/.openclaw/openclaw.json.bak ~/.openclaw/openclaw.json
 Systemd is enabled.
 
 Active services:
-- clawdbot-gateway.service     (main AI gateway)
+- openclaw-gateway.service     (main AI gateway)
 - jett-task-manager.service    (dashboard :3000)
 - jett-gemma.service           (content tool :3002)
 - jett-levelup.service         (cards :5000)
