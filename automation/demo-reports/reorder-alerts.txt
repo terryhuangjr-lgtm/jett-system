@@ -1,0 +1,146 @@
+⚠️ Smart Reorder Alerts
+As of 2026-04-25 (90-day window)
+
+🔴 HIGH Hajime No Ippo - Rounds Tee
+   Total units across all variants: 8 | Avg days of stock: 24 | Pattern: new_launch
+   ⚠️  Variant breakdown:
+      Black / S: 1 units | 23 days remaining ← 🔴 CRITICAL | Reorder 3 units
+      Black / M: 2 units | 23 days remaining ← 🔴 CRITICAL | Reorder 6 units
+      Black / L: 0 units | 0 days remaining ← 🔴 CRITICAL
+      Black / XL: 1 units | 30 days remaining ← 🟡 Reorder | Reorder 2 units
+      Black / XXL: 3 units | 21 days remaining ← 🔴 CRITICAL | Reorder 10 units
+      Black / 3XL: 1 units | 45 days remaining ← 🟡 Reorder | Reorder 1 units
+
+🔴 HIGH Nike Hyper KO 3
+   Total units across all variants: 7 | Avg days of stock: 29 | Pattern: new_launch
+   ⚠️  Variant breakdown:
+      Black/White / 5: 1 units | 45 days remaining ← 🟡 Reorder | Reorder 1 units
+      Black/White / 5.5: 1 units | 45 days remaining ← 🟡 Reorder | Reorder 1 units
+      Black/White / 6: 0 units | 0 days remaining ← 🔴 CRITICAL
+      Black/White / 6.5: 0 units | 0 days remaining ← 🔴 CRITICAL
+      Black/White / 7: 0 units | 0 days remaining ← 🔴 CRITICAL
+      Black/White / 7.5: 0 units | 0 days remaining ← 🔴 CRITICAL
+      Black/White / 8: 0 units | 0 days remaining ← 🔴 CRITICAL
+      Black/White / 8.5: 1 units | 30 days remaining ← 🟡 Reorder | Reorder 2 units
+      Black/White / 9: 0 units | 0 days remaining ← 🔴 CRITICAL
+      Black/White / 9.5: 1 units | 30 days remaining ← 🟡 Reorder | Reorder 2 units
+      Black/White / 10: 0 units | 0 days remaining ← 🔴 CRITICAL
+      Black/White / 10.5: 0 units | 0 days remaining ← 🔴 CRITICAL | Reorder 1 units
+      Black/White / 11: 0 units | 0 days remaining ← 🔴 CRITICAL
+      Black/White / 11.5: 0 units | 0 days remaining ← 🔴 CRITICAL
+      Black/White / 12: 0 units | 0 days remaining ← 🔴 CRITICAL
+      Black/White / 12.5: 0 units | 0 days remaining ← 🔴 CRITICAL
+      Black/White / 13: 1 units | 45 days remaining ← 🟡 Reorder | Reorder 1 units
+      White/Gold / 5: 0 units | 0 days remaining ← 🔴 CRITICAL
+      White/Gold / 5.5: 1 units | 30 days remaining ← 🟡 Reorder | Reorder 2 units
+      White/Gold / 6: 0 units | 0 days remaining ← 🔴 CRITICAL | Reorder 1 units
+      White/Gold / 6.5: 0 units | 0 days remaining ← 🔴 CRITICAL
+      White/Gold / 7: 0 units | 0 days remaining ← 🔴 CRITICAL
+      White/Gold / 7.5: 0 units | 0 days remaining ← 🔴 CRITICAL
+      White/Gold / 8: 0 units | 0 days remaining ← 🔴 CRITICAL | Reorder 1 units
+      White/Gold / 8.5: 0 units | 0 days remaining ← 🔴 CRITICAL
+      White/Gold / 9: 0 units | 0 days remaining ← 🔴 CRITICAL
+      White/Gold / 9.5: 0 units | 0 days remaining ← 🔴 CRITICAL
+      White/Gold / 10: 0 units | 0 days remaining ← 🔴 CRITICAL
+      White/Gold / 10.5: 0 units | 0 days remaining ← 🔴 CRITICAL
+      White/Gold / 11: 0 units | 0 days remaining ← 🔴 CRITICAL
+      White/Gold / 11.5: 0 units | 0 days remaining ← 🔴 CRITICAL | Reorder 1 units
+      White/Gold / 12: 0 units | 0 days remaining ← 🔴 CRITICAL
+      White/Gold / 12.5: 1 units | 30 days remaining ← 🟡 Reorder | Reorder 2 units
+      White/Gold / 13: 0 units | 0 days remaining ← 🔴 CRITICAL
+
+🔴 OVERSTOCK One Series Leather Headgear
+   Units Remaining in Stock: 90 | Avg days of stock: 300 | Pattern: declining
+
+🔴 OVERSTOCK Enorme 2-in-1 Gear Bag 83L
+   Units Remaining in Stock: 90 | Avg days of stock: 324 | Pattern: declining
+
+🔴 OVERSTOCK Carico 2-in-1 Gear Bag 65L
+   Units Remaining in Stock: 162 | Avg days of stock: 394 | Pattern: declining
+
+🟡 MEDIUM S40 Italian Leather Velcro Gloves
+   Total units across all variants: 9 | Avg days of stock: 30 | Pattern: new_launch
+   ⚠️  Variant breakdown:
+      Black / 10 oz: 0 units | 0 days remaining ← 🔴 CRITICAL
+      Black / 12 oz: 1 units | 30 days remaining ← 🟡 Reorder | Reorder 2 units
+      Black / 14 oz: 2 units | 26 days remaining ← 🔴 CRITICAL | Reorder 5 units
+      Black / 16 oz: 0 units | 0 days remaining ← 🔴 CRITICAL
+      Red / 10 oz: 1 units | 30 days remaining ← 🟡 Reorder | Reorder 2 units
+      Red / 12 oz: 1 units | 30 days remaining ← 🟡 Reorder | Reorder 2 units
+      Red / 14 oz: 1 units | 45 days remaining ← 🟡 Reorder | Reorder 1 units
+      Red / 16 oz: 1 units | 30 days remaining ← 🟡 Reorder | Reorder 2 units
+      White / 10 oz: 0 units | 0 days remaining ← 🔴 CRITICAL | Reorder 1 units
+      White / 12 oz: 1 units | 30 days remaining ← 🟡 Reorder | Reorder 2 units
+      White / 14 oz: 0 units | 0 days remaining ← 🔴 CRITICAL
+      White / 16 oz: 1 units | 45 days remaining ← 🟡 Reorder | Reorder 1 units
+
+🟡 MEDIUM Superare Finisher Hoodie
+   Total units across all variants: 102 | Avg days of stock: 48 | Pattern: bestseller
+   ⚠️  Variant breakdown:
+      Grey / S: 4 units | 45 days remaining ← 🟡 Reorder | Reorder 4 units
+      Grey / M: 5 units | 45 days remaining ← 🟡 Reorder | Reorder 5 units
+      Grey / L: 5 units | 45 days remaining ← 🟡 Reorder | Reorder 5 units
+      Grey / XL: 4 units | 45 days remaining ← 🟡 Reorder | Reorder 4 units
+      Grey / XXL: 6 units | 45 days remaining ← 🟡 Reorder | Reorder 6 units
+      Grey / 3XL: 3 units | 54 days remaining ← 🟡 Reorder | Reorder 2 units
+      Black / S: 6 units | 49 days remaining ← 🟡 Reorder | Reorder 5 units
+      Black / M: 6 units | 45 days remaining ← 🟡 Reorder | Reorder 6 units
+      Black / L: 4 units | 45 days remaining ← 🟡 Reorder | Reorder 4 units
+      Black / XL: 5 units | 50 days remaining ← 🟡 Reorder | Reorder 4 units
+      Black / XXL: 7 units | 48 days remaining ← 🟡 Reorder | Reorder 6 units
+      Black / 3XL: 9 units | 48 days remaining ← 🟡 Reorder | Reorder 8 units
+      Navy / S: 11 units | 50 days remaining ← 🟡 Reorder | Reorder 9 units
+      Navy / M: 7 units | 45 days remaining ← 🟡 Reorder | Reorder 7 units
+      Navy / L: 5 units | 50 days remaining ← 🟡 Reorder | Reorder 4 units
+      Navy / XL: 3 units | 54 days remaining ← 🟡 Reorder | Reorder 2 units
+      Navy / XXL: 6 units | 45 days remaining ← 🟡 Reorder | Reorder 6 units
+      Navy / 3XL: 4 units | 45 days remaining ← 🟡 Reorder | Reorder 4 units
+
+🟡 MEDIUM World Champion Tee
+   Total units across all variants: 89 | Avg days of stock: 54 | Pattern: bestseller
+   ⚠️  Variant breakdown:
+      Light Blue / S: 19 units | 55 days remaining ← 🟡 Reorder | Reorder 12 units
+      Light Blue / M: 18 units | 54 days remaining ← 🟡 Reorder | Reorder 12 units
+      Light Blue / L: 16 units | 55 days remaining ← 🟡 Reorder | Reorder 10 units
+      Light Blue / XL: 14 units | 55 days remaining ← 🟡 Reorder | Reorder 9 units
+      Light Blue / XXL: 12 units | 54 days remaining ← 🟡 Reorder | Reorder 8 units
+      Light Blue / 3XL: 11 units | 55 days remaining ← 🟡 Reorder | Reorder 7 units
+
+🟢 OK S40 Italian Leather Lace Up Gloves
+   Total units across all variants: 59 | Avg days of stock: 62 | Pattern: steady
+
+🟢 OK Finisher Dad Hat
+   Total units across all variants: 55 | Avg days of stock: 68 | Pattern: steady
+
+🟢 OK Supergel Pro Gloves
+   Total units across all variants: 128 | Avg days of stock: 76 | Pattern: bestseller
+
+🟢 OK Superare Finisher Hand Wraps
+   Total units across all variants: 75 | Avg days of stock: 89 | Pattern: steady
+
+🟢 OK Supergel V Gloves
+   Total units across all variants: 199 | Avg days of stock: 89 | Pattern: bestseller
+
+🟢 OK Superare Fundamental 2.0 Athletic Shorts
+   Total units across all variants: 71 | Avg days of stock: 101 | Pattern: steady
+
+🟢 OK Boxing Club NYC Tee
+   Total units across all variants: 100 | Avg days of stock: 113 | Pattern: seasonal
+
+🟢 OK Supergel 2.0 Lace Up Gloves
+   Total units across all variants: 94 | Avg days of stock: 116 | Pattern: steady
+
+🟢 OK Happiest At Heavyweight Tee
+   Total units across all variants: 56 | Avg days of stock: 140 | Pattern: seasonal
+
+🟢 OK Finisher 2.0 Tee
+   Total units across all variants: 62 | Avg days of stock: 143 | Pattern: seasonal
+
+🟢 OK Superare Bringing The Heat Tee
+   Total units across all variants: 86 | Avg days of stock: 149 | Pattern: seasonal
+
+☠️ CRITICAL Legacy Tee
+   Total units across all variants: 124 | Avg days of stock: 797 | Pattern: dead
+
+☠️ CRITICAL One Series No Foul Protector
+   Total units across all variants: 39 | Avg days of stock: 878 | Pattern: dead

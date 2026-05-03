@@ -1,0 +1,24 @@
+💀 Dead Inventory Report
+As of 2026-04-25 (90-day activity window)
+
+⚠️  Dead variants (with &lt;2 sales in 90d or pattern=dead/declining): 64
+  1. Nike Hyper KO 3 — White/Gold / 13: 0 sold, 1000 units idle, $210,000 | Pattern: new_launch
+  2. Nike Hyper KO 3 — White/Gold / 12: 0 sold, 1000 units idle, $210,000 | Pattern: new_launch
+  3. Nike Hyper KO 3 — White/Gold / 11.5: 1 sold, 1000 units idle, $210,000 | Pattern: new_launch
+  4. Nike Hyper KO 3 — White/Gold / 11: 0 sold, 1000 units idle, $210,000 | Pattern: new_launch
+  5. Nike Hyper KO 3 — White/Gold / 10.5: 0 sold, 1000 units idle, $210,000 | Pattern: new_launch
+  6. Nike Hyper KO 3 — White/Gold / 10: 0 sold, 1000 units idle, $210,000 | Pattern: new_launch
+  7. Nike Hyper KO 3 — White/Gold / 9.5: 0 sold, 1000 units idle, $210,000 | Pattern: new_launch
+  8. Nike Hyper KO 3 — White/Gold / 9: 0 sold, 1000 units idle, $210,000 | Pattern: new_launch
+  9. Nike Hyper KO 3 — White/Gold / 8.5: 0 sold, 1000 units idle, $210,000 | Pattern: new_launch
+  10. Nike Hyper KO 3 — White/Gold / 8: 1 sold, 1000 units idle, $210,000 | Pattern: new_launch
+  11. Nike Hyper KO 3 — White/Gold / 7.5: 0 sold, 1000 units idle, $210,000 | Pattern: new_launch
+  12. Nike Hyper KO 3 — White/Gold / 7: 0 sold, 1000 units idle, $210,000 | Pattern: new_launch
+  13. Nike Hyper KO 3 — White/Gold / 6.5: 0 sold, 1000 units idle, $210,000 | Pattern: new_launch
+  14. Nike Hyper KO 3 — White/Gold / 6: 1 sold, 1000 units idle, $210,000 | Pattern: new_launch
+  15. Nike Hyper KO 3 — White/Gold / 5: 0 sold, 1000 units idle, $210,000 | Pattern: new_launch
+
+💡 Recommendations:
+  • Bundle dead variants with bestsellers (25% off bundle).
+  • Clear XS/XXL dead stock via flash sale.
+  • Consider discontinuing variants with 0 movement.

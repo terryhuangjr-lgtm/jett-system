@@ -1,0 +1,138 @@
+{
+  "generatedAt": "2026-04-25T05:03:33.764Z",
+  "store": "superare-demo.myshopify.com",
+  "dateRange": {
+    "from": "2023-04-01T04:00:00.000Z",
+    "to": "2025-05-01T03:59:59.000Z"
+  },
+  "existingOrdersBefore": 219,
+  "estimatedOrderCount": 487,
+  "productPatterns": [
+    {
+      "product_id": 10524893118629,
+      "title": "Supergel V Gloves",
+      "pattern": "bestseller",
+      "variants": 20
+    },
+    {
+      "product_id": 10524889022629,
+      "title": "Superare Finisher Hoodie",
+      "pattern": "bestseller",
+      "variants": 18
+    },
+    {
+      "product_id": 10524899672229,
+      "title": "Supergel Pro Gloves",
+      "pattern": "bestseller",
+      "variants": 12
+    },
+    {
+      "product_id": 10550762340517,
+      "title": "World Champion Tee",
+      "pattern": "bestseller",
+      "variants": 6
+    },
+    {
+      "product_id": 10529449017509,
+      "title": "Superare Finisher Hand Wraps",
+      "pattern": "steady",
+      "variants": 3
+    },
+    {
+      "product_id": 10527729287333,
+      "title": "Finisher Dad Hat",
+      "pattern": "steady",
+      "variants": 1
+    },
+    {
+      "product_id": 10533505433765,
+      "title": "Superare Fundamental 2.0 Athletic Shorts",
+      "pattern": "steady",
+      "variants": 10
+    },
+    {
+      "product_id": 10533470109861,
+      "title": "Supergel 2.0 Lace Up Gloves",
+      "pattern": "steady",
+      "variants": 12
+    },
+    {
+      "product_id": 10533111169189,
+      "title": "S40 Italian Leather Lace Up Gloves",
+      "pattern": "steady",
+      "variants": 12
+    },
+    {
+      "product_id": 10535546716325,
+      "title": "Finisher 2.0 Tee",
+      "pattern": "seasonal",
+      "variants": 8
+    },
+    {
+      "product_id": 10527729746085,
+      "title": "Happiest At Heavyweight Tee",
+      "pattern": "seasonal",
+      "variants": 6
+    },
+    {
+      "product_id": 10524888793253,
+      "title": "Superare Bringing The Heat Tee",
+      "pattern": "seasonal",
+      "variants": 12
+    },
+    {
+      "product_id": 10524896985253,
+      "title": "Boxing Club NYC Tee",
+      "pattern": "seasonal",
+      "variants": 6
+    },
+    {
+      "product_id": 10527994773669,
+      "title": "Carico 2-in-1 Gear Bag 65L",
+      "pattern": "declining",
+      "variants": 2
+    },
+    {
+      "product_id": 10527994740901,
+      "title": "Enorme 2-in-1 Gear Bag 83L",
+      "pattern": "declining",
+      "variants": 1
+    },
+    {
+      "product_id": 10526211047589,
+      "title": "One Series Leather Headgear",
+      "pattern": "declining",
+      "variants": 8
+    },
+    {
+      "product_id": 10525642326181,
+      "title": "Legacy Tee",
+      "pattern": "dead",
+      "variants": 6
+    },
+    {
+      "product_id": 10529106755749,
+      "title": "One Series No Foul Protector",
+      "pattern": "dead",
+      "variants": 12
+    },
+    {
+      "product_id": 10535695941797,
+      "title": "Nike Hyper KO 3",
+      "pattern": "new_launch",
+      "variants": 34
+    },
+    {
+      "product_id": 10530271264933,
+      "title": "S40 Italian Leather Velcro Gloves",
+      "pattern": "new_launch",
+      "variants": 12
+    },
+    {
+      "product_id": 10526209245349,
+      "title": "Hajime No Ippo - Rounds Tee",
+      "pattern": "new_launch",
+      "variants": 6
+    }
+  ]
+}

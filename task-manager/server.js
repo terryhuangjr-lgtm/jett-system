@@ -1167,8 +1167,8 @@ Rules: Keep all language simple. Every activity 3-6 minutes. Make it feel like p
       try {
         const { execFileSync } = require('child_process');
         const result = execFileSync(
-          '/home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot',
-          ['cron', 'list', '--json'],
+          '/home/clawd/.nvm/versions/node/v22.22.0/bin/node',
+          ['/home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot', 'cron', 'list', '--json'],
           { timeout: 10000 }
         ).toString();
         const data = JSON.parse(result);

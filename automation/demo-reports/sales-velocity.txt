@@ -1,0 +1,31 @@
+🚀 Sales Velocity Report
+Period: 2026-02-24 → 2026-04-25
+Dataset: 736 orders, 22 products
+
+🔝 Top 5 Products (last 30 days):
+   1. Supergel V Gloves — 201 units ($20,098) ▲ +12.0%
+   2. Superare Finisher Hoodie — 191 units ($11,398) ▲ +12.0%
+   3. Supergel Pro Gloves — 151 units ($22,508) ▲ +12.0%
+   4. World Champion Tee — 148 units ($5,624) ▲ +12.0%
+   5. S40 Italian Leather Lace Up Gloves — 86 units ($19,350) ▲ +4.0%
+
+🔻 Bottom 5 Products (last 30 days):
+  1. World Champions Tee — 1 units
+  2. One Series No Foul Protector — 4 units
+  3. Legacy Tee — 14 units
+  4. Nike Hyper KO 3 — 22 units
+  5. Enorme 2-in-1 Gear Bag 83L — 25 units
+
+📈 Trends:
+  🟢 Accelerating (>10% growth): 11 products
+    • Nike Hyper KO 3 (+65.0%)
+    • S40 Italian Leather Velcro Gloves (+65.0%)
+    • Hajime No Ippo - Rounds Tee (+65.0%)
+    • Happiest At Heavyweight Tee (+15.0%)
+    • Finisher 2.0 Tee (+15.0%)
+  🔴 Decelerating (>10% drop): 3 products
+    • Enorme 2-in-1 Gear Bag 83L (-25.0%)
+    • One Series Leather Headgear (-25.0%)
+    • Carico 2-in-1 Gear Bag 65L (-25.0%)
+
+💰 Projected Revenue Next 30 Days: $140,088

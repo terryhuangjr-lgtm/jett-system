@@ -5,6 +5,7 @@ const WebSocket = require('ws');
 const { execFile } = require('child_process');
 const path = require('path');
 const fs = require('fs');
+const chrono = require('chrono-node');
 const app = express();
 
 app.use(express.urlencoded({ extended: false }));
@@ -77,6 +78,17 @@ const GWS_BIN = '/home/clawd/.nvm/versions/node/v22.22.0/bin/gws';
 const CALENDAR_TIMEZONE = 'America/New_York';
 const DEFAULT_SERVICE_DURATION = 60; // minutes
 
+const BUSINESS_HOURS = {
+  // day of week: { open: hour (24h), close: hour (24h) }
+  0: { open: 10, close: 17 }, // Sunday
+  1: { open: 9, close: 19 },  // Monday
+  2: { open: 9, close: 19 },  // Tuesday
+  3: { open: 9, close: 19 },  // Wednesday
+  4: { open: 9, close: 19 },  // Thursday
+  5: { open: 9, close: 19 },  // Friday
+  6: { open: 9, close: 18 },  // Saturday
+};
+
 const SERVICE_DURATIONS = {
   'haircut': 60,
   'color': 120,
@@ -132,38 +144,9 @@ function sendSms(to, message) {
   });
 }
 
-/**
- * Log a call to Supabase
- */
-function logCallToSupabase(callSid, fromNumber, status, details) {
-  const supabaseUrl = process.env.SUPABASE_URL || 'https://fhmjvnphxsbtwcutqkvq.supabase.co';
-  const supabaseKey = process.env.SUPABASE_ANON_KEY;
-  const storeId = process.env.STORE_ID || '00000000-0000-0000-0000-000000000001';
-
-  if (!supabaseKey) return;
-
-  const body = JSON.stringify({
-    store_id: storeId,
-    action: 'Incoming Call',
-    summary: `${status === 'completed' ? '📞 Call completed' : '📞 Call missed'}`,
-    details: `From: ${fromNumber}\nCallSid: ${callSid}\nStatus: ${status}\n${details || ''}`,
-    status: status === 'completed' ? 'success' : 'warning',
-    created_at: new Date().toISOString(),
-  });
-
-  const req = require('https').request(`${supabaseUrl}/rest/v1/activity_log`, {
-    method: 'POST',
-    headers: {
-      'apikey': supabaseKey,
-      'Authorization': `Bearer ${supabaseKey}`,
-      'Content-Type': 'application/json',
-      'Prefer': 'return=minimal',
-    },
-  });
-  req.on('error', () => {});
-  req.write(body);
-  req.end();
-}
+// NOTE: Supabase activity logging was for StoreIQ, which is the Superare Shopify dashboard.
+// The salon is a separate business — not a StoreIQ client. Removed to avoid polluting
+// the Superare activity log with salon call data.
 
 /**
  * Check calendar for existing events on a given date/time — returns available slots
@@ -206,6 +189,51 @@ function getAvailableSlots(dateStr) {
 }
 
 /**
+ * Check if a proposed time slot is available (not overlapping existing events)
+ */
+async function isSlotAvailable(startISO, endISO) {
+  const start = new Date(startISO);
+  const busy = await getAvailableSlots(start.toISOString());
+  const proposedStart = start.getTime();
+  const proposedEnd = new Date(endISO).getTime();
+  for (const slot of busy) {
+    const busyStart = slot.start.getTime();
+    const busyEnd = slot.end.getTime();
+    if (proposedStart < busyEnd && proposedEnd > busyStart) {
+      return false;
+    }
+  }
+  return true;
+}
+
+/**
+ * Check if a time falls within business hours
+ */
+function isWithinBusinessHours(startISO, endISO) {
+  const estOffset = -4 * 60;
+  const start = new Date(startISO);
+  const end = new Date(endISO);
+  const localStart = new Date(start.getTime() + estOffset * 60000);
+  const localEnd = new Date(end.getTime() + estOffset * 60000);
+  const dayOfWeek = localStart.getDay();
+  const hours = BUSINESS_HOURS[dayOfWeek];
+  if (!hours) return false;
+  const startHour = localStart.getHours() + localStart.getMinutes() / 60;
+  const endHour = localEnd.getHours() + localEnd.getMinutes() / 60;
+  return startHour >= hours.open && endHour <= hours.close;
+}
+
+/**
+ * Send SMS to owner about new booking
+ */
+function sendOwnerAlert(customerName, service, dateStr, timeStr, phone) {
+  const ownerPhone = process.env.OWNER_PHONE;
+  if (!ownerPhone || ownerPhone === 'your_real_cell_here') return;
+  const msg = `📅 New Booking!\n${customerName} - ${service}\n${dateStr} at ${timeStr}\nPhone: ${phone}`;
+  sendSms(ownerPhone, msg);
+}
+
+/**
  * Parse a time string like "3pm", "3:00 PM", "15:00", "10am" to (hours, minutes)
  */
 function parseTimeString(str) {
@@ -229,84 +257,47 @@ function parseTimeString(str) {
 
 /**
  * Parse a natural language date/time from a transcript into ISO datetime + duration
- * Returns { startISO, endISO } or null
+ * Uses chrono-node (NLP date parser) to handle real-world expressions:
+ *   "tomorrow at 3pm", "next Tuesday at 2:30", "May 10th at 11am",
+ *   "this Friday at noon", "the 15th at 4pm", "Saturday morning"
+ * Returns { service, startISO, endISO, duration } or null
  */
 function parseBookingTranscript(transcript) {
-  // Try to extract: service, name, date, time
-  // Examples: "I'd like a haircut tomorrow at 3pm"
-  //          "Can I book a color for Jane on Friday at 10?"
-  //          "Reserve a blowout for Saturday morning"
-
   // Detect service
   let service = null;
-  const services = Object.keys(SERVICE_DURATIONS);
-  for (const s of services) {
+  for (const s of Object.keys(SERVICE_DURATIONS)) {
     if (transcript.toLowerCase().includes(s)) {
       service = s;
       break;
     }
   }
 
-  // Detect day references
-  const now = new Date();
-  let targetDate = null;
-  const dayNames = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
-
-  // "tomorrow"
-  if (/\btomorrow\b/i.test(transcript)) {
-    targetDate = new Date(now);
-    targetDate.setDate(targetDate.getDate() + 1);
+  // Use chrono to parse date/time from the transcript
+  // Strip "tomorrow" if there's also an explicit date (e.g., "May 3rd") to avoid confusion
+  // chrono handles: "next Monday", "May 10", "Friday", "this Friday", "the 15th"
+  let cleanTranscript = transcript;
+  if (/\btomorrow\b/i.test(transcript) && /\b(?:january|february|march|april|may|june|july|august|september|october|november|december|jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)\b/i.test(transcript)) {
+    cleanTranscript = transcript.replace(/\btomorrow\b/gi, '').trim();
+    // Collapse multiple spaces
+    cleanTranscript = cleanTranscript.replace(/\s+/g, ' ');
   }
-  // "today"
-  else if (/\btoday\b/i.test(transcript)) {
-    targetDate = new Date(now);
-  }
-  // "next week" + day
-  else if (/next (monday|tuesday|wednesday|thursday|friday|saturday|sunday)/i.test(transcript)) {
-    const match = transcript.match(/next (monday|tuesday|wednesday|thursday|friday|saturday|sunday)/i);
-    const targetDay = dayNames.indexOf(match[1].toLowerCase());
-    targetDate = new Date(now);
-    const currentDay = targetDate.getDay();
-    let daysUntil = targetDay - currentDay;
-    if (daysUntil <= 0) daysUntil += 7;
-    daysUntil += 7; // "next" means next week, not this week
-    targetDate.setDate(targetDate.getDate() + daysUntil);
-  }
-  // "this" + day or just day name
-  else {
-    for (let i = 0; i < dayNames.length; i++) {
-      const re = new RegExp(`\\b(this\\s+)?${dayNames[i]}\\b`, 'i');
-      if (re.test(transcript)) {
-        targetDate = new Date(now);
-        const currentDay = targetDate.getDay();
-        let daysUntil = i - currentDay;
-        if (daysUntil < 0) daysUntil += 7;
-        if (daysUntil === 0 && /this/i.test(transcript)) {} // today or this day
-        else if (daysUntil === 0 && !/this/i.test(transcript)) daysUntil += 7; // just "friday" when it's friday = next friday
-        targetDate.setDate(targetDate.getDate() + daysUntil);
-        break;
-      }
-    }
-  }
+  const parsed = chrono.parse(cleanTranscript, new Date(), { forwardDate: true });
+  if (parsed.length === 0) return null;
 
-  if (!targetDate) return null;
+  const ref = parsed[0];
+  if (!ref.start) return null;
 
-  // Extract time
-  const timeMatch = transcript.match(/(\d{1,2})(?::(\d{2}))?\s*(am|pm)|(\d{1,2}):(\d{2})(?:\s*am|\s*pm)?|(\d{1,2})(?:\s*am|\s*pm)/i);
-  let hours = 10; // default 10am
-  let minutes = 0;
+  const startDate = ref.start.date();
 
+  // Extract time from the parsed result manually via regex if chrono didn't get time right
+  // chrono is good at dates but can miss time references that are in a different clause
+  const timeMatch = transcript.match(/(\d{1,2})(?::(\d{2}))?\s*(am|pm)|(\d{1,2}):(\d{2})(?:\s*am|\s*pm)?|(\d{1,2})\s*(?:am|pm)|(?:\bat\b\s*)(\d{1,2})(?::(\d{2}))?\s*(am|pm)?/i);
   if (timeMatch) {
-    const parsed = parseTimeString(timeMatch[0]);
-    if (parsed) {
-      hours = parsed.hours;
-      minutes = parsed.minutes;
+    const parsedTime = parseTimeString(timeMatch[0]);
+    if (parsedTime) {
+      startDate.setHours(parsedTime.hours, parsedTime.minutes, 0, 0);
     }
   }
-
-  // Set the time on target date
-  const startDate = new Date(targetDate);
-  startDate.setHours(hours, minutes, 0, 0);
 
   // Duration
   const duration = service ? (SERVICE_DURATIONS[service] || DEFAULT_SERVICE_DURATION) : DEFAULT_SERVICE_DURATION;
@@ -411,6 +402,30 @@ app.post('/incoming-call', (req, res) => {
   res.send(twiml.toString());
 });
 
+// Voicemail fallback
+app.post('/voicemail', (req, res) => {
+  const twiml = new VoiceResponse();
+  twiml.say({
+    voice: 'alice',
+  }, 'Thanks for calling. We\'re currently assisting another customer. Please leave your name and number and we\'ll call you back as soon as possible.');
+  twiml.record({
+    action: '/voicemail-callback',
+    maxLength: 30,
+    playBeep: true,
+  });
+  twiml.say('Goodbye.');
+  res.type('text/xml');
+  res.send(twiml.toString());
+});
+
+app.post('/voicemail-callback', (req, res) => {
+  console.log(`📝 Voicemail from ${req.body.From}: ${req.body.RecordingUrl}`);
+  const twiml = new VoiceResponse();
+  twiml.hangup();
+  res.type('text/xml');
+  res.send(twiml.toString());
+});
+
 // Step 2 — WebSocket handler for real-time audio
 const wss = new WebSocket.Server({ noServer: true });
 
@@ -419,7 +434,6 @@ wss.on('connection', (twilioWs) => {
   
   let xaiWs = null;
   let streamSid = null;
-  let callSid = null;
   let customerName = '';
   let customerPhone = '';
   
@@ -511,44 +525,87 @@ wss.on('connection', (twilioWs) => {
     // Only log errors
     if (event.error) console.log(`❌ xAI Error:`, JSON.stringify(event.error));
     
-    // Eve transcript
     if (event.type === 'response.output_audio_transcript.done') {
       console.log(`\n🤖 Eve: ${event.transcript}\n`);
     }
     
     if (event.type === 'conversation.item.input_audio_transcription.completed') {
       console.log(`👤 Customer: ${event.transcript}`);
+      // Capture name from customer: "my name is X Y", "I'm X", etc.
+      const txt = event.transcript || '';
+      // Try full name first: "my name is Frank Sullivan"
+      let m = txt.match(/(?:my name is)\s+(\w+)\s+(\w+)/i);
+      if (m && m[1] && m[2]) {
+        customerName = m[1].charAt(0).toUpperCase() + m[1].slice(1).toLowerCase() + ' ' +
+                       m[2].charAt(0).toUpperCase() + m[2].slice(1).toLowerCase();
+        console.log(`📝 Captured name: ${customerName}`);
+      } else {
+        // Single name: "my name is Frank", "I'm Frank"
+        m = txt.match(/(?:my name is|name's|i'm|it's|this is)\s+(\w+)/i);
+        if (m && m[1] && m[1].length > 1) {
+          customerName = m[1].charAt(0).toUpperCase() + m[1].slice(1).toLowerCase();
+          console.log(`📝 Captured name: ${customerName}`);
+        }
+      }
     }
     
-    if (event.type === 'response.audio_transcript.done') {
-      console.log(`🤖 Eve: ${event.transcript}`);
+    // Handle booking confirmation — xAI may send EITHER event type depending on model version
+    if (event.type === 'response.output_audio_transcript.done' || event.type === 'response.audio_transcript.done') {
+      if (event.type === 'response.audio_transcript.done') {
+        console.log(`🤖 Eve: ${event.transcript}`);
+      }
 
-      // Detect booking confirmations — Eve says something like
-      // "Great, I've you booked for a haircut tomorrow at 3pm"
-      // When she confirms, look backward through the conversation
-      // for the customer's details to create the calendar event
       const transcript = event.transcript || '';
-      const bookingKeywords = ['booked', 'scheduled', 'confirmed', 'set you up', 'see you', 'reserved', 'appointment for'];
-      const isBookingConfirm = bookingKeywords.some(kw => transcript.toLowerCase().includes(kw));
+      const isBookingConfirm = /booked|scheduled|confirmed|reserved|appointment for/i.test(transcript);
 
-      if (isBookingConfirm && transcript.includes(customerName)) {
-        // Try to parse the booking from the transcript
-        const booking = parseBookingTranscript(transcript);
-        if (booking && booking.startISO) {
-          createBookingEvent(customerName, customerPhone || 'Unknown', booking.service || 'Appointment', booking.startISO, booking.endISO)
-            .then(event => {
-              if (event) {
-                console.log(`📅 Booking confirmed: ${customerName} - ${booking.service} at ${booking.startISO}`);
-                // Send SMS confirmation to customer
-                const salonName = process.env.SALON_NAME || 'Salon';
-                const serviceName = booking.service ? booking.service.charAt(0).toUpperCase() + booking.service.slice(1) : 'Appointment';
-                const eventDate = new Date(booking.startISO);
-                const dateStr = eventDate.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
-                const timeStr = eventDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
-                const msg = `✅ Confirmed! Your ${serviceName} at ${salonName} is booked for ${dateStr} at ${timeStr}. See you then!`;
-                if (customerPhone) sendSms(customerPhone, msg);
+      if (isBookingConfirm) {
+        // Extract name from Eve's confirmation — she always says "First Last, I have you booked"
+        // or "First Last. I've reserved..." / "Thank you First Last."
+        const nameFromEve = transcript.match(/\b([A-Z][a-z]+ [A-Z][a-z]+)[,.]/);
+        if (nameFromEve) {
+          customerName = nameFromEve[1];
+          console.log(`📝 Name from Eve: ${customerName}`);
+        }
+        // If no full name, try single capitalized word + comma
+        if (!customerName) {
+          const nameWord = transcript.match(/\b([A-Z][a-z]{2,}),/);
+          if (nameWord) {
+            customerName = nameWord[1];
+            console.log(`📝 Name (single) from Eve: ${customerName}`);
+          }
+        }
+
+        if (customerName) {
+          const booking = parseBookingTranscript(transcript);
+          if (booking && booking.startISO) {
+            // Check business hours
+            if (!isWithinBusinessHours(booking.startISO, booking.endISO)) {
+              console.log(`⛔ Outside business hours: ${booking.startISO}`);
+              return;
+            }
+
+            // Check availability
+            isSlotAvailable(booking.startISO, booking.endISO).then(available => {
+              if (!available) {
+                console.log(`⛔ Slot unavailable (double-booking): ${booking.startISO}`);
+                return;
               }
+
+              createBookingEvent(customerName, customerPhone || 'Unknown', booking.service || 'Appointment', booking.startISO, booking.endISO)
+                .then(event => {
+                  if (event) {
+                    console.log(`✅ BOOKED: ${customerName} - ${booking.service} at ${booking.startISO}`);
+                    const salon = process.env.SALON_NAME || 'Salon';
+                    const svc = booking.service ? booking.service.charAt(0).toUpperCase() + booking.service.slice(1) : 'Appointment';
+                    const d = new Date(booking.startISO);
+                    const ds = d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
+                    const ts = d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+                    sendSms(customerPhone, `✅ Confirmed! Your ${svc} at ${salon} is booked for ${ds} at ${ts}. See you then!`);
+                    sendOwnerAlert(customerName, svc, ds, ts, customerPhone || 'Unknown');
+                  }
+                });
             });
+          }
         }
       }
     }
@@ -560,8 +617,8 @@ wss.on('connection', (twilioWs) => {
     
     if (event.event === 'start') {
       streamSid = event.start.streamSid;
-      callSid = event.start.callSid;
-      customerPhone = event.start?.callerNumber || event.start?.from || '';
+      // Twilio start event: caller number is in event.from (root level), NOT event.start
+      customerPhone = event.from || event.start?.callerNumber || event.start?.from || '';
       console.log(`📱 Call from: ${customerPhone} | Stream: ${streamSid}`);
     }
     
@@ -599,7 +656,6 @@ wss.on('connection', (twilioWs) => {
   
   twilioWs.on('close', () => {
     console.log('📵 Twilio disconnected');
-    logCallToSupabase(callSid, customerPhone, 'completed', `Customer: ${customerName || 'Unknown'}`);
     xaiWs?.close();
   });
   
