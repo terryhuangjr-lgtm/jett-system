@@ -137,7 +137,7 @@ Refer to `TOOLS.md` or `SYSTEMS.md` for provider details.
 
 ## SYSTEM ARCHITECTURE
 
-**Port Registry:** See `~/clawd/clawd/context/PORT-REGISTRY.md` for the complete list of reserved ports. Do NOT start anything on those ports without updating the registry.
+**Port Registry:** All agents and coding tools MUST read `~/clawd/clawd/PORT_MAP.md` before binding to any port or making networking changes. See also `~/clawd/clawd/context/PORT-REGISTRY.md` for the canonical reserved-port list. Do NOT start anything on those ports without updating both files.
 
 **Detailed Architecture:** See `SYSTEMS.md` for complete system diagram and documentation.
 - **Port 3000** — Jett Mission Control (Task Manager + all proxy routes) - `~/clawd/task-manager/server.js`
@@ -146,10 +146,26 @@ Refer to `TOOLS.md` or `SYSTEMS.md` for provider details.
   - Cloudflare tunnel: jettmissioncontrol.com → localhost:3000
 - **Port 3002** — Gemma Assistant (content transformation)
 - **Port 3003** — storeiq-dashboard (Shopify analytics for clients)
+- **Port 3333** — Salon Voice Agent (Twilio + xAI Grok, systemd: salon-voice-agent SYSTEM service)
 - **Port 5000** — Level Up Cards (Flask, systemd: jett-levelup.service)
 - **Port 5001** — Podcast Summarizer (Flask, systemd: jett-podcast.service)
 - **Port 5002** — Watchlist Dashboard (Flask, systemd: jett-watchlist.service)
 - **Port 8000** — API Usage Dashboard
+
+**Doctor Agent:**
+A health monitoring cron runs every 30 minutes via clawdbot.
+It checks service health, stuck processes, error logs, and resources.
+It ONLY alerts — it never auto-fixes. Do not modify doctor scripts unless specifically asked by Terry.
+Cron name: Doctor Health Check (af62c24d-228a-42d6-8917-ab9ea45d0e6a)
+Script: /home/clawd/.hermes/doctor/doctor-check.py
+State: /home/clawd/.hermes/doctor/last-alerts.json
+
+**Profile Architecture:**
+Hermes runs three profiles, each on its own gateway process (Telegram long-polling, no local ports):
+- hermes-gateway.service (default): Superare/Shopify ops (deepseek-v4-flash)
+- hermes-gateway-personal.service: Terry's personal assistant (grok-4-1-fast-reasoning)
+- hermes-gateway-coder.service: Dev tasks (deepseek-chat)
+Do not cross-wire profiles. See PORT_MAP.md for architecture notes.
 
 **NOTE: PM2 is DEAD.** As of the May 2026 system audit, PM2 was killed and disabled. All services use systemd. Do NOT use `pm2` commands — use `systemctl --user` instead.
 

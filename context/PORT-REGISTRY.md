@@ -1,5 +1,5 @@
 # Jett System Port Registry
-# Last updated: 2026-05-02
+# Last updated: 2026-05-03
 # 
 # RESERVED PORTS — Do NOT start any service on these ports.
 # All ports below are managed by systemd and auto-start on boot.
@@ -10,6 +10,7 @@
 | 3000 | Mission Control Dashboard | jett-task-manager.service | ✅ Active |
 | 3002 | Gemma Assistant (content transform) | jett-gemma.service | ✅ Active |
 | 3003 | storeiq-dashboard (Vite dev) | jett-storeiq.service | ⚠️ Disabled (use Vercel) |
+| 3333 | Salon Voice Agent (Twilio + xAI Grok Voice) | salon-voice-agent.service (system) | ✅ Active |
 | 5000 | Level Up Cards (Flask) | jett-levelup.service | ✅ Active |
 | 5001 | Podcast Summarizer (Flask) | jett-podcast.service | ✅ Active |
 | 5002 | Watchlist Dashboard (Flask) | jett-watchlist.service | ✅ Active |
