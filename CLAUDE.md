@@ -152,19 +152,24 @@ Refer to `TOOLS.md` or `SYSTEMS.md` for provider details.
 - **Port 5002** — Watchlist Dashboard (Flask, systemd: jett-watchlist.service)
 - **Port 8000** — API Usage Dashboard
 
-**Doctor Agent:**
-A health monitoring cron runs every 30 minutes via clawdbot.
-It checks service health, stuck processes, error logs, and resources.
-It ONLY alerts — it never auto-fixes. Do not modify doctor scripts unless specifically asked by Terry.
-Cron name: Doctor Health Check (af62c24d-228a-42d6-8917-ab9ea45d0e6a)
-Script: /home/clawd/.hermes/doctor/doctor-check.py
-State: /home/clawd/.hermes/doctor/last-alerts.json
+**Doctor Agent (Hermes Profile):**
+A Hermes agent profile that monitors system health every 30 minutes and alerts Terry on Telegram.
+- Telegram bot: @JettHermesDoctorBot (separate from all other bots)
+- Gateway service: hermes-gateway-doctor.service
+- Profile: ~/.hermes/profiles/doctor/
+- Cron trigger: Doctor Health Check (5f1cfbfc) — every 30min via clawdbot
+- Cron script: ~/.hermes/cron/doctor-health-check.py (sends HEALTH_CHECK_SCHEDULED to bot)
+- Model: grok-4-1-fast
+- ONLY alerts when something is wrong — silence = healthy
+- NEVER auto-fixes. Gives Terry numbered options to approve.
+- Do NOT modify doctor profile files without Terry's explicit request.
 
 **Profile Architecture:**
-Hermes runs three profiles, each on its own gateway process (Telegram long-polling, no local ports):
+Hermes runs FOUR profiles, each on its own gateway process (Telegram long-polling, no local ports):
 - hermes-gateway.service (default): Superare/Shopify ops (deepseek-v4-flash)
 - hermes-gateway-personal.service: Terry's personal assistant (grok-4-1-fast-reasoning)
 - hermes-gateway-coder.service: Dev tasks (deepseek-chat)
+- hermes-gateway-doctor.service: System health monitor (grok-4-1-fast)
 Do not cross-wire profiles. See PORT_MAP.md for architecture notes.
 
 **NOTE: PM2 is DEAD.** As of the May 2026 system audit, PM2 was killed and disabled. All services use systemd. Do NOT use `pm2` commands — use `systemctl --user` instead.
@@ -196,6 +201,7 @@ crontab -l                                   # View system cron (all jobs)
 | hermes-gateway.service | — | Restart=always |
 | hermes-gateway-personal.service | — | Restart=always |
 | hermes-gateway-coder.service | — | Restart=always |
+| hermes-gateway-doctor.service | — | Restart=on-failure |
 
 Plus jett-keepalive.timer (fires every 2 min, auto-restarts any downed service).
 

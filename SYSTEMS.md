@@ -166,6 +166,23 @@ journalctl --user -u hermes-gateway-personal.service -n 50 --no-pager
 
 ---
 
+### 4b. Doctor Agent (Hermes Profile)
+
+| Attribute | Value |
+|-----------|-------|
+| Profile | `~/.hermes/profiles/doctor/` |
+| Service | `hermes-gateway-doctor.service` (systemd user) |
+| Telegram | @JettHermesDoctorBot |
+| Model | grok-4-1-fast |
+| Cron trigger | Doctor Health Check (5f1cfbfc) — `*/30 * * * *` |
+| Trigger script | `~/.hermes/cron/doctor-health-check.py` |
+
+**Purpose:** System health watchdog. Runs terminal checks every 30 min, alerts Terry on Telegram only when something is wrong. Conversational — Terry can ask questions and approve/reject recommended fixes.
+
+**Rules:** NEVER auto-fixes. NEVER kills kilo/bun. Silence = healthy.
+
+---
+
 ### 5. Gemma Assistant (Port 3002)
 
 | Attribute | Value |

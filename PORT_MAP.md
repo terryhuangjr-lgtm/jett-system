@@ -19,12 +19,13 @@
 | 20241 | Cloudflare Tunnel | cloudflared | Jett | tunnels jettmissioncontrol.com → :3000; DO NOT TOUCH |
 
 ## Hermes Gateways (no local ports)
-Hermes runs 3 Python gateway processes via Telegram long-polling. They do NOT bind to any local port.
+Hermes runs 4 Python gateway processes via Telegram long-polling. They do NOT bind to any local port.
 | Service | Profile | Unit | Notes |
 |---------|---------|------|-------|
 | Hermes Default | Superare/Shopify ops | hermes-gateway.service | deepseek-v4-flash |
 | Hermes Personal | Terry's personal assistant | hermes-gateway-personal.service | grok-4-1-fast-reasoning |
 | Hermes Coder | Dev tasks | hermes-gateway-coder.service | deepseek-chat |
+| Hermes Doctor | System health monitor | hermes-gateway-doctor.service | grok-4-1-fast; @JettHermesDoctorBot |
 
 ## Rules
 1. No two services may share a port
