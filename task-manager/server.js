@@ -1217,6 +1217,23 @@ Rules: Keep all language simple. Every activity 3-6 minutes. Make it feel like p
       }
     }
 
+    // ── STOREIQ SYNC ────────────────────────────────────────────────
+    if (pathname === '/api/storeiq-sync' && req.method === 'POST') {
+      try {
+        const { execFileSync } = require('child_process');
+        const output = execFileSync(
+          '/home/clawd/.nvm/versions/node/v22.22.0/bin/node',
+          ['/home/clawd/clawd/automation/hermes-to-supabase.js'],
+          { encoding: 'utf8', timeout: 120000 }
+        );
+        return this.sendJSON(res, { success: true, message: 'Sync completed', output: output.slice(-500) });
+      } catch (e) {
+        const stderr = e.stderr || '';
+        const stdout = e.stdout || '';
+        return this.sendJSON(res, { success: false, error: e.message, details: (stdout + stderr).slice(-500) });
+      }
+    }
+
     // 404
     res.writeHead(404);
     res.end(JSON.stringify({ error: 'Not Found' }));
