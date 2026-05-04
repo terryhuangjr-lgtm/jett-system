@@ -576,7 +576,10 @@ function generateFreshAlerts(variantInventory, orders, referenceDate) {
     } else if (daysOfStock < 30 && unitsInStock > 0) {
       // Reorder alert - low stock relative to sales velocity
       const severity = daysOfStock < 15 ? 'critical' : daysOfStock < 21 ? 'high' : 'medium';
-      const reorderQty = Math.ceil(Math.max(100, avgDailySales * 45)); // 45-day coverage
+      const reorderQty = Math.max(
+        Math.ceil(avgDailySales * 45 - unitsInStock),
+        Math.ceil(avgDailySales * 30)  // minimum: 30-day velocity
+      );
       
       alerts.push({
         ...alertBase,

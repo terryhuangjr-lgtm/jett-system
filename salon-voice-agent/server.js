@@ -148,6 +148,96 @@ function sendSms(to, message) {
 // The salon is a separate business — not a StoreIQ client. Removed to avoid polluting
 // the Superare activity log with salon call data.
 
+// ──────────────────────────────────────────
+// Post-Call LLM Booking Extraction
+// Instead of fragile keyword parsing during the call, we collect the full
+// conversation transcript and feed it to an LLM after the call ends.
+// The LLM extracts structured booking data from natural conversation reliably.
+// ──────────────────────────────────────────
+
+const XAI_API_KEY = process.env.XAI_API_KEY;
+
+/**
+ * Send the full call transcript to xAI/Grok and ask it to extract booking details.
+ * Returns { hasBooking, customerName, service, dateStr, timeStr, phone } or null.
+ */
+async function extractBookingFromTranscript(transcript) {
+  if (!transcript || transcript.trim().length < 20) return null;
+  if (!XAI_API_KEY) {
+    console.log('⚠️ No XAI_API_KEY for post-call extraction');
+    return null;
+  }
+
+  const prompt = `You are a salon booking extraction system. Given a conversation transcript between a salon receptionist and a customer, determine if a booking was made.
+
+If a booking was made, extract EXACTLY these fields as JSON:
+{
+  "hasBooking": true,
+  "customerName": "First Last",
+  "service": "haircut or color or highlights or blowout or keratin treatment or trim or beard trim or eyebrow",
+  "dateStr": "May 3rd",
+  "timeStr": "3pm",
+  "phone": "+15551234567"
+}
+
+If no booking was made (e.g., just an inquiry, wrong number, hang up, information request), respond with:
+{"hasBooking": false}
+
+Rules:
+- customerName: Capture the customer's full name as stated. If only first name, use that alone.
+- service: Use the exact service name from the list above. If unclear, use "appointment".
+- dateStr: The natural language date the customer agreed to.
+- timeStr: The natural language time the customer agreed to. Include am/pm.
+- phone: The caller's phone number if mentioned during the conversation. Can be null.
+- Only extract if the receptionist CONFIRMED the booking aloud. If it sounds tentative or the customer said "let me think about it", do NOT extract.
+
+Conversation transcript:
+${transcript}`;
+
+  try {
+    const response = await fetch('https://api.x.ai/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${XAI_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: 'grok-4-1-fast',
+        messages: [{ role: 'user', content: prompt }],
+        temperature: 0.1,
+        max_tokens: 300,
+      }),
+    });
+
+    if (!response.ok) {
+      console.log(`⚠️ LLM extraction failed: ${response.status}`);
+      return null;
+    }
+
+    const data = await response.json();
+    const content = data.choices?.[0]?.message?.content || '';
+    console.log(`🤖 LLM extraction result: ${content}`);
+
+    // Parse JSON from the response — handle markdown-wrapped JSON
+    const jsonMatch = content.match(/\{[\s\S]*\}/);
+    if (!jsonMatch) {
+      console.log('⚠️ No JSON in LLM response');
+      return null;
+    }
+
+    const result = JSON.parse(jsonMatch[0]);
+    if (result.hasBooking) {
+      console.log(`✅ LLM extracted: ${result.customerName} - ${result.service} on ${result.dateStr} at ${result.timeStr}`);
+      return result;
+    }
+    console.log('ℹ️ LLM determined no booking was made');
+    return null;
+  } catch (err) {
+    console.log(`⚠️ LLM extraction error: ${err.message}`);
+    return null;
+  }
+}
+
 /**
  * Check calendar for existing events on a given date/time — returns available slots
  */
@@ -436,9 +526,10 @@ wss.on('connection', (twilioWs) => {
   let streamSid = null;
   let customerName = '';
   let customerPhone = '';
+  const conversationLog = []; // Collects { speaker, text } turns during the call
   
   // Connect to xAI Voice Agent
-  xaiWs = new WebSocket('wss://api.x.ai/v1/realtime', {
+  xaiWs = new WebSocket('wss://api.x.ai/v1/realtime?model=grok-voice-think-fast-1.0', {
     headers: {
       'Authorization': `Bearer ${process.env.XAI_API_KEY}`
     }
@@ -450,7 +541,7 @@ wss.on('connection', (twilioWs) => {
   xaiWs.on('open', () => {
     console.log('🤖 Connected to xAI Voice Agent');
     
-    // Configure the voice agent
+    // Configure the voice agent — xAI native format (NOT OpenAI compatibility mode)
     xaiWs.send(JSON.stringify({
       type: 'session.update',
       session: {
@@ -462,10 +553,9 @@ wss.on('connection', (twilioWs) => {
           prefix_padding_ms: 300,
           silence_duration_ms: 800
         },
-        input_audio_format: 'g711_ulaw',
-        output_audio_format: 'g711_ulaw',
-        input_audio_transcription: {
-          model: 'grok-2-transcribe'
+        audio: {
+          input: { format: { type: 'audio/pcmu' } },
+          output: { format: { type: 'audio/pcmu' } }
         }
       }
     }));
@@ -503,34 +593,25 @@ wss.on('connection', (twilioWs) => {
     
     if (event.type === 'response.output_audio.delta' && streamSid) {
       if (twilioWs.readyState === WebSocket.OPEN) {
-        try {
-          // xAI sends PCM16 — convert to G711 mulaw for Twilio
-          const pcmBuffer = Buffer.from(event.delta, 'base64');
-          const mulawBuffer = pcm16ToMulaw(pcmBuffer);
-          const mulawPayload = mulawBuffer.toString('base64');
-          // conversion silent
-          twilioWs.send(JSON.stringify({
-            event: 'media',
-            streamSid: streamSid,
-            media: { payload: mulawPayload }
-          }));
-        } catch(e) {
-          console.log(`❌ Audio conversion error: ${e.message}`);
-        }
+        // xAI sends raw µ-law (audio/pcmu) — pass straight to Twilio
+        twilioWs.send(JSON.stringify({
+          event: 'media',
+          streamSid: streamSid,
+          media: { payload: event.delta }
+        }));
       } else {
         console.log(`⚠️ Twilio WS not open: ${twilioWs.readyState}`);
       }
     }
     
-    // Only log errors
-    if (event.error) console.log(`❌ xAI Error:`, JSON.stringify(event.error));
-    
     if (event.type === 'response.output_audio_transcript.done') {
       console.log(`\n🤖 Eve: ${event.transcript}\n`);
+      conversationLog.push({ speaker: 'receptionist', text: event.transcript });
     }
     
     if (event.type === 'conversation.item.input_audio_transcription.completed') {
       console.log(`👤 Customer: ${event.transcript}`);
+      conversationLog.push({ speaker: 'customer', text: event.transcript });
       // Capture name from customer: "my name is X Y", "I'm X", etc.
       const txt = event.transcript || '';
       // Try full name first: "my name is Frank Sullivan"
@@ -549,66 +630,8 @@ wss.on('connection', (twilioWs) => {
       }
     }
     
-    // Handle booking confirmation — xAI may send EITHER event type depending on model version
-    if (event.type === 'response.output_audio_transcript.done' || event.type === 'response.audio_transcript.done') {
-      if (event.type === 'response.audio_transcript.done') {
-        console.log(`🤖 Eve: ${event.transcript}`);
-      }
-
-      const transcript = event.transcript || '';
-      const isBookingConfirm = /booked|scheduled|confirmed|reserved|appointment for/i.test(transcript);
-
-      if (isBookingConfirm) {
-        // Extract name from Eve's confirmation — she always says "First Last, I have you booked"
-        // or "First Last. I've reserved..." / "Thank you First Last."
-        const nameFromEve = transcript.match(/\b([A-Z][a-z]+ [A-Z][a-z]+)[,.]/);
-        if (nameFromEve) {
-          customerName = nameFromEve[1];
-          console.log(`📝 Name from Eve: ${customerName}`);
-        }
-        // If no full name, try single capitalized word + comma
-        if (!customerName) {
-          const nameWord = transcript.match(/\b([A-Z][a-z]{2,}),/);
-          if (nameWord) {
-            customerName = nameWord[1];
-            console.log(`📝 Name (single) from Eve: ${customerName}`);
-          }
-        }
-
-        if (customerName) {
-          const booking = parseBookingTranscript(transcript);
-          if (booking && booking.startISO) {
-            // Check business hours
-            if (!isWithinBusinessHours(booking.startISO, booking.endISO)) {
-              console.log(`⛔ Outside business hours: ${booking.startISO}`);
-              return;
-            }
-
-            // Check availability
-            isSlotAvailable(booking.startISO, booking.endISO).then(available => {
-              if (!available) {
-                console.log(`⛔ Slot unavailable (double-booking): ${booking.startISO}`);
-                return;
-              }
-
-              createBookingEvent(customerName, customerPhone || 'Unknown', booking.service || 'Appointment', booking.startISO, booking.endISO)
-                .then(event => {
-                  if (event) {
-                    console.log(`✅ BOOKED: ${customerName} - ${booking.service} at ${booking.startISO}`);
-                    const salon = process.env.SALON_NAME || 'Salon';
-                    const svc = booking.service ? booking.service.charAt(0).toUpperCase() + booking.service.slice(1) : 'Appointment';
-                    const d = new Date(booking.startISO);
-                    const ds = d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
-                    const ts = d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
-                    sendSms(customerPhone, `✅ Confirmed! Your ${svc} at ${salon} is booked for ${ds} at ${ts}. See you then!`);
-                    sendOwnerAlert(customerName, svc, ds, ts, customerPhone || 'Unknown');
-                  }
-                });
-            });
-          }
-        }
-      }
-    }
+    // Log errors only
+    if (event.error) console.log(`❌ xAI Error:`, JSON.stringify(event.error));
   });
   
   // Forward Twilio audio to xAI
@@ -624,22 +647,11 @@ wss.on('connection', (twilioWs) => {
     
     if (event.event === 'media' && xaiWs?.readyState === WebSocket.OPEN) {
       if (sessionReady) {
-        // Twilio sends mulaw 8kHz — need to upsample to PCM16 24kHz for xAI
-        try {
-          const mulawBuffer = Buffer.from(event.media.payload, 'base64');
-          const pcmBuffer = mulawToPcm16(mulawBuffer);
-          const pcmPayload = pcmBuffer.toString('base64');
-          xaiWs.send(JSON.stringify({
-            type: 'input_audio_buffer.append',
-            audio: pcmPayload
-          }));
-        } catch(e) {
-          // Fallback to raw
-          xaiWs.send(JSON.stringify({
-            type: 'input_audio_buffer.append',
-            audio: event.media.payload
-          }));
-        }
+        // Twilio sends g711 µ-law at 8kHz — xAI accepts raw µ-law (audio/pcmu)
+        xaiWs.send(JSON.stringify({
+          type: 'input_audio_buffer.append',
+          audio: event.media.payload
+        }));
       } else {
         audioBuffer.push(JSON.stringify({
           type: 'input_audio_buffer.append',
@@ -657,6 +669,71 @@ wss.on('connection', (twilioWs) => {
   twilioWs.on('close', () => {
     console.log('📵 Twilio disconnected');
     xaiWs?.close();
+
+    // Post-call LLM booking extraction
+    // Collect the full conversation transcript and let Grok figure out if a booking was made
+    const transcripts = conversationLog.map(t => `${t.speaker === 'receptionist' ? 'Receptionist' : 'Customer'}: ${t.text}`).join('\n');
+    if (transcripts.length > 20) {
+      console.log(`📝 Running post-call booking extraction...`);
+      extractBookingFromTranscript(transcripts).then(booking => {
+        if (!booking) {
+          console.log('ℹ️ No booking detected in this call');
+          return;
+        }
+
+        // Parse dateStr + timeStr into ISO dates using chrono
+        const combined = `${booking.dateStr} ${booking.timeStr || ''}`.trim();
+        const parsed = chrono.parse(combined, new Date(), { forwardDate: true });
+        if (!parsed.length || !parsed[0].start) {
+          console.log(`⚠️ Could not parse date/time: ${combined}`);
+          return;
+        }
+
+        const startDate = parsed[0].start.date();
+        const duration = Object.keys(SERVICE_DURATIONS).includes((booking.service || '').toLowerCase())
+          ? SERVICE_DURATIONS[booking.service.toLowerCase()]
+          : DEFAULT_SERVICE_DURATION;
+        const endDate = new Date(startDate.getTime() + duration * 60000);
+        const startISO = startDate.toISOString();
+        const endISO = endDate.toISOString();
+
+        // Check business hours
+        if (!isWithinBusinessHours(startISO, endISO)) {
+          console.log(`⛔ Outside business hours: ${startISO}`);
+          return;
+        }
+
+        // Check availability and book
+        isSlotAvailable(startISO, endISO).then(available => {
+          if (!available) {
+            console.log(`⛔ Slot unavailable (double-booking): ${startISO}`);
+            return;
+          }
+
+          const service = (booking.service || 'Appointment').toLowerCase();
+          createBookingEvent(booking.customerName, customerPhone || booking.phone || 'Unknown', service, startISO, endISO)
+            .then(event => {
+              if (event) {
+                console.log(`✅ LLM BOOKED: ${booking.customerName} - ${service} at ${startISO}`);
+                const salon = process.env.SALON_NAME || 'Salon';
+                const svc = service.charAt(0).toUpperCase() + service.slice(1);
+                const d = new Date(startISO);
+                const ds = d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
+                const ts = d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+                const phone = customerPhone || booking.phone;
+                if (phone) {
+                  sendSms(phone, `✅ Confirmed! Your ${svc} at ${salon} is booked for ${ds} at ${ts}. See you then!`);
+                }
+                sendOwnerAlert(booking.customerName, svc, ds, ts, phone || 'Unknown');
+              } else {
+                console.log('⚠️ Calendar event creation returned null');
+              }
+            });
+        });
+      });
+    } else {
+      console.log('ℹ️ Call too short for booking extraction');
+    }
   });
   
   xaiWs.on('error', (err) => {
