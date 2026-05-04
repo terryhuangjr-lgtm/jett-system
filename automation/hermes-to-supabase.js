@@ -573,9 +573,46 @@ function generateFreshAlerts(variantInventory, orders, referenceDate) {
           description: `${unitsInStock} units in stock, ZERO sales in 30 days. Stock would last indefinitely (no recent sales).`,
         });
       }
-    } else if (daysOfStock < 30 && unitsInStock > 0) {
+    } else if (daysOfStock < 30 && unitsInStock > 0 && avgDailySales > 0) {
       // Reorder alert - low stock relative to sales velocity
-      const severity = daysOfStock < 15 ? 'critical' : daysOfStock < 21 ? 'high' : 'medium';
+      // Smart triage: urgency × importance
+      //
+      // Factors:
+      //   - daysOfStock: urgency
+      //   - unitsSold30d: product-level velocity (across all variants)  
+      //   - unitsInStock: variant-level remaining
+      //   - variantShare: fraction of total product stock this variant has
+      //     (small-share variants = least popular sizes, cap severity)
+      //
+      const totalStock = variantInventory[productName]?.inventory || unitsInStock;
+      const variantShare = totalStock > 0 ? Math.round((unitsInStock / totalStock) * 100) : 100;
+      
+      // Velocity tiers
+      const isHotSeller = unitsSold30d >= 50;
+      const isTopSeller = unitsSold30d >= 30;
+      const isMediumSeller = unitsSold30d >= 10;
+      const isSlowSeller = unitsSold30d < 10;
+      
+      // Extension sizes (e.g. 3XL, XXL, odd sizes) with both low share and low absolute stock
+      // These are NOT critical — they're nice-to-have variants, not revenue drivers
+      const isExtensionSize = variantShare < 15 && unitsInStock < 5;
+      
+      let severity;
+      // Only truly critical: hot seller running out of core sizes
+      if (daysOfStock < 5 && isHotSeller && !isExtensionSize) {
+        severity = 'critical';
+      // Top seller with <14 days OR hot seller with <7 days on extension
+      } else if (daysOfStock < 14 && isTopSeller && !isExtensionSize) {
+        severity = 'high';
+      // Medium seller with <21 days, not an extension
+      } else if (daysOfStock < 21 && isMediumSeller && !isExtensionSize) {
+        severity = 'medium';
+      // Everything else = low
+      } else {
+        // Skip creating an alert entirely for slow sellers or extensions
+        // that have enough stock for their actual demand
+        return; // skip this alert
+      }
       const reorderQty = Math.max(
         Math.ceil(avgDailySales * 45 - unitsInStock),
         Math.ceil(avgDailySales * 30)  // minimum: 30-day velocity
