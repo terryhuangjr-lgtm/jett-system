@@ -1101,6 +1101,127 @@ function generateCohortReport(orders, referenceDate) {
 }
 
 /**
+ * Generate customer segmentation data (RFM-like) from Shopify orders
+ * Writes to customer_segments, customers, and cohort_data tables
+ */
+function generateCustomerInsights(orders, referenceDate) {
+  const customerOrders = {}; // email -> { firstOrder, totalSpent, orderCount, name }
+  
+  orders.forEach(o => {
+    const email = o.email || o.customer?.email || `customer_${o.id}`;
+    const name = o.customer?.first_name 
+      ? `${o.customer.first_name} ${o.customer.last_name || ''}`.trim()
+      : email.split('@')[0];
+    
+    if (!customerOrders[email]) {
+      customerOrders[email] = { 
+        firstOrder: o.created_at, 
+        lastOrder: o.created_at,
+        totalSpent: 0, 
+        orderCount: 0, 
+        email, 
+        name 
+      };
+    }
+    customerOrders[email].totalSpent += parseFloat(o.total_price || 0);
+    customerOrders[email].orderCount++;
+    if (o.created_at > customerOrders[email].lastOrder) {
+      customerOrders[email].lastOrder = o.created_at;
+    }
+  });
+
+  const now = new Date(referenceDate);
+  const customers = Object.values(customerOrders)
+    .filter(c => !c.email.startsWith('customer_'))
+    .map(c => {
+      const lastDate = new Date(c.lastOrder);
+      const daysSinceLastOrder = Math.floor((now - lastDate) / (1000 * 60 * 60 * 24));
+      
+      // Assign segment based on RFM-like logic
+      let segment;
+      if (c.orderCount >= 5 && daysSinceLastOrder <= 60) {
+        segment = 'Champions';
+      } else if (c.orderCount >= 3 && daysSinceLastOrder <= 90) {
+        segment = 'Loyal';
+      } else if (daysSinceLastOrder > 90 && daysSinceLastOrder <= 180) {
+        segment = 'At-Risk';
+      } else if (daysSinceLastOrder > 180) {
+        segment = 'Lost';
+      } else if (c.orderCount === 1 && daysSinceLastOrder <= 30) {
+        segment = 'New';
+      } else {
+        segment = 'One-Time';
+      }
+      
+      return {
+        store_id: STORE_CONFIG.id,
+        name: c.name,
+        email: c.email,
+        total_orders: c.orderCount,
+        lifetime_value: Math.round(c.totalSpent),
+        last_order: c.lastOrder.split('T')[0],
+        segment
+      };
+    })
+    .sort((a, b) => b.lifetimeValue - a.lifetimeValue);
+
+  // Build segments summary
+  const segmentMap = {};
+  customers.forEach(c => {
+    if (!segmentMap[c.segment]) {
+      segmentMap[c.segment] = { count: 0, revenue: 0, ltvSum: 0 };
+    }
+    segmentMap[c.segment].count++;
+    segmentMap[c.segment].revenue += c.lifetimeValue;
+    segmentMap[c.segment].ltvSum += c.lifetimeValue;
+  });
+
+  const totalRevenue = customers.reduce((s, c) => s + c.lifetimeValue, 0);
+  const segmentColors = {
+    'Champions': '#10B981',
+    'Loyal': '#3B82F6',
+    'At-Risk': '#F59E0B',
+    'Lost': '#EF4444',
+    'New': '#8B5CF6',
+    'One-Time': '#6B7280',
+  };
+
+  const segments = Object.entries(segmentMap).map(([segment, data]) => ({
+    store_id: STORE_CONFIG.id,
+    segment,
+    count: data.count,
+    revenue_percentage: totalRevenue > 0 ? parseFloat((data.revenue / totalRevenue * 100).toFixed(1)) : 0,
+    avg_ltv: data.count > 0 ? Math.round(data.ltvSum / data.count) : 0,
+    color: segmentColors[segment] || '#6B7280',
+  }));
+
+  // Build cohort data (month by month)
+  const monthBuckets = {};
+  orders.forEach(o => {
+    const monthKey = o.created_at.slice(0, 7);
+    if (!monthBuckets[monthKey]) monthBuckets[monthKey] = { newSet: new Set(), returningSet: new Set() };
+    const email = o.email || o.customer?.email || `customer_${o.id}`;
+    // If this email's first order is in this month, it's new
+    if (customerOrders[email] && customerOrders[email].firstOrder.slice(0, 7) === monthKey) {
+      monthBuckets[monthKey].newSet.add(email);
+    } else {
+      monthBuckets[monthKey].returningSet.add(email);
+    }
+  });
+
+  const cohortData = Object.entries(monthBuckets)
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([month, data]) => ({
+      store_id: STORE_CONFIG.id,
+      month,
+      new_customers: data.newSet.size,
+      returning_customers: data.returningSet.size,
+    }));
+
+  return { segments, topCustomers: customers.slice(0, 5), cohortData };
+}
+
+/**
  * Generate per-product performance data for Sales Intelligence
  * Produces records for 7d, 30d, 60d, and 90d periods from the available order data.
  *
@@ -1559,6 +1680,51 @@ async function syncToSupabase() {
     
     syncSummary.sales_intel = { products: productPerformance.length, channels: channelBreakdown.length };
     
+    // =========================================================================
+    // 7. SYNC CUSTOMER INSIGHTS TABLES
+    // =========================================================================
+    console.log('\n👥 STEP 7: Syncing Customer Insight Tables...');
+    
+    const customerInsights = generateCustomerInsights(orders, shopifyData.referenceDate);
+    
+    console.log(`  Generated ${customerInsights.segments.length} segments`);
+    console.log(`  Generated ${customerInsights.topCustomers.length} top customers`);
+    console.log(`  Generated ${customerInsights.cohortData.length} cohort months`);
+    
+    if (canWrite) {
+      // customer_segments
+      await supabase.from('customer_segments').delete().eq('store_id', STORE_CONFIG.id);
+      if (customerInsights.segments.length > 0) {
+        const { error: segErr } = await supabase.from('customer_segments').insert(customerInsights.segments);
+        console.log(`  ${segErr ? '❌ Error: ' + segErr.message : '✅ Customer segments synced'}`);
+      }
+      
+      // customers (top 5 by LTV)
+      await supabase.from('customers').delete().eq('store_id', STORE_CONFIG.id);
+      if (customerInsights.topCustomers.length > 0) {
+        const { error: custErr } = await supabase.from('customers').insert(customerInsights.topCustomers);
+        console.log(`  ${custErr ? '❌ Error: ' + custErr.message : '✅ Top customers synced'}`);
+      }
+      
+      // cohort_data
+      await supabase.from('cohort_data').delete().eq('store_id', STORE_CONFIG.id);
+      if (customerInsights.cohortData.length > 0) {
+        const { error: cohortErr } = await supabase.from('cohort_data').insert(customerInsights.cohortData);
+        console.log(`  ${cohortErr ? '❌ Error: ' + cohortErr.message : '✅ Cohort data synced'}`);
+      }
+    } else {
+      console.log('  [DRY RUN] Would delete old data and insert:');
+      console.log(`    Segments: ${customerInsights.segments.length} records`);
+      console.log(`    Top customers: ${customerInsights.topCustomers.length} records`);
+      console.log(`    Cohort data: ${customerInsights.cohortData.length} records`);
+    }
+    
+    syncSummary.customer_insights = {
+      segments: customerInsights.segments.length,
+      customers: customerInsights.topCustomers.length,
+      cohorts: customerInsights.cohortData.length,
+    };
+    
   } else if (orders.length === 0) {
     console.log('\n⚠️  No orders available - skipping table updates');
   }
@@ -1579,6 +1745,10 @@ async function syncToSupabase() {
   const si = syncSummary.sales_intel;
   if (si) {
     console.log(`  ✓ Sales Intel: ${si.products} products, ${si.channels} channels`);
+  }
+  const ci = syncSummary.customer_insights;
+  if (ci) {
+    console.log(`  ✓ Customers:   ${ci.segments} segments, ${ci.customers} top, ${ci.cohorts} cohort months`);
   }
   
   if (syncSummary.anomalies.length > 0) {

@@ -164,6 +164,14 @@ A Hermes agent profile that monitors system health every 30 minutes and alerts T
 - NEVER auto-fixes. Gives Terry numbered options to approve.
 - Do NOT modify doctor profile files without Terry's explicit request.
 
+**StoreIQ Auto-Sync (OpenClaw Cron):**
+Syncs Shopify → Supabase every 30 min. Runs `hermes-to-supabase.js`.
+- Cron ID: c33da630509a (every 30 min, forever)
+- Sync script: /home/clawd/clawd/automation/hermes-to-supabase.js
+- Populates: metrics, alerts, reports, activity_log, product_performance, channel_breakdown, customer_segments, customers, cohort_data
+- Tables added 2026-05-05: customer_segments, customers, cohort_data
+- Supabase project: fhmjvnphxsbtwcutqkvq
+
 **Profile Architecture:**
 Hermes runs FOUR profiles, each on its own gateway process (Telegram long-polling, no local ports):
 - hermes-gateway.service (default): Superare/Shopify ops (deepseek-v4-flash)

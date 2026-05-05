@@ -17,7 +17,7 @@ AI-powered Shopify analytics dashboard for inventory alerts, sales intelligence,
 
 ## Quick Workflow
 1. Edit code → `cd ~/clawd/storeiq-dashboard && npm run build && git add . && git commit -m "changes" && git push`
-2. Sync data: `cd ~/clawd/clawd/automation && node hermes-to-supabase.js`
+2. Data syncs automatically every 30 min via cron (or manual: `cd ~/clawd/clawd/automation && node hermes-to-supabase.js`)
 3. Test live: Refresh Vercel URL
 
 ## Recent Features
