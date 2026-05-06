@@ -695,7 +695,7 @@ gws sheets spreadsheets list       # List spreadsheets
 Completed 2026-05-02. Results:
 
 ### Services — 0 Failed
-All 9 systemd services running clean. Zero OOM kills on record. jett-keepalive.timer monitors every 2 min.
+All 10 systemd services running clean. Salon voice agent (salon-voice-agent.service) added 2026-05-05 — system-level (not --user), monitored by keepalive timer.
 
 ### Security — 2 HIGH Fixes Applied
 - `.env` files hardened: `chmod 600` across all env files and GWS token cache

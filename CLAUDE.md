@@ -1,5 +1,5 @@
 # CLAUDE.md - Jett System Standing Orders
-Last Updated: 2026-05-02
+# Last Updated: 2026-05-05
 
 READ THIS ENTIRE FILE BEFORE TOUCHING ANYTHING.
 
@@ -527,6 +527,7 @@ Active services:
 - hermes-gateway.service       (Hermes default)
 - hermes-gateway-personal.service (Hermes personal)
 - hermes-gateway-coder.service (Hermes coder)
+- salon-voice-agent.service     (voice agent :3333) — systemctl (not --user)
 - jett-keepalive.timer         (self-heal every 2 min)
 
 Windows resiliency (prevents WSL shutdown on terminal close):
