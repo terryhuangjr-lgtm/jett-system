@@ -95,6 +95,26 @@ Action:
 
 ---
 
+## ABSOLUTE RULE: Never Edit .env Files or Save Truncated Keys
+
+**.env files are PRODUCTION-LOCKED.** Never edit, create, or modify any `.env` file under any circumstances. This includes:
+- `/home/clawd/.env`
+- `/home/clawd/.hermes/.env`
+- `/home/clawd/.hermes/profiles/*/.env` (any profile)
+- `/home/clawd/clawd/salon-voice-agent/.env`
+- `/home/clawd/clawd/automation/.env`
+- `/home/clawd/storeiq-dashboard/.env`
+
+**Truncated keys (CRITICAL):** `read_file`, `cat`, `grep`, and terminal output all **mask** credential values with `...` (display security). A line like `XAI_API_KEY=xai-l1...QwDE` in terminal output is NOT the real value. Writing it to any file destroys the credential.
+
+**Verify before writing:** Use `xxd <file>` or `sed -n '<line>p' <file> | xxd` to read raw bytes. If the value contains `...` in the hex dump, it's corrupted — ask Terry for the real key.
+
+**If a credential is wrong in a .env file:** Tell Terry. Do not fix it yourself. Do not read a value from terminal display and write it back.
+
+**This rule has NO exceptions.** Even during active debugging.
+
+---
+
 ## HERMES AGENT (Parallel System — DO NOT CONFUSE WITH JETT)
 
 Hermes is a **separate AI agent** running in parallel on the same machine. It handles Shopify/Superare operations and Terry's personal assistant tasks.
@@ -146,7 +166,7 @@ Refer to `TOOLS.md` or `SYSTEMS.md` for provider details.
   - Cloudflare tunnel: jettmissioncontrol.com → localhost:3000
 - **Port 3002** — Gemma Assistant (content transformation)
 - **Port 3003** — storeiq-dashboard (Shopify analytics for clients)
-- **Port 3333** — Salon Voice Agent (Twilio + xAI Grok, systemd: salon-voice-agent SYSTEM service)
+- **Port 3333** — Salon Voice Agent (Twilio + xAI Grok, systemd: salon-voice-agent SYSTEM service) → voice.jettmissioncontrol.com
 - **Port 5000** — Level Up Cards (Flask, systemd: jett-levelup.service)
 - **Port 5001** — Podcast Summarizer (Flask, systemd: jett-podcast.service)
 - **Port 5002** — Watchlist Dashboard (Flask, systemd: jett-watchlist.service)
