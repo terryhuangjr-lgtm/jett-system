@@ -38,22 +38,30 @@ Caller → Twilio (Phone Number)
 ## Configuration (in server.js)
 
 ```
-MAX_CONCURRENT_BOOKINGS = 1   // Number of simultaneous appointments
-STYLISTS = []                  // Staff names, e.g. ["Alex","Sarah","Mike"]
+MAX_CONCURRENT_BOOKINGS = 3   // 3 chairs/stylists
+STYLISTS = [
+  { name: 'Mark',  daysOff: [2] },       // Off Tuesdays
+  { name: 'Sofia', daysOff: [1] },       // Off Mondays
+  { name: 'Jenna', daysOff: [1, 2] },    // Off Mon-Tues
+]
 SERVICE_DURATIONS              // Per-service duration in minutes
 SALON_NAME / ADDRESS / HOURS  // Salon info (from .env)
 SALON_PHONE                    // Display phone number
 ```
 
 ## Services & Prices (Eve's script)
-- Haircut: $65
-- Color: $120+
-- Highlights: $150+
-- Blowout: $45
-- Keratin Treatment: $200+
-- Trim: $30
-- Beard Trim: $15
-- Eyebrow Wax: $15
+
+| Service | Price | Duration |
+|---------|-------|----------|
+| Women's Haircut | $75 | 60 min |
+| Men's Haircut | $55 | 45 min |
+| Color | $130+ | 120 min |
+| Highlights | $160+ | 120 min |
+| Blowout | $50 | 45 min |
+| Keratin Treatment | $220+ | 90 min |
+| Trim | $35 | 30 min |
+| Beard Trim | $20 | 15 min |
+| Eyebrow Wax | $18 | 15 min |
 
 ## Features
 

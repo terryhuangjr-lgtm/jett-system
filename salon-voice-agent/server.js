@@ -73,10 +73,42 @@ function pcm16ToMulaw(pcmBuffer) {
 // ──────────────────────────────────────────
 // Google Calendar — Book Appointments
 // ──────────────────────────────────────────
-
+const SALON_HOURS = 'Monday-Saturday 9am-7pm, Sunday 10am-5pm';
 const GWS_BIN = '/home/clawd/.nvm/versions/node/v22.22.0/bin/gws';
 const CALENDAR_TIMEZONE = 'America/New_York';
-const DEFAULT_SERVICE_DURATION = 60; // minutes
+
+// ──────────────────────────────────────────
+// SALON CONFIGURATION
+// ──────────────────────────────────────────
+
+// Number of simultaneous bookings allowed (stylists/chairs available)
+const MAX_CONCURRENT_BOOKINGS = 3;
+
+// Staff — Eve can ask who the customer prefers
+const STYLISTS = [
+  { name: 'Mark',      daysOff: [2] },                // Off Tuesdays
+  { name: 'Sofia',     daysOff: [1] },                // Off Mondays
+  { name: 'Jenna',     daysOff: [1, 2] },             // Off Mon-Tues
+];
+
+// Duration per service (minutes)
+const SERVICE_DURATIONS = {
+  "women's haircut":  60,
+  "men's haircut":    45,
+  'color':           120,
+  'highlights':      120,
+  'blowout':          45,
+  'keratin treatment': 90,
+  'trim':             30,
+  'beard trim':       15,
+  'eyebrow wax':      15,
+};
+
+const DEFAULT_SERVICE_DURATION = 60;
+
+const COVERAGE_GAP_MINUTES = 30;
+
+// ──────────────────────────────────────────
 
 const BUSINESS_HOURS = {
   // day of week: { open: hour (24h), close: hour (24h) }
@@ -87,17 +119,6 @@ const BUSINESS_HOURS = {
   4: { open: 9, close: 19 },  // Thursday
   5: { open: 9, close: 19 },  // Friday
   6: { open: 9, close: 18 },  // Saturday
-};
-
-const SERVICE_DURATIONS = {
-  'haircut': 60,
-  'color': 120,
-  'highlights': 120,
-  'blowout': 45,
-  'keratin treatment': 90,
-  'trim': 30,
-  'beard trim': 15,
-  'eyebrow': 15,
 };
 
 /**
@@ -188,7 +209,7 @@ Rules:
 - service: Use the exact service name from the list above. If unclear, use "appointment".
 - dateStr: The natural language date the customer agreed to.
 - timeStr: The natural language time the customer agreed to. Include am/pm.
-- phone: The caller's phone number if mentioned during the conversation. Can be null.
+- phone: The phone number the customer provided during the call if asked. Format as +1XXXXXXXXXX. Can be null.
 - Only extract if the receptionist CONFIRMED the booking aloud. If it sounds tentative or the customer said "let me think about it", do NOT extract.
 
 Conversation transcript:
@@ -227,6 +248,14 @@ ${transcript}`;
 
     const result = JSON.parse(jsonMatch[0]);
     if (result.hasBooking) {
+      // Normalize time: if no "am" or "pm" in timeStr, assume PM for reasonable hours
+      if (result.timeStr && !/am|pm/i.test(result.timeStr)) {
+        const num = parseInt(result.timeStr);
+        if (!isNaN(num) && num >= 1 && num <= 11) {
+          result.timeStr = num + 'pm';
+          console.log(`⏰ Normalized time to: ${result.timeStr}`);
+        }
+      }
       console.log(`✅ LLM extracted: ${result.customerName} - ${result.service} on ${result.dateStr} at ${result.timeStr}`);
       return result;
     }
@@ -279,37 +308,121 @@ function getAvailableSlots(dateStr) {
 }
 
 /**
- * Check if a proposed time slot is available (not overlapping existing events)
+ * Check if a proposed time slot is available (not exceeding concurrent booking capacity)
+ * Uses MAX_CONCURRENT_BOOKINGS to allow multiple overlapping appointments (e.g., 3 chairs).
  */
-async function isSlotAvailable(startISO, endISO) {
-  const start = new Date(startISO);
-  const busy = await getAvailableSlots(start.toISOString());
-  const proposedStart = start.getTime();
-  const proposedEnd = new Date(endISO).getTime();
+async function isSlotAvailable(startDate, endDate) {
+  const busy = await getAvailableSlots(startDate.toISOString());
+  const proposedStart = startDate.getTime();
+  const proposedEnd = endDate.getTime();
+  let overlapCount = 0;
   for (const slot of busy) {
     const busyStart = slot.start.getTime();
     const busyEnd = slot.end.getTime();
     if (proposedStart < busyEnd && proposedEnd > busyStart) {
-      return false;
+      overlapCount++;
+      if (overlapCount >= MAX_CONCURRENT_BOOKINGS) return false;
     }
   }
   return true;
 }
 
 /**
+ * Fetch available time slots for the next 7 days (starting tomorrow).
+ * Returns a human-readable string like "Friday May 8th: 9am, 10am, 11am, 2pm, 3pm"
+ * Used to inject live calendar availability into Eve's system prompt.
+ */
+async function fetchAvailableSlotsWindow() {
+  const BUSINESS_HOURS_MAP = {0:10,1:9,2:9,3:9,4:9,5:9,6:9};
+  const BUSINESS_HOURS_CLOSE = {0:17,1:19,2:19,3:19,4:19,5:19,6:18};
+  const SERVICE_GAP = 60; // minutes between slots
+
+  const today = new Date();
+  const results = [];
+
+  for (let dayOffset = 0; dayOffset < 7; dayOffset++) {
+    const date = new Date(today);
+    date.setDate(today.getDate() + dayOffset);
+    const dayOfWeek = date.getDay();
+    const open = BUSINESS_HOURS_MAP[dayOfWeek];
+    const close = BUSINESS_HOURS_CLOSE[dayOfWeek];
+    if (!open) continue; // closed
+
+    // Fetch existing events for this day
+    const dayStart = new Date(date);
+    dayStart.setHours(0, 0, 0, 0);
+    const dayEnd = new Date(date);
+    dayEnd.setHours(23, 59, 59, 999);
+
+    let busySlots = [];
+    try {
+      busySlots = await new Promise((resolve, reject) => {
+        execFile(GWS_BIN, [
+          'calendar', 'events', 'list',
+          '--params', JSON.stringify({
+            calendarId: 'primary',
+            timeMin: dayStart.toISOString(),
+            timeMax: dayEnd.toISOString(),
+            singleEvents: true,
+            orderBy: 'startTime',
+          }),
+          '--format', 'json',
+        ], { timeout: 10000 }, (err, stdout) => {
+          if (err) return resolve([]);
+          try {
+            const data = JSON.parse(stdout);
+            resolve((data.items || []).map(e => ({
+              start: new Date(e.start?.dateTime || e.start?.date).getTime(),
+              end: new Date(e.end?.dateTime || e.end?.date).getTime(),
+            })));
+          } catch { resolve([]); }
+        });
+      });
+    } catch { busySlots = []; }
+
+    // Compute free hour slots
+    const availableHours = [];
+    for (let h = open; h < close; h++) {
+      const slotStart = new Date(date);
+      slotStart.setHours(h, 0, 0, 0);
+      const slotEnd = new Date(slotStart.getTime() + SERVICE_GAP * 60000);
+      const slotStartMs = slotStart.getTime();
+      const slotEndMs = slotEnd.getTime();
+
+      // Count overlapping events — slot is free if under MAX_CONCURRENT_BOOKINGS
+      let overlapCount = 0;
+      for (const b of busySlots) {
+        if (slotStartMs < b.end && slotEndMs > b.start) {
+          overlapCount++;
+          if (overlapCount >= MAX_CONCURRENT_BOOKINGS) break;
+        }
+      }
+      if (overlapCount < MAX_CONCURRENT_BOOKINGS) {
+        const hourStr = h === 0 ? '12am' : h < 12 ? `${h}am` : h === 12 ? '12pm' : `${h - 12}pm`;
+        availableHours.push(hourStr);
+      }
+    }
+
+    if (availableHours.length > 0) {
+      const dayName = date.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
+      results.push(`${dayName}: ${availableHours.join(', ')}`);
+    }
+  }
+
+  return results.length > 0
+    ? results.join('\n')
+    : '';
+}
+
+/**
  * Check if a time falls within business hours
  */
-function isWithinBusinessHours(startISO, endISO) {
-  const estOffset = -4 * 60;
-  const start = new Date(startISO);
-  const end = new Date(endISO);
-  const localStart = new Date(start.getTime() + estOffset * 60000);
-  const localEnd = new Date(end.getTime() + estOffset * 60000);
-  const dayOfWeek = localStart.getDay();
+function isWithinBusinessHours(startDate, endDate) {
+  const dayOfWeek = startDate.getDay();
   const hours = BUSINESS_HOURS[dayOfWeek];
   if (!hours) return false;
-  const startHour = localStart.getHours() + localStart.getMinutes() / 60;
-  const endHour = localEnd.getHours() + localEnd.getMinutes() / 60;
+  const startHour = startDate.getHours() + startDate.getMinutes() / 60;
+  const endHour = endDate.getHours() + endDate.getMinutes() / 60;
   return startHour >= hours.open && endHour <= hours.close;
 }
 
@@ -404,11 +517,13 @@ function parseBookingTranscript(transcript) {
 /**
  * Create a calendar event via GWS CLI
  */
-function createBookingEvent(customerName, customerPhone, service, startISO, endISO) {
+function createBookingEvent(customerName, customerPhone, service, startDate, endDate) {
   return new Promise((resolve, reject) => {
     if (!service) service = 'Appointment';
     const summary = `${customerName} - ${service.charAt(0).toUpperCase() + service.slice(1)}`;
     const description = `Booked via Salon Voice Agent\nCustomer: ${customerName}\nPhone: ${customerPhone}\nService: ${service}`;
+    const startISO = startDate.toISOString();
+    const endISO = endDate.toISOString();
 
     const args = [
       'calendar', '+insert',
@@ -435,8 +550,40 @@ function createBookingEvent(customerName, customerPhone, service, startISO, endI
   });
 }
 
-// Salon context — this gets fed to the AI
-const SALON_CONTEXT = `
+// Salon context builder — generates dynamic instructions per call with live availability
+function buildSalonContext(availableSlotsStr) {
+  // Staff info — show stylists with their schedules
+  let staffInfo = '';
+  if (STYLISTS.length > 0) {
+    const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const stylistLines = STYLISTS.map(s => {
+      const daysOff = s.daysOff.map(d => dayNames[d]).join(', ');
+      return `- ${s.name} (off ${daysOff})`;
+    });
+    staffInfo = `\nSTYLISTS:\n${stylistLines.join('\n')}\n- Ask who they prefer. If they don't care, book with whoever's working.\n- If a stylist is off that day, tell the customer and suggest another stylist or day.`;
+  }
+  if (MAX_CONCURRENT_BOOKINGS > 1) {
+    staffInfo += `\n- Our salon has ${MAX_CONCURRENT_BOOKINGS} stylists working at once, so multiple appointments can run at the same time.`;
+  }
+
+  let bookingSection = `BOOKING:
+- Ask for: their name, what service they want, preferred date and time
+- Say the customer's FULL NAME out loud at least once during the conversation — I need to hear it clearly
+- Ask for their phone number to send a confirmation SMS before finalizing`;
+
+  if (availableSlotsStr) {
+    bookingSection += `
+- Suggest specific available times from the list below. For example: "We have 10am, 2pm, or 4pm available on Friday."
+- Do NOT suggest times that are not listed below
+
+AVAILABLE SLOTS (pre-computed from calendar):
+${availableSlotsStr}`;
+  } else {
+    bookingSection += `
+- Available times: any slot during business hours`;
+  }
+
+  return `
 You are a friendly receptionist for ${process.env.SALON_NAME}.
 Your job is to answer calls, book appointments, and answer questions.
 
@@ -447,34 +594,41 @@ SALON INFO:
 - Phone: ${process.env.SALON_PHONE}
 
 SERVICES & PRICES:
-- Haircut: $65
-- Color: $120+
-- Highlights: $150+
-- Blowout: $45
-- Keratin Treatment: $200+
-- Trim: $30
-- Beard Trim: $15
-- Eyebrow Wax: $15
+- Women's Haircut: $75
+- Men's Haircut: $55
+- Color: $130+
+- Highlights: $160+
+- Blowout: $50
+- Keratin Treatment: $220+
+- Trim: $35
+- Beard Trim: $20
+- Eyebrow Wax: $18
 
 BEGINNING THE CALL:
 - The customer just called your business
-- Greet them warmly and ask how you can help
+- Greet them ONCE warmly
+- If the customer says "Hi" back, continue the conversation naturally — do NOT re-greet them
 - DO NOT introduce yourself by name — just say "Hi, thanks for calling [Salon Name], how can I help you?"
 
-BOOKING:
-- Ask for: their name, what service they want, preferred date and time
-- Say the customer's FULL NAME out loud at least once during the conversation — I need to hear it clearly
-- Available times: any slot during business hours
+RULES:
+- If the customer simply replies with "Hi" or "Hello", continue naturally with "What can I help you with?" — do NOT repeat the greeting
+
+${bookingSection}
+
+${staffInfo}
+
 - When you confirm the booking, say it clearly like: "Great, I have you booked for a [service] on [day] at [time]"
 - Confirm the booking clearly before ending the call
 
 RULES:
 - Be warm, friendly, and professional
 - Keep responses concise — this is a phone call
+- Speak at a brisk pace — shorter sentences, less wordy
+- If the customer speaks while you're talking, stop immediately and listen. Do NOT finish your sentence — the customer comes first.
 - If you cannot help, offer to take a message for the owner
 - Never make up information not provided above
 - Always confirm booking details before ending call
-`;
+`;}
 
 // Step 1 — Twilio calls this when someone calls our number
 app.post('/incoming-call', (req, res) => {
@@ -541,17 +695,20 @@ wss.on('connection', (twilioWs) => {
   xaiWs.on('open', () => {
     console.log('🤖 Connected to xAI Voice Agent');
     
-    // Configure the voice agent — xAI native format (NOT OpenAI compatibility mode)
+  fetchAvailableSlotsWindow().then(slotsStr => {
+    const instructions = buildSalonContext(slotsStr);
+    console.log(`📋 Injected available slots into system prompt`);
+    
     xaiWs.send(JSON.stringify({
       type: 'session.update',
       session: {
         voice: 'eve',
-        instructions: SALON_CONTEXT,
+        instructions: instructions,
         turn_detection: {
           type: 'server_vad',
-          threshold: 0.5,
-          prefix_padding_ms: 300,
-          silence_duration_ms: 800
+          threshold: 0.8,
+          prefix_padding_ms: 200,
+          silence_duration_ms: 450
         },
         audio: {
           input: { format: { type: 'audio/pcmu' } },
@@ -560,6 +717,7 @@ wss.on('connection', (twilioWs) => {
       }
     }));
   });
+});
   
   // Forward xAI audio back to Twilio
   xaiWs.on('message', (data) => {
@@ -576,18 +734,7 @@ wss.on('connection', (twilioWs) => {
       }
       audioBuffer = [];
 
-      // Now send greeting
-      xaiWs.send(JSON.stringify({
-        type: 'conversation.item.create',
-        item: {
-          type: 'message',
-          role: 'user',
-          content: [{
-            type: 'input_text',
-            text: 'A customer just called. Greet them warmly and ask how you can help.'
-          }]
-        }
-      }));
+      // Trigger the first greeting based on system instructions
       xaiWs.send(JSON.stringify({ type: 'response.create' }));
     }
     
@@ -698,20 +845,20 @@ wss.on('connection', (twilioWs) => {
         const endISO = endDate.toISOString();
 
         // Check business hours
-        if (!isWithinBusinessHours(startISO, endISO)) {
-          console.log(`⛔ Outside business hours: ${startISO}`);
+        if (!isWithinBusinessHours(startDate, endDate)) {
+          console.log(`⛔ Outside business hours: ${startDate.toString()}`);
           return;
         }
 
         // Check availability and book
-        isSlotAvailable(startISO, endISO).then(available => {
+        isSlotAvailable(startDate, endDate).then(available => {
           if (!available) {
             console.log(`⛔ Slot unavailable (double-booking): ${startISO}`);
             return;
           }
 
           const service = (booking.service || 'Appointment').toLowerCase();
-          createBookingEvent(booking.customerName, customerPhone || booking.phone || 'Unknown', service, startISO, endISO)
+          createBookingEvent(booking.customerName, customerPhone || booking.phone || 'Unknown', service, startDate, endDate)
             .then(event => {
               if (event) {
                 console.log(`✅ LLM BOOKED: ${booking.customerName} - ${service} at ${startISO}`);

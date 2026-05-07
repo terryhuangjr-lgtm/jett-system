@@ -10,16 +10,28 @@ A real-time AI voice receptionist for Terry's mom's salon. Handles inbound calls
 
 ## Configuration
 
-| File | Path |
-|------|------|
-| Main server | `/home/clawd/clawd/salon-voice-agent/server.js` |
-| Log file | `/tmp/salon-agent.log` |
-| Skill (full docs) | `software-development/twilio-xai-voice-agent` |
-| Systemd service | `salon-voice-agent.service` |
+| Setting | Value |
+|---------|-------|
+| Chairs / concurrent bookings | **3** |
+| Stylists | Mark (off Tues), Sofia (off Mon), Jenna (off Mon-Tues) |
+| Post-call LLM | `grok-4-1-fast` |
+| Twilio number | `+185****4781` |
+| GWS user | `jett.theassistant@gmail.com` |
+| GWS binary | `/home/clawd/.nvm/versions/node/v22.22.0/bin/gws` |
 
-- Twilio number: `+185****4781`
-- GWS user: `jett.theassistant@gmail.com`
-- GWS binary: `/home/clawd/.nvm/versions/node/v22.22.0/bin/gws`
+### Services & Prices
+
+| Service | Price | Duration |
+|---------|-------|----------|
+| Women's Haircut | $75 | 60 min |
+| Men's Haircut | $55 | 45 min |
+| Color | $130+ | 120 min |
+| Highlights | $160+ | 120 min |
+| Blowout | $50 | 45 min |
+| Keratin Treatment | $220+ | 90 min |
+| Trim | $35 | 30 min |
+| Beard Trim | $20 | 15 min |
+| Eyebrow Wax | $18 | 15 min |
 
 ## Known Issues
 1. ~~Old keyword-based booking detection removed~~ — Replaced with post-call LLM extraction (grok-4-1-fast). Should be near-perfect.

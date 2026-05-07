@@ -124,8 +124,10 @@ systemctl --user restart jett-task-manager.service
 |-----------|-------|
 | Framework | Nous Research Hermes Agent (Python venv) |
 | Default profile | `~/.hermes/` (Superare/Shopify ops) |
-| Personal profile | `~/.hermes/profiles/personal/` |
-| Personal service | `hermes-gateway-personal.service` (systemd) |
+| Personal profile | `~/.hermes/profiles/personal/` | ✅ Personal Gateway |
+| Personal service | `hermes-gateway-personal.service` (systemd) | |
+| **Leads profile** | **`~/.hermes/profiles/leads/`** | **✅ Lead Gen Gateway** |
+| **Leads service** | **`hermes-gateway-leads.service` (systemd)** | |
 | Platform | Telegram (separate bot from Jett's) |
 
 **Responsibilities:**
@@ -177,10 +179,15 @@ journalctl --user -u hermes-gateway-personal.service -n 50 --no-pager
 | Cron trigger | Doctor Health Check (5f1cfbfc) — `*/30 * * * *` |
 | Trigger script | `~/.hermes/cron/doctor-health-check.py` |
 
-**Purpose:** System health watchdog. Runs terminal checks every 30 min, alerts Terry on Telegram only when something is wrong. Conversational — Terry can ask questions and approve/reject recommended fixes.
+**Checks:**
+- 10 systemd services (active)
+- 5 local endpoints (HTTP 200 on ports)
+- Resource thresholds (RAM >85%, Disk >90%)
+- Clawdbot cron errors (≥3 consecutive)
+- **Ollama** process + required models (nomic-embed-text, minimax-m2.5:cloud)
+- **Cloudflare tunnel** (jettmissioncontrol.com → HTTP 200 + "Mission Control")
 
 **Rules:** NEVER auto-fixes. NEVER kills kilo/bun. Silence = healthy.
-
 ---
 
 ### 5. Gemma Assistant (Port 3002)
@@ -469,12 +476,20 @@ cd /home/clawd/clawd/ebay-scanner && node run-from-config.js [day]
 
 ```
 ┌──────────────────┐     ┌──────────────────┐     ┌──────────────────┐
-│ Cron Mon/Thu     │────▶│ lead-generator/  │────▶│ Google Sheets    │
-│ 6AM              │     │ v3.py            │     │ (Leads)         │
-└──────────────────┘     └──────────────────┘     └──────────────────┘
+│ Cron Mon/Thu     │────▶│ Hermes "leads"   │────▶│ Google Sheets    │
+│ 6AM (clawdbot)   │     │ Profile          │     │ (Leads)         │
+└──────────────────┘     │ lead-gen.py      │     └──────────────────┘
+                         │ → v3.py          │
+                         └──────────────────┘
 ```
 
-**Location:** `/home/clawd/clawd/lead-generator/`
+**Location (scripts):** `/home/clawd/clawd/lead-generator/` (original)
+**Profile:** `~/.hermes/profiles/leads/` (Hermes profile)
+**Profile scripts:** `~/.hermes/profiles/leads/lead-gen/` (mirrored)
+**Cron wrapper:** `~/.hermes/cron/lead-gen.py`
+**Service:** `hermes-gateway-leads.service` (systemd user)
+**Telegram:** Same bot as personal (Terry's DM)
+**Models:** DeepSeek V4 Flash (primary), Grok 4.1 Fast Reasoning (fallback)
 
 **What it does:**
 - Searches Google Places API for local service businesses in Nassau County
@@ -493,9 +508,10 @@ cd /home/clawd/clawd/ebay-scanner && node run-from-config.js [day]
 - State-based town rotation
 - Auto-rotating tiers (no hardcoded tier per cron)
 
-**Cron Jobs:**
-- `Lead Generator Monday` (460d992a) — 6 AM Monday, auto-rotating
-- `Lead Generator Thursday` (fe56a724) — 6 AM Thursday, auto-rotating
+**Cron Jobs (clawdbot):**
+- `Lead Generator Monday (Profile)` (460d992a) — 6 AM Monday
+- `Lead Generator Thursday (Profile)` (fe56a724) — 6 AM Thursday
+- Both now call: `python3 /home/clawd/.hermes/cron/lead-gen.py`
 
 **Rotation:**
 - Towns: Cycles through 25 Nassau County towns (5 per run)
