@@ -44,6 +44,7 @@ class LiveStream {
       ws.send(JSON.stringify({
         type: 'connected',
         message: 'Connected to salon live stream',
+        timestamp: new Date().toISOString(),
       }));
 
       ws.on('close', () => {
