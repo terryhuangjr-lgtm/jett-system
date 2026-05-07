@@ -6,6 +6,8 @@ const { execFile } = require('child_process');
 const path = require('path');
 const fs = require('fs');
 const chrono = require('chrono-node');
+const salonDb = require('./salon-db');
+const liveStream = require('./live-stream');
 const app = express();
 
 app.use(express.urlencoded({ extended: false }));
@@ -431,9 +433,9 @@ function isWithinBusinessHours(startDate, endDate) {
  */
 function sendOwnerAlert(customerName, service, dateStr, timeStr, phone) {
   const ownerPhone = process.env.OWNER_PHONE;
-  if (!ownerPhone || ownerPhone === 'your_real_cell_here') return;
+  if (!ownerPhone || ownerPhone === 'your_real_cell_here') return Promise.resolve();
   const msg = `📅 New Booking!\n${customerName} - ${service}\n${dateStr} at ${timeStr}\nPhone: ${phone}`;
-  sendSms(ownerPhone, msg);
+  return sendSms(ownerPhone, msg);
 }
 
 /**
@@ -678,8 +680,12 @@ wss.on('connection', (twilioWs) => {
   
   let xaiWs = null;
   let streamSid = null;
+  let callSid = null;
   let customerName = '';
   let customerPhone = '';
+  let callLogId = null; // Supabase call_logs ID
+  let bookingResult = null; // Store booking result for final update
+  let smsResults = { customer: false, owner: false };
   const conversationLog = []; // Collects { speaker, text } turns during the call
   
   // Connect to xAI Voice Agent
@@ -754,11 +760,17 @@ wss.on('connection', (twilioWs) => {
     if (event.type === 'response.output_audio_transcript.done') {
       console.log(`\n🤖 Eve: ${event.transcript}\n`);
       conversationLog.push({ speaker: 'receptionist', text: event.transcript });
+      // Live broadcast to dashboard + Supabase
+      liveStream.transcriptTurn(streamSid, 'receptionist', event.transcript);
+      if (streamSid) salonDb.appendLiveTranscript(streamSid, 'receptionist', event.transcript);
     }
     
     if (event.type === 'conversation.item.input_audio_transcription.completed') {
       console.log(`👤 Customer: ${event.transcript}`);
       conversationLog.push({ speaker: 'customer', text: event.transcript });
+      // Live broadcast to dashboard + Supabase
+      liveStream.transcriptTurn(streamSid, 'customer', event.transcript);
+      if (streamSid) salonDb.appendLiveTranscript(streamSid, 'customer', event.transcript);
       // Capture name from customer: "my name is X Y", "I'm X", etc.
       const txt = event.transcript || '';
       // Try full name first: "my name is Frank Sullivan"
@@ -787,9 +799,15 @@ wss.on('connection', (twilioWs) => {
     
     if (event.event === 'start') {
       streamSid = event.start.streamSid;
+      callSid = event.start.callSid || '';
       // Twilio start event: caller number is in event.from (root level), NOT event.start
       customerPhone = event.from || event.start?.callerNumber || event.start?.from || '';
-      console.log(`📱 Call from: ${customerPhone} | Stream: ${streamSid}`);
+      console.log(`📱 Call from: ${customerPhone} | Stream: ${streamSid} | CallSid: ${callSid}`);
+      // Log to Supabase + broadcast live
+      salonDb.logCallStarted(customerPhone, streamSid, callSid).then(log => {
+        if (log) callLogId = log.id;
+      });
+      liveStream.callStarted(customerPhone, streamSid);
     }
     
     if (event.event === 'media' && xaiWs?.readyState === WebSocket.OPEN) {
@@ -816,23 +834,41 @@ wss.on('connection', (twilioWs) => {
   twilioWs.on('close', () => {
     console.log('📵 Twilio disconnected');
     xaiWs?.close();
+    liveStream.callEnded(streamSid);
 
     // Post-call LLM booking extraction
     // Collect the full conversation transcript and let Grok figure out if a booking was made
     const transcripts = conversationLog.map(t => `${t.speaker === 'receptionist' ? 'Receptionist' : 'Customer'}: ${t.text}`).join('\n');
+    
+    // Helper: finalize call log in Supabase
+    const finalizeCall = () => {
+      if (callLogId) {
+        salonDb.logCallComplete(callLogId, conversationLog, bookingResult, smsResults);
+      }
+      if (streamSid) {
+        salonDb.endLiveCall(streamSid);
+      }
+    };
+
     if (transcripts.length > 20) {
       console.log(`📝 Running post-call booking extraction...`);
       extractBookingFromTranscript(transcripts).then(booking => {
         if (!booking) {
           console.log('ℹ️ No booking detected in this call');
+          finalizeCall();
           return;
         }
+
+        // Broadcast booking to dashboard
+        bookingResult = booking;
+        liveStream.bookingDetected(streamSid, booking);
 
         // Parse dateStr + timeStr into ISO dates using chrono
         const combined = `${booking.dateStr} ${booking.timeStr || ''}`.trim();
         const parsed = chrono.parse(combined, new Date(), { forwardDate: true });
         if (!parsed.length || !parsed[0].start) {
           console.log(`⚠️ Could not parse date/time: ${combined}`);
+          finalizeCall();
           return;
         }
 
@@ -841,45 +877,57 @@ wss.on('connection', (twilioWs) => {
           ? SERVICE_DURATIONS[booking.service.toLowerCase()]
           : DEFAULT_SERVICE_DURATION;
         const endDate = new Date(startDate.getTime() + duration * 60000);
-        const startISO = startDate.toISOString();
-        const endISO = endDate.toISOString();
 
         // Check business hours
         if (!isWithinBusinessHours(startDate, endDate)) {
           console.log(`⛔ Outside business hours: ${startDate.toString()}`);
+          finalizeCall();
           return;
         }
 
         // Check availability and book
         isSlotAvailable(startDate, endDate).then(available => {
           if (!available) {
-            console.log(`⛔ Slot unavailable (double-booking): ${startISO}`);
+            console.log(`⛔ Slot unavailable (double-booking): ${startDate.toISOString()}`);
+            finalizeCall();
             return;
           }
 
           const service = (booking.service || 'Appointment').toLowerCase();
           createBookingEvent(booking.customerName, customerPhone || booking.phone || 'Unknown', service, startDate, endDate)
-            .then(event => {
-              if (event) {
-                console.log(`✅ LLM BOOKED: ${booking.customerName} - ${service} at ${startISO}`);
+            .then(calEvent => {
+              if (calEvent) {
+                console.log(`✅ LLM BOOKED: ${booking.customerName} - ${service} at ${startDate.toISOString()}`);
+                bookingResult.calendarEventId = (calEvent.id || null);
                 const salon = process.env.SALON_NAME || 'Salon';
                 const svc = service.charAt(0).toUpperCase() + service.slice(1);
-                const d = new Date(startISO);
+                const d = startDate;
                 const ds = d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
                 const ts = d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
                 const phone = customerPhone || booking.phone;
                 if (phone) {
-                  sendSms(phone, `✅ Confirmed! Your ${svc} at ${salon} is booked for ${ds} at ${ts}. See you then!`);
+                  sendSms(phone, `✅ Confirmed! Your ${svc} at ${salon} is booked for ${ds} at ${ts}. See you then!`)
+                    .then(() => { smsResults.customer = true; })
+                    .finally(() => {
+                      sendOwnerAlert(booking.customerName, svc, ds, ts, phone || 'Unknown')
+                        .then(() => { smsResults.owner = true; })
+                        .finally(finalizeCall);
+                    });
+                } else {
+                  sendOwnerAlert(booking.customerName, svc, ds, ts, 'Unknown')
+                    .then(() => { smsResults.owner = true; })
+                    .finally(finalizeCall);
                 }
-                sendOwnerAlert(booking.customerName, svc, ds, ts, phone || 'Unknown');
               } else {
                 console.log('⚠️ Calendar event creation returned null');
+                finalizeCall();
               }
             });
         });
       });
     } else {
       console.log('ℹ️ Call too short for booking extraction');
+      finalizeCall();
     }
   });
   
@@ -893,6 +941,9 @@ const server = app.listen(3333, () => {
   console.log('🚀 Salon Voice Agent running on port 3333');
   console.log(`📞 Twilio number: ${process.env.TWILIO_PHONE_NUMBER}`);
   console.log(`🏪 Salon: ${process.env.SALON_NAME}`);
+  // Initialize live transcript streaming for the dashboard
+  liveStream.attach(server, '/live-transcripts');
+  liveStream.init();
 });
 
 // Attach WebSocket to HTTP server
@@ -901,5 +952,7 @@ server.on('upgrade', (request, socket, head) => {
     wss.handleUpgrade(request, socket, head, (ws) => {
       wss.emit('connection', ws, request);
     });
+  } else {
+    liveStream.handleUpgrade(request, socket, head);
   }
 });
