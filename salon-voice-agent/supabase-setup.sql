@@ -29,6 +29,7 @@ CREATE TABLE IF NOT EXISTS salon_settings (
   coverage_gap_minutes INTEGER NOT NULL DEFAULT 30,
   prompt_instructions TEXT NOT NULL DEFAULT '',
   system_prompt TEXT NOT NULL DEFAULT '',
+  owner_phone TEXT NOT NULL DEFAULT '',
   updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
   updated_by TEXT
 );

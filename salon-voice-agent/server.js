@@ -161,7 +161,7 @@ function calculateDuration(serviceName) {
   return subMatch ? subMatch[1] : DEFAULT_SERVICE_DURATION;
 }
 
-// Load service durations from Supabase salon_settings (dashboard is source of truth)
+// Load service durations + owner phone from Supabase salon_settings (dashboard is source of truth)
 async function loadDurationsFromSettings() {
   try {
     const settings = await salonDb.getSalonSettings();
@@ -176,9 +176,21 @@ async function loadDurationsFromSettings() {
       LOADED_SERVICES = settings.services;
       console.log(`📊 Loaded ${Object.keys(nameMap).length} service durations from Supabase settings`);
     }
+    // Load owner phone from dashboard settings (fallback to .env)
+    if (settings?.owner_phone) {
+      process.env.OWNER_PHONE = settings.owner_phone;
+      console.log(`📱 Owner phone loaded from dashboard settings`);
+    }
   } catch (err) {
     console.log('⚠️ Could not load settings from Supabase, using fallback durations');
   }
+}
+
+/**
+ * Get the owner's phone number — checks dynamically loaded value first, then .env
+ */
+function getOwnerPhone() {
+  return process.env.OWNER_PHONE || '';
 }
 
 const COVERAGE_GAP_MINUTES = 30;
@@ -513,7 +525,7 @@ function isWithinBusinessHours(startDate, endDate) {
  * Send SMS to owner about new booking
  */
 function sendOwnerAlert(customerName, service, dateStr, timeStr, phone) {
-  const ownerPhone = process.env.OWNER_PHONE;
+  const ownerPhone = getOwnerPhone();
   if (!ownerPhone || ownerPhone === 'your_real_cell_here') return Promise.resolve();
   const msg = `📅 New Booking!\n${customerName} - ${service}\n${dateStr} at ${timeStr}\nPhone: ${phone}`;
   return sendSms(ownerPhone, msg);
@@ -976,7 +988,7 @@ ${transcript}`;
  * Send voicemail notification to owner
  */
 async function sendVoicemailAlert(vmInfo, transcript, callerNumber, callLogId) {
-  const ownerPhone = process.env.OWNER_PHONE;
+  const ownerPhone = getOwnerPhone();
   if (!ownerPhone || ownerPhone === 'your_real_cell_here') {
     console.log('⚠️ No owner phone set, skipping voicemail alert');
     return;
@@ -1095,7 +1107,7 @@ wss.on('connection', (twilioWs) => {
       // Check for transfer-to-human signal
       if (event.transcript && event.transcript.includes('[[TRANSFER]]')) {
         console.log('🔄 Transfer to human requested — redirecting call to owner');
-        const ownerPhone = process.env.OWNER_PHONE;
+        const ownerPhone = getOwnerPhone();
         if (ownerPhone && ownerPhone !== 'your_real_cell_here' && callSid) {
           const twilioClient = require('twilio')(
             process.env.TWILIO_ACCOUNT_SID,
