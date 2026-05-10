@@ -1458,6 +1458,31 @@ vmWss.on('connection', (twilioWs) => {
   });
 });
 
+// Health check
+app.get('/health', (req, res) => {
+  res.json({ status: 'ok', uptime: process.uptime() });
+});
+
+// Restart endpoint — dashboard calls this instead of requiring SSH
+// Protected by RESTART_SECRET from .env
+app.post('/api/restart', (req, res) => {
+  const auth = req.headers['authorization'];
+  const expected = process.env.RESTART_SECRET;
+  
+  if (!expected || auth !== `Bearer ${expected}`) {
+    return res.status(401).json({ error: 'Unauthorized' });
+  }
+  
+  console.log('🔄 Dashboard requested restart — restarting in 1s...');
+  res.json({ message: 'Restarting...' });
+  
+  // Give the response time to flush, then exit
+  // systemd will automatically restart the service
+  setTimeout(() => {
+    process.exit(0);
+  }, 1000);
+});
+
 // Start server
 const server = app.listen(3333, async () => {
   console.log('🚀 Salon Voice Agent running on port 3333');

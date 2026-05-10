@@ -63,6 +63,8 @@ CREATE TABLE IF NOT EXISTS call_logs (
   sms_owner_sent BOOLEAN NOT NULL DEFAULT false,
   status TEXT NOT NULL DEFAULT 'completed', -- completed, missed, voicemail
   summary TEXT, -- LLM-generated call summary
+  recording_url TEXT,
+  recording_duration INTEGER,
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 

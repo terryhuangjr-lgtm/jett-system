@@ -121,9 +121,9 @@
         ]
       },
       "output_file": "/tmp/mj-upperdeck-scan.json",
-      "last_run": "2026-04-09T13:01:15.336Z",
+      "last_run": "2026-05-07T13:01:03.824Z",
       "last_results": {
-        "timestamp": "2026-04-09T13:01:15.336Z",
+        "timestamp": "2026-05-07T13:01:03.824Z",
         "success": true
       },
       "last_updated": "2026-03-25T21:24:38.311Z",
@@ -153,9 +153,9 @@
         "minPrice": 10
       },
       "output_file": "/tmp/topps-refractors-multi-scan.json",
-      "last_run": "2026-04-10T13:00:27.011Z",
+      "last_run": "2026-05-08T13:00:35.988Z",
       "last_results": {
-        "timestamp": "2026-04-10T13:00:27.011Z",
+        "timestamp": "2026-05-08T13:00:35.988Z",
         "success": true
       },
       "last_updated": "2026-03-30T01:47:21.918Z",
@@ -181,9 +181,9 @@
         ]
       },
       "output_file": "/tmp/mj-base-scan.json",
-      "last_run": "2026-04-11T13:01:21.360Z",
+      "last_run": "2026-05-09T13:01:30.556Z",
       "last_results": {
-        "timestamp": "2026-04-11T13:01:21.360Z",
+        "timestamp": "2026-05-09T13:01:30.556Z",
         "success": true
       },
       "last_updated": "2026-04-02T01:59:00.519Z",
