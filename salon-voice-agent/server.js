@@ -93,20 +93,93 @@ const STYLISTS = [
   { name: 'Jenna',     daysOff: [1, 2] },             // Off Mon-Tues
 ];
 
-// Duration per service (minutes)
-const SERVICE_DURATIONS = {
-  "women's haircut":  60,
-  "men's haircut":    45,
-  'color':           120,
-  'highlights':      120,
-  'blowout':          45,
-  'keratin treatment': 90,
-  'trim':             30,
-  'beard trim':       15,
-  'eyebrow wax':      15,
-};
+// Individual service durations (minutes) — loaded from Supabase at startup
+// These are base single-service durations, NOT combo combos
+let SERVICE_DURATIONS = {};
+let LOADED_SERVICES = []; // Full service objects from Supabase (for prices in prompts)
 
 const DEFAULT_SERVICE_DURATION = 60;
+
+/**
+ * Calculate duration for ANY service description by parsing individual services.
+ * Handles both single services ("blowout") and combos ("haircut and color", "cut & highlights").
+ * Splits on and/&/,/+ and sums the individual durations.
+ */
+function calculateDuration(serviceName) {
+  if (!serviceName) return DEFAULT_SERVICE_DURATION;
+
+  const normalized = serviceName.trim().toLowerCase().replace(/['’]/g, "'");
+
+  // First try exact match (fast path for single services)
+  if (SERVICE_DURATIONS[normalized]) return SERVICE_DURATIONS[normalized];
+
+  // Split on common combiners: "and", "&", ",", "+"
+  const parts = normalized.split(/\s+(?:and|&)\s+|\s*,\s*|\s*\+\s*/).filter(Boolean);
+
+  if (parts.length > 1) {
+    let total = 0;
+    let foundAll = true;
+    for (const part of parts) {
+      const p = part.trim().replace(/['\u2019]/g, "'");
+      // Try exact match
+      let dur = SERVICE_DURATIONS[p];
+      if (!dur) dur = SERVICE_DURATIONS[p + "s"]; // "haircut" -> "haircuts"
+
+      // Try matching "womens" -> "women's", "haircut" -> "womens haircut"
+      if (!dur) {
+        const match = Object.entries(SERVICE_DURATIONS).find(([k]) => {
+          const a = k.replace(/['\u2019]/g, "").toLowerCase();
+          const b = p.replace(/['\u2019]/g, "").toLowerCase();
+          // Prefer when one contains the other AND they start the same first 3 chars
+          return a === b || (a.length >= 4 && b.length >= 4 && a[0] === b[0] && a[1] === b[1] && (a.includes(b) || b.includes(a)));
+        });
+        dur = match ? match[1] : null;
+      }
+
+      if (dur) {
+        total += dur;
+      } else {
+        foundAll = false;
+        break;
+      }
+    }
+    if (foundAll && total > 0) return total;
+  }
+
+  // Fallback: try fuzzy match on the full string
+  const cleaned = normalized.replace(/['’]/g, "").replace(/\s+(?:and|&)\s+/g, " ");
+  const fuzzyMatch = Object.entries(SERVICE_DURATIONS).find(([k]) => {
+    const kCleaned = k.replace(/['’]/g, "").toLowerCase();
+    return kCleaned.includes(cleaned) || cleaned.includes(kCleaned);
+  });
+  if (fuzzyMatch) return fuzzyMatch[1];
+
+  // Last resort — use the first service that appears anywhere in the name
+  const subMatch = Object.entries(SERVICE_DURATIONS).find(([k]) =>
+    normalized.includes(k) || k.includes(normalized)
+  );
+  return subMatch ? subMatch[1] : DEFAULT_SERVICE_DURATION;
+}
+
+// Load service durations from Supabase salon_settings (dashboard is source of truth)
+async function loadDurationsFromSettings() {
+  try {
+    const settings = await salonDb.getSalonSettings();
+    if (settings?.services && Array.isArray(settings.services)) {
+      const nameMap = {};
+      for (const svc of settings.services) {
+        // Index by lowercase name for fuzzy matching
+        const key = svc.name.trim().toLowerCase();
+        nameMap[key] = svc.duration;
+      }
+      SERVICE_DURATIONS = nameMap;
+      LOADED_SERVICES = settings.services;
+      console.log(`📊 Loaded ${Object.keys(nameMap).length} service durations from Supabase settings`);
+    }
+  } catch (err) {
+    console.log('⚠️ Could not load settings from Supabase, using fallback durations');
+  }
+}
 
 const COVERAGE_GAP_MINUTES = 30;
 
@@ -191,16 +264,22 @@ async function extractBookingFromTranscript(transcript) {
     return null;
   }
 
-  const prompt = `You are a salon booking extraction system. Given a conversation transcript between a salon receptionist and a customer, determine if a booking was made.
+  // Build service list for extraction prompt from Supabase data
+  const extractServiceList = LOADED_SERVICES.length > 0
+    ? LOADED_SERVICES.map(s => s.name.toLowerCase().trim()).join(' or ')
+    : "haircut or color or highlights or blowout or keratin treatment or trim or beard trim or eyebrow wax";
+
+  const prompt = `You are a multilingual salon booking extraction system. Given a conversation transcript between a salon receptionist and a customer, determine if a booking was made. The conversation may be in ANY LANGUAGE — Spanish, Chinese (Mandarin/Cantonese), Korean, English, or any other language.
 
 If a booking was made, extract EXACTLY these fields as JSON:
 {
   "hasBooking": true,
   "customerName": "First Last",
-  "service": "haircut or color or highlights or blowout or keratin treatment or trim or beard trim or eyebrow",
+  "service": "${extractServiceList}",
   "dateStr": "May 3rd",
   "timeStr": "3pm",
-  "phone": "+15551234567"
+  "stylist": "Sophia",
+  "phone": "+155****4567"
 }
 
 If no booking was made (e.g., just an inquiry, wrong number, hang up, information request), respond with:
@@ -208,11 +287,13 @@ If no booking was made (e.g., just an inquiry, wrong number, hang up, informatio
 
 Rules:
 - customerName: Capture the customer's full name as stated. If only first name, use that alone.
-- service: Use the exact service name from the list above. If unclear, use "appointment".
-- dateStr: The natural language date the customer agreed to.
-- timeStr: The natural language time the customer agreed to. Include am/pm.
+- service: Use the exact service name from the English list above. Even if the customer asked in another language (e.g. "corte de cabello" = "haircut", "染发" = "color"), map it to the closest matching English service name from the list. If the customer asked for a combination (e.g. "corte y color"), describe it naturally like "haircut and color".
+- dateStr: The natural language date in ENGLISH (e.g. "May 3rd"), regardless of what language the customer spoke. Translate dates to English.
+- timeStr: The natural language time in ENGLISH. Include am/pm.
+- stylist: The stylist name the customer requested. If they didn't specify one, set to null.
 - phone: The phone number the customer provided during the call if asked. Format as +1XXXXXXXXXX. Can be null.
 - Only extract if the receptionist CONFIRMED the booking aloud. If it sounds tentative or the customer said "let me think about it", do NOT extract.
+- The transcript may contain mixed languages — extract from whichever language has the booking details.
 
 Conversation transcript:
 ${transcript}`;
@@ -468,12 +549,25 @@ function parseTimeString(str) {
  * Returns { service, startISO, endISO, duration } or null
  */
 function parseBookingTranscript(transcript) {
-  // Detect service
+  // Detect service — look for individual services AND combos (split on and/&/,)
   let service = null;
+  const lower = transcript.toLowerCase();
+  
+  // First pass: try to detect a combo (two services joined by "and" or "&")
   for (const s of Object.keys(SERVICE_DURATIONS)) {
-    if (transcript.toLowerCase().includes(s)) {
+    if (lower.includes(s)) {
       service = s;
       break;
+    }
+  }
+  // If no exact match, search for individual service words in context of "and"/"&"
+  if (!service) {
+    const serviceNames = Object.keys(SERVICE_DURATIONS).sort((a, b) => b.length - a.length);
+    for (const s of serviceNames) {
+      if (lower.includes(s)) {
+        service = s;
+        break;
+      }
     }
   }
 
@@ -505,7 +599,7 @@ function parseBookingTranscript(transcript) {
   }
 
   // Duration
-  const duration = service ? (SERVICE_DURATIONS[service] || DEFAULT_SERVICE_DURATION) : DEFAULT_SERVICE_DURATION;
+  const duration = service ? calculateDuration(service) : DEFAULT_SERVICE_DURATION;
   const endDate = new Date(startDate.getTime() + duration * 60000);
 
   return {
@@ -516,14 +610,25 @@ function parseBookingTranscript(transcript) {
   };
 }
 
+// Stylist color map for Google Calendar events
+// Google Calendar color IDs: 1=Lavender, 2=Sage, 3=Grape, 4=Flamingo, 5=Banana,
+// 6=Tangerine, 7=Peacock, 8=Graphite, 9=Blueberry, 10=Basil, 11=Tomato
+const STYLIST_COLORS = {
+  'mark':  1,  // Lavender
+  'sofia': 9,  // Blueberry
+  'sophia': 9, // Blueberry (alternate spelling)
+  'jenna': 3,  // Grape
+};
+
 /**
  * Create a calendar event via GWS CLI
  */
-function createBookingEvent(customerName, customerPhone, service, startDate, endDate) {
+function createBookingEvent(customerName, customerPhone, service, startDate, endDate, stylistName) {
   return new Promise((resolve, reject) => {
     if (!service) service = 'Appointment';
-    const summary = `${customerName} - ${service.charAt(0).toUpperCase() + service.slice(1)}`;
-    const description = `Booked via Salon Voice Agent\nCustomer: ${customerName}\nPhone: ${customerPhone}\nService: ${service}`;
+    const stylistLabel = stylistName ? ` w/ ${stylistName}` : '';
+    const summary = `${customerName} - ${service.charAt(0).toUpperCase() + service.slice(1)}${stylistLabel}`;
+    const description = `Booked via Salon Voice Agent\nCustomer: ${customerName}\nPhone: ${customerPhone}\nService: ${service}${stylistName ? `\nStylist: ${stylistName}` : ''}`;
     const startISO = startDate.toISOString();
     const endISO = endDate.toISOString();
 
@@ -544,6 +649,20 @@ function createBookingEvent(customerName, customerPhone, service, startDate, end
       try {
         const event = JSON.parse(stdout);
         console.log(`✅ Booked: ${summary} at ${startISO}`);
+
+        // Set calendar color based on stylist (GWS CLI doesn't support colorId on insert)
+        const colorId = stylistName ? STYLIST_COLORS[stylistName.toLowerCase().trim()] : null;
+        if (colorId && event.id) {
+          execFile(GWS_BIN, [
+            'calendar', 'events', 'patch',
+            '--params', JSON.stringify({ calendarId: 'primary', eventId: event.id }),
+            '--json', JSON.stringify({ colorId: String(colorId) }),
+          ], { timeout: 5000 }, (patchErr) => {
+            if (!patchErr) console.log(`🎨 Event color set for ${stylistName}`);
+            else console.log(`⚠️ Color patch error: ${patchErr.message}`);
+          });
+        }
+
         resolve(event);
       } catch {
         resolve(null);
@@ -585,6 +704,26 @@ ${availableSlotsStr}`;
 - Available times: any slot during business hours`;
   }
 
+  // Services list — build from Supabase data (or fallback hardcoded)
+  const servicesList = Object.keys(SERVICE_DURATIONS).length > 0
+    ? Object.entries(SERVICE_DURATIONS).map(([name, duration]) => {
+        const price = (() => {
+          // try to find price from settings if we cached it
+          const svc = LOADED_SERVICES?.find(s => s.name?.toLowerCase() === name);
+          return svc?.price || '';
+        })();
+        return `- ${name.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')}: $${price}${price ? (duration ? ` (${duration}min)` : '') : ''}`;
+      }).join('\n')
+    : `- Women's Haircut: $75 (60min)
+- Men's Haircut: $55 (45min)
+- Color: $130+ (120min)
+- Highlights: $160+ (120min)
+- Blowout: $50 (45min)
+- Keratin Treatment: $220+ (90min)
+- Trim: $35 (30min)
+- Beard Trim: $20 (15min)
+- Eyebrow Wax: $18 (15min)`;
+
   return `
 You are a friendly receptionist for ${process.env.SALON_NAME}.
 Your job is to answer calls, book appointments, and answer questions.
@@ -596,15 +735,7 @@ SALON INFO:
 - Phone: ${process.env.SALON_PHONE}
 
 SERVICES & PRICES:
-- Women's Haircut: $75
-- Men's Haircut: $55
-- Color: $130+
-- Highlights: $160+
-- Blowout: $50
-- Keratin Treatment: $220+
-- Trim: $35
-- Beard Trim: $20
-- Eyebrow Wax: $18
+${servicesList}
 
 BEGINNING THE CALL:
 - The customer just called your business
@@ -623,23 +754,58 @@ ${staffInfo}
 - Confirm the booking clearly before ending the call
 
 RULES:
-- Be warm, friendly, and professional
-- Keep responses concise — this is a phone call
-- Speak at a brisk pace — shorter sentences, less wordy
-- If the customer speaks while you're talking, stop immediately and listen. Do NOT finish your sentence — the customer comes first.
-- If you cannot help, offer to take a message for the owner
-- Never make up information not provided above
-- Always confirm booking details before ending call
+|- Be warm, friendly, and professional
+|- Keep responses concise — this is a phone call
+|- Speak at a brisk pace — shorter sentences, less wordy
+|- If the customer speaks while you're talking, stop immediately and listen. Do NOT finish your sentence — the customer comes first.
+|- If you cannot help, offer to take a message for the owner
+|- Never make up information not provided above
+|- Always confirm booking details before ending call
+|- LANGUAGE MATCH: If the customer speaks Spanish, Chinese (Mandarin/Cantonese), or any other language, respond in that same language. Do NOT switch to English unless the customer does first.
+|- TRANSFER TO HUMAN: If the customer says "let me speak to a human/manager/owner/person" or anything similar, respond warmly with "Of course, let me transfer you to the owner right away!" then say exactly: [[TRANSFER]]
 `;}
+
+/**
+ * Check if current time is within business hours
+ */
+function isWithinBusinessHoursNow() {
+  const now = new Date();
+  const dayOfWeek = now.getDay();
+  const hours = BUSINESS_HOURS[dayOfWeek];
+  if (!hours) return false;
+  const currentHour = now.getHours() + now.getMinutes() / 60;
+  // Allow 30-minute buffer before close so Eve can finish a call
+  return currentHour >= hours.open && currentHour <= hours.close - 0.5;
+}
 
 // Step 1 — Twilio calls this when someone calls our number
 app.post('/incoming-call', (req, res) => {
   console.log(`📞 Incoming call from: ${req.body.From}`);
   
+  if (!isWithinBusinessHoursNow()) {
+    console.log('🕐 Outside business hours — routing to Eve voicemail');
+    const twiml = new VoiceResponse();
+    const publicHost = process.env.PUBLIC_HOST || 'voice.jettmissioncontrol.com';
+    const connect = twiml.connect({
+      recordingStatusCallback: `https://${publicHost}/recording-callback`,
+      recordingStatusCallbackEvent: ['completed']
+    });
+    const stream = connect.stream({
+      url: `wss://${req.headers.host}/media-stream-voicemail`
+    });
+    res.type('text/xml');
+    res.send(twiml.toString());
+    return;
+  }
+  
   const twiml = new VoiceResponse();
   
-  // Connect to our WebSocket media stream
-  const connect = twiml.connect();
+  // Connect to our WebSocket media stream — with recording
+  const publicHost = process.env.PUBLIC_HOST || 'voice.jettmissioncontrol.com';
+  const connect = twiml.connect({
+    recordingStatusCallback: `https://${publicHost}/recording-callback`,
+    recordingStatusCallbackEvent: ['completed']
+  });
   const stream = connect.stream({
     url: `wss://${req.headers.host}/media-stream`
   });
@@ -671,6 +837,168 @@ app.post('/voicemail-callback', (req, res) => {
   res.type('text/xml');
   res.send(twiml.toString());
 });
+
+/**
+ * Twilio recording callback — saves RecordingUrl to the call_logs table
+ * Twilio POSTs here when a recording completes
+ */
+app.post('/recording-callback', async (req, res) => {
+  const callSid = req.body.CallSid;
+  const recordingUrl = req.body.RecordingUrl;
+  const duration = req.body.RecordingDuration ? parseInt(req.body.RecordingDuration) : null;
+  
+  if (!callSid || !recordingUrl) {
+    console.log('⚠️ Recording callback missing CallSid or RecordingUrl');
+    res.sendStatus(200); // Always 200 so Twilio doesn't retry
+    return;
+  }
+  
+  console.log(`🔴 Recording complete for ${callSid}: ${recordingUrl} (${duration || '?'}s)`);
+  
+  // Save to call_logs
+  const updates = { recording_url: recordingUrl.includes('http') ? recordingUrl : `https://api.twilio.com${recordingUrl.startsWith('/') ? '' : '/'}${recordingUrl}` };
+  if (duration) updates.recording_duration = duration;
+  
+  const supabaseUrl = process.env.SUPABASE_URL || 'https://fhmjvnphxsbtwcutqkvq.supabase.co';
+  const supabaseKey = process.env.SUPABASE_ANON_KEY;
+  
+  try {
+    const { createClient } = require('@supabase/supabase-js');
+    const supabase = createClient(supabaseUrl, supabaseKey);
+    
+    // Find the call_log by call_sid
+    const { data, error } = await supabase
+      .from('call_logs')
+      .update(updates)
+      .eq('call_sid', callSid)
+      .select();
+    
+    if (error) {
+      console.log('⚠️ Failed to save recording URL:', error.message);
+    } else if (data?.length > 0) {
+      console.log(`📹 Recording saved to call_log for ${callSid}`);
+    } else {
+      // Try matching by stream_sid (fallback)
+      console.log(`📹 No call_log found for CallSid ${callSid}, recording URL stored`);
+    }
+  } catch (e) {
+    console.log('⚠️ Recording callback error:', e.message);
+  }
+  
+  res.sendStatus(200);
+});
+
+/**
+ * Build system prompt for after-hours voicemail mode
+ */
+function buildVoicemailContext() {
+  const salonName = process.env.SALON_NAME || 'Salon';
+  const salonHours = process.env.SALON_HOURS || 'Monday-Saturday 9am-7pm, Sunday 10am-5pm';
+  const salonPhone = process.env.SALON_PHONE || '';
+
+  return `
+You are a polite voicemail receptionist for ${salonName}.
+The salon is currently CLOSED. Your only job is to take a message.
+
+AVAILABLE HOURS:
+${salonHours}
+Phone: ${salonPhone}
+
+RULES:
+- Greet the caller warmly with "Hi, thanks for calling ${salonName}. We're currently closed, but I can take a message for the owner."
+- Ask for their name, phone number, and the reason for their call
+- If they try to book an appointment, say: "I'd love to help with that, but I can only take a message right now. I'll make sure the owner calls you back during business hours."
+- Keep it brief — this is a voicemail
+- LANGUAGE MATCH: If the customer speaks Spanish, Chinese, or any other language, respond in that same language
+- Do NOT offer to book anything
+- Do NOT check availability
+- End with "Thanks for calling, I'll make sure the owner gets your message."
+`;
+}
+
+/**
+ * Extract voicemail info from a transcript — caller name, phone, reason
+ */
+async function extractVoicemailFromTranscript(transcript) {
+  if (!transcript || transcript.trim().length < 20) return null;
+  if (!XAI_API_KEY) return null;
+
+  const prompt = `You are a voicemail extraction system. Given a transcript of a caller leaving a message for a closed business, extract the key information as JSON.
+
+{
+  "hasMessage": true,
+  "callerName": "First Last or null",
+  "phone": "Number they gave or null",
+  "reason": "Brief summary of why they called",
+  "wantsBooking": true/false
+}
+
+If no clear message was left (hang up, wrong number, just silence), respond with:
+{"hasMessage": false}
+
+Rules:
+- callerName: Extract the name the caller provided. If none, set null.
+- phone: Extract any phone number they provided. Format as +1XXXXXXXXXX.
+- reason: A one-line summary of why they called, in English.
+- wantsBooking: true if they wanted to book an appointment or service.
+- The conversation may be in any language — extract from whatever language is used.
+
+Transcript:
+${transcript}`;
+
+  try {
+    const response = await fetch('https://api.x.ai/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${XAI_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: 'grok-4-1-fast',
+        messages: [{ role: 'user', content: prompt }],
+        temperature: 0.1,
+        max_tokens: 300,
+      }),
+    });
+
+    if (!response.ok) return null;
+
+    const data = await response.json();
+    const text = data.choices?.[0]?.message?.content || '';
+    return JSON.parse(text);
+  } catch (e) {
+    console.log('⚠️ Voicemail extraction failed:', e.message);
+    return null;
+  }
+}
+
+/**
+ * Send voicemail notification to owner
+ */
+async function sendVoicemailAlert(vmInfo, transcript, callerNumber, callLogId) {
+  const ownerPhone = process.env.OWNER_PHONE;
+  if (!ownerPhone || ownerPhone === 'your_real_cell_here') {
+    console.log('⚠️ No owner phone set, skipping voicemail alert');
+    return;
+  }
+
+  const callerName = vmInfo?.callerName || 'Unknown';
+  const reason = vmInfo?.reason || 'No message left';
+  const phone = vmInfo?.phone || callerNumber || 'Unknown';
+  const wantsBooking = vmInfo?.wantsBooking ? '📅 Wants to book' : '';
+
+  const msg = `📞 Voicemail from ${callerName}
+📱 ${phone}
+📝 ${reason}
+${wantsBooking ? '📅 Wants to book' : ''}
+━━━━━━━━━━━━━
+Transcript (limited):
+${(transcript || '').substring(0, 300)}
+━━━━━━━━━━━━━
+View full: https://voice.jettmissioncontrol.com/calls`.trim();
+
+  await sendSms(ownerPhone, msg);
+}
 
 // Step 2 — WebSocket handler for real-time audio
 const wss = new WebSocket.Server({ noServer: true });
@@ -763,6 +1091,22 @@ wss.on('connection', (twilioWs) => {
       // Live broadcast to dashboard + Supabase
       liveStream.transcriptTurn(streamSid, 'receptionist', event.transcript);
       if (streamSid) salonDb.appendLiveTranscript(streamSid, 'receptionist', event.transcript);
+      
+      // Check for transfer-to-human signal
+      if (event.transcript && event.transcript.includes('[[TRANSFER]]')) {
+        console.log('🔄 Transfer to human requested — redirecting call to owner');
+        const ownerPhone = process.env.OWNER_PHONE;
+        if (ownerPhone && ownerPhone !== 'your_real_cell_here' && callSid) {
+          const twilioClient = require('twilio')(
+            process.env.TWILIO_ACCOUNT_SID,
+            process.env.TWILIO_AUTH_TOKEN
+          );
+          // Redirect the call to the owner's phone
+          twilioClient.calls(callSid).update({
+            twiml: `<Response><Dial timeout="30">${ownerPhone}</Dial></Response>`
+          }).catch(err => console.log('⚠️ Transfer failed:', err.message));
+        }
+      }
     }
     
     if (event.type === 'conversation.item.input_audio_transcription.completed') {
@@ -873,9 +1217,7 @@ wss.on('connection', (twilioWs) => {
         }
 
         const startDate = parsed[0].start.date();
-        const duration = Object.keys(SERVICE_DURATIONS).includes((booking.service || '').toLowerCase())
-          ? SERVICE_DURATIONS[booking.service.toLowerCase()]
-          : DEFAULT_SERVICE_DURATION;
+        const duration = calculateDuration(booking.service);
         const endDate = new Date(startDate.getTime() + duration * 60000);
 
         // Check business hours
@@ -894,7 +1236,7 @@ wss.on('connection', (twilioWs) => {
           }
 
           const service = (booking.service || 'Appointment').toLowerCase();
-          createBookingEvent(booking.customerName, customerPhone || booking.phone || 'Unknown', service, startDate, endDate)
+          createBookingEvent(booking.customerName, customerPhone || booking.phone || 'Unknown', service, startDate, endDate, booking.stylist)
             .then(calEvent => {
               if (calEvent) {
                 console.log(`✅ LLM BOOKED: ${booking.customerName} - ${service} at ${startDate.toISOString()}`);
@@ -936,11 +1278,182 @@ wss.on('connection', (twilioWs) => {
   });
 });
 
+// Voicemail WebSocket handler — same audio pipeline, different system prompt, different post-call behavior
+const vmWss = new WebSocket.Server({ noServer: true });
+
+vmWss.on('connection', (twilioWs) => {
+  console.log('🔊 Voicemail media stream connected');
+  
+  let xaiWs = null;
+  let streamSid = null;
+  let callSid = null;
+  let callLogId = null;
+  let vmCallerNumber = ''; // captured from Twilio start event
+  const conversationLog = [];
+
+  // Connect to xAI Voice Agent
+  xaiWs = new WebSocket('wss://api.x.ai/v1/realtime?model=grok-voice-think-fast-1.0', {
+    headers: {
+      'Authorization': `Bearer ${process.env.XAI_API_KEY}`
+    }
+  });
+  
+  let sessionReady = false;
+  let audioBuffer = [];
+
+  xaiWs.on('open', () => {
+    console.log('🤖 Connected to xAI Voice Agent (voicemail mode)');
+    
+    const instructions = buildVoicemailContext();
+    
+    xaiWs.send(JSON.stringify({
+      type: 'session.update',
+      session: {
+        voice: 'eve',
+        instructions: instructions,
+        turn_detection: {
+          type: 'server_vad',
+          threshold: 0.8,
+          prefix_padding_ms: 200,
+          silence_duration_ms: 450
+        },
+        audio: {
+          input: { format: { type: 'audio/pcmu' } },
+          output: { format: { type: 'audio/pcmu' } }
+        }
+      }
+    }));
+  });
+  
+  // Forward xAI audio back to Twilio
+  xaiWs.on('message', (data) => {
+    const event = JSON.parse(data);
+
+    if (event.type === 'session.updated' && !sessionReady) {
+      sessionReady = true;
+      console.log('✅ Voicemail session ready — sending greeting');
+      
+      for (const audio of audioBuffer) {
+        xaiWs.send(audio);
+      }
+      audioBuffer = [];
+
+      xaiWs.send(JSON.stringify({ type: 'response.create' }));
+    }
+    
+    if (event.type === 'response.output_audio.delta' && streamSid) {
+      if (twilioWs.readyState === WebSocket.OPEN) {
+        twilioWs.send(JSON.stringify({
+          event: 'media',
+          streamSid: streamSid,
+          media: { payload: event.delta }
+        }));
+      }
+    }
+    
+    if (event.type === 'response.output_audio_transcript.done') {
+      console.log(`\n🤖 Eve (voicemail): ${event.transcript}\n`);
+      conversationLog.push({ speaker: 'receptionist', text: event.transcript });
+    }
+    
+    if (event.type === 'conversation.item.input_audio_transcription.completed') {
+      console.log(`👤 Caller: ${event.transcript}`);
+      conversationLog.push({ speaker: 'customer', text: event.transcript });
+    }
+    
+    if (event.error) console.log(`❌ xAI Error (voicemail):`, JSON.stringify(event.error));
+  });
+  
+  // Forward Twilio audio to xAI
+  twilioWs.on('message', (data) => {
+    const event = JSON.parse(data);
+    
+    if (event.event === 'start') {
+      streamSid = event.start.streamSid;
+      callSid = event.start.callSid || '';
+      const callerNumber = event.from || event.start?.callerNumber || event.start?.from || '';
+      vmCallerNumber = callerNumber;
+      console.log(`📱 Voicemail call from: ${callerNumber} | Stream: ${streamSid}`);
+      
+      // Log with 'voicemail' status
+      salonDb.logCallStarted(callerNumber, streamSid, callSid).then(log => {
+        if (log) {
+          callLogId = log.id;
+          // Update status to 'voicemail' immediately
+          const { createClient } = require('@supabase/supabase-js');
+          const supabase = createClient(
+            process.env.SUPABASE_URL || 'https://fhmjvnphxsbtwcutqkvq.supabase.co',
+            process.env.SUPABASE_ANON_KEY
+          );
+          supabase.from('call_logs').update({ status: 'voicemail' }).eq('id', log.id).then(() => {});
+        }
+      });
+    }
+    
+    if (event.event === 'media' && xaiWs?.readyState === WebSocket.OPEN) {
+      if (sessionReady) {
+        xaiWs.send(JSON.stringify({
+          type: 'input_audio_buffer.append',
+          audio: event.media.payload
+        }));
+      } else {
+        audioBuffer.push(JSON.stringify({
+          type: 'input_audio_buffer.append',
+          audio: event.media.payload
+        }));
+      }
+    }
+    
+    if (event.event === 'stop') {
+      console.log('📵 Voicemail call ended');
+      xaiWs?.close();
+    }
+  });
+  
+  twilioWs.on('close', () => {
+    console.log('📵 Voicemail Twilio disconnected');
+    xaiWs?.close();
+
+    // Post-call: extract voicemail message
+    const transcripts = conversationLog.map(t => `${t.speaker === 'receptionist' ? 'Eve' : 'Caller'}: ${t.text}`).join('\n');
+    
+    const finalizeVM = () => {
+      if (callLogId) {
+        salonDb.logCallComplete(callLogId, conversationLog, null, { customer: false, owner: false });
+      }
+    };
+
+    if (transcripts.length > 20) {
+      console.log(`📝 Running voicemail extraction...`);
+      extractVoicemailFromTranscript(transcripts).then(vmInfo => {
+        if (vmInfo?.hasMessage) {
+          console.log(`📞 Voicemail from: ${vmInfo.callerName || 'Unknown'} — ${vmInfo.reason || ''}`);
+          // Send SMS to owner with voicemail details
+          sendVoicemailAlert(vmInfo, transcripts, vmCallerNumber, callLogId);
+        } else {
+          console.log('ℹ️ No meaningful voicemail left');
+        }
+        finalizeVM();
+      });
+    } else {
+      console.log('ℹ️ Voicemail call too short');
+      finalizeVM();
+    }
+  });
+  
+  xaiWs.on('error', (err) => {
+    console.error('xAI error (voicemail):', err.message);
+  });
+});
+
 // Start server
-const server = app.listen(3333, () => {
+const server = app.listen(3333, async () => {
   console.log('🚀 Salon Voice Agent running on port 3333');
   console.log(`📞 Twilio number: ${process.env.TWILIO_PHONE_NUMBER}`);
   console.log(`🏪 Salon: ${process.env.SALON_NAME}`);
+  // Load service durations from Supabase settings (dashboard is single source of truth)
+  await loadDurationsFromSettings();
+  console.log(`📊 Service durations loaded: ${Object.keys(SERVICE_DURATIONS).length} services`);
   // Initialize live transcript streaming for the dashboard
   liveStream.attach(server, '/live-transcripts');
   liveStream.init();
@@ -951,6 +1464,10 @@ server.on('upgrade', (request, socket, head) => {
   if (request.url === '/media-stream') {
     wss.handleUpgrade(request, socket, head, (ws) => {
       wss.emit('connection', ws, request);
+    });
+  } else if (request.url === '/media-stream-voicemail') {
+    vmWss.handleUpgrade(request, socket, head, (ws) => {
+      vmWss.emit('connection', ws, request);
     });
   } else {
     liveStream.handleUpgrade(request, socket, head);
