@@ -1,6 +1,6 @@
 {
   "version": "1.2",
-  "last_updated": "2026-04-02T01:59:20.190Z",
+  "last_updated": "2026-05-12T01:43:51.758Z",
   "global_filters": {
     "quality_rules": {
       "seller_feedback_min": 98,
@@ -29,9 +29,9 @@
         ]
       },
       "output_file": "/tmp/mj-finest-scan.json",
-      "last_run": "2026-05-04T13:00:24.393Z",
+      "last_run": "2026-05-11T13:00:26.745Z",
       "last_results": {
-        "timestamp": "2026-05-04T13:00:24.393Z",
+        "timestamp": "2026-05-11T13:00:26.745Z",
         "success": true
       },
       "last_updated": "2026-03-26T03:16:17.947Z",
@@ -60,10 +60,11 @@
         ]
       },
       "output_file": "/tmp/griffey-refractors-scan.json",
-      "last_run": "2026-05-05T13:00:36.022Z",
+      "last_run": "2026-05-12T13:03:08.423Z",
       "last_results": {
-        "timestamp": "2026-05-05T13:00:36.022Z",
-        "success": true
+        "timestamp": "2026-05-12T13:03:08.423Z",
+        "success": false,
+        "error": "spawnSync node ETIMEDOUT"
       },
       "last_updated": "2026-04-02T01:58:47.759Z",
       "useVisionScout": true,
@@ -196,7 +197,7 @@
       "card_condition": "raw",
       "listing_type": "auction",
       "search_terms": [
-        "Victor Wembanyama /99"
+        "2024 Victor Wembanyama auto"
       ],
       "filters": {
         "topN": 20,
@@ -215,7 +216,7 @@
         "timestamp": "2026-05-03T13:00:23.189Z",
         "success": true
       },
-      "last_updated": "2026-03-22T03:39:44.921Z",
+      "last_updated": "2026-05-12T01:43:51.715Z",
       "useVisionScout": true,
       "useVisionFilter": false
     }

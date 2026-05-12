@@ -459,21 +459,25 @@ Rules: Keep all language simple. Every activity 3-6 minutes. Make it feel like p
     }
     // ── END SIENNA ──────────────────────────────────────────────────
 
-    // GET /api/tasks - read from clawdbot cron list (source of truth)
+    // GET /api/tasks - read from Hermes cron jobs.json (source of truth)
     if (pathname === '/api/tasks' && req.method === 'GET') {
       try {
-        const { execSync } = require('child_process');
-        const output = execSync('/home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot cron list --json', { encoding: 'utf8', timeout: 10000 });
-        const jobs = JSON.parse(output);
-        const tasks = jobs.jobs.map((job, idx) => ({
+        const fsSync = require('fs');
+        const cronFile = path.join(process.env.HOME, '.hermes', 'profiles', 'coder', 'cron', 'jobs.json');
+        if (!fsSync.existsSync(cronFile)) {
+          return this.sendJSON(res, []);
+        }
+        const raw = fsSync.readFileSync(cronFile, 'utf8');
+        const data = JSON.parse(raw);
+        const tasks = (data.jobs || []).map((job, idx) => ({
           id: idx,
           name: job.name,
-          command: job.payload?.text || '',
-          schedule: job.schedule?.expr || '',
-          status: job.state?.lastStatus || 'pending',
-          next_run: job.state?.nextRunAtMs ? new Date(job.state.nextRunAtMs).toISOString() : null,
-          last_run: job.state?.lastRunAtMs ? new Date(job.state.lastRunAtMs).toISOString() : null,
-          enabled: job.enabled
+          command: job.script || job.prompt?.slice(0, 80) || '',
+          schedule: job.schedule?.expr || job.schedule?.display || '',
+          status: job.last_status || 'pending',
+          next_run: job.next_run_at || null,
+          last_run: job.last_run_at || null,
+          enabled: job.enabled !== false
         }));
         return this.sendJSON(res, tasks);
       } catch (e) {
@@ -1165,16 +1169,34 @@ Rules: Keep all language simple. Every activity 3-6 minutes. Make it feel like p
     // ── CRONS proxy ────────────────────────────────────────────────
     if (pathname === '/api/crons' && req.method === 'GET') {
       try {
-        const { execFileSync } = require('child_process');
-        const result = execFileSync(
-          '/home/clawd/.nvm/versions/node/v22.22.0/bin/node',
-          ['/home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot', 'cron', 'list', '--json'],
-          { timeout: 10000 }
-        ).toString();
-        const data = JSON.parse(result);
-        return this.sendJSON(res, { jobs: data.jobs || [], source: 'clawdbot' });
+        const fsSync = require('fs');
+        const cronFile = path.join(process.env.HOME, '.hermes', 'profiles', 'coder', 'cron', 'jobs.json');
+        if (!fsSync.existsSync(cronFile)) {
+          return this.sendJSON(res, { jobs: [], source: 'hermes', error: 'No cron file' });
+        }
+        const raw = fsSync.readFileSync(cronFile, 'utf8');
+        const data = JSON.parse(raw);
+        const jobs = (data.jobs || []).map(job => ({
+          id: job.id,
+          name: job.name,
+          schedule: {
+            expr: job.schedule?.expr || job.schedule?.display || '',
+            display: job.schedule?.display || job.schedule?.expr || ''
+          },
+          enabled: job.enabled !== false,
+          script: job.script || null,
+          noAgent: job.no_agent || false,
+          state: {
+            nextRunAtMs: job.next_run_at ? new Date(job.next_run_at).getTime() : null,
+            lastRunAtMs: job.last_run_at ? new Date(job.last_run_at).getTime() : null,
+            lastStatus: job.last_status || 'pending'
+          },
+          workdir: job.workdir || null,
+          deliver: job.deliver || 'origin'
+        }));
+        return this.sendJSON(res, { jobs, source: 'hermes' });
       } catch(e) {
-        return this.sendJSON(res, { jobs: [], source: 'error', error: e.message });
+        return this.sendJSON(res, { jobs: [], source: 'hermes-error', error: e.message });
       }
     }
 
