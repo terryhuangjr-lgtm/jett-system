@@ -523,14 +523,14 @@ cd /home/clawd/clawd/ebay-scanner && node run-from-config.js [day]
 
 **Key differences from old system:**
 - All 3 scripts use **Grok** (`grok-4-1-fast-reasoning`) for enrichment — 90% cost reduction vs Sonnet
-- **No per-lead email drafting** (was costing $3-5/week in Sonnet calls)
+- ~~No per-lead email drafting~~ → **1 Sonnet template draft per run** (generated from best lead, ~$0.03/call)
 - Falls back to Anthropic Sonnet if `XAI_API_KEY` not set
 - Env vars from `~/.hermes/profiles/leads/.env`
 
 **What each script does:**
-- **Web Design:** Google Places API → filter no-website businesses → Grok score (1-10) + inline draft → qualified leads (score ≥5 + phone) → Sheet
-- **Voice Agent:** Google Places API → service businesses → Grok enrichment (revenue estimates, fit) → Sheet
-- **Shopify/StoreIQ:** Playwright + Bing Search → find Shopify stores → Grok enrichment → Sheet
+- **Web Design:** Google Places API → filter no-website businesses → Grok score (1-10) + inline draft → qualified leads (score ≥5 + phone) → Sheet + **1 Sonnet template draft**
+- **Voice Agent:** Google Places API → service businesses → Grok enrichment (revenue estimates, fit) → Sheet + **1 Sonnet template draft (email + DM)**
+- **Shopify/StoreIQ:** Playwright + Bing Search → find Shopify stores → Grok enrichment → Sheet + **1 Sonnet template draft (email + DM + LinkedIn)**
 
 ---
 
