@@ -307,4 +307,19 @@ cd ~/clawd/automation
 
 ---
 
-Last updated: 2026-02-05
+Last updated: 2026-05-12
+
+## Content Calendar
+
+**Script:** `content-calendar-ai.js`
+**Schedule:** Sunday 9AM via Hermes cron
+**Model:** Claude Sonnet 4-6
+**Output:** Google Sheet "Level Up Content" > "Content Calendar" tab
+**Generates:** LinkedIn, Instagram, X/Twitter, Facebook posts for Mon-Sat
+
+## Lead Gen Scripts
+
+The 3 lead gen scripts live at `/home/clawd/skills/web-design-leads/`:
+- `web-design-leads.js` — Mon 8AM (Google Places → Grok enrichment)
+- `voice-agent-leads.js` — Wed 8AM (Google Places → Grok enrichment)
+- `shopify-leads.js` — Fri 8AM (Playwright + Bing → Grok enrichment)

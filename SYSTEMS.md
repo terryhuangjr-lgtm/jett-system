@@ -1,6 +1,6 @@
 # Jett System Architecture
 
-Last Updated: 2026-05-01
+Last Updated: 2026-05-12
 
 ---
 
@@ -88,7 +88,8 @@ Last Updated: 2026-05-01
 
 **Responsibilities:**
 - Web dashboard showing cron jobs
-- Reads from clawdbot cron API
+- Reads from Hermes cron jobs.json (`~/.hermes/profiles/coder/cron/jobs.json`)
+- Schedule tab now shows Hermes-managed crons (Content Calendar, Lead Gen, StoreIQ Auto-Sync)
 - Health check display
 - Sienna Lesson Launcher (AI learning for kids)
 
@@ -101,7 +102,8 @@ systemctl --user restart jett-task-manager.service
 **NOTE:** Service was created 2026-04-21 after system moved to new house. Previously had no systemd service for auto-start.
 
 **API Endpoints:**
-- `GET /api/tasks` - List all cron jobs (from clawdbot)
+- `GET /api/tasks` - List all cron jobs (from Hermes jobs.json)
+- `GET /api/crons` - List all cron jobs with full details (from Hermes jobs.json)
 - `GET /` - Dashboard UI
 
 ---
@@ -255,7 +257,33 @@ journalctl --user -u hermes-gateway-personal.service -n 50 --no-pager
 
 ## Scheduling Systems
 
-**System Crontab** (token-free, runs directly):
+### Primary: Hermes Cron (PM2/OpenClaw replacement)
+
+All scheduled automation now runs via **Hermes Agent's built-in cron scheduler**.
+
+**Management:**
+```bash
+hermes cron list              # View all jobs
+hermes cron run <job_id>      # Run a job immediately
+```
+
+**Data source:** `~/.hermes/profiles/coder/cron/jobs.json`
+
+**Active Jobs (Hermes Cron):**
+
+| Name | Schedule | Type | Script |
+|------|----------|------|--------|
+| **Content Calendar** | Sun 9AM | `no_agent` | `content-calendar-ai.js` (Sonnet) |
+| **Web Design Leads** | Mon 8AM | `no_agent` | `web-design-leads.js` (Grok) |
+| **Voice Agent Leads** | Wed 8AM | `no_agent` | `voice-agent-leads.js` (Grok) |
+| **Shopify StoreIQ Leads** | Fri 8AM | `no_agent` | `shopify-leads.js` (Grok) |
+| **StoreIQ Auto-Sync** | Every 30m | Agent | Shopify→Supabase sync |
+
+**Migration status:** All lead gen crons migrated from PM2→Hermes. Content calendar built directly on Hermes. No OpenClaw/PM2 dependency for these jobs.
+
+**Shell wrappers:** `~/.hermes/profiles/coder/scripts/*.sh` — each cron's no_agent entrypoint, using explicit Node v22 path.
+
+### System Crontab (token-free, runs directly):
 - Gateway Ping, PM2 Monitor, Watchlist Monitor
 - Finance Monitor (AM/Midday/PM weekdays)
 - Performance Check, Patch OpenClaw
@@ -472,57 +500,37 @@ cd /home/clawd/clawd/ebay-scanner && node run-from-config.js [day]
 
 ---
 
-### 6. Lead Generator (Level Up Digital)
+### 6. Lead Generator (Level Up Digital) — 3 Hermes Cron Jobs
 
 ```
 ┌──────────────────┐     ┌──────────────────┐     ┌──────────────────┐
-│ Cron Mon/Thu     │────▶│ Hermes "leads"   │────▶│ Google Sheets    │
-│ 6AM (clawdbot)   │     │ Profile          │     │ (Leads)         │
-└──────────────────┘     │ lead-gen.py      │     └──────────────────┘
-                         │ → v3.py          │
-                         └──────────────────┘
+│ Hermes Cron      │────▶│ Node.js Scripts  │────▶│ Google Sheets    │
+│ (Sun/Mon/Wed/Fri)│     │ (Grok enrichment)│     │ (Level Up Leads) │
+└──────────────────┘     └──────────────────┘     └──────────────────┘
 ```
 
-**Location (scripts):** `/home/clawd/clawd/lead-generator/` (original)
-**Profile:** `~/.hermes/profiles/leads/` (Hermes profile)
-**Profile scripts:** `~/.hermes/profiles/leads/lead-gen/` (mirrored)
-**Cron wrapper:** `~/.hermes/cron/lead-gen.py`
-**Service:** `hermes-gateway-leads.service` (systemd user)
-**Telegram:** Same bot as personal (Terry's DM)
-**Models:** DeepSeek V4 Flash (primary), Grok 4.1 Fast Reasoning (fallback)
+**Location:** `/home/clawd/skills/web-design-leads/` (all 3 scripts)
 
-**What it does:**
-- Searches Google Places API for local service businesses in Nassau County
-- Filters: 3.8+ rating, 3-1000 reviews, 10000m radius, no/outdated website
-- Email extraction from business websites
-- Optional AI-powered lead qualification
-- Saves each lead immediately (crash-safe)
-- Brave API budget: max 60 calls per run with retry + rate limit handling
+**Cron Entrypoints:** `~/.hermes/profiles/coder/scripts/*.sh`
 
-**v3 Improvements:**
-- Broader filters (was 4.0★ / 5-500 reviews)
-- Email extraction from websites
-- AI qualification (optional)
-- 5 towns per run (was 3)
-- Expanded industries (9 types)
-- State-based town rotation
-- Auto-rotating tiers (no hardcoded tier per cron)
+**Data:** Google Sheets (Level Up Content + per-category lead sheets)
 
-**Cron Jobs (clawdbot):**
-- `Lead Generator Monday (Profile)` (460d992a) — 6 AM Monday
-- `Lead Generator Thursday (Profile)` (fe56a724) — 6 AM Thursday
-- Both now call: `python3 /home/clawd/.hermes/cron/lead-gen.py`
+| # | Name | Schedule | Script | Enrichment Model |
+|---|------|----------|--------|-----------------|
+| 1 | **Web Design Leads** | Mon 8AM | `web-design-leads.js` | Grok (xAI) |
+| 2 | **Voice Agent Leads** | Wed 8AM | `voice-agent-leads.js` | Grok (xAI) |
+| 3 | **Shopify StoreIQ Leads** | Fri 8AM | `shopify-leads.js` | Grok (xAI) |
 
-**Rotation:**
-- Towns: Cycles through 25 Nassau County towns (5 per run)
-- Industries: Auto-rotates via state file
-- State: `/home/clawd/.lead-gen-state.json`
+**Key differences from old system:**
+- All 3 scripts use **Grok** (`grok-4-1-fast-reasoning`) for enrichment — 90% cost reduction vs Sonnet
+- **No per-lead email drafting** (was costing $3-5/week in Sonnet calls)
+- Falls back to Anthropic Sonnet if `XAI_API_KEY` not set
+- Env vars from `~/.hermes/profiles/leads/.env`
 
-**Spreadsheet:** https://docs.google.com/spreadsheets/d/1Dl0VF4yASbUSXcuyS1km-Uo1fa6fZVfAYlRFl7h38gc
-
-**API Keys:**
-- Brave Search API: via os.environ.get() fallback
-- Google Places API: AIzaSyAgmfVMDHDCbQdq06pCDiMCEeN-0lx-_d4
+**What each script does:**
+- **Web Design:** Google Places API → filter no-website businesses → Grok score (1-10) + inline draft → qualified leads (score ≥5 + phone) → Sheet
+- **Voice Agent:** Google Places API → service businesses → Grok enrichment (revenue estimates, fit) → Sheet
+- **Shopify/StoreIQ:** Playwright + Bing Search → find Shopify stores → Grok enrichment → Sheet
 
 ---
 

@@ -1,81 +1,68 @@
-# Migration: Clawdbot Cron → System Cron
+# Migration: Clawdbot/System Cron → Hermes Cron
 
-## Problem
-Clawdbot cron jobs use `wakeMode: "next-heartbeat"` which requires active heartbeats in the session. The main session heartbeat is disabled, so jobs schedule but never execute.
+## Status: COMPLETED 2026-05-12
 
-## Solution
-Migrate all automated tasks to native Linux cron (crontab), bypassing Clawdbot's scheduler entirely.
+All previously PM2-managed crons have been migrated to **Hermes Agent's built-in cron scheduler**.
 
----
+## What Changed
 
-## Tasks to Migrate
+| Before | After |
+|--------|-------|
+| PM2 cron (content calendar, lead gen) | Hermes cron (`no_agent=true` shell wrappers) |
+| Clawdbot cron (21M, eBay, health) | OpenClaw continues to manage these — no change |
+| `/api/crons` reads from `clawdbot cron list --json` | Reads from `~/.hermes/profiles/coder/cron/jobs.json` |
+| `/api/tasks` reads from `clawdbot cron list --json` | Reads from `~/.hermes/profiles/coder/cron/jobs.json` |
 
-### Daily Tasks (24 total)
-| Time | Task | Command |
-|------|------|---------|
-| 00:00 | 21M Research | `cd /home/clawd && /home/clawd/.nvm/versions/node/v22.22.0/bin/node /home/clawd/clawd/automation/21m-nightly-scraper.js` |
-| 00:00 | BTC Research | `cd /home/clawd && /home/clawd/.nvm/versions/node/v22.22.0/bin/node /home/clawd/clawd/automation/jett-daily-research.js --balanced` |
-| 03:00 | Podcast Processing | `/usr/bin/python3 /home/clawd/skills/podcast-summary/run_background.py` |
-| 04:00 | Bitcoin Tweet Gen | `/home/clawd/.nvm/versions/node/v22.22.0/bin/node /home/clawd/clawd/automation/21m-claude-generator.js --type bitcoin` |
-| 05:00 | Sports Tweet Gen | `/home/clawd/.nvm/versions/node/v22.22.0/bin/node /home/clawd/clawd/automation/21m-claude-generator.js --type sports` |
-| 06:30 | Podcast Deploy | `/home/clawd/.nvm/versions/node/v22.22.0/bin/node /home/clawd/clawd/automation/deploy-podcast-summary.js` |
-| 07:30 | Sports Deploy | `/home/clawd/.nvm/versions/node/v22.22.0/bin/node /home/clawd/clawd/automation/deploy-21m-tweet.js /home/clawd/clawd/memory/21m-sports-verified-content.json` |
-| 08:00 | System Health | `/home/clawd/.nvm/versions/node/v22.22.0/bin/node /home/clawd/clawd/automation/post-health-to-slack.js` |
-| 08:30 | Bitcoin Deploy | `/home/clawd/.nvm/versions/node/v22.22.0/bin/node /home/clawd/clawd/automation/deploy-21m-tweet.js /home/clawd/clawd/memory/21m-bitcoin-verified-content.json` |
-| 09:00 | eBay Scans (Mon-Fri) | `cd /home/clawd/clawd/ebay-scanner && /home/clawd/.nvm/versions/node/v22.22.0/bin/node run-from-config.js [day]` |
-| 10:00 | eBay Deploy | `/home/clawd/.nvm/versions/node/v22.22.0/bin/node /home/clawd/clawd/automation/deploy-ebay-scans.js` |
-| 10:00 | Sports Scout | `/usr/bin/python3 /home/clawd/clawd/sports_betting/orchestrator.py --mode scout` |
-| 16:00 | Sports Pick | `/usr/bin/python3 /home/clawd/clawd/sports_betting/orchestrator.py --mode final` |
+## Migrated Jobs
 
-### Weekly Tasks
-| Time | Task |
-|------|------|
-| Sun 09:00 | eBay Scan (Cam Ward) |
-| Mon 09:00 | eBay Scan (MJ Finest) |
-| Tue 09:00 | eBay Scan (Griffey) |
-| Wed 09:00 | eBay Scan (Kobe) |
-| Thu 09:00 | eBay Scan (MJ UD) |
-| Fri 09:00 | eBay Scan (Multi) |
-| Sat 09:00 | eBay Scan (MJ 94-99) |
+| Job | Schedule | Script | Enrichment |
+|-----|----------|--------|-----------|
+| Content Calendar | Sun 9AM | `content-calendar-ai.js` | Sonnet (Claude) |
+| Web Design Leads | Mon 8AM | `web-design-leads.js` | Grok (xAI) |
+| Voice Agent Leads | Wed 8AM | `voice-agent-leads.js` | Grok (xAI) |
+| Shopify StoreIQ Leads | Fri 8AM | `shopify-leads.js` | Grok (xAI) |
+| StoreIQ Auto-Sync | Every 30m | Hermes agent | DeepSeek |
 
-### Maintenance
-| Time | Task |
-|------|------|
-| Daily 02:30 | Log Rotate |
-| Daily 02:45 | Backup |
-| Sun 03:00 | Podcast Cleanup |
+## Shell Wrappers
 
----
+Each cron has a shell wrapper at `~/.hermes/profiles/coder/scripts/*.sh`:
+- `content-calendar-ai.sh`
+- `web-design-leads.sh`
+- `voice-agent-leads.sh`
+- `shopify-leads.sh`
 
-## Implementation Plan
+These use explicit Node v22 path to avoid shebang resolution issues.
 
-1. **Create wrapper script** (`/home/clawd/scripts/cron-runner.sh`)
-   - Sets proper PATH, NODE_PATH, HOME
-   - Logs output to `/home/clawd/logs/cron/{job-name}.log`
-   - Handles errors gracefully
+## Data Source
 
-2. **Add to crontab** (`crontab -e`)
-   - Set timezone to America/New_York
-   - Add all daily/weekly jobs
+The dashboard reads from `~/.hermes/profiles/coder/cron/jobs.json`
 
-3. **Disable Clawdbot cron jobs**
-   - Mark all existing cron jobs as disabled (so they don't conflict)
+## Dashboard Schedule Tab
 
-4. **Add monitoring**
-   - Simple health check script that alerts if cron stops running
+Mission Control's Schedule tab (`/api/crons`) now shows Hermes cron jobs.
+Old OpenClaw/PM2 cron jobs no longer appear there — that's intentional.
 
----
+## Cost Optimization
 
-## Files to Create/Modify
+- **Grok** (`grok-4-1-fast-reasoning`) replaced Sonnet for lead enrichment → 90% cost reduction
+- **No email drafting** — removed `draftMessages()` from voice-agent and shopify scripts
+- **Sonnet retained** for Content Calendar (quality matters for public content)
 
-- `/home/clawd/scripts/cron-runner.sh` - Wrapper script
-- `/home/clawd/crontab` - Full crontab file
-- Update each automation script to ensure standalone execution
+## Remaining OpenClaw Crons (NOT migrated)
 
----
+These still run via OpenClaw and are NOT affected by this migration:
+- 21M Sports/Bitcoin tweets
+- eBay scans
+- Morning family brief
+- Podcast queue
+- Health checks
 
-## Success Criteria
-- [ ] All daily content tasks run on schedule without manual intervention
-- [ ] No dependency on Clawdbot session/heartbeat
-- [ ] Logs go to `/home/clawd/logs/cron/`
-- [ ] Failed jobs alert to Slack
+## Troubleshooting
+
+```bash
+hermes cron list              # View all Hermes cron jobs
+hermes cron run <job_id>      # Manually trigger a job
+journalctl --user -u jett-task-manager.service -n 50 --no-pager  # Check dashboard
+```
+
+If `/api/crons` returns empty: check `~/.hermes/profiles/coder/cron/jobs.json` exists and is valid JSON.
