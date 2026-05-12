@@ -279,7 +279,7 @@ hermes cron run <job_id>      # Run a job immediately
 | **Shopify StoreIQ Leads** | Fri 8AM | `no_agent` | `shopify-leads.js` (Grok) |
 | **StoreIQ Auto-Sync** | Every 30m | Agent | Shopify→Supabase sync |
 
-**Migration status:** All lead gen crons migrated from PM2→Hermes. Content calendar built directly on Hermes. No OpenClaw/PM2 dependency for these jobs.
+**Migration status:** All lead gen crons migrated from PM2→Hermes. Content calendar rebuilt for 3 weekly posts (Mon Education, Wed Proof, Fri Pain Point). No OpenClaw/PM2 dependency for these jobs.
 
 **Shell wrappers:** `~/.hermes/profiles/coder/scripts/*.sh` — each cron's no_agent entrypoint, using explicit Node v22 path.
 
@@ -531,6 +531,29 @@ cd /home/clawd/clawd/ebay-scanner && node run-from-config.js [day]
 - **Web Design:** Google Places API → filter no-website businesses → Grok score (1-10) + inline draft → qualified leads (score ≥5 + phone) → Sheet + **1 Sonnet template draft**
 - **Voice Agent:** Google Places API → service businesses → Grok enrichment (revenue estimates, fit) → Sheet + **1 Sonnet template draft (email + DM)**
 - **Shopify/StoreIQ:** Playwright + Bing Search → find Shopify stores → Grok enrichment → Sheet + **1 Sonnet template draft (email + DM + LinkedIn)**
+
+---
+
+### 7. Content Calendar (Level Up Digital) — 3 Weekly Posts
+
+```
+┌──────────────────┐     ┌──────────────────┐     ┌──────────────────┐
+│ Hermes Cron      │────▶│ content-calendar- │────▶│ Google Sheets    │
+│ (Sun 9AM)        │     │ ai.js (Sonnet)   │     │ (Level Up Leads) │
+└──────────────────┘     └──────────────────┘     └──────────────────┘
+```
+
+**Script:** `~/clawd/automation/content-calendar-ai.js` (Sonnet `claude-sonnet-4-6`)
+
+**Strategy:** 3 high-quality posts/week > 7 mediocre ones. Focus on authentic content from real work.
+
+| Day | Pillar | Focus | Platforms |
+|-----|--------|-------|-----------|
+| Monday | **Education** | Teach something useful with a cited stat. Screenshot idea from StoreIQ dashboard. | LinkedIn + X |
+| Wednesday | **Demo/Proof** | Building in public. Raw screenshots of real tools — Hermes, Shopify, Telegram alerts. This is the most authentic content. | LinkedIn + X |
+| Friday | **Pain Point** | Name a problem your audience has. No pitch. Let them come to you. | LinkedIn + X |
+
+**Key rule:** Best content comes from actual work — not AI-generated images. Every post should suggest a real screenshot Terry can capture from his actual tools.
 
 ---
 
