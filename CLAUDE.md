@@ -193,11 +193,13 @@ Syncs Shopify → Supabase every 30 min. Runs `hermes-to-supabase.js`.
 - Supabase project: fhmjvnphxsbtwcutqkvq
 
 **Profile Architecture:**
-Hermes runs FOUR profiles, each on its own gateway process (Telegram long-polling, no local ports):
-- hermes-gateway.service (default): Superare/Shopify ops (deepseek-v4-flash)
-- hermes-gateway-personal.service: Terry's personal assistant (grok-4-1-fast-reasoning)
-- hermes-gateway-coder.service: Dev tasks (deepseek-chat)
-- hermes-gateway-doctor.service: System health monitor (grok-4-1-fast)
+Hermes runs **SIX** profiles, each on its own gateway process (Telegram long-polling, no local ports):
+- hermes-gateway.service (default): Superare/Shopify ops
+- hermes-gateway-personal.service: Terry's personal assistant
+- hermes-gateway-coder.service: Dev tasks (deepseek-chat) — this is the main coding bot
+- hermes-gateway-doctor.service: System health monitor
+- hermes-gateway-finance.service: Finance/Trading assistant (Grok, Yahoo Finance, Finnhub)
+- hermes-gateway-leads.service: Lead generation assistant (Grok, Google Sheets)
 Do not cross-wire profiles. See PORT_MAP.md for architecture notes.
 
 **NOTE: PM2 is DEAD.** As of the May 2026 system audit, PM2 was killed and disabled. All services use systemd. Do NOT use `pm2` commands — use `systemctl --user` instead.
@@ -210,14 +212,13 @@ crontab -l                                   # View system cron (all jobs)
 **Notes:**
 - Some jobs migrated from clawdbot cron to system crontab (zero token cost):
   - Self-Heal Ping (`*/15 * * * *`) — dropped from 5 min to 15 min
-  - PM2 Monitor (`*/15 * * * *`) — legacy, PM2 is dead
   - Performance Check (`0 */6 * * *`)
   - Watchlist Monitor (`*/15 6-20 * * 1-5`) — deterministic, only alerts when threshold breaches
   - Patch OpenClaw (weekly Sundays) — dropped from daily
 - Morning Brief stays in clawdbot (low frequency)
 - Other automation stays in clawdbot cron (agent turns required)
 
-**systemd Services (9 total):**
+**systemd Services (12 total):**
 | Service | Port | Restart Policy |
 |---------|------|----------------|
 | openclaw-gateway.service | 18789/18791 | Restart=always |
@@ -230,6 +231,8 @@ crontab -l                                   # View system cron (all jobs)
 | hermes-gateway-personal.service | — | Restart=always |
 | hermes-gateway-coder.service | — | Restart=always |
 | hermes-gateway-doctor.service | — | Restart=on-failure |
+| hermes-gateway-finance.service | — | Restart=always |
+| hermes-gateway-leads.service | — | Restart=always |
 
 Plus jett-keepalive.timer (fires every 2 min, auto-restarts any downed service).
 

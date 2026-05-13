@@ -1,0 +1,81 @@
+{
+  "tickers": [
+    {
+      "symbol": "IREN",
+      "type": "stock",
+      "name": "IREN Limited",
+      "notes": "AI data center + BTC mining. NVIDIA partnership. Sweetwater 1 energized. Long-term hold.",
+      "alertThresholds": {
+        "priceChangePercent": 5,
+        "volumeMultiplier": 2.5
+      },
+      "addedAt": "2026-05-12T00:00:00Z"
+    },
+    {
+      "symbol": "MSTR",
+      "type": "stock",
+      "name": "Strategy (MicroStrategy)",
+      "notes": "Leveraged Bitcoin treasury company. Saylor. BTC proxy.",
+      "alertThresholds": {
+        "priceChangePercent": 5,
+        "volumeMultiplier": 2
+      },
+      "addedAt": "2026-05-12T00:00:00Z"
+    },
+    {
+      "symbol": "CIFR",
+      "type": "stock",
+      "name": "Cipher Mining",
+      "notes": "Bitcoin miner, AI data center pivot. High leverage BTC play.",
+      "alertThresholds": {
+        "priceChangePercent": 7,
+        "volumeMultiplier": 3
+      },
+      "addedAt": "2026-05-12T00:00:00Z"
+    },
+    {
+      "symbol": "NOW",
+      "type": "stock",
+      "name": "ServiceNow",
+      "notes": "Enterprise AI workflow platform. Jensen Huang endorsed. Down 40% YTD - value play.",
+      "alertThresholds": {
+        "priceChangePercent": 4,
+        "volumeMultiplier": 2
+      },
+      "addedAt": "2026-05-12T00:00:00Z"
+    },
+    {
+      "symbol": "BTC-USD",
+      "type": "crypto",
+      "name": "Bitcoin",
+      "notes": "Core holding. 13 BTC stack. HODL. Monitor macro sentiment and price action.",
+      "alertThresholds": {
+        "priceChangePercent": 4,
+        "volumeMultiplier": 2
+      },
+      "addedAt": "2026-05-12T00:00:00Z"
+    },
+    {
+      "symbol": "ASST",
+      "type": "stock",
+      "name": "ASST",
+      "notes": "",
+      "alertThresholds": {
+        "priceChangePercent": 5,
+        "volumeMultiplier": 2
+      },
+      "addedAt": "2026-05-13T17:34:01.949Z"
+    },
+    {
+      "symbol": "SLNH",
+      "type": "stock",
+      "name": "SLNH",
+      "notes": "",
+      "alertThresholds": {
+        "priceChangePercent": 5,
+        "volumeMultiplier": 2
+      },
+      "addedAt": "2026-05-13T17:34:29.171Z"
+    }
+  ]
+}

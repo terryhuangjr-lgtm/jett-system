@@ -74,6 +74,18 @@ No `pkill` or background `&` needed — systemd handles everything.
   --params '{"timeMin":"2026-05-03T00:00:00Z","timeMax":"2026-05-05T00:00:00Z"}'
 ```
 
+## Call Dashboard
+
+A real-time call log dashboard is available at:
+- **Local**: `http://localhost:3333/dashboard`
+- **Public**: `https://voice.jettmissioncontrol.com/dashboard` (requires Cloudflare tunnel/config)
+
+Features:
+- Shows last 20 calls from Supabase `call_logs` table
+- Auto-updates via Supabase Realtime when new calls complete
+- Dark theme (#0a0a0f), cards with status, booking detection, appointment details
+- Stats bar: today's calls, total calls, booking count, connection status
+
 ## Next Improvements (if revisited)
 - Wire ngrok auto-update into the server so Twilio webhook stays current
 - Add phone number to the transcript extraction for more reliable SMS

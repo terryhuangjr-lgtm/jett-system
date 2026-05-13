@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finance Intel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg-base:#0a0a0f;--bg-surface:#111118;--bg-elevated:#181825;--bg-hover:#202035;
+  --border:rgba(255,255,255,0.06);--border-mid:rgba(255,255,255,0.1);
+  --text:#e8e8f0;--text-secondary:#8888a0;--text-muted:#555570;
+  --green:#00ff88;--green-dim:rgba(0,255,136,0.12);--red:#ff4444;--red-dim:rgba(255,68,68,0.12);
+  --gold:#ffd700;--gold-dim:rgba(255,215,0,0.12);--blue:#00b4ff;--blue-dim:rgba(0,180,255,0.1);
+  --accent:#00b4ff;
+  --radius:6px;--font-mono:'JetBrains Mono',monospace;--font-sans:'Inter',sans-serif;
+}
+html,body{height:100%;background:var(--bg-base);color:var(--text);font-family:var(--font-sans);font-size:13px;overflow-x:hidden}
+body{padding:24px;max-width:1400px;margin:0 auto}
+.header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+.header-left{display:flex;align-items:center;gap:12px}
+.header h1{font-family:var(--font-mono);font-size:16px;font-weight:500;color:var(--text);
+  background:linear-gradient(135deg,var(--blue),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.header .sub{font-size:11px;color:var(--text-muted);font-family:var(--font-mono);letter-spacing:0.06em}
+.header-right{display:flex;align-items:center;gap:10px}
+.btn{background:var(--bg-elevated);border:1px solid var(--border);color:var(--text-secondary);padding:6px 14px;border-radius:var(--radius);
+  font-size:11px;font-family:var(--font-mono);cursor:pointer;transition:all 0.15s;display:flex;align-items:center;gap:6px;white-space:nowrap}
+.btn:hover{background:var(--bg-hover);color:var(--text);border-color:var(--border-mid)}
+.btn-primary{background:var(--blue-dim);border-color:rgba(0,180,255,0.3);color:var(--blue)}
+.btn-primary:hover{background:rgba(0,180,255,0.2)}
+.btn-danger{color:var(--red);border-color:var(--red-dim)}
+.btn-danger:hover{background:var(--red-dim)}
+.btn:disabled{opacity:0.4;cursor:not-allowed}
+.spinner{width:14px;height:14px;border:2px solid var(--border-mid);border-top-color:var(--blue);border-radius:50%;animation:spin .6s linear infinite;display:inline-block}
+@keyframes spin{to{transform:rotate(360deg)}}
+.toast{position:fixed;bottom:20px;right:20px;background:var(--bg-elevated);border:1px solid var(--border-mid);padding:10px 16px;border-radius:var(--radius);
+  font-size:12px;color:var(--text);z-index:999;opacity:0;transform:translateY(10px);transition:all 0.3s;max-width:360px}
+.toast.show{opacity:1;transform:translateY(0)}
+.toast.error{border-color:var(--red-dim);border-left:3px solid var(--red)}
+.toast.success{border-color:var(--green-dim);border-left:3px solid var(--green)}
+
+/* ── Watchlist Grid ─────────────────────────────────────────────── */
+.section{margin-bottom:24px}
+.section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.section-title{font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted)}
+.watchlist-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}
+.ticker-card{
+  background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px;
+  cursor:pointer;transition:all 0.15s;position:relative;overflow:hidden
+}
+.ticker-card:hover{border-color:var(--border-mid);background:var(--bg-elevated)}
+.ticker-card.active{border-color:var(--blue);box-shadow:0 0 0 1px rgba(0,180,255,0.15)}
+.ticker-card .symbol{font-family:var(--font-mono);font-size:18px;font-weight:600;color:var(--text)}
+.ticker-card .name{font-size:11px;color:var(--text-muted);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ticker-card .price-row{display:flex;align-items:baseline;gap:8px;margin-top:8px}
+.ticker-card .price{font-family:var(--font-mono);font-size:22px;font-weight:500}
+.ticker-card .change{font-family:var(--font-mono);font-size:13px;font-weight:500}
+.ticker-card .change.pos{color:var(--green)}
+.ticker-card .change.neg{color:var(--red)}
+.ticker-card .change.neutral{color:var(--text-muted)}
+.ticker-card .meta{display:flex;gap:10px;margin-top:6px;font-size:10px;color:var(--text-muted);font-family:var(--font-mono)}
+.ticker-card .news-dot{width:8px;height:8px;border-radius:50%;position:absolute;top:10px;right:10px;background:var(--blue-dim)}
+.ticker-card .news-dot.flash{background:var(--blue);animation:pulse-glow 1.5s infinite}
+@keyframes pulse-glow{0%,100%{box-shadow:0 0 4px var(--blue)}50%{box-shadow:0 0 12px var(--blue)}}
+.ticker-card .notes-tooltip{display:none;position:absolute;top:100%;left:0;right:0;background:var(--bg-elevated);border:1px solid var(--border-mid);padding:8px 10px;font-size:11px;color:var(--text-secondary);z-index:10;border-radius:0 0 var(--radius) var(--radius)}
+.ticker-card:hover .notes-tooltip{display:block}
+.market-badge{font-size:9px;padding:2px 6px;border-radius:3px;background:var(--green-dim);color:var(--green);font-family:var(--font-mono)}
+.market-badge.closed{background:var(--red-dim);color:var(--red)}
+.market-badge.premarket{background:var(--gold-dim);color:var(--gold)}
+.mkt-status{font-size:10px;color:var(--text-muted);font-family:var(--font-mono)}
+
+/* ── Brief Section ──────────────────────────────────────────────── */
+.brief-card{background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px}
+.brief-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.brief-timestamp{font-size:11px;color:var(--text-muted);font-family:var(--font-mono)}
+.brief-text{font-size:13px;line-height:1.7;color:var(--text-secondary);white-space:pre-wrap}
+.brief-text em{color:var(--text)}
+.brief-empty{color:var(--text-muted);font-style:italic}
+.brief-loading{display:flex;align-items:center;gap:10px;padding:20px;color:var(--text-muted)}
+
+/* ── Deep Dive ──────────────────────────────────────────────────── */
+.deep-dive{display:none;margin-top:10px}
+.deep-dive.open{display:block}
+.dive-card{background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px}
+.dive-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.dive-symbol{font-family:var(--font-mono);font-size:20px;font-weight:600;color:var(--text)}
+.dive-price{font-family:var(--font-mono);font-size:24px;font-weight:500}
+.dive-price.pos{color:var(--green)}.dive-price.neg{color:var(--red)}
+.dive-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.dive-col h3{font-family:var(--font-mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px}
+.news-item{padding:8px 0;border-bottom:1px solid var(--border);font-size:12px;line-height:1.5}
+.news-item:last-child{border-bottom:none}
+.news-item .headline{color:var(--text-secondary)}
+.news-item .headline.urgent{color:var(--gold)}
+.news-item .meta{font-size:10px;color:var(--text-muted);margin-top:3px;display:flex;gap:8px}
+.news-item .meta .tag{background:var(--red-dim);color:var(--red);padding:1px 5px;border-radius:3px;font-size:9px}
+.reddit-post{padding:6px 0;font-size:12px;color:var(--text-secondary);border-bottom:1px solid var(--border)}
+.reddit-post:last-child{border-bottom:none}
+.reddit-post a{color:var(--blue);text-decoration:none}
+.reddit-post a:hover{text-decoration:underline}
+.threshold-row{display:flex;align-items:center;justify-content:space-between;padding:6px 0;font-size:12px;color:var(--text-secondary)}
+.threshold-row label{color:var(--text-muted)}
+.threshold-row input{width:60px;background:var(--bg-base);border:1px solid var(--border);border-radius:4px;padding:3px 6px;color:var(--text);font-family:var(--font-mono);font-size:12px;text-align:right}
+.alert-item{padding:8px 0;border-bottom:1px solid var(--border);font-size:12px}
+.alert-item:last-child{border-bottom:none}
+.alert-symbol{font-family:var(--font-mono);font-weight:500;color:var(--text)}
+.alert-conditions{color:var(--text-secondary);margin-top:2px}
+
+/* ── Add Modal ──────────────────────────────────────────────────── */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:100;align-items:center;justify-content:center}
+.modal-overlay.open{display:flex}
+.modal{background:var(--bg-elevated);border:1px solid var(--border-mid);border-radius:8px;padding:20px;width:380px;max-width:90vw}
+.modal h2{font-family:var(--font-mono);font-size:14px;margin-bottom:16px}
+.modal label{display:block;font-size:11px;color:var(--text-muted);margin-bottom:4px;font-family:var(--font-mono);letter-spacing:0.05em}
+.modal input,.modal select{width:100%;background:var(--bg-base);border:1px solid var(--border);border-radius:4px;padding:8px 10px;color:var(--text);font-size:13px;margin-bottom:12px;font-family:var(--font-sans)}
+.modal input:focus,.modal select:focus{outline:none;border-color:var(--blue)}
+.modal .btn-row{display:flex;gap:8px;justify-content:flex-end;margin-top:8px}
+
+/* ── Responsive ─────────────────────────────────────────────────── */
+@media(max-width:768px){
+  body{padding:16px}
+  .watchlist-grid{grid-template-columns:1fr}
+  .dive-grid{grid-template-columns:1fr}
+  .header{flex-direction:column;align-items:flex-start;gap:10px}
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-left">
+    <h1>Finance Intel</h1>
+    <span class="sub" id="marketStatus">— loading...</span>
+  </div>
+  <div class="header-right">
+    <button class="btn" onclick="refreshAllQuotes()" id="refreshBtn">⟳ Refresh</button>
+    <button class="btn btn-primary" onclick="openAddModal()">+ Add Ticker</button>
+  </div>
+</div>
+
+<!-- Watchlist -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-title">Watchlist</span>
+    <span class="mkt-status" id="mktTime"></span>
+  </div>
+  <div class="watchlist-grid" id="watchlistGrid"></div>
+</div>
+
+<!-- Deep Dive -->
+<div class="deep-dive" id="deepDive">
+  <div class="dive-card" id="diveContent"></div>
+</div>
+
+<!-- Brief -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-title">Morning Brief</span>
+    <div style="display:flex;gap:8px">
+      <button class="btn btn-primary" onclick="generateBrief()" id="genBriefBtn">Generate Now</button>
+    </div>
+  </div>
+  <div class="brief-card">
+    <div class="brief-header">
+      <span class="brief-timestamp" id="briefTime">No brief yet</span>
+      <span class="brief-timestamp" id="briefNext">Next: 7:00 AM tomorrow</span>
+    </div>
+    <div id="briefText" class="brief-text brief-empty">Click "Generate Now" to create an AI-powered morning brief with sentiment analysis.</div>
+  </div>
+</div>
+
+<!-- Add Modal -->
+<div class="modal-overlay" id="addModal">
+  <div class="modal">
+    <h2>Add Ticker</h2>
+    <label>Symbol</label>
+    <input type="text" id="addSymbol" placeholder="AAPL">
+    <label>Type</label>
+    <select id="addType"><option value="stock">Stock</option><option value="crypto">Crypto</option></select>
+    <label>Notes</label>
+    <input type="text" id="addNotes" placeholder="Investment thesis...">
+    <label>Alert: Price Change %</label>
+    <input type="number" id="addPriceThreshold" value="5" step="0.5">
+    <label>Alert: Volume Multiplier</label>
+    <input type="number" id="addVolThreshold" value="2" step="0.5" min="1">
+    <div class="btn-row">
+      <button class="btn" onclick="closeAddModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="confirmAdd()">Add</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script>
+const API = window.location.origin;
+
+// ── State ─────────────────────────────────────────────────────────
+let watchlist = [];
+let deepDiveSymbol = null;
+let refreshInterval = null;
+
+// ── Init ──────────────────────────────────────────────────────────
+async function init() {
+  await loadWatchlist();
+  await loadBrief();
+  // Auto-refresh quotes every 60s
+  if (refreshInterval) clearInterval(refreshInterval);
+  refreshInterval = setInterval(refreshAllQuotes, 60000);
+}
+init();
+
+// ── Watchlist ─────────────────────────────────────────────────────
+async function loadWatchlist() {
+  try {
+    const r = await fetch(API + '/finance/api/watchlist');
+    watchlist = await r.json();
+    renderWatchlist();
+    await refreshAllQuotes();
+  } catch(e) {
+    showToast('Failed to load watchlist: ' + e.message, 'error');
+  }
+}
+
+function renderWatchlist() {
+  const grid = document.getElementById('watchlistGrid');
+  grid.innerHTML = watchlist.map(t => `
+    <div class="ticker-card" data-symbol="${t.symbol}" onclick="selectTicker('${t.symbol}')">
+      <div class="symbol">${t.symbol}</div>
+      <div class="name">${t.name || t.symbol}</div>
+      <div class="price-row">
+        <span class="price" data-price="${t.symbol}">—</span>
+        <span class="change" data-change="${t.symbol}"></span>
+      </div>
+      <div class="meta">
+        <span data-vol="${t.symbol}"></span>
+        <span class="market-badge" data-market="${t.symbol}"></span>
+      </div>
+      <div class="notes-tooltip">${t.notes || 'No notes'}</div>
+      <div class="news-dot" data-dot="${t.symbol}"></div>
+    </div>
+  `).join('');
+}
+
+async function refreshAllQuotes() {
+  document.getElementById('refreshBtn').disabled = true;
+  for (const t of watchlist) {
+    fetchQuote(t.symbol);
+    await sleep(200); // Rate limit spacing
+  }
+  document.getElementById('refreshBtn').disabled = false;
+  updateMarketTime();
+}
+
+async function fetchQuote(symbol) {
+  try {
+    const r = await fetch(API + '/finance/api/quote/' + encodeURIComponent(symbol));
+    const q = await r.json();
+    updateCard(symbol, q);
+    return q;
+  } catch(e) {
+    return null;
+  }
+}
+
+function updateCard(symbol, q) {
+  if (q.error) {
+    document.querySelector(`[data-price="${symbol}"]`).textContent = '—';
+    return;
+  }
+  const priceEl = document.querySelector(`[data-price="${symbol}"]`);
+  const changeEl = document.querySelector(`[data-change="${symbol}"]`);
+  const volEl = document.querySelector(`[data-vol="${symbol}"]`);
+  const marketEl = document.querySelector(`[data-market="${symbol}"]`);
+  const dotEl = document.querySelector(`[data-dot="${symbol}"]`);
+
+  if (priceEl) priceEl.textContent = q.price != null ? '$' + q.price.toLocaleString() : '—';
+  if (changeEl && q.changePercent != null) {
+    const pct = q.changePercent;
+    changeEl.textContent = (pct >= 0 ? '+' : '') + pct.toFixed(1) + '%';
+    changeEl.className = 'change ' + (pct > 0.5 ? 'pos' : pct < -0.5 ? 'neg' : 'neutral');
+  }
+  if (volEl && q.volumeMultiplier) volEl.textContent = q.volumeMultiplier + 'x vol';
+  if (marketEl) {
+    const status = q.marketStatus || 'open';
+    marketEl.textContent = status === 'open' ? 'Open' : status === 'premarket' ? 'Pre-Mkt' : status === 'afterhours' ? 'After-Hrs' : 'Closed';
+    marketEl.className = 'market-badge ' + status;
+  }
+  // BTC enrichment
+  if (symbol === 'BTC-USD' && q.btcStackValue) {
+    const meta = document.querySelector(`[data-vol="${symbol}"]`);
+    if (meta) meta.textContent = 'Stack: $' + q.btcStackValue.toLocaleString();
+  }
+  // Update deep dive if this ticker is selected
+  if (symbol === deepDiveSymbol) {
+    updateDivePrice(q);
+  }
+}
+
+function updateMarketTime() {
+  const now = new Date();
+  document.getElementById('mktTime').textContent = now.toLocaleTimeString('en-US', {hour:'2-digit',minute:'2-digit', timeZone:'America/New_York'}) + ' ET';
+  const statusEl = document.getElementById('marketStatus');
+  const h = now.getHours();
+  const m = now.getMinutes();
+  const day = now.getDay();
+  if (day === 0 || day === 6) { statusEl.textContent = '— Market Closed'; return; }
+  const mins = h * 60 + m;
+  if (mins >= 570 && mins < 960) statusEl.textContent = '— Market Open';
+  else if (mins >= 240 && mins < 570) statusEl.textContent = '— Pre-Market';
+  else if (mins >= 960) statusEl.textContent = '— After-Hours';
+  else statusEl.textContent = '— Market Closed';
+}
+
+// ── Deep Dive ─────────────────────────────────────────────────────
+async function selectTicker(symbol) {
+  const cards = document.querySelectorAll('.ticker-card');
+  cards.forEach(c => c.classList.remove('active'));
+  const card = document.querySelector(`[data-symbol="${symbol}"]`);
+  if (card) card.classList.add('active');
+
+  if (symbol === deepDiveSymbol) {
+    // Toggle off
+    document.getElementById('deepDive').classList.remove('open');
+    deepDiveSymbol = null;
+    return;
+  }
+
+  deepDiveSymbol = symbol;
+  document.getElementById('deepDive').classList.add('open');
+  document.getElementById('diveContent').innerHTML = '<div class="brief-loading"><span class="spinner"></span> Loading...</div>';
+
+  const [q, newsData] = await Promise.all([
+    fetchQuote(symbol),
+    fetch(API + '/finance/api/news/' + encodeURIComponent(symbol)).then(r => r.json()).catch(() => [])
+  ]);
+
+  const ticker = watchlist.find(t => t.symbol === symbol) || {};
+  const thresholds = ticker.alertThresholds || { priceChangePercent: 5, volumeMultiplier: 2 };
+
+  renderDive(symbol, ticker, q, newsData, thresholds);
+}
+
+function renderDive(symbol, ticker, q, news, thresholds) {
+  const isPos = q && q.changePercent > 0;
+  const priceClass = q ? (isPos ? 'pos' : 'neg') : '';
+  const newsHtml = (news || []).slice(0, 8).map(n => `
+    <div class="news-item">
+      <div class="headline${n.urgent ? ' urgent' : ''}">${n.urgent ? '⚠️ ' : ''}${escapeHtml(n.headline)}</div>
+      <div class="meta"><span>${n.source}</span><span>${n.timeAgo || ''}</span>${n.urgent ? '<span class="tag">URGENT</span>' : ''}</div>
+    </div>
+  `).join('') || '<div style="color:var(--text-muted)">No recent news</div>';
+
+  const redditPosts = (ticker._reddit?.posts || []).slice(0, 3).map(rp => `
+    <div class="reddit-post"><a href="${rp.url}" target="_blank">${escapeHtml(rp.title)}</a></div>
+  `).join('') || '<div style="color:var(--text-muted)">No Reddit mentions</div>';
+
+  document.getElementById('diveContent').innerHTML = `
+    <div class="dive-header">
+      <div>
+        <div class="dive-symbol">${symbol}</div>
+        <div style="font-size:11px;color:var(--text-muted)">${ticker.name || ''}</div>
+      </div>
+      <div>
+        <div class="dive-price ${priceClass}">${q && q.price ? '$' + q.price.toLocaleString() : '—'}</div>
+        <div style="font-family:var(--font-mono);font-size:12px;color:var(--text-secondary);text-align:right">
+          ${q && q.changePercent != null ? (q.changePercent >= 0 ? '+' : '') + q.changePercent.toFixed(1) + '%' : ''}
+        </div>
+        ${q && q.btcStackValue ? '<div style="font-family:var(--font-mono);font-size:12px;color:var(--gold);margin-top:4px">Stack: $' + q.btcStackValue.toLocaleString() + '</div>' : ''}
+      </div>
+    </div>
+    <div class="dive-grid">
+      <div class="dive-col">
+        <h3>News Feed</h3>
+        ${newsHtml}
+      </div>
+      <div class="dive-col">
+        <h3>Reddit Sentiment</h3>
+        <div style="font-size:12px;color:var(--text-muted);margin-bottom:6px">${ticker._reddit?.mentionCount || 0} mentions</div>
+        ${redditPosts}
+        <h3 style="margin-top:14px">Alert Thresholds</h3>
+        <div class="threshold-row">
+          <label>Price Change %</label>
+          <input type="number" value="${thresholds.priceChangePercent}" step="0.5" data-threshold="priceChangePercent" onchange="updateThreshold('${symbol}')">
+        </div>
+        <div class="threshold-row">
+          <label>Volume Multiplier</label>
+          <input type="number" value="${thresholds.volumeMultiplier}" step="0.5" min="1" data-threshold="volumeMultiplier" onchange="updateThreshold('${symbol}')">
+        </div>
+        <div style="margin-top:12px">
+          <button class="btn btn-danger" onclick="removeTicker('${symbol}')">Remove from Watchlist</button>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function updateDivePrice(q) {
+  const header = document.querySelector('.dive-price');
+  const pct = document.querySelector('.dive-price ~ div');
+  if (header && q && q.price) {
+    header.textContent = '$' + q.price.toLocaleString();
+    header.className = 'dive-price ' + (q.changePercent > 0 ? 'pos' : 'neg');
+  }
+}
+
+async function updateThreshold(symbol) {
+  const inputs = document.querySelectorAll(`[data-threshold]`);
+  const thresholds = {};
+  inputs.forEach(inp => { thresholds[inp.getAttribute('data-threshold')] = parseFloat(inp.value) || 5; });
+  try {
+    await fetch(API + '/finance/api/watchlist/' + encodeURIComponent(symbol), {
+      method: 'PUT',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({ alertThresholds: thresholds })
+    });
+  } catch(e) {
+    showToast('Failed to update thresholds', 'error');
+  }
+}
+
+async function removeTicker(symbol) {
+  if (!confirm('Remove ' + symbol + ' from watchlist?')) return;
+  try {
+    await fetch(API + '/finance/api/watchlist/' + encodeURIComponent(symbol), { method: 'DELETE' });
+    showToast('Removed ' + symbol, 'success');
+    deepDiveSymbol = null;
+    document.getElementById('deepDive').classList.remove('open');
+    await loadWatchlist();
+  } catch(e) {
+    showToast('Failed to remove', 'error');
+  }
+}
+
+// ── Brief ─────────────────────────────────────────────────────────
+async function loadBrief() {
+  try {
+    const r = await fetch(API + '/finance/api/brief');
+    const data = await r.json();
+    if (data && data.brief) {
+      document.getElementById('briefText').textContent = data.brief;
+      document.getElementById('briefText').className = 'brief-text';
+      if (data.generatedAt) {
+        const d = new Date(data.generatedAt);
+        document.getElementById('briefTime').textContent = 'Last generated: ' + d.toLocaleString('en-US', {month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'});
+      }
+      // Brief type
+      if (data.type === 'morning') document.getElementById('briefNext').textContent = 'Morning brief ✓';
+      else document.getElementById('briefNext').textContent = 'Manual brief';
+    }
+  } catch(e){}
+}
+
+async function generateBrief() {
+  const btn = document.getElementById('genBriefBtn');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span> Synthesizing...';
+  try {
+    const r = await fetch(API + '/finance/api/brief/generate', { method: 'POST' });
+    const data = await r.json();
+    if (data.error) throw new Error(data.error);
+    document.getElementById('briefText').textContent = data.brief;
+    document.getElementById('briefText').className = 'brief-text';
+    const d = new Date(data.generatedAt);
+    document.getElementById('briefTime').textContent = 'Last generated: ' + d.toLocaleString('en-US', {month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'});
+    document.getElementById('briefNext').textContent = 'Manual brief';
+    showToast('Brief generated', 'success');
+  } catch(e) {
+    showToast('Brief failed: ' + e.message, 'error');
+  }
+  btn.disabled = false;
+  btn.textContent = 'Generate Now';
+}
+
+// ── Add Ticker ────────────────────────────────────────────────────
+function openAddModal() {
+  document.getElementById('addModal').classList.add('open');
+  document.getElementById('addSymbol').value = '';
+  document.getElementById('addNotes').value = '';
+  document.getElementById('addSymbol').focus();
+}
+
+function closeAddModal() {
+  document.getElementById('addModal').classList.remove('open');
+}
+
+async function confirmAdd() {
+  const symbol = document.getElementById('addSymbol').value.trim().toUpperCase();
+  if (!symbol) { showToast('Enter a symbol', 'error'); return; }
+  const body = {
+    symbol,
+    type: document.getElementById('addType').value,
+    notes: document.getElementById('addNotes').value.trim(),
+    alertThresholds: {
+      priceChangePercent: parseFloat(document.getElementById('addPriceThreshold').value) || 5,
+      volumeMultiplier: parseFloat(document.getElementById('addVolThreshold').value) || 2
+    }
+  };
+  try {
+    const r = await fetch(API + '/finance/api/watchlist', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify(body)
+    });
+    const data = await r.json();
+    if (data.error) throw new Error(data.error);
+    closeAddModal();
+    showToast('Added ' + symbol, 'success');
+    await loadWatchlist();
+  } catch(e) {
+    showToast(e.message, 'error');
+  }
+}
+
+// ── Toast ─────────────────────────────────────────────────────────
+function showToast(msg, type = 'info') {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.className = 'toast show ' + type;
+  clearTimeout(el._hide);
+  el._hide = setTimeout(() => el.classList.remove('show'), 4000);
+}
+
+function escapeHtml(s) {
+  if (!s) return '';
+  const d = document.createElement('div');
+  d.textContent = s;
+  return d.innerHTML;
+}
+
+function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+</script>
+</body>
+</html>

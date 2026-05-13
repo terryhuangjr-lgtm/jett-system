@@ -8,6 +8,7 @@ const http = require('http');
 const fs = require('fs').promises;
 const path = require('path');
 const TaskDatabase = require('./database');
+const financeIntel = require('./services/financeIntel');
 
 const PORT = 3000;
 // ── SIENNA: load .env for Anthropic key ──────────────────────────
@@ -23,6 +24,8 @@ const _siennaEnv = (() => {
   return out;
 })();
 const SIENNA_API_KEY = _siennaEnv['ANTHROPIC_API_KEY'] || process.env.ANTHROPIC_API_KEY || '';
+const FINNHUB_API_KEY = _siennaEnv['FINNHUB_API_KEY'] || process.env.FINNHUB_API_KEY || '';
+process.env.FINNHUB_API_KEY = FINNHUB_API_KEY;
 // ─────────────────────────────────────────────────────────────────
 const db = new TaskDatabase();
 
@@ -83,6 +86,13 @@ class TaskServer {
       return this.serveFile(res, 'dashboard/mission-control.html', 'text/html');
     } else if (pathname === '/sienna' || pathname === '/sienna.html') {
       return this.serveFile(res, 'dashboard/sienna.html', 'text/html');
+    } else if (pathname === '/finance' || pathname === '/finance.html') {
+      return this.serveFile(res, 'dashboard/finance.html', 'text/html');
+    }
+
+    // Finance API routes (must come before generic proxy routes)
+    if (pathname.startsWith('/finance/api/')) {
+      return this.handleAPI(req, res, pathname, url);
     }
 
     // Proxy routes for iframes
@@ -256,6 +266,48 @@ class TaskServer {
       const contentType = req.headers['content-type'] || null;
       const body = (req.method === 'POST' || req.method === 'PUT' || req.method === 'DELETE') ? await this.readBody(req) : null;
       return this.proxyRequest(res, levelupPath, 5000, req.method, body, contentType, req);
+    }
+
+    // ── SHOPIFY WEBHOOK RECEIVER ─────────────────────────────────────────
+    if (pathname === '/webhooks/shopify' && req.method === 'POST') {
+      // Read raw body for HMAC verification
+      const rawBody = await this.readBody(req);
+
+      // Verify HMAC if secret is set
+      const secret = process.env.SHOPIFY_WEBHOOK_SECRET;
+      if (secret) {
+        const hmacHeader = req.headers['x-shopify-hmac-sha256'];
+        const crypto = require('crypto');
+        const computed = crypto.createHmac('sha256', secret).update(rawBody).digest('base64');
+        if (computed !== hmacHeader) {
+          console.log('⚠️ Shopify webhook: invalid HMAC — rejected');
+          res.writeHead(401); res.end('Unauthorized'); return;
+        }
+      }
+
+      // Respond 200 immediately (Shopify requires fast response)
+      res.writeHead(200, { 'Content-Type': 'text/plain' });
+      res.end('ok');
+
+      // Determine sync mode from topic header
+      const topic = req.headers['x-shopify-topic'] || '';
+      console.log(`📦 Shopify webhook: ${topic}`);
+
+      const isInventoryOnly = topic === 'inventory_levels/update';
+      const args = isInventoryOnly
+        ? ['/home/clawd/clawd/automation/hermes-to-supabase.js', '--alerts']
+        : ['/home/clawd/clawd/automation/hermes-to-supabase.js'];
+
+      // Run sync asynchronously (don't block the response)
+      const { execFile } = require('child_process');
+      execFile('/home/clawd/.nvm/versions/node/v22.22.0/bin/node', args,
+        { timeout: 120000, cwd: '/home/clawd/clawd/automation' },
+        (err) => {
+          if (err) console.error('❌ Webhook sync failed:', err.message);
+          else console.log('✅ Webhook sync complete');
+        }
+      );
+      return;
     }
 
     // API routes
@@ -1256,6 +1308,113 @@ Rules: Keep all language simple. Every activity 3-6 minutes. Make it feel like p
       }
     }
 
+    // ── FINANCE INTELLIGENCE API ──────────────────────────────────────
+    if (pathname === '/finance/api/watchlist' && req.method === 'GET') {
+      try {
+        return this.sendJSON(res, financeIntel.loadWatchlist());
+      } catch (e) {
+        return this.sendJSON(res, { error: e.message }, 500);
+      }
+    }
+    if (pathname === '/finance/api/watchlist' && req.method === 'POST') {
+      try {
+        const body = await this.readBodyJSON(req);
+        const wl = financeIntel.loadWatchlist();
+        if (wl.find(t => t.symbol === body.symbol)) {
+          return this.sendJSON(res, { error: body.symbol + ' already in watchlist' }, 400);
+        }
+        wl.push({
+          symbol: body.symbol.toUpperCase(),
+          type: body.type || 'stock',
+          name: body.name || body.symbol.toUpperCase(),
+          notes: body.notes || '',
+          alertThresholds: body.alertThresholds || { priceChangePercent: 5, volumeMultiplier: 2 },
+          addedAt: new Date().toISOString()
+        });
+        financeIntel.saveWatchlist(wl);
+        return this.sendJSON(res, { success: true, symbol: body.symbol.toUpperCase() });
+      } catch (e) {
+        return this.sendJSON(res, { error: e.message }, 500);
+      }
+    }
+    if (pathname.startsWith('/finance/api/watchlist/') && req.method === 'DELETE') {
+      try {
+        const symbol = decodeURIComponent(pathname.split('/')[4]);
+        const wl = financeIntel.loadWatchlist();
+        financeIntel.saveWatchlist(wl.filter(t => t.symbol !== symbol));
+        return this.sendJSON(res, { success: true, symbol });
+      } catch (e) {
+        return this.sendJSON(res, { error: e.message }, 500);
+      }
+    }
+    if (pathname.startsWith('/finance/api/watchlist/') && req.method === 'PUT') {
+      try {
+        const symbol = decodeURIComponent(pathname.split('/')[4]);
+        const body = await this.readBodyJSON(req);
+        const wl = financeIntel.loadWatchlist();
+        const idx = wl.findIndex(t => t.symbol === symbol);
+        if (idx === -1) return this.sendJSON(res, { error: 'Not found' }, 404);
+        Object.assign(wl[idx], body);
+        financeIntel.saveWatchlist(wl);
+        return this.sendJSON(res, { success: true, symbol });
+      } catch (e) {
+        return this.sendJSON(res, { error: e.message }, 500);
+      }
+    }
+    if (pathname === '/finance/api/brief' && req.method === 'GET') {
+      try {
+        return this.sendJSON(res, financeIntel.loadBrief());
+      } catch (e) {
+        return this.sendJSON(res, { error: e.message }, 500);
+      }
+    }
+    if (pathname === '/finance/api/brief/generate' && req.method === 'POST') {
+      try {
+        const result = await financeIntel.generateFullBrief(SIENNA_API_KEY);
+        return this.sendJSON(res, result);
+      } catch (e) {
+        console.error('Brief generation error:', e.message);
+        return this.sendJSON(res, { error: e.message || 'Generation failed' }, 500);
+      }
+    }
+    if (pathname.startsWith('/finance/api/quote/') && req.method === 'GET') {
+      try {
+        const symbol = decodeURIComponent(pathname.split('/')[4]);
+        const quote = await financeIntel.fetchQuote(symbol);
+        return this.sendJSON(res, quote);
+      } catch (e) {
+        return this.sendJSON(res, { error: e.message }, 500);
+      }
+    }
+    if (pathname.startsWith('/finance/api/news/') && req.method === 'GET') {
+      try {
+        const symbol = decodeURIComponent(pathname.split('/')[4]);
+        const news = await financeIntel.fetchNews(symbol);
+        return this.sendJSON(res, news);
+      } catch (e) {
+        return this.sendJSON(res, { error: e.message }, 500);
+      }
+    }
+    if (pathname === '/finance/api/alerts-config' && req.method === 'GET') {
+      try {
+        const fsSync = require('fs');
+        const ac = JSON.parse(fsSync.readFileSync(path.join(__dirname, 'data', 'finance', 'alerts-config.json'), 'utf8'));
+        return this.sendJSON(res, ac);
+      } catch (e) {
+        return this.sendJSON(res, {});
+      }
+    }
+    if (pathname === '/finance/api/alerts-config' && req.method === 'PUT') {
+      try {
+        const body = await this.readBodyJSON(req);
+        const fsSync = require('fs');
+        fsSync.writeFileSync(path.join(__dirname, 'data', 'finance', 'alerts-config.json'), JSON.stringify(body, null, 2));
+        return this.sendJSON(res, { success: true });
+      } catch (e) {
+        return this.sendJSON(res, { error: e.message }, 500);
+      }
+    }
+
     // 404
     res.writeHead(404);
     res.end(JSON.stringify({ error: 'Not Found' }));
@@ -1331,6 +1490,107 @@ if (require.main === module) {
     console.error('Failed to start server:', error);
     process.exit(1);
   });
+
+  // ── Finance Intel Crons ────────────────────────────────────────────
+  // Morning brief: weekdays at 7:00 AM ET
+  // After-market summary: weekdays at 4:30 PM ET
+  const CRON_INTERVAL = 60000; // Check every minute
+
+  function scheduleFinanceBrief() {
+    const now = new Date();
+    const et = new Date(now.toLocaleString('en-US', {timeZone:'America/New_York'}));
+    const day = et.getDay();
+    const minutes = et.getHours() * 60 + et.getMinutes();
+
+    // Skip weekends
+    if (day === 0 || day === 6) return;
+
+    // Morning brief at 7:00 AM
+    if (minutes === 420) {
+      console.log('[Finance Cron] Running morning brief...');
+      financeIntel.generateFullBrief(SIENNA_API_KEY).then(result => {
+        console.log('[Finance Cron] Morning brief generated');
+        sendFinanceBriefTelegram(result, 'morning');
+      }).catch(e => console.error('[Finance Cron] Morning brief error:', e.message));
+    }
+
+    // After-market at 4:30 PM
+    if (minutes === 990) {
+      console.log('[Finance Cron] Running after-market brief...');
+      financeIntel.generateFullBrief(SIENNA_API_KEY).then(result => {
+        console.log('[Finance Cron] After-market brief generated');
+        sendFinanceBriefTelegram(result, 'aftermarket');
+      }).catch(e => console.error('[Finance Cron] After-market error:', e.message));
+    }
+
+    // Signal scan every 2 hours during market hours (9:30 AM - 4:00 PM)
+    if (minutes >= 570 && minutes <= 960 && minutes % 120 === 0) {
+      checkFinanceAlerts().catch(e => console.error('[Finance Cron] Alert scan error:', e.message));
+    }
+  }
+
+  async function sendFinanceBriefTelegram(result, type) {
+    try {
+      const https = require('https');
+      const token = process.env.TELEGRAM_BOT_TOKEN || '';
+      const chatId = process.env.TELEGRAM_CHAT_ID || '';
+      if (!token || !chatId) {
+        console.log('[Finance Cron] No Telegram credentials');
+        return;
+      }
+
+      // Use the finance bot token + chat from env
+      const financeToken = '8802358712:AAHF8OBwmP9Y7eb04RHetK3fD6RTan8ZLuw';
+      const financeChat = '5867308866';
+
+      // Build brief text for Telegram
+      const header = type === 'morning' ? '🌅 Morning Brief' : '🌆 After-Market Summary';
+      const ts = new Date().toLocaleString('en-US', {month:'short',day:'numeric',hour:'2-digit',minute:'2-digit',timeZone:'America/New_York'});
+      const text = encodeURIComponent(`${header} — ${ts}\n\n${result.brief || 'No brief generated.'}`);
+      const url = `https://api.telegram.org/bot${financeToken}/sendMessage?chat_id=${financeChat}&text=${text}&parse_mode=Markdown`;
+
+      await new Promise((resolve, reject) => {
+        https.get(url, {timeout: 15000}, (res) => {
+          let d = '';
+          res.on('data', c => d += c);
+          res.on('end', () => resolve(d));
+        }).on('error', reject);
+      });
+    } catch(e) {
+      console.error('[Finance Cron] Telegram send error:', e.message);
+    }
+  }
+
+  async function checkFinanceAlerts() {
+    try {
+      const result = await financeIntel.generateFullBrief(SIENNA_API_KEY);
+      if (result.alerts && result.alerts.length > 0) {
+        for (const alert of result.alerts) {
+          const text = encodeURIComponent(
+            `🔍 Signal Alert: ${alert.symbol}\n\n` +
+            `${alert.conditions.join('\n')}\n\n` +
+            `Price: $${alert.price} (${alert.changePercent >= 0 ? '+' : ''}${alert.changePercent}%)`
+          );
+          const token = '8802358712:AAHF8OBwmP9Y7eb04RHetK3fD6RTan8ZLuw';
+          const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=5867308866&text=${text}&parse_mode=Markdown`;
+          const https = require('https');
+          await new Promise((resolve, reject) => {
+            https.get(url, {timeout: 10000}, (res) => {
+              let d = '';
+              res.on('data', c => d += c);
+              res.on('end', () => resolve(d));
+            }).on('error', reject);
+          });
+        }
+      }
+    } catch(e) {
+      console.error('[Finance Cron] Alert check error:', e.message);
+    }
+  }
+
+  // Start cron checker
+  setInterval(scheduleFinanceBrief, CRON_INTERVAL);
+  console.log('[Finance Cron] Scheduler started (checking every 60s)');
 }
 
 module.exports = TaskServer;

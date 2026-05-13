@@ -51,53 +51,57 @@ const MAX_BRAVE_CALLS = 40;
 
 const RESEARCH_TOPICS = [
   {
-    area: 'OpenClaw & Agent Tools',
+    area: 'Hermes Agent & Skills',
     queries: [
-      'OpenClaw new skills ClawHub 2026',
-      'Hermes agent new features tips',
-      'AI agent automation tools new release',
-      'MCP tools new integrations 2026'
+      'Nous Research Hermes agent new features 2026',
+      'Hermes agent skills MCP tools new',
+      'AI agent skills automation Hermes new release',
+      'hermes-agent update cron webhook toolset'
     ]
   },
   {
-    area: 'Content Generation & Social',
+    area: 'AI Agency & Client Tools',
     queries: [
-      'AI content generation tools new 2026',
-      'Twitter X automation tools AI',
-      'social media AI scheduling tools'
+      'AI automation agency tools small business 2026',
+      'AI voice agent appointment booking tools',
+      'Shopify analytics AI dashboard tools new',
+      'local business AI automation ROI case study'
     ]
   },
   {
-    area: 'Sports Cards & Collecting',
+    area: 'Lead Generation & Outreach',
+    queries: [
+      'AI lead generation tools small business Long Island NY',
+      'Shopify store finder scraping tools 2026',
+      'local business outreach automation cold email AI',
+      'Google Maps lead gen scraping tools new'
+    ]
+  },
+  {
+    area: 'Sports Cards & eBay Automation',
     queries: [
       'sports card pricing API tools 2026',
-      'card grading AI tools new',
-      'eBay sports card scraping tools',
-      'PSA grading population data API'
+      'eBay scraping automation tools new',
+      'PSA grading population data API access',
+      'card grading AI condition detection tools'
     ]
   },
   {
-    area: 'Lead Generation',
+    area: 'Web Scraping & Browser Automation',
     queries: [
-      'AI lead generation tools small business 2026',
-      'Google Maps scraping leads tools',
-      'local business outreach automation'
+      'Playwright Puppeteer stealth anti-bot tools 2026',
+      'Brave Search API web scraping lead gen techniques',
+      'Firecrawl alternatives web extraction AI 2026',
+      'curl_cffi camoufox browser fingerprint bypass'
     ]
   },
   {
-    area: 'Web Scraping & Data',
+    area: 'LLM & Model Updates',
     queries: [
-      'web scraping tools new 2026',
-      'Scrapling alternatives browser automation',
-      'data extraction AI tools'
-    ]
-  },
-  {
-    area: 'Local LLM & AI Updates',
-    queries: [
-      'local LLM new release this week',
-      'Ollama new models 2026',
-      'AI optimization consumer GPU 2026'
+      'Grok xAI new model release 2026',
+      'DeepSeek new model update 2026',
+      'Ollama new models local LLM release this week',
+      'AI model cost reduction API pricing 2026'
     ]
   }
 ];
@@ -399,8 +403,8 @@ async function main() {
   for (const topic of RESEARCH_TOPICS) {
     console.log(`\n📂 ${topic.area}`);
 
-    // Pick best 2 queries from the topic
-    const queriesToRun = topic.queries.slice(0, 2);
+    // Pick best 3 queries from the topic (was 2)
+    const queriesToRun = topic.queries.slice(0, 3);
     const allSearchResults = [];
 
     for (const query of queriesToRun) {
@@ -502,6 +506,28 @@ async function main() {
       ], { timeout: 30000, stdio: 'pipe' });
       console.log(`\n📧 Email sent: ${subject}`);
       console.log(`📊 Brave API calls used: ${braveCallCount}/${MAX_BRAVE_CALLS}`);
+
+      // Also send Telegram summary with top findings
+      const topFindings = topicResults
+        .filter(t => t.synthesis && t.synthesis.length > 50)
+        .slice(0, 3)
+        .map(t => {
+          const firstLine = t.synthesis.split('\n').find(l => l.trim().length > 20) || '';
+          return `• *${t.area}:* ${firstLine.replace(/^[-*•]\s*/, '').slice(0, 100)}`;
+        })
+        .join('\n');
+
+      const tgMsg = `🔍 *Ecosystem Research — ${dayName} ${new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}*\n\n${topFindings}\n\n_Full digest in email_`;
+      try {
+        execFileSync('/home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot', [
+          'message', 'send', '--channel', 'telegram',
+          '--target', '5867308866',
+          '--message', tgMsg
+        ], { timeout: 15000, stdio: 'pipe' });
+        console.log('📨 Telegram summary sent');
+      } catch (tgErr) {
+        console.log('⚠️ Telegram send failed:', tgErr.message.slice(0, 100));
+      }
     } catch (e) {
       console.error('\n❌ Email send failed:', e.message);
     }

@@ -1,0 +1,7 @@
+{
+  "global": {
+    "enabled": true,
+    "cooldownMinutes": 120,
+    "maxAlertsPerDay": 5
+  }
+}

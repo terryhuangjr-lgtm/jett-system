@@ -91,9 +91,9 @@
         "maxPrice": 5000
       },
       "output_file": "/tmp/kobe-refractors-scan.json",
-      "last_run": "2026-05-06T13:00:07.726Z",
+      "last_run": "2026-05-13T13:00:09.825Z",
       "last_results": {
-        "timestamp": "2026-05-06T13:00:07.726Z",
+        "timestamp": "2026-05-13T13:00:09.825Z",
         "success": true
       },
       "last_updated": "2026-04-02T01:53:35.316Z",

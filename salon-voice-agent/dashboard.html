@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Call Dashboard — Salon Voice Agent</title>
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #0a0a0f;
+    color: #e0e0e0;
+    min-height: 100vh;
+  }
+  .container { max-width: 1200px; margin: 0 auto; padding: 24px; }
+  header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 24px; padding-bottom: 16px;
+    border-bottom: 1px solid #2a2a3a;
+  }
+  h1 { font-size: 22px; font-weight: 600; color: #f0f0f0; }
+  .badge {
+    background: #6366f1; color: white; padding: 4px 12px;
+    border-radius: 12px; font-size: 13px; font-weight: 500;
+  }
+  .status-bar {
+    display: flex; gap: 16px; margin-bottom: 20px; flex-wrap: wrap;
+  }
+  .stat-card {
+    background: #16161f; border: 1px solid #2a2a3a;
+    border-radius: 10px; padding: 16px 20px; flex: 1; min-width: 140px;
+  }
+  .stat-card .label { font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 0.5px; }
+  .stat-card .value { font-size: 26px; font-weight: 700; margin-top: 4px; }
+  .stat-card .value.green { color: #22c55e; }
+  .stat-card .value.purple { color: #818cf8; }
+  .stat-card .value.amber { color: #f59e0b; }
+  .connected { color: #22c55e; font-size: 12px; display: flex; align-items: center; gap: 4px; }
+  .connected::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: #22c55e; display: inline-block; }
+  .disconnected { color: #ef4444; font-size: 12px; display: flex; align-items: center; gap: 4px; }
+  .disconnected::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: #ef4444; display: inline-block; }
+  table { width: 100%; border-collapse: separate; border-spacing: 0; }
+  th {
+    text-align: left; padding: 12px 16px;
+    font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px;
+    color: #888; border-bottom: 1px solid #2a2a3a;
+    position: sticky; top: 0; background: #0a0a0f; z-index: 1;
+  }
+  td { padding: 14px 16px; border-bottom: 1px solid #1e1e2e; font-size: 14px; }
+  tr:hover td { background: #12121a; }
+  .caller { font-weight: 500; color: #f0f0f0; }
+  .status-completed { color: #22c55e; }
+  .status-in_progress { color: #f59e0b; }
+  .status-failed { color: #ef4444; }
+  .booking-yes { color: #22c55e; font-weight: 600; }
+  .booking-no { color: #888; }
+  .duration { font-variant-numeric: tabular-nums; color: #ccc; }
+  .time { font-variant-numeric: tabular-nums; color: #aaa; font-size: 13px; }
+  .appointment-detail { font-size: 12px; color: #818cf8; margin-top: 2px; }
+  .loading { text-align: center; padding: 60px; color: #666; }
+  .loading .spinner {
+    width: 32px; height: 32px; border: 3px solid #2a2a3a;
+    border-top-color: #818cf8; border-radius: 50%;
+    animation: spin 0.8s linear infinite; margin: 0 auto 12px;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .error { text-align: center; padding: 40px; color: #ef4444; }
+  .new-call-flash { animation: flashRow 1.5s ease-out; }
+  @keyframes flashRow {
+    0% { background: rgba(99, 102, 241, 0.2); }
+    100% { background: transparent; }
+  }
+  .empty { text-align: center; padding: 60px; color: #555; }
+  .empty p { margin-bottom: 8px; }
+  @media (max-width: 768px) {
+    .container { padding: 12px; }
+    .stat-card { min-width: 100px; padding: 12px; }
+    .stat-card .value { font-size: 20px; }
+    th, td { padding: 10px 8px; font-size: 13px; }
+    .appointment-detail, .time { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>📞 Call Dashboard</h1>
+    <div>
+      <span class="badge" id="connectionBadge">Connecting...</span>
+    </div>
+  </header>
+
+  <div class="status-bar">
+    <div class="stat-card">
+      <div class="label">Today's Calls</div>
+      <div class="value purple" id="todayCount">—</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">Total Calls</div>
+      <div class="value" id="totalCount">—</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">Bookings</div>
+      <div class="value green" id="bookingCount">—</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">Realtime</div>
+      <div id="realtimeStatus" class="disconnected">Disconnected</div>
+    </div>
+  </div>
+
+  <div class="loading" id="loadingState">
+    <div class="spinner"></div>
+    <p>Loading call logs...</p>
+  </div>
+  <div class="error" id="errorState" style="display:none">
+    <p>⚠️ Failed to load call logs</p>
+    <p id="errorMessage"></p>
+  </div>
+  <div class="empty" id="emptyState" style="display:none">
+    <p>No calls yet</p>
+    <p style="font-size:13px;color:#555;">Call logs will appear here once calls are received</p>
+  </div>
+
+  <div id="tableContainer" style="display:none">
+    <table>
+      <thead>
+        <tr>
+          <th>Time</th>
+          <th>Caller</th>
+          <th>Duration</th>
+          <th>Status</th>
+          <th>Booking</th>
+          <th>Appointment</th>
+        </tr>
+      </thead>
+      <tbody id="callLogsBody"></tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+// ── Config (injected by server) ──
+const SUPABASE_URL = '__SUPABASE_URL__' || 'https://fhmjvnphxsbtwcutqkvq.supabase.co';
+const SUPABASE_ANON_KEY = '__SUPABASE_ANON_KEY__' || '';
+
+if (!SUPABASE_ANON_KEY) {
+  document.getElementById('errorState').style.display = 'block';
+  document.getElementById('errorMessage').textContent = 'Supabase key not configured. Contact admin.';
+}
+
+const supabase = supabaseJs.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+  realtime: {
+    params: { eventsPerSecond: 10 }
+  }
+});
+
+// ── State ──
+let allCalls = [];
+let newCallIds = new Set();
+
+// ── Helpers ──
+function formatTime(iso) {
+  if (!iso) return '—';
+  const d = new Date(iso);
+  return d.toLocaleString('en-US', {
+    month: 'short', day: 'numeric',
+    hour: '2-digit', minute: '2-digit',
+    timeZone: 'America/New_York'
+  });
+}
+
+function formatDuration(seconds) {
+  if (!seconds && seconds !== 0) return '—';
+  if (seconds < 60) return `${Math.round(seconds)}s`;
+  const m = Math.floor(seconds / 60);
+  const s = Math.round(seconds % 60);
+  return `${m}m ${s}s`;
+}
+
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str || '';
+  return div.innerHTML;
+}
+
+function renderCalls() {
+  const tbody = document.getElementById('callLogsBody');
+  tbody.innerHTML = '';
+
+  if (allCalls.length === 0) {
+    document.getElementById('tableContainer').style.display = 'none';
+    document.getElementById('emptyState').style.display = 'block';
+    return;
+  }
+
+  document.getElementById('tableContainer').style.display = 'block';
+  document.getElementById('emptyState').style.display = 'none';
+
+  // Show latest 50 calls
+  const display = allCalls.slice(0, 50);
+
+  for (const call of display) {
+    const tr = document.createElement('tr');
+    if (newCallIds.has(call.id)) {
+      tr.className = 'new-call-flash';
+    }
+
+    const bookingDetected = call.booking_detected;
+    const appointment = call.appointment_details
+      ? (typeof call.appointment_details === 'string'
+          ? JSON.parse(call.appointment_details)
+          : call.appointment_details)
+      : null;
+
+    tr.innerHTML = `
+      <td class="time">${formatTime(call.started_at)}</td>
+      <td class="caller">${escapeHtml(call.caller_number || 'Unknown')}</td>
+      <td class="duration">${formatDuration(call.duration_seconds)}</td>
+      <td><span class="status-${call.status || 'completed'}">${escapeHtml(call.status || 'completed')}</span></td>
+      <td><span class="${bookingDetected ? 'booking-yes' : 'booking-no'}">${bookingDetected ? '✅ Yes' : '—'}</span></td>
+      <td>
+        ${appointment
+          ? `<span style="color:#818cf8">${escapeHtml(appointment.service || '')} — ${escapeHtml(appointment.customerName || '')}</span>
+             <div class="appointment-detail">${escapeHtml(appointment.dateStr || '')} ${escapeHtml(appointment.timeStr || '')}</div>`
+          : '<span style="color:#555">—</span>'}
+      </td>
+    `;
+    tbody.appendChild(tr);
+  }
+
+  // Update stats
+  const today = new Date().toISOString().slice(0, 10);
+  const todayCalls = allCalls.filter(c => c.started_at && c.started_at.slice(0, 10) === today);
+  document.getElementById('todayCount').textContent = todayCalls.length;
+  document.getElementById('totalCount').textContent = allCalls.length;
+  document.getElementById('bookingCount').textContent = allCalls.filter(c => c.booking_detected).length;
+}
+
+// ── Load initial data ──
+async function loadCalls() {
+  document.getElementById('loadingState').style.display = 'block';
+  document.getElementById('errorState').style.display = 'none';
+
+  const { data, error } = await supabase
+    .from('call_logs')
+    .select('*')
+    .order('started_at', { ascending: false })
+    .limit(20);
+
+  document.getElementById('loadingState').style.display = 'none';
+
+  if (error) {
+    document.getElementById('errorState').style.display = 'block';
+    document.getElementById('errorMessage').textContent = error.message;
+    return;
+  }
+
+  allCalls = data || [];
+  renderCalls();
+}
+
+// ── Realtime subscription ──
+function subscribeToRealtime() {
+  const channel = supabase.channel('call_logs_realtime');
+
+  channel
+    .on('postgres_changes',
+      { event: 'INSERT', schema: 'public', table: 'call_logs' },
+      (payload) => {
+        const newCall = payload.new;
+        // Add to front of array
+        allCalls.unshift(newCall);
+        newCallIds.add(newCall.id);
+        // Keep array manageable
+        if (allCalls.length > 200) allCalls = allCalls.slice(0, 200);
+        renderCalls();
+        // Clear flash after animation
+        setTimeout(() => { newCallIds.delete(newCall.id); }, 2000);
+      }
+    )
+    .subscribe((status) => {
+      const statusEl = document.getElementById('realtimeStatus');
+      const badge = document.getElementById('connectionBadge');
+      if (status === 'SUBSCRIBED') {
+        statusEl.className = 'connected';
+        statusEl.textContent = 'Connected';
+        badge.textContent = '🟢 Live';
+        badge.style.background = '#22c55e';
+      } else if (status === 'CHANNEL_ERROR') {
+        statusEl.className = 'disconnected';
+        statusEl.textContent = 'Error';
+        badge.textContent = '⚠️ Error';
+        badge.style.background = '#ef4444';
+      } else {
+        statusEl.className = 'disconnected';
+        statusEl.textContent = status;
+        badge.textContent = status;
+      }
+    });
+}
+
+// ── Start ──
+loadCalls();
+subscribeToRealtime();
+</script>
+</body>
+</html>

@@ -44,7 +44,7 @@ Last Updated: 2026-05-12
 │                                                                             │
 │  ┌────────────────────────────────────────────────────────────────┐        │
 │  │  Hermes Agent (Nous Research) — Shopify / Personal Assistant   │        │
-│  │  Profiles: default (~/.hermes/)  |  personal (~/.hermes/profiles/personal/) │
+│  │  Profiles: default (~/.hermes/), personal, coder, doctor, finance, leads │
 │  │  Service: hermes-gateway-personal.service (systemd)            │        │
 │  │  Default model: DeepSeek V4 Flash  |  Fallback: Grok 4.1-fast │        │
 │  │  Cron owner: Supergel watchdog, Low Stock, Shopify reports     │        │
@@ -128,14 +128,23 @@ systemctl --user restart jett-task-manager.service
 | Default profile | `~/.hermes/` (Superare/Shopify ops) |
 | Personal profile | `~/.hermes/profiles/personal/` | ✅ Personal Gateway |
 | Personal service | `hermes-gateway-personal.service` (systemd) | |
+| **Coder profile** | **`~/.hermes/profiles/coder/`** | **✅ Main Coding Bot** |
+| **Coder service** | **`hermes-gateway-coder.service` (systemd)** | |
 | **Leads profile** | **`~/.hermes/profiles/leads/`** | **✅ Lead Gen Gateway** |
 | **Leads service** | **`hermes-gateway-leads.service` (systemd)** | |
+| **Doctor profile** | **`~/.hermes/profiles/doctor/`** | **✅ Health Monitor** |
+| **Doctor service** | **`hermes-gateway-doctor.service` (systemd)** | |
+| **Finance profile** | **`~/.hermes/profiles/finance/`** | **✅ Finance/Trading** |
+| **Finance service** | **`hermes-gateway-finance.service` (systemd)** | |
 | Platform | Telegram (separate bot from Jett's) |
 
 **Responsibilities:**
-- ALL Shopify operations for Superare (inventory, costs, draft orders, PDFs)
-- Superare low-stock watchdog (every 2hrs)
-- Personal Telegram assistant (coding, general queries)
+- default (Superare): ALL Shopify operations for Superare (inventory, costs, draft orders, PDFs), Superare low-stock watchdog
+- personal: Terry's personal assistant (coding, general queries, Gemini/Sonnet/Grok switching)
+- coder: Main coding bot — dev work, system maintenance, utility tasks (deepseek-chat default)
+- doctor: System health monitor every 30min — silence = healthy
+- finance: Yahoo Finance stock/crypto price checks, Finnhub news, morning briefs, signal scans (Grok 4.1)
+- leads: Lead generation — web design, voice agent, Shopify StoreIQ leads (Grok 4.1)
 
 **Default model (personal profile):** `deepseek-v4-flash` via `custom:deepseek`
 **Fallback model:** `grok-4-1-fast-reasoning` via `custom:api.x.ai`
@@ -192,6 +201,24 @@ journalctl --user -u hermes-gateway-personal.service -n 50 --no-pager
 **Rules:** NEVER auto-fixes. NEVER kills kilo/bun. Silence = healthy.
 ---
 
+### 4c. Finance Agent (Hermes Profile)
+
+| Attribute | Value |
+|-----------|-------|
+| Profile | `~/.hermes/profiles/finance/` |
+| Service | `hermes-gateway-finance.service` (systemd user) |
+| Telegram | @JettFinanceBot |
+| Model | grok-4-1-fast-reasoning |
+| Cron | `morning-brief` weekdays 7AM ET, `signal-scan` every 2h |
+
+**Capabilities:**
+- Yahoo Finance: stock/crypto price lookups, chart data
+- Finnhub: news headlines for watchlist tickers
+- Watchlist: `/home/clawd/dashboard/data/finance/watchlist.json`
+- Full Terry financial context via SOUL.md
+
+---
+
 ### 5. Gemma Assistant (Port 3002)
 
 | Attribute | Value |
@@ -245,6 +272,7 @@ journalctl --user -u hermes-gateway-personal.service -n 50 --no-pager
 | `/card/*` | Port 5000 | Card detail pages |
 | `/podcast` | Port 5001 | Podcast summarizer |
 | `/sienna` | Port 3000 | Sienna Lesson Launcher (AI learning for kids) |
+| `/webhooks/shopify` | Port 3000 | Shopify webhook receiver (POST) — triggers StoreIQ sync |
 
 **Local ports:**
 || Port | Service | systemd Unit | Restart |
@@ -257,7 +285,7 @@ journalctl --user -u hermes-gateway-personal.service -n 50 --no-pager
 
 ## Scheduling Systems
 
-### Primary: Hermes Cron (PM2/OpenClaw replacement)
+### Hermes Cron (primary scheduler)
 
 All scheduled automation now runs via **Hermes Agent's built-in cron scheduler**.
 
@@ -277,7 +305,8 @@ hermes cron run <job_id>      # Run a job immediately
 | **Web Design Leads** | Mon 8AM | `no_agent` | `web-design-leads.js` (Grok) |
 | **Voice Agent Leads** | Wed 8AM | `no_agent` | `voice-agent-leads.js` (Grok) |
 | **Shopify StoreIQ Leads** | Fri 8AM | `no_agent` | `shopify-leads.js` (Grok) |
-| **StoreIQ Auto-Sync** | Every 30m | Agent | Shopify→Supabase sync |
+| **StoreIQ Auto-Sync** | Every 30m | Agent | Shopify→Supabase sync (kept as fallback) |
+| **StoreIQ Webhook** | On Shopify event | Webhook | Instant sync via /webhooks/shopify |
 
 **Migration status:** All lead gen crons migrated from PM2→Hermes. Content calendar rebuilt for 3 weekly posts (Mon Education, Wed Proof, Fri Pain Point). No OpenClaw/PM2 dependency for these jobs.
 
@@ -295,9 +324,11 @@ hermes cron run <job_id>      # Run a job immediately
 - Backup, Log Rotate
 - Lead Generator, Podcast Queue, Research
 
-### Primary: Clawdbot Cron
+### Clawdbot Cron (legacy — diminishing)
 
 **Command:** `clawdbot cron list`
+
+Tasks below still run via OpenClaw's embedded cron scheduler (LLM-based, higher cost):
 
 | Task ID | Name | Schedule | Command |
 |---------|------|----------|---------|

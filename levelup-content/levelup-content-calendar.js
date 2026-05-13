@@ -31,7 +31,7 @@ const PILLARS = [
   'Portfolio showcase',
   'Local business education',
   'AI and automation',
-  'SEO tips',
+  'AI Automation Tips',
   'Behind the scenes',
   'Social proof',
   'Direct CTA'
@@ -89,9 +89,9 @@ async function generatePost(pillar, day, portfolio) {
     ? `Portfolio site: ${portfolio.name} (${portfolio.desc}) at ${portfolio.url}`
     : '';
 
-  const prompt = `You are writing social media content for Level Up Digital NY, a web design and AI automation agency run by Terry Huang in Nassau County, Long Island NY. Terry builds websites, AI agents, voice bots, and automation for local small businesses.
+  const prompt = `You are writing social media content for Level Up Digital NY, an AI automation agency (with web design) run by Terry Huang in Nassau County, Long Island NY. Terry builds AI agents, voice bots, automations, and websites for local small businesses.
 
-Generate 3 unique social media posts for ${day} with pillar: "${pillar}"
+Generate 3 unique social media posts for ${day?.day ?? day} with pillar: "${pillar}"
 ${portfolioContext}
 
 Terry's tone: casual but professional, direct, no corporate speak, genuine local business owner energy. He has built real AI products: an AI voice receptionist (Eve), an AI Shopify operations bot (Hermes), an email triage agent, and a lead gen pipeline. He has clients like Dynamic Demolition, and a demo pending with Superare (NYC fight gear brand).

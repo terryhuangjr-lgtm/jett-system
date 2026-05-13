@@ -1458,6 +1458,15 @@ vmWss.on('connection', (twilioWs) => {
   });
 });
 
+// Call dashboard (static HTML with Supabase Realtime)
+app.get('/dashboard', (req, res) => {
+  let html = fs.readFileSync(path.join(__dirname, 'dashboard.html'), 'utf8');
+  html = html.replace('__SUPABASE_URL__', process.env.SUPABASE_URL || 'https://fhmjvnphxsbtwcutqkvq.supabase.co');
+  html = html.replace('__SUPABASE_ANON_KEY__', process.env.SUPABASE_ANON_KEY || '');
+  res.setHeader('Content-Type', 'text/html');
+  res.send(html);
+});
+
 // Health check
 app.get('/health', (req, res) => {
   res.json({ status: 'ok', uptime: process.uptime() });

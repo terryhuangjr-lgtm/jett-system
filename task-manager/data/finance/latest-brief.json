@@ -1,0 +1,78 @@
+{
+  "generatedAt": "2026-05-13T18:01:00.183Z",
+  "type": "manual",
+  "brief": "**Macro:** BTC pullback (-1.2%) is minor noise; broader market weakness (-2.8% across IREN/MSTR/NOW) suggests profit-taking ahead of macro clarity, not thesis break.\n\n**Per Ticker:**\n\n**MSTR** (-2.8%): Headline about Saylor \"stretching it\" into a new phase warrants close reading—if this signals pivot away from pure BTC accumulation (leverage, dilution, or strategy shift), that's thesis-critical. Current dip is tradeable swing entry *if* you confirm the narrative is still \"maximize BTC treasury.\" Check latest earnings/capital allocation statements.\n\n**CIFR** (5.3%): Green on red market = relative strength. Q1 earnings call suggests operational momentum in AI mining capacity. This is your cleanest swing candidate if macro stabilizes—watch for 5-15% pullback entry or hold if already long.\n\n**IREN** (-2.8%): \"Solid execution\" framing + minimal Reddit chatter suggests institutional accumulation phase, not panic. Thesis intact. Dip is dull but not a setup.\n\n**SLNH** (15.7%): The outlier. \"4.3 GW pipeline\" is the real story—if this is credible, you're looking at 2-3 year thesis reset on capacity. Needs vetting: is pipeline funded? Timelines realistic? Could be 30-50% move if pipeline de-risks, or vapor if not.\n\n**BTC/NOW/ASST**: Broad weakness, no fresh signals.\n\n**Action:** Deep-dive MSTR's latest capital allocation plan and SLNH's pipeline funding/timeline. CIFR is your swing setup if BTC stabilizes above $78.5K.",
+  "tickerSnapshots": [
+    {
+      "symbol": "IREN",
+      "price": 54.97,
+      "changePercent": -2.81,
+      "volumeMultiplier": 0,
+      "newsCount": 5,
+      "redditMentions": 5,
+      "redditSentiment": "active",
+      "tweets": 0
+    },
+    {
+      "symbol": "MSTR",
+      "price": 179.34,
+      "changePercent": -2.75,
+      "volumeMultiplier": 0,
+      "newsCount": 5,
+      "redditMentions": 5,
+      "redditSentiment": "active",
+      "tweets": 0
+    },
+    {
+      "symbol": "CIFR",
+      "price": 21.12,
+      "changePercent": 5.28,
+      "volumeMultiplier": 0,
+      "newsCount": 5,
+      "redditMentions": 5,
+      "redditSentiment": "active",
+      "tweets": 0
+    },
+    {
+      "symbol": "NOW",
+      "price": 86.25,
+      "changePercent": -3.09,
+      "volumeMultiplier": 0,
+      "newsCount": 5,
+      "redditMentions": 5,
+      "redditSentiment": "active",
+      "tweets": 0
+    },
+    {
+      "symbol": "BTC-USD",
+      "price": 79504.49,
+      "changePercent": -1.21,
+      "volumeMultiplier": 1,
+      "newsCount": 5,
+      "redditMentions": 5,
+      "redditSentiment": "active",
+      "tweets": 0
+    },
+    {
+      "symbol": "ASST",
+      "price": 16.96,
+      "changePercent": -0.64,
+      "volumeMultiplier": 0,
+      "newsCount": 1,
+      "redditMentions": 5,
+      "redditSentiment": "active",
+      "tweets": 0
+    },
+    {
+      "symbol": "SLNH",
+      "price": 2.06,
+      "changePercent": 15.73,
+      "volumeMultiplier": 0,
+      "newsCount": 2,
+      "redditMentions": 5,
+      "redditSentiment": "active",
+      "tweets": 0
+    }
+  ],
+  "alerts": []
+}
