@@ -8,39 +8,54 @@ All previously PM2-managed crons have been migrated to **Hermes Agent's built-in
 
 | Before | After |
 |--------|-------|
-| PM2 cron (content calendar, lead gen) | Hermes cron (`no_agent=true` shell wrappers) |
+| PM2 cron (content calendar, lead gen) | Hermes cron (LLM-driven per profile) |
 | Clawdbot cron (21M, eBay, health) | OpenClaw continues to manage these — no change |
-| `/api/crons` reads from `clawdbot cron list --json` | Reads from `~/.hermes/profiles/coder/cron/jobs.json` |
-| `/api/tasks` reads from `clawdbot cron list --json` | Reads from `~/.hermes/profiles/coder/cron/jobs.json` |
+| All jobs in one `jobs.json` | Profile-specific cron files: `~/.hermes/profiles/<profile>/cron/jobs.json` |
+| `/api/crons` reads from `clawdbot cron list --json` | Reads from profile-specific `jobs.json` |
 
-## Migrated Jobs
+## Current Cron Jobs by Profile
 
-| Job | Schedule | Script | Enrichment |
-|-----|----------|--------|-----------|
-| Content Calendar | Sun 9AM | `content-calendar-ai.js` | Sonnet (Claude) |
-| Web Design Leads | Mon 8AM | `web-design-leads.js` | Grok (xAI) |
-| Voice Agent Leads | Wed 8AM | `voice-agent-leads.js` | Grok (xAI) |
-| Shopify StoreIQ Leads | Fri 8AM | `shopify-leads.js` | Grok (xAI) |
-| StoreIQ Auto-Sync | Every 30m | Hermes agent | DeepSeek |
+### Root (`~/.hermes/cron/jobs.json`)
+- Superare morning brief (daily 8AM)
+- Shopify weekly PDF (Mon 9AM)
+- EOD summary (daily 6PM)
+- Monthly sales report (1st of month 9AM)
 
-## Shell Wrappers
+### Coder Profile
+- MaggiePM daily report (daily 8AM) — script sends its own Telegram message
 
-Each cron has a shell wrapper at `~/.hermes/profiles/coder/scripts/*.sh`:
-- `content-calendar-ai.sh`
-- `web-design-leads.sh`
-- `voice-agent-leads.sh`
-- `shopify-leads.sh`
+### Leads Profile
+- Web Design Leads (Mon 8AM)
+- Voice Agent Leads (Wed 8AM)
+- Shopify StoreIQ Leads (Fri 8AM)
+- Content Calendar (Sun 9AM)
 
-These use explicit Node v22 path to avoid shebang resolution issues.
+### Superare Profile
+- StoreIQ Auto-Sync (every 30m)
 
-## Data Source
+### Finance Profile
+- Morning brief (weekdays 9AM)
+- Intraday scan (weekdays 10:30/12:30/14:30/16:30)
 
-The dashboard reads from `~/.hermes/profiles/coder/cron/jobs.json`
+## Shell Wrappers (legacy — now LLM-driven, no wrappers)
+Previously each cron had a shell wrapper at `~/.hermes/profiles/coder/scripts/*.sh`. As of May 2026, lead gen crons operate as **LLM-driven** (no shell wrappers). The cron agent runs the commands directly.
+
+## Environment Variables — Infisical
+All secrets have been migrated to Infisical Cloud (jett-infra project). Local `.env` files are locked to `chmod 000`. See `SYSTEMS.md` → Secrets Management for details.
+
+## Data Sources by Profile
+
+| Profile | Cron File |
+|---------|-----------|
+| Root | `~/.hermes/cron/jobs.json` |
+| Coder | `~/.hermes/profiles/coder/cron/jobs.json` |
+| Leads | `~/.hermes/profiles/leads/cron/jobs.json` |
+| Superare | `~/.hermes/profiles/superare/cron/jobs.json` |
+| Finance | `~/.hermes/profiles/finance/cron/jobs.json` |
 
 ## Dashboard Schedule Tab
 
-Mission Control's Schedule tab (`/api/crons`) now shows Hermes cron jobs.
-Old OpenClaw/PM2 cron jobs no longer appear there — that's intentional.
+Mission Control's Schedule tab (`/api/crons`) shows **root-level Hermes cron jobs only** (Superare crons). Profile-level crons are managed independently by their respective gateways.
 
 ## Cost Optimization
 

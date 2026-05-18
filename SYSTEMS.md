@@ -804,3 +804,20 @@ All 10 systemd services running clean. Salon voice agent (salon-voice-agent.serv
 ### Windows Resiliency
 - `C:\Users\Jett\.wslconfig` with `shutdownOnDetach=false` — WSL survives terminal closure
 - Windows Startup script launches WSL 60s after boot
+
+---
+
+## Secrets Management — Infisical Cloud
+
+**Status:** Active — Infisical Cloud (jett-infra org → jett-infra project)  
+**Project ID:** `cd6095a4-89bb-4005-8855-b6ad0059f36a`  
+**Secrets:** 66 secrets across 7 profiles stored at `/` path with prefixed names  
+**Token:** Service token `jett-infra-token` saved at `~/.infisical_token`  
+**.env files:** Locked to `chmod 000` (no permissions) — disabled until crons migrate to Infisical  
+**Migration status:** Backup/audit layer active. Runtime still uses .env sourcing in cron prompts.
+
+**Naming convention:** `PROFILE_SECRET_NAME` — e.g. `LEADS_TELEGRAM_BOT_TOKEN`, `CODER_ANTHROPIC_API_KEY`
+
+**Profiles in Infisical:** coder, leads, personal, superare, maggiepm, finance, doctor
+
+**Access:** `infisical secrets --token=$(cat ~/.infisical_token) --projectId=cd6095a4-89bb-4005-8855-b6ad0059f36a --env=dev`

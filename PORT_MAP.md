@@ -19,13 +19,20 @@
 | 20241 | Cloudflare Tunnel | cloudflared | Jett | tunnels jettmissioncontrol.com → :3000; DO NOT TOUCH |
 
 ## Hermes Gateways (no local ports)
-Hermes runs 4 Python gateway processes via Telegram long-polling. They do NOT bind to any local port.
+Hermes runs 7 Python gateway processes via Telegram long-polling. They do NOT bind to any local port.
 | Service | Profile | Unit | Notes |
 |---------|---------|------|-------|
-| Hermes Default | Superare/Shopify ops | hermes-gateway.service | deepseek-v4-flash |
+| Hermes Coder | Dev tasks | hermes-gateway-coder.service | deepseek-chat; has maggiepm cron |
+| Hermes Leads | Lead generation | hermes-gateway-leads.service | 4 crons (web-design Mon, voice-agent Wed, shopify Fri, content Sun) |
 | Hermes Personal | Terry's personal assistant | hermes-gateway-personal.service | grok-4-1-fast-reasoning |
-| Hermes Coder | Dev tasks | hermes-gateway-coder.service | deepseek-chat |
-| Hermes Doctor | System health monitor | hermes-gateway-doctor.service | grok-4-1-fast; @JettHermesDoctorBot |
+| Hermes Superare | Shopify ops | hermes-gateway-superare.service | deepseek-v4-flash; StoreIQ sync every 30m |
+| Hermes Finance | Market analysis | hermes-gateway-finance.service | grok-4-1-fast; @JettFinanceBot |
+| Hermes MaggiePM | Property management | hermes-gateway-maggiepm.service | Daily report via coder cron |
+| Hermes Doctor | System health | hermes-gateway-doctor.service | grok-4-1-fast; @JettHermesDoctorBot |
+
+## Secrets
+Secrets stored in Infisical Cloud (jett-infra project). Local `.env` files locked (`chmod 000`).
+See `SYSTEMS.md` → Secrets Management for full details.
 
 ## Rules
 1. No two services may share a port
