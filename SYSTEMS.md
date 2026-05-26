@@ -1,6 +1,6 @@
 # Jett System Architecture
 
-Last Updated: 2026-05-12
+Last Updated: 2026-05-26
 
 ---
 
@@ -66,6 +66,35 @@ Last Updated: 2026-05-12
 | PID | 680 |
 | Auto-start | Via systemd (clawdbot-gateway.service) |
 | Health check | `*/10 * * * *` (clawdbot cron) + `0 */2 * * *` (crontab) |
+
+---
+
+### 3. Huang Family Hub
+
+| Attribute | Value |
+|-----------|-------|
+| Type | Vite + React on Vercel |
+| URL | https://huang-family-hub.vercel.app |
+| GitHub | terryhuangjr-lgtm/huang-family-hub |
+| Supabase Pro | igllbezrxxdpggjxhfno (us-east-1) |
+| Hermes Profile | `huangfam` at `~/.hermes/profiles/huangfam/` |
+| Agent Name | Jett |
+| Telegram Bot | @HuangFamJettBot |
+| Model | Grok 4.1 Fast Reasoning |
+| Components | Calendar, Tasks, Shopping, Meals, Watchlist (5 tabs) |
+
+**Responsibilities:**
+- Family calendar with recurring events, all-day, multi-day, duration
+- Family to-do list with priorities, assignees, due dates
+- Shopping list with categories and bought tracking
+- Weekly meal plan grid (breakfast/lunch/dinner, 7 days)
+- Watchlist with movie/TV/documentary/anime categories and watched tracking
+- Telegram agent interface for quick queries
+
+**Key files:**
+- Dashboard: `/home/clawd/clawd/huang-family-hub/`
+- Script: `/home/clawd/.hermes/scripts/huangfam-query.py`
+- SYSTEM.md: `/home/clawd/clawd/huang-family-hub/SYSTEM.md`
 
 **Responsibilities:**
 - Message routing (Telegram → Jett)
@@ -136,7 +165,45 @@ systemctl --user restart jett-task-manager.service
 | **Doctor service** | **`hermes-gateway-doctor.service` (systemd)** | |
 | **Finance profile** | **`~/.hermes/profiles/finance/`** | **✅ Finance/Trading** |
 | **Finance service** | **`hermes-gateway-finance.service` (systemd)** | |
+| **MaggiePM profile** | **`~/.hermes/profiles/maggiepm/`** | **✅ Maggie's Agent** |
+| **MaggiePM host** | **VPS at 167.172.135.39** (DigitalOcean, Ubuntu 22.04) | |
+| **MaggiePM manager** | **PM2** (process: maggie-pm-agent) | |
 | Platform | Telegram (separate bot from Jett's) |
+
+### 4d. MaggiePM Agent (DigitalOcean VPS)
+
+The MaggiePM Hermes agent runs on a **separate DigitalOcean VPS** — not the H1 Mini.
+
+| Attribute | Value |
+|-----------|-------|
+| IP | 167.172.135.39 |
+| OS | Ubuntu 22.04 |
+| User | clawd (SSH password auth + ssh-key) |
+| SSH | `ssh clawd@167.172.135.39` |
+| Hermes | v0.13.0 (git clone, commit faa13e49f) at `~/.hermes/hermes-agent/` |
+| MaggiePM profile | `~/.hermes/profiles/maggiepm/` |
+| Process manager | **PM2** — `maggie-pm-agent` (not systemd) |
+| Python | 3.12.3 |
+| PM2 start cmd | `pm2 start --name maggie-pm-agent '/home/clawd/.hermes/hermes-agent/venv/bin/hermes --profile maggiepm gateway run'` |
+| PM2 restart | `pm2 restart maggie-pm-agent` |
+| PM2 logs | `pm2 logs maggie-pm-agent --nostream` |
+| PM2 status | `pm2 status` |
+
+**PM2 startup (run once to survive reboots):**
+```bash
+sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u clawd --hp /home/clawd
+pm2 save
+```
+
+**Shared scripts (copied from H1 Mini):**
+- `~/.hermes/scripts/maggiepm-daily.py`
+- `~/.hermes/scripts/maggiepm-calendar-sync.py`
+
+**.env location:** `~/.hermes/profiles/maggiepm/.env` — needs these vars:
+- `TELEGRAM_BOT_TOKEN`, `XAI_API_KEY`, `SUPABASE_URL`, `SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_KEY`
+- `MAGGIE_TELEGRAM_BOT_TOKEN`, `TELEGRAM_ALLOWED_USERS`
+- `GOOGLE_REFRESH_TOKEN`, `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`
+- `GOOGLE_CALENDAR_ID`, `DROPBOX_ACCESS_TOKEN`, `SUPABASE_MGMT_TOKEN`
 
 **Responsibilities:**
 - default (Superare): ALL Shopify operations for Superare (inventory, costs, draft orders, PDFs), Superare low-stock watchdog

@@ -155,9 +155,13 @@ Refer to `TOOLS.md` or `SYSTEMS.md` for provider details.
 
 ---
 
-## SYSTEM ARCHITECTURE
+## System Architecture
 
 **Port Registry:** All agents and coding tools MUST read `~/clawd/clawd/PORT_MAP.md` before binding to any port or making networking changes. See also `~/clawd/clawd/context/PORT-REGISTRY.md` for the canonical reserved-port list. Do NOT start anything on those ports without updating both files.
+
+**Hardware:**
+- **H1 Mini** (WSL2 on Windows) — primary: all agents (Jett, Hermes profiles), all dashboards/services
+- **DigitalOcean VPS** (167.172.135.39, Ubuntu 22.04) — MaggiePM Hermes agent only (PM2-managed)
 
 **Detailed Architecture:** See `SYSTEMS.md` for complete system diagram and documentation.
 - **Port 3000** — Jett Mission Control (Task Manager + all proxy routes) - `~/clawd/task-manager/server.js`
