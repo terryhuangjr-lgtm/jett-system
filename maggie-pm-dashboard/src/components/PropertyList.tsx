@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react'
 import { supabase } from '../lib/supabase'
 import { StatusBadge } from './ui/StatusBadge'
-import { Building2, MapPin } from 'lucide-react'
+import { Modal } from './ui/Modal'
+import { PropertyForm } from './PropertyForm'
+import { Building2, MapPin, Plus, Pencil } from 'lucide-react'
 
 interface Property {
   id: string
@@ -10,6 +12,7 @@ interface Property {
   property_type: string
   bedrooms: number
   bathrooms: number
+  square_footage: number | null
   owner_name: string
   status: string
   monthly_management_fee: number
@@ -27,9 +30,15 @@ export function PropertyList({ onViewProperty }: { onViewProperty: (id: string) 
   const [leaseMap, setLeaseMap] = useState<Record<string, LeaseInfo>>({})
   const [loading, setLoading] = useState(true)
   const [filter, setFilter] = useState('all')
+  const [showForm, setShowForm] = useState(false)
+  const [editProperty, setEditProperty] = useState<any>(null)
 
   useEffect(() => {
     loadProperties()
+    const channel = supabase.channel('props-realtime')
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'properties' }, loadProperties)
+      .subscribe()
+    return () => { supabase.removeChannel(channel) }
   }, [])
 
   async function loadProperties() {
@@ -39,13 +48,9 @@ export function PropertyList({ onViewProperty }: { onViewProperty: (id: string) 
       if (props) {
         setProperties(props)
         
-        // Load active leases for each property
         const { data: leases } = await supabase
           .from('leases')
-          .select(`
-            id, property_id, monthly_rent, lease_end, status,
-            tenants (first_name, last_name)
-          `)
+          .select(`id, property_id, monthly_rent, lease_end, status, tenants (first_name, last_name)`)
           .eq('status', 'active')
         
         const lMap: Record<string, LeaseInfo> = {}
@@ -77,13 +82,28 @@ export function PropertyList({ onViewProperty }: { onViewProperty: (id: string) 
     acc[p.status] = (acc[p.status] || 0) + 1; return acc
   }, {})
 
+  function handleEdit(p: any, e: React.MouseEvent) {
+    e.stopPropagation()
+    setEditProperty(p)
+    setShowForm(true)
+  }
+
   if (loading) return <div className="loading-state"><Building2 /> <p>Loading properties...</p></div>
 
   return (
     <div>
-      <div className="page-header">
-        <h1>Properties</h1>
-        <p>{properties.length} total properties • {statusCounts.active || 0} active • {statusCounts.vacant || 0} vacant</p>
+      <div className="page-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+        <div>
+          <h1>Properties</h1>
+          <p>{properties.length} total • {statusCounts.active || 0} active • {statusCounts.vacant || 0} vacant</p>
+        </div>
+        <button onClick={() => { setEditProperty(null); setShowForm(true) }} style={{
+          padding: '8px 16px', borderRadius: 8, border: 'none',
+          background: 'var(--accent)', color: '#fff', fontWeight: 600,
+          fontSize: 13, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6
+        }}>
+          <Plus size={16} /> Add Property
+        </button>
       </div>
 
       <div className="filter-bar">
@@ -106,17 +126,35 @@ export function PropertyList({ onViewProperty }: { onViewProperty: (id: string) 
         {filtered.map(p => {
           const lease = leaseMap[p.id]
           return (
-            <div key={p.id} className="property-card" onClick={() => onViewProperty(p.id)}>
+            <div
+              key={p.id}
+              className="property-card"
+              onClick={() => onViewProperty(p.id)}
+              style={{ position: 'relative', cursor: 'pointer' }}
+            >
               <div className="property-card-top">
                 <div>
-                  <div className="property-card-address">{p.address}{p.unit_number ? `, ${p.unit_number}` : ''}</div>
+                  <div className="property-card-address">
+                    {p.address}{p.unit_number ? `, ${p.unit_number}` : ''}
+                  </div>
                   <div className="property-card-sub">
                     <span>{p.property_type}</span>
-                    <span>{p.bedrooms} bed / {p.bathrooms} bath</span>
+                    <span>{p.bedrooms} bed / {p.bathrooms} bath {p.square_footage ? `/ ${p.square_footage} sqft` : ''}</span>
                     <span>Owner: {p.owner_name}</span>
                   </div>
                 </div>
                 <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+                  <button
+                    onClick={(e) => handleEdit(p, e)}
+                    style={{
+                      background: 'none', border: '1px solid var(--border)',
+                      borderRadius: 6, padding: 4, color: 'var(--text-muted)',
+                      cursor: 'pointer', display: 'flex'
+                    }}
+                    title="Edit property"
+                  >
+                    <Pencil size={14} />
+                  </button>
                   {lease && (
                     <span style={{ fontSize: 14, fontWeight: 600, color: 'var(--green)' }}>
                       ${Number(lease.monthly_rent).toLocaleString()}/mo
@@ -135,6 +173,15 @@ export function PropertyList({ onViewProperty }: { onViewProperty: (id: string) 
           )
         })}
       </div>
+
+      <Modal open={showForm} onClose={() => { setShowForm(false); setEditProperty(null) }}
+        title={editProperty ? 'Edit Property' : 'Add Property'} width="640px">
+        <PropertyForm
+          property={editProperty}
+          onSaved={() => { setShowForm(false); setEditProperty(null); loadProperties() }}
+          onCancel={() => { setShowForm(false); setEditProperty(null) }}
+        />
+      </Modal>
     </div>
   )
 }

@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react'
 import { supabase } from '../lib/supabase'
 import { StatusBadge } from './ui/StatusBadge'
-import { Clock, CheckCircle } from 'lucide-react'
+import { Modal } from './ui/Modal'
+import { TaskForm } from './TaskForm'
+import { Plus, Clock, CheckCircle } from 'lucide-react'
 
 interface Task {
   id: string
@@ -14,14 +16,23 @@ interface Task {
   address: string | null
   unit_number: string | null
   tenant_name: string | null
+  completed_at?: string | null
 }
 
 export function TaskList() {
   const [tasks, setTasks] = useState<Task[]>([])
+  const [properties, setProperties] = useState<any[]>([])
+  const [tenants, setTenants] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
   const [filter, setFilter] = useState('all')
   const [typeFilter, setTypeFilter] = useState('all')
   const [updating, setUpdating] = useState<string | null>(null)
+  const [showCompleted, setShowCompleted] = useState(false)
+  const [completedTasks, setCompletedTasks] = useState<Task[]>([])
+  const [clearing, setClearing] = useState(false)
+
+  const [showForm, setShowForm] = useState(false)
+  const [editTask, setEditTask] = useState<any>(null)
 
   useEffect(() => {
     loadTasks()
@@ -33,12 +44,54 @@ export function TaskList() {
 
   async function loadTasks() {
     try {
-      const { data } = await supabase.from('open_tasks_by_priority').select('*')
-      setTasks(data || [])
+      const [tasksRes, propsRes, tenantsRes] = await Promise.all([
+        supabase.from('open_tasks_by_priority').select('*'),
+        supabase.from('properties').select('id, address, unit_number'),
+        supabase.from('tenants').select('id, first_name, last_name, property_id'),
+      ])
+      setTasks(tasksRes.data || [])
+      setProperties(propsRes.data || [])
+      setTenants(tenantsRes.data || [])
     } catch (err) {
       console.error('Failed to load tasks:', err)
     } finally {
       setLoading(false)
+    }
+  }
+
+  async function loadCompletedTasks() {
+    try {
+      const { data } = await supabase
+        .from('tasks')
+        .select('*')
+        .eq('status', 'completed')
+        .order('completed_at', { ascending: false })
+        .limit(50)
+      setCompletedTasks(data || [])
+    } catch (err) {
+      console.error('Failed to load completed tasks:', err)
+    }
+  }
+
+  async function clearCompleted() {
+    if (!confirm('Archive all completed tasks? They will be hidden from view.')) return
+    setClearing(true)
+    try {
+      const ids = completedTasks.map(t => t.id)
+      for (const id of ids) {
+        await supabase.from('tasks').update({ status: 'archived' }).eq('id', id)
+      }
+      await supabase.from('activity_log').insert({
+        action: 'Completed tasks cleared',
+        details: `Archived ${ids.length} completed tasks`,
+        source: 'manual'
+      })
+      setCompletedTasks([])
+      setShowCompleted(false)
+    } catch (err) {
+      console.error('Failed to clear completed tasks:', err)
+    } finally {
+      setClearing(false)
     }
   }
 
@@ -49,13 +102,11 @@ export function TaskList() {
         status: 'completed',
         completed_at: new Date().toISOString()
       }).eq('id', taskId)
-      // Also log activity
       await supabase.from('activity_log').insert({
         action: 'Task completed',
         details: `Task completed: ${tasks.find(t => t.id === taskId)?.title}`,
         source: 'manual'
       })
-      // Refresh
       setTimeout(loadTasks, 300)
     } catch (err) {
       console.error('Failed to complete task:', err)
@@ -67,8 +118,6 @@ export function TaskList() {
   const filtered = tasks.filter(t => {
     if (filter === 'overdue' && t.due_date && new Date(t.due_date) >= new Date()) return false
     if (filter === 'today' && t.due_date && new Date(t.due_date).toDateString() !== new Date().toDateString()) return false
-    if (filter === 'all_tasks') return true
-    if (filter === 'all') return true
     return true
   }).filter(t => {
     if (typeFilter === 'all') return true
@@ -81,9 +130,18 @@ export function TaskList() {
 
   return (
     <div>
-      <div className="page-header">
-        <h1>Tasks</h1>
-        <p>{tasks.length} open tasks • {tasks.filter(t => t.priority === 'urgent').length} urgent</p>
+      <div className="page-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+        <div>
+          <h1>Tasks</h1>
+          <p>{tasks.length} open • {tasks.filter(t => t.priority === 'urgent').length} urgent</p>
+        </div>
+        <button onClick={() => { setEditTask(null); setShowForm(true) }} style={{
+          padding: '8px 16px', borderRadius: 8, border: 'none',
+          background: 'var(--accent)', color: '#fff', fontWeight: 600,
+          fontSize: 13, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6
+        }}>
+          <Plus size={16} /> New Task
+        </button>
       </div>
 
       <div className="filter-bar">
@@ -95,11 +153,9 @@ export function TaskList() {
       <div className="filter-bar">
         <button className={`filter-btn ${typeFilter === 'all' ? 'active' : ''}`} onClick={() => setTypeFilter('all')}>All Types</button>
         {taskTypes.map(type => (
-          <button
-            key={type}
+          <button key={type}
             className={`filter-btn ${typeFilter === type ? 'active' : ''}`}
-            onClick={() => setTypeFilter(type)}
-          >
+            onClick={() => setTypeFilter(type)}>
             {type.replace(/_/g, ' ')}
           </button>
         ))}
@@ -107,7 +163,7 @@ export function TaskList() {
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
         {filtered.length === 0 && (
-          <div className="empty-state"><CheckCircle /> <p>No tasks match the current filters</p></div>
+          <div className="empty-state"><CheckCircle /> <p>No tasks match current filters</p></div>
         )}
         {filtered.map(t => {
           const isOverdue = t.due_date && new Date(t.due_date) < new Date()
@@ -126,7 +182,8 @@ export function TaskList() {
               >
                 {updating === t.id ? '...' : ''}
               </button>
-              <div style={{ flex: 1 }}>
+              <div style={{ flex: 1, cursor: 'pointer' }}
+                onClick={() => { setEditTask(t); setShowForm(true) }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
                   <span className={`priority-dot priority-${t.priority}`} />
                   <span style={{ fontWeight: 600 }}>{t.title}</span>
@@ -150,6 +207,64 @@ export function TaskList() {
           )
         })}
       </div>
+
+      {/* Completed tasks toggle */}
+      <div style={{ marginTop: 16 }}>
+        <button
+          onClick={() => { setShowCompleted(!showCompleted); if (!showCompleted) loadCompletedTasks() }}
+          className="filter-btn"
+          style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 13 }}
+        >
+          <CheckCircle size={14} />
+          {showCompleted ? 'Hide' : 'Show'} recently completed
+        </button>
+      </div>
+
+      {showCompleted && (
+        <div className="card" style={{ marginTop: 8 }}>
+          <div className="card-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <h3 style={{ fontSize: 14, margin: 0 }}>Completed Tasks</h3>
+            {completedTasks.length > 0 && (
+              <button
+                onClick={clearCompleted}
+                disabled={clearing}
+                className="filter-btn"
+                style={{ fontSize: 12, color: 'var(--red)' }}
+              >
+                {clearing ? 'Archiving...' : 'Clear all'}
+              </button>
+            )}
+          </div>
+          <div className="card-body">
+            {completedTasks.length === 0 ? (
+              <div className="empty-state" style={{ padding: '16px 0' }}>
+                <CheckCircle size={20} /> <p>No completed tasks</p>
+              </div>
+            ) : (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 4, fontSize: 13, opacity: 0.7 }}>
+                {completedTasks.map(t => (
+                  <div key={t.id} style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '4px 0' }}>
+                    <span style={{ color: 'var(--green)' }}>✓</span>
+                    <span style={{ textDecoration: 'line-through' }}>{t.title}</span>
+                    {t.completed_at && (
+                      <span style={{ color: 'var(--text-muted)', fontSize: 11, marginLeft: 'auto' }}>
+                        {new Date(t.completed_at).toLocaleDateString()}
+                      </span>
+                    )}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
+      <Modal open={showForm} onClose={() => { setShowForm(false); setEditTask(null) }}
+        title={editTask ? 'Edit Task' : 'New Task'} width="560px">
+        <TaskForm properties={properties} tenants={tenants} task={editTask}
+          onSaved={() => { setShowForm(false); setEditTask(null); loadTasks() }}
+          onCancel={() => { setShowForm(false); setEditTask(null) }} />
+      </Modal>
     </div>
   )
 }

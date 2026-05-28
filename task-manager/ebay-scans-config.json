@@ -91,9 +91,9 @@
         "maxPrice": 5000
       },
       "output_file": "/tmp/kobe-refractors-scan.json",
-      "last_run": "2026-05-13T13:00:09.825Z",
+      "last_run": "2026-05-27T13:00:03.051Z",
       "last_results": {
-        "timestamp": "2026-05-13T13:00:09.825Z",
+        "timestamp": "2026-05-27T13:00:03.051Z",
         "success": true
       },
       "last_updated": "2026-04-02T01:53:35.316Z",
@@ -122,9 +122,9 @@
         ]
       },
       "output_file": "/tmp/mj-upperdeck-scan.json",
-      "last_run": "2026-05-07T13:01:03.824Z",
+      "last_run": "2026-05-14T13:01:12.173Z",
       "last_results": {
-        "timestamp": "2026-05-07T13:01:03.824Z",
+        "timestamp": "2026-05-14T13:01:12.173Z",
         "success": true
       },
       "last_updated": "2026-03-25T21:24:38.311Z",
@@ -154,9 +154,9 @@
         "minPrice": 10
       },
       "output_file": "/tmp/topps-refractors-multi-scan.json",
-      "last_run": "2026-05-08T13:00:35.988Z",
+      "last_run": "2026-05-15T13:00:37.725Z",
       "last_results": {
-        "timestamp": "2026-05-08T13:00:35.988Z",
+        "timestamp": "2026-05-15T13:00:37.725Z",
         "success": true
       },
       "last_updated": "2026-03-30T01:47:21.918Z",

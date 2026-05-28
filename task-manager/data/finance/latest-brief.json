@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-05-13T20:30:51.458Z",
+  "generatedAt": "2026-05-27T20:30:59.201Z",
   "type": "manual",
-  "brief": "**Macro: Bitcoin consolidating after recent strength; AI infrastructure plays diverging on execution risk while mining sector gaining momentum on power tailwinds.**\n\n**Ticker Notes:**\n\n**BTC-USD** (-1.1% to $79.6K) — Holding above $79K support. The SpaceX IPO chatter is noise; what matters is whether institutional capital (MSTR, CIFR) continues absorbing supply. No thesis change, but watch for break below $77K as a potential capitulation entry if it happens.\n\n**MSTR** (-3.5%) — Dip is normal volatility around MSTR's BTC treasury strategy. The earnings/holdings news is evergreen for this ticker. No red flags. Good swing entry if BTC holds $77K–$79K range and MSTR tags $170.\n\n**CIFR** (+5.9%) — Outperforming on Q1 results. Mining profitability is real if BTC holds here and power costs stay favorable. This is your purest leverage to BTC + AI infra demand for compute. No concerns yet; watch for ASIC efficiency announcements.\n\n**IREN** (-2.5%) — Nebius execution story is intact (solid Q1 ops), but the -2.5% dip + low Reddit activity suggest market patience wearing thin. Needs a catalyst or next earnings beat to re-ignite. Holding thesis unchanged but monitor for sign of demand slowdown in their AI/HPC segment.\n\n**NOW** (-2.2%) — Dragged down by Nvidia pre-earnings noise, not fundamentals. Unrelated to your macro thesis. Ignore.\n\n**SLNH** (+21.4%) — The 4.3 GW pipeline headline is the story. Mining power thesis is heating up. This is a lower-conviction micro-cap, but if SLNH is moving 21% on pipeline talk, check if there's a financing or partnership update that validates the buildout timeline.\n\n**Action: Check CIFR's latest power cost contracts and SLNH's pipeline funding status. If both have secured capacity at <$0.05/kWh, the mining cycle is real — consider this a swing signal for the whole cohort (CIFR especially as the core holding). If BTC dips to $77.5K on macro weakness, MSTR + CIFR become buy-the-dip opportunities.**",
+  "brief": "**Macro Snapshot: BTC consolidating near $75K as institutional interest shifts—mining/AI infrastructure plays remain the better risk/reward than broad crypto exposure.**\n\n**Position-by-Position:**\n\n**MSTR** (-3.6%) is the standout here. Saylor's public commitment to buy all remaining 1M BTC through 2140 is thesis-affirming *and* a massive capital allocation signal—this locks in MSTR as a leveraged BTC proxy with optionality on corporate treasury strategy. On dips like today, this is accumulation territory for you. The -3.6% is noise if BTC is consolidating.\n\n**IREN** (+13.5%, PT $88) has legs. B. Riley's target raise validates the energy/AI infrastructure thesis that drew you in. No red flags in the chatter—this is trending right directionally. Watch for a pullback to $75–80 as a reload zone.\n\n**CIFR** (+9.3%) is also moving—mining operations benefit from both BTC stability AND the coming halving cycle dynamics. Keep it on the radar for a 15–25% swing if mining difficulty or spot BTC pops.\n\n**NOW** (+2.2%) is doing its job but is a defensive AI play in a choppy market. Not actionable unless macro cracks or AI narrative shifts; this is a \"hold and forget\" position.\n\n**Risk Flag:** The \"Asset Managers Exit Crypto\" headline is worth watching—if institutional AUM rotation accelerates, it could pressure BTC in the near term (2–4 weeks), which would tank MSTR and CIFR before the long-term thesis reasserts. Monitor fund flows this week.\n\n**Action Item:** Use any BTC pullback below $73K as a MSTR reload opportunity. Saylor's capital discipline gives you conviction. IREN is in an accumulation sweet spot—don't chase; wait for $78–80.",
   "tickerSnapshots": [
     {
       "symbol": "IREN",
-      "price": 55.17,
-      "changePercent": -2.46,
+      "price": 67.84,
+      "changePercent": 13.48,
       "volumeMultiplier": 0,
       "newsCount": 5,
       "redditMentions": 5,
@@ -15,8 +15,8 @@
     },
     {
       "symbol": "MSTR",
-      "price": 178.03,
-      "changePercent": -3.46,
+      "price": 154.2,
+      "changePercent": -3.58,
       "volumeMultiplier": 0,
       "newsCount": 5,
       "redditMentions": 5,
@@ -25,18 +25,18 @@
     },
     {
       "symbol": "CIFR",
-      "price": 21.24,
-      "changePercent": 5.88,
+      "price": 25.16,
+      "changePercent": 9.3,
       "volumeMultiplier": 0,
-      "newsCount": 5,
+      "newsCount": 3,
       "redditMentions": 5,
       "redditSentiment": "active",
       "tweets": 0
     },
     {
       "symbol": "NOW",
-      "price": 87.05,
-      "changePercent": -2.19,
+      "price": 102.12,
+      "changePercent": 2.2,
       "volumeMultiplier": 0,
       "newsCount": 5,
       "redditMentions": 5,
@@ -45,8 +45,8 @@
     },
     {
       "symbol": "BTC-USD",
-      "price": 79615.74,
-      "changePercent": -1.07,
+      "price": 75152.49,
+      "changePercent": -0.89,
       "volumeMultiplier": 1,
       "newsCount": 5,
       "redditMentions": 5,
@@ -55,8 +55,8 @@
     },
     {
       "symbol": "ASST",
-      "price": 16.74,
-      "changePercent": -1.93,
+      "price": 17.82,
+      "changePercent": -1.55,
       "volumeMultiplier": 0,
       "newsCount": 1,
       "redditMentions": 5,
@@ -65,8 +65,18 @@
     },
     {
       "symbol": "SLNH",
-      "price": 2.16,
-      "changePercent": 21.35,
+      "price": 1.86,
+      "changePercent": -3.63,
+      "volumeMultiplier": 0,
+      "newsCount": 1,
+      "redditMentions": 5,
+      "redditSentiment": "active",
+      "tweets": 0
+    },
+    {
+      "symbol": "OPEN",
+      "price": 4.75,
+      "changePercent": 6.03,
       "volumeMultiplier": 0,
       "newsCount": 2,
       "redditMentions": 5,
@@ -74,5 +84,28 @@
       "tweets": 0
     }
   ],
-  "alerts": []
+  "alerts": [
+    {
+      "symbol": "IREN",
+      "type": "convergence",
+      "conditions": [
+        "Price up 13.48%",
+        "Urgent news: B. Riley Securities Maintains Buy on IREN, Raises Price Target to $88"
+      ],
+      "price": 67.84,
+      "changePercent": 13.48,
+      "timestamp": "2026-05-27T20:30:59.201Z"
+    },
+    {
+      "symbol": "OPEN",
+      "type": "convergence",
+      "conditions": [
+        "Price up 6.03%",
+        "Urgent news: Abercrombie & Fitch Upbeat Q1 Earnings, Joins Digital Turbine, Dycom Industries "
+      ],
+      "price": 4.75,
+      "changePercent": 6.03,
+      "timestamp": "2026-05-27T20:30:59.201Z"
+    }
+  ]
 }

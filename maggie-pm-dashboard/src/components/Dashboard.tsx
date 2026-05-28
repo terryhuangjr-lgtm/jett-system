@@ -2,12 +2,15 @@ import { useEffect, useState } from 'react'
 import { supabase } from '../lib/supabase'
 import { StatCard } from './ui/StatCard'
 import { StatusBadge } from './ui/StatusBadge'
-import { Home, TrendingUp, AlertTriangle, Calendar, Clock, CheckCircle } from 'lucide-react'
+import { Home, TrendingUp, AlertTriangle, Calendar, Clock, CheckCircle, Building2 } from 'lucide-react'
+import { Modal } from './ui/Modal'
+import { PaymentForm } from './PaymentForm'
 
 interface DashboardData {
   totalProperties: number
   occupiedUnits: number
   totalUnits: number
+  portfolioValue: number
   monthlyRentExpected: number
   monthlyRentCollected: number
   paymentsReceived: number
@@ -23,13 +26,15 @@ interface DashboardData {
 
 export function Dashboard(_props: { onViewProperty?: (id: string) => void }) {
   const [data, setData] = useState<DashboardData>({
-    totalProperties: 0, occupiedUnits: 0, totalUnits: 0,
+    totalProperties: 0, occupiedUnits: 0, totalUnits: 0, portfolioValue: 0,
     monthlyRentExpected: 0, monthlyRentCollected: 0,
     paymentsReceived: 0, paymentsPending: 0, paymentsLate: 0,
     openTasks: 0, urgentTasks: 0,
     upcomingExpirations: [], recentActivity: [], rentStatus: [], openTasksList: []
   })
   const [loading, setLoading] = useState(true)
+  const [showPaymentForm, setShowPaymentForm] = useState(false)
+  const [paymentLeaseContext, setPaymentLeaseContext] = useState<{propertyId: string, leaseId: string, tenantId: string | null, rent: number} | null>(null)
 
   useEffect(() => {
     loadData()
@@ -61,14 +66,28 @@ export function Dashboard(_props: { onViewProperty?: (id: string) => void }) {
       const allTasks = tasks.data || []
 
       // Rent calculations
+      const portfolioValue = props.reduce((sum: number, p: any) => sum + Number(p.current_market_value || p.purchase_price || 0), 0)
       const monthlyRentExpected = activeLeases.reduce((sum: number, l: any) => sum + Number(l.monthly_rent || 0), 0)
-      const receivedPayments = allPayments.filter(p => p.status === 'received')
+      
+      // Get all payments for THIS month to accurately count what's collected
+      const now = new Date()
+      const thisMonthPayments = allPayments.filter(p => {
+        if (!p.due_date) return false
+        const d = new Date(p.due_date)
+        // Convert to UTC to avoid timezone issues when checking month
+        const dueMonth = d.getUTCMonth()
+        const dueYear = d.getUTCFullYear()
+        return dueMonth === now.getMonth() && dueYear === now.getFullYear()
+      })
+      
+      const receivedPayments = thisMonthPayments.filter(p => p.status === 'received')
       const monthlyRentCollected = receivedPayments.reduce((sum: number, p: any) => sum + Number(p.amount || 0), 0)
 
       setData({
         totalProperties: props.length,
         occupiedUnits: activeLeases.length,
         totalUnits: props.reduce((sum: number, p: any) => sum + (p.bedrooms || 1), 0),
+        portfolioValue,
         monthlyRentExpected,
         monthlyRentCollected,
         paymentsReceived: rentStatus.data?.filter(r => r.payment_status === 'received').length || 0,
@@ -103,7 +122,7 @@ export function Dashboard(_props: { onViewProperty?: (id: string) => void }) {
     <div>
       <div className="page-header">
         <h1>Overview Dashboard</h1>
-        <p>Maggie's Property Management — 18 NYC Properties</p>
+        <p>Maggie Huang — Property Management Portfolio</p>
       </div>
 
       {/* Stats */}
@@ -114,6 +133,13 @@ export function Dashboard(_props: { onViewProperty?: (id: string) => void }) {
           icon={<Home />}
           iconBg="rgba(16, 185, 129, 0.15)"
           change={`${occupancyRate}% occupied`}
+        />
+        <StatCard
+          label="Portfolio Value"
+          value={`$${(data.portfolioValue / 1000000).toFixed(1)}M`}
+          icon={<Building2 />}
+          iconBg="rgba(139, 92, 246, 0.15)"
+          change={`${data.totalUnits} units total`}
         />
         <StatCard
           label="Monthly Rent"
@@ -145,7 +171,7 @@ export function Dashboard(_props: { onViewProperty?: (id: string) => void }) {
         {/* Lease Expirations */}
         <div className="card">
           <div className="card-header">
-            <h3>📋 Lease Expirations (Next 90 Days)</h3>
+            <h3>Lease Expirations — Next 90 Days</h3>
           </div>
           <div className="card-body">
             {data.upcomingExpirations.length === 0 ? (
@@ -191,7 +217,7 @@ export function Dashboard(_props: { onViewProperty?: (id: string) => void }) {
         {/* Rent Status */}
         <div className="card">
           <div className="card-header">
-            <h3>💰 Rent Status — This Month</h3>
+            <h3>Rent Status — This Month</h3>
           </div>
           <div className="card-body">
             <div className="stats-grid" style={{ gridTemplateColumns: '1fr 1fr 1fr', marginBottom: 16 }}>
@@ -207,6 +233,7 @@ export function Dashboard(_props: { onViewProperty?: (id: string) => void }) {
                   <th>Rent</th>
                   <th>Due Day</th>
                   <th>Status</th>
+                  <th>Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -222,6 +249,48 @@ export function Dashboard(_props: { onViewProperty?: (id: string) => void }) {
                         : <StatusBadge status="pending" />
                       }
                     </td>
+                    <td>
+                      {r.payment_status !== 'received' ? (
+                        <button 
+                          className="btn" 
+                          style={{ padding: '4px 8px', fontSize: 11 }}
+                          onClick={() => {
+                            setPaymentLeaseContext({
+                              propertyId: r.property_id,
+                              leaseId: r.lease_id,
+                              tenantId: r.tenant_id,
+                              rent: Number(r.monthly_rent || 0)
+                            })
+                            setShowPaymentForm(true)
+                          }}
+                        >
+                          Log Payment
+                        </button>
+                      ) : (
+                        <button 
+                          className="btn btn-danger" 
+                          style={{ padding: '4px 8px', fontSize: 11, background: 'transparent', border: '1px solid var(--red)', color: 'var(--red)' }}
+                          onClick={async () => {
+                            if (!r.payment_id || !confirm('Undo this payment?')) return;
+                            try {
+                              await supabase.from('payments').delete().eq('id', r.payment_id);
+                              await supabase.from('activity_log').insert({
+                                property_id: r.property_id,
+                                tenant_id: r.tenant_id,
+                                action: 'Payment reversed',
+                                details: 'Payment was undone manually',
+                                source: 'manual'
+                              });
+                              loadData();
+                            } catch (e) {
+                              console.error(e);
+                            }
+                          }}
+                        >
+                          Undo
+                        </button>
+                      )}
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -232,7 +301,7 @@ export function Dashboard(_props: { onViewProperty?: (id: string) => void }) {
         {/* Open Tasks */}
         <div className="card">
           <div className="card-header">
-            <h3>📌 Open Tasks by Priority</h3>
+            <h3>Open Tasks by Priority</h3>
           </div>
           <div className="card-body">
             {data.openTasksList.length === 0 ? (
@@ -273,7 +342,7 @@ export function Dashboard(_props: { onViewProperty?: (id: string) => void }) {
         {/* Recent Activity */}
         <div className="card">
           <div className="card-header">
-            <h3>📝 Recent Activity</h3>
+            <h3>Recent Activity</h3>
           </div>
           <div className="card-body">
             {data.recentActivity.length === 0 ? (
@@ -307,6 +376,23 @@ export function Dashboard(_props: { onViewProperty?: (id: string) => void }) {
           </div>
         </div>
       </div>
+      {/* Modals */}
+      <Modal open={showPaymentForm} onClose={() => setShowPaymentForm(false)} title="Log Payment" width="480px">
+        {paymentLeaseContext && (
+          <PaymentForm 
+            propertyId={paymentLeaseContext.propertyId}
+            leaseId={paymentLeaseContext.leaseId}
+            tenantId={paymentLeaseContext.tenantId}
+            rentAmount={paymentLeaseContext.rent}
+            onSaved={() => {
+              setShowPaymentForm(false)
+              loadData()
+            }}
+            onCancel={() => setShowPaymentForm(false)}
+          />
+        )}
+      </Modal>
+
     </div>
   )
 }

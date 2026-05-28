@@ -135,6 +135,9 @@ ORDER BY l.lease_end ASC;
 -- VIEW: monthly_rent_status
 CREATE OR REPLACE VIEW monthly_rent_status AS
 SELECT
+  p.id AS property_id,
+  l.id AS lease_id,
+  t.id AS tenant_id,
   p.address,
   p.unit_number,
   t.first_name || ' ' || t.last_name AS tenant_name,

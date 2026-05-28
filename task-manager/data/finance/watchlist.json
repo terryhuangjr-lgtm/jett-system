@@ -78,17 +78,6 @@
       "addedAt": "2026-05-13T17:34:29.171Z"
     },
     {
-      "symbol": "ONDS",
-      "type": "stock",
-      "name": "ONDS",
-      "notes": "",
-      "alertThresholds": {
-        "priceChangePercent": 5,
-        "volumeMultiplier": 2
-      },
-      "addedAt": "2026-05-14T02:05:57.337Z"
-    },
-    {
       "symbol": "OPEN",
       "type": "stock",
       "name": "OPEN",
