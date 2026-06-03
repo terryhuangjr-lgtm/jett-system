@@ -84,13 +84,15 @@ const CALENDAR_TIMEZONE = 'America/New_York';
 // ──────────────────────────────────────────
 
 // Number of simultaneous bookings allowed (stylists/chairs available)
-const MAX_CONCURRENT_BOOKINGS = 3;
+const MAX_CONCURRENT_BOOKINGS = 4;
 
 // Staff — Eve can ask who the customer prefers
+// Each stylist has staggered days off so at least 2 are always working Mon-Sat
 const STYLISTS = [
-  { name: 'Mark',      daysOff: [2] },                // Off Tuesdays
-  { name: 'Sofia',     daysOff: [1] },                // Off Mondays
-  { name: 'Jenna',     daysOff: [1, 2] },             // Off Mon-Tues
+  { name: 'Mark',      daysOff: [1] },                // Off Mondays
+  { name: 'Sofia',     daysOff: [2] },                // Off Tuesdays
+  { name: 'Jenna',     daysOff: [3] },                // Off Wednesdays
+  { name: 'Emma',      daysOff: [1] },                // Off Mondays (same as Mark, works Tue-Sat)
 ];
 
 // Individual service durations (minutes) — loaded from Supabase at startup
@@ -193,7 +195,71 @@ function getOwnerPhone() {
   return process.env.OWNER_PHONE || '';
 }
 
-const COVERAGE_GAP_MINUTES = 30;
+let COVERAGE_GAP_MINUTES = 30;
+
+// ── Loaded from Supabase salon_settings at startup ─────────────────
+let SALON_CONFIG = null;  // Full settings object from Supabase
+
+let SALON_NAME = process.env.SALON_NAME || 'Salon';
+let SALON_ADDRESS = process.env.SALON_ADDRESS || '';
+let SALON_PHONE = process.env.SALON_PHONE || '';
+let SALON_HOURS_DISPLAY = process.env.SALON_HOURS || 'Monday-Saturday 9am-7pm, Sunday 10am-5pm';
+let SALON_STYLISTS = [...STYLISTS];  // Copy default
+let SALON_MAX_BOOKINGS = MAX_CONCURRENT_BOOKINGS;
+let SALON_BUSINESS_HOURS = {
+  0: { open: 10, close: 17 },
+  1: { open: 9, close: 19 },
+  2: { open: 9, close: 19 },
+  3: { open: 9, close: 19 },
+  4: { open: 9, close: 19 },
+  5: { open: 9, close: 19 },
+  6: { open: 9, close: 18 },
+};
+
+async function loadSalonConfig() {
+  try {
+    const settings = await salonDb.getSalonSettings();
+    if (!settings) {
+      console.log('⚠️ No salon_settings found in Supabase, using .env defaults');
+      return;
+    }
+    SALON_CONFIG = settings;
+
+    // Salon info
+    if (settings.salon_name) SALON_NAME = settings.salon_name;
+    if (settings.salon_phone) SALON_PHONE = settings.salon_phone;
+    if (settings.salon_address) SALON_ADDRESS = settings.salon_address;
+    if (settings.salon_hours) SALON_HOURS_DISPLAY = settings.salon_hours;
+    if (settings.max_concurrent_bookings) SALON_MAX_BOOKINGS = settings.max_concurrent_bookings;
+    if (settings.coverage_gap_minutes) COVERAGE_GAP_MINUTES = settings.coverage_gap_minutes;
+
+    // Stylists from dashboard
+    if (settings.stylists && Array.isArray(settings.stylists) && settings.stylists.length > 0) {
+      SALON_STYLISTS = settings.stylists;
+    }
+
+    // Business hours from dashboard
+    if (settings.business_hours && typeof settings.business_hours === 'object') {
+      for (const day of Object.keys(settings.business_hours)) {
+        const h = settings.business_hours[day];
+        if (h && typeof h.open === 'number' && typeof h.close === 'number') {
+          SALON_BUSINESS_HOURS[parseInt(day)] = { open: h.open, close: h.close };
+        }
+      }
+    }
+
+    // Owner phone
+    if (settings.owner_phone) {
+      process.env.OWNER_PHONE = settings.owner_phone;
+      console.log(`📱 Owner phone loaded from dashboard settings`);
+    }
+
+    console.log(`🏪 Salon config loaded from Supabase: ${SALON_NAME}`);
+    console.log(`   Stylists: ${SALON_STYLISTS.length}, Max bookings: ${SALON_MAX_BOOKINGS}`);
+  } catch (err) {
+    console.log(`⚠️ Could not load salon config from Supabase: ${err.message}`);
+  }
+}
 
 // ──────────────────────────────────────────
 
@@ -630,6 +696,7 @@ const STYLIST_COLORS = {
   'sofia': 9,  // Blueberry
   'sophia': 9, // Blueberry (alternate spelling)
   'jenna': 3,  // Grape
+  'emma':  5,  // Banana
 };
 
 /**
@@ -687,22 +754,19 @@ function createBookingEvent(customerName, customerPhone, service, startDate, end
 function buildSalonContext(availableSlotsStr) {
   // Staff info — show stylists with their schedules
   let staffInfo = '';
-  if (STYLISTS.length > 0) {
+  if (SALON_STYLISTS.length > 0) {
     const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-    const stylistLines = STYLISTS.map(s => {
-      const daysOff = s.daysOff.map(d => dayNames[d]).join(', ');
+    const stylistLines = SALON_STYLISTS.map(s => {
+      const daysOff = (s.daysOff || []).map(d => dayNames[d]).join(', ');
       return `- ${s.name} (off ${daysOff})`;
     });
-    staffInfo = `\nSTYLISTS:\n${stylistLines.join('\n')}\n- Ask who they prefer. If they don't care, book with whoever's working.\n- If a stylist is off that day, tell the customer and suggest another stylist or day.`;
+    staffInfo = `\nSTYLISTS:\n${stylistLines.join('\n')}\n- Ask the customer: "Do you have a preferred stylist?" — say their names so the customer knows who works here.\n- If they don't care, book with whoever is working that day.\n- If the stylist they want is off that day, tell them and suggest a different stylist or a different day.`;
   }
-  if (MAX_CONCURRENT_BOOKINGS > 1) {
-    staffInfo += `\n- Our salon has ${MAX_CONCURRENT_BOOKINGS} stylists working at once, so multiple appointments can run at the same time.`;
+  if (SALON_MAX_BOOKINGS > 1) {
+    staffInfo += `\n- Our salon has ${SALON_MAX_BOOKINGS} stylists working at once, so multiple appointments can run at the same time.`;
   }
 
-  let bookingSection = `BOOKING:
-- Ask for: their name, what service they want, preferred date and time
-- Say the customer's FULL NAME out loud at least once during the conversation — I need to hear it clearly
-- Ask for their phone number to send a confirmation SMS before finalizing`;
+  let bookingSection = `BOOKING:\n- First ask if they have a particular stylist in mind. Mention who's working today by name!\n- If they don't have a preference, say whoever's available works great.\n- If the stylist they want is off that day, say \"[Stylist] is off [day], but [other stylist] is available then — or I can check a different day.\"\n- Then ask for: their name, what service they want, and preferred date/time\n- Say the customer's FULL NAME out loud at least once during the conversation — I need to hear it clearly\n- Ask for their phone number to send a confirmation SMS before finalizing`;
 
   if (availableSlotsStr) {
     bookingSection += `
@@ -737,14 +801,14 @@ ${availableSlotsStr}`;
 - Eyebrow Wax: $18 (15min)`;
 
   return `
-You are a friendly receptionist for ${process.env.SALON_NAME}.
+You are a friendly receptionist for ${SALON_NAME}.
 Your job is to answer calls, book appointments, and answer questions.
 
 SALON INFO:
-- Name: ${process.env.SALON_NAME}
-- Address: ${process.env.SALON_ADDRESS}
-- Hours: ${process.env.SALON_HOURS}
-- Phone: ${process.env.SALON_PHONE}
+- Name: ${SALON_NAME}
+- Address: ${SALON_ADDRESS}
+- Hours: ${SALON_HOURS_DISPLAY}
+- Phone: ${SALON_PHONE}
 
 SERVICES & PRICES:
 ${servicesList}
@@ -783,7 +847,7 @@ RULES:
 function isWithinBusinessHoursNow() {
   const now = new Date();
   const dayOfWeek = now.getDay();
-  const hours = BUSINESS_HOURS[dayOfWeek];
+  const hours = SALON_BUSINESS_HOURS[dayOfWeek];
   if (!hours) return false;
   const currentHour = now.getHours() + now.getMinutes() / 60;
   // Allow 30-minute buffer before close so Eve can finish a call
@@ -1467,9 +1531,126 @@ app.get('/dashboard', (req, res) => {
   res.send(html);
 });
 
+// Settings page — stylist/salon management (uses Supabase API directly)
+app.get('/settings', (req, res) => {
+  let html = fs.readFileSync(path.join(__dirname, 'settings.html'), 'utf8');
+  html = html.replace('__SUPABASE_URL__', process.env.SUPABASE_URL || 'https://fhmjvnphxsbtwcutqkvq.supabase.co');
+  html = html.replace('__SUPABASE_ANON_KEY__', process.env.SUPABASE_ANON_KEY || '');
+  res.setHeader('Content-Type', 'text/html');
+  res.send(html);
+});
+
 // Health check
 app.get('/health', (req, res) => {
   res.json({ status: 'ok', uptime: process.uptime() });
+});
+
+// API: Save salon settings (uses service key to bypass RLS)
+// The frontend can't save directly because anon key PATCH to JSONB columns
+// is restricted by RLS. So we proxy through the server.
+app.post('/api/save-settings', async (req, res) => {
+  try {
+    const updates = req.body;
+    if (!updates || Object.keys(updates).length === 0) {
+      return res.status(400).json({ error: 'No updates provided' });
+    }
+
+    // Read service key from superare profile (shares this Supabase project)
+    const envPath = '/home/clawd/.hermes/profiles/superare/.env';
+    let serviceKey = '';
+
+    if (fs.existsSync(envPath)) {
+      const envContent = fs.readFileSync(envPath, 'utf8');
+      for (const line of envContent.split('\n')) {
+        if (line.trim().startsWith('SUPABASE_SERVICE_KEY=')) {
+          serviceKey = line.split('=').slice(1).join('=').trim().replace(/['"]/g, '');
+          break;
+        }
+      }
+    }
+
+    if (!serviceKey) {
+      return res.status(500).json({ error: 'Service key not available' });
+    }
+
+    const supabaseUrl = process.env.SUPABASE_URL || 'https://fhmjvnphxsbtwcutqkvq.supabase.co';
+    const { createClient } = require('@supabase/supabase-js');
+    const adminClient = createClient(supabaseUrl, serviceKey);
+
+    // Get the settings row ID
+    const { data: existing, error: fetchError } = await adminClient
+      .from('salon_settings')
+      .select('id')
+      .limit(1)
+      .single();
+
+    if (fetchError || !existing) {
+      return res.status(500).json({ error: 'Could not find salon settings', details: fetchError?.message });
+    }
+
+    const { error: updateError } = await adminClient
+      .from('salon_settings')
+      .update(updates)
+      .eq('id', existing.id);
+
+    if (updateError) {
+      return res.status(500).json({ error: 'Save failed', details: updateError.message });
+    }
+
+    // 🔁 Sync stylists to salon_stylists table when stylists JSONB is updated
+    if (updates.stylists && Array.isArray(updates.stylists)) {
+      // Get existing stylists from salon_stylists to match by name
+      const { data: existingStylists } = await adminClient
+        .from('salon_stylists')
+        .select('id, name');
+
+      const existingStylistMap = {};
+      if (existingStylists) {
+        for (const s of existingStylists) {
+          existingStylistMap[s.name] = s.id;
+        }
+      }
+
+      for (const s of updates.stylists) {
+        const daysOff = (s.daysOff || []).filter(d => d >= 0 && d <= 6);
+        if (existingStylistMap[s.name]) {
+          // Update existing stylist
+          await adminClient
+            .from('salon_stylists')
+            .update({ days_off: daysOff, active: true })
+            .eq('id', existingStylistMap[s.name]);
+        } else {
+          // Insert new stylist
+          await adminClient
+            .from('salon_stylists')
+            .insert({ name: s.name, days_off: daysOff, active: true });
+        }
+      }
+
+      // Deactivate stylists that were removed from the settings
+      if (existingStylists) {
+        const currentNames = updates.stylists.map(s => s.name);
+        for (const existing of existingStylists) {
+          if (!currentNames.includes(existing.name)) {
+            await adminClient
+              .from('salon_stylists')
+              .update({ active: false })
+              .eq('id', existing.id);
+          }
+        }
+      }
+    }
+
+    console.log(`⚙️ Settings saved via dashboard: ${Object.keys(updates).join(', ')}`);
+    res.json({ success: true });
+
+    // Reload config in-memory after save
+    await loadSalonConfig();
+    await loadDurationsFromSettings();
+  } catch (err) {
+    console.log('⚠️ Save settings error:', err.message);
+    res.status(500).json({ error: err.message });
+  }
 });
 
 // Restart endpoint — dashboard calls this instead of requiring SSH
@@ -1496,10 +1677,62 @@ app.post('/api/restart', (req, res) => {
 const server = app.listen(3333, async () => {
   console.log('🚀 Salon Voice Agent running on port 3333');
   console.log(`📞 Twilio number: ${process.env.TWILIO_PHONE_NUMBER}`);
-  console.log(`🏪 Salon: ${process.env.SALON_NAME}`);
-  // Load service durations from Supabase settings (dashboard is single source of truth)
+  // Load all salon config from Supabase (dashboard is single source of truth)
+  await loadSalonConfig();
+  console.log(`🏪 Salon: ${SALON_NAME}`);
   await loadDurationsFromSettings();
   console.log(`📊 Service durations loaded: ${Object.keys(SERVICE_DURATIONS).length} services`);
+
+  // Initial sync: push salon_settings stylists into salon_stylists table
+  (async () => {
+    try {
+      const envPath = '/home/clawd/.hermes/profiles/superare/.env';
+      const supUrl = process.env.SUPABASE_URL || 'https://fhmjvnphxsbtwcutqkvq.supabase.co';
+      if (fs.existsSync(envPath)) {
+        const envContent = fs.readFileSync(envPath, 'utf8');
+        let serviceKey = '';
+        for (const line of envContent.split('\n')) {
+          if (line.trim().startsWith('SUPABASE_SERVICE_KEY=')) {
+            serviceKey = line.split('=').slice(1).join('=').trim().replace(/['"]/g, '');
+            break;
+          }
+        }
+        if (serviceKey) {
+          const { createClient } = require('@supabase/supabase-js');
+          const ac = createClient(supUrl, serviceKey);
+
+          // Sync stylists from settings to salon_stylists table
+          if (SALON_STYLISTS.length > 0) {
+            const { data: existing } = await ac.from('salon_stylists').select('id, name');
+            const existingNames = {};
+            if (existing) existing.forEach(s => existingNames[s.name] = s.id);
+
+            for (const s of SALON_STYLISTS) {
+              const daysOff = (s.daysOff || []).filter(d => d >= 0 && d <= 6);
+              if (existingNames[s.name]) {
+                await ac.from('salon_stylists').update({ days_off: daysOff, active: true }).eq('id', existingNames[s.name]);
+              } else {
+                await ac.from('salon_stylists').insert({ name: s.name, days_off: daysOff, active: true });
+              }
+            }
+            // Deactivate any that were removed
+            const currentNames = SALON_STYLISTS.map(s => s.name);
+            if (existing) {
+              for (const s of existing) {
+                if (!currentNames.includes(s.name)) {
+                  await ac.from('salon_stylists').update({ active: false }).eq('id', s.id);
+                }
+              }
+            }
+            console.log(`🔄 Synced ${SALON_STYLISTS.length} stylists to salon_stylists table`);
+          }
+        }
+      }
+    } catch (e) {
+      console.log(`⚠️ Initial stylist sync skipped: ${e.message}`);
+    }
+  })();
+
   // Initialize live transcript streaming for the dashboard
   liveStream.attach(server, '/live-transcripts');
   liveStream.init();

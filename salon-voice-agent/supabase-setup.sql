@@ -21,9 +21,10 @@ CREATE TABLE IF NOT EXISTS salon_settings (
     {"name":"Eyebrow Wax","price":18,"duration":15}
   ]',
   stylists JSONB NOT NULL DEFAULT '[
-    {"name":"Mark","daysOff":[2]},
-    {"name":"Sofia","daysOff":[1]},
-    {"name":"Jenna","daysOff":[1,2]}
+    {"name":"Mark","daysOff":[1]},
+    {"name":"Sofia","daysOff":[2]},
+    {"name":"Jenna","daysOff":[3]},
+    {"name":"Emma","daysOff":[1]}
   ]',
   max_concurrent_bookings INTEGER NOT NULL DEFAULT 3,
   coverage_gap_minutes INTEGER NOT NULL DEFAULT 30,

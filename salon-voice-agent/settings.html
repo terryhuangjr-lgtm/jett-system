@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Settings — Salon Voice Agent</title>
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #0a0a0f;
+    color: #e0e0e0;
+    min-height: 100vh;
+  }
+  .container { max-width: 1000px; margin: 0 auto; padding: 24px; }
+  header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 24px;
+  }
+  h1 { font-size: 22px; font-weight: 600; color: #f0f0f0; }
+
+  .tabs { display: flex; gap: 0; border-bottom: 1px solid #2a2a3a; margin-bottom: 24px; }
+  .tab {
+    padding: 10px 20px; cursor: pointer; color: #888; font-size: 14px;
+    border-bottom: 2px solid transparent; transition: all 0.2s;
+    background: none; border-top: none; border-left: none; border-right: none;
+  }
+  .tab:hover { color: #ccc; }
+  .tab.active { color: #818cf8; border-bottom-color: #818cf8; }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  .section { margin-bottom: 28px; }
+  .section-title { font-size: 15px; font-weight: 600; color: #f0f0f0; margin-bottom: 12px; }
+
+  .stylist-card {
+    background: #16161f; border: 1px solid #2a2a3a;
+    border-radius: 10px; padding: 16px; margin-bottom: 12px;
+  }
+  .stylist-card .name-row {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 10px;
+  }
+  .stylist-card .stylist-name { font-size: 15px; font-weight: 600; color: #f0f0f0; }
+  .stylist-card .remove-btn {
+    background: none; border: 1px solid #ef4444; color: #ef4444;
+    padding: 3px 10px; border-radius: 6px; cursor: pointer; font-size: 12px;
+  }
+  .stylist-card .remove-btn:hover { background: #ef4444; color: white; }
+  .days-grid {
+    display: flex; gap: 6px; flex-wrap: wrap;
+  }
+  .day-btn {
+    padding: 6px 12px; border-radius: 8px; border: 1px solid #2a2a3a;
+    background: #1a1a25; color: #888; cursor: pointer; font-size: 12px;
+    transition: all 0.15s; min-width: 60px; text-align: center;
+  }
+  .day-btn:hover { border-color: #555; }
+  .day-btn.off { background: #2d1b1b; border-color: #ef4444; color: #ef4444; }
+  .day-btn.off:hover { background: #3d2b2b; }
+
+  .add-stylist-form {
+    background: #16161f; border: 1px dashed #2a2a3a;
+    border-radius: 10px; padding: 16px; margin-top: 16px;
+  }
+  .add-stylist-form input {
+    background: #1a1a25; border: 1px solid #2a2a3a;
+    border-radius: 6px; padding: 8px 12px; color: #e0e0e0; font-size: 14px;
+    width: 200px; outline: none;
+  }
+  .add-stylist-form input:focus { border-color: #818cf8; }
+  .add-btn {
+    background: #818cf8; color: white; border: none;
+    padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 14px;
+    margin-left: 8px; font-weight: 500;
+  }
+  .add-btn:hover { background: #6d77e5; }
+
+  .save-bar {
+    position: sticky; bottom: 0;
+    background: #0a0a0f; border-top: 1px solid #2a2a3a;
+    padding: 16px 0; margin-top: 24px; text-align: right;
+  }
+  .save-btn {
+    background: #22c55e; color: white; border: none;
+    padding: 10px 28px; border-radius: 8px; cursor: pointer;
+    font-size: 14px; font-weight: 600;
+  }
+  .save-btn:hover { background: #1ca34d; }
+  .save-btn:disabled { background: #2a5a3a; cursor: not-allowed; opacity: 0.5; }
+  .save-status { font-size: 13px; margin-right: 12px; display: inline-block; }
+  .save-status.saving { color: #f59e0b; }
+  .save-status.saved { color: #22c55e; }
+  .save-status.error { color: #ef4444; }
+
+  .status-bar {
+    display: flex; gap: 16px; margin-bottom: 20px; flex-wrap: wrap;
+  }
+  .stat-card {
+    background: #16161f; border: 1px solid #2a2a3a;
+    border-radius: 10px; padding: 16px 20px; flex: 1; min-width: 140px;
+  }
+  .stat-card .label { font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 0.5px; }
+  .stat-card .value { font-size: 22px; font-weight: 700; margin-top: 4px; }
+  .stat-card .value.purple { color: #818cf8; }
+  .badge {
+    background: #6366f1; color: white; padding: 4px 12px;
+    border-radius: 12px; font-size: 13px; font-weight: 500;
+  }
+
+  .loading { text-align: center; padding: 60px; color: #666; }
+  .loading .spinner {
+    width: 32px; height: 32px; border: 3px solid #2a2a3a;
+    border-top-color: #818cf8; border-radius: 50%;
+    animation: spin 0.8s linear infinite; margin: 0 auto 12px;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .error { text-align: center; padding: 40px; color: #ef4444; }
+  .hint { font-size: 12px; color: #666; margin-top: 6px; }
+
+  .info-section { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .info-field { margin-bottom: 12px; }
+  .info-field label { display: block; font-size: 12px; color: #888; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .info-field input, .info-field textarea {
+    width: 100%; background: #1a1a25; border: 1px solid #2a2a3a;
+    border-radius: 6px; padding: 8px 12px; color: #e0e0e0; font-size: 14px; outline: none;
+  }
+  .info-field input:focus, .info-field textarea:focus { border-color: #818cf8; }
+  .info-field textarea { resize: vertical; min-height: 60px; font-family: inherit; }
+
+  @media (max-width: 768px) {
+    .container { padding: 12px; }
+    .info-section { grid-template-columns: 1fr; }
+    .add-stylist-form input { width: 100%; margin-bottom: 8px; }
+    .add-btn { margin-left: 0; width: 100%; text-align: center; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>⚙️ Salon Settings</h1>
+    <a href="/dashboard" style="color:#818cf8;text-decoration:none;font-size:14px;">← Back to Calls</a>
+  </header>
+
+  <div class="tabs">
+    <button class="tab active" data-tab="stylists">Stylists</button>
+    <button class="tab" data-tab="general">General</button>
+  </div>
+
+  <div id="loadingState" class="loading">
+    <div class="spinner"></div>
+    <p>Loading settings...</p>
+  </div>
+  <div id="errorState" class="error" style="display:none">
+    <p>⚠️ <span id="errorMessage"></span></p>
+  </div>
+
+  <!-- ── STYLISTS TAB ── -->
+  <div id="tab-stylists" class="tab-content active">
+    <div class="section">
+      <div class="section-title">Schedule — click a day to toggle it as off</div>
+      <div id="stylistsList"></div>
+
+      <div class="add-stylist-form">
+        <div style="font-size:13px;color:#888;margin-bottom:8px;">+ Add Stylist</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;">
+          <input type="text" id="newStylistName" placeholder="Stylist name..." maxlength="40">
+          <button class="add-btn" onclick="addStylist()">Add</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="save-bar">
+      <span id="saveStatus" class="save-status"></span>
+      <button class="save-btn" id="saveBtn" onclick="saveStylists()">Save Changes</button>
+    </div>
+  </div>
+
+  <!-- ── GENERAL TAB ── -->
+  <div id="tab-general" class="tab-content">
+    <div class="section">
+      <div class="section-title">Salon Info</div>
+      <div class="info-section">
+        <div class="info-field">
+          <label>Salon Name</label>
+          <input type="text" id="gSalonName">
+        </div>
+        <div class="info-field">
+          <label>Phone</label>
+          <input type="text" id="gSalonPhone">
+        </div>
+        <div class="info-field">
+          <label>Address</label>
+          <input type="text" id="gSalonAddress">
+        </div>
+        <div class="info-field">
+          <label>Hours Display</label>
+          <input type="text" id="gSalonHours" placeholder="e.g. Monday-Saturday 9am-7pm, Sunday 10am-5pm">
+        </div>
+        <div class="info-field">
+          <label>Owner Phone (for SMS alerts)</label>
+          <input type="text" id="gOwnerPhone" placeholder="+1XXXXXXXXXX">
+        </div>
+        <div class="info-field">
+          <label>Max Concurrent Bookings</label>
+          <input type="number" id="gMaxBookings" min="1" max="10">
+        </div>
+      </div>
+      <div style="margin-top:16px;text-align:right;">
+        <span id="generalSaveStatus" class="save-status"></span>
+        <button class="save-btn" onclick="saveGeneral()">Save General</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const SUPABASE_URL = '__SUPABASE_URL__' || 'https://fhmjvnphxsbtwcutqkvq.supabase.co';
+const SUPABASE_ANON_KEY = '__SUPABASE_ANON_KEY__' || '';
+
+const DAY_NAMES = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+const supabase = supabaseJs.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+let settings = null;
+let stylists = [];
+let dirty = false;
+
+// ── Tab switching ──
+document.querySelectorAll('.tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
+  });
+});
+
+// ── Load ──
+async function loadSettings() {
+  document.getElementById('loadingState').style.display = 'block';
+  document.getElementById('errorState').style.display = 'none';
+
+  const { data, error } = await supabase
+    .from('salon_settings')
+    .select('*')
+    .limit(1)
+    .single();
+
+  document.getElementById('loadingState').style.display = 'none';
+
+  if (error || !data) {
+    document.getElementById('errorState').style.display = 'block';
+    document.getElementById('errorMessage').textContent = error?.message || 'No settings found';
+    return;
+  }
+
+  settings = data;
+  stylists = JSON.parse(JSON.stringify(data.stylists || []));
+  renderStylists();
+
+  // General tab fields
+  document.getElementById('gSalonName').value = data.salon_name || '';
+  document.getElementById('gSalonPhone').value = data.salon_phone || '';
+  document.getElementById('gSalonAddress').value = data.salon_address || '';
+  document.getElementById('gSalonHours').value = data.salon_hours || '';
+  document.getElementById('gOwnerPhone').value = data.owner_phone || '';
+  document.getElementById('gMaxBookings').value = data.max_concurrent_bookings || 3;
+}
+
+// ── Render stylists ──
+function renderStylists() {
+  const container = document.getElementById('stylistsList');
+  if (stylists.length === 0) {
+    container.innerHTML = '<div style="color:#555;padding:20px;text-align:center;">No stylists yet — add one above.</div>';
+    return;
+  }
+
+  container.innerHTML = stylists.map((s, i) => {
+    const daysOff = s.daysOff || [];
+    const days = DAY_NAMES.map((name, d) => `
+      <button class="day-btn ${daysOff.includes(d) ? 'off' : ''}"
+              onclick="toggleDayOff(${i}, ${d})">${name.slice(0,3)}</button>
+    `).join('');
+    return `
+      <div class="stylist-card">
+        <div class="name-row">
+          <span class="stylist-name">${escapeHtml(s.name)}</span>
+          <button class="remove-btn" onclick="removeStylist(${i})">Remove</button>
+        </div>
+        <div class="days-grid">${days}</div>
+      </div>
+    `;
+  }).join('');
+}
+
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str || '';
+  return div.innerHTML;
+}
+
+function toggleDayOff(index, day) {
+  const s = stylists[index];
+  const off = s.daysOff || [];
+  const idx = off.indexOf(day);
+  if (idx >= 0) {
+    off.splice(idx, 1);
+  } else {
+    off.push(day);
+    off.sort();
+  }
+  s.daysOff = off;
+  dirty = true;
+  renderStylists();
+  updateSaveStatus();
+}
+
+function removeStylist(index) {
+  if (!confirm(`Remove ${stylists[index].name}?`)) return;
+  stylists.splice(index, 1);
+  dirty = true;
+  renderStylists();
+  updateSaveStatus();
+}
+
+function addStylist() {
+  const input = document.getElementById('newStylistName');
+  const name = input.value.trim();
+  if (!name) return;
+  stylists.push({ name, daysOff: [] });
+  input.value = '';
+  dirty = true;
+  renderStylists();
+  updateSaveStatus();
+}
+
+function updateSaveStatus() {
+  const el = document.getElementById('saveStatus');
+  if (dirty) {
+    el.textContent = '⚠️ Unsaved changes';
+    el.className = 'save-status saving';
+  } else {
+    el.textContent = '✅ All saved';
+    el.className = 'save-status saved';
+  }
+  document.getElementById('saveBtn').disabled = !dirty;
+}
+
+// ── Save stylists ──
+async function saveStylists() {
+  const btn = document.getElementById('saveBtn');
+  const status = document.getElementById('saveStatus');
+  btn.disabled = true;
+  status.textContent = 'Saving...';
+  status.className = 'save-status saving';
+
+  // Clean stylist data
+  const cleanStylists = stylists.map(s => ({
+    name: s.name.trim(),
+    daysOff: (s.daysOff || []).filter(d => d >= 0 && d <= 6).sort(),
+  }));
+
+  // Use server-side API endpoint (uses service key to bypass RLS)
+  try {
+    const resp = await fetch('/api/save-settings', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ stylists: cleanStylists }),
+    });
+    const result = await resp.json();
+
+    if (!result.success) {
+      status.textContent = '❌ Save failed: ' + (result.error || result.details || 'Unknown error');
+      status.className = 'save-status error';
+      btn.disabled = false;
+      return;
+    }
+  } catch (e) {
+    status.textContent = '❌ Save failed: ' + e.message;
+    status.className = 'save-status error';
+    btn.disabled = false;
+    return;
+  }
+
+  stylists = cleanStylists;
+  dirty = false;
+  status.textContent = '✅ Saved! Restarting voice agent...';
+  status.className = 'save-status saved';
+
+  // Auto-restart the voice agent so it picks up changes
+  restartAgent();
+}
+
+// ── Save general ──
+async function saveGeneral() {
+  const status = document.getElementById('generalSaveStatus');
+  status.textContent = 'Saving...';
+  status.className = 'save-status saving';
+
+  const updates = {
+    salon_name: document.getElementById('gSalonName').value.trim(),
+    salon_phone: document.getElementById('gSalonPhone').value.trim(),
+    salon_address: document.getElementById('gSalonAddress').value.trim(),
+    salon_hours: document.getElementById('gSalonHours').value.trim(),
+    owner_phone: document.getElementById('gOwnerPhone').value.trim(),
+    max_concurrent_bookings: parseInt(document.getElementById('gMaxBookings').value) || 3,
+  };
+
+  // Use server-side API endpoint
+  try {
+    const resp = await fetch('/api/save-settings', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(updates),
+    });
+    const result = await resp.json();
+
+    if (!result.success) {
+      status.textContent = '❌ Save failed: ' + (result.error || result.details || 'Unknown');
+      status.className = 'save-status error';
+      return;
+    }
+  } catch (e) {
+    status.textContent = '❌ Save failed: ' + e.message;
+    status.className = 'save-status error';
+    return;
+  }
+
+  status.textContent = '✅ Saved!';
+  status.className = 'save-status saved';
+
+  // Auto-restart to pick up changes
+  restartAgent();
+}
+
+// ── Restart the voice agent via API ──
+function restartAgent() {
+  fetch('/api/restart', {
+    method: 'POST',
+    headers: { 'Authorization': 'Bearer bbbfcf0757488aa5912ee40056be10' }
+  }).then(r => r.json()).then(d => {
+    console.log('Restart requested:', d);
+  }).catch(e => {
+    console.log('Restart API not available, manual restart needed');
+  });
+}
+
+// ── Start ──
+loadSettings();
+</script>
+</body>
+</html>
