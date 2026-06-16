@@ -260,25 +260,25 @@
       <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
       <span class="tooltip">eBay</span>
     </div>
-    <div class="nav-item" data-tab="levelup">
-      <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
-      <span class="tooltip">Level Up</span>
+    <div class="nav-item" data-tab="card-lister">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+      <span class="tooltip">Card Lister</span>
     </div>
     <div class="nav-item" data-tab="podcast">
       <svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2M12 19v4M8 23h8"/></svg>
       <span class="tooltip">Podcast</span>
     </div>
-    <div class="nav-item" data-tab="gemma">
-      <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-      <span class="tooltip">Gemma</span>
+    <div class="nav-item" data-tab="article">
+      <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/><path d="M8 10h.01M12 10h.01M16 10h.01"/></svg>
+      <span class="tooltip">Article Reader</span>
     </div>
     <div class="nav-divider"></div>
     <div class="nav-item" data-tab="memory">
       <svg viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg>
-      <span class="tooltip">Jett Memory</span>
+      <span class="tooltip">Metrics</span>
     </div>
     <div class="nav-divider"></div>
-    <div class="nav-item" onclick="window.location.href='/finance'" style="cursor:pointer">
+    <div class="nav-item" data-tab="finance">
       <svg viewBox="0 0 24 24"><path d="M12 2l-8 4v12l8 4 8-4V6l-8-4z"/><path d="M12 22V10"/><path d="M4 6l8 4 8-4"/></svg>
       <span class="tooltip">Finance Intel</span>
     </div>
@@ -295,26 +295,14 @@
               <path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg>
             Refresh
           </button>
-          <button class="btn" onclick="restartGateway()">
+          <button class="btn" onclick="restartProfileGateway('all')">
             <svg viewBox="0 0 24 24">
               <path d="M18.36 6.64a9 9 0 11-12.73 0"/>
               <line x1="12" y1="2" x2="12" y2="12"/>
             </svg>
-            Restart Gateway
+            Restart Gateways
           </button>
-          <button class="btn" onclick="restartService('podcast-summary')"
-            title="Restart Podcast">
-            <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/>
-              <path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg>
-            Podcast
-          </button>
-          <button class="btn" onclick="restartService('levelup-cards')"
-            title="Restart Level Up Cards">
-            <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/>
-              <path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg>
-            Level Up
-          </button>
-          <button class="btn danger" onclick="restartAllServices()">
+          <button class="btn danger" onclick="restartProfileGateway('all')">
             <svg viewBox="0 0 24 24">
               <path d="M18.36 6.64a9 9 0 11-12.73 0"/>
               <line x1="12" y1="2" x2="12" y2="12"/>
@@ -337,8 +325,17 @@
       </div>
 
       <div class="card" style="margin-top:12px">
-        <div class="card-label">Token Cost (Last 7d)</div>
+        <div class="card-label">Local Ollama Models</div>
+        <div id="modelsTracker"><div class="loading">Loading...</div></div>
+      </div>
+
+      <div class="card" style="margin-top:12px">
+        <div class="card-label">Hermes Gateways</div>
         <div id="costTracker"><div class="loading">Loading...</div></div>
+      </div>
+      <div class="card" style="margin-top:12px">
+        <div class="card-label">VPS Health (167.172.135.39)</div>
+        <div id="vpsHealth"><div class="loading">Loading...</div></div>
       </div>
     </div>
 
@@ -355,6 +352,10 @@
         <div class="next-up-list" id="nextUpList">
           <div class="loading">Loading...</div>
         </div>
+      </div>
+      <div class="card" style="margin-top:12px">
+        <div class="card-label">Cron Jobs by Profile</div>
+        <div id="profileCrons"><div class="loading">Loading...</div></div>
       </div>
     </div>
 
@@ -399,69 +400,45 @@
       </div>
     </div>
 
-    <div class="tab-panel" id="tab-levelup">
-      <div class="section-header">
-        <span class="section-title">Level Up Cards — Inventory</span>
-        <button class="btn" onclick="loadInventory()">
-          <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg>
-          Refresh
-        </button>
-        <a href="/levelup" target="_blank" class="btn primary" 
-          style="text-decoration:none">
-          Open Full App ↗
-        </a>
-      </div>
-      <div class="status-grid" id="inventoryStats">
-        <div class="loading" style="grid-column:1/-1">Loading...</div>
-      </div>
-      <div class="card">
-        <div id="inventoryTable"><div class="loading">Loading inventory...</div></div>
-      </div>
+    <div class="tab-panel" id="tab-card-lister">
+      <iframe src="https://cardminer.jettmissioncontrol.com/list" class="full-iframe" style="width: 100%; height: 100vh; border: none; border-radius: var(--radius);"></iframe>
     </div>
 
     <div class="tab-panel" id="tab-podcast">
       <div class="section-header">
         <span class="section-title">Podcast Summarizer</span>
-        <button class="btn" onclick="processPodcastNow()" 
-          style="color:var(--green);border-color:rgba(34,197,94,0.3)">
-          <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-          Process Now
-        </button>
       </div>
-      <div class="card" style="margin-bottom:12px">
-        <div class="card-label">Add to Queue</div>
-        <div style="display:flex;flex-direction:column;gap:8px;margin-top:6px">
-          <input class="podcast-input" id="podcastTitle" 
-            placeholder="Episode title (e.g. Pomp Podcast - Shezan Maredia)" type="text">
-          <div style="display:flex;gap:8px">
-            <input class="podcast-input" id="podcastUrl" 
-              placeholder="Paste YouTube or podcast URL..." type="text" style="flex:1">
-            <button class="btn primary" onclick="addPodcast()">Add</button>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-label">Queue</div>
-        <div id="podcastQueue"><div class="loading">Loading queue...</div></div>
-      </div>
+      <iframe src="/podcast" sandbox="allow-scripts allow-same-origin" style="border:none;width:100%;height:calc(100vh - 90px);background:transparent" loading="lazy"></iframe>
     </div>
 
-    <div class="tab-panel" id="tab-gemma">
+    <div class="tab-panel" id="tab-article">
       <div class="section-header">
-        <span class="section-title">Gemma Assistant</span>
+        <span class="section-title">Article Reader</span>
       </div>
-      <iframe src="/gemma" style="width:100%;height:calc(100vh - 140px);border:none;border-radius:6px"></iframe>
+      <iframe src="/jett-ai" sandbox="allow-scripts allow-same-origin" style="border:none;width:100%;height:calc(100vh - 90px);background:transparent" loading="lazy"></iframe>
     </div>
 
     <div class="tab-panel" id="tab-memory">
       <div class="section-header">
-        <span class="section-title">Jett Memory</span>
-        <button class="btn" onclick="loadMemory()">
-          <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg>
-          Refresh
-        </button>
+        <span class="section-title">Metrics &amp; KPIs</span>
+        <div class="btn-row">
+          <button class="btn" onclick="loadMetrics()">
+            <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg>
+            Refresh
+          </button>
+        </div>
       </div>
-      <div id="memoryCards"><div class="loading">Loading memory...</div></div>
+
+      <div id="metrics-content">
+        <div class="loading">Loading metrics...</div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="tab-finance">
+      <div class="section-header">
+        <span class="section-title">Finance Intel</span>
+      </div>
+      <iframe src="/finance" sandbox="allow-scripts allow-same-origin" style="border:none;width:100%;height:calc(100vh - 90px);background:transparent" loading="lazy"></iframe>
     </div>
 
   </main>
@@ -485,9 +462,7 @@ function loadTab(tab) {
     schedule: loadSchedule,
     ebay: loadEbayConfig,
     levelup: loadInventory,
-    podcast: loadPodcastQueue,
-    gemma: null,
-    memory: loadMemory
+    memory: loadMetrics
   };
   if (loaders[tab]) loaders[tab]();
 }
@@ -516,9 +491,13 @@ async function runHealthCheck() {
   try {
     const data = await apiFetch('/api/health');
     
-    const gatewayOk = data.checks?.find(c => c.name === 'Gateway')?.status === 'healthy';
-    document.getElementById('gatewayDot').style.background = gatewayOk ? 'var(--green)' : 'var(--red)';
-    document.getElementById('gatewayLabel').textContent = gatewayOk ? 'online' : 'offline';
+    // Gateway pill: online if any profile gateway is running
+    const profiles = data.raw?.profiles || {};
+    const anyOnline = Object.values(profiles).some(p => p.gatewayRunning);
+    const onlineCount = Object.values(profiles).filter(p => p.gatewayRunning).length;
+    const totalCount = Object.keys(profiles).length;
+    document.getElementById('gatewayDot').style.background = anyOnline ? 'var(--green)' : 'var(--red)';
+    document.getElementById('gatewayLabel').textContent = anyOnline ? `${onlineCount}/${totalCount} online` : 'offline';
 
     const components = data.checks || [];
 
@@ -541,94 +520,145 @@ async function runHealthCheck() {
       </tr>
     `).join('');
 
-    loadCosts();
+    // Render local Ollama models
+    const models = data.raw?.ollama?.models || [];
+    const modelsEl = document.getElementById('modelsTracker');
+    if (modelsEl) {
+      const loaded = data.raw?.ollama?.running || [];
+      const loadedNames = new Set(loaded.map(m => m.name.split(':')[0]));
+      modelsEl.innerHTML = `
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px;margin-top:4px">
+          ${models.map(m => {
+            const inVram = loadedNames.has(m.name.split(':')[0]);
+            const sizeGb = (m.size / 1e9).toFixed(1);
+            return `<div style="display:flex;align-items:center;gap:8px;padding:8px 10px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:var(--radius)">
+              <span class="status-dot ${inVram ? 'healthy' : 'unhealthy'}" style="flex-shrink:0"></span>
+              <div style="flex:1;min-width:0">
+                <div style="font-size:12px;font-family:'JetBrains Mono',monospace;color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${m.name}</div>
+                <div style="font-size:10px;color:var(--text-muted);margin-top:1px">${sizeGb}GB · ${inVram ? 'Loaded in VRAM' : 'Pulled, idle'}</div>
+              </div>
+            </div>`;
+          }).join('')}
+        </div>
+        <div style="font-size:10px;color:var(--text-muted);margin-top:6px">Total: ${models.length} models · ${(models.reduce((s,m) => s+m.size, 0) / 1e9).toFixed(1)}GB on disk</div>
+      `;
+    }
+
+    // Replace cost tracker with gateway restart buttons
+    const costTracker = document.getElementById('costTracker');
+    if (costTracker) {
+      const profileList = Object.entries(profiles);
+      if (profileList.length) {
+        costTracker.innerHTML = `
+          <div style="margin-top:8px">
+            <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px">Hermes Gateways</div>
+            <div style="display:flex;flex-wrap:wrap;gap:6px">
+              ${profileList.map(([name, p]) => `
+                <button class="btn ${p.gatewayRunning ? '' : 'danger'}" 
+                  onclick="restartProfileGateway('${name}')"
+                  style="font-size:10px;padding:4px 10px"
+                  title="${p.label} · ${p.config?.model || 'unknown'}">
+                  <span class="status-dot ${p.gatewayRunning ? 'healthy' : 'unhealthy'}" 
+                    style="display:inline-block;width:6px;height:6px;border-radius:50%;margin-right:4px;vertical-align:middle"></span>
+                  ${p.label}
+                </button>
+              `).join('')}
+            </div>
+            <div style="margin-top:8px">
+              <button class="btn danger" onclick="restartProfileGateway('all')" style="font-size:11px;padding:4px 12px">Restart All Gateways</button>
+            </div>
+          </div>
+        `;
+      } else {
+        costTracker.innerHTML = '<div class="loading">No Hermes profiles found</div>';
+      }
+    }
+
+    // Load VPS health
+    loadVpsHealth();
 
   } catch(e) {
     document.getElementById('statusGrid').innerHTML = `<div class="error-msg">${e.message}</div>`;
   }
 }
 
-async function restartGateway() {
-  if (!confirm('Restart OpenClaw gateway?')) return;
+async function loadVpsHealth() {
+  const el = document.getElementById('vpsHealth');
+  if (!el) return;
   try {
-    const data = await fetch('/api/gateway/restart', {method:'POST'}).then(r=>r.json());
-    if (data.ok) {
-      document.getElementById('gatewayLabel').textContent = 'restarting...';
-      document.getElementById('gatewayDot').style.background = 'var(--amber)';
-      setTimeout(runHealthCheck, 5000);
-    } else {
-      alert('Restart failed: ' + data.error);
-    }
-  } catch(e) { alert(e.message); }
-}
-
-async function restartService(name) {
-  if (!confirm(`Restart ${name}?`)) return;
-  try {
-    const data = await fetch(`/api/service/restart/${name}`, {method:'POST'}).then(r=>r.json());
-    if (data.ok) {
-      setTimeout(runHealthCheck, 3000);
-    } else {
-      alert('Restart failed: ' + data.error);
-    }
-  } catch(e) { alert(e.message); }
-}
-
-async function restartAllServices() {
-  if (!confirm('Restart ALL services? This will briefly interrupt everything.')) return;
-  const services = ['podcast-summary', 'levelup-cards'];
-  for (const s of services) {
-    await fetch(`/api/service/restart/${s}`, {method:'POST'});
-    await new Promise(r => setTimeout(r, 500));
-  }
-  await fetch('/api/gateway/restart', {method:'POST'});
-  document.getElementById('gatewayLabel').textContent = 'restarting...';
-  document.getElementById('gatewayDot').style.background = 'var(--amber)';
-  setTimeout(runHealthCheck, 8000);
-}
-
-async function loadCosts() {
-  try {
-    const data = await apiFetch('/api/jett/costs');
-    if (data.error || !data.raw) {
-      document.getElementById('costTracker').innerHTML = '<div class="loading">No cost data yet — will populate after agent runs</div>';
+    const data = await apiFetch('/api/vps/health');
+    if (data.error) {
+      el.innerHTML = `<div class="error-msg">${data.error}</div>`;
       return;
     }
-    const raw = typeof data.raw === 'string' ? data.raw : JSON.stringify(data.raw);
-    const lines = raw.trim().split('\n').filter(Boolean);
-    if (!lines.length) {
-      document.getElementById('costTracker').innerHTML = '<div class="loading">No cost data yet</div>';
-      return;
-    }
-    const maxCost = Math.max(...lines.map(l => parseFloat(l.split('|')[1]) || 0));
-    document.getElementById('costTracker').innerHTML = lines.map(line => {
-      const parts = line.split('|');
-      const name = parts[0]?.trim();
-      const cost = parseFloat(parts[1]) || 0;
-      const pct = maxCost > 0 ? (cost / maxCost * 100) : 0;
-      return `<div class="cost-bar">
-        <span class="cost-name">${name}</span>
-        <div class="cost-track"><div class="cost-fill" style="width:${pct}%"></div></div>
-        <span class="cost-val">$${cost.toFixed(4)}</span>
+    el.innerHTML = `
+      <div style="display:flex;flex-direction:column;gap:6px">
+        ${data.results.map(r => {
+          const icon = r.status === 'ok' ? '\u2705' : r.status === 'warn' ? '\u26A0\uFE0F' : '\u274C';
+          const color = r.status === 'ok' ? 'var(--green)' : r.status === 'warn' ? 'var(--amber)' : 'var(--red)';
+          return `<div style="display:flex;align-items:center;gap:8px;padding:4px 0">
+            <span style="font-size:13px">${icon}</span>
+            <span style="font-size:12px;color:var(--text-primary);min-width:180px">${r.name}</span>
+            <span style="font-size:11px;color:var(--text-secondary)">${r.detail}</span>
+          </div>`;
+        }).join('')}
+        <div style="margin-top:6px;display:flex;align-items:center;gap:8px">
+          <span class="status-dot ${data.healthy ? 'green' : 'red'}" style="display:inline-block"></span>
+          <span style="font-size:11px;font-family:'DM Mono',monospace;color:var(--text-muted)">
+            ${data.healthy ? 'All services healthy' : 'Some services down'}
+          </span>
+          <span style="font-size:10px;color:var(--text-muted)"> \u00B7 </span>
+          <span style="font-size:10px;color:var(--text-muted)">${new Date(data.timestamp).toLocaleTimeString()}</span>
+        </div>
       </div>`;
-    }).join('');
   } catch(e) {
-    document.getElementById('costTracker').innerHTML = '<div class="loading">No cost data yet</div>';
+    el.innerHTML = `<div class="error-msg">${e.message}</div>`;
   }
+}
+
+async function restartProfileGateway(profile) {
+  const label = profile === 'all' ? 'ALL Hermes gateways' : `${profile} gateway`;
+  if (!confirm(`Restart ${label}? This will briefly interrupt the agent.`)) return;
+
+  const url = profile === 'all' ? '/api/gateway/restart' : `/api/gateway/restart/${profile}`;
+  try {
+    document.getElementById('gatewayLabel').textContent = 'restarting...';
+    document.getElementById('gatewayDot').style.background = 'var(--amber)';
+    const data = await fetch(url, {method:'POST'}).then(r=>r.json());
+    setTimeout(runHealthCheck, 5000);
+    if (!data.success && !data.ok) {
+      console.error('Restart failed:', data.error || data);
+    }
+  } catch(e) {
+    console.error('Restart error:', e.message);
+    setTimeout(runHealthCheck, 3000);
+  }
+}
+
+async function restartGateway() {
+  await restartProfileGateway('all');
 }
 
 async function loadSchedule() {
   try {
-    const data = await apiFetch('/api/crons');
-    const jobs = data.jobs || [];
+    const data = await apiFetch('/api/hermes/crons');
+    const profileNames = Object.keys(data).filter(k => Array.isArray(data[k]));
+    
+    // Flatten all profile jobs into one array with profile field
+    const jobs = [];
+    for (const profile of profileNames) {
+      for (const job of data[profile]) {
+        jobs.push({ ...job, profile });
+      }
+    }
+
     const days = ['SUN','MON','TUE','WED','THU','FRI','SAT'];
     const today = new Date().getDay();
     document.getElementById('scheduleDate').textContent = new Date().toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'});
 
-    // Map jobs to days based on cron expression
-    function getJobDays(expr) {
-      if (!expr) return [0,1,2,3,4,5,6];
-      const parts = expr.split(' ');
+    function getJobDays(sched) {
+      if (!sched) return [0,1,2,3,4,5,6];
+      const parts = sched.split(' ');
       if (parts.length < 5) return [0,1,2,3,4,5,6];
       const dow = parts[4];
       if (dow === '*' || dow === '*/1') return [0,1,2,3,4,5,6];
@@ -641,9 +671,9 @@ async function loadSchedule() {
       });
     }
 
-    function getJobTime(expr) {
-      if (!expr) return '';
-      const parts = expr.split(' ');
+    function getJobTime(sched) {
+      if (!sched) return '';
+      const parts = sched.split(' ');
       if (parts.length < 5) return '';
       const min = parts[0], hour = parts[1];
       if (hour === '*' || hour.startsWith('*/')) return `every ${hour.includes('/')?hour.split('/')[1]:1}h`;
@@ -656,12 +686,13 @@ async function loadSchedule() {
       if (n.includes('bitcoin')||n.includes('btc')||n.includes('finance')) return 'blue';
       if (n.includes('morning')||n.includes('brief')||n.includes('backup')||n.includes('log')) return 'green';
       if (n.includes('ebay')||n.includes('research')||n.includes('lead')) return 'amber';
-      return 'purple';
+      if (n.includes('podcast')) return 'purple';
+      return 'amber';
     }
 
-    function getSortMinutes(expr) {
-      if (!expr) return 9999;
-      const parts = expr.split(' ');
+    function getSortMinutes(sched) {
+      if (!sched) return 9999;
+      const parts = sched.split(' ');
       if (parts.length < 2) return 9999;
       const hour = parts[1], min = parts[0];
       if (hour === '*' || hour.startsWith('*/')) return -1;
@@ -671,32 +702,34 @@ async function loadSchedule() {
     // Build day columns
     document.getElementById('calendarGrid').innerHTML = days.map((day,i) => {
       const dayJobs = jobs
-        .filter(j => getJobDays(j.schedule?.expr).includes(i))
-        .sort((a,b) => getSortMinutes(a.schedule?.expr) - getSortMinutes(b.schedule?.expr));
+        .filter(j => getJobDays(j.schedule).includes(i))
+        .sort((a,b) => getSortMinutes(a.schedule) - getSortMinutes(b.schedule));
       return `<div class="cal-day${i===today?' today':''}">
         <div class="cal-day-name">${day}</div>
         ${dayJobs.map(j => `
-          <div class="cal-event ${getJobColor(j.name)}">
-            ${getJobTime(j.schedule?.expr)} ${j.name}
+          <div class="cal-event ${getJobColor(j.name)}" title="${j.profile}">
+            ${getJobTime(j.schedule)} ${j.name}
           </div>
         `).join('')}
+        ${dayJobs.length === 0 ? '<div style="font-size:10px;color:var(--text-muted);text-align:center;margin-top:8px">—</div>' : ''}
       </div>`;
     }).join('');
 
-    // Next up — jobs with nextRunAtMs, sorted
+    // Next up — all jobs with nextRun, sorted
     const now = Date.now();
     const upcoming = jobs
-      .filter(j => j.state?.nextRunAtMs)
-      .sort((a,b) => a.state.nextRunAtMs - b.state.nextRunAtMs)
-      .slice(0,8);
+      .filter(j => j.nextRun)
+      .sort((a,b) => new Date(a.nextRun) - new Date(b.nextRun))
+      .slice(0,10);
 
     document.getElementById('nextUpList').innerHTML = upcoming.length ?
       upcoming.map(j => {
-        const next = new Date(j.state.nextRunAtMs);
-        const lastStatus = j.state?.lastRunStatus || 'pending';
+        const next = new Date(j.nextRun);
+        const lastStatus = j.lastStatus || 'pending';
         return `<div class="next-up-item">
           <span class="next-up-name">${j.name}</span>
           <div class="next-up-meta">
+            <span class="badge ${j.profile === 'coder'?'green':j.profile === 'huangfam'?'blue':j.profile === 'finance'?'purple':'amber'}" style="font-size:9px;padding:1px 5px">${j.profile}</span>
             <span class="next-up-time mono">${next.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'})} ${next.toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'})}</span>
             <span class="badge ${lastStatus==='ok'?'green':lastStatus==='error'?'red':'amber'}">${lastStatus}</span>
           </div>
@@ -704,8 +737,35 @@ async function loadSchedule() {
       }).join('') :
       '<div class="loading">No upcoming jobs</div>';
 
+    // Profile breakdown
+    const profileOrder = ['coder','huangfam','finance','personal','maggiepm','superare','vision'];
+    document.getElementById('profileCrons').innerHTML = profileOrder
+      .filter(p => data[p] && data[p].length > 0)
+      .map(p => {
+        const profileJobs = data[p];
+        const enabled = profileJobs.filter(j => j.enabled !== false).length;
+        return `<div style="margin-bottom:12px">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+            <span class="badge ${p === 'coder'?'green':p === 'huangfam'?'blue':p === 'finance'?'purple':'amber'}" style="font-size:10px;padding:2px 8px">${p}</span>
+            <span style="font-size:11px;color:var(--text-secondary)">${enabled} active / ${profileJobs.length} total</span>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:4px">
+            ${profileJobs.map(j => {
+              const status = j.lastStatus || 'pending';
+              const statusColor = status === 'ok' ? 'green' : status === 'error' ? 'red' : 'amber';
+              return `<div style="display:inline-flex;align-items:center;gap:6px;padding:3px 8px;background:var(--bg-elevated);border-radius:4px;font-size:11px">
+                <span style="color:var(--text-primary);font-weight:500">${j.name}</span>
+                <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text-muted)">${j.schedule || '—'}</span>
+                <span class="status-dot ${statusColor}" style="display:inline-block;width:5px;height:5px"></span>
+              </div>`;
+            }).join('')}
+          </div>
+        </div>`;
+      }).join('') || '<div class="loading">No cron jobs found</div>';
+
   } catch(e) {
     document.getElementById('calendarGrid').innerHTML = `<div class="error-msg" style="grid-column:1/-1">${e.message}</div>`;
+    document.getElementById('profileCrons').innerHTML = `<div class="error-msg">${e.message}</div>`;
   }
 }
 
@@ -1009,19 +1069,207 @@ async function addPodcast() {
   } catch(e) { alert(e.message); }
 }
 
-async function loadMemory() {
+async function loadMetrics() {
+  const container = document.getElementById('metrics-content');
+  container.innerHTML = '<div class="loading">Loading metrics...</div>';
   try {
-    const data = await apiFetch('/api/jett/memory');
-    const memories = data.memories || [];
-    document.getElementById('memoryCards').innerHTML = memories.length ?
-      memories.map(m => `
-        <div class="card" style="margin-bottom:10px">
-          <div class="card-label">${m.date}</div>
-          <div class="log-output" style="max-height:150px">${m.content}</div>
+    const data = await apiFetch('/api/metrics');
+    const p = data.profiles || {};
+    const sys = data.system || {};
+    const totals = data.totals || {};
+
+    // ── Per-profile activity cards ─────────────────────────────────
+    const profileOrder = ['coder','huangfam','finance','personal','superare','vision','maggiepm'];
+    const profileLabel = {coder:'Coder',huangfam:'HuangFam',finance:'Finance',personal:'Personal',superare:'Superare',vision:'Vision',maggiepm:'MaggiePM'};
+
+    let profileCards = '';
+    for (const name of profileOrder) {
+      const stats = p[name];
+      if (!stats) continue;
+      const apiCallsAll = stats.totalApiCalls.toLocaleString();
+      const todayApi = stats.todayApiCalls.toLocaleString();
+      const monthApi = stats.monthApiCalls.toLocaleString();
+      profileCards += `
+        <div class="status-card" style="flex:1;min-width:180px">
+          <div class="status-card-top">
+            <span class="status-card-name">${profileLabel[name] || name}</span>
+            <span class="status-dot ${stats.todayResponses > 0 ? 'green' : 'amber'}" style="display:inline-block"></span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:2px;margin-top:4px">
+            <div style="display:flex;justify-content:space-between">
+              <span style="font-size:10px;color:var(--text-muted)">Today</span>
+              <span style="font-size:11px;color:var(--text-primary);font-family:'JetBrains Mono',monospace">
+                ${stats.todayResponses} resp · ${todayApi} api
+              </span>
+            </div>
+            <div style="display:flex;justify-content:space-between">
+              <span style="font-size:10px;color:var(--text-muted)">This Month</span>
+              <span style="font-size:11px;color:var(--text-primary);font-family:'JetBrains Mono',monospace">
+                ${stats.monthResponses} resp · ${monthApi} api
+              </span>
+            </div>
+            <div style="display:flex;justify-content:space-between;border-top:1px solid var(--border);padding-top:4px;margin-top:4px">
+              <span style="font-size:10px;color:var(--text-muted)">All-time</span>
+              <span style="font-size:11px;color:var(--text-secondary);font-family:'JetBrains Mono',monospace">
+                ${stats.totalResponses.toLocaleString()} resp · ${apiCallsAll} api
+              </span>
+            </div>
+          </div>
+          <div style="display:flex;gap:10px;margin-top:6px;padding-top:6px;border-top:1px solid var(--border);font-size:10px;color:var(--text-muted);font-family:'DM Mono',monospace">
+            <span>⏱ ${stats.avgResponseTime}s avg</span>
+            <span>📊 p95 ${stats.p95ResponseTime}s</span>
+          </div>
+        </div>`;
+    }
+
+    // ── System Status ────────────────────────────────────────────
+    const diskParts = (sys.disk || '').split(' ');
+    const memParts = (sys.memory || '').split(' ');
+    const cpuParts = (sys.cpu || '').split(' ');
+    const diskPct = diskParts[3] || '—';
+    const memUsed = memParts[1] || '—';
+    const memTotal = memParts[0] || '—';
+    const load1 = cpuParts[0] || '—';
+
+    // Ollama VRAM
+    let vramHtml = '<span style="color:var(--text-muted)">Not loaded</span>';
+    if (sys.ollamaVram && sys.ollamaVram.models && sys.ollamaVram.models.length) {
+      vramHtml = sys.ollamaVram.models.map(m =>
+        `<div style="display:flex;justify-content:space-between;align-items:center;padding:2px 0">
+          <span style="font-size:11px;color:var(--text-primary);font-family:'JetBrains Mono',monospace">${m.name}</span>
+          <span style="font-size:10px;color:var(--text-muted)">${(m.vram / 1e9).toFixed(1)}GB</span>
+        </div>`
+      ).join('');
+      const totalVram = sys.ollamaVram.totalVramGb;
+      vramHtml += `<div style="font-size:10px;color:var(--text-secondary);border-top:1px solid var(--border);padding-top:4px;margin-top:4px">Σ ${totalVram}GB VRAM</div>`;
+    }
+
+    // Log sizes
+    const logSizesEntries = Object.entries(sys.logSizes || {})
+      .sort((a, b) => b[1] - a[1])
+      .map(([k, v]) =>
+        `<span style="font-size:10px;color:var(--text-muted);font-family:'DM Mono',monospace">${k}: ${v > 1024 ? (v/1024).toFixed(1)+'MB' : v+'KB'}</span>`
+      ).join(' · ');
+
+    // ── Cost estimation ─────────────────────────────────────────
+    // Very rough: assume 2K tokens per api call average, mix of providers
+    // DeepSeek ~$0.5/M input, $2/M output | Anthropic ~$3/$15 | X/Grok ~$2/$10
+    // We'll be transparent this is an estimate
+    const totalApiAllTime = totals.apiCalls || 0;
+    const monthApiAllTime = Object.values(p).reduce((s, v) => s + (v.monthApiCalls || 0), 0);
+    const todayApiAllTime = Object.values(p).reduce((s, v) => s + (v.todayApiCalls || 0), 0);
+    const monthCostLow = Math.round(monthApiAllTime * 2000 * 0.5 / 1e6 * 100) / 100; // est $0.5/M input tokens
+    const monthCostHigh = Math.round(monthApiAllTime * 2000 * 3 / 1e6 * 100) / 100;
+
+    container.innerHTML = `
+      <div style="display:flex;flex-direction:column;gap:14px">
+
+        <div class="card">
+          <div class="card-label">API Activity by Profile</div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px">
+            ${profileCards}
+          </div>
+          <div style="display:flex;gap:16px;margin-top:10px;padding-top:8px;border-top:1px solid var(--border)">
+            <div style="flex:1">
+              <div style="font-size:10px;color:var(--text-muted);font-family:'DM Mono',monospace">Today total</div>
+              <div style="font-size:22px;font-weight:500;font-family:'JetBrains Mono',monospace;color:var(--text-primary)">${todayApiAllTime.toLocaleString()}</div>
+              <div style="font-size:10px;color:var(--text-secondary)">API calls across all profiles</div>
+            </div>
+            <div style="flex:1">
+              <div style="font-size:10px;color:var(--text-muted);font-family:'DM Mono',monospace">This month</div>
+              <div style="font-size:22px;font-weight:500;font-family:'JetBrains Mono',monospace;color:var(--text-primary)">${monthApiAllTime.toLocaleString()}</div>
+              <div style="font-size:10px;color:var(--text-secondary)">API calls</div>
+            </div>
+            <div style="flex:1">
+              <div style="font-size:10px;color:var(--text-muted);font-family:'DM Mono',monospace">All-time</div>
+              <div style="font-size:22px;font-weight:500;font-family:'JetBrains Mono',monospace;color:var(--text-primary)">${totalApiAllTime.toLocaleString()}</div>
+              <div style="font-size:10px;color:var(--text-secondary)">API calls (gateway)</div>
+            </div>
+          </div>
         </div>
-      `).join('') : '<div class="loading">No memory files found</div>';
+
+        <div style="display:grid;grid-template-columns: 1fr 1fr;gap:12px">
+
+          <div class="card">
+            <div class="card-label">Token Burn Estimate</div>
+            <div style="margin-bottom:8px">
+              <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border)">
+                <span style="font-size:11px;color:var(--text-secondary)">Month estimated tokens</span>
+                <span style="font-size:12px;font-family:'JetBrains Mono',monospace;color:var(--text-primary)">~${(monthApiAllTime * 2000).toLocaleString()}</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border)">
+                <span style="font-size:11px;color:var(--text-secondary)">Est. monthly cost range</span>
+                <span style="font-size:12px;font-family:'JetBrains Mono',monospace;color:var(--text-primary)">
+                  ~$${monthCostLow} – $${monthCostHigh}
+                </span>
+              </div>
+              <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border)">
+                <span style="font-size:11px;color:var(--text-secondary)">Avg tokens per API call</span>
+                <span style="font-size:12px;font-family:'JetBrains Mono',monospace;color:var(--text-muted)">~2,000 (estimated)</span>
+              </div>
+              <div style="padding:6px 0">
+                <span style="font-size:10px;color:var(--text-muted);font-style:italic">
+                  Rough estimate based on api_call count × avg token usage.
+                  Mixes DeepSeek, Anthropic, Grok pricing.
+                </span>
+              </div>
+            </div>
+            <div class="card-label" style="margin-top:4px">Response Latency</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+              ${profileOrder.filter(n => p[n]).map(n => `
+                <div style="background:var(--bg-elevated);border-radius:4px;padding:6px 8px">
+                  <div style="font-size:9px;color:var(--text-muted);font-family:'DM Mono',monospace;text-transform:uppercase">${profileLabel[n]}</div>
+                  <div style="font-size:14px;font-family:'JetBrains Mono',monospace;color:var(--text-primary)">${p[n].avgResponseTime}s</div>
+                  <div style="font-size:9px;color:var(--text-muted)">p95 ${p[n].p95ResponseTime}s</div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+
+          <div>
+            <div class="card">
+              <div class="card-label">System Resources</div>
+              <div style="display:flex;flex-direction:column;gap:4px">
+                <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border)">
+                  <span style="font-size:11px;color:var(--text-secondary)">Uptime</span>
+                  <span style="font-size:12px;font-family:'JetBrains Mono',monospace;color:var(--text-primary)">${sys.uptimeDays?.toFixed(1)} days</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border)">
+                  <span style="font-size:11px;color:var(--text-secondary)">RAM</span>
+                  <span style="font-size:12px;font-family:'JetBrains Mono',monospace;color:var(--text-primary)">${memUsed} / ${memTotal}</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border)">
+                  <span style="font-size:11px;color:var(--text-secondary)">Disk</span>
+                  <span style="font-size:12px;font-family:'JetBrains Mono',monospace;color:${parseInt(diskPct) >= 80 ? 'var(--red)' : 'var(--text-primary)'}">${diskPct}</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border)">
+                  <span style="font-size:11px;color:var(--text-secondary)">CPU Load (1/5/15)</span>
+                  <span style="font-size:12px;font-family:'JetBrains Mono',monospace;color:var(--text-primary)">${load1} / ${cpuParts[1] || '—'} / ${cpuParts[2] || '—'}</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="card" style="margin-top:12px">
+              <div class="card-label">Ollama VRAM</div>
+              ${vramHtml}
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-label">Log Files</div>
+          <div class="cost-bar">
+            <span class="cost-name">Size per profile</span>
+            <span class="cost-val" style="text-align:left">${logSizesEntries || 'N/A'}</span>
+          </div>
+          <div style="font-size:10px;color:var(--text-muted);margin-top:4px">
+            Gateway logs are rotated automatically. Large logs may impact metrics parsing speed.
+          </div>
+        </div>
+      </div>
+    `;
   } catch(e) {
-    document.getElementById('memoryCards').innerHTML = `<div class="error-msg">${e.message}</div>`;
+    container.innerHTML = `<div class="error-msg">Failed to load metrics: ${e.message}</div>`;
   }
 }
 
@@ -1040,11 +1288,9 @@ async function loadEbayConfig() {
     const gf = data.global_filters?.quality_rules || {};
     const gl = data.global_filters || {};
     const lt = gl.listing_type || 'fixed_price';
-    const ct = data.cardMode || 'raw';
     const ltLabel = {fixed_price:'BIN only', auction:'Auctions', both:'BIN+Auction'}[lt];
-    const ctLabel = {raw:'Raw', graded:'Graded'}[ct];
     document.getElementById('ebayGlobalSummary').innerHTML =
-      `${ltLabel} · ${ctLabel} · Seller ≥${gf.seller_feedback_min||98}% · ${gf.listing_age_max_days||25}d max`;
+      `${ltLabel} · Seller ≥${gf.seller_feedback_min||98}% · ${gf.listing_age_max_days||25}d max`;
 
     // Day cards - compact
     document.getElementById('ebayDayCards').innerHTML = DAY_ORDER.map((day, i) => {
@@ -1291,19 +1537,6 @@ function openGlobalModal() {
               Both
             </label>
           </div>
-          <div class="card-label" style="margin-bottom:6px">CARD TYPE</div>
-          <div style="display:flex;flex-direction:column;gap:6px">
-            <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:12px;color:var(--text-secondary)">
-              <input type="radio" name="cardType" value="raw" id="ct-raw" style="accent-color:var(--accent)"
-                ${(ebayConfigData.cardMode||'raw')==='raw'?'checked':''}>
-              Raw only
-            </label>
-            <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:12px;color:var(--text-secondary)">
-              <input type="radio" name="cardType" value="graded" id="ct-graded" style="accent-color:var(--accent)"
-                ${ebayConfigData.cardMode==='graded'?'checked':''}>
-              Graded only
-            </label>
-          </div>
         </div>
       </div>
     </div>
@@ -1349,8 +1582,6 @@ async function saveModalData() {
     if (!updated.global_filters.quality_rules) updated.global_filters.quality_rules = {};
     updated.global_filters.quality_rules.seller_feedback_min = parseInt(document.getElementById('modal-feedback').value)||98;
     updated.global_filters.quality_rules.listing_age_max_days = parseInt(document.getElementById('modal-age').value)||25;
-    updated.cardMode = 
-      document.querySelector('input[name="cardType"]:checked')?.value || 'raw';
     updated.global_filters.listing_type = 
       document.querySelector('input[name="listingType"]:checked')?.value || 'fixed_price';
   }
