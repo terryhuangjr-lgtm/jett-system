@@ -86,11 +86,11 @@
     .gallery-actions { display: flex; gap: 8px; margin-bottom: 12px; }
     .gallery-actions button { flex: 1; }
 
-    /* Account badge */
+    /* Account switcher */
     #account-badge {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
       padding: 6px 12px;
       border-radius: 20px;
       font-size: 0.78rem;
@@ -99,6 +99,7 @@
       color: var(--accent);
       border: 1px solid rgba(59,130,246,0.25);
       white-space: nowrap;
+      position: relative;
     }
     #account-badge.disconnected {
       background: rgba(239,68,68,0.1);
@@ -107,6 +108,58 @@
     }
     #account-badge a { color: inherit; text-decoration: none; }
     #account-badge a:hover { text-decoration: underline; }
+    .account-switch-btn {
+      background: none;
+      border: none;
+      color: var(--text-secondary);
+      cursor: pointer;
+      font-size: 0.7rem;
+      padding: 2px 6px;
+      border-radius: 4px;
+      opacity: 0.7;
+    }
+    .account-switch-btn:hover { opacity: 1; color: var(--accent); }
+    #account-dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      margin-top: 4px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      min-width: 200px;
+      z-index: 100;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    }
+    #account-dropdown.show { display: block; }
+    .account-option {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      cursor: pointer;
+      transition: background 0.1s;
+      font-size: 0.85rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .account-option:last-child { border-bottom: none; }
+    .account-option:hover { background: rgba(59,130,246,0.08); }
+    .account-option.active { color: var(--accent); font-weight: 600; }
+    .account-option .check { margin-left: auto; opacity: 0; }
+    .account-option.active .check { opacity: 1; color: var(--green); }
+    .account-add-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 14px;
+      color: var(--text-secondary);
+      font-size: 0.8rem;
+      cursor: pointer;
+      border-top: 1px solid var(--border);
+    }
+    .account-add-btn:hover { color: var(--accent); }
+    .account-add-btn a { color: inherit; text-decoration: none; display: flex; align-items: center; gap: 6px; }
 
     /* Form */
     .form-group { margin-bottom: 14px; }
@@ -257,7 +310,9 @@
   <div class="header">
     <h2>Card Lister</h2>
     <div id="account-badge" class="disconnected">
-      <span>⏳</span><span>Checking...</span>
+      <span class="badge-status">⏳</span><span class="badge-text">Checking...</span>
+      <button class="account-switch-btn" id="switch-btn" onclick="toggleDropdown()" style="display:none;">▼</button>
+      <div id="account-dropdown"></div>
     </div>
   </div>
 
@@ -435,25 +490,129 @@
     let cardType = 'raw';
     let isSubmitting = false;
     let currentSession = null;
+    let connectedAccounts = [];
 
-    // ── Session / Account Badge ────────────────────────────────────
+    // ── Session / Account Switcher ────────────────────────────────
 
     async function checkSession() {
       const badge = document.getElementById('account-badge');
+      const statusEl = badge.querySelector('.badge-status');
+      const textEl = badge.querySelector('.badge-text');
+      const switchBtn = document.getElementById('switch-btn');
+
       try {
-        const res = await fetch('/api/card-lister/session');
-        const data = await res.json();
-        currentSession = data;
-        if (data.logged_in && data.user) {
+        // Get current session
+        const [sessionRes, accountsRes] = await Promise.all([
+          fetch('/api/card-lister/session'),
+          fetch('/api/card-lister/accounts')
+        ]);
+        const sessionData = await sessionRes.json();
+        const accountsData = await accountsRes.json();
+
+        currentSession = sessionData;
+        connectedAccounts = accountsData.accounts || [];
+
+        if (sessionData.logged_in && sessionData.user) {
+          statusEl.textContent = '✓';
+          textEl.innerHTML = `<strong>${escapeHtml(sessionData.user.ebay_username)}</strong>`;
           badge.className = '';
-          badge.innerHTML = `<span>✓</span><span>Listing as <strong>${escapeHtml(data.user.ebay_username)}</strong></span>`;
+          // Show switch button if multiple accounts or one account that isn't the default
+          switchBtn.style.display = connectedAccounts.length > 0 ? 'block' : 'none';
         } else {
+          statusEl.textContent = '✗';
+          textEl.innerHTML = `<a href="https://cardminer.jettmissioncontrol.com/connect" target="_blank">Connect eBay</a> to list cards`;
           badge.className = 'disconnected';
-          badge.innerHTML = `<span>✗</span><span><a href="https://cardminer.jettmissioncontrol.com/connect" target="_blank">Connect eBay</a> to list under your account</span>`;
+          switchBtn.style.display = 'none';
+        }
+
+        // Build dropdown
+        buildDropdown();
+
+      } catch (e) {
+        statusEl.textContent = '✗';
+        textEl.textContent = 'Connect eBay to list cards';
+        badge.className = 'disconnected';
+        switchBtn.style.display = 'none';
+      }
+    }
+
+    function buildDropdown() {
+      const dropdown = document.getElementById('account-dropdown');
+      const currentUserId = currentSession?.user?.ebay_user_id;
+      dropdown.innerHTML = '';
+
+      // Connected accounts
+      for (const acct of connectedAccounts) {
+        const opt = document.createElement('div');
+        opt.className = 'account-option';
+        if (acct.ebay_user_id === currentUserId) opt.classList.add('active');
+        opt.innerHTML = `
+          <span>${escapeHtml(acct.ebay_username)}</span>
+          <span class="check">✓</span>
+        `;
+        opt.addEventListener('click', () => switchAccount(acct.ebay_user_id, acct.ebay_username));
+        dropdown.appendChild(opt);
+      }
+
+      // Add account link
+      const addBtn = document.createElement('div');
+      addBtn.className = 'account-add-btn';
+      addBtn.innerHTML = '<a href="https://cardminer.jettmissioncontrol.com/connect" target="_blank">+ Connect another eBay account</a>';
+      dropdown.appendChild(addBtn);
+    }
+
+    function toggleDropdown() {
+      document.getElementById('account-dropdown').classList.toggle('show');
+    }
+
+    // Close dropdown on outside click
+    document.addEventListener('click', function(e) {
+      const badge = document.getElementById('account-badge');
+      const dropdown = document.getElementById('account-dropdown');
+      if (!badge.contains(e.target)) {
+        dropdown.classList.remove('show');
+      }
+    });
+
+    async function switchAccount(ebayUserId, ebayUsername) {
+      const badge = document.getElementById('account-badge');
+      const statusEl = badge.querySelector('.badge-status');
+      const textEl = badge.querySelector('.badge-text');
+
+      // Show loading state
+      statusEl.textContent = '⏳';
+      textEl.textContent = `Switching to ${escapeHtml(ebayUsername)}...`;
+      document.getElementById('account-dropdown').classList.remove('show');
+
+      try {
+        const res = await fetch('/api/card-lister/switch-account', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ ebay_user_id: ebayUserId })
+        });
+        const data = await res.json();
+
+        if (data.success) {
+          // Update badge immediately
+          statusEl.textContent = '✓';
+          textEl.innerHTML = `<strong>${escapeHtml(data.user.ebay_username)}</strong>`;
+          badge.className = '';
+          currentSession = { logged_in: true, user: data.user };
+          // Rebuild dropdown with new active state
+          buildDropdown();
+          // Reload draft for this account (or refresh form)
+          loadDraft();
+        } else {
+          statusEl.textContent = '⚠';
+          textEl.textContent = `Switch failed: ${data.error || 'Unknown error'}`;
+          badge.className = 'disconnected';
+          setTimeout(checkSession, 3000);
         }
       } catch (e) {
+        statusEl.textContent = '⚠';
+        textEl.textContent = `Switch failed: ${e.message}`;
         badge.className = 'disconnected';
-        badge.innerHTML = `<span>✗</span><span>Connect eBay to list cards</span>`;
+        setTimeout(checkSession, 3000);
       }
     }
 
