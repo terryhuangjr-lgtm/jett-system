@@ -1,4 +1,21 @@
-require('dotenv').config();
+// Force-load .env FIRST — read file directly to bypass dotenv process.env interference
+const envFs = require('fs');
+const envPath = __dirname + '/.env';
+if (envFs.existsSync(envPath)) {
+  const envContent = envFs.readFileSync(envPath, 'utf8');
+  for (const line of envContent.split('\n')) {
+    const trimmed = line.trim();
+    if (!trimmed || trimmed.startsWith('#')) continue;
+    const eqIdx = trimmed.indexOf('=');
+    if (eqIdx === -1) continue;
+    const k = trimmed.substring(0, eqIdx).trim();
+    const v = trimmed.substring(eqIdx + 1).trim();
+    // Always set from .env — the salon's .env is the source of truth
+    process.env[k] = v;
+  }
+}
+// Then run dotenv as normal for remaining vars
+require('dotenv').config({ override: false });
 const express = require('express');
 const twilio = require('twilio');
 const WebSocket = require('ws');
@@ -76,7 +93,7 @@ function pcm16ToMulaw(pcmBuffer) {
 // Google Calendar — Book Appointments
 // ──────────────────────────────────────────
 const SALON_HOURS = 'Monday-Saturday 9am-7pm, Sunday 10am-5pm';
-const GWS_BIN = '/home/clawd/.nvm/versions/node/v22.22.0/bin/gws';
+const GWS_BIN = '/home/terry/.nvm/versions/node/v22.22.0/bin/gws';
 const CALENDAR_TIMEZONE = 'America/New_York';
 
 // ──────────────────────────────────────────
@@ -280,12 +297,11 @@ const BUSINESS_HOURS = {
 function sendSms(to, message) {
   const accountSid = process.env.TWILIO_ACCOUNT_SID;
   const authToken = process.env.TWILIO_AUTH_TOKEN;
-  const fromNumber = process.env.TWILIO_PHONE_NUMBER;
 
   const auth = Buffer.from(`${accountSid}:${authToken}`).toString('base64');
   const body = new URLSearchParams({
     To: to,
-    From: fromNumber,
+    MessagingServiceSid: 'MG9bbd0ebe1e101a973f47392d49708d9f',
     Body: message,
   });
 
@@ -863,6 +879,7 @@ app.post('/incoming-call', (req, res) => {
     const twiml = new VoiceResponse();
     const publicHost = process.env.PUBLIC_HOST || 'voice.jettmissioncontrol.com';
     const connect = twiml.connect({
+      timeout: '300',
       recordingStatusCallback: `https://${publicHost}/recording-callback`,
       recordingStatusCallbackEvent: ['completed']
     });
@@ -879,6 +896,7 @@ app.post('/incoming-call', (req, res) => {
   // Connect to our WebSocket media stream — with recording
   const publicHost = process.env.PUBLIC_HOST || 'voice.jettmissioncontrol.com';
   const connect = twiml.connect({
+    timeout: '300',
     recordingStatusCallback: `https://${publicHost}/recording-callback`,
     recordingStatusCallbackEvent: ['completed']
   });
@@ -968,7 +986,7 @@ app.post('/recording-callback', async (req, res) => {
  * Build system prompt for after-hours voicemail mode
  */
 function buildVoicemailContext() {
-  const salonName = process.env.SALON_NAME || 'Salon';
+  const salonName = SALON_NAME || 'Salon';
   const salonHours = process.env.SALON_HOURS || 'Monday-Saturday 9am-7pm, Sunday 10am-5pm';
   const salonPhone = process.env.SALON_PHONE || '';
 
@@ -1209,6 +1227,11 @@ wss.on('connection', (twilioWs) => {
       }
     }
     
+    // Log all event types for debugging
+    if (event.type && !['response.output_audio.delta', 'response.output_audio_transcript.done', 'response.audio_transcript.done', 'conversation.item.input_audio_transcription.completed', 'input_audio_buffer.speech_started', 'input_audio_buffer.speech_stopped'].includes(event.type)) {
+      console.log(`ℹ️ xAI event: ${event.type}`, event.type === 'response.done' ? '(response complete)' : '');
+    }
+    
     // Log errors only
     if (event.error) console.log(`❌ xAI Error:`, JSON.stringify(event.error));
   });
@@ -1432,6 +1455,12 @@ vmWss.on('connection', (twilioWs) => {
       conversationLog.push({ speaker: 'receptionist', text: event.transcript });
     }
     
+    if (event.type === 'response.done') {
+      console.log('✅ Voicemail response turn complete — waiting for caller response');
+      // DON'T hang up here — the caller needs to respond!
+      // The stream will end naturally when Twilio closes it.
+    }
+    
     if (event.type === 'conversation.item.input_audio_transcription.completed') {
       console.log(`👤 Caller: ${event.transcript}`);
       conversationLog.push({ speaker: 'customer', text: event.transcript });
@@ -1522,24 +1551,7 @@ vmWss.on('connection', (twilioWs) => {
   });
 });
 
-// Call dashboard (static HTML with Supabase Realtime)
-app.get('/dashboard', (req, res) => {
-  let html = fs.readFileSync(path.join(__dirname, 'dashboard.html'), 'utf8');
-  html = html.replace('__SUPABASE_URL__', process.env.SUPABASE_URL || 'https://fhmjvnphxsbtwcutqkvq.supabase.co');
-  html = html.replace('__SUPABASE_ANON_KEY__', process.env.SUPABASE_ANON_KEY || '');
-  res.setHeader('Content-Type', 'text/html');
-  res.send(html);
-});
-
-// Settings page — stylist/salon management (uses Supabase API directly)
-app.get('/settings', (req, res) => {
-  let html = fs.readFileSync(path.join(__dirname, 'settings.html'), 'utf8');
-  html = html.replace('__SUPABASE_URL__', process.env.SUPABASE_URL || 'https://fhmjvnphxsbtwcutqkvq.supabase.co');
-  html = html.replace('__SUPABASE_ANON_KEY__', process.env.SUPABASE_ANON_KEY || '');
-  res.setHeader('Content-Type', 'text/html');
-  res.send(html);
-});
-
+// Dashboard lives on Vercel — cleaned up local route
 // Health check
 app.get('/health', (req, res) => {
   res.json({ status: 'ok', uptime: process.uptime() });
@@ -1556,7 +1568,7 @@ app.post('/api/save-settings', async (req, res) => {
     }
 
     // Read service key from superare profile (shares this Supabase project)
-    const envPath = '/home/clawd/.hermes/profiles/superare/.env';
+    const envPath = '/home/terry/.hermes/profiles/superare/.env';
     let serviceKey = '';
 
     if (fs.existsSync(envPath)) {
@@ -1686,7 +1698,7 @@ const server = app.listen(3333, async () => {
   // Initial sync: push salon_settings stylists into salon_stylists table
   (async () => {
     try {
-      const envPath = '/home/clawd/.hermes/profiles/superare/.env';
+      const envPath = '/home/terry/.hermes/profiles/superare/.env';
       const supUrl = process.env.SUPABASE_URL || 'https://fhmjvnphxsbtwcutqkvq.supabase.co';
       if (fs.existsSync(envPath)) {
         const envContent = fs.readFileSync(envPath, 'utf8');

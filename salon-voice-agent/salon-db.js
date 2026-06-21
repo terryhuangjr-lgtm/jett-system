@@ -2,11 +2,25 @@
 // Handles call logging, live transcript tracking, and settings retrieval
 
 const { createClient } = require('@supabase/supabase-js');
+const fs = require('fs');
+const path = require('path');
 
 const supabaseUrl = process.env.SUPABASE_URL || 'https://fhmjvnphxsbtwcutqkvq.supabase.co';
-const supabaseKey = process.env.SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZobWp2bnBoeHNidHdjdXRxa3ZxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzcyMTgyNzcsImV4cCI6MjA5Mjc5NDI3N30.aUBnSwsBCE4JURXaQpZR81jtgP6A4cO-XXSUHrdnRgU';
 
-const supabase = createClient(supabaseUrl, supabaseKey);
+// Use service key for write operations (bypasses RLS)
+let serviceKey = process.env.SUPABASE_ANON_KEY;
+const envPath = '/home/terry/.hermes/profiles/superare/.env';
+if (fs.existsSync(envPath)) {
+  const envContent = fs.readFileSync(envPath, 'utf8');
+  for (const line of envContent.split('\n')) {
+    if (line.trim().startsWith('SUPABASE_SERVICE_KEY=')) {
+      serviceKey = line.split('=').slice(1).join('=').trim().replace(/['"]/g, '');
+      break;
+    }
+  }
+}
+
+const supabase = createClient(supabaseUrl, serviceKey);
 
 /**
  * Log a new call to Supabase
