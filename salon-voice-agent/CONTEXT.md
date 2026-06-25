@@ -123,6 +123,50 @@ pm2 stop salon-voice-agent        # Stop
 pm2 start salon-voice-agent       # Start
 ```
 
+## Deployment Architecture
+
+### Two Components, One Product
+```
+┌─────────────────────────────────────────────────────┐
+│                 One Product                          │
+├──────────────────────┬──────────────────────────────┤
+│                      │                              │
+│  Backend (PM2)       │  Frontend (Vercel)           │
+│  Local Strix Halo    │  salon-dashboard-lac.vercel. │
+│  port 3333           │  app                         │
+│                      │                              │
+│  Git: clawd repo     │  Git: salon-dashboard repo   │
+│  salon-voice-agent/  │  Auto-deploys on push to     │
+│                      │  master                      │
+│                      │                              │
+│  Cloudflare tunnel   │  Reads API from              │
+│  → voice.jettmission │  voice.jettmissioncontrol.com│
+│  control.com:3333    │                              │
+└──────────────────────┴──────────────────────────────┘
+```
+
+### Frontend (Dashboard) Deployment
+| Step | What |
+|------|------|
+| **Repo** | `github.com/terryhuangjr-lgtm/salon-dashboard` (branch: master) |
+| **Vercel project** | `salon-dashboard` (ID: `prj_YGe76AJXHpRmuY26F0LzbURD9PGD`) |
+| **Production URL** | `https://salon-dashboard-lac.vercel.app` |
+| **Auto-deploy** | Yes — any `git push` to master triggers Vercel deploy |
+| **Framework** | Vite + React + TypeScript |
+| **Auth** | PIN 2024 (client-side, stored in Supabase) |
+| **API Base** | Configured to point at `voice.jettmissioncontrol.com` |
+
+### Backend (Voice Agent) Deployment
+| Step | What |
+|------|------|
+| **Host** | Strix Halo (local), 128GB RAM |
+| **Repo** | `github.com/terryhuangjr-lgtm/jett-system` → `salon-voice-agent/` |
+| **Process** | PM2 — `pm2 restart salon-voice-agent` |
+| **Tunnel** | Cloudflare tunnel → `voice.jettmissioncontrol.com` → :3333 |
+| **Secrets** | `.env` in `salon-voice-agent/` (DO NOT COMMIT) |
+
+> **Note:** The backend CANNOT run on Vercel because it's a persistent Node.js server with WebSocket + Twilio streams. PM2 on the Strix Halo (or a VPS) is the right architecture.
+
 ## Testing
 1. Call `+1516***8571` — Eve answers
 2. Dashboard: `https://salon-dashboard-lac.vercel.app` (PIN: 2024)
