@@ -92,8 +92,8 @@ function pcm16ToMulaw(pcmBuffer) {
 // ──────────────────────────────────────────
 // Google Calendar — Book Appointments
 // ──────────────────────────────────────────
+const googleCal = require('./google-calendar');
 const SALON_HOURS = 'Monday-Saturday 9am-7pm, Sunday 10am-5pm';
-const GWS_BIN = '/home/terry/.nvm/versions/node/v22.22.0/bin/gws';
 const CALENDAR_TIMEZONE = 'America/New_York';
 
 // ──────────────────────────────────────────
@@ -455,32 +455,9 @@ function getAvailableSlots(dateStr) {
     const dayEnd = new Date(date);
     dayEnd.setHours(23, 59, 59, 999);
 
-    const args = [
-      'calendar', 'events', 'list',
-      '--params', JSON.stringify({
-        calendarId: 'primary',
-        timeMin: dayStart.toISOString(),
-        timeMax: dayEnd.toISOString(),
-        singleEvents: true,
-        orderBy: 'startTime',
-      }),
-      '--format', 'json',
-    ];
-
-    execFile(GWS_BIN, args, { timeout: 10000 }, (err, stdout) => {
-      if (err) return resolve([]); // Fail open — return all slots
-      try {
-        const data = JSON.parse(stdout);
-        const events = data.items || [];
-        const busySlots = events.map(e => ({
-          start: new Date(e.start?.dateTime || e.start?.date),
-          end: new Date(e.end?.dateTime || e.end?.date),
-        }));
-        resolve(busySlots);
-      } catch {
-        resolve([]);
-      }
-    });
+    googleCal.listEvents(dateStr).then(busySlots => {
+      resolve(busySlots);
+    }).catch(() => resolve([]));
   });
 }
 
@@ -533,28 +510,11 @@ async function fetchAvailableSlotsWindow() {
 
     let busySlots = [];
     try {
-      busySlots = await new Promise((resolve, reject) => {
-        execFile(GWS_BIN, [
-          'calendar', 'events', 'list',
-          '--params', JSON.stringify({
-            calendarId: 'primary',
-            timeMin: dayStart.toISOString(),
-            timeMax: dayEnd.toISOString(),
-            singleEvents: true,
-            orderBy: 'startTime',
-          }),
-          '--format', 'json',
-        ], { timeout: 10000 }, (err, stdout) => {
-          if (err) return resolve([]);
-          try {
-            const data = JSON.parse(stdout);
-            resolve((data.items || []).map(e => ({
-              start: new Date(e.start?.dateTime || e.start?.date).getTime(),
-              end: new Date(e.end?.dateTime || e.end?.date).getTime(),
-            })));
-          } catch { resolve([]); }
-        });
-      });
+      const daySlots = await googleCal.listEvents(date.toISOString());
+      busySlots = daySlots.map(s => ({
+        start: s.start.getTime(),
+        end: s.end.getTime(),
+      }));
     } catch { busySlots = []; }
 
     // Compute free hour slots
@@ -719,50 +679,21 @@ const STYLIST_COLORS = {
  * Create a calendar event via GWS CLI
  */
 function createBookingEvent(customerName, customerPhone, service, startDate, endDate, stylistName) {
-  return new Promise((resolve, reject) => {
+  return new Promise(async (resolve, reject) => {
     if (!service) service = 'Appointment';
     const stylistLabel = stylistName ? ` w/ ${stylistName}` : '';
     const summary = `${customerName} - ${service.charAt(0).toUpperCase() + service.slice(1)}${stylistLabel}`;
     const description = `Booked via Salon Voice Agent\nCustomer: ${customerName}\nPhone: ${customerPhone}\nService: ${service}${stylistName ? `\nStylist: ${stylistName}` : ''}`;
-    const startISO = startDate.toISOString();
-    const endISO = endDate.toISOString();
+    
+    const colorId = stylistName ? STYLIST_COLORS[stylistName.toLowerCase().trim()] : null;
 
-    const args = [
-      'calendar', '+insert',
-      '--summary', summary,
-      '--start', startISO,
-      '--end', endISO,
-      '--description', description,
-      '--format', 'json',
-    ];
-
-    execFile(GWS_BIN, args, { timeout: 15000 }, (err, stdout, stderr) => {
-      if (err) {
-        console.error('❌ Calendar insert failed:', err.message);
-        return resolve(null);
-      }
-      try {
-        const event = JSON.parse(stdout);
-        console.log(`✅ Booked: ${summary} at ${startISO}`);
-
-        // Set calendar color based on stylist (GWS CLI doesn't support colorId on insert)
-        const colorId = stylistName ? STYLIST_COLORS[stylistName.toLowerCase().trim()] : null;
-        if (colorId && event.id) {
-          execFile(GWS_BIN, [
-            'calendar', 'events', 'patch',
-            '--params', JSON.stringify({ calendarId: 'primary', eventId: event.id }),
-            '--json', JSON.stringify({ colorId: String(colorId) }),
-          ], { timeout: 5000 }, (patchErr) => {
-            if (!patchErr) console.log(`🎨 Event color set for ${stylistName}`);
-            else console.log(`⚠️ Color patch error: ${patchErr.message}`);
-          });
-        }
-
-        resolve(event);
-      } catch {
-        resolve(null);
-      }
-    });
+    const event = await googleCal.createEvent(summary, startDate, endDate, description, colorId);
+    if (event) {
+      console.log(`✅ Booked: ${summary}`);
+      resolve(event);
+    } else {
+      resolve(null);
+    }
   });
 }
 
@@ -1205,7 +1136,22 @@ wss.on('connection', (twilioWs) => {
     
     if (event.type === 'conversation.item.input_audio_transcription.completed') {
       console.log(`👤 Customer: ${event.transcript}`);
-      conversationLog.push({ speaker: 'customer', text: event.transcript });
+      // Coalesce partial STT utterances — if last customer entry starts with new text, replace it
+      const lastIdx = conversationLog.length - 1;
+      if (lastIdx >= 0 && conversationLog[lastIdx].speaker === 'customer') {
+        const lastText = conversationLog[lastIdx].text;
+        // If new text is a superset/continuation of the last, replace it
+        if (event.transcript.length > lastText.length && event.transcript.startsWith(lastText)) {
+          conversationLog[lastIdx] = { speaker: 'customer', text: event.transcript };
+        } else if (lastText.length >= event.transcript.length && lastText.startsWith(event.transcript)) {
+          // New text is shorter — it's probably a stale partial, skip it
+          return;
+        } else {
+          conversationLog.push({ speaker: 'customer', text: event.transcript });
+        }
+      } else {
+        conversationLog.push({ speaker: 'customer', text: event.transcript });
+      }
       // Live broadcast to dashboard + Supabase
       liveStream.transcriptTurn(streamSid, 'customer', event.transcript);
       if (streamSid) salonDb.appendLiveTranscript(streamSid, 'customer', event.transcript);
@@ -1250,6 +1196,7 @@ wss.on('connection', (twilioWs) => {
       salonDb.logCallStarted(customerPhone, streamSid, callSid).then(log => {
         if (log) callLogId = log.id;
       });
+      salonDb.trackLiveCall(customerPhone, streamSid);
       liveStream.callStarted(customerPhone, streamSid);
     }
     
@@ -1479,7 +1426,10 @@ vmWss.on('connection', (twilioWs) => {
       const callerNumber = event.from || event.start?.callerNumber || event.start?.from || '';
       vmCallerNumber = callerNumber;
       console.log(`📱 Voicemail call from: ${callerNumber} | Stream: ${streamSid}`);
-      
+
+      // Track live call
+      salonDb.trackLiveCall(callerNumber, streamSid);
+
       // Log with 'voicemail' status
       salonDb.logCallStarted(callerNumber, streamSid, callSid).then(log => {
         if (log) {
@@ -1526,6 +1476,9 @@ vmWss.on('connection', (twilioWs) => {
       if (callLogId) {
         salonDb.logCallComplete(callLogId, conversationLog, null, { customer: false, owner: false });
       }
+      if (streamSid) {
+        salonDb.endLiveCall(streamSid);
+      }
     };
 
     if (transcripts.length > 20) {
@@ -1551,7 +1504,27 @@ vmWss.on('connection', (twilioWs) => {
   });
 });
 
-// Dashboard lives on Vercel — cleaned up local route
+// Dashboard
+// Serve dashboard with Supabase config injected
+app.get('/dashboard', (req, res) => {
+  const fs = require('fs');
+  const path = require('path');
+  let html = fs.readFileSync(path.join(__dirname, 'dashboard.html'), 'utf8');
+  const supabaseUrl = process.env.SUPABASE_URL || 'https://fhmjvnphxsbtwcutqkvq.supabase.co';
+  const supabaseKey = process.env.SUPABASE_ANON_KEY || '';
+  html = html.replace('__SUPABASE_URL__', supabaseUrl);
+  html = html.replace('__SUPABASE_ANON_KEY__', supabaseKey);
+  res.type('html').send(html);
+});
+
+// Serve settings as static
+app.use('/settings', express.static(__dirname + '/settings.html'));
+
+// Root redirect to dashboard
+app.get('/', (req, res) => {
+  res.redirect('/dashboard');
+});
+
 // Health check
 app.get('/health', (req, res) => {
   res.json({ status: 'ok', uptime: process.uptime() });
