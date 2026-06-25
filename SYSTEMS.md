@@ -1,6 +1,8 @@
 # Jett System Architecture
 
-Last Updated: 2026-05-26
+Last Updated: 2026-06-01
+
+**⚠️ This file is legacy. The canonical system reference has moved to `~/.hermes/SYSTEMS.md`.** All Hermes profile SOUL.md and CONTEXT.md files now point there. This file is kept for backward compatibility with the clawdbot system.
 
 ---
 
@@ -92,9 +94,9 @@ Last Updated: 2026-05-26
 - Telegram agent interface for quick queries
 
 **Key files:**
-- Dashboard: `/home/clawd/clawd/huang-family-hub/`
-- Script: `/home/clawd/.hermes/scripts/huangfam-query.py`
-- SYSTEM.md: `/home/clawd/clawd/huang-family-hub/SYSTEM.md`
+- Dashboard: `/home/terry/clawd/huang-family-hub/`
+- Script: `/home/terry/.hermes/scripts/huangfam-query.py`
+- SYSTEM.md: `/home/terry/clawd/huang-family-hub/SYSTEM.md`
 
 **Responsibilities:**
 - Message routing (Telegram → Jett)
@@ -106,10 +108,11 @@ Last Updated: 2026-05-26
 
 ---
 
-### 2. Task Manager Dashboard (Port 3000)
+### 2. Jett Mission Control / Task Manager (Port 3000)
 
 | Attribute | Value |
 |-----------|-------|
+| Name | Jett Mission Control |
 | Process | `server.js` |
 | Port | 3000 |
 | Auto-start | **Via systemd service (jett-task-manager.service)** |
@@ -121,6 +124,7 @@ Last Updated: 2026-05-26
 - Schedule tab now shows Hermes-managed crons (Content Calendar, Lead Gen, StoreIQ Auto-Sync)
 - Health check display
 - Sienna Lesson Launcher (AI learning for kids)
+- Integrates with Llama.cpp (Qwen3.6-35b-a3b) for AI task processing (e.g., Podcasts)
 
 **Commands:**
 ```bash
@@ -137,15 +141,16 @@ systemctl --user restart jett-task-manager.service
 
 ---
 
-### 3. Ollama (Local LLM)
+### 3. Llama.cpp / Ollama (Local LLM)
 
 | Attribute | Value |
 |-----------|-------|
-| Process | `ollama serve` |
+| Process | `llama.cpp` / `ollama serve` |
+| Port | 11434 |
 | Auto-start | Via systemd (clawdbot-gateway.service) |
-| Models | nomic-embed-text (embeddings), minimax-m2.5:cloud |
+| Models | nomic-embed-text (loaded), qwen3.6-35b-a3b (loaded), gemma4-12b (idle), qwen3-coder-next (idle) |
 
-**Note:** Ollama runs for memory search embeddings + minimax. All other tasks use Grok/Haiku.
+**Note:** Used for memory search embeddings, podcast summarization (Qwen), and local processing.
 
 ---
 
@@ -168,6 +173,7 @@ systemctl --user restart jett-task-manager.service
 | **MaggiePM profile** | **`~/.hermes/profiles/maggiepm/`** | **✅ Maggie's Agent** |
 | **MaggiePM host** | **VPS at 167.172.135.39** (DigitalOcean, Ubuntu 22.04) | |
 | **MaggiePM manager** | **PM2** (process: maggie-pm-agent) | |
+| **MaggiePM Dashboard**| **Vercel Production** (`/home/terry/clawd/maggie-pm-dashboard/`) | |
 | Platform | Telegram (separate bot from Jett's) |
 
 ### 4d. MaggiePM Agent (DigitalOcean VPS)
@@ -184,14 +190,14 @@ The MaggiePM Hermes agent runs on a **separate DigitalOcean VPS** — not the H1
 | MaggiePM profile | `~/.hermes/profiles/maggiepm/` |
 | Process manager | **PM2** — `maggie-pm-agent` (not systemd) |
 | Python | 3.12.3 |
-| PM2 start cmd | `pm2 start --name maggie-pm-agent '/home/clawd/.hermes/hermes-agent/venv/bin/hermes --profile maggiepm gateway run'` |
+| PM2 start cmd | `pm2 start --name maggie-pm-agent '/home/terry/.hermes/hermes-agent/venv/bin/hermes --profile maggiepm gateway run'` |
 | PM2 restart | `pm2 restart maggie-pm-agent` |
 | PM2 logs | `pm2 logs maggie-pm-agent --nostream` |
 | PM2 status | `pm2 status` |
 
 **PM2 startup (run once to survive reboots):**
 ```bash
-sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u clawd --hp /home/clawd
+sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u clawd --hp /home/terry
 pm2 save
 ```
 
@@ -281,7 +287,7 @@ journalctl --user -u hermes-gateway-personal.service -n 50 --no-pager
 **Capabilities:**
 - Yahoo Finance: stock/crypto price lookups, chart data
 - Finnhub: news headlines for watchlist tickers
-- Watchlist: `/home/clawd/dashboard/data/finance/watchlist.json`
+- Watchlist: `/home/terry/dashboard/data/finance/watchlist.json`
 - Full Terry financial context via SOUL.md
 
 ---
@@ -374,6 +380,9 @@ hermes cron run <job_id>      # Run a job immediately
 | **Shopify StoreIQ Leads** | Fri 8AM | `no_agent` | `shopify-leads.js` (Grok) |
 | **StoreIQ Auto-Sync** | Every 30m | Agent | Shopify→Supabase sync (kept as fallback) |
 | **StoreIQ Webhook** | On Shopify event | Webhook | Instant sync via /webhooks/shopify |
+| **eBay Daily Card Scans** | Daily 9AM | `no_agent` | `run-ebay-scan.sh` |
+| **Podcast Processing** | Nightly 4AM | `agent` | Node processor (Whisper + Qwen3.6) |
+| **NAS Photo/Video Conversion** | Tonight 11PM | `no_agent` | `nas-photo-convert.py` |
 
 **Migration status:** All lead gen crons migrated from PM2→Hermes. Content calendar rebuilt for 3 weekly posts (Mon Education, Wed Proof, Fri Pain Point). No OpenClaw/PM2 dependency for these jobs.
 
@@ -556,7 +565,7 @@ node automation/jett-community-pulse.js "NIL deals college football"
 
 **Cron (deterministic - no LLM):**
 ```bash
-cd /home/clawd/clawd/ebay-scanner && node run-from-config.js [day]
+cd /home/terry/clawd/ebay-scanner && node run-from-config.js [day]
 ```
 
 ---
@@ -594,7 +603,7 @@ cd /home/clawd/clawd/ebay-scanner && node run-from-config.js [day]
 └──────────────────┘     └──────────────────┘     └──────────────────┘
 ```
 
-**Skill:** `/home/clawd/skills/podcast-summary/`
+**Skill:** `/home/terry/skills/podcast-summary/`
 
 ---
 
@@ -607,7 +616,7 @@ cd /home/clawd/clawd/ebay-scanner && node run-from-config.js [day]
 └──────────────────┘     └──────────────────┘     └──────────────────┘
 ```
 
-**Location:** `/home/clawd/skills/web-design-leads/` (all 3 scripts)
+**Location:** `/home/terry/skills/web-design-leads/` (all 3 scripts)
 
 **Cron Entrypoints:** `~/.hermes/profiles/coder/scripts/*.sh`
 
@@ -679,7 +688,7 @@ cd /home/clawd/clawd/ebay-scanner && node run-from-config.js [day]
 └──────────────────┘     └──────────────────┘     └──────────────────┘
 ```
 
-**Location:** `/home/clawd/skills/morning-brief/`
+**Location:** `/home/terry/skills/morning-brief/`
 
 **Note:** Removed Notion dependency (shopping list + tasks). Now uses Google Calendar only.
 
@@ -689,10 +698,10 @@ cd /home/clawd/clawd/ebay-scanner && node run-from-config.js [day]
 
 | Skill | Location | Purpose |
 |-------|----------|---------|
-| 21m-sports-generation | /home/clawd/skills/21m-sports-generation/ | Sports content validation |
-| ebay-scan | /home/clawd/skills/ebay-scan/ | eBay scanning |
-| morning-brief | /home/clawd/skills/morning-brief/ | Family brief (Google Calendar only) |
-| podcast-summary | /home/clawd/skills/podcast-summary/ | Podcast transcription/summary |
+| 21m-sports-generation | /home/terry/skills/21m-sports-generation/ | Sports content validation |
+| ebay-scan | /home/terry/skills/ebay-scan/ | eBay scanning |
+| morning-brief | /home/terry/skills/morning-brief/ | Family brief (Google Calendar only) |
+| podcast-summary | /home/terry/skills/podcast-summary/ | Podcast transcription/summary |
 
 ---
 
@@ -708,7 +717,7 @@ cd /home/clawd/clawd/ebay-scanner && node run-from-config.js [day]
 
 **ALWAYS use execFileSync with array args:**
 ```javascript
-execFileSync('/home/clawd/.nvm/versions/node/v22.22.0/bin/clawdbot', [
+execFileSync('/home/terry/.nvm/versions/node/v22.22.0/bin/clawdbot', [
   'message', 'send', '--channel', 'telegram',
   '--target', '5867308866',
   '--message', message
@@ -742,8 +751,8 @@ See: `docs/MIGRATION-ROADMAP.md`
 
 | Repo | Path | Remote |
 |------|------|--------|
-| jett-system | /home/clawd/clawd | https://github.com/terryhuangjr-lgtm/jett-system.git |
-| jett-skills | /home/clawd/skills | https://github.com/terryhuangjr-lgtm/jett-skills.git |
+| jett-system | /home/terry/clawd | https://github.com/terryhuangjr-lgtm/jett-system.git |
+| jett-skills | /home/terry/skills | https://github.com/terryhuangjr-lgtm/jett-skills.git |
 
 ---
 
@@ -766,7 +775,7 @@ crontab -l                  # View watchdog cron
 # @reboot removed - now via systemd
 ```
 
-**Self-Heal Watchdog** (`/home/clawd/scripts/self-heal.sh`):
+**Self-Heal Watchdog** (`/home/terry/scripts/self-heal.sh`):
 - Runs every 5 minutes via crontab
 - Completely independent of clawdbot
 - Checks and restarts:
